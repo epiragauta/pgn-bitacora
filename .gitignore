@@ -1,0 +1,18 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Base de datos generada (se recrea en el build de Render)
+db/pgn.db
+
+# Carpeta interna de Claude
+.claude/
+
+# CSVs de datos sensibles / actualizaciones
+etl/data/*.csv

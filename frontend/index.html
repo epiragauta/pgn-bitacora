@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Bitácora PGN 2025-I — Comportamiento de la Inversión Pública · DNP</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+/* ── Tokens DNP 2026 / BDC GOV.CO v5.0 ─── */
+:root{
+  --t:   #00c3c1; /* Turquesa – innovación y apertura */
+  --m:   #fe1b7b; /* Magenta  – inclusión y transformación */
+  --a:   #ffca00; /* Amarillo – desarrollo y esperanza */
+  --gc:  #ebebeb; /* Gris claro – neutralidad */
+  --fw:  #f5f2e9; /* Fondo warm  */
+  --bl:  #ffffff;
+  --gt:  #3d3d3d; /* Gris texto */
+  --gm:  #5e5e5e;
+  --gs:  #9b9b9b;
+  --nr:  #fbb03b; /* Naranja sec */
+  --mo:  #7f47dd; /* Morado sec  */
+  --r:   12px;
+  --rs:  8px;
+  --sh:  0 2px 14px rgba(0,0,0,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--fw);color:var(--gt);font-family:'Nunito Sans',Arial,sans-serif;font-size:15px;line-height:1.6}
+
+/* Franja tricolor diagonal (elemento principal de marca) */
+.franja{height:6px;background:linear-gradient(105deg,var(--t) 0%,var(--t) 31%,var(--m) 31%,var(--m) 63%,var(--a) 63%,var(--a) 100%)}
+
+/* ── Nav ── */
+nav{position:sticky;top:0;z-index:100;background:var(--bl);box-shadow:0 1px 0 var(--gc)}
+.nav-inner{display:flex;align-items:center;gap:24px;max-width:1200px;margin:0 auto;padding:0 32px;height:54px}
+.nav-logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:14px;color:var(--gt);text-decoration:none;margin-right:auto}
+.logo-badge{background:var(--t);color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:4px;letter-spacing:.06em}
+nav a.lk{color:var(--gm);font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;transition:color .2s}
+nav a.lk:hover{color:var(--t)}
+.corte-badge{background:var(--m);color:#fff;font-size:10px;font-weight:900;padding:2px 9px;border-radius:4px;letter-spacing:.04em}
+
+/* ── Wrap ── */
+.pw{max-width:1200px;margin:0 auto;padding:0 32px}
+
+/* ── Hero ── */
+#hero{background:var(--bl);border-bottom:1px solid var(--gc)}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;min-height:90vh}
+.hl{padding:60px 44px 60px 32px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--gc)}
+.eyebrow{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--t);margin-bottom:18px}
+.hl h1{font-size:clamp(30px,3.8vw,50px);font-weight:900;line-height:1.06;letter-spacing:-.02em;color:var(--gt);margin-bottom:12px}
+.hl h1 strong{color:var(--m)}
+.hl p{font-size:14px;color:var(--gm);max-width:420px;line-height:1.7;margin-bottom:36px}
+.kpi-g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi{background:var(--fw);border:1px solid var(--gc);border-radius:var(--rs);padding:16px 14px 12px;position:relative;overflow:hidden}
+.kpi::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
+.kpi.kt::after{background:var(--t)}.kpi.km::after{background:var(--m)}.kpi.ka::after{background:var(--a)}.kpi.kg::after{background:var(--gc)}
+.kl{font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--gs);margin-bottom:5px}
+.kv{font-size:clamp(20px,2.5vw,28px);font-weight:900;line-height:1;color:var(--gt)}
+.kv small{font-size:.42em;font-weight:400;color:var(--gm)}
+.kd{font-size:10px;color:var(--gs);margin-top:4px}
+.hr{background:var(--t);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 36px;position:relative;overflow:hidden}
+.hr::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 1px,transparent 0,transparent 50%);background-size:20px 20px}
+.hr-c{position:relative;z-index:1;text-align:center;color:#fff}
+.hr-num{font-size:clamp(52px,8vw,90px);font-weight:900;line-height:1;letter-spacing:-.03em}
+.hr-lbl{font-size:clamp(11px,1.4vw,15px);font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-top:4px;opacity:.9}
+.hr-sub{font-size:13px;opacity:.72;margin-top:10px}
+.etq{margin-top:28px;background:var(--m);color:#fff;font-weight:900;font-size:12px;padding:7px 18px;border-radius:20px;display:inline-block;letter-spacing:.02em}
+
+/* ── Secciones ── */
+.sec{background:var(--bl);border-bottom:1px solid var(--gc);padding:52px 0 44px}
+.sec.nf{background:var(--fw)}
+.stag{display:inline-flex;align-items:center;gap:5px;background:rgba(0,195,193,.09);border:1px solid rgba(0,195,193,.2);color:var(--t);font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-bottom:14px}
+.stag .n{background:var(--t);color:#fff;width:16px;height:16px;border-radius:50%;display:grid;place-items:center;font-size:8px;font-weight:900}
+.stag.sm{background:rgba(254,27,123,.07);border-color:rgba(254,27,123,.18);color:var(--m)}.stag.sm .n{background:var(--m)}
+.stag.sa{background:rgba(255,202,0,.1);border-color:rgba(255,202,0,.28);color:#9a7200}.stag.sa .n{background:var(--a)}
+h2.st{font-size:clamp(20px,2.6vw,30px);font-weight:900;letter-spacing:-.01em;color:var(--gt);margin-bottom:6px;line-height:1.15}
+.ss{font-size:13px;color:var(--gm);margin-bottom:28px;max-width:600px;line-height:1.6}
+.ss strong{color:var(--gt)}
+
+/* grids */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+/* cards */
+.card{background:var(--bl);border:1px solid var(--gc);border-radius:var(--r);padding:22px;box-shadow:var(--sh)}
+.card.bt{border-top:3px solid var(--t)}.card.bm{border-top:3px solid var(--m)}.card.ba{border-top:3px solid var(--a)}
+.ct{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gs);margin-bottom:16px}
+
+/* tablas */
+.tbl{width:100%;border-collapse:collapse;font-size:12px}
+.tbl thead th{background:var(--t);color:#fff;font-weight:800;font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:8px 10px;text-align:right}
+.tbl thead th:first-child{text-align:left;border-radius:5px 0 0 0}.tbl thead th:last-child{border-radius:0 5px 0 0}
+.tbl td{padding:8px 10px;border-bottom:1px solid var(--gc);color:var(--gm);text-align:right}
+.tbl td:first-child{color:var(--gt);text-align:left;font-weight:700}
+.tbl tr:hover td{background:rgba(0,195,193,.04)}
+.tbl .tr td{background:rgba(0,195,193,.06);color:var(--gt);font-weight:900;border-top:2px solid var(--t)}
+.pb{background:var(--m);color:#fff;font-size:9px;font-weight:900;padding:1px 6px;border-radius:8px}
+
+/* donut legend */
+.dl{display:grid;grid-template-columns:170px 1fr;gap:18px;align-items:center}
+.li{display:flex;align-items:flex-start;gap:7px;margin-bottom:8px}
+.ld{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.ln{font-size:11px;color:var(--gm);flex:1;line-height:1.3}
+.lv{font-size:11px;font-weight:900;color:var(--gt)}.lp{font-size:9px;color:var(--gs);margin-left:2px}
+
+/* regiones */
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.rc{background:var(--bl);border:1px solid var(--gc);border-left:4px solid var(--t);border-radius:var(--rs);padding:14px;transition:box-shadow .2s,transform .2s}
+.rc:hover{box-shadow:0 4px 14px rgba(0,195,193,.13);transform:translateY(-2px)}
+.rn{font-weight:900;font-size:12px;color:var(--gt);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.rp{background:var(--t);color:#fff;font-size:9px;font-weight:900;padding:1px 6px;border-radius:7px}
+.rs{display:flex;justify-content:space-between;font-size:10px;padding:3px 0;border-bottom:1px solid var(--gc)}
+.rs:last-of-type{border-bottom:none}
+.rsl{color:var(--gs)}.rsv{font-weight:800;color:var(--gt)}
+.rsect{font-size:9px;color:var(--gs);margin-top:7px;line-height:1.5}
+
+/* timeline */
+.tg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.tc{background:var(--bl);border:1px solid var(--gc);border-top:4px solid var(--t);border-radius:var(--rs);padding:16px}
+.tc:nth-child(2){border-top-color:var(--m)}.tc:nth-child(3){border-top-color:var(--a)}
+.tcy{font-size:26px;font-weight:900;color:var(--gt);line-height:1}
+.tcv{font-size:9px;color:var(--gs);margin-top:2px;margin-bottom:12px;font-weight:700;letter-spacing:.03em}
+.tcs{display:flex;justify-content:space-between;font-size:10px;margin-bottom:4px}
+.tcs .ll{color:var(--gs)}.tcs .vv{font-weight:900;color:var(--m)}
+.tcp{display:inline-block;margin-top:8px;background:rgba(0,195,193,.1);border:1px solid rgba(0,195,193,.2);color:var(--t);font-size:9px;font-weight:800;padding:2px 8px;border-radius:8px}
+
+/* VF */
+.vfh{margin-bottom:28px}
+.vfb{font-size:clamp(40px,6.5vw,68px);font-weight:900;letter-spacing:-.03em;color:var(--gt);line-height:1}
+.vfb em{color:var(--t);font-style:normal}
+.vfd{font-size:14px;color:var(--gm);margin-top:6px}.vfd strong{color:var(--m)}
+
+/* sectorial */
+.sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.sc{background:var(--bl);border:1px solid var(--gc);border-radius:var(--r);padding:18px;transition:box-shadow .2s}
+.sc:hover{box-shadow:0 4px 12px rgba(0,0,0,.07)}
+.sn{font-weight:900;font-size:12px;color:var(--gt);margin-bottom:10px;letter-spacing:-.01em}
+.skv{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px}
+.skv .ll{font-size:9px;color:var(--gs);text-transform:uppercase;letter-spacing:.06em;font-weight:800}
+.skv .vv{font-size:13px;font-weight:900;color:var(--gt)}
+.gr{margin-bottom:7px}
+.gl{display:flex;justify-content:space-between;font-size:9px;margin-bottom:2px}
+.gl span:first-child{color:var(--gs);font-weight:700}
+.gl span:last-child{font-weight:900}
+.gtr{background:var(--gc);border-radius:3px;height:5px;overflow:hidden}
+.gf{height:100%;border-radius:3px;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
+.gft{background:var(--t)}.gfm{background:var(--m)}
+.snd{font-size:10px;color:var(--gs);font-style:italic;margin-top:6px}
+
+/* hbars */
+.hr-row{margin-bottom:12px}
+.hr-lbl{display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px}
+.hr-lbl span:first-child{color:var(--gm);font-weight:700}.hr-lbl span:last-child{font-weight:900;color:var(--gt)}
+.hr-tr{background:var(--gc);border-radius:3px;height:7px}
+.hr-fi{height:100%;border-radius:3px;background:var(--t)}
+
+/* footer */
+footer{background:var(--gt);color:rgba(255,255,255,.7);padding:36px 32px}
+.fi{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:11px;line-height:1.7}
+.fm{font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--t);margin-bottom:4px}
+footer a{color:var(--t);text-decoration:none}
+footer strong{color:#fff}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:860px){
+  .hero-inner{grid-template-columns:1fr}.hr{min-height:220px}
+  .g2,.g3,.tg{grid-template-columns:1fr}
+  .dl{grid-template-columns:1fr}
+  .pw,.nav-inner{padding-left:16px;padding-right:16px}
+  nav{overflow-x:auto}.sec{padding:36px 0 28px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <span class="logo-badge">DNP</span>
+      Bitácora PGN 2025-I
+    </a>
+    <a href="#sec1" class="lk">Transformaciones</a>
+    <a href="#sec2" class="lk">Evolución</a>
+    <a href="#sec3" class="lk">Regionalización</a>
+    <a href="#sec4" class="lk">Ejecución</a>
+    <a href="#sec5" class="lk">Vigencias</a>
+    <a href="#sec6" class="lk">Sectorial</a>
+    <span class="corte-badge">Mar 2025</span>
+  </div>
+  <div class="franja"></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hl pw" style="max-width:none">
+      <div class="eyebrow">Dirección de Programación de Inversiones Públicas · DNP</div>
+      <h1>Comportamiento<br>de la <strong>Inversión<br>Pública</strong></h1>
+      <p>Evolución del presupuesto de inversión financiado a través del Presupuesto General de la Nación. Corte al 31 de marzo de 2025. Vigencias 2022–2025.</p>
+      <div class="kpi-g">
+        <div class="kpi kt"><div class="kl">Apropiación vigente 2025</div><div class="kv">83,9 <small>Bill. COP</small></div><div class="kd">4,6% del PIB · 16% del gasto total</div></div>
+        <div class="kpi km"><div class="kl">Compromisos</div><div class="kv">36,4 <small>Bill. COP</small></div><div class="kd">43% de la apropiación vigente</div></div>
+        <div class="kpi ka"><div class="kl">Obligaciones</div><div class="kv">6,6 <small>Bill. COP</small></div><div class="kd">8% de la apropiación vigente</div></div>
+        <div class="kpi kg"><div class="kl">Pagos</div><div class="kv">6,5 <small>Bill. COP</small></div><div class="kd">7,8% de la apropiación vigente</div></div>
+      </div>
+    </div>
+    <div class="hr">
+      <div class="hr-c">
+        <div class="hr-num">83,9</div>
+        <div class="hr-lbl">Billones de pesos corrientes</div>
+        <div class="hr-sub">Inversión pública vigencia 2025<br>Presupuesto General de la Nación</div>
+        <span class="etq">Colombia tiene un plan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEC 1: TRANSFORMACIONES -->
+<section id="sec1" class="sec">
+  <div class="pw">
+    <div class="stag"><span class="n">1</span>Inversiones PND 2022-2026</div>
+    <h2 class="st">Distribución por Transformaciones</h2>
+    <p class="ss">Vigencia 2025 · PND <strong>"Colombia, potencia mundial de la vida"</strong> · Miles de millones COP corrientes. Fuente: DPIP–SIIF.</p>
+    <div class="g2 rv">
+      <div class="card bt">
+        <div class="ct">Distribución porcentual inversión 2025</div>
+        <div class="dl">
+          <div style="position:relative;height:185px"><canvas id="donutT"></canvas></div>
+          <div id="leyT"></div>
+        </div>
+      </div>
+      <div class="card bm">
+        <div class="ct">Ejecución por transformador — corte marzo 2025</div>
+        <table class="tbl" id="tblT">
+          <thead><tr><th>Transformador</th><th>Vigente</th><th>Compromisos</th><th>%C/AV</th><th>%O/AV</th></tr></thead>
+          <tbody></tbody>
+          <tfoot><tr class="tr"><td>TOTAL</td><td>83.961</td><td>36.363</td><td><span class="pb">43%</span></td><td>8%</td></tr></tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEC 2: EVOLUCIÓN -->
+<section id="sec2" class="sec nf">
+  <div class="pw">
+    <div class="stag sm"><span class="n">2</span>Evolución Presupuestal</div>
+    <h2 class="st">PGN 2022 – 2025</h2>
+    <p class="ss">Estructura del Presupuesto General de la Nación. Miles de millones COP corrientes. Fuente: MHCP – DNP.</p>
+    <div class="g2 rv">
+      <div class="card bt"><div class="ct">Apropiación vigente PGN por componente</div><div style="position:relative;height:230px"><canvas id="barPGN"></canvas></div></div>
+      <div class="card bm"><div class="ct">Inversión % del PIB y del gasto total</div><div style="position:relative;height:230px"><canvas id="lineInv"></canvas></div></div>
+    </div>
+    <div class="card rv" style="margin-top:18px">
+      <div class="ct">Resumen PGN 2022-2025 (miles de millones COP corrientes)</div>
+      <div style="overflow-x:auto">
+        <table class="tbl">
+          <thead><tr><th>Componente</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>% 2025</th></tr></thead>
+          <tbody>
+            <tr><td>Funcionamiento</td><td>210.990</td><td>253.434</td><td>308.251</td><td>329.237</td><td>18,1%</td></tr>
+            <tr><td>Inversión</td><td>69.626</td><td>74.222</td><td>99.851</td><td>83.961</td><td>4,6%</td></tr>
+            <tr><td>Servicio de la Deuda</td><td>71.665</td><td>77.998</td><td>94.522</td><td>112.605</td><td>6,2%</td></tr>
+            <tr class="tr"><td>TOTAL PGN</td><td>352.281</td><td>405.655</td><td>502.624</td><td>525.803</td><td>100%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEC 3: REGIONALIZACIÓN -->
+<section id="sec3" class="sec">
+  <div class="pw">
+    <div class="stag sa"><span class="n">3</span>Regionalización</div>
+    <h2 class="st">Distribución por Regiones y Departamentos</h2>
+    <p class="ss">Apropiación, compromisos y participación regional. Millones COP. Corte marzo 2025. Fuente: DPIP-PIIP.</p>
+    <div class="rg rv" id="regGrid"></div>
+  </div>
+</section>
+
+<!-- SEC 4: EJECUCIÓN -->
+<section id="sec4" class="sec nf">
+  <div class="pw">
+    <div class="stag"><span class="n">4</span>Ejecución de la inversión</div>
+    <h2 class="st">Ejecución Presupuestal 2022 – 2025</h2>
+    <p class="ss">Comparativo histórico corte primer trimestre. Fuente: SIIF Nación.</p>
+    <div class="tg rv" id="tlGrid"></div>
+    <div class="g2 rv" style="margin-top:18px">
+      <div class="card bt"><div class="ct">% Compromisos · Obligaciones · Pagos</div><div style="position:relative;height:220px"><canvas id="lineEj"></canvas></div></div>
+      <div class="card bm"><div class="ct">Apropiación sectores principales 2022-2025</div><div id="hbSect"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEC 5: VIGENCIAS FUTURAS -->
+<section id="sec5" class="sec">
+  <div class="pw">
+    <div class="stag sm"><span class="n">5</span>Vigencias Futuras</div>
+    <h2 class="st">Compromisos 2026 – 2040</h2>
+    <div class="vfh"><div class="vfb"><em>136,7</em> billones</div><p class="vfd">COP constantes 2025 comprometidos 2026-2040. Principal sector: <strong>Transporte</strong>.</p></div>
+    <div class="card bt rv"><div class="ct">Vigencias futuras por sector y año (mmm COP constantes 2025)</div><div style="position:relative;height:270px"><canvas id="barVF"></canvas></div></div>
+    <div class="card rv" style="margin-top:18px;overflow-x:auto"><div class="ct">Tabla de vigencias futuras comprometidas</div><table class="tbl" id="tblVF"></table></div>
+  </div>
+</section>
+
+<!-- SEC 6: SECTORIAL -->
+<section id="sec6" class="sec nf">
+  <div class="pw">
+    <div class="stag sa"><span class="n">6</span>Ejecución Sectorial</div>
+    <h2 class="st">Ejecución por Sector — 2025</h2>
+    <p class="ss">% Compromisos y Obligaciones sobre apropiación vigente. Corte: 31 de marzo de 2025. Fuente: SIIF Nación.</p>
+    <div class="sg rv" id="sectGrid"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="franja" style="margin-bottom:0"></div>
+  <div class="fi" style="margin-top:32px">
+    <div>
+      <div class="fm">Departamento Nacional de Planeación</div>
+      <strong>Dirección de Programación de Inversiones Públicas (DPIP)</strong><br>
+      Bitácora 2 · PGN 2025-I · Corte 31 de marzo de 2025<br>
+      Cifras en miles de millones COP corrientes (vigencias futuras: constantes 2025)
+    </div>
+    <div style="text-align:right">
+      Fuentes: SIIF Nación · MHCP · DPIP<br>
+      <a href="https://www.dnp.gov.co">www.dnp.gov.co</a><br>
+      <span style="font-size:10px;color:rgba(255,255,255,.35)">BDC GOV.CO v5.0 · Key Visual DNP 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const API='/api';
+async function af(p,fb){try{const r=await fetch(API+p);if(!r.ok)throw 0;return await r.json();}catch{return fb;}}
+
+/* Paleta DNP exacta */
+const P={t:'#00c3c1',m:'#fe1b7b',a:'#ffca00',nr:'#fbb03b',mo:'#7f47dd',gs:'#9b9b9b',gc:'#ebebeb',
+  all:['#00c3c1','#fe1b7b','#ffca00','#fbb03b','#7f47dd','#5e5e5e']};
+
+Chart.defaults.font.family="'Nunito Sans',Arial,sans-serif";
+Chart.defaults.font.size=11;
+Chart.defaults.color=P.gs;
+
+const D={
+  tr:[
+    {t:'SEGURIDAD HUMANA Y JUSTICIA SOCIAL',v:32.149,p:38.29,c:10.096,pc:31,po:9},
+    {t:'CONVERGENCIA REGIONAL',             v:25.544,p:30.42,c:14.336,pc:56,po:7},
+    {t:'OTRAS TRANSF. Y EJES TRANSVERSALES',v:10.725,p:12.77,c: 7.948,pc:74,po:13},
+    {t:'TRANSF. PRODUCTIVA E INTERNAC.',    v: 9.552,p:11.38,c: 2.277,pc:24,po:1},
+    {t:'ORDENAMIENTO TERRITORIO Y AGUA',    v: 3.529,p: 4.20,c: 1.037,pc:29,po:4},
+    {t:'DERECHO HUMANO A LA ALIMENTACIÓN',  v: 2.462,p: 2.93,c: 0.668,pc:27,po:2},
+  ],
+  ev:[
+    {y:2022,r:'Funcionamiento',v:210990},{y:2022,r:'Inversión',v:69626},{y:2022,r:'Servicio Deuda',v:71665},
+    {y:2023,r:'Funcionamiento',v:253434},{y:2023,r:'Inversión',v:74222},{y:2023,r:'Servicio Deuda',v:77998},
+    {y:2024,r:'Funcionamiento',v:308251},{y:2024,r:'Inversión',v:99851},{y:2024,r:'Servicio Deuda',v:94522},
+    {y:2025,r:'Funcionamiento',v:329237},{y:2025,r:'Inversión',v:83961},{y:2025,r:'Servicio Deuda',v:112605},
+  ],
+  ej:[
+    {y:2022,vg:69626,c:36610,o:11380,p:11143,pc:53,po:16,pp:16.0,pib:4.7,g:20},
+    {y:2023,vg:74222,c:31580,o: 8506,p: 8419,pc:43,po:11,pp:11.3,pib:5.3,g:20},
+    {y:2024,vg:99851,c:38582,o: 9082,p: 8679,pc:39,po: 9,pp: 8.7,pib:5.3,g:19},
+    {y:2025,vg:83961,c:36363,o: 6628,p: 6532,pc:43,po: 8,pp: 7.8,pib:4.6,g:16},
+  ],
+  re:[
+    {r:'AMAZONAS',  v:2124156, c:410848, pc:19.3,pp:99.9, s:'Transporte 19%·Minas 19%·Igualdad 13%'},
+    {r:'ANDINA',    v:22904919,c:7928802,pc:34.6,pp:99.5, s:'Transporte 23%·Trabajo 19%·Igualdad 14%'},
+    {r:'CARIBE',    v:11509903,c:2540747,pc:22.1,pp:97.5, s:'Igualdad 22%·Minas 17%·Inclusión 16%'},
+    {r:'ORINOQUÍA', v:2133287, c:606828, pc:28.4,pp:100.0,s:'Transporte 26%·Igualdad 15%·Minas 14%'},
+    {r:'PACÍFICO',  v:8652873, c:1951833,pc:22.6,pp:99.4, s:'Transporte 21%·Inclusión 16%·Igualdad 16%'},
+    {r:'NACIONAL',  v:25623712,c:8407022,pc:null, pp:null,  s:'Cobertura nacional'},
+  ],
+  vft:[
+    {y:2026,t:18578,pib:1.01},{y:2027,t:15125,pib:0.80},{y:2028,t:15882,pib:0.81},
+    {y:2029,t:14633,pib:0.72},{y:2030,t:12822,pib:0.61},{y:2031,t:11158,pib:0.52},
+    {y:2032,t:10722,pib:0.48},{y:2033,t: 9356,pib:0.41},{y:2034,t: 6355,pib:0.27},
+    {y:2035,t: 4756,pib:0.19},{y:2036,t: 4635,pib:0.18},{y:2037,t: 4167,pib:0.16},
+    {y:2038,t: 3731,pib:0.14},{y:2039,t: 2669,pib:0.10},{y:2040,t: 2105,pib:0.07},
+  ],
+  vfs:{
+    TRANSPORTE:      [9651,9172,8777,8373,8542,7208,6921,6452,4067,2495,2401,1958,1939,1205,656],
+    HACIENDA:        [4433,3545,5057,4302,2827,2796,2766,2852,2236,2209,2183,2157,1741,1412,1397],
+    'DEF. Y POLICÍA':[1170,983,983,983,983,983,983,0,0,0,0,0,0,0,0],
+    VIVIENDA:        [391,524,548,571,226,75,0,0,0,0,0,0,0,0,0],
+    OTROS:           [911,314,52,52,52,52,52,52,52,52,52,52,52,52,52],
+  },
+  se:[
+    {s:'TRANSPORTE',              v:13.748,pc:66,po:10},
+    {s:'IGUALDAD Y EQUIDAD',      v:10.151,pc:null,po:null},
+    {s:'EDUCACIÓN',               v:8.267, pc:null,po:null},
+    {s:'MINAS Y ENERGÍA',         v:7.419, pc:null,po:null},
+    {s:'TRABAJO',                 v:6.642, pc:null,po:null},
+    {s:'INCL. SOCIAL Y RECONC.',  v:8.243, pc:null,po:null},
+    {s:'VIVIENDA, CIUDAD Y TERR.',v:4.377, pc:68,  po:4},
+    {s:'HACIENDA',                v:4.406, pc:37,  po:3},
+    {s:'AGRICULTURA Y D. RURAL',  v:4.288, pc:24,  po:3},
+    {s:'DEFENSA Y POLICÍA',       v:2.493, pc:42,  po:13},
+    {s:'INTERIOR',                v:0.483, pc:10,  po:1},
+    {s:'PRESIDENCIA',             v:0.604, pc:7,   po:0.4},
+  ],
+};
+
+/* ── Renders ── */
+function rDonut(d){
+  new Chart(document.getElementById('donutT').getContext('2d'),{
+    type:'doughnut',
+    data:{labels:d.map(x=>x.t.substring(0,28)),
+      datasets:[{data:d.map(x=>x.v),backgroundColor:P.all,borderColor:'#fff',borderWidth:2,hoverOffset:5}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'65%',
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${(c.parsed).toLocaleString('es-CO',{minimumFractionDigits:3})} mmm (${d[c.dataIndex].p}%)`}}}}
+  });
+  document.getElementById('leyT').innerHTML=d.map((x,i)=>`
+    <div class="li"><div class="ld" style="background:${P.all[i]}"></div>
+    <div class="ln">${x.t.substring(0,36)}</div>
+    <div><span class="lv">${x.v.toLocaleString('es-CO',{minimumFractionDigits:3})}</span><span class="lp">${x.p}%</span></div></div>`).join('');
+}
+
+function rTablaT(d){
+  document.querySelector('#tblT tbody').innerHTML=d.map(x=>`<tr>
+    <td>${x.t.length>30?x.t.substring(0,30)+'…':x.t}</td>
+    <td>${x.v.toLocaleString('es-CO',{minimumFractionDigits:3})}</td>
+    <td>${x.c.toLocaleString('es-CO',{minimumFractionDigits:3})}</td>
+    <td><span class="pb">${x.pc}%</span></td><td>${x.po}%</td></tr>`).join('');
+}
+
+function rBarPGN(ev){
+  const R=['Funcionamiento','Inversión','Servicio Deuda'],CL=[P.t,P.m,P.a],Y=[2022,2023,2024,2025];
+  new Chart(document.getElementById('barPGN').getContext('2d'),{type:'bar',
+    data:{labels:['2022','2023','2024','2025'],
+      datasets:R.map((r,i)=>({label:r,data:Y.map(y=>{const row=ev.find(d=>d.y===y&&d.r===r);return row?row.v:0}),
+        backgroundColor:CL[i]+'99',borderColor:CL[i],borderWidth:1}))},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{x:{stacked:true,grid:{color:P.gc}},y:{stacked:true,grid:{color:P.gc},ticks:{callback:v=>v.toLocaleString('es-CO')}}},
+      plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:12}}}}});
+}
+
+function rLineInv(ej){
+  new Chart(document.getElementById('lineInv').getContext('2d'),{type:'line',
+    data:{labels:['2022','2023','2024','2025'],datasets:[
+      {label:'% Gasto total',data:ej.map(d=>d.g), borderColor:P.m,backgroundColor:'rgba(254,27,123,.07)',tension:.35,pointRadius:4,fill:true},
+      {label:'% PIB',        data:ej.map(d=>d.pib),borderColor:P.t,backgroundColor:'rgba(0,195,193,.05)', tension:.35,pointRadius:4,fill:true}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{x:{grid:{color:P.gc}},y:{grid:{color:P.gc},ticks:{callback:v=>v+'%'}}},
+      plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:12}}}}});
+}
+
+function rRegiones(d){
+  const f=n=>n?(n/1000000).toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1})+' Bill':'—';
+  const fp=p=>p!=null?p.toFixed(1)+'%':'—';
+  document.getElementById('regGrid').innerHTML=d.map(x=>`
+    <div class="rc">
+      <div class="rn">${x.r}<span class="rp">${fp(x.pc)}</span></div>
+      <div class="rs"><span class="rsl">Vigente</span><span class="rsv">${f(x.v)}</span></div>
+      <div class="rs"><span class="rsl">Compromisos</span><span class="rsv">${f(x.c)}</span></div>
+      <div class="rs"><span class="rsl">Ejec. pagos</span><span class="rsv">${fp(x.pp)}</span></div>
+      <div class="rsect">${x.s}</div>
+    </div>`).join('');
+}
+
+function rTimeline(ej){
+  document.getElementById('tlGrid').innerHTML=ej.map(d=>`
+    <div class="tc">
+      <div class="tcy">${d.y}</div><div class="tcv">Vigente: ${d.vg.toLocaleString('es-CO')} mmm</div>
+      <div class="tcs"><span class="ll">Compromisos</span><span class="vv">${d.pc}%</span></div>
+      <div class="tcs"><span class="ll">Obligaciones</span><span class="vv">${d.po}%</span></div>
+      <div class="tcs"><span class="ll">Pagos</span><span class="vv">${d.pp}%</span></div>
+      <div class="tcs"><span class="ll">% PIB</span><span class="vv">${d.pib}%</span></div>
+      <span class="tcp">Gasto total: ${d.g}%</span>
+    </div>`).join('');
+}
+
+function rLineEj(ej){
+  new Chart(document.getElementById('lineEj').getContext('2d'),{type:'line',
+    data:{labels:['2022','2023','2024','2025'],datasets:[
+      {label:'% Compromisos', data:ej.map(d=>d.pc),borderColor:P.t,tension:.3,pointRadius:4},
+      {label:'% Obligaciones',data:ej.map(d=>d.po),borderColor:P.m,tension:.3,pointRadius:4},
+      {label:'% Pagos',       data:ej.map(d=>d.pp),borderColor:P.a,tension:.3,pointRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{x:{grid:{color:P.gc}},y:{grid:{color:P.gc},ticks:{callback:v=>v+'%'}}},
+      plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:12}}}}});
+}
+
+function rHBars(){
+  const S=[
+    {n:'Transporte',      v:[11233,11304,12777,13748]},
+    {n:'Igualdad y Equidad',v:[0,0,9968,10151]},
+    {n:'Inclusión Social',  v:[9788,21728,11152,8243]},
+    {n:'Educación',         v:[5535,7404,8081,8267]},
+    {n:'Minas y Energía',   v:[4787,7287,7526,7419]},
+    {n:'Trabajo',           v:[4333,5121,5663,6642]},
+  ];
+  const mx=22000,CL=[P.t,P.m,P.a,P.nr];
+  document.getElementById('hbSect').innerHTML=S.map(s=>`
+    <div class="hr-row">
+      <div class="hr-lbl"><span>${s.n}</span><span>${(s.v[3]/1000).toFixed(1)} Bill. 2025</span></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px">
+        ${s.v.map((v,i)=>`<div><div style="font-size:8px;color:${P.gs};margin-bottom:2px;font-weight:700">${[2022,2023,2024,2025][i]}</div>
+        <div class="hr-tr"><div class="hr-fi" style="width:${(v/mx*100).toFixed(1)}%;background:${CL[i]}"></div></div></div>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+function rVF(tot,sect){
+  const ctx=document.getElementById('barVF').getContext('2d');
+  const SN=Object.keys(sect),SC=[P.t,P.a,P.m,P.nr,P.gs];
+  new Chart(ctx,{type:'bar',
+    data:{labels:tot.map(d=>String(d.y)),
+      datasets:SN.map((s,i)=>({label:s.charAt(0)+s.slice(1).toLowerCase(),data:sect[s],
+        backgroundColor:SC[i]+'bb',borderColor:SC[i],borderWidth:1}))},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{x:{stacked:true,grid:{color:P.gc}},y:{stacked:true,grid:{color:P.gc},ticks:{callback:v=>v.toLocaleString('es-CO')}}},
+      plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:11}}}}});
+  document.getElementById('tblVF').innerHTML=`
+    <thead><tr><th>Año</th>${SN.map(s=>`<th>${s}</th>`).join('')}<th>TOTAL</th><th>% PIB</th></tr></thead>
+    <tbody>${tot.map((d,i)=>`<tr><td><strong>${d.y}</strong></td>${SN.map(s=>`<td>${(sect[s][i]||0).toLocaleString('es-CO')}</td>`).join('')}
+    <td><strong>${d.t.toLocaleString('es-CO')}</strong></td><td>${d.pib.toFixed(2)}%</td></tr>`).join('')}</tbody>`;
+}
+
+function rSectorial(d){
+  document.getElementById('sectGrid').innerHTML=d.map(x=>`
+    <div class="sc">
+      <div class="sn">${x.s}</div>
+      <div class="skv"><span class="ll">Apropiación vigente</span><span class="vv">${x.v.toLocaleString('es-CO',{minimumFractionDigits:3})} mmm</span></div>
+      ${x.pc!=null?`
+      <div class="gr"><div class="gl"><span>% Compromisos</span><span style="color:${P.t}">${x.pc}%</span></div>
+      <div class="gtr"><div class="gf gft" style="width:${x.pc}%"></div></div></div>
+      <div class="gr"><div class="gl"><span>% Obligaciones</span><span style="color:${P.m}">${x.po}%</span></div>
+      <div class="gtr"><div class="gf gfm" style="width:${x.po}%"></div></div></div>
+      `:`<div class="snd">Datos de ejecución en actualización</div>`}
+    </div>`).join('');
+}
+
+/* Scroll reveal */
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')})},{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+async function init(){
+  rDonut(D.tr);rTablaT(D.tr);
+  rBarPGN(D.ev);rLineInv(D.ej);
+  rTimeline(D.ej);rLineEj(D.ej);rHBars();
+  rRegiones(D.re);
+  rVF(D.vft,D.vfs);
+  rSectorial(D.se);
+}
+init();
+</script>
+</body>
+</html>
