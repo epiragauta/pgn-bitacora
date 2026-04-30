@@ -166,12 +166,143 @@ footer strong{color:#fff}
 .rv{opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s}
 .rv.in{opacity:1;transform:none}
 
+/* info icon & modal */
+.info-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:18px;
+  height:18px;
+  background:rgba(0,195,193,.15);
+  border:1.5px solid rgba(0,195,193,.35);
+  color:var(--t);
+  font-size:11px;
+  font-weight:900;
+  font-style:normal;
+  border-radius:50%;
+  margin-left:6px;
+  cursor:pointer;
+  transition:all .2s;
+  vertical-align:middle;
+}
+.info-icon:hover{
+  background:var(--t);
+  color:#fff;
+  border-color:var(--t);
+  transform:scale(1.1);
+}
+.stag.sm .info-icon{
+  background:rgba(254,27,123,.12);
+  border-color:rgba(254,27,123,.3);
+  color:var(--m);
+}
+.stag.sm .info-icon:hover{
+  background:var(--m);
+  color:#fff;
+  border-color:var(--m);
+}
+.stag.sa .info-icon{
+  background:rgba(255,202,0,.15);
+  border-color:rgba(255,202,0,.35);
+  color:#9a7200;
+}
+.stag.sa .info-icon:hover{
+  background:var(--a);
+  color:#fff;
+  border-color:var(--a);
+}
+
+.modal-overlay{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:rgba(0,0,0,.5);
+  z-index:1000;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  backdrop-filter:blur(4px);
+  animation:fadeIn .25s;
+}
+.modal-overlay.active{display:flex}
+
+.modal-content{
+  background:var(--bl);
+  border-radius:var(--r);
+  max-width:650px;
+  width:100%;
+  max-height:85vh;
+  overflow-y:auto;
+  box-shadow:0 12px 48px rgba(0,0,0,.25);
+  animation:slideUp .3s;
+  position:relative;
+}
+
+.modal-header{
+  background:var(--t);
+  color:#fff;
+  padding:20px 24px;
+  border-radius:var(--r) var(--r) 0 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.modal-header h3{
+  font-size:16px;
+  font-weight:900;
+  letter-spacing:-.01em;
+  margin:0;
+}
+.modal-close{
+  background:rgba(255,255,255,.2);
+  border:none;
+  color:#fff;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  font-size:18px;
+  font-weight:700;
+  cursor:pointer;
+  transition:background .2s;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.modal-close:hover{
+  background:rgba(255,255,255,.3);
+}
+
+.modal-body{
+  padding:24px;
+  color:var(--gt);
+  font-size:14px;
+  line-height:1.7;
+}
+.modal-body p{
+  margin:0;
+}
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes slideUp{
+  from{transform:translateY(30px);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+
 @media(max-width:860px){
   .hero-inner{grid-template-columns:1fr}.hr{min-height:220px}
   .g2,.g3,.tg{grid-template-columns:1fr}
   .dl{grid-template-columns:1fr}
   .pw,.nav-inner{padding-left:16px;padding-right:16px}
   nav{overflow-x:auto}.sec{padding:36px 0 28px}
+  .modal-content{max-width:95%;max-height:90vh}
+  .modal-header{padding:16px 20px}
+  .modal-body{padding:20px}
 }
 </style>
 </head>
@@ -223,7 +354,10 @@ footer strong{color:#fff}
 <!-- SEC 1: TRANSFORMACIONES -->
 <section id="sec1" class="sec">
   <div class="pw">
-    <div class="stag"><span class="n">1</span>Inversiones PND 2022-2026</div>
+    <div class="stag">
+      <span class="n">1</span>Inversiones PND 2022-2026
+      <i class="info-icon" onclick="openInfoModal('Inversiones PND 2022-2026', 'sec1-info')">i</i>
+    </div>
     <h2 class="st">Distribución por Transformaciones</h2>
     <p class="ss">Vigencia 2025 · PND <strong>"Colombia, potencia mundial de la vida"</strong> · Miles de millones COP corrientes. Fuente: DPIP–SIIF.</p>
     <div class="g2 rv">
@@ -276,7 +410,9 @@ footer strong{color:#fff}
 <!-- SEC 3: REGIONALIZACIÓN -->
 <section id="sec3" class="sec">
   <div class="pw">
-    <div class="stag sa"><span class="n">3</span>Regionalización</div>
+    <div class="stag sa"><span class="n">3</span>Regionalización
+      <i class="info-icon" onclick="openInfoModal('Regionalización', 'sec3-info')">i</i>
+    </div>
     <h2 class="st">Distribución por Regiones y Departamentos</h2>
     <p class="ss">Apropiación, compromisos y participación regional. Millones COP. Corte marzo 2025. Fuente: DPIP-PIIP.</p>
     <div class="rg rv" id="regGrid"></div>
@@ -335,6 +471,19 @@ footer strong{color:#fff}
     </div>
   </div>
 </footer>
+
+<!-- MODAL INFO -->
+<div id="infoModal" class="modal-overlay">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="modalTitle"></h3>
+      <button class="modal-close" onclick="closeInfoModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p id="modalText"></p>
+    </div>
+  </div>
+</div>
 
 <script>
 const API='/api';
@@ -550,6 +699,44 @@ async function init(){
   rSectorial(D.se);
 }
 init();
+
+/* ── Modal Info System ── */
+const infoTexts = {
+  'sec1-info': 'En la vigencia 2025, con corte al 31 de marzo el presupuesto de inversión ascendió a 83,9 billones de pesos, destinados a dar cumplimiento a las apuestas del Plan Nacional de desarrollo 2022-2026, "Colombia, potencia mundial de la vida", cuyo objetivo de centra en la superación de las injusticias históricas y el cierre de las brechas entre las regiones y territorios, promoviendo un crecimiento económico sostenible y respetuoso con el medio ambiente. La mayor parte de la inversión se concentra en las transformaciones y ejes cuyo fin son la reducción de la pobreza para la paz, al impulso de la economía popular, a la conexión de los territorios a través de infraestructura vial y al fortalecimiento de la educación de calidad como vehículo para reducir las desigualdades.',
+  'sec3-info': 'Si bien los recursos del PGN, no tienen vocación de ser asignados de forma directa a los departamentos, la regionalización del PGN permite realizar una aproximación sobre cómo los recursos de inversión beneficiarán a cada uno de los departamentos y sus poblaciones. En este orden de ideas, las entidades del orden nacional son las responsables de determinar el impacto de las inversiones en el territorio'
+};
+
+function openInfoModal(title, contentKey) {
+  const modal = document.getElementById('infoModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalText = document.getElementById('modalText');
+
+  modalTitle.textContent = title;
+  modalText.textContent = infoTexts[contentKey] || 'Información no disponible.';
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeInfoModal() {
+  const modal = document.getElementById('infoModal');
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Cerrar modal al hacer clic fuera del contenido
+document.getElementById('infoModal').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeInfoModal();
+  }
+});
+
+// Cerrar modal con tecla ESC
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeInfoModal();
+  }
+});
 </script>
 </body>
 </html>
