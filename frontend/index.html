@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Bitácora PGN 2025-I — Comportamiento de la Inversión Pública · DNP</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 /* ── Tokens DNP 2026 / BDC GOV.CO v5.0 ─── */
@@ -41,7 +43,7 @@ nav a.lk:hover{color:var(--t)}
 .corte-badge{background:var(--m);color:#fff;font-size:10px;font-weight:900;padding:2px 9px;border-radius:4px;letter-spacing:.04em}
 
 /* ── Wrap ── */
-.pw{max-width:1200px;margin:0 auto;padding:0 32px}
+.pw{max-width:1200px;margin: 10px auto;padding:0 32px}
 
 /* ── Hero ── */
 #hero{background:var(--bl);border-bottom:1px solid var(--gc)}
@@ -71,11 +73,11 @@ nav a.lk:hover{color:var(--t)}
 .sec{background:var(--bl);border-bottom:1px solid var(--gc);padding:52px 0 44px}
 .sec.nf{background:var(--fw)}
 .stag{display:inline-flex;align-items:center;gap:5px;background:rgba(0,195,193,.09);border:1px solid rgba(0,195,193,.2);color:var(--t);font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-bottom:14px}
-.stag .n{background:var(--t);color:#fff;width:16px;height:16px;border-radius:50%;display:grid;place-items:center;font-size:8px;font-weight:900}
+.stag .n{background:var(--t);color:#fff;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700}
 .stag.sm{background:rgba(254,27,123,.07);border-color:rgba(254,27,123,.18);color:var(--m)}.stag.sm .n{background:var(--m)}
 .stag.sa{background:rgba(255,202,0,.1);border-color:rgba(255,202,0,.28);color:#9a7200}.stag.sa .n{background:var(--a)}
-h2.st{font-size:clamp(20px,2.6vw,30px);font-weight:900;letter-spacing:-.01em;color:var(--gt);margin-bottom:6px;line-height:1.15}
-.ss{font-size:13px;color:var(--gm);margin-bottom:28px;max-width:600px;line-height:1.6}
+h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;color:var(--gt);margin-bottom:6px;line-height:1.15}
+.ss{font-size:13px;color:var(--gm);margin-bottom:28px;max-width:700px;line-height:1.6}
 .ss strong{color:var(--gt)}
 
 /* grids */
@@ -94,6 +96,7 @@ h2.st{font-size:clamp(20px,2.6vw,30px);font-weight:900;letter-spacing:-.01em;col
 .tbl td{padding:8px 10px;border-bottom:1px solid var(--gc);color:var(--gm);text-align:right}
 .tbl td:first-child{color:var(--gt);text-align:left;font-weight:700}
 .tbl tr:hover td{background:rgba(0,195,193,.04)}
+.tbl tbody tr[onclick]:hover td{background:rgba(0,195,193,.12);transition:background .15s}
 .tbl .tr td{background:rgba(0,195,193,.06);color:var(--gt);font-weight:900;border-top:2px solid var(--t)}
 .pb{background:var(--m);color:#fff;font-size:9px;font-weight:900;padding:1px 6px;border-radius:8px}
 
@@ -108,12 +111,18 @@ h2.st{font-size:clamp(20px,2.6vw,30px);font-weight:900;letter-spacing:-.01em;col
 .rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
 .rc{background:var(--bl);border:1px solid var(--gc);border-left:4px solid var(--t);border-radius:var(--rs);padding:14px;transition:box-shadow .2s,transform .2s}
 .rc:hover{box-shadow:0 4px 14px rgba(0,195,193,.13);transform:translateY(-2px)}
+.rc[onclick]{cursor:pointer}
+.rc[onclick]:hover{box-shadow:0 6px 18px rgba(0,195,193,.18)}
+.rc-total{background:linear-gradient(135deg,rgba(0,195,193,.08) 0%,rgba(254,27,123,.05) 100%);border-left:4px solid var(--m);border:2px solid var(--m);box-shadow:0 2px 12px rgba(254,27,123,.12);grid-column:1/-1}
+.rc-total:hover{box-shadow:0 4px 18px rgba(254,27,123,.2);transform:translateY(-1px)}
+.rc-total .rn{font-size:13px;color:var(--m);text-transform:uppercase;letter-spacing:.02em}
+.rc-total .rsv{color:var(--m)}
 .rn{font-weight:900;font-size:12px;color:var(--gt);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
 .rp{background:var(--t);color:#fff;font-size:9px;font-weight:900;padding:1px 6px;border-radius:7px}
-.rs{display:flex;justify-content:space-between;font-size:10px;padding:3px 0;border-bottom:1px solid var(--gc)}
+.rs{display:flex;justify-content:space-between;font-size:12px;padding:3px 0;border-bottom:1px solid var(--gc)}
 .rs:last-of-type{border-bottom:none}
 .rsl{color:var(--gs)}.rsv{font-weight:800;color:var(--gt)}
-.rsect{font-size:9px;color:var(--gs);margin-top:7px;line-height:1.5}
+.rsect{font-size:11px;color:var(--gs);margin-top:7px;line-height:1.5}
 
 /* timeline */
 .tg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -184,6 +193,7 @@ footer strong{color:#fff}
   cursor:pointer;
   transition:all .2s;
   vertical-align:middle;
+  text-transform: lowercase;
 }
 .info-icon:hover{
   background:var(--t);
@@ -232,7 +242,7 @@ footer strong{color:#fff}
 .modal-content{
   background:var(--bl);
   border-radius:var(--r);
-  max-width:650px;
+  max-width:750px;
   width:100%;
   max-height:85vh;
   overflow-y:auto;
@@ -283,6 +293,31 @@ footer strong{color:#fff}
 }
 .modal-body p{
   margin:0;
+}
+
+/* ── Mapa Leaflet ── */
+#mapContainer{background:var(--gc)}
+.leaflet-tooltip{
+  background:var(--bl);
+  border:2px solid var(--t);
+  border-radius:var(--rs);
+  box-shadow:0 4px 18px rgba(0,195,193,.25);
+  padding:10px 12px;
+  font-family:'Nunito Sans',sans-serif;
+  color:var(--gt);
+  line-height:1.4;
+}
+.leaflet-tooltip-top:before{
+  border-top-color:var(--t);
+}
+.leaflet-tooltip-bottom:before{
+  border-bottom-color:var(--t);
+}
+.leaflet-tooltip-left:before{
+  border-left-color:var(--t);
+}
+.leaflet-tooltip-right:before{
+  border-right-color:var(--t);
 }
 
 @keyframes fadeIn{
@@ -415,6 +450,16 @@ footer strong{color:#fff}
     </div>
     <h2 class="st">Distribución por Regiones y Departamentos</h2>
     <p class="ss">Apropiación, compromisos y participación regional. Millones COP. Corte marzo 2025. Fuente: DPIP-PIIP.</p>
+
+    <!-- Mapa interactivo de regiones -->
+    <div class="card ba rv" style="margin-bottom:24px">
+      <div class="ct">Mapa de ejecución regional — % Compromisos / Apropiación Vigente</div>
+      <div id="mapContainer" style="height:450px;border-radius:8px;overflow:hidden"></div>
+      <div style="margin-top:12px;font-size:10px;color:var(--gs);text-align:center">
+        Haz clic en una región para ver el detalle de sus departamentos
+      </div>
+    </div>
+
     <div class="rg rv" id="regGrid"></div>
   </div>
 </section>
@@ -572,7 +617,7 @@ function rDonut(d){
 }
 
 function rTablaT(d){
-  document.querySelector('#tblT tbody').innerHTML=d.map(x=>`<tr>
+  document.querySelector('#tblT tbody').innerHTML=d.map(x=>`<tr style="cursor:pointer" data-transformador="${x.t}" onclick="showComponentes('${x.t.replace(/'/g, "\\'")}')">
     <td>${x.t.length>30?x.t.substring(0,30)+'…':x.t}</td>
     <td>${x.v.toLocaleString('es-CO',{minimumFractionDigits:3})}</td>
     <td>${x.c.toLocaleString('es-CO',{minimumFractionDigits:3})}</td>
@@ -604,13 +649,135 @@ function rRegiones(d){
   const f=n=>n?(n/1000000).toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1})+' Bill':'—';
   const fp=p=>p!=null?p.toFixed(1)+'%':'—';
   document.getElementById('regGrid').innerHTML=d.map(x=>`
-    <div class="rc">
-      <div class="rn">${x.r}<span class="rp">${fp(x.pc)}</span></div>
+    <div class="rc${x.isTotal?' rc-total':''}" ${!x.isTotal?`style="cursor:pointer" onclick="showDepartamentos('${x.r}')"`:''}>
+      <div class="rn">${x.r}${!x.isTotal?`<span class="rp">${fp(x.pc)}</span>`:''}</div>
       <div class="rs"><span class="rsl">Vigente</span><span class="rsv">${f(x.v)}</span></div>
       <div class="rs"><span class="rsl">Compromisos</span><span class="rsv">${f(x.c)}</span></div>
-      <div class="rs"><span class="rsl">Ejec. pagos</span><span class="rsv">${fp(x.pp)}</span></div>
-      <div class="rsect">${x.s}</div>
+      ${!x.isTotal?`<div class="rs"><span class="rsl">Ejec. pagos</span><span class="rsv">${fp(x.pp)}</span></div>`:''}
+      ${x.s && x.s!=='Sin datos' && !x.isTotal?`<div class="rsect">${x.s}</div>`:''}
     </div>`).join('');
+}
+
+async function rMapa(regionesData){
+  const f=n=>n?(n/1000000).toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1}):' —';
+  const fp=p=>p!=null?p.toFixed(1)+'%':'—';
+
+  // Límites geográficos de Colombia (con margen)
+  const colombiaBounds=L.latLngBounds(
+    L.latLng(-5.0,-80.0), // Suroeste (sur, oeste)
+    L.latLng(13.5,-66.0)  // Noreste (norte, este)
+  );
+
+  // Crear mapa centrado en Colombia con restricciones
+  const map=L.map('mapContainer',{
+    center:[4.5,-74],
+    zoom:5.5,
+    minZoom:5,
+    maxZoom:10,
+    maxBounds:colombiaBounds,
+    maxBoundsViscosity:0.9
+  });
+
+  // Tile layer en tonos grises
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
+    attribution:'©OpenStreetMap ©CARTO'
+  }).addTo(map);
+
+  // Cargar GeoJSON
+  try{
+    const response=await fetch('/data/regiones.geojson');
+    const geojson=await response.json();
+
+    // Función para obtener color según % ejecución
+    const getColor=pct=>{
+      if(!pct)return '#d0d0d0';
+      return pct>=40?P.t:pct>=30?'#4dd5d3':pct>=20?'#9ae5e4':'#cef3f2';
+    };
+
+    // Estilo de cada región
+    const style=feature=>{
+      const region=feature.properties.REGION;
+      const data=regionesData.find(r=>r.r===region);
+      return {
+        fillColor:getColor(data?.pc),
+        weight:2,
+        opacity:1,
+        color:'white',
+        fillOpacity:0.7
+      };
+    };
+
+    // Eventos de interacción
+    const highlightFeature=e=>{
+      const layer=e.target;
+      layer.setStyle({weight:4,color:P.a,fillOpacity:0.9});
+      layer.bringToFront();
+    };
+
+    const resetHighlight=e=>{
+      geojsonLayer.resetStyle(e.target);
+    };
+
+    const onEachFeature=(feature,layer)=>{
+      const region=feature.properties.REGION;
+      const data=regionesData.find(r=>r.r===region);
+
+      if(data){
+        // Tooltip para hover (no se abre en click)
+        const tooltipContent=`
+          <div style="font-weight:900;font-size:12px;color:var(--t);margin-bottom:4px">${region}</div>
+          <div style="font-size:11px">
+            <div style="display:flex;justify-content:space-between;margin:2px 0">
+              <span style="color:var(--gs)">Vigente:</span>
+              <span style="font-weight:800;margin-left:8px">${f(data.v)} Bill</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin:2px 0">
+              <span style="color:var(--gs)">Compromisos:</span>
+              <span style="font-weight:800;margin-left:8px">${f(data.c)} Bill</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin:2px 0">
+              <span style="color:var(--gs)">% Ejec:</span>
+              <span style="font-weight:800;margin-left:8px">${fp(data.pc)}</span>
+            </div>
+          </div>
+          <div style="margin-top:6px;font-size:9px;color:var(--gs);text-align:center;font-style:italic">
+            Clic para ver departamentos
+          </div>
+        `;
+
+        layer.bindTooltip(tooltipContent,{
+          sticky:true,
+          direction:'top',
+          offset:[0,-10]
+        });
+
+        layer.on({
+          mouseover:highlightFeature,
+          mouseout:resetHighlight,
+          click:()=>{
+            map.closePopup();
+            showDepartamentos(region);
+          }
+        });
+      }
+    };
+
+    const geojsonLayer=L.geoJSON(geojson,{
+      style:style,
+      onEachFeature:onEachFeature
+    }).addTo(map);
+
+    // Reset highlight cuando se arrastra el mapa
+    map.on('movestart',()=>{
+      geojsonLayer.eachLayer(layer=>{
+        geojsonLayer.resetStyle(layer);
+      });
+    });
+
+  }catch(err){
+    console.error('Error cargando GeoJSON:',err);
+    document.getElementById('mapContainer').innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--gs)">Error cargando mapa</div>';
+  }
 }
 
 function rTimeline(ej){
@@ -691,14 +858,156 @@ const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
 async function init(){
-  rDonut(D.tr);rTablaT(D.tr);
-  rBarPGN(D.ev);rLineInv(D.ej);
-  rTimeline(D.ej);rLineEj(D.ej);rHBars();
-  rRegiones(D.re);
-  rVF(D.vft,D.vfs);
-  rSectorial(D.se);
+  // Fetch data from API with fallback to embedded data
+  const trRaw = await af('/transformaciones?vigencia=2025', null);
+  const evRaw = await af('/evolucion', null);
+  const ejRaw = await af('/ejecucion', null);
+  const reRaw = await af('/regionalizacion', null);
+  const vftRaw = await af('/vigencias_futuras/totales', null);
+  const seRaw = await af('/sectorial?vigencia=2025', null);
+
+  // Map API data to frontend format or use fallback
+  const tr = trRaw ? trRaw.map(x=>({t:x.transformador,v:x.inversion_mmm,p:x.peso_pct,c:x.compromisos_mmm,pc:x.pct_c_av,po:x.pct_o_av})) : D.tr;
+  const ev = evRaw ? evRaw.map(x=>({y:x.vigencia,r:x.rubro,v:x.vigente_mmm})) : D.ev;
+  const ej = ejRaw ? ejRaw.map(x=>({y:x.vigencia,vg:x.vigente_mmm,c:x.compromisos_mmm,o:x.obligaciones_mmm,p:x.pagos_mmm,pc:x.pct_compromisos,po:x.pct_obligaciones,pp:x.pct_pagos,pib:x.inv_pct_pib,g:x.inv_pct_gasto_total})) : D.ej;
+  const re = reRaw ? reRaw.filter(x=>x.pct_participacion===100||x.pct_participacion===null).map(x=>{
+    let sectores = 'Sin datos';
+    if(Array.isArray(x.principales_sectores) && x.principales_sectores.length>0){
+      sectores = x.principales_sectores.map(s=>`${s.sector} ${s.pct}%`).join('·');
+    }
+    return {r:x.region,v:x.vigente_mm,c:x.compromisos_mm,pc:x.pct_ejec_compromisos,pp:x.pct_ejec_pagos,s:sectores,isTotal:x.region==='NACIONAL'};
+  }).sort((a,b)=>a.isTotal?1:b.isTotal?-1:0) : D.re;
+  const vft = vftRaw ? vftRaw.map(x=>({y:x.vigencia_exec,t:x.total_mmm,pib:x.pct_pib})) : D.vft;
+  const se = seRaw ? [...seRaw.reduce((m,x)=>{const k=x.sector;if(!m.has(k))m.set(k,{s:x.sector,v:0,pc:null,po:null});const g=m.get(k);g.v+=x.apr_vigente_mmm||0;if(x.pct_c_av!=null){g.pc=(g.pc||0)+x.pct_c_av;g.po=(g.po||0)+x.pct_o_av;}return m;},new Map()).values()].map(x=>({...x,v:parseFloat(x.v.toFixed(3))})) : D.se;
+
+  rDonut(tr);rTablaT(tr);
+  rBarPGN(ev);rLineInv(ej);
+  rTimeline(ej);rLineEj(ej);rHBars();
+  rRegiones(re);
+  rMapa(re);
+  rVF(vft,D.vfs);
+  rSectorial(se);
 }
 init();
+
+/* ── Componentes Modal ── */
+async function showComponentes(transformador) {
+  const modal = document.getElementById('infoModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalText = document.getElementById('modalText');
+
+  // Show loading state
+  modalTitle.textContent = 'Componentes del transformador';
+  modalText.innerHTML = '<div style="text-align:center;padding:20px;color:var(--gs)">Cargando componentes...</div>';
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  // Fetch componentes
+  const componentes = await af(`/transformaciones/${encodeURIComponent(transformador)}/componentes?vigencia=2025`, []);
+
+  // Build table
+  if (componentes.length === 0) {
+    modalText.innerHTML = '<p style="color:var(--gs);text-align:center;padding:20px">No hay componentes disponibles para este transformador.</p>';
+    return;
+  }
+
+  const tableHTML = `
+    <div style="margin-bottom:10px">
+      <strong style="font-size:13px;color:var(--gt)">${transformador}</strong>
+    </div>
+    <table class="tbl" style="font-size:11px">
+      <thead>
+        <tr>
+          <th style="text-align:left">Componente</th>
+          <th>Vigente (mmm)</th>
+          <th>% Peso</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${componentes.map(c => `
+          <tr>
+            <td style="text-align:left;font-weight:600">${c.componente}</td>
+            <td>${c.vigente_mmm.toLocaleString('es-CO', {minimumFractionDigits:3})}</td>
+            <td>${c.peso_pct.toFixed(2)}%</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+
+  modalText.innerHTML = tableHTML;
+}
+
+/* ── Departamentos Modal ── */
+async function showDepartamentos(region) {
+  const modal = document.getElementById('infoModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalText = document.getElementById('modalText');
+
+  // Show loading state
+  modalTitle.textContent = `Departamentos de la región ${region}`;
+  modalText.innerHTML = '<div style="text-align:center;padding:20px;color:var(--gs)">Cargando departamentos...</div>';
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  // Fetch departamentos
+  const data = await af(`/regionalizacion?region=${encodeURIComponent(region)}`, []);
+
+  // Filter out regional total (pct_participacion = 100)
+  const deptos = data.filter(x => x.pct_participacion !== 100);
+
+  // Build table
+  if (deptos.length === 0) {
+    modalText.innerHTML = '<p style="color:var(--gs);text-align:center;padding:20px">No hay departamentos disponibles para esta región.</p>';
+    return;
+  }
+
+  const f = n => n ? n.toLocaleString('es-CO', {minimumFractionDigits:0, maximumFractionDigits:0}) : '—';
+  const fp = p => p != null ? p.toFixed(1) + '%' : '—';
+
+  const tableHTML = `
+    <div style="margin-bottom:12px">
+      <strong style="font-size:13px;color:var(--gt)">Región ${region}</strong>
+      <div style="font-size:11px;color:var(--gs);margin-top:3px">${deptos.length} departamento${deptos.length !== 1 ? 's' : ''}</div>
+    </div>
+    <div style="max-height:400px;overflow-y:auto">
+      <table class="tbl" style="font-size:10px">
+        <thead>
+          <tr>
+            <th style="text-align:left;min-width:120px">Departamento</th>
+            <th>Vigente (mm)</th>
+            <th>Comp. (mm)</th>
+            <th>% Ejec C</th>
+            <th>% Ejec P</th>
+            <th>% Part.</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${deptos.map(d => {
+            let sectoresHTML = '';
+            if (Array.isArray(d.principales_sectores) && d.principales_sectores.length > 0) {
+              sectoresHTML = `<div style="font-size:9px;color:var(--gs);margin-top:3px;line-height:1.4">${d.principales_sectores.map(s => `${s.sector} ${s.pct}%`).join(' · ')}</div>`;
+            }
+            return `
+            <tr>
+              <td style="text-align:left;font-weight:600">
+                ${d.departamento}
+                ${sectoresHTML}
+              </td>
+              <td>${f(d.vigente_mm)}</td>
+              <td>${f(d.compromisos_mm)}</td>
+              <td>${fp(d.pct_ejec_compromisos)}</td>
+              <td>${fp(d.pct_ejec_pagos)}</td>
+              <td>${fp(d.pct_participacion)}</td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+
+  modalText.innerHTML = tableHTML;
+}
 
 /* ── Modal Info System ── */
 const infoTexts = {
