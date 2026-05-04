@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 <style>
 /* ── Tokens DNP 2026 / BDC GOV.CO v5.0 ─── */
 :root{
@@ -126,13 +127,16 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 
 /* timeline */
 .tg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.tc{background:var(--bl);border:1px solid var(--gc);border-top:4px solid var(--t);border-radius:var(--rs);padding:16px}
+.tc{background:var(--bl);border:1px solid var(--gc);border-top:4px solid var(--t);border-radius:var(--rs);padding:16px;cursor:pointer;transition:box-shadow .2s,border-color .2s}
+.tc:hover{box-shadow:0 4px 14px rgba(0,0,0,.1)}
 .tc:nth-child(2){border-top-color:var(--m)}.tc:nth-child(3){border-top-color:var(--a)}
 .tcy{font-size:26px;font-weight:900;color:var(--gt);line-height:1}
 .tcv{font-size:9px;color:var(--gs);margin-top:2px;margin-bottom:12px;font-weight:700;letter-spacing:.03em}
 .tcs{display:flex;justify-content:space-between;font-size:10px;margin-bottom:4px}
 .tcs .ll{color:var(--gs)}.tcs .vv{font-weight:900;color:var(--m)}
+.tcs .vvt{font-weight:900;color:var(--t)}
 .tcp{display:inline-block;margin-top:8px;background:rgba(0,195,193,.1);border:1px solid rgba(0,195,193,.2);color:var(--t);font-size:9px;font-weight:800;padding:2px 8px;border-radius:8px}
+.tc-hint{font-size:8px;color:var(--gs);text-align:center;margin-top:10px;padding-top:8px;border-top:1px dashed var(--gc);letter-spacing:.05em;text-transform:uppercase;opacity:.7}
 
 /* VF */
 .vfh{margin-bottom:28px}
@@ -156,6 +160,16 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 .gf{height:100%;border-radius:3px;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
 .gft{background:var(--t)}.gfm{background:var(--m)}
 .snd{font-size:10px;color:var(--gs);font-style:italic;margin-top:6px}
+.sec6-filter{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:20px;align-items:center}
+.sf-lbl{font-size:9px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--gs);margin-right:3px;flex-shrink:0}
+.sf-btn{background:none;border:1px solid var(--gc);border-radius:6px;padding:3px 9px;font-size:11px;font-weight:800;cursor:pointer;color:var(--gs);transition:all .15s;line-height:1.5}
+.sf-btn:hover{background:rgba(255,202,0,.18);border-color:var(--a);color:#6a4e00}
+.sf-btn.active{background:var(--a);border-color:#d4a800;color:#4a3000}
+.sf-btn.sf-all{border-color:rgba(0,195,193,.25);color:var(--t)}
+.sf-btn.sf-all.active{background:var(--t);border-color:var(--t);color:#fff}
+.sc.sc-hidden{display:none}
+.si-fa{font-size:26px;color:var(--m);margin-bottom:10px;display:block;line-height:1}
+.si-init{width:36px;height:36px;border-radius:50%;background:rgba(254,27,123,.1);border:1.5px solid rgba(254,27,123,.2);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#fe1b7b;margin-bottom:10px}
 
 /* hbars */
 .hr-row{margin-bottom:12px}
@@ -294,6 +308,10 @@ footer strong{color:#fff}
 .modal-body p{
   margin:0;
 }
+.modal-tabs{display:flex;border-bottom:2px solid var(--gc);margin:-24px -24px 20px;padding:0 24px;overflow-x:auto}
+.modal-tab-btn{padding:10px 16px;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;color:var(--gs);transition:color .2s;white-space:nowrap;flex-shrink:0}
+.modal-tab-btn.active{color:var(--t);border-bottom-color:var(--t)}
+.modal-tab-btn:hover:not(.active){color:var(--gt)}
 
 /* ── Mapa Leaflet ── */
 #mapContainer{background:var(--gc)}
@@ -467,7 +485,9 @@ footer strong{color:#fff}
 <!-- SEC 4: EJECUCIÓN -->
 <section id="sec4" class="sec nf">
   <div class="pw">
-    <div class="stag"><span class="n">4</span>Ejecución de la inversión</div>
+    <div class="stag"><span class="n">4</span>Ejecución de la inversión
+      <i class="info-icon" onclick="openInfoModal('Ejecución Presupuestal', 'sec4-info')">i</i>
+    </div>
     <h2 class="st">Ejecución Presupuestal 2022 – 2025</h2>
     <p class="ss">Comparativo histórico corte primer trimestre. Fuente: SIIF Nación.</p>
     <div class="tg rv" id="tlGrid"></div>
@@ -495,6 +515,7 @@ footer strong{color:#fff}
     <div class="stag sa"><span class="n">6</span>Ejecución Sectorial</div>
     <h2 class="st">Ejecución por Sector — 2025</h2>
     <p class="ss">% Compromisos y Obligaciones sobre apropiación vigente. Corte: 31 de marzo de 2025. Fuente: SIIF Nación.</p>
+    <div id="sec6Filter" class="sec6-filter"></div>
     <div class="sg rv" id="sectGrid"></div>
   </div>
 </section>
@@ -780,16 +801,37 @@ async function rMapa(regionesData){
   }
 }
 
+let ejData=null,tlMode='pct';
+
 function rTimeline(ej){
+  ejData=ej;
+  const isPct=tlMode==='pct';
   document.getElementById('tlGrid').innerHTML=ej.map(d=>`
-    <div class="tc">
-      <div class="tcy">${d.y}</div><div class="tcv">Vigente: ${d.vg.toLocaleString('es-CO')} mmm</div>
-      <div class="tcs"><span class="ll">Compromisos</span><span class="vv">${d.pc}%</span></div>
-      <div class="tcs"><span class="ll">Obligaciones</span><span class="vv">${d.po}%</span></div>
-      <div class="tcs"><span class="ll">Pagos</span><span class="vv">${d.pp}%</span></div>
-      <div class="tcs"><span class="ll">% PIB</span><span class="vv">${d.pib}%</span></div>
-      <span class="tcp">Gasto total: ${d.g}%</span>
+    <div class="tc" onclick="toggleTlMode()" title="${isPct?'Clic para ver valores en miles de millones':'Clic para ver porcentajes'}">
+      <div class="tcy">${d.y}</div>
+      ${isPct?`
+        <div class="tcv">Vigente: ${d.vg.toLocaleString('es-CO')} mmm</div>
+        <div class="tcs"><span class="ll">Compromisos</span><span class="vv">${d.pc}%</span></div>
+        <div class="tcs"><span class="ll">Obligaciones</span><span class="vv">${d.po}%</span></div>
+        <div class="tcs"><span class="ll">Pagos</span><span class="vv">${d.pp}%</span></div>
+        <div class="tcs"><span class="ll">% PIB</span><span class="vv">${d.pib}%</span></div>
+        <span class="tcp">Gasto total: ${d.g}%</span>
+        <div class="tc-hint">$ ver en mmm</div>`
+      :`
+        <div class="tcv">Miles de millones de COP</div>
+        <div class="tcs"><span class="ll">Vigente</span><span class="vvt">${d.vg.toLocaleString('es-CO')}</span></div>
+        <div class="tcs"><span class="ll">Compromisos</span><span class="vvt">${d.c.toLocaleString('es-CO')}</span></div>
+        <div class="tcs"><span class="ll">Obligaciones</span><span class="vvt">${d.o.toLocaleString('es-CO')}</span></div>
+        <div class="tcs"><span class="ll">Pagos</span><span class="vvt">${d.p.toLocaleString('es-CO')}</span></div>
+        <span class="tcp">% PIB: ${d.pib}% · Gasto: ${d.g}%</span>
+        <div class="tc-hint">% ver porcentajes</div>`
+      }
     </div>`).join('');
+}
+
+function toggleTlMode(){
+  tlMode=tlMode==='pct'?'mmm':'pct';
+  rTimeline(ejData);
 }
 
 function rLineEj(ej){
@@ -839,9 +881,59 @@ function rVF(tot,sect){
     <td><strong>${d.t.toLocaleString('es-CO')}</strong></td><td>${d.pib.toFixed(2)}%</td></tr>`).join('')}</tbody>`;
 }
 
+function sFL(n){
+  return n.normalize('NFD').replace(/[̀-ͯ]/g,'').charAt(0).toUpperCase();
+}
+
+function getSectorIcon(name){
+  const n=name.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[.,;]/g,' ');
+  const rules=[
+    [['sistema','verdad'],          'fa-dove'],
+    [['incl','social'],             'fa-handshake'],
+    [['informac','estadist'],       'fa-chart-line'],
+    [['agricultur'],                'fa-tractor'],
+    [['ambiente'],                  'fa-leaf'],
+    [['ciencia'],                   'fa-flask'],
+    [['comercio'],                  'fa-store'],
+    [['congreso'],                  'fa-landmark'],
+    [['cultura'],                   'fa-masks-theater'],
+    [['defensa'],                   'fa-shield-halved'],
+    [['deporte'],                   'fa-trophy'],
+    [['educac'],                    'fa-graduation-cap'],
+    [['empleo'],                    'fa-briefcase'],
+    [['fiscal'],                    'fa-gavel'],
+    [['hacienda'],                  'fa-coins'],
+    [['igualdad'],                  'fa-scale-balanced'],
+    [['intelig'],                   'fa-eye'],
+    [['interior'],                  'fa-users'],
+    [['justicia'],                  'fa-scale-balanced'],
+    [['minas'],                     'fa-bolt'],
+    [['organismos'],                'fa-magnifying-glass'],
+    [['planeac'],                   'fa-chart-pie'],
+    [['presidencia'],               'fa-star'],
+    [['rama'],                      'fa-gavel'],
+    [['registradur'],               'fa-id-card'],
+    [['relaciones'],                'fa-globe'],
+    [['salud'],                     'fa-heart-pulse'],
+    [['tecnolog'],                  'fa-tower-broadcast'],
+    [['trabajo'],                   'fa-hard-hat'],
+    [['transport'],                 'fa-bus'],
+    [['vivienda'],                  'fa-city'],
+  ];
+  for(const[kws,icon]of rules){
+    if(kws.every(k=>n.includes(k)))return icon;
+  }
+  return 'fa-building-columns';
+}
+
+function sIcon(name){
+  return `<i class="fas ${getSectorIcon(name)} si-fa"></i>`;
+}
+
 function rSectorial(d){
   document.getElementById('sectGrid').innerHTML=d.map(x=>`
-    <div class="sc">
+    <div class="sc" data-letter="${sFL(x.s)}">
+      ${sIcon(x.s)}
       <div class="sn">${x.s}</div>
       <div class="skv"><span class="ll">Apropiación vigente</span><span class="vv">${x.v.toLocaleString('es-CO',{minimumFractionDigits:3})} mmm</span></div>
       ${x.pc!=null?`
@@ -851,6 +943,22 @@ function rSectorial(d){
       <div class="gtr"><div class="gf gfm" style="width:${x.po}%"></div></div></div>
       `:`<div class="snd">Datos de ejecución en actualización</div>`}
     </div>`).join('');
+
+  const letters=[...new Set(d.map(x=>sFL(x.s)))].sort();
+  document.getElementById('sec6Filter').innerHTML=
+    `<span class="sf-lbl">Filtrar:</span>
+     <button class="sf-btn sf-all active" onclick="filterSectors('')">Todos</button>`+
+    letters.map(l=>`<button class="sf-btn" onclick="filterSectors('${l}')">${l}</button>`).join('');
+}
+
+function filterSectors(letter){
+  document.querySelectorAll('.sf-btn').forEach(b=>b.classList.remove('active'));
+  const btn=letter
+    ? [...document.querySelectorAll('#sec6Filter .sf-btn:not(.sf-all)')].find(b=>b.textContent===letter)
+    : document.querySelector('#sec6Filter .sf-btn.sf-all');
+  if(btn)btn.classList.add('active');
+  document.querySelectorAll('#sectGrid .sc').forEach(c=>
+    c.classList.toggle('sc-hidden',!!(letter&&c.dataset.letter!==letter)));
 }
 
 /* Scroll reveal */
@@ -1012,7 +1120,94 @@ async function showDepartamentos(region) {
 /* ── Modal Info System ── */
 const infoTexts = {
   'sec1-info': 'En la vigencia 2025, con corte al 31 de marzo el presupuesto de inversión ascendió a 83,9 billones de pesos, destinados a dar cumplimiento a las apuestas del Plan Nacional de desarrollo 2022-2026, "Colombia, potencia mundial de la vida", cuyo objetivo de centra en la superación de las injusticias históricas y el cierre de las brechas entre las regiones y territorios, promoviendo un crecimiento económico sostenible y respetuoso con el medio ambiente. La mayor parte de la inversión se concentra en las transformaciones y ejes cuyo fin son la reducción de la pobreza para la paz, al impulso de la economía popular, a la conexión de los territorios a través de infraestructura vial y al fortalecimiento de la educación de calidad como vehículo para reducir las desigualdades.',
-  'sec3-info': 'Si bien los recursos del PGN, no tienen vocación de ser asignados de forma directa a los departamentos, la regionalización del PGN permite realizar una aproximación sobre cómo los recursos de inversión beneficiarán a cada uno de los departamentos y sus poblaciones. En este orden de ideas, las entidades del orden nacional son las responsables de determinar el impacto de las inversiones en el territorio'
+  'sec3-info': 'Si bien los recursos del PGN, no tienen vocación de ser asignados de forma directa a los departamentos, la regionalización del PGN permite realizar una aproximación sobre cómo los recursos de inversión beneficiarán a cada uno de los departamentos y sus poblaciones. En este orden de ideas, las entidades del orden nacional son las responsables de determinar el impacto de las inversiones en el territorio',
+  'sec4-info': {
+    tabs: [
+      {
+        label: 'Ciclo de la Ejecución del Gasto',
+        content: `<div style="font-family:inherit;display:grid;grid-template-columns:1fr 96px 1fr;grid-template-rows:auto auto auto;column-gap:8px;row-gap:10px;align-items:stretch">
+    <div style="background:rgba(254,27,123,.08);border:1.5px solid rgba(254,27,123,.25);border-radius:10px;padding:13px 14px">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:7px">
+        <span style="background:#fe1b7b;color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px">01</span>
+        <span style="font-size:12px;font-weight:900;color:#9a1050">Apropiación vigente</span>
+      </div>
+      <p style="margin:0;font-size:11px;line-height:1.5;color:#5e5e5e">Corresponde a la apropiación inicial (+/-) las modificaciones realizadas a la fecha por efecto de traslados, adiciones, incorporaciones, distribuciones, etc.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center">
+      <span style="font-size:9px;font-weight:700;color:#9b9b9b;line-height:1.3;text-transform:uppercase;letter-spacing:.04em">Pérdida de apropiación</span>
+      <span style="color:#c8c8c8;font-size:20px;line-height:1">&#8594;</span>
+    </div>
+    <div style="background:rgba(254,27,123,.08);border:1.5px solid rgba(254,27,123,.25);border-radius:10px;padding:13px 14px">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:7px">
+        <span style="background:#fe1b7b;color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px">02</span>
+        <span style="font-size:12px;font-weight:900;color:#9a1050">Compromiso</span>
+      </div>
+      <p style="margin:0;font-size:11px;line-height:1.5;color:#5e5e5e">Corresponde al valor de los registros presupuestales que afectan las apropiaciones vigentes, con el fin de atender un gasto por efecto de la suscripción de un contrato o convenio interadministrativo.</p>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center">
+      <span style="color:#c8c8c8;font-size:20px;line-height:1">&#8593;</span>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;padding:6px">
+      <div style="background:#1c2d5e;border-radius:50%;width:84px;height:84px;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;flex-shrink:0">
+        <span style="color:#fff;font-size:8.5px;font-weight:900;letter-spacing:.02em;line-height:1.3;text-transform:uppercase">Ciclo de la Ejecución del Gasto</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center">
+      <span style="font-size:9px;font-weight:700;color:#9b9b9b;line-height:1.3;text-transform:uppercase;letter-spacing:.04em">Reserva Presupuestal</span>
+      <span style="color:#c8c8c8;font-size:20px;line-height:1">&#8595;</span>
+    </div>
+    <div style="background:rgba(254,27,123,.08);border:1.5px solid rgba(254,27,123,.25);border-radius:10px;padding:13px 14px">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:7px">
+        <span style="background:#fe1b7b;color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px">04</span>
+        <span style="font-size:12px;font-weight:900;color:#9a1050">Pago</span>
+      </div>
+      <p style="margin:0;font-size:11px;line-height:1.5;color:#5e5e5e">Corresponde al valor de los giros realizados a un beneficiario final con el fin de cancelar las obligaciones asumidas por la entidad.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center">
+      <span style="color:#c8c8c8;font-size:20px;line-height:1">&#8592;</span>
+      <span style="font-size:9px;font-weight:700;color:#9b9b9b;line-height:1.3;text-transform:uppercase;letter-spacing:.04em">Cuentas por pagar</span>
+    </div>
+    <div style="background:rgba(254,27,123,.08);border:1.5px solid rgba(254,27,123,.25);border-radius:10px;padding:13px 14px">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:7px">
+        <span style="background:#fe1b7b;color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px">03</span>
+        <span style="font-size:12px;font-weight:900;color:#9a1050">Obligación</span>
+      </div>
+      <p style="margin:0;font-size:11px;line-height:1.5;color:#5e5e5e">Corresponde al valor de las cuentas radicadas para el pago en la dependencia pagadora, como resultado de la entrega a satisfacción de un bien o un servicio adquiridos en desarrollo de los compromisos relacionados en el ítem anterior.</p>
+    </div>
+  </div>`
+      },
+      {
+        label: 'Rezago Presupuestal',
+        content: `<div style="font-family:inherit;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="border-radius:8px;overflow:hidden;border:1.5px solid rgba(254,27,123,.25)">
+        <div style="background:#9a1050;color:#fff;text-align:center;font-weight:900;font-size:11px;padding:7px 12px;letter-spacing:.04em">Pérdida de apropiación</div>
+        <div style="background:rgba(254,27,123,.06);padding:11px;font-size:11px;line-height:1.5;color:#5e5e5e">Las apropiaciones son autorizaciones máximas de gasto que el Congreso de la República aprueba para ser comprometidas durante la vigencia fiscal respectiva. Después del 31 de diciembre de cada año estas autorizaciones expiran y en consecuencia no podrán comprometerse, adicionarse, transferirse ni contracreditarse.</div>
+      </div>
+      <div style="display:flex;justify-content:center;padding:6px 0">
+        <div style="background:#1c2d5e;border-radius:50%;width:84px;height:84px;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;flex-shrink:0">
+          <span style="color:#fff;font-size:8.5px;font-weight:900;line-height:1.3;text-transform:uppercase">Ejecución del Rezago</span>
+        </div>
+      </div>
+      <div style="border-radius:8px;overflow:hidden;border:1.5px solid rgba(254,27,123,.25)">
+        <div style="background:#9a1050;color:#fff;text-align:center;font-weight:900;font-size:11px;padding:7px 12px;letter-spacing:.04em">Cuentas por Pagar</div>
+        <div style="background:rgba(254,27,123,.06);padding:11px;font-size:11px;line-height:1.5;color:#5e5e5e">Obligaciones pendientes de pago para la siguiente vigencia fiscal, y se presentan en los casos en que el bien o servicio se ha recibido a satisfacción a 31 de diciembre o cuando en desarrollo de un contrato se han pactado anticipos y estos no fueron cancelados al cierre de la vigencia fiscal.</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="border-radius:8px;overflow:hidden;border:1.5px solid rgba(127,71,221,.25)">
+        <div style="background:#5a2080;color:#fff;text-align:center;font-weight:900;font-size:11px;padding:7px 12px;letter-spacing:.04em">Reserva Presupuestal</div>
+        <div style="background:rgba(127,71,221,.07);padding:11px;font-size:11px;line-height:1.5;color:#5e5e5e">Compromisos legalmente constituidos por los órganos que conforman el PGN, que tienen registro presupuestal, pero cuyo objeto no fue cumplido dentro del año fiscal que termina y, por lo mismo, se pagarán dentro de la vigencia siguiente con cargo al presupuesto de la vigencia anterior; es decir, con cargo al presupuesto que las originó.<br><br><strong style="color:#5a2080">Compromisos &#8722; Obligaciones</strong></div>
+      </div>
+      <div style="border-radius:8px;overflow:hidden;border:1.5px solid rgba(28,45,94,.22)">
+        <div style="background:#1c2d5e;color:#fff;text-align:center;font-weight:900;font-size:11px;padding:7px 12px;letter-spacing:.04em">Rezago Presupuestal</div>
+        <div style="background:rgba(28,45,94,.05);padding:14px 12px;text-align:center;font-size:12px;font-weight:800;color:#1c2d5e;line-height:1.9">Reserva presupuestal<br><span style="font-size:20px;line-height:1">+</span><br>Cuentas por pagar</div>
+      </div>
+    </div>
+  </div>`
+      }
+    ]
+  }
 };
 
 function openInfoModal(title, contentKey) {
@@ -1021,10 +1216,29 @@ function openInfoModal(title, contentKey) {
   const modalText = document.getElementById('modalText');
 
   modalTitle.textContent = title;
-  modalText.textContent = infoTexts[contentKey] || 'Información no disponible.';
+  const content = infoTexts[contentKey];
+
+  if (!content) {
+    modalText.textContent = 'Información no disponible.';
+  } else if (typeof content === 'object' && content.tabs) {
+    modalText.innerHTML =
+      `<div class="modal-tabs">${content.tabs.map((t,i)=>
+        `<button class="modal-tab-btn${i===0?' active':''}" onclick="switchModalTab(this,${i},'${contentKey}')">${t.label}</button>`
+      ).join('')}</div><div id="modalTabContent">${content.tabs[0].content}</div>`;
+  } else if (typeof content === 'string' && content.trim().startsWith('<')) {
+    modalText.innerHTML = content;
+  } else {
+    modalText.textContent = content;
+  }
 
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
+}
+
+function switchModalTab(btn, idx, contentKey) {
+  document.querySelectorAll('.modal-tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('modalTabContent').innerHTML = infoTexts[contentKey].tabs[idx].content;
 }
 
 function closeInfoModal() {
