@@ -297,6 +297,9 @@ footer strong{color:#fff}
 
 /* ── Mapa Leaflet ── */
 #mapContainer{background:var(--gc)}
+.leaflet-interactive{outline:none!important}
+.leaflet-interactive:focus{outline:none!important}
+svg.leaflet-zoom-animated path{outline:none!important}
 .leaflet-tooltip{
   background:var(--bl);
   border:2px solid var(--t);
@@ -318,6 +321,40 @@ footer strong{color:#fff}
 }
 .leaflet-tooltip-right:before{
   border-right-color:var(--t);
+}
+
+/* Control de capas personalizado */
+.leaflet-control-layers{
+  background:var(--bl);
+  border:2px solid var(--t);
+  border-radius:var(--rs);
+  box-shadow:var(--sh);
+  font-family:'Nunito Sans',sans-serif;
+  padding:12px 14px;
+}
+.leaflet-control-layers-toggle{
+  background:var(--t);
+  border-radius:var(--rs);
+}
+.leaflet-control-layers-expanded{
+  color:var(--gt);
+}
+.leaflet-control-layers label{
+  font-size:12px;
+  font-weight:700;
+  color:var(--gt);
+  cursor:pointer;
+  padding:4px 0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.leaflet-control-layers label:hover{
+  color:var(--t);
+}
+.leaflet-control-layers input[type="radio"]{
+  accent-color:var(--t);
+  cursor:pointer;
 }
 
 @keyframes fadeIn{
@@ -683,19 +720,21 @@ async function rMapa(regionesData){
     attribution:'©OpenStreetMap ©CARTO'
   }).addTo(map);
 
-  // Cargar GeoJSON
+  // Función para obtener color según % ejecución
+  const getColor=pct=>{
+    if(!pct)return '#d0d0d0';
+    return pct>=40?P.t:pct>=30?'#4dd5d3':pct>=20?'#9ae5e4':'#cef3f2';
+  };
+
   try{
-    const response=await fetch('/data/regiones.geojson');
-    const geojson=await response.json();
+    // Cargar ambos GeoJSON en paralelo
+    const [regionesGeoJSON, dptosGeoJSON]=await Promise.all([
+      fetch('/data/regiones.geojson').then(r=>r.json()),
+      fetch('/data/dptos.geojson').then(r=>r.json())
+    ]);
 
-    // Función para obtener color según % ejecución
-    const getColor=pct=>{
-      if(!pct)return '#d0d0d0';
-      return pct>=40?P.t:pct>=30?'#4dd5d3':pct>=20?'#9ae5e4':'#cef3f2';
-    };
-
-    // Estilo de cada región
-    const style=feature=>{
+    // ── CAPA DE REGIONES ──
+    const regionesStyle=feature=>{
       const region=feature.properties.REGION;
       const data=regionesData.find(r=>r.r===region);
       return {
@@ -707,23 +746,11 @@ async function rMapa(regionesData){
       };
     };
 
-    // Eventos de interacción
-    const highlightFeature=e=>{
-      const layer=e.target;
-      layer.setStyle({weight:4,color:P.a,fillOpacity:0.9});
-      layer.bringToFront();
-    };
-
-    const resetHighlight=e=>{
-      geojsonLayer.resetStyle(e.target);
-    };
-
-    const onEachFeature=(feature,layer)=>{
+    const regionesOnEachFeature=(feature,layer)=>{
       const region=feature.properties.REGION;
       const data=regionesData.find(r=>r.r===region);
 
       if(data){
-        // Tooltip para hover (no se abre en click)
         const tooltipContent=`
           <div style="font-weight:900;font-size:12px;color:var(--t);margin-bottom:4px">${region}</div>
           <div style="font-size:11px">
@@ -752,8 +779,14 @@ async function rMapa(regionesData){
         });
 
         layer.on({
-          mouseover:highlightFeature,
-          mouseout:resetHighlight,
+          mouseover:e=>{
+            const layer=e.target;
+            layer.setStyle({weight:4,color:P.a,fillOpacity:0.9});
+            layer.bringToFront();
+          },
+          mouseout:e=>{
+            regionesLayer.resetStyle(e.target);
+          },
           click:()=>{
             map.closePopup();
             showDepartamentos(region);
@@ -762,15 +795,75 @@ async function rMapa(regionesData){
       }
     };
 
-    const geojsonLayer=L.geoJSON(geojson,{
-      style:style,
-      onEachFeature:onEachFeature
+    const regionesLayer=L.geoJSON(regionesGeoJSON,{
+      style:regionesStyle,
+      onEachFeature:regionesOnEachFeature
+    });
+
+    // ── CAPA DE DEPARTAMENTOS ──
+    const dptosStyle=feature=>{
+      return {
+        fillColor:'rgba(0,195,193,0.2)',
+        weight:2,
+        opacity:1,
+        color:P.t,
+        fillOpacity:0.3
+      };
+    };
+
+    const dptosOnEachFeature=(feature,layer)=>{
+      const dpto=feature.properties.dpto_cnmbr;
+      const codigo=feature.properties.dpto_ccdgo;
+
+      const tooltipContent=`
+        <div style="font-weight:900;font-size:12px;color:var(--t);margin-bottom:4px">${dpto}</div>
+        <div style="font-size:10px;color:var(--gs)">Código: ${codigo}</div>
+      `;
+
+      layer.bindTooltip(tooltipContent,{
+        sticky:true,
+        direction:'top',
+        offset:[0,-10]
+      });
+
+      layer.on({
+        mouseover:e=>{
+          const layer=e.target;
+          layer.setStyle({weight:4,color:P.m,fillOpacity:0.6});
+          layer.bringToFront();
+        },
+        mouseout:e=>{
+          dptosLayer.resetStyle(e.target);
+        }
+      });
+    };
+
+    const dptosLayer=L.geoJSON(dptosGeoJSON,{
+      style:dptosStyle,
+      onEachFeature:dptosOnEachFeature
+    });
+
+    // Añadir capa de regiones por defecto
+    regionesLayer.addTo(map);
+
+    // ── CONTROL DE CAPAS ──
+    const baseLayers={
+      'Regiones':regionesLayer,
+      'Departamentos':dptosLayer
+    };
+
+    L.control.layers(baseLayers,null,{
+      position:'topright',
+      collapsed:false
     }).addTo(map);
 
     // Reset highlight cuando se arrastra el mapa
     map.on('movestart',()=>{
-      geojsonLayer.eachLayer(layer=>{
-        geojsonLayer.resetStyle(layer);
+      regionesLayer.eachLayer(layer=>{
+        regionesLayer.resetStyle(layer);
+      });
+      dptosLayer.eachLayer(layer=>{
+        dptosLayer.resetStyle(layer);
       });
     });
 
