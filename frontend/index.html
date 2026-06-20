@@ -7,6 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.zoomhome@1.0.0/dist/leaflet.zoomhome.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/leaflet.zoomhome@1.0.0/dist/leaflet.zoomhome.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 <style>
@@ -375,6 +377,30 @@ svg.leaflet-zoom-animated path{outline:none!important}
   cursor:pointer;
 }
 
+/* Personalización del control ZoomHome */
+.leaflet-control-zoom-home{
+  background:var(--t)!important;
+  border-color:var(--t)!important;
+}
+.leaflet-control-zoom-home:hover{
+  background:var(--m)!important;
+  border-color:var(--m)!important;
+}
+.leaflet-control-zoom{
+  border:2px solid var(--t)!important;
+  border-radius:var(--rs)!important;
+  box-shadow:var(--sh)!important;
+}
+.leaflet-control-zoom a{
+  color:var(--t)!important;
+  font-weight:900!important;
+  transition:all .2s!important;
+}
+.leaflet-control-zoom a:hover{
+  background:rgba(0,195,193,.1)!important;
+  color:var(--t)!important;
+}
+
 @keyframes fadeIn{
   from{opacity:0}
   to{opacity:1}
@@ -733,8 +759,16 @@ async function rMapa(regionesData){
     minZoom:5,
     maxZoom:10,
     maxBounds:colombiaBounds,
-    maxBoundsViscosity:0.9
+    maxBoundsViscosity:0.9,
+    zoomControl:false
   });
+
+  // Añadir control de zoom con botón home
+  L.control.zoomHome({
+    position:'topleft',
+    zoomHomeTitle:'Vista completa',
+    homeZoomLevel:5.5
+  }).addTo(map);
 
   // Tile layer en tonos grises
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
