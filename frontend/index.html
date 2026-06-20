@@ -36,6 +36,11 @@ body{background:var(--fw);color:var(--gt);font-family:'Nunito Sans',Arial,sans-s
 
 /* ── Nav ── */
 nav{position:sticky;top:0;z-index:100;background:var(--bl);box-shadow:0 1px 0 var(--gc)}
+.bit-sel{background:#f4f4f4;border-bottom:1px solid #e4e4e4;padding:7px 32px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.bit-lbl{font-size:10px;font-weight:900;color:#9b9b9b;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.bit-btn{padding:4px 14px;border-radius:20px;border:1.5px solid #ddd;background:#fff;cursor:pointer;font-family:'Nunito Sans',sans-serif;font-size:11px;font-weight:700;color:#5e5e5e;transition:all .15s;line-height:1.4}
+.bit-btn.active{background:#00c3c1;border-color:#00c3c1;color:#fff}
+.bit-btn:hover:not(.active){border-color:#00c3c1;color:#00c3c1}
 .nav-inner{display:flex;align-items:center;gap:24px;max-width:1200px;margin:0 auto;padding:0 32px;height:54px}
 .nav-logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:14px;color:var(--gt);text-decoration:none;margin-right:auto}
 .logo-badge{background:var(--t);color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:4px;letter-spacing:.06em}
@@ -374,10 +379,16 @@ footer strong{color:#fff}
     <a href="#sec4" class="lk">Ejecución</a>
     <a href="#sec5" class="lk">Vigencias</a>
     <a href="#sec6" class="lk">Sectorial</a>
-    <span class="corte-badge">Mar 2025</span>
+    <span class="corte-badge" id="corteBadge">Mar 2025</span>
   </div>
   <div class="franja"></div>
 </nav>
+
+<!-- SELECTOR DE PERÍODO -->
+<div id="bitSelector" class="bit-sel">
+  <span class="bit-lbl">Bitácora:</span>
+  <div id="bitBtns"></div>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -385,19 +396,19 @@ footer strong{color:#fff}
     <div class="hl pw" style="max-width:none">
       <div class="eyebrow">Dirección de Programación de Inversiones Públicas · DNP</div>
       <h1>Comportamiento<br>de la <strong>Inversión<br>Pública</strong></h1>
-      <p>Evolución del presupuesto de inversión financiado a través del Presupuesto General de la Nación. Corte al 31 de marzo de 2025. Vigencias 2022–2025.</p>
+      <p id="heroPara">Evolución del presupuesto de inversión financiado a través del Presupuesto General de la Nación. Corte al 31 de marzo de 2025. Vigencias 2022–2025.</p>
       <div class="kpi-g">
-        <div class="kpi kt"><div class="kl">Apropiación vigente 2025</div><div class="kv">83,9 <small>Bill. COP</small></div><div class="kd">4,6% del PIB · 16% del gasto total</div></div>
-        <div class="kpi km"><div class="kl">Compromisos</div><div class="kv">36,4 <small>Bill. COP</small></div><div class="kd">43% de la apropiación vigente</div></div>
-        <div class="kpi ka"><div class="kl">Obligaciones</div><div class="kv">6,6 <small>Bill. COP</small></div><div class="kd">8% de la apropiación vigente</div></div>
-        <div class="kpi kg"><div class="kl">Pagos</div><div class="kv">6,5 <small>Bill. COP</small></div><div class="kd">7,8% de la apropiación vigente</div></div>
+        <div class="kpi kt" id="kpiVig"><div class="kl">Apropiación vigente 2025</div><div class="kv">83,9 <small>Bill. COP</small></div><div class="kd">4,6% del PIB · 16% del gasto total</div></div>
+        <div class="kpi km" id="kpiComp"><div class="kl">Compromisos</div><div class="kv">36,4 <small>Bill. COP</small></div><div class="kd">43% de la apropiación vigente</div></div>
+        <div class="kpi ka" id="kpiObl"><div class="kl">Obligaciones</div><div class="kv">6,6 <small>Bill. COP</small></div><div class="kd">8% de la apropiación vigente</div></div>
+        <div class="kpi kg" id="kpiPag"><div class="kl">Pagos</div><div class="kv">6,5 <small>Bill. COP</small></div><div class="kd">7,8% de la apropiación vigente</div></div>
       </div>
     </div>
     <div class="hr">
       <div class="hr-c">
-        <div class="hr-num">83,9</div>
+        <div class="hr-num" id="hrNum">83,9</div>
         <div class="hr-lbl">Billones de pesos corrientes</div>
-        <div class="hr-sub">Inversión pública vigencia 2025<br>Presupuesto General de la Nación</div>
+        <div class="hr-sub" id="hrSub">Inversión pública vigencia 2025<br>Presupuesto General de la Nación</div>
         <span class="etq">Colombia tiene un plan</span>
       </div>
     </div>
@@ -527,7 +538,7 @@ footer strong{color:#fff}
     <div>
       <div class="fm">Departamento Nacional de Planeación</div>
       <strong>Dirección de Programación de Inversiones Públicas (DPIP)</strong><br>
-      Bitácora 2 · PGN 2025-I · Corte 31 de marzo de 2025<br>
+      <span id="footerMeta">Bitácora 2 · PGN 2025-I · Corte 31 de marzo de 2025</span><br>
       Cifras en miles de millones COP corrientes (vigencias futuras: constantes 2025)
     </div>
     <div style="text-align:right">
@@ -553,7 +564,55 @@ footer strong{color:#fff}
 
 <script>
 const API='/api';
+let activeBit=null;  // {id, vigencia, periodo, numero_bitacora, corte_fecha}
+
 async function af(p,fb){try{const r=await fetch(API+p);if(!r.ok)throw 0;return await r.json();}catch{return fb;}}
+
+function destroyChart(id){const c=Chart.getChart(document.getElementById(id));if(c)c.destroy();}
+
+function fmtFecha(f){
+  if(!f)return '';
+  const M=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const[y,m,d]=f.split('-');return `${parseInt(d)} de ${M[parseInt(m)-1]} de ${y}`;
+}
+
+function updateHero(res){
+  const bill=v=>v!=null?`${(v/1000).toFixed(1)} <small>Bill. COP</small>`:'— <small>Bill. COP</small>';
+  const pctStr=(v,base)=>v!=null?`${v}% de la apropiación vigente`:'';
+  document.getElementById('hrNum').textContent=res.inversion_vigente_mmm?(res.inversion_vigente_mmm/1000).toFixed(1):'—';
+  document.getElementById('hrSub').innerHTML=`Inversión pública vigencia ${res.vigencia}<br>Presupuesto General de la Nación`;
+  document.getElementById('heroPara').textContent=`Evolución del presupuesto de inversión financiado a través del Presupuesto General de la Nación. Corte al ${fmtFecha(res.corte_fecha)}. Vigencias 2022–${res.vigencia}.`;
+  const qv=document.getElementById('kpiVig');
+  qv.querySelector('.kl').textContent=`Apropiación vigente ${res.vigencia}`;
+  qv.querySelector('.kv').innerHTML=bill(res.inversion_vigente_mmm);
+  qv.querySelector('.kd').textContent=res.inv_pct_pib?`${res.inv_pct_pib}% del PIB · ${res.inv_pct_gasto_total||'—'}% del gasto total`:`Fuente: SIIF Nación`;
+  const qc=document.getElementById('kpiComp');
+  qc.querySelector('.kv').innerHTML=bill(res.inversion_compromisos_mmm);
+  qc.querySelector('.kd').textContent=pctStr(res.pct_compromisos);
+  const qo=document.getElementById('kpiObl');
+  qo.querySelector('.kv').innerHTML=bill(res.inversion_obligaciones_mmm);
+  qo.querySelector('.kd').textContent=pctStr(res.pct_obligaciones);
+  const qp=document.getElementById('kpiPag');
+  qp.querySelector('.kv').innerHTML=bill(res.inversion_pagos_mmm);
+  qp.querySelector('.kd').textContent=pctStr(res.pct_pagos);
+  const fm=document.getElementById('footerMeta');
+  if(fm)fm.textContent=`Bitácora ${res.numero_bitacora} · PGN ${res.periodo} · Corte ${fmtFecha(res.corte_fecha)}`;
+  const cb=document.getElementById('corteBadge');
+  if(cb&&res.corte_fecha){const M=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];const[y,m]=res.corte_fecha.split('-');cb.textContent=`${M[parseInt(m)-1]} ${y}`;}
+}
+
+function buildSelector(bitas){
+  const c=document.getElementById('bitBtns');
+  if(!c)return;
+  c.innerHTML=bitas.map(b=>`<button class="bit-btn${activeBit&&activeBit.id===b.id?' active':''}" onclick="selectBit(${b.id})">${b.periodo} <small style="font-weight:400;opacity:.75">· ${fmtFecha(b.corte_fecha)}</small></button>`).join('');
+}
+
+async function selectBit(bid){
+  const bitas=await af('/bitacoras',[]);
+  activeBit=bitas.find(b=>b.id===bid)||null;
+  buildSelector(bitas);
+  await init(bid);
+}
 
 /* Paleta DNP exacta */
 const P={t:'#00c3c1',m:'#fe1b7b',a:'#ffca00',nr:'#fbb03b',mo:'#7f47dd',gs:'#9b9b9b',gc:'#ebebeb',
@@ -624,6 +683,7 @@ const D={
 
 /* ── Renders ── */
 function rDonut(d){
+  destroyChart('donutT');
   new Chart(document.getElementById('donutT').getContext('2d'),{
     type:'doughnut',
     data:{labels:d.map(x=>x.t.substring(0,28)),
@@ -642,10 +702,16 @@ function rTablaT(d){
     <td>${x.t.length>30?x.t.substring(0,30)+'…':x.t}</td>
     <td>${x.v.toLocaleString('es-CO',{minimumFractionDigits:3})}</td>
     <td>${x.c.toLocaleString('es-CO',{minimumFractionDigits:3})}</td>
-    <td><span class="pb">${x.pc}%</span></td><td>${x.po}%</td></tr>`).join('');
+    <td><span class="pb">${x.pc!=null?x.pc+'%':'—'}</span></td><td>${x.po!=null?x.po+'%':'—'}</td></tr>`).join('');
+  const tv=d.reduce((s,x)=>s+(x.v||0),0);
+  const tc=d.reduce((s,x)=>s+(x.c||0),0);
+  const pctC=tv>0?Math.round(tc/tv*100):0;
+  const avgO=tv>0?Math.round(d.reduce((s,x)=>s+(x.po||0)*(x.v||0),0)/tv):0;
+  document.querySelector('#tblT tfoot tr').innerHTML=`<td>TOTAL</td><td>${tv.toLocaleString('es-CO',{minimumFractionDigits:3})}</td><td>${tc.toLocaleString('es-CO',{minimumFractionDigits:3})}</td><td><span class="pb">${pctC}%</span></td><td>${avgO}%</td>`;
 }
 
 function rBarPGN(ev){
+  destroyChart('barPGN');
   const R=['Funcionamiento','Inversión','Servicio Deuda'],CL=[P.t,P.m,P.a],Y=[2022,2023,2024,2025];
   new Chart(document.getElementById('barPGN').getContext('2d'),{type:'bar',
     data:{labels:['2022','2023','2024','2025'],
@@ -657,6 +723,7 @@ function rBarPGN(ev){
 }
 
 function rLineInv(ej){
+  destroyChart('lineInv');
   new Chart(document.getElementById('lineInv').getContext('2d'),{type:'line',
     data:{labels:['2022','2023','2024','2025'],datasets:[
       {label:'% Gasto total',data:ej.map(d=>d.g), borderColor:P.m,backgroundColor:'rgba(254,27,123,.07)',tension:.35,pointRadius:4,fill:true},
@@ -680,6 +747,7 @@ function rRegiones(d){
 }
 
 async function rMapa(regionesData){
+  if(_leafletMap){_leafletMap.remove();_leafletMap=null;}
   const f=n=>n?(n/1000000).toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1}):' —';
   const fp=p=>p!=null?p.toFixed(1)+'%':'—';
 
@@ -690,7 +758,7 @@ async function rMapa(regionesData){
   );
 
   // Crear mapa centrado en Colombia con restricciones
-  const map=L.map('mapContainer',{
+  const map=_leafletMap=L.map('mapContainer',{
     center:[4.5,-74],
     zoom:5.5,
     minZoom:5,
@@ -801,7 +869,7 @@ async function rMapa(regionesData){
   }
 }
 
-let ejData=null,tlMode='pct';
+let ejData=null,tlMode='pct',_leafletMap=null;
 
 function rTimeline(ej){
   ejData=ej;
@@ -835,6 +903,7 @@ function toggleTlMode(){
 }
 
 function rLineEj(ej){
+  destroyChart('lineEj');
   new Chart(document.getElementById('lineEj').getContext('2d'),{type:'line',
     data:{labels:['2022','2023','2024','2025'],datasets:[
       {label:'% Compromisos', data:ej.map(d=>d.pc),borderColor:P.t,tension:.3,pointRadius:4},
@@ -866,6 +935,10 @@ function rHBars(){
 }
 
 function rVF(tot,sect){
+  const totalVF=tot.reduce((s,x)=>s+(x.t||0),0);
+  const vfb=document.querySelector('.vfb');
+  if(vfb)vfb.innerHTML=`<em>${(totalVF/1000).toFixed(1)}</em> billones`;
+  destroyChart('barVF');
   const ctx=document.getElementById('barVF').getContext('2d');
   const SN=Object.keys(sect),SC=[P.t,P.a,P.m,P.nr,P.gs];
   new Chart(ctx,{type:'bar',
@@ -965,28 +1038,46 @@ function filterSectors(letter){
 const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')})},{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-async function init(){
-  // Fetch data from API with fallback to embedded data
-  const trRaw = await af('/transformaciones?vigencia=2025', null);
-  const evRaw = await af('/evolucion', null);
-  const ejRaw = await af('/ejecucion', null);
-  const reRaw = await af('/regionalizacion', null);
-  const vftRaw = await af('/vigencias_futuras/totales', null);
-  const seRaw = await af('/sectorial?vigencia=2025', null);
+async function init(bid){
+  const q=bid?`?bitacora_id=${bid}`:'';
+  const trRaw = await af(`/transformaciones${q}`, null);
+  const evRaw = await af(`/evolucion${q}`, null);
+  const ejRaw = await af(`/ejecucion${q}`, null);
+  const reRaw = await af(`/regionalizacion${q}`, null);
+  const vftRaw = await af(`/vigencias_futuras/totales${q}`, null);
+  const seRaw  = await af(`/sectorial${q}`, null);
+  const resRaw = await af(`/resumen${q}`, null);
 
-  // Map API data to frontend format or use fallback
-  const tr = trRaw ? trRaw.map(x=>({t:x.transformador,v:x.inversion_mmm,p:x.peso_pct,c:x.compromisos_mmm,pc:x.pct_c_av,po:x.pct_o_av})) : D.tr;
-  const ev = evRaw ? evRaw.map(x=>({y:x.vigencia,r:x.rubro,v:x.vigente_mmm})) : D.ev;
-  const ej = ejRaw ? ejRaw.map(x=>({y:x.vigencia,vg:x.vigente_mmm,c:x.compromisos_mmm,o:x.obligaciones_mmm,p:x.pagos_mmm,pc:x.pct_compromisos,po:x.pct_obligaciones,pp:x.pct_pagos,pib:x.inv_pct_pib,g:x.inv_pct_gasto_total})) : D.ej;
-  const re = reRaw ? reRaw.filter(x=>x.pct_participacion===100||x.pct_participacion===null).map(x=>{
+  if(resRaw){
+    updateHero(resRaw);
+    const v=resRaw.vigencia;
+    const ss1=document.querySelector('#sec1 .ss');
+    if(ss1)ss1.innerHTML=`Vigencia ${v} · PND <strong>"Colombia, potencia mundial de la vida"</strong> · Miles de millones COP corrientes. Fuente: DPIP–SIIF.`;
+    const ct1=document.querySelector('#sec1 .card.bt .ct');
+    if(ct1)ct1.textContent=`Distribución porcentual inversión ${v}`;
+    const ct2=document.querySelector('#sec1 .card.bm .ct');
+    if(ct2)ct2.textContent=`Ejecución por transformador — corte marzo ${v}`;
+    const ss6=document.querySelector('#sec6 .st');
+    if(ss6)ss6.textContent=`Ejecución por Sector — ${v}`;
+    const p6=document.querySelector('#sec6 .ss');
+    if(p6)p6.innerHTML=`% Compromisos y Obligaciones sobre apropiación vigente. Corte: 31 de marzo de ${v}. Fuente: SIIF Nación.`;
+    document.title=`Bitácora PGN ${resRaw.periodo} — Comportamiento de la Inversión Pública — DNP`;
+  }
+
+  // Fallback: usa datos embebidos si la API no devuelve filas
+  const hasRows=r=>r&&r.length>0;
+  const tr = hasRows(trRaw) ? trRaw.map(x=>({t:x.transformador,v:x.inversion_mmm,p:x.peso_pct,c:x.compromisos_mmm,pc:x.pct_c_av,po:x.pct_o_av})) : D.tr;
+  const ev = hasRows(evRaw) ? evRaw.map(x=>({y:x.vigencia,r:x.rubro,v:x.vigente_mmm})) : D.ev;
+  const ej = hasRows(ejRaw) ? ejRaw.map(x=>({y:x.vigencia,vg:x.vigente_mmm,c:x.compromisos_mmm,o:x.obligaciones_mmm,p:x.pagos_mmm,pc:x.pct_compromisos,po:x.pct_obligaciones,pp:x.pct_pagos,pib:x.inv_pct_pib,g:x.inv_pct_gasto_total})) : D.ej;
+  const re = hasRows(reRaw) ? reRaw.filter(x=>x.pct_participacion===100||x.pct_participacion===null).map(x=>{
     let sectores = 'Sin datos';
     if(Array.isArray(x.principales_sectores) && x.principales_sectores.length>0){
       sectores = x.principales_sectores.map(s=>`${s.sector} ${s.pct}%`).join('·');
     }
     return {r:x.region,v:x.vigente_mm,c:x.compromisos_mm,pc:x.pct_ejec_compromisos,pp:x.pct_ejec_pagos,s:sectores,isTotal:x.region==='NACIONAL'};
   }).sort((a,b)=>a.isTotal?1:b.isTotal?-1:0) : D.re;
-  const vft = vftRaw ? vftRaw.map(x=>({y:x.vigencia_exec,t:x.total_mmm,pib:x.pct_pib})) : D.vft;
-  const se = seRaw ? [...seRaw.reduce((m,x)=>{const k=x.sector;if(!m.has(k))m.set(k,{s:x.sector,v:0,pc:null,po:null});const g=m.get(k);g.v+=x.apr_vigente_mmm||0;if(x.pct_c_av!=null){g.pc=(g.pc||0)+x.pct_c_av;g.po=(g.po||0)+x.pct_o_av;}return m;},new Map()).values()].map(x=>({...x,v:parseFloat(x.v.toFixed(3))})) : D.se;
+  const vft = hasRows(vftRaw) ? vftRaw.map(x=>({y:x.vigencia_exec,t:x.total_mmm,pib:x.pct_pib||0})) : D.vft;
+  const se  = hasRows(seRaw)  ? [...seRaw.reduce((m,x)=>{const k=x.sector;if(!m.has(k))m.set(k,{s:x.sector,v:0,pc:null,po:null});const g=m.get(k);g.v+=x.apr_vigente_mmm||0;if(x.pct_c_av!=null){g.pc=(g.pc||0)+x.pct_c_av;g.po=(g.po||0)+x.pct_o_av;}return m;},new Map()).values()].map(x=>({...x,v:parseFloat(x.v.toFixed(3))})) : D.se;
 
   rDonut(tr);rTablaT(tr);
   rBarPGN(ev);rLineInv(ej);
@@ -996,7 +1087,18 @@ async function init(){
   rVF(vft,D.vfs);
   rSectorial(se);
 }
-init();
+
+async function initApp(){
+  const bitas=await af('/bitacoras',[]);
+  if(bitas.length){
+    activeBit=bitas[0]; // más reciente (API devuelve DESC)
+    buildSelector(bitas);
+    await init(activeBit.id);
+  } else {
+    await init(null);
+  }
+}
+initApp();
 
 /* ── Componentes Modal ── */
 async function showComponentes(transformador) {
@@ -1011,7 +1113,8 @@ async function showComponentes(transformador) {
   document.body.style.overflow = 'hidden';
 
   // Fetch componentes
-  const componentes = await af(`/transformaciones/${encodeURIComponent(transformador)}/componentes?vigencia=2025`, []);
+  const bq=activeBit?`?bitacora_id=${activeBit.id}`:'';
+  const componentes = await af(`/transformaciones/${encodeURIComponent(transformador)}/componentes${bq}`, []);
 
   // Build table
   if (componentes.length === 0) {
@@ -1059,7 +1162,8 @@ async function showDepartamentos(region) {
   document.body.style.overflow = 'hidden';
 
   // Fetch departamentos
-  const data = await af(`/regionalizacion?region=${encodeURIComponent(region)}`, []);
+  const bq2=activeBit?`&bitacora_id=${activeBit.id}`:'';
+  const data = await af(`/regionalizacion?region=${encodeURIComponent(region)}${bq2}`, []);
 
   // Filter out regional total (pct_participacion = 100)
   const deptos = data.filter(x => x.pct_participacion !== 100);

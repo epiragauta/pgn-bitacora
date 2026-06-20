@@ -37,7 +37,11 @@ except ImportError:
 # ---------------------------------------------------------------------------
 DB_PATH = Path(__file__).parent.parent / "db" / "pgn.db"
 
-_BASES = Path(r"D:\ws\Bases Bitácora\2026\Marzo")
+# Ruta DNP (equipo institucional) con fallback al PC personal
+_BASES_DNP      = Path(r"D:\ws\Bases Bitácora\2026\Marzo")
+_BASES_PERSONAL = Path(r"C:\ws\dnp\ws\BASES_BITACORA\2026\Marzo")
+_BASES = _BASES_DNP if _BASES_DNP.exists() else _BASES_PERSONAL
+
 FILE1_DEFAULT = _BASES / "1. INVERSIONES 2026 - PND 2022 - 2026" / "Inversiones 2026 - PND 2022-2026.xlsx"
 FILE5_DEFAULT = _BASES / "5. VIGENCIAS FUTURAS" / "20260513 Nueva Base VF - Validada - Revisión Analistas.xlsx"
 
