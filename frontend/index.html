@@ -362,6 +362,20 @@ footer strong{color:#fff}
   .modal-header{padding:16px 20px}
   .modal-body{padding:20px}
 }
+
+/* ── Subrayado semántico + tooltip de definición ── */
+.def{border-bottom:2px dashed var(--t);cursor:help;display:inline}
+.def:hover{border-bottom-color:var(--m)}
+.tbl thead th.def{border-bottom:2px dashed rgba(255,255,255,.55);cursor:help}
+.tbl thead th.def:hover{border-bottom-color:#fff}
+#defTip{position:fixed;z-index:900;background:var(--bl);border:1.5px solid var(--t);border-radius:var(--rs);
+  box-shadow:0 8px 32px rgba(0,195,193,.22);padding:14px 16px;max-width:272px;width:272px;
+  pointer-events:none;opacity:0;transition:opacity .18s;font-family:'Nunito Sans',Arial,sans-serif;line-height:1}
+#defTip.vis{opacity:1}
+.dt-term{font-size:9px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--t);margin-bottom:8px}
+.dt-body{font-size:12px;color:var(--gt);line-height:1.55}
+.dt-fml{font-size:10px;color:var(--m);margin-top:9px;font-style:italic;font-weight:700;line-height:1.4}
+.dt-src{font-size:9px;color:var(--gs);margin-top:6px;letter-spacing:.05em;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -398,10 +412,10 @@ footer strong{color:#fff}
       <h1>Comportamiento<br>de la <strong>Inversión<br>Pública</strong></h1>
       <p id="heroPara">Evolución del presupuesto de inversión financiado a través del Presupuesto General de la Nación. Corte al 31 de marzo de 2025. Vigencias 2022–2025.</p>
       <div class="kpi-g">
-        <div class="kpi kt" id="kpiVig"><div class="kl">Apropiación vigente 2025</div><div class="kv">83,9 <small>Bill. COP</small></div><div class="kd">4,6% del PIB · 16% del gasto total</div></div>
-        <div class="kpi km" id="kpiComp"><div class="kl">Compromisos</div><div class="kv">36,4 <small>Bill. COP</small></div><div class="kd">43% de la apropiación vigente</div></div>
-        <div class="kpi ka" id="kpiObl"><div class="kl">Obligaciones</div><div class="kv">6,6 <small>Bill. COP</small></div><div class="kd">8% de la apropiación vigente</div></div>
-        <div class="kpi kg" id="kpiPag"><div class="kl">Pagos</div><div class="kv">6,5 <small>Bill. COP</small></div><div class="kd">7,8% de la apropiación vigente</div></div>
+        <div class="kpi kt" id="kpiVig"><div class="kl def" data-def="apr-vigente">Apropiación vigente 2025</div><div class="kv">83,9 <small>Bill. COP</small></div><div class="kd">4,6% del PIB · 16% del gasto total</div></div>
+        <div class="kpi km" id="kpiComp"><div class="kl def" data-def="compromisos">Compromisos</div><div class="kv">36,4 <small>Bill. COP</small></div><div class="kd">43% de la apropiación vigente</div></div>
+        <div class="kpi ka" id="kpiObl"><div class="kl def" data-def="obligaciones">Obligaciones</div><div class="kv">6,6 <small>Bill. COP</small></div><div class="kd">8% de la apropiación vigente</div></div>
+        <div class="kpi kg" id="kpiPag"><div class="kl def" data-def="pagos">Pagos</div><div class="kv">6,5 <small>Bill. COP</small></div><div class="kd">7,8% de la apropiación vigente</div></div>
       </div>
     </div>
     <div class="hr">
@@ -435,7 +449,7 @@ footer strong{color:#fff}
       <div class="card bm">
         <div class="ct">Ejecución por transformador — corte marzo 2025</div>
         <table class="tbl" id="tblT">
-          <thead><tr><th>Transformador</th><th>Vigente</th><th>Compromisos</th><th>%C/AV</th><th>%O/AV</th></tr></thead>
+          <thead><tr><th>Transformador</th><th class="def" data-def="apr-vigente">Vigente</th><th class="def" data-def="compromisos">Compromisos</th><th class="def" data-def="pct-comp">%C/AV</th><th class="def" data-def="pct-obl">%O/AV</th></tr></thead>
           <tbody></tbody>
           <tfoot><tr class="tr"><td>TOTAL</td><td>83.961</td><td>36.363</td><td><span class="pb">43%</span></td><td>8%</td></tr></tfoot>
         </table>
@@ -514,7 +528,7 @@ footer strong{color:#fff}
   <div class="pw">
     <div class="stag sm"><span class="n">5</span>Vigencias Futuras</div>
     <h2 class="st">Compromisos 2026 – 2040</h2>
-    <div class="vfh"><div class="vfb"><em>136,7</em> billones</div><p class="vfd">COP constantes 2025 comprometidos 2026-2040. Principal sector: <strong>Transporte</strong>.</p></div>
+    <div class="vfh"><div class="vfb"><em>136,7</em> billones</div><p class="vfd"><span class="def" data-def="vigencias-futuras">COP constantes 2025</span> comprometidos 2026-2040. Principal sector: <strong>Transporte</strong>.</p></div>
     <div class="card bt rv"><div class="ct">Vigencias futuras por sector y año (mmm COP constantes 2025)</div><div style="position:relative;height:270px"><canvas id="barVF"></canvas></div></div>
     <div class="card rv" style="margin-top:18px;overflow-x:auto"><div class="ct">Tabla de vigencias futuras comprometidas</div><table class="tbl" id="tblVF"></table></div>
   </div>
@@ -1087,6 +1101,88 @@ async function init(bid){
   rVF(vft,D.vfs);
   rSectorial(se);
 }
+
+/* ── Glosario presupuestal ── */
+const G={
+  'apr-vigente':{
+    term:'Apropiación Vigente',
+    body:'Monto máximo autorizado para gastar en la vigencia, tras todos los traslados y adiciones presupuestales. Es el techo del ciclo de ejecución.',
+    fml:null,
+    src:'SIIF Nación · MHCP'
+  },
+  'compromisos':{
+    term:'Compromisos',
+    body:'Recursos afectados mediante actos jurídicos: contratos, resoluciones, convenios. Primera etapa formal del ciclo de ejecución presupuestal.',
+    fml:null,
+    src:'SIIF Nación'
+  },
+  'obligaciones':{
+    term:'Obligaciones',
+    body:'Se genera cuando la entidad recibe efectivamente los bienes o servicios contratados. El contratista ya cumplió su prestación.',
+    fml:null,
+    src:'SIIF Nación'
+  },
+  'pagos':{
+    term:'Pagos',
+    body:'Giro efectivo de recursos al contratista o beneficiario. Última etapa del ciclo; refleja el impacto real de la inversión sobre la economía.',
+    fml:null,
+    src:'SIIF Nación · Tesorería General de la Nación'
+  },
+  'pct-comp':{
+    term:'% Compromisos / Apr. Vigente',
+    body:'Indicador temprano de ritmo de ejecución. Mide qué fracción del presupuesto disponible ya tiene respaldo jurídico mediante un acto de compromiso.',
+    fml:'%C/AV = Compromisos ÷ Apropiación Vigente × 100',
+    src:'SIIF Nación'
+  },
+  'pct-obl':{
+    term:'% Obligaciones / Apr. Vigente',
+    body:'Proporción del presupuesto que ya generó una obligación de pago, es decir, donde los bienes o servicios ya fueron recibidos por la entidad.',
+    fml:'%O/AV = Obligaciones ÷ Apropiación Vigente × 100',
+    src:'SIIF Nación'
+  },
+  'vigencias-futuras':{
+    term:'Vigencias Futuras',
+    body:'Autorizaciones para comprometer presupuesto de vigencias posteriores. Permiten contratar proyectos de largo plazo que superan un año fiscal: obras viales, concesiones, créditos.',
+    fml:null,
+    src:'DPIP · MHCP · Ley 819 de 2003'
+  }
+};
+
+/* ── Motor de tooltip ── */
+(function(){
+  const tip=document.createElement('div');
+  tip.id='defTip';
+  tip.innerHTML='<div class="dt-term" id="dtTerm"></div><div class="dt-body" id="dtBody"></div><div class="dt-fml" id="dtFml"></div><div class="dt-src" id="dtSrc"></div>';
+  document.body.appendChild(tip);
+
+  function pos(el){
+    const r=el.getBoundingClientRect(),W=272,gap=10;
+    let x=r.left+r.width/2-W/2;
+    let y=r.top-tip.offsetHeight-gap;
+    if(y<8)y=r.bottom+gap;
+    x=Math.max(8,Math.min(x,window.innerWidth-W-8));
+    tip.style.left=x+'px';tip.style.top=y+'px';
+  }
+
+  document.addEventListener('mouseover',e=>{
+    const el=e.target.closest('.def[data-def]');
+    if(!el)return;
+    const d=G[el.dataset.def];
+    if(!d)return;
+    document.getElementById('dtTerm').textContent=d.term;
+    document.getElementById('dtBody').textContent=d.body;
+    const fEl=document.getElementById('dtFml');
+    fEl.textContent=d.fml||'';
+    fEl.style.display=d.fml?'':'none';
+    document.getElementById('dtSrc').textContent=d.src?'Fuente: '+d.src:'';
+    tip.classList.add('vis');
+    pos(el);
+  });
+  document.addEventListener('mouseout',e=>{
+    if(e.target.closest('.def[data-def]'))tip.classList.remove('vis');
+  });
+  window.addEventListener('scroll',()=>tip.classList.remove('vis'),{passive:true});
+})();
 
 async function initApp(){
   const bitas=await af('/bitacoras',[]);
