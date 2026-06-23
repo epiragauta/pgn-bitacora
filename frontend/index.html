@@ -72,7 +72,7 @@ nav a.lk:hover{color:var(--t)}
 .hr::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 1px,transparent 0,transparent 50%);background-size:20px 20px}
 .hr-c{position:relative;z-index:1;text-align:center;color:#fff}
 .hr-num{font-size:clamp(52px,8vw,90px);font-weight:900;line-height:1;letter-spacing:-.03em}
-.hr-lbl{font-size:clamp(11px,1.4vw,15px);font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-top:4px;opacity:.9}
+.hr .hr-lbl{font-size:clamp(11px,1.4vw,15px);font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-top:4px;opacity:.9}
 .hr-sub{font-size:14px;opacity:.72;margin-top:10px}
 .etq{margin-top:28px;background:var(--m);color:#fff;font-weight:900;font-size:13px;padding:7px 18px;border-radius:20px;display:inline-block;letter-spacing:.02em}
 
@@ -391,9 +391,10 @@ footer strong{color:#fff}
   .hl{padding:24px 16px}
   .hr{padding:24px 16px}
   .fi{flex-direction:column;gap:20px}
-  canvas{min-height:200px}
   #drawer{width:100%}
   .tbl-wrap .tbl td,.tbl-wrap .tbl th{white-space:nowrap}
+  .ln{flex:0 0 65%;min-width:0}
+  .lv{font-size:11px}
 }
 
 /* ── Subrayado semántico + tooltip de definición ── */
