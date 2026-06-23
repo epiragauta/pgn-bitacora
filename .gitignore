@@ -8,8 +8,6 @@ venv/
 dist/
 build/
 
-# Base de datos generada (se recrea en el build de Render)
-db/pgn.db
 
 # Carpeta interna de Claude
 .claude/

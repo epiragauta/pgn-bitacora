@@ -7,7 +7,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN python etl/seed_data.py
+RUN [ -f db/pgn.db ] || python etl/seed_data.py
 
 EXPOSE 8080
 
