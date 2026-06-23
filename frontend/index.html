@@ -110,6 +110,7 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 
 /* donut legend */
 .dl{display:grid;grid-template-columns:170px 1fr;gap:18px;align-items:center}
+.donut-wrap{position:relative;height:185px;width:100%;overflow:hidden}
 .li{display:flex;align-items:flex-start;gap:7px;margin-bottom:8px}
 .ld{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:4px}
 .ln{font-size:13px;color:var(--gm);flex:1;line-height:1.3}
@@ -393,8 +394,9 @@ footer strong{color:#fff}
   .fi{flex-direction:column;gap:20px}
   #drawer{width:100%}
   .tbl-wrap .tbl td,.tbl-wrap .tbl th{white-space:nowrap}
-  .ln{flex:0 0 65%;min-width:0}
-  .lv{font-size:11px}
+  .li{flex-wrap:wrap;row-gap:2px}
+  .ln{flex:1 0 80%;min-width:0;font-size:12px}
+  .lv{font-size:11px;margin-left:16px}
 }
 
 /* ── Subrayado semántico + tooltip de definición ── */
@@ -499,7 +501,7 @@ footer strong{color:#fff}
       <div class="card bt">
         <div class="ct">Distribución porcentual inversión 2025</div>
         <div class="dl">
-          <div style="position:relative;height:185px"><canvas id="donutT"></canvas></div>
+          <div class="donut-wrap"><canvas id="donutT"></canvas></div>
           <div id="leyT"></div>
         </div>
       </div>
