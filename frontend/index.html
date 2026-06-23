@@ -96,6 +96,7 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 .ct{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gs);margin-bottom:16px}
 
 /* tablas */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .tbl{width:100%;border-collapse:collapse;font-size:13px}
 .tbl thead th{background:var(--t);color:#fff;font-weight:800;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:8px 10px;text-align:right}
 .tbl thead th:first-child{text-align:left;border-radius:5px 0 0 0}.tbl thead th:last-child{border-radius:0 5px 0 0}
@@ -391,6 +392,8 @@ footer strong{color:#fff}
   .fi{flex-direction:column;gap:20px}
   canvas{min-height:200px}
   #drawer{width:100%}
+  .tbl-wrap .tbl{min-width:420px}
+  .tbl-wrap .tbl td,.tbl-wrap .tbl th{white-space:nowrap}
 }
 
 /* ── Subrayado semántico + tooltip de definición ── */
@@ -501,11 +504,13 @@ footer strong{color:#fff}
       </div>
       <div class="card bm">
         <div class="ct">Ejecución por transformador — corte marzo 2025</div>
+        <div class="tbl-wrap">
         <table class="tbl" id="tblT">
           <thead><tr><th>Transformador</th><th class="def" data-def="apr-vigente">Vigente</th><th class="def" data-def="compromisos">Compromisos</th><th class="def" data-def="pct-comp">%C/AV</th><th class="def" data-def="pct-obl">%O/AV</th></tr></thead>
           <tbody></tbody>
           <tfoot><tr class="tr"><td>TOTAL</td><td>83.961</td><td>36.363</td><td><span class="pb">43%</span></td><td>8%</td></tr></tfoot>
         </table>
+        </div>
       </div>
     </div>
   </div>
@@ -525,7 +530,7 @@ footer strong{color:#fff}
     </div>
     <div class="card rv" style="margin-top:18px">
       <div class="ct">Resumen PGN 2022-2025 (miles de millones COP corrientes)</div>
-      <div style="overflow-x:auto">
+      <div class="tbl-wrap">
         <table class="tbl">
           <thead><tr><th>Componente</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>% 2025</th></tr></thead>
           <tbody>
@@ -587,7 +592,7 @@ footer strong{color:#fff}
     <h2 class="st">Compromisos 2026 – 2040</h2>
     <div class="vfh"><div class="vfb"><em>136,7</em> billones</div><p class="vfd"><span class="def" data-def="vigencias-futuras">COP constantes 2025</span> comprometidos 2026-2040. Principal sector: <strong>Transporte</strong>.</p></div>
     <div class="card bt rv"><div class="ct">Vigencias futuras por sector y año (mmm COP constantes 2025)</div><div style="position:relative;height:270px"><canvas id="barVF"></canvas></div></div>
-    <div class="card rv" style="margin-top:18px;overflow-x:auto"><div class="ct">Tabla de vigencias futuras comprometidas</div><table class="tbl" id="tblVF"></table></div>
+    <div class="card rv" style="margin-top:18px"><div class="ct">Tabla de vigencias futuras comprometidas</div><div class="tbl-wrap"><table class="tbl" id="tblVF"></table></div></div>
   </div>
 </section>
 
