@@ -368,9 +368,14 @@ footer strong{color:#fff}
   .hl{padding:36px 20px;border-right:none;border-bottom:1px solid var(--gc)}
   .hr{min-height:180px;padding:32px 20px}
   .g2,.g3{grid-template-columns:1fr}
+  .g2>*,.g3>*{min-width:0}
   .tg{grid-template-columns:repeat(2,1fr)}
   .dl{grid-template-columns:1fr;overflow:hidden}
+  .dl>*{min-width:0}
   .donut-wrap{max-width:185px;height:185px;margin:0 auto}
+  .li{flex-wrap:wrap;row-gap:2px}
+  .ln{flex:1 0 80%;min-width:0;font-size:12px}
+  .lv{font-size:11px;margin-left:16px}
   .pw,.nav-inner,.bit-sel{padding-left:16px;padding-right:16px}
   .nav-inner{gap:12px;overflow-x:auto;scrollbar-width:none}
   .nav-inner::-webkit-scrollbar{display:none}
@@ -395,9 +400,6 @@ footer strong{color:#fff}
   .fi{flex-direction:column;gap:20px}
   #drawer{width:100%}
   .tbl-wrap .tbl td,.tbl-wrap .tbl th{white-space:nowrap}
-  .li{flex-wrap:wrap;row-gap:2px}
-  .ln{flex:1 0 80%;min-width:0;font-size:12px}
-  .lv{font-size:11px;margin-left:16px}
 }
 
 /* ── Subrayado semántico + tooltip de definición ── */
