@@ -485,7 +485,9 @@ footer strong{color:#fff}
 <!-- SEC 2: EVOLUCIÓN -->
 <section id="sec2" class="sec nf">
   <div class="pw">
-    <div class="stag sm"><span class="n">2</span>Evolución Presupuestal</div>
+    <div class="stag sm"><span class="n">2</span>Evolución Presupuestal
+      <i class="info-icon" onclick="openDrawer('sec2-info')">i</i>
+    </div>
     <h2 class="st">PGN 2022 – 2025</h2>
     <p class="ss">Estructura del Presupuesto General de la Nación. Miles de millones COP corrientes. Fuente: MHCP – DNP.</p>
     <div class="g2 rv">
@@ -550,7 +552,9 @@ footer strong{color:#fff}
 <!-- SEC 5: VIGENCIAS FUTURAS -->
 <section id="sec5" class="sec">
   <div class="pw">
-    <div class="stag sm"><span class="n">5</span>Vigencias Futuras</div>
+    <div class="stag sm"><span class="n">5</span>Vigencias Futuras
+      <i class="info-icon" onclick="openDrawer('sec5-info')">i</i>
+    </div>
     <h2 class="st">Compromisos 2026 – 2040</h2>
     <div class="vfh"><div class="vfb"><em>136,7</em> billones</div><p class="vfd"><span class="def" data-def="vigencias-futuras">COP constantes 2025</span> comprometidos 2026-2040. Principal sector: <strong>Transporte</strong>.</p></div>
     <div class="card bt rv"><div class="ct">Vigencias futuras por sector y año (mmm COP constantes 2025)</div><div style="position:relative;height:270px"><canvas id="barVF"></canvas></div></div>
@@ -561,7 +565,9 @@ footer strong{color:#fff}
 <!-- SEC 6: SECTORIAL -->
 <section id="sec6" class="sec nf">
   <div class="pw">
-    <div class="stag sa"><span class="n">6</span>Ejecución Sectorial</div>
+    <div class="stag sa"><span class="n">6</span>Ejecución Sectorial
+      <i class="info-icon" onclick="openDrawer('sec6-info')">i</i>
+    </div>
     <h2 class="st">Ejecución por Sector — 2025</h2>
     <p class="ss">% Compromisos y Obligaciones sobre apropiación vigente. Corte: 31 de marzo de 2025. Fuente: SIIF Nación.</p>
     <div id="sec6Filter" class="sec6-filter"></div>
@@ -1344,6 +1350,28 @@ const DC={
       }
     ]
   },
+  'sec2-info':{
+    title:'Evolución Presupuestal PGN',
+    etq:'Sección 2 · Estructura del gasto',
+    tabs:[
+      {label:'Contexto',html:`
+        <p>El <strong>Presupuesto General de la Nación (PGN)</strong> es el principal instrumento de política fiscal del Estado colombiano. Determina cuánto puede gastar el Gobierno Nacional Central en un año y en qué lo gasta.</p>
+        <p>Está compuesto por tres grandes componentes que reflejan prioridades distintas del Estado: atender su funcionamiento ordinario, pagar las deudas contraídas y ejecutar inversiones que transformen el territorio.</p>
+        <div class="dr-note">El análisis histórico 2022-2025 permite identificar tendencias estructurales en la composición del gasto público y evaluar la priorización de la inversión frente a otros compromisos.</div>`
+      },
+      {label:'Componentes',html:`
+        <div class="dr-src-item"><span class="dr-src-name">Funcionamiento</span><span class="dr-src-desc">Gastos para que el Estado opere: nómina, transferencias a entidades territoriales, pensiones y gastos generales. Es el componente de mayor peso relativo en el PGN.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">Inversión</span><span class="dr-src-desc">Recursos destinados a proyectos que generan capacidad productiva y bienestar: infraestructura, educación, salud, ciencia y tecnología. Financiados vía PGN e incluye crédito externo.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">Servicio de Deuda</span><span class="dr-src-desc">Amortizaciones e intereses de la deuda pública interna y externa. Su crecimiento refleja el nivel de endeudamiento acumulado del Estado.</span></div>
+        <div class="dr-note">El porcentaje de inversión sobre el PIB y sobre el gasto total es el indicador internacional estándar para comparar el esfuerzo inversor entre países y vigencias.</div>`
+      },
+      {label:'Fuentes',html:`
+        <div class="dr-src-item"><span class="dr-src-name">MHCP</span><span class="dr-src-desc">Ministerio de Hacienda y Crédito Público — Ley anual de presupuesto, decretos de liquidación y modificaciones presupuestales.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">SIIF Nación</span><span class="dr-src-desc">Sistema Integrado de Información Financiera — apropiaciones vigentes y ejecución por rubro.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">DANE · Banrep</span><span class="dr-src-desc">Producto Interno Bruto corriente utilizado para calcular la participación porcentual de la inversión y el gasto total sobre el PIB.</span></div>`
+      }
+    ]
+  },
   'sec4-info':{
     title:'Ejecución Presupuestal',
     etq:'Sección 4 · Histórico 2022-2025',
@@ -1363,6 +1391,50 @@ const DC={
         <div class="dr-src-item"><span class="dr-src-name">SIIF Nación</span><span class="dr-src-desc">Sistema Integrado de Información Financiera del MHCP — cifras oficiales de ejecución presupuestal.</span></div>
         <div class="dr-src-item"><span class="dr-src-name">MHCP</span><span class="dr-src-desc">Ministerio de Hacienda y Crédito Público — datos de apropiación y estructura del PGN.</span></div>
         <div class="dr-src-item"><span class="dr-src-name">DNP</span><span class="dr-src-desc">Departamento Nacional de Planeación — consolidación y análisis histórico comparado.</span></div>`
+      }
+    ]
+  },
+  'sec5-info':{
+    title:'Vigencias Futuras',
+    etq:'Sección 5 · Compromisos 2026-2040',
+    tabs:[
+      {label:'Contexto',html:`
+        <p>Las <strong>vigencias futuras</strong> son autorizaciones que otorga el CONFIS o el MHCP para que las entidades puedan asumir compromisos que afectarán el presupuesto de años posteriores. Permiten contratar proyectos de largo plazo que superan el año fiscal.</p>
+        <p>Son esenciales para la ejecución de grandes proyectos de infraestructura, concesiones viales, APP y créditos de largo plazo, donde los contratos tienen duración de varios años pero el presupuesto se aprueba anualmente.</p>
+        <div class="dr-note">Su magnitud indica cuánto del presupuesto de inversión futuro ya está comprometido antes de que el Congreso lo apruebe, reduciendo el margen de maniobra de gobiernos futuros.</div>`
+      },
+      {label:'Marco legal',html:`
+        <p>El régimen de vigencias futuras está regulado por el <strong>Estatuto Orgánico del Presupuesto (Decreto 111 de 1996)</strong> y desarrollado por la <strong>Ley 819 de 2003</strong> de responsabilidad fiscal.</p>
+        <div class="dr-src-item"><span class="dr-src-name">Ordinarias</span><span class="dr-src-desc">Autorizadas por el CONFIS. Aplican para proyectos de inversión del Plan Nacional de Desarrollo. Pueden comprometer hasta el 100% de la apropiación de vigencias futuras.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">Excepcionales</span><span class="dr-src-desc">Autorizadas por el MHCP. Para proyectos de interés nacional no incluidos en el PND. Requieren concepto previo de la Comisión Económica del Congreso.</span></div>
+        <div class="dr-note">Las cifras se expresan en <strong>pesos constantes de 2025</strong> para facilitar la comparación entre distintos años de vigencia futura.</div>`
+      },
+      {label:'Fuentes',html:`
+        <div class="dr-src-item"><span class="dr-src-name">DPIP · DNP</span><span class="dr-src-desc">Dirección de Programación de Inversiones Públicas — registro y consolidación de vigencias futuras por sector y año de vencimiento.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">MHCP</span><span class="dr-src-desc">Ministerio de Hacienda y Crédito Público — autorizaciones CONFIS y resoluciones de vigencias futuras.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">SIIF Nación</span><span class="dr-src-desc">Registro presupuestal de los compromisos con cargo a vigencias futuras autorizadas.</span></div>`
+      }
+    ]
+  },
+  'sec6-info':{
+    title:'Ejecución Sectorial',
+    etq:'Sección 6 · Entidades ejecutoras',
+    tabs:[
+      {label:'Contexto',html:`
+        <p>La <strong>ejecución sectorial</strong> desagrega el comportamiento presupuestal hasta el nivel de entidad ejecutora, agrupadas por sector. Permite identificar cuáles organismos están ejecutando a buen ritmo y cuáles presentan rezago.</p>
+        <p>Este nivel de detalle es especialmente útil para el seguimiento operativo: una baja ejecución en una entidad con alta apropiación puede ser señal de problemas contractuales, jurídicos o de capacidad institucional.</p>
+        <div class="dr-note">El filtro por sector permite enfocar el análisis en un conjunto de entidades y comparar su ejecución relativa dentro del mismo ramo presupuestal.</div>`
+      },
+      {label:'Indicadores',html:`
+        <p>Cada tarjeta de entidad muestra dos barras de progreso sobre la apropiación vigente:</p>
+        <div class="dr-src-item"><span class="dr-src-name">% Compromisos</span><span class="dr-src-desc">Barra turquesa. Fracción del presupuesto comprometida jurídicamente. Es el primer indicador de ejecución; valores bajos en Q1 no son necesariamente alarmantes.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">% Obligaciones</span><span class="dr-src-desc">Barra magenta. Fracción donde ya se recibió el bien o servicio contratado. Indica avance físico real del proyecto o programa.</span></div>
+        <div class="dr-note">Una brecha amplia entre compromisos y obligaciones puede indicar contratos firmados sin avance físico — señal de alerta para el seguimiento de la entidad.</div>`
+      },
+      {label:'Fuentes',html:`
+        <div class="dr-src-item"><span class="dr-src-name">SIIF Nación</span><span class="dr-src-desc">Sistema Integrado de Información Financiera — ejecución presupuestal por entidad, rubro y objeto de gasto al corte de la bitácora.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">DPIP · DNP</span><span class="dr-src-desc">Clasificación sectorial de entidades y consolidación para la Bitácora PGN.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">CHIP · CGR</span><span class="dr-src-desc">Contaduría General de la República — información complementaria de entidades de régimen especial.</span></div>`
       }
     ]
   }
