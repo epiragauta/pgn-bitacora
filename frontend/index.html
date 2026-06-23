@@ -352,15 +352,45 @@ footer strong{color:#fff}
   to{transform:translateY(0);opacity:1}
 }
 
-@media(max-width:860px){
-  .hero-inner{grid-template-columns:1fr}.hr{min-height:220px}
-  .g2,.g3,.tg{grid-template-columns:1fr}
+/* ── Responsive: tablet grande ── */
+@media(max-width:1024px){
+  .tg{grid-template-columns:repeat(2,1fr)}
+  .hero-inner{min-height:70vh}
+  .hl{padding:48px 32px 48px 24px}
+}
+
+/* ── Responsive: tablet / móvil grande ── */
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr;min-height:auto}
+  .hl{padding:36px 20px;border-right:none;border-bottom:1px solid var(--gc)}
+  .hr{min-height:180px;padding:32px 20px}
+  .g2,.g3{grid-template-columns:1fr}
+  .tg{grid-template-columns:repeat(2,1fr)}
   .dl{grid-template-columns:1fr}
-  .pw,.nav-inner{padding-left:16px;padding-right:16px}
-  nav{overflow-x:auto}.sec{padding:36px 0 28px}
+  .pw,.nav-inner,.bit-sel{padding-left:16px;padding-right:16px}
+  .nav-inner{gap:12px;overflow-x:auto;scrollbar-width:none}
+  .nav-inner::-webkit-scrollbar{display:none}
+  nav a.lk{font-size:12px;white-space:nowrap}
+  .corte-badge{display:none}
+  .sec{padding:36px 0 28px}
   .modal-content{max-width:95%;max-height:90vh}
   .modal-header{padding:16px 20px}
   .modal-body{padding:20px}
+}
+
+/* ── Responsive: móvil pequeño ── */
+@media(max-width:480px){
+  .pw,.nav-inner,.bit-sel{padding-left:12px;padding-right:12px}
+  .nav-inner{height:48px}
+  nav a.lk{display:none}
+  .eyebrow{display:none}
+  .kpi-g{grid-template-columns:1fr}
+  .tg{grid-template-columns:1fr}
+  .hl{padding:24px 16px}
+  .hr{padding:24px 16px}
+  .fi{flex-direction:column;gap:20px}
+  canvas{min-height:200px}
+  #drawer{width:100%}
 }
 
 /* ── Subrayado semántico + tooltip de definición ── */
@@ -399,7 +429,6 @@ footer strong{color:#fff}
 .dr-src-item:last-child{border-bottom:none}
 .dr-src-name{font-weight:900;font-size:12px;min-width:72px;color:var(--t);padding-top:1px}
 .dr-src-desc{font-size:13px;color:var(--gm);line-height:1.5}
-@media(max-width:600px){#drawer{width:100%}}
 </style>
 </head>
 <body>
