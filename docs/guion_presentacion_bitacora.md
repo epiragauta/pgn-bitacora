@@ -39,6 +39,10 @@
 
 > "Para 2026-I, con corte al 31 de marzo de 2026, el PGN de inversión asciende a **88,4 billones de pesos corrientes**. Ese es el marco dentro del cual se financia el Plan Nacional de Desarrollo."
 
+**[Pasar el cursor sobre la etiqueta subrayada "Apropiación vigente" en el KPI]**
+
+> "Noten que las etiquetas de estos indicadores tienen un subrayado punteado en turquesa. Al pasar el cursor aparece una tarjeta con la **definición técnica del concepto**, su fórmula de cálculo y la fuente. Esto permite que cualquier asistente, sin importar su familiaridad con la terminología presupuestal, entienda exactamente qué está mirando."
+
 ---
 
 ## Sección 1 — Transformaciones PND (5 min)
@@ -57,13 +61,17 @@
 >
 > El badge magenta del %C/AV nos alerta visualmente cuando la ejecución está por debajo de lo esperado para el corte."
 
+**[Pasar el cursor sobre el encabezado de columna "%C/AV" en la tabla]**
+
+> "Los encabezados de columna también tienen definiciones contextuales: al hacer hover sobre '%C/AV' aparece el tooltip con la fórmula exacta. Esto es especialmente útil en reuniones donde participan personas de diferentes áreas que no manejan la jerga presupuestal cotidianamente."
+
 **[Clic en una fila de la tabla — mostrar el drill-down de componentes]**
 
 > "Al hacer clic sobre cualquier transformador, se despliega el detalle de sus **componentes PND** —los programas específicos que la componen. Esto permite ir del nivel estratégico al nivel operativo sin perder el contexto."
 
 **[Clic en el ícono 'i' del tag de sección]**
 
-> "El ícono de información abre un modal con la definición metodológica de esta sección. Está disponible en varias secciones para usuarios que necesiten contexto técnico sin interrumpir la narrativa visual."
+> "El ícono de información abre un **panel lateral deslizante** con contenido organizado en pestañas: Contexto, Metodología y Fuentes. Está disponible en las seis secciones y es la referencia técnica para usuarios que necesiten profundizar sin interrumpir la narrativa visual."
 
 ---
 
@@ -76,6 +84,10 @@
 **[Señalar el gráfico de barras apiladas — izquierda]**
 
 > "Este gráfico de barras apiladas muestra cómo ha evolucionado la **estructura del gasto total**. Un patrón que salta a la vista: el funcionamiento y la deuda han crecido proporcionalmente más que la inversión entre 2023 y 2025, reflejando las presiones fiscales del período."
+
+**[Señalar los círculos de anotación sobre el gráfico de barras]**
+
+> "Sobre el gráfico verán unos pequeños marcadores circulares de color. Estos son **anotaciones de eventos presupuestales relevantes**: adiciones, ajustes fiscales o hitos del período. Al pasar el cursor sobre un marcador aparece la descripción del evento y el año al que corresponde. Son una forma de poner en contexto los cambios que se ven en las barras."
 
 **[Señalar el gráfico de líneas — derecha]**
 
@@ -123,13 +135,17 @@
 >
 > Al hacer clic sobre una tarjeta se puede explorar el detalle sectorial de ese año."
 
-**[Señalar el gráfico de líneas inferior izquierdo]**
+**[Señalar el gráfico de líneas inferior izquierdo y sus anotaciones]**
 
-> "El gráfico de líneas superpone las tres métricas de ejecución —compromisos, obligaciones y pagos— a lo largo de los cuatro años. Permite ver si la brecha entre compromisos y pagos se ha ampliado o reducido, lo cual es un indicador de calidad de ejecución."
+> "El gráfico de líneas superpone las tres métricas de ejecución —compromisos, obligaciones y pagos— a lo largo de los cuatro años. Igual que en la sección anterior, los **marcadores de eventos** sobre la línea señalan hitos relevantes: el inicio del PND, rezagos de ejecución en trimestres específicos o mejoras de ritmo. Al hacer hover se lee el contexto del evento."
 
 **[Señalar las barras horizontales sectoriales — derecha]**
 
 > "Y las barras horizontales muestran los **sectores con mayor apropiación** —Transporte, Educación, Salud, entre otros— comparando su participación entre vigencias. Es una lectura rápida de recomposición sectorial del gasto de inversión."
+
+**[Clic en el ícono 'i' del tag — mostrar panel de Indicadores]**
+
+> "En el panel lateral de esta sección, la pestaña **'Indicadores'** explica el ciclo completo del gasto: desde la apropiación vigente hasta el pago, pasando por compromisos y obligaciones —incluyendo los conceptos de reserva presupuestal y cuentas por pagar al cierre del año."
 
 ---
 
@@ -143,6 +159,10 @@
 
 > "El headline de esta sección es impactante: para el corte de marzo 2025, el Estado colombiano tiene comprometidos **136,7 billones de pesos constantes de 2025** en vigencias futuras que se ejecutarán entre 2026 y 2040. Esto equivale a más de un PGN completo de inversión."
 
+**[Pasar el cursor sobre el texto 'COP constantes 2025' subrayado]**
+
+> "La nota 'COP constantes 2025' también tiene definición contextual. Al hacer hover explica que las cifras están deflactadas para permitir comparaciones reales entre años, eliminando el efecto de la inflación."
+
 **[Señalar el gráfico de barras apiladas]**
 
 > "El gráfico muestra la distribución de esos compromisos por **sector y por año**. Se puede ver que los años más cercanos —2026 y 2027— concentran la mayor carga, y que el sector **Transporte** domina el perfil de vencimientos, como es esperable dado el volumen de concesiones viales."
@@ -150,6 +170,10 @@
 **[Señalar la tabla al pie]**
 
 > "La tabla completa desagrega el monto por sector para cada año hasta 2040, permitiendo analizar la presión presupuestal futura con precisión."
+
+**[Clic en el ícono 'i' — mostrar panel de Marco Legal]**
+
+> "El panel lateral de esta sección incluye la pestaña **'Marco legal'**: el artículo del Estatuto Orgánico del Presupuesto que regula las vigencias futuras, el límite porcentual respecto al MFMP y las obligaciones de aprobación por el CONFIS. Útil para equipos jurídicos o de planeación financiera."
 
 ---
 
@@ -168,7 +192,7 @@
 > "Cada tarjeta de entidad muestra:
 >
 > - La **apropiación vigente** en miles de millones
-> - Las barras de progreso de **compromisos** (turquesa) y **obligaciones** (magenta), con sus porcentajes
+> - Las barras de progreso de **compromisos** (turquesa) y **obligaciones** (magenta), con sus porcentajes expresados con hasta dos decimales
 > - La entidad ejecutora principal cuando aplica
 >
 > El color de la barra de progreso da una lectura inmediata: si la barra turquesa de compromisos apenas supera el 20% en marzo, es una señal de alerta de ejecución tardía."
@@ -195,7 +219,7 @@
 
 ## Preguntas y exploración libre (tiempo restante)
 
-> "Los invito a explorar libremente. Pueden hacer clic en las regiones del mapa, filtrar por sector, cambiar entre períodos. La aplicación está diseñada para que los datos cuenten su propia historia."
+> "Los invito a explorar libremente. Pueden pasar el cursor sobre cualquier término subrayado para ver su definición, hacer clic en el ícono 'i' de cada sección para el contexto metodológico, navegar el mapa por regiones y departamentos, o filtrar la ejecución sectorial por inicial de sector. La aplicación está diseñada para que los datos cuenten su propia historia."
 
 ---
 
@@ -205,3 +229,14 @@
 - Verificar que la BD contiene las dos bitácoras cargadas (2025-I y 2026-I) con `curl http://localhost:8000/api/bitacoras`.
 - Si la red es inestable, la app tiene datos embebidos de fallback y funciona sin API — las secciones 2, 3 y 4 mostrarán datos 2025-I por defecto.
 - La sección de regionalización requiere conexión a internet para cargar los GeoJSON de departamentos desde el CDN.
+
+### Elementos interactivos a destacar en la demo
+
+| Elemento | Dónde aparece | Cómo activarlo |
+|----------|--------------|----------------|
+| Tooltip de glosario (subrayado punteado) | KPI labels, encabezados de tabla Sec. 1, "COP constantes 2025" en Sec. 5 | Hover con el cursor |
+| Panel lateral de información (drawer) | Tag de sección en todas las secciones (1–6) | Clic en el ícono circular **i** |
+| Anotaciones de eventos históricos | Gráfico de barras Sec. 2, gráfico de líneas Sec. 4 | Hover sobre el círculo de color en la parte superior del gráfico |
+| Drill-down de componentes PND | Tabla de transformaciones Sec. 1 | Clic en cualquier fila |
+| Detalle departamental por región | Mapa y tarjetas Sec. 3 | Clic en región del mapa o tarjeta |
+| Filtro por sector | Sección 6 | Clic en botones de letras |
