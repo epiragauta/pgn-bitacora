@@ -674,6 +674,79 @@ Chart.defaults.font.family="'Nunito Sans',Arial,sans-serif";
 Chart.defaults.font.size=11;
 Chart.defaults.color=P.gs;
 
+/* ── Eventos presupuestales para anotaciones en gráficas ── */
+const CHART_EVENTS={
+  barPGN:[
+    {x:'2023',label:'Adición presupuestal',desc:'Ley 2269 de 2022 incorporó $29 bill. adicionales al PGN 2023, principalmente en funcionamiento y servicio de la deuda.',color:P.m},
+    {x:'2024',label:'Récord de inversión',desc:'Apropiación de inversión: $99,8 bill. — máximo histórico del cuatrienio, impulsado por crédito externo y recursos propios.',color:P.a},
+    {x:'2025',label:'Ajuste fiscal',desc:'Reducción de $15,9 bill. en inversión frente a 2024 como parte del ajuste de gasto del Gobierno Nacional Central.',color:P.nr},
+  ],
+  lineEj:[
+    {x:'2022',label:'Inicio PND',desc:'Primer corte Q1 del PND "Colombia, potencia mundial de la vida". Ejecución Q1 en rangos históricos esperados para el inicio de un cuatrienio.',color:P.mo},
+    {x:'2024',label:'Rezago Q1',desc:'Con la apropiación más alta del cuatrienio ($99,8 bill.), el %C/AV al Q1 fue el más bajo: comprometer volúmenes tan altos en 3 meses es estructuralmente difícil.',color:P.m},
+    {x:'2025',label:'Mejor ritmo Q1',desc:'43% de compromisos al corte de marzo — el mejor arranque Q1 del cuatrienio, a pesar del ajuste presupuestal de $15,9 bill.',color:P.t},
+  ]
+};
+
+/* ── Plugin de anotaciones de eventos sobre canvas ── */
+const evtAnnotPlugin={
+  id:'evtAnnot',
+  _tips:new Map(),
+
+  afterDraw(chart){
+    const evts=chart._evtAnnot;
+    if(!evts||!evts.length)return;
+    const ctx=chart.ctx,xScale=chart.scales.x,yTop=chart.chartArea.top+14;
+    const tips=[];
+    evts.forEach(ev=>{
+      const idx=chart.data.labels.indexOf(String(ev.x));
+      if(idx<0)return;
+      const xPx=xScale.getPixelForValue(idx);
+      tips.push({xPx,yPx:yTop,ev});
+      ctx.save();
+      ctx.shadowColor='rgba(0,0,0,.18)';ctx.shadowBlur=5;
+      ctx.beginPath();ctx.arc(xPx,yTop,9,0,Math.PI*2);
+      ctx.fillStyle=ev.color;ctx.fill();
+      ctx.shadowBlur=0;
+      ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();
+      ctx.font='900 10px "Nunito Sans",Arial,sans-serif';
+      ctx.fillStyle='#fff';ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText('i',xPx,yTop);
+      ctx.restore();
+    });
+    evtAnnotPlugin._tips.set(chart.canvas.id,tips);
+  },
+
+  afterEvent(chart,args){
+    const ev=args.event;
+    if(ev.type==='mouseout'){hideEvtTip();chart.canvas.style.cursor='';return;}
+    if(ev.type!=='mousemove')return;
+    const tips=evtAnnotPlugin._tips.get(chart.canvas.id);
+    if(!tips)return;
+    const hit=tips.find(t=>Math.hypot(t.xPx-ev.x,t.yPx-ev.y)<12);
+    if(hit){showEvtTip(chart.canvas,hit);chart.canvas.style.cursor='help';}
+    else{hideEvtTip();chart.canvas.style.cursor='';}
+  }
+};
+Chart.register(evtAnnotPlugin);
+
+function showEvtTip(canvas,hit){
+  const tip=document.getElementById('defTip');
+  const d=hit.ev;
+  document.getElementById('dtTerm').textContent=d.label;
+  document.getElementById('dtBody').textContent=d.desc;
+  document.getElementById('dtFml').style.display='none';
+  document.getElementById('dtSrc').textContent='';
+  const r=canvas.getBoundingClientRect(),W=272,gap=14;
+  let x=r.left+hit.xPx-W/2;
+  let y=r.top+hit.yPx-tip.offsetHeight-gap;
+  if(y<8)y=r.top+hit.yPx+gap+18;
+  x=Math.max(8,Math.min(x,window.innerWidth-W-8));
+  tip.style.left=x+'px';tip.style.top=y+'px';
+  tip.classList.add('vis');
+}
+function hideEvtTip(){document.getElementById('defTip').classList.remove('vis');}
+
 const D={
   tr:[
     {t:'SEGURIDAD HUMANA Y JUSTICIA SOCIAL',v:32.149,p:38.29,c:10.096,pc:31,po:9},
@@ -765,13 +838,15 @@ function rTablaT(d){
 function rBarPGN(ev){
   destroyChart('barPGN');
   const R=['Funcionamiento','Inversión','Servicio Deuda'],CL=[P.t,P.m,P.a],Y=[2022,2023,2024,2025];
-  new Chart(document.getElementById('barPGN').getContext('2d'),{type:'bar',
+  const c=new Chart(document.getElementById('barPGN').getContext('2d'),{type:'bar',
     data:{labels:['2022','2023','2024','2025'],
       datasets:R.map((r,i)=>({label:r,data:Y.map(y=>{const row=ev.find(d=>d.y===y&&d.r===r);return row?row.v:0}),
         backgroundColor:CL[i]+'99',borderColor:CL[i],borderWidth:1}))},
     options:{responsive:true,maintainAspectRatio:false,
+      layout:{padding:{top:22}},
       scales:{x:{stacked:true,grid:{color:P.gc}},y:{stacked:true,grid:{color:P.gc},ticks:{callback:v=>v.toLocaleString('es-CO')}}},
       plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:12}}}}});
+  c._evtAnnot=CHART_EVENTS.barPGN;
 }
 
 function rLineInv(ej){
@@ -956,14 +1031,16 @@ function toggleTlMode(){
 
 function rLineEj(ej){
   destroyChart('lineEj');
-  new Chart(document.getElementById('lineEj').getContext('2d'),{type:'line',
+  const c=new Chart(document.getElementById('lineEj').getContext('2d'),{type:'line',
     data:{labels:['2022','2023','2024','2025'],datasets:[
       {label:'% Compromisos', data:ej.map(d=>d.pc),borderColor:P.t,tension:.3,pointRadius:4},
       {label:'% Obligaciones',data:ej.map(d=>d.po),borderColor:P.m,tension:.3,pointRadius:4},
       {label:'% Pagos',       data:ej.map(d=>d.pp),borderColor:P.a,tension:.3,pointRadius:4}]},
     options:{responsive:true,maintainAspectRatio:false,
+      layout:{padding:{top:22}},
       scales:{x:{grid:{color:P.gc}},y:{grid:{color:P.gc},ticks:{callback:v=>v+'%'}}},
       plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:12}}}}});
+  c._evtAnnot=CHART_EVENTS.lineEj;
 }
 
 function rHBars(){
