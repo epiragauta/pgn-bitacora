@@ -376,6 +376,30 @@ footer strong{color:#fff}
 .dt-body{font-size:12px;color:var(--gt);line-height:1.55}
 .dt-fml{font-size:10px;color:var(--m);margin-top:9px;font-style:italic;font-weight:700;line-height:1.4}
 .dt-src{font-size:9px;color:var(--gs);margin-top:6px;letter-spacing:.05em;text-transform:uppercase}
+
+/* ── Drawer lateral contextual ── */
+#drawerBackdrop{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:799;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(2px)}
+#drawerBackdrop.open{opacity:1;pointer-events:all}
+#drawer{position:fixed;top:0;right:0;width:390px;height:100%;background:var(--bl);box-shadow:-8px 0 44px rgba(0,0,0,.17);z-index:800;transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;overflow:hidden}
+#drawer.open{transform:translateX(0)}
+.dr-head{background:var(--t);padding:20px 20px 16px;flex-shrink:0}
+.dr-head-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.dr-etq{font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.dr-close{background:rgba(255,255,255,.2);border:none;color:#fff;width:28px;height:28px;border-radius:50%;font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0;line-height:1}
+.dr-close:hover{background:rgba(255,255,255,.35)}
+.dr-title{font-size:17px;font-weight:900;color:#fff;line-height:1.2;letter-spacing:-.01em}
+.dr-tabs{display:flex;border-bottom:2px solid var(--gc);flex-shrink:0;background:var(--bl);overflow-x:auto}
+.dr-tab{padding:11px 18px;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;color:var(--gs);transition:color .15s;white-space:nowrap;flex-shrink:0}
+.dr-tab.active{color:var(--t);border-bottom-color:var(--t)}
+.dr-tab:hover:not(.active){color:var(--gt)}
+.dr-body{flex:1;overflow-y:auto;padding:22px 22px 40px;font-size:13px;color:var(--gt);line-height:1.7}
+.dr-body p{margin-bottom:12px}.dr-body p:last-child{margin-bottom:0}
+.dr-note{background:rgba(0,195,193,.07);border-left:3px solid var(--t);border-radius:0 var(--rs) var(--rs) 0;padding:10px 14px;font-size:12px;margin:14px 0;line-height:1.55}
+.dr-src-item{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--gc)}
+.dr-src-item:last-child{border-bottom:none}
+.dr-src-name{font-weight:900;font-size:11px;min-width:72px;color:var(--t);padding-top:1px}
+.dr-src-desc{font-size:12px;color:var(--gm);line-height:1.5}
+@media(max-width:600px){#drawer{width:100%}}
 </style>
 </head>
 <body>
@@ -434,7 +458,7 @@ footer strong{color:#fff}
   <div class="pw">
     <div class="stag">
       <span class="n">1</span>Inversiones PND 2022-2026
-      <i class="info-icon" onclick="openInfoModal('Inversiones PND 2022-2026', 'sec1-info')">i</i>
+      <i class="info-icon" onclick="openDrawer('sec1-info')">i</i>
     </div>
     <h2 class="st">Distribución por Transformaciones</h2>
     <p class="ss">Vigencia 2025 · PND <strong>"Colombia, potencia mundial de la vida"</strong> · Miles de millones COP corrientes. Fuente: DPIP–SIIF.</p>
@@ -489,7 +513,7 @@ footer strong{color:#fff}
 <section id="sec3" class="sec">
   <div class="pw">
     <div class="stag sa"><span class="n">3</span>Regionalización
-      <i class="info-icon" onclick="openInfoModal('Regionalización', 'sec3-info')">i</i>
+      <i class="info-icon" onclick="openDrawer('sec3-info')">i</i>
     </div>
     <h2 class="st">Distribución por Regiones y Departamentos</h2>
     <p class="ss">Apropiación, compromisos y participación regional. Millones COP. Corte marzo 2025. Fuente: DPIP-PIIP.</p>
@@ -511,7 +535,7 @@ footer strong{color:#fff}
 <section id="sec4" class="sec nf">
   <div class="pw">
     <div class="stag"><span class="n">4</span>Ejecución de la inversión
-      <i class="info-icon" onclick="openInfoModal('Ejecución Presupuestal', 'sec4-info')">i</i>
+      <i class="info-icon" onclick="openDrawer('sec4-info')">i</i>
     </div>
     <h2 class="st">Ejecución Presupuestal 2022 – 2025</h2>
     <p class="ss">Comparativo histórico corte primer trimestre. Fuente: SIIF Nación.</p>
@@ -562,6 +586,20 @@ footer strong{color:#fff}
     </div>
   </div>
 </footer>
+
+<!-- DRAWER CONTEXTUAL -->
+<div id="drawerBackdrop" onclick="closeDrawer()"></div>
+<aside id="drawer">
+  <div class="dr-head">
+    <div class="dr-head-top">
+      <span class="dr-etq" id="drEtq"></span>
+      <button class="dr-close" onclick="closeDrawer()">&#xd7;</button>
+    </div>
+    <div class="dr-title" id="drTitle"></div>
+  </div>
+  <div class="dr-tabs" id="drTabs"></div>
+  <div class="dr-body" id="drBody"></div>
+</aside>
 
 <!-- MODAL INFO -->
 <div id="infoModal" class="modal-overlay">
@@ -1184,6 +1222,105 @@ const G={
   window.addEventListener('scroll',()=>tip.classList.remove('vis'),{passive:true});
 })();
 
+/* ── Contenido del drawer por sección ── */
+const DC={
+  'sec1-info':{
+    title:'Inversiones PND 2022-2026',
+    etq:'Sección 1 · Transformaciones',
+    tabs:[
+      {label:'Contexto',html:`
+        <p>En la vigencia 2025, con corte al 31 de marzo, el presupuesto de inversión ascendió a <strong>83,9 billones de pesos</strong>, destinados a dar cumplimiento a las apuestas del Plan Nacional de Desarrollo 2022-2026, <em>"Colombia, potencia mundial de la vida"</em>.</p>
+        <p>El PND tiene como objetivo central la superación de las injusticias históricas y el cierre de brechas entre regiones y territorios, promoviendo un crecimiento económico sostenible y respetuoso con el medio ambiente.</p>
+        <p>La mayor parte de la inversión se concentra en las transformaciones orientadas a la reducción de la pobreza, el impulso de la economía popular, la conexión territorial mediante infraestructura vial y el fortalecimiento de la educación de calidad.</p>`
+      },
+      {label:'Metodología',html:`
+        <p>Cada proyecto de inversión registrado en el <strong>Banco de Proyectos de Inversión Nacional (BPIN)</strong> se clasifica según la Transformación y el Componente del PND al que contribuye, mediante la línea de política sectorial correspondiente.</p>
+        <p>Los seis transformadores agrupan la totalidad del presupuesto de inversión financiado por el PGN. Los proyectos de carácter transversal o sin clasificación directa se consolidan en <em>Otras transformaciones y ejes transversales</em>.</p>
+        <div class="dr-note">Los porcentajes %C/AV y %O/AV se calculan sobre la apropiación vigente de cada transformador al corte de la bitácora.</div>`
+      },
+      {label:'Fuentes',html:`
+        <div class="dr-src-item"><span class="dr-src-name">SIIF Nación</span><span class="dr-src-desc">Sistema Integrado de Información Financiera — registro oficial de compromisos, obligaciones y pagos por proyecto.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">BPIN</span><span class="dr-src-desc">Banco de Proyectos de Inversión Nacional — clasificación sectorial y por PND de los proyectos de inversión.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">DPIP · DNP</span><span class="dr-src-desc">Dirección de Programación de Inversiones Públicas — consolidación, análisis y publicación de la Bitácora PGN.</span></div>`
+      }
+    ]
+  },
+  'sec3-info':{
+    title:'Regionalización del PGN',
+    etq:'Sección 3 · Distribución territorial',
+    tabs:[
+      {label:'Contexto',html:`
+        <p>Si bien los recursos del PGN no tienen vocación de ser asignados de forma directa a los departamentos, la <strong>regionalización</strong> permite una aproximación sobre cómo los recursos de inversión beneficiarán a cada territorio y su población.</p>
+        <p>Las entidades del orden nacional son responsables de determinar el impacto territorial de sus inversiones, reportando la regionalización prevista de cada proyecto en el sistema PIIP.</p>
+        <div class="dr-note">La regionalización es una estimación declarada por las entidades. No implica que los recursos sean girados directamente a los departamentos.</div>`
+      },
+      {label:'Cómo leer',html:`
+        <p>El mapa muestra Colombia dividida en las <strong>regiones de planificación del DNP</strong>, coloreadas según el porcentaje de compromisos sobre apropiación vigente (%C/AV).</p>
+        <p><strong>Escala de color:</strong> turquesa claro = ejecución baja · turquesa intenso = ejecución alta.</p>
+        <p>Al hacer clic sobre una región se despliega el detalle departamental con apropiación, compromisos, %C/AV y participación individual en el total nacional.</p>
+        <div class="dr-note">El análisis intrarregional permite identificar disparidades entre departamentos de una misma región con ritmos de ejecución muy distintos.</div>`
+      },
+      {label:'Fuentes',html:`
+        <div class="dr-src-item"><span class="dr-src-name">PIIP</span><span class="dr-src-desc">Portal de Información de Inversión Pública — regionalización declarada por entidades nacionales.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">DPIP · DNP</span><span class="dr-src-desc">Dirección de Programación de Inversiones Públicas — consolidación regional y análisis de brechas.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">DANE</span><span class="dr-src-desc">Límites geográficos departamentales utilizados en el mapa interactivo.</span></div>`
+      }
+    ]
+  },
+  'sec4-info':{
+    title:'Ejecución Presupuestal',
+    etq:'Sección 4 · Histórico 2022-2025',
+    tabs:[
+      {label:'Contexto',html:`
+        <p>El análisis compara el comportamiento del <strong>primer trimestre</strong> de cada vigencia entre 2022 y 2025. Permite responder: ¿cómo va 2025 respecto a años anteriores a la misma fecha de corte?</p>
+        <p>El ciclo presupuestal colombiano concentra históricamente la ejecución en el segundo semestre, por lo que los porcentajes de primer trimestre son bajos en términos absolutos pero relevantes como señal temprana de ritmo.</p>
+        <div class="dr-note">Una brecha amplia entre %C/AV y %P/AV puede indicar acumulación de cuentas por pagar o rezago de caja en la Tesorería General.</div>`
+      },
+      {label:'Indicadores',html:`
+        <p>Se reportan tres indicadores del ciclo de ejecución presupuestal:</p>
+        <div class="dr-src-item"><span class="dr-src-name">%C/AV</span><span class="dr-src-desc">Compromisos / Apropiación Vigente. Primer indicador de ejecución; refleja actos jurídicos formalizados (contratos, resoluciones).</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">%O/AV</span><span class="dr-src-desc">Obligaciones / Apropiación Vigente. Avance real: bienes o servicios ya recibidos por la entidad contratante.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">%P/AV</span><span class="dr-src-desc">Pagos / Apropiación Vigente. Giros efectivos realizados; refleja el impacto real sobre la economía y los beneficiarios.</span></div>`
+      },
+      {label:'Fuentes',html:`
+        <div class="dr-src-item"><span class="dr-src-name">SIIF Nación</span><span class="dr-src-desc">Sistema Integrado de Información Financiera del MHCP — cifras oficiales de ejecución presupuestal.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">MHCP</span><span class="dr-src-desc">Ministerio de Hacienda y Crédito Público — datos de apropiación y estructura del PGN.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">DNP</span><span class="dr-src-desc">Departamento Nacional de Planeación — consolidación y análisis histórico comparado.</span></div>`
+      }
+    ]
+  }
+};
+
+/* ── Motor del drawer ── */
+let _drKey=null,_drTab=0;
+
+function openDrawer(key){
+  const c=DC[key];
+  if(!c)return;
+  _drKey=key;_drTab=0;
+  document.getElementById('drEtq').textContent=c.etq;
+  document.getElementById('drTitle').textContent=c.title;
+  document.getElementById('drTabs').innerHTML=c.tabs.map((t,i)=>
+    `<button class="dr-tab${i===0?' active':''}" onclick="switchDrTab(${i})">${t.label}</button>`
+  ).join('');
+  document.getElementById('drBody').innerHTML=c.tabs[0].html;
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawerBackdrop').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeDrawer(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawerBackdrop').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function switchDrTab(i){
+  _drTab=i;
+  document.querySelectorAll('.dr-tab').forEach((b,j)=>b.classList.toggle('active',i===j));
+  document.getElementById('drBody').innerHTML=DC[_drKey].tabs[i].html;
+}
+
 async function initApp(){
   const bitas=await af('/bitacoras',[]);
   if(bitas.length){
@@ -1454,10 +1591,11 @@ document.getElementById('infoModal').addEventListener('click', function(e) {
   }
 });
 
-// Cerrar modal con tecla ESC
+// Cerrar modal o drawer con tecla ESC
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     closeInfoModal();
+    closeDrawer();
   }
 });
 </script>
