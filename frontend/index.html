@@ -94,7 +94,9 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 /* cards */
 .card{background:var(--bl);border:1px solid var(--gc);border-radius:var(--r);padding:22px;box-shadow:var(--sh)}
 .card.bt{border-top:3px solid var(--t)}.card.bm{border-top:3px solid var(--m)}.card.ba{border-top:3px solid var(--a)}
-.ct{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gs);margin-bottom:16px}
+.ct{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gs);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.card-expand{flex-shrink:0;background:none;border:1px solid var(--gc);border-radius:4px;padding:2px 6px;cursor:pointer;color:var(--gs);opacity:.6;transition:opacity .15s,border-color .15s,color .15s;line-height:1}
+.card-expand:hover{opacity:1;color:var(--t);border-color:var(--t)}
 
 /* tablas */
 .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
@@ -533,14 +535,22 @@ footer strong{color:#fff}
     <p class="ss">Vigencia 2025 · PND <strong>"Colombia, potencia mundial de la vida"</strong> · Miles de millones COP corrientes. Fuente: DPIP–SIIF.</p>
     <div class="g2 rv">
       <div class="card bt">
-        <div class="ct">Distribución porcentual inversión 2025</div>
+        <div class="ct">Distribución porcentual inversión 2025
+          <button class="card-expand" onclick="openCardModal('donut-sec1')" title="Ver en pantalla completa">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg>
+          </button>
+        </div>
         <div class="dl">
           <div class="donut-wrap"><canvas id="donutT"></canvas></div>
           <div id="leyT"></div>
         </div>
       </div>
       <div class="card bm">
-        <div class="ct">Ejecución por transformador — corte marzo 2025</div>
+        <div class="ct">Ejecución por transformador — corte marzo 2025
+          <button class="card-expand" onclick="openCardModal('tabla-sec1')" title="Ver en pantalla completa">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg>
+          </button>
+        </div>
         <div class="tbl-wrap">
         <table class="tbl" id="tblT">
           <thead><tr><th>Transformador</th><th class="def" data-def="apr-vigente">Vigente</th><th class="def" data-def="compromisos">Compromisos</th><th class="def" data-def="pct-comp">%C/AV</th><th class="def" data-def="pct-obl">%O/AV</th></tr></thead>
@@ -685,6 +695,16 @@ footer strong{color:#fff}
 </aside>
 
 <!-- MODAL INFO -->
+<div id="cardModal" class="modal-overlay" onclick="closeCardModal(event)">
+  <div class="modal-content modal-tabla">
+    <div class="modal-header">
+      <h3 id="cardModalTitle"></h3>
+      <button class="modal-close" onclick="closeCardModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="cardModalBody"></div>
+  </div>
+</div>
+
 <div id="tablaModal" class="modal-overlay" onclick="closeTablaModal(event)">
   <div class="modal-content modal-tabla">
     <div class="modal-header">
@@ -907,8 +927,12 @@ const D={
   ],
 };
 
+/* ── Cache datos Sec 1 para re-render en modal ── */
+const _s1={};
+
 /* ── Renders ── */
 function rDonut(d){
+  _s1.donut=d;
   destroyChart('donutT');
   new Chart(document.getElementById('donutT').getContext('2d'),{
     type:'doughnut',
@@ -924,6 +948,7 @@ function rDonut(d){
 }
 
 function rTablaT(d){
+  _s1.tabla=d;
   document.querySelector('#tblT tbody').innerHTML=d.map(x=>`<tr style="cursor:pointer" data-transformador="${x.t}" onclick="showComponentes('${x.t.replace(/'/g, "\\'")}')">
     <td>${x.t.length>30?x.t.substring(0,30)+'…':x.t}</td>
     <td>${x.v.toLocaleString('es-CO',{minimumFractionDigits:3})}</td>
@@ -934,6 +959,66 @@ function rTablaT(d){
   const pctC=tv>0?Math.round(tc/tv*100):0;
   const avgO=tv>0?Math.round(d.reduce((s,x)=>s+(x.po||0)*(x.v||0),0)/tv):0;
   document.querySelector('#tblT tfoot tr').innerHTML=`<td>TOTAL</td><td>${tv.toLocaleString('es-CO',{minimumFractionDigits:3})}</td><td>${tc.toLocaleString('es-CO',{minimumFractionDigits:3})}</td><td><span class="pb">${pctC}%</span></td><td>${avgO}%</td>`;
+}
+
+function _rDonutModal(d){
+  destroyChart('donutT-m');
+  new Chart(document.getElementById('donutT-m').getContext('2d'),{
+    type:'doughnut',
+    data:{labels:d.map(x=>x.t),
+      datasets:[{data:d.map(x=>x.v),backgroundColor:P.all,borderColor:'#fff',borderWidth:2,hoverOffset:8}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'62%',
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${(c.parsed).toLocaleString('es-CO',{minimumFractionDigits:3})} mmm (${d[c.dataIndex].p}%)`}}}}
+  });
+  document.getElementById('leyT-m').innerHTML=d.map((x,i)=>`
+    <div class="li"><div class="ld" style="background:${P.all[i]}"></div>
+    <div class="ln">${x.t}</div>
+    <div><span class="lv">${x.v.toLocaleString('es-CO',{minimumFractionDigits:3})}</span><span class="lp">${x.p}%</span></div></div>`).join('');
+}
+
+function _rTablaTModal(d){
+  const tv=d.reduce((s,x)=>s+(x.v||0),0);
+  const tc=d.reduce((s,x)=>s+(x.c||0),0);
+  const pctC=tv>0?Math.round(tc/tv*100):0;
+  const avgO=tv>0?Math.round(d.reduce((s,x)=>s+(x.po||0)*(x.v||0),0)/tv):0;
+  document.querySelector('#tblT-m tbody').innerHTML=d.map(x=>`<tr>
+    <td>${x.t}</td>
+    <td>${x.v.toLocaleString('es-CO',{minimumFractionDigits:3})}</td>
+    <td>${x.c.toLocaleString('es-CO',{minimumFractionDigits:3})}</td>
+    <td><span class="pb">${x.pc!=null?x.pc+'%':'—'}</span></td>
+    <td>${x.po!=null?x.po+'%':'—'}</td></tr>`).join('');
+  document.querySelector('#tblT-m tfoot tr').innerHTML=`<td>TOTAL</td><td>${tv.toLocaleString('es-CO',{minimumFractionDigits:3})}</td><td>${tc.toLocaleString('es-CO',{minimumFractionDigits:3})}</td><td><span class="pb">${pctC}%</span></td><td>${avgO}%</td>`;
+}
+
+function openCardModal(key){
+  const modal=document.getElementById('cardModal');
+  const title=document.getElementById('cardModalTitle');
+  const body=document.getElementById('cardModalBody');
+  modal.classList.add('active');
+  document.body.style.overflow='hidden';
+  if(key==='donut-sec1'){
+    title.textContent='Distribución porcentual inversión 2025';
+    body.innerHTML=`<div style="display:grid;grid-template-columns:min(320px,45%) 1fr;gap:28px;height:calc(88vh - 80px)">
+      <div style="position:relative"><canvas id="donutT-m"></canvas></div>
+      <div id="leyT-m" style="overflow-y:auto;padding-right:4px"></div>
+    </div>`;
+    if(_s1.donut) requestAnimationFrame(()=>_rDonutModal(_s1.donut));
+  } else if(key==='tabla-sec1'){
+    title.textContent='Ejecución por transformador — corte marzo 2025';
+    body.innerHTML=`<div class="tbl-wrap"><table class="tbl" id="tblT-m">
+      <thead><tr><th>Transformador</th><th>Vigente</th><th>Compromisos</th><th>%C/AV</th><th>%O/AV</th></tr></thead>
+      <tbody></tbody>
+      <tfoot><tr class="tr"><td colspan="5"></td></tr></tfoot>
+    </table></div>`;
+    if(_s1.tabla) _rTablaTModal(_s1.tabla);
+  }
+}
+
+function closeCardModal(e){
+  if(e&&e.target!==document.getElementById('cardModal'))return;
+  document.getElementById('cardModal').classList.remove('active');
+  document.body.style.overflow='';
+  destroyChart('donutT-m');
 }
 
 function rBarPGN(ev){
@@ -1030,7 +1115,7 @@ async function openTablaModal(){
   document.body.style.overflow='hidden';
   const wrap=document.getElementById('tablaCompletaWrap');
   if(wrap.textContent.trim().startsWith('Cargando')){
-    const raw=await af('/api/evolucion/tabla_completa',null);
+    const raw=await af('/evolucion/tabla_completa',null);
     rTablaCompleta(raw);
   }
 }
@@ -1919,7 +2004,10 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     closeInfoModal();
     closeDrawer();
-    document.getElementById('tablaModal').classList.remove('active');
+    ['tablaModal','cardModal'].forEach(id=>{
+      document.getElementById(id).classList.remove('active');
+    });
+    destroyChart('donutT-m');
     document.body.style.overflow='';
   }
 });
