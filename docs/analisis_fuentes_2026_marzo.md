@@ -1,7 +1,7 @@
 # Análisis de Fuentes de Datos — Bitácora PGN 2026-I
 **Corte:** 31 de marzo de 2026  
 **Fecha de análisis:** 19 de junio de 2026  
-**Analista:** Edwin Piragauta / Claude Sonnet 4.6
+**Analista:** Edwin Piragauta
 
 ---
 
