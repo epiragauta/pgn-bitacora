@@ -116,6 +116,8 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 .tbl-pgn tr.tp-hdr:hover td{filter:brightness(1.3);color:#4a0020!important}
 .btn-tabla{display:inline-flex;align-items:center;gap:6px;padding:9px 22px;border-radius:8px;border:1.5px solid var(--t);background:transparent;color:var(--t);font-weight:700;cursor:pointer;font-size:13px;font-family:inherit;transition:background .2s,color .2s}
 .btn-tabla:hover{background:var(--t);color:#fff}
+.tgl-btn{background:none;border:none;color:inherit;font-weight:800;cursor:pointer;padding:0 2px;font-size:11px;font-family:monospace;line-height:1;vertical-align:middle;opacity:.85}
+.tgl-btn:hover{opacity:1}
 .tbl thead th{background:var(--t);color:#fff;font-weight:800;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:8px 10px;text-align:right}
 .tbl thead th:first-child{text-align:left;border-radius:5px 0 0 0}.tbl thead th:last-child{border-radius:0 5px 0 0}
 .tbl td{padding:8px 10px;border-bottom:1px solid var(--gc);color:var(--gm);text-align:right}
@@ -935,26 +937,36 @@ function rLineInv(ej){
       plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:12}}}}});
 }
 
+function toggleChildren(pid,btn){
+  document.querySelectorAll(`tr[data-pid="${pid}"]`).forEach(r=>{
+    r.style.display=r.style.display==='none'?'':'none';
+  });
+  btn.textContent=btn.textContent.trim()==='(+)'?'(−)':'(+)';
+}
+
 function rTablaCompleta(raw){
   const el=document.getElementById('tablaCompletaWrap');
   if(!raw||!raw.length){el.innerHTML='<p class="ss" style="text-align:center;color:#c00">Sin datos disponibles.</p>';return;}
   const Y=[2022,2023,2024,2025,2026];
   const F=['vigente','comprometido','obligado','pagado'];
   const FL=['Vig.','Comp.','Obl.','Pago'];
-  // Reordenar: filas % PIB antes de su par COP (en CSV van después, índice impar)
   const sorted=[...raw].sort((a,b)=>{
     const ga=a.unidad==='% PIB'?a.orden-1:a.orden;
     const gb=b.unidad==='% PIB'?b.orden-1:b.orden;
     if(ga!==gb)return ga-gb;
     return a.unidad==='% PIB'?-1:1;
   });
+  // Primer recorrido: detectar qué filas nivel 3 tienen hijos nivel 4
+  const parentMap=new Map(); // nombre_n3 → id_n3
+  let lastN3=null;
+  for(const r of sorted){
+    if(r.nivel===3)lastN3=r;
+    if(r.nivel===4&&lastN3)parentMap.set(lastN3.nombre,lastN3.id);
+  }
   const fmtN=v=>v==null?'–':Math.round(v).toLocaleString('es-CO');
   const fmtP=v=>v==null?'–':(v*100).toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1})+'%';
   const rowCls=r=>{
-    if(r.unidad==='% PIB'){
-      const n=r.nombre;
-      return 'tp-hdr';
-    }
+    if(r.unidad==='% PIB')return 'tp-hdr';
     if(r.nombre==='Total PGN')return 'tp-tot';
     if(r.nivel===2)return 'tp-n2';
     if(r.nivel===3)return 'tp-n3';
@@ -968,10 +980,18 @@ function rTablaCompleta(raw){
     </tr>
     <tr>${Y.flatMap(()=>FL.map(f=>`<th class="th-fase">${f}</th>`)).join('')}</tr>
   </thead><tbody>`;
+  let lastN3Name=null;
   for(const r of sorted){
+    if(r.nivel===3)lastN3Name=r.nombre;
     const cls=rowCls(r);
     const fmt=r.unidad==='% PIB'?fmtP:fmtN;
-    h+=`<tr class="${cls}"><td>${r.nombre}</td>`;
+    const isParent=parentMap.has(r.nombre);
+    const isChild=r.nivel===4;
+    const pid=isParent?`p${r.id}`:'';
+    const childPid=isChild?(parentMap.has(lastN3Name)?`p${parentMap.get(lastN3Name)}`:''):'';
+    const tgl=isParent?`<button class="tgl-btn" onclick="toggleChildren('${pid}',this)">(+)</button> `:'';
+    const rowAttr=isChild?` data-pid="${childPid}" style="display:none"`:'';
+    h+=`<tr class="${cls}"${rowAttr}><td>${tgl}${r.nombre}</td>`;
     for(const y of Y)for(const f of F)h+=`<td>${fmt(r[f+'_'+y])}</td>`;
     h+=`</tr>`;
   }
