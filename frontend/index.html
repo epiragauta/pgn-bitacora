@@ -609,7 +609,7 @@ footer strong{color:#fff}
 
     <!-- Mapa interactivo de regiones -->
     <div class="card ba rv" style="margin-bottom:24px">
-      <div class="ct">Mapa de ejecución regional — % Compromisos / Apropiación Vigente</div>
+      <div class="ct">Mapa de ejecución regional — % Compromisos / Apropiación Vigente<button class="card-expand" onclick="openCardModal('map-sec3')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div>
       <div id="mapContainer" style="height:450px;border-radius:8px;overflow:hidden"></div>
       <div style="margin-top:12px;font-size:11px;color:var(--gs);text-align:center">
         Haz clic en una región para ver el detalle de sus departamentos
@@ -630,8 +630,8 @@ footer strong{color:#fff}
     <p class="ss">Comparativo histórico corte primer trimestre. Fuente: SIIF Nación.</p>
     <div class="tg rv" id="tlGrid"></div>
     <div class="g2 rv" style="margin-top:18px">
-      <div class="card bt"><div class="ct">% Compromisos · Obligaciones · Pagos</div><div style="position:relative;height:220px"><canvas id="lineEj"></canvas></div></div>
-      <div class="card bm"><div class="ct">Apropiación sectores principales 2022-2025</div><div id="hbSect"></div></div>
+      <div class="card bt"><div class="ct">% Compromisos · Obligaciones · Pagos<button class="card-expand" onclick="openCardModal('line-sec4')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div style="position:relative;height:220px"><canvas id="lineEj"></canvas></div></div>
+      <div class="card bm"><div class="ct">Apropiación sectores principales 2022-2025<button class="card-expand" onclick="openCardModal('hb-sec4')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div id="hbSect"></div></div>
     </div>
   </div>
 </section>
@@ -644,8 +644,8 @@ footer strong{color:#fff}
     </div>
     <h2 class="st">Compromisos 2026 – 2040</h2>
     <div class="vfh"><div class="vfb"><em>136,7</em> billones</div><p class="vfd"><span class="def" data-def="vigencias-futuras">COP constantes 2025</span> comprometidos 2026-2040. Principal sector: <strong>Transporte</strong>.</p></div>
-    <div class="card bt rv"><div class="ct">Vigencias futuras por sector y año (mmm COP constantes 2025)</div><div style="position:relative;height:270px"><canvas id="barVF"></canvas></div></div>
-    <div class="card rv" style="margin-top:18px"><div class="ct">Tabla de vigencias futuras comprometidas</div><div class="tbl-wrap"><table class="tbl" id="tblVF"></table></div></div>
+    <div class="card bt rv"><div class="ct">Vigencias futuras por sector y año (mmm COP constantes 2025)<button class="card-expand" onclick="openCardModal('bar-sec5')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div style="position:relative;height:270px"><canvas id="barVF"></canvas></div></div>
+    <div class="card rv" style="margin-top:18px"><div class="ct">Tabla de vigencias futuras comprometidas<button class="card-expand" onclick="openCardModal('tbl-sec5')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div class="tbl-wrap"><table class="tbl" id="tblVF"></table></div></div>
   </div>
 </section>
 
@@ -657,7 +657,10 @@ footer strong{color:#fff}
     </div>
     <h2 class="st">Ejecución por Sector — 2025</h2>
     <p class="ss">% Compromisos y Obligaciones sobre apropiación vigente. Corte: 31 de marzo de 2025. Fuente: SIIF Nación.</p>
-    <div id="sec6Filter" class="sec6-filter"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+      <div id="sec6Filter" class="sec6-filter" style="margin-bottom:0"></div>
+      <button class="card-expand" style="flex-shrink:0;margin-left:8px" onclick="openCardModal('grid-sec6')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button>
+    </div>
     <div class="sg rv" id="sectGrid"></div>
   </div>
 </section>
@@ -927,9 +930,8 @@ const D={
   ],
 };
 
-/* ── Cache datos Sec 1 y Sec 2 para re-render en modal ── */
-const _s1={};
-const _s2={};
+/* ── Cache datos Sec 1-6 para re-render en modal ── */
+const _s1={},_s2={},_s4={},_s5={};
 
 /* ── Renders ── */
 function rDonut(d){
@@ -1023,6 +1025,33 @@ function openCardModal(key){
   } else if(key==='tbl-sec2'){
     title.textContent='Resumen PGN 2022-2026 · Vigente a marzo';
     body.innerHTML=document.querySelector('#sec2 .card.rv .tbl-wrap').outerHTML;
+  } else if(key==='map-sec3'){
+    title.textContent='Mapa de ejecución regional — % Compromisos / Apropiación Vigente';
+    const mapEl=document.getElementById('mapContainer');
+    const sentinel=document.createElement('div');
+    sentinel.id='mapSentinel';sentinel.style.height='450px';
+    mapEl.parentElement.insertBefore(sentinel,mapEl);
+    body.style.cssText='padding:0;height:calc(88vh - 70px)';
+    mapEl.style.height='100%';
+    body.appendChild(mapEl);
+    if(_leafletMap) setTimeout(()=>_leafletMap.invalidateSize(),120);
+  } else if(key==='line-sec4'){
+    title.textContent='% Compromisos · Obligaciones · Pagos — Ejecución inversión 2022-2025';
+    body.innerHTML=`<div style="position:relative;height:calc(88vh - 80px)"><canvas id="lineEj-m"></canvas></div>`;
+    if(_s4.ej) requestAnimationFrame(()=>_buildLineEj('lineEj-m',_s4.ej));
+  } else if(key==='hb-sec4'){
+    title.textContent='Apropiación sectores principales 2022-2025';
+    body.innerHTML=`<div style="max-width:700px;margin:0 auto">${document.getElementById('hbSect').innerHTML}</div>`;
+  } else if(key==='bar-sec5'){
+    title.textContent='Vigencias futuras por sector y año (mmm COP constantes 2025)';
+    body.innerHTML=`<div style="position:relative;height:calc(88vh - 80px)"><canvas id="barVF-m"></canvas></div>`;
+    if(_s5.tot) requestAnimationFrame(()=>_buildBarVF('barVF-m',_s5.tot,_s5.sect));
+  } else if(key==='tbl-sec5'){
+    title.textContent='Tabla de vigencias futuras comprometidas';
+    body.innerHTML=document.querySelector('#sec5 .card.rv .tbl-wrap').outerHTML;
+  } else if(key==='grid-sec6'){
+    title.textContent='Ejecución por Sector — 2025';
+    body.innerHTML=`<div class="sg" style="padding:4px">${document.getElementById('sectGrid').innerHTML}</div>`;
   }
 }
 
@@ -1030,7 +1059,17 @@ function closeCardModal(e){
   if(e&&e.target!==document.getElementById('cardModal'))return;
   document.getElementById('cardModal').classList.remove('active');
   document.body.style.overflow='';
-  ['donutT-m','barPGN-m','lineInv-m'].forEach(id=>destroyChart(id));
+  ['donutT-m','barPGN-m','lineInv-m','lineEj-m','barVF-m'].forEach(id=>destroyChart(id));
+  // Restaurar mapa si fue movido al modal
+  const sentinel=document.getElementById('mapSentinel');
+  if(sentinel){
+    const mapEl=document.getElementById('mapContainer');
+    sentinel.parentElement.insertBefore(mapEl,sentinel);
+    sentinel.remove();
+    mapEl.style.height='450px';
+    document.getElementById('cardModalBody').style.cssText='';
+    if(_leafletMap) setTimeout(()=>_leafletMap.invalidateSize(),120);
+  }
 }
 
 function _buildBarPGN(canvasId,ev){
@@ -1308,9 +1347,9 @@ function toggleTlMode(){
   rTimeline(ejData);
 }
 
-function rLineEj(ej){
-  destroyChart('lineEj');
-  const c=new Chart(document.getElementById('lineEj').getContext('2d'),{type:'line',
+function _buildLineEj(canvasId,ej){
+  destroyChart(canvasId);
+  const c=new Chart(document.getElementById(canvasId).getContext('2d'),{type:'line',
     data:{labels:['2022','2023','2024','2025'],datasets:[
       {label:'% Compromisos', data:ej.map(d=>d.pc),borderColor:P.t,tension:.3,pointRadius:4},
       {label:'% Obligaciones',data:ej.map(d=>d.po),borderColor:P.m,tension:.3,pointRadius:4},
@@ -1321,6 +1360,7 @@ function rLineEj(ej){
       plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:12}}}}});
   c._evtAnnot=CHART_EVENTS.lineEj;
 }
+function rLineEj(ej){_s4.ej=ej;_buildLineEj('lineEj',ej);}
 
 function rHBars(){
   const S=[
@@ -1342,20 +1382,24 @@ function rHBars(){
     </div>`).join('');
 }
 
-function rVF(tot,sect){
-  const totalVF=tot.reduce((s,x)=>s+(x.t||0),0);
-  const vfb=document.querySelector('.vfb');
-  if(vfb)vfb.innerHTML=`<em>${(totalVF/1000).toFixed(1)}</em> billones`;
-  destroyChart('barVF');
-  const ctx=document.getElementById('barVF').getContext('2d');
+function _buildBarVF(canvasId,tot,sect){
+  destroyChart(canvasId);
   const SN=Object.keys(sect),SC=[P.t,P.a,P.m,P.nr,P.gs];
-  new Chart(ctx,{type:'bar',
+  new Chart(document.getElementById(canvasId).getContext('2d'),{type:'bar',
     data:{labels:tot.map(d=>String(d.y)),
       datasets:SN.map((s,i)=>({label:s.charAt(0)+s.slice(1).toLowerCase(),data:sect[s],
         backgroundColor:SC[i]+'bb',borderColor:SC[i],borderWidth:1}))},
     options:{responsive:true,maintainAspectRatio:false,
       scales:{x:{stacked:true,grid:{color:P.gc}},y:{stacked:true,grid:{color:P.gc},ticks:{callback:v=>v.toLocaleString('es-CO')}}},
       plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:11}}}}});
+}
+function rVF(tot,sect){
+  _s5.tot=tot;_s5.sect=sect;
+  const totalVF=tot.reduce((s,x)=>s+(x.t||0),0);
+  const vfb=document.querySelector('.vfb');
+  if(vfb)vfb.innerHTML=`<em>${(totalVF/1000).toFixed(1)}</em> billones`;
+  _buildBarVF('barVF',tot,sect);
+  const SN=Object.keys(sect);
   document.getElementById('tblVF').innerHTML=`
     <thead><tr><th>Año</th>${SN.map(s=>`<th>${s}</th>`).join('')}<th>TOTAL</th><th>% PIB</th></tr></thead>
     <tbody>${tot.map((d,i)=>`<tr><td><strong>${d.y}</strong></td>${SN.map(s=>`<td>${(sect[s][i]||0).toLocaleString('es-CO')}</td>`).join('')}
@@ -2021,7 +2065,7 @@ document.addEventListener('keydown', function(e) {
     ['tablaModal','cardModal'].forEach(id=>{
       document.getElementById(id).classList.remove('active');
     });
-    ['donutT-m','barPGN-m','lineInv-m'].forEach(id=>destroyChart(id));
+    ['donutT-m','barPGN-m','lineInv-m','lineEj-m','barVF-m'].forEach(id=>destroyChart(id));
     document.body.style.overflow='';
   }
 });
