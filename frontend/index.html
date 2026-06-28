@@ -291,6 +291,18 @@ footer strong{color:#fff}
   animation:slideUp .3s;
   position:relative;
 }
+.modal-content.modal-tabla{
+  max-width:98vw;
+  max-height:92vh;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.modal-content.modal-tabla .modal-body{
+  overflow:auto;
+  flex:1;
+  padding:12px 16px 16px;
+}
 
 .modal-header{
   background:var(--t);
@@ -568,13 +580,10 @@ footer strong{color:#fff}
       </div>
     </div>
     <div style="text-align:center;margin-top:22px">
-      <button id="btnTablaCompleta" class="btn-tabla" onclick="toggleTablaCompleta()">
+      <button class="btn-tabla" onclick="openTablaModal()">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M0 2h16v2H0zM0 7h16v2H0zM0 12h16v2H0z"/></svg>
-        <span id="btnTablaLabel">Ver tabla detallada</span>
+        Ver tabla detallada
       </button>
-    </div>
-    <div id="tablaCompletaWrap" style="display:none;margin-top:14px">
-      <p class="ss" style="text-align:center">Cargando…</p>
     </div>
   </div>
 </section>
@@ -676,6 +685,21 @@ footer strong{color:#fff}
 </aside>
 
 <!-- MODAL INFO -->
+<div id="tablaModal" class="modal-overlay" onclick="closeTablaModal(event)">
+  <div class="modal-content modal-tabla">
+    <div class="modal-header">
+      <div>
+        <h3>Evolución del PGN por tipo de gasto · 2022–2026</h3>
+        <div style="font-size:11px;opacity:.8;font-weight:400;margin-top:2px">Acumulada a marzo · Cifras en miles de millones de pesos corrientes</div>
+      </div>
+      <button class="modal-close" onclick="closeTablaModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div id="tablaCompletaWrap"><p class="ss" style="text-align:center;padding:24px 0">Cargando…</p></div>
+    </div>
+  </div>
+</div>
+
 <div id="infoModal" class="modal-overlay">
   <div class="modal-content">
     <div class="modal-header">
@@ -1000,20 +1024,20 @@ function rTablaCompleta(raw){
   el.innerHTML=h;
 }
 
-async function toggleTablaCompleta(){
-  const el=document.getElementById('tablaCompletaWrap');
-  const lbl=document.getElementById('btnTablaLabel');
-  if(el.style.display==='none'){
-    el.style.display='';
-    lbl.textContent='Ocultar tabla detallada';
-    if(el.textContent.trim().startsWith('Cargando')){
-      const raw=await af('/evolucion/tabla_completa',null);
-      rTablaCompleta(raw);
-    }
-  }else{
-    el.style.display='none';
-    lbl.textContent='Ver tabla detallada';
+async function openTablaModal(){
+  const modal=document.getElementById('tablaModal');
+  modal.classList.add('active');
+  document.body.style.overflow='hidden';
+  const wrap=document.getElementById('tablaCompletaWrap');
+  if(wrap.textContent.trim().startsWith('Cargando')){
+    const raw=await af('/api/evolucion/tabla_completa',null);
+    rTablaCompleta(raw);
   }
+}
+function closeTablaModal(e){
+  if(e&&e.target!==document.getElementById('tablaModal'))return;
+  document.getElementById('tablaModal').classList.remove('active');
+  document.body.style.overflow='';
 }
 
 function rRegiones(d){
@@ -1895,6 +1919,8 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     closeInfoModal();
     closeDrawer();
+    document.getElementById('tablaModal').classList.remove('active');
+    document.body.style.overflow='';
   }
 });
 </script>
