@@ -528,22 +528,22 @@ footer strong{color:#fff}
     <div class="stag sm"><span class="n">2</span>Evolución Presupuestal
       <i class="info-icon" onclick="openDrawer('sec2-info')">i</i>
     </div>
-    <h2 class="st">PGN 2022 – 2025</h2>
-    <p class="ss">Estructura del Presupuesto General de la Nación. Miles de millones COP corrientes. Fuente: MHCP – DNP.</p>
+    <h2 class="st">PGN 2022 – 2026</h2>
+    <p class="ss">Estructura del Presupuesto General de la Nación. Apropiación vigente acumulada a marzo. Miles de millones COP corrientes. Fuente: MHCP – DNP.</p>
     <div class="g2 rv">
       <div class="card bt"><div class="ct">Apropiación vigente PGN por componente</div><div style="position:relative;height:230px"><canvas id="barPGN"></canvas></div></div>
       <div class="card bm"><div class="ct">Inversión % del PIB y del gasto total</div><div style="position:relative;height:230px"><canvas id="lineInv"></canvas></div></div>
     </div>
     <div class="card rv" style="margin-top:18px">
-      <div class="ct">Resumen PGN 2022-2025 (miles de millones COP corrientes)</div>
+      <div class="ct">Resumen PGN 2022-2026 · Vigente a marzo (miles de millones COP corrientes)</div>
       <div class="tbl-wrap">
         <table class="tbl">
-          <thead><tr><th>Componente</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>% 2025</th></tr></thead>
+          <thead><tr><th>Componente</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026</th><th>% 2026</th></tr></thead>
           <tbody>
-            <tr><td>Funcionamiento</td><td>210.990</td><td>253.434</td><td>308.251</td><td>329.237</td><td>18,1%</td></tr>
-            <tr><td>Inversión</td><td>69.626</td><td>74.222</td><td>99.851</td><td>83.961</td><td>4,6%</td></tr>
-            <tr><td>Servicio de la Deuda</td><td>71.665</td><td>77.998</td><td>94.522</td><td>112.605</td><td>6,2%</td></tr>
-            <tr class="tr"><td>TOTAL PGN</td><td>352.281</td><td>405.655</td><td>502.624</td><td>525.803</td><td>100%</td></tr>
+            <tr><td>Funcionamiento</td><td>208.808</td><td>258.069</td><td>289.892</td><td>319.191</td><td>327.314</td><td>63,4%</td></tr>
+            <tr><td>Inversión</td><td>69.626</td><td>74.222</td><td>99.851</td><td>83.961</td><td>88.401</td><td>17,1%</td></tr>
+            <tr><td>Servicio de la Deuda</td><td>71.665</td><td>77.998</td><td>94.522</td><td>112.605</td><td>100.450</td><td>19,5%</td></tr>
+            <tr class="tr"><td>TOTAL PGN</td><td>350.098</td><td>410.290</td><td>484.266</td><td>515.757</td><td>516.165</td><td>100%</td></tr>
           </tbody>
         </table>
       </div>
@@ -726,6 +726,7 @@ const CHART_EVENTS={
     {x:'2023',label:'Adición presupuestal',desc:'Ley 2269 de 2022 incorporó $29 bill. adicionales al PGN 2023, principalmente en funcionamiento y servicio de la deuda.',color:P.m},
     {x:'2024',label:'Récord de inversión',desc:'Apropiación de inversión: $99,8 bill. — máximo histórico del cuatrienio, impulsado por crédito externo y recursos propios.',color:P.a},
     {x:'2025',label:'Ajuste fiscal',desc:'Reducción de $15,9 bill. en inversión frente a 2024 como parte del ajuste de gasto del Gobierno Nacional Central.',color:P.nr},
+    {x:'2026',label:'Estabilización',desc:'PGN 2026 prácticamente igual al de 2025 ($516 bill.), con leve recomposición: cae Servicio de la Deuda ($12 bill.) y sube inversión ($4,4 bill.).',color:P.t},
   ],
   lineEj:[
     {x:'2022',label:'Inicio PND',desc:'Primer corte Q1 del PND "Colombia, potencia mundial de la vida". Ejecución Q1 en rangos históricos esperados para el inicio de un cuatrienio.',color:P.mo},
@@ -803,16 +804,18 @@ const D={
     {t:'DERECHO HUMANO A LA ALIMENTACIÓN',  v: 2.462,p: 2.93,c: 0.668,pc:27,po:2},
   ],
   ev:[
-    {y:2022,r:'Funcionamiento',v:210990},{y:2022,r:'Inversión',v:69626},{y:2022,r:'Servicio Deuda',v:71665},
-    {y:2023,r:'Funcionamiento',v:253434},{y:2023,r:'Inversión',v:74222},{y:2023,r:'Servicio Deuda',v:77998},
-    {y:2024,r:'Funcionamiento',v:308251},{y:2024,r:'Inversión',v:99851},{y:2024,r:'Servicio Deuda',v:94522},
-    {y:2025,r:'Funcionamiento',v:329237},{y:2025,r:'Inversión',v:83961},{y:2025,r:'Servicio Deuda',v:112605},
+    {y:2022,r:'Funcionamiento',v:208808},{y:2022,r:'Inversión',v:69626},{y:2022,r:'Servicio Deuda',v:71665},
+    {y:2023,r:'Funcionamiento',v:258069},{y:2023,r:'Inversión',v:74222},{y:2023,r:'Servicio Deuda',v:77998},
+    {y:2024,r:'Funcionamiento',v:289892},{y:2024,r:'Inversión',v:99851},{y:2024,r:'Servicio Deuda',v:94522},
+    {y:2025,r:'Funcionamiento',v:319191},{y:2025,r:'Inversión',v:83961},{y:2025,r:'Servicio Deuda',v:112605},
+    {y:2026,r:'Funcionamiento',v:327314},{y:2026,r:'Inversión',v:88401},{y:2026,r:'Servicio Deuda',v:100450},
   ],
   ej:[
-    {y:2022,vg:69626,c:36610,o:11380,p:11143,pc:53,po:16,pp:16.0,pib:4.7,g:20},
-    {y:2023,vg:74222,c:31580,o: 8506,p: 8419,pc:43,po:11,pp:11.3,pib:5.3,g:20},
-    {y:2024,vg:99851,c:38582,o: 9082,p: 8679,pc:39,po: 9,pp: 8.7,pib:5.3,g:19},
-    {y:2025,vg:83961,c:36363,o: 6628,p: 6532,pc:43,po: 8,pp: 7.8,pib:4.6,g:16},
+    {y:2022,vg:69626,c:36610,o:11380,p:11143,pc:52.6,po:16.3,pp:16.0,pib:4.7,g:19.9},
+    {y:2023,vg:74222,c:31580,o: 8506,p: 8419,pc:42.5,po:11.5,pp:11.3,pib:4.7,g:18.1},
+    {y:2024,vg:99851,c:38582,o: 9082,p: 8679,pc:38.6,po: 9.1,pp: 8.7,pib:5.8,g:20.6},
+    {y:2025,vg:83961,c:36363,o: 6628,p: 6532,pc:43.3,po: 7.9,pp: 7.8,pib:4.5,g:16.3},
+    {y:2026,vg:88401,c:44986,o: 9962,p: 9533,pc:50.89,po:11.27,pp:10.78,pib:4.4,g:17.1},
   ],
   re:[
     {r:'AMAZONAS',  v:2124156, c:410848, pc:19.3,pp:99.9, s:'Transporte 19%·Minas 19%·Igualdad 13%'},
@@ -883,9 +886,9 @@ function rTablaT(d){
 
 function rBarPGN(ev){
   destroyChart('barPGN');
-  const R=['Funcionamiento','Inversión','Servicio Deuda'],CL=[P.t,P.m,P.a],Y=[2022,2023,2024,2025];
+  const R=['Funcionamiento','Inversión','Servicio Deuda'],CL=[P.t,P.m,P.a],Y=[2022,2023,2024,2025,2026];
   const c=new Chart(document.getElementById('barPGN').getContext('2d'),{type:'bar',
-    data:{labels:['2022','2023','2024','2025'],
+    data:{labels:['2022','2023','2024','2025','2026'],
       datasets:R.map((r,i)=>({label:r,data:Y.map(y=>{const row=ev.find(d=>d.y===y&&d.r===r);return row?row.v:0}),
         backgroundColor:CL[i]+'99',borderColor:CL[i],borderWidth:1}))},
     options:{responsive:true,maintainAspectRatio:false,
@@ -898,7 +901,7 @@ function rBarPGN(ev){
 function rLineInv(ej){
   destroyChart('lineInv');
   new Chart(document.getElementById('lineInv').getContext('2d'),{type:'line',
-    data:{labels:['2022','2023','2024','2025'],datasets:[
+    data:{labels:['2022','2023','2024','2025','2026'],datasets:[
       {label:'% Gasto total',data:ej.map(d=>d.g), borderColor:P.m,backgroundColor:'rgba(254,27,123,.07)',tension:.35,pointRadius:4,fill:true},
       {label:'% PIB',        data:ej.map(d=>d.pib),borderColor:P.t,backgroundColor:'rgba(0,195,193,.05)', tension:.35,pointRadius:4,fill:true}]},
     options:{responsive:true,maintainAspectRatio:false,

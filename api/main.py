@@ -114,39 +114,145 @@ def get_componentes(transformador: str, bitacora_id: Optional[int] = None):
 
 # ──────────────────────────────────────────────
 # SECCIÓN 2 – EVOLUCIÓN PRESUPUESTAL
+# Fuente: tablas pgn_concepto + pgn_ejecucion (2022-2026)
 # ──────────────────────────────────────────────
 @app.get("/api/evolucion", tags=["Sec 2 - Evolución Presupuestal"])
 def get_evolucion(
     bitacora_id: Optional[int] = None,
-    rubro: Optional[str] = Query(None, description="Filtra por rubro: Funcionamiento, Inversión, Servicio Deuda, TOTAL PGN")
+    rubro: Optional[str] = Query(None, description="Filtra por rubro: Funcionamiento, Inversión, Servicio Deuda")
 ):
-    """Evolución del PGN por rubro principal."""
+    """Apropiación vigente por rubro principal (2022-2026). Nivel 2, Miles mm COP."""
     db = get_db()
-    bid, _ = resolve_bitacora(db, bitacora_id)
+    # Alias corto para compatibilidad con el frontend
     sql = """
-        SELECT vigencia, rubro, sub_rubro, vigente_mmm,
-               compromisos_mmm, obligaciones_mmm, pagos_mmm, pct_pgn
-        FROM evolucion_presupuestal
-        WHERE bitacora_id=? AND sub_rubro IS NULL
+        SELECT
+            e.anio                                          AS vigencia,
+            REPLACE(c.nombre, 'Servicio de la Deuda',
+                              'Servicio Deuda')             AS rubro,
+            e.valor                                         AS vigente_mmm
+        FROM pgn_ejecucion  e
+        JOIN pgn_concepto   c ON c.id = e.concepto_id
+        WHERE c.nivel  = 2
+          AND c.unidad = 'Miles mm COP'
+          AND e.fase   = 'Vigente'
     """
-    params: list = [bid]
+    params: list = []
     if rubro:
-        sql += " AND rubro=?"
+        sql += " AND REPLACE(c.nombre,'Servicio de la Deuda','Servicio Deuda') = ?"
         params.append(rubro)
-    sql += " ORDER BY vigencia, rubro"
+    sql += " ORDER BY e.anio, c.orden"
     return rows_to_list(db.execute(sql, params).fetchall())
+
+
+@app.get("/api/evolucion/composicion", tags=["Sec 2 - Evolución Presupuestal"])
+def get_evolucion_composicion(anio: int = Query(..., description="Año (2022-2026)"), fase: str = "Vigente"):
+    """Composición porcentual del PGN por categoría principal para un año dado."""
+    db = get_db()
+    rows = db.execute("""
+        WITH total AS (
+            SELECT e.valor
+            FROM   pgn_ejecucion e
+            JOIN   pgn_concepto  c ON c.id = e.concepto_id
+            WHERE  c.nombre = 'Total PGN' AND c.unidad = 'Miles mm COP'
+              AND  e.anio = ? AND e.fase = ?
+        )
+        SELECT c.nombre AS concepto, e.valor,
+               ROUND(e.valor * 100.0 / total.valor, 2) AS pct_total
+        FROM pgn_ejecucion e
+        JOIN pgn_concepto  c ON c.id = e.concepto_id
+        CROSS JOIN total
+        WHERE c.nivel = 2 AND c.unidad = 'Miles mm COP'
+          AND e.anio = ? AND e.fase = ?
+        ORDER BY c.orden
+    """, (anio, fase, anio, fase)).fetchall()
+    return rows_to_list(rows)
+
+
+@app.get("/api/evolucion/tasa_ejecucion", tags=["Sec 2 - Evolución Presupuestal"])
+def get_tasa_ejecucion():
+    """Tasa de ejecución (Pagado/Vigente) del Total PGN por año."""
+    db = get_db()
+    rows = db.execute("""
+        SELECT v.anio, v.valor AS vigente, p.valor AS pagado,
+               ROUND(p.valor * 100.0 / v.valor, 2) AS tasa_ejecucion_pct
+        FROM pgn_ejecucion v
+        JOIN pgn_ejecucion p
+             ON  p.anio = v.anio AND p.concepto_id = v.concepto_id AND p.fase = 'Pagado'
+        JOIN pgn_concepto  c ON c.id = v.concepto_id
+        WHERE c.nombre = 'Total PGN' AND c.unidad = 'Miles mm COP' AND v.fase = 'Vigente'
+        ORDER BY v.anio
+    """).fetchall()
+    return rows_to_list(rows)
+
+
+@app.get("/api/evolucion/pct_pib", tags=["Sec 2 - Evolución Presupuestal"])
+def get_evolucion_pct_pib():
+    """Evolución de grandes rubros como % del PIB (Vigente, nivel 2)."""
+    db = get_db()
+    rows = db.execute("""
+        SELECT e.anio, c.nombre AS concepto,
+               ROUND(e.valor * 100, 4) AS valor_pct_pib
+        FROM pgn_ejecucion e
+        JOIN pgn_concepto  c ON c.id = e.concepto_id
+        WHERE c.nivel = 2 AND c.unidad = '% PIB' AND e.fase = 'Vigente'
+        ORDER BY e.anio, c.orden
+    """).fetchall()
+    return rows_to_list(rows)
+
+
+@app.get("/api/evolucion/drilldown", tags=["Sec 2 - Evolución Presupuestal"])
+def get_evolucion_drilldown(
+    concepto: str = Query(..., description="Nombre del concepto raíz"),
+    anio: int = Query(..., description="Año"),
+    fase: str = "Vigente"
+):
+    """Árbol jerárquico completo de un concepto y sus descendientes."""
+    db = get_db()
+    rows = db.execute("""
+        WITH RECURSIVE arbol AS (
+            SELECT id, nombre, nivel, padre_id, orden FROM pgn_concepto WHERE nombre = ?
+            UNION ALL
+            SELECT c.id, c.nombre, c.nivel, c.padre_id, c.orden
+            FROM pgn_concepto c JOIN arbol a ON c.padre_id = a.id
+        )
+        SELECT a.nivel, a.nombre, e.valor, COALESCE(p.nombre,'') AS padre
+        FROM   arbol a
+        JOIN   pgn_ejecucion  e ON e.concepto_id = a.id
+        LEFT JOIN pgn_concepto p ON p.id = a.padre_id
+        WHERE  e.anio = ? AND e.fase = ?
+        ORDER BY a.orden
+    """, (concepto, anio, fase)).fetchall()
+    return rows_to_list(rows)
 
 
 @app.get("/api/evolucion/inversion_historica", tags=["Sec 2 - Evolución Presupuestal"])
 def get_inversion_historica(bitacora_id: Optional[int] = None):
-    """Serie histórica de inversión con indicadores macroeconómicos."""
+    """Serie histórica de inversión con indicadores macroeconómicos (2022-2026)."""
     db = get_db()
-    bid, _ = resolve_bitacora(db, bitacora_id)
     rows = db.execute("""
-        SELECT vigencia, vigente_mmm, compromisos_mmm, obligaciones_mmm, pagos_mmm,
-               pct_compromisos, pct_obligaciones, pct_pagos, inv_pct_pib, inv_pct_gasto_total
-        FROM ejecucion_historica WHERE bitacora_id=? ORDER BY vigencia
-    """, (bid,)).fetchall()
+        SELECT
+            v.anio                                              AS vigencia,
+            v.valor                                             AS vigente_mmm,
+            com.valor                                           AS compromisos_mmm,
+            obl.valor                                           AS obligaciones_mmm,
+            pag.valor                                           AS pagados_mmm,
+            ROUND(com.valor * 100.0 / v.valor, 2)              AS pct_compromisos,
+            ROUND(obl.valor * 100.0 / v.valor, 2)              AS pct_obligaciones,
+            ROUND(pag.valor * 100.0 / v.valor, 2)              AS pct_pagos,
+            ROUND(pib.valor * 100, 1)                          AS inv_pct_pib,
+            ROUND(v.valor * 100.0 / tot.valor, 1)              AS inv_pct_gasto_total
+        FROM pgn_ejecucion v
+        JOIN pgn_ejecucion com ON com.anio=v.anio AND com.concepto_id=v.concepto_id AND com.fase='Comprometido'
+        JOIN pgn_ejecucion obl ON obl.anio=v.anio AND obl.concepto_id=v.concepto_id AND obl.fase='Obligado'
+        JOIN pgn_ejecucion pag ON pag.anio=v.anio AND pag.concepto_id=v.concepto_id AND pag.fase='Pagado'
+        JOIN pgn_ejecucion pib ON pib.anio=v.anio AND pib.fase='Vigente'
+        JOIN pgn_concepto  cpib ON cpib.id=pib.concepto_id AND cpib.nombre='Inversión como % del PIB'
+        JOIN pgn_ejecucion tot ON tot.anio=v.anio AND tot.fase='Vigente'
+        JOIN pgn_concepto  ctot ON ctot.id=tot.concepto_id AND ctot.nombre='Total PGN' AND ctot.unidad='Miles mm COP'
+        JOIN pgn_concepto  c    ON c.id=v.concepto_id AND c.nombre='Inversión' AND c.unidad='Miles mm COP'
+        WHERE v.fase = 'Vigente'
+        ORDER BY v.anio
+    """).fetchall()
     return rows_to_list(rows)
 
 
@@ -200,14 +306,32 @@ def get_regionalizacion_historico(bitacora_id: Optional[int] = None):
 # ──────────────────────────────────────────────
 @app.get("/api/ejecucion", tags=["Sec 4 - Ejecución"])
 def get_ejecucion(bitacora_id: Optional[int] = None):
-    """Ejecución presupuestal histórica de inversión."""
+    """Ejecución histórica de inversión 2022-2026 (pgn_ejecucion)."""
     db = get_db()
-    bid, _ = resolve_bitacora(db, bitacora_id)
     rows = db.execute("""
-        SELECT vigencia, vigente_mmm, compromisos_mmm, obligaciones_mmm, pagos_mmm,
-               pct_compromisos, pct_obligaciones, pct_pagos, inv_pct_pib, inv_pct_gasto_total
-        FROM ejecucion_historica WHERE bitacora_id=? ORDER BY vigencia
-    """, (bid,)).fetchall()
+        SELECT
+            v.anio                                          AS vigencia,
+            v.valor                                         AS vigente_mmm,
+            com.valor                                       AS compromisos_mmm,
+            obl.valor                                       AS obligaciones_mmm,
+            pag.valor                                       AS pagos_mmm,
+            ROUND(com.valor * 100.0 / v.valor, 2)          AS pct_compromisos,
+            ROUND(obl.valor * 100.0 / v.valor, 2)          AS pct_obligaciones,
+            ROUND(pag.valor * 100.0 / v.valor, 2)          AS pct_pagos,
+            ROUND(pib.valor * 100, 1)                      AS inv_pct_pib,
+            ROUND(v.valor * 100.0 / tot.valor, 1)          AS inv_pct_gasto_total
+        FROM pgn_ejecucion v
+        JOIN pgn_ejecucion com ON com.anio=v.anio AND com.concepto_id=v.concepto_id AND com.fase='Comprometido'
+        JOIN pgn_ejecucion obl ON obl.anio=v.anio AND obl.concepto_id=v.concepto_id AND obl.fase='Obligado'
+        JOIN pgn_ejecucion pag ON pag.anio=v.anio AND pag.concepto_id=v.concepto_id AND pag.fase='Pagado'
+        JOIN pgn_ejecucion pib ON pib.anio=v.anio AND pib.fase='Vigente'
+        JOIN pgn_concepto  cpib ON cpib.id=pib.concepto_id AND cpib.nombre='Inversión como % del PIB'
+        JOIN pgn_ejecucion tot ON tot.anio=v.anio AND tot.fase='Vigente'
+        JOIN pgn_concepto  ctot ON ctot.id=tot.concepto_id AND ctot.nombre='Total PGN' AND ctot.unidad='Miles mm COP'
+        JOIN pgn_concepto  c    ON c.id=v.concepto_id AND c.nombre='Inversión' AND c.unidad='Miles mm COP'
+        WHERE v.fase = 'Vigente'
+        ORDER BY v.anio
+    """).fetchall()
     return rows_to_list(rows)
 
 

@@ -1,0 +1,561 @@
+﻿Año;Fase;Nivel;Concepto;Concepto_Padre;Unidad;Valor
+2022;Vigente;1;Total PGN;;Miles mm COP;350.097,955
+2022;Vigente;1;PGN como % del PIB;Total PGN;% PIB;0,238
+2022;Vigente;2;Funcionamiento;Total PGN;Miles mm COP;208.807,827
+2022;Vigente;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,142
+2022;Vigente;3;Gastos de Personal;Funcionamiento;Miles mm COP;38.307,185
+2022;Vigente;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;11.679,843
+2022;Vigente;3;Transferencias;Funcionamiento;Miles mm COP;155.147,678
+2022;Vigente;4;SGP;Transferencias;Miles mm COP;49.564,897
+2022;Vigente;4;Pensiones;Transferencias;Miles mm COP;50.488,999
+2022;Vigente;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;4.400,246
+2022;Vigente;4;Resto;Transferencias;Miles mm COP;50.693,536
+2022;Vigente;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;1.597,456
+2022;Vigente;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;550,314
+2022;Vigente;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;430,933
+2022;Vigente;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;1.094,417
+2022;Vigente;2;Servicio de la Deuda;Total PGN;Miles mm COP;71.664,580
+2022;Vigente;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,049
+2022;Vigente;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;15.621,349
+2022;Vigente;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;3.936,135
+2022;Vigente;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;11.581,091
+2022;Vigente;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;104,123
+2022;Vigente;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;56.043,231
+2022;Vigente;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;27.741,272
+2022;Vigente;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;26.639,140
+2022;Vigente;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;411,315
+2022;Vigente;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;1.251,504
+2022;Vigente;2;Inversión;Total PGN;Miles mm COP;69.625,548
+2022;Vigente;2;Inversión como % del PIB;Inversión;% PIB;0,047
+2022;Comprometido;1;Total PGN;;Miles mm COP;210.177,315
+2022;Comprometido;1;PGN como % del PIB;Total PGN;% PIB;0,143
+2022;Comprometido;2;Funcionamiento;Total PGN;Miles mm COP;164.877,277
+2022;Comprometido;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,112
+2022;Comprometido;3;Gastos de Personal;Funcionamiento;Miles mm COP;8.213,462
+2022;Comprometido;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;6.533,559
+2022;Comprometido;3;Transferencias;Funcionamiento;Miles mm COP;148.786,526
+2022;Comprometido;4;SGP;Transferencias;Miles mm COP;12.582,012
+2022;Comprometido;4;Pensiones;Transferencias;Miles mm COP;12.619,786
+2022;Comprometido;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;4.273,138
+2022;Comprometido;4;Resto;Transferencias;Miles mm COP;119.311,590
+2022;Comprometido;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;662,326
+2022;Comprometido;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;393,241
+2022;Comprometido;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;56,534
+2022;Comprometido;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;231,629
+2022;Comprometido;2;Servicio de la Deuda;Total PGN;Miles mm COP;8.690,014
+2022;Comprometido;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,006
+2022;Comprometido;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;3.391,474
+2022;Comprometido;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;720,372
+2022;Comprometido;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;2.655,054
+2022;Comprometido;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;16,049
+2022;Comprometido;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;5.298,540
+2022;Comprometido;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;637,457
+2022;Comprometido;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;4.570,448
+2022;Comprometido;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;7,765
+2022;Comprometido;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;82,870
+2022;Comprometido;2;Inversión;Total PGN;Miles mm COP;36.610,024
+2022;Comprometido;2;Inversión como % del PIB;Inversión;% PIB;0,025
+2022;Obligado;1;Total PGN;;Miles mm COP;165.451,985
+2022;Obligado;1;PGN como % del PIB;Total PGN;% PIB;0,112
+2022;Obligado;2;Funcionamiento;Total PGN;Miles mm COP;145.440,030
+2022;Obligado;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,099
+2022;Obligado;3;Gastos de Personal;Funcionamiento;Miles mm COP;7.476,793
+2022;Obligado;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;1.739,371
+2022;Obligado;3;Transferencias;Funcionamiento;Miles mm COP;135.393,900
+2022;Obligado;4;SGP;Transferencias;Miles mm COP;12.578,425
+2022;Obligado;4;Pensiones;Transferencias;Miles mm COP;6.115,606
+2022;Obligado;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;1.357,022
+2022;Obligado;4;Resto;Transferencias;Miles mm COP;115.342,848
+2022;Obligado;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;153,281
+2022;Obligado;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;391,607
+2022;Obligado;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;55,366
+2022;Obligado;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;229,711
+2022;Obligado;2;Servicio de la Deuda;Total PGN;Miles mm COP;8.631,580
+2022;Obligado;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,006
+2022;Obligado;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;3.340,896
+2022;Obligado;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;708,347
+2022;Obligado;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;2.623,092
+2022;Obligado;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;9,457
+2022;Obligado;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;5.290,685
+2022;Obligado;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;637,449
+2022;Obligado;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;4.570,448
+2022;Obligado;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;0,000
+2022;Obligado;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;82,787
+2022;Obligado;2;Inversión;Total PGN;Miles mm COP;11.380,375
+2022;Obligado;2;Inversión como % del PIB;Inversión;% PIB;0,008
+2022;Pagado;1;Total PGN;;Miles mm COP;164.868,950
+2022;Pagado;1;PGN como % del PIB;Total PGN;% PIB;0,112
+2022;Pagado;2;Funcionamiento;Total PGN;Miles mm COP;145.146,029
+2022;Pagado;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,099
+2022;Pagado;3;Gastos de Personal;Funcionamiento;Miles mm COP;7.447,535
+2022;Pagado;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;1.594,801
+2022;Pagado;3;Transferencias;Funcionamiento;Miles mm COP;135.295,023
+2022;Pagado;4;SGP;Transferencias;Miles mm COP;12.067,658
+2022;Pagado;4;Pensiones;Transferencias;Miles mm COP;6.111,338
+2022;Pagado;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;1.352,335
+2022;Pagado;4;Resto;Transferencias;Miles mm COP;115.763,692
+2022;Pagado;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;133,053
+2022;Pagado;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;391,596
+2022;Pagado;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;54,789
+2022;Pagado;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;229,231
+2022;Pagado;2;Servicio de la Deuda;Total PGN;Miles mm COP;8.579,760
+2022;Pagado;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,006
+2022;Pagado;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;3.289,076
+2022;Pagado;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;666,375
+2022;Pagado;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;2.613,560
+2022;Pagado;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;9,142
+2022;Pagado;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;5.290,685
+2022;Pagado;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;637,449
+2022;Pagado;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;4.570,448
+2022;Pagado;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;0,000
+2022;Pagado;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;82,787
+2022;Pagado;2;Inversión;Total PGN;Miles mm COP;11.143,160
+2022;Pagado;2;Inversión como % del PIB;Inversión;% PIB;0,008
+2023;Vigente;1;Total PGN;;Miles mm COP;410.289,582
+2023;Vigente;1;PGN como % del PIB;Total PGN;% PIB;0,258
+2023;Vigente;2;Funcionamiento;Total PGN;Miles mm COP;258.069,351
+2023;Vigente;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,163
+2023;Vigente;3;Gastos de Personal;Funcionamiento;Miles mm COP;47.008,858
+2023;Vigente;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;11.755,103
+2023;Vigente;3;Transferencias;Funcionamiento;Miles mm COP;195.733,915
+2023;Vigente;4;SGP;Transferencias;Miles mm COP;54.936,408
+2023;Vigente;4;Pensiones;Transferencias;Miles mm COP;55.740,759
+2023;Vigente;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;5.217,285
+2023;Vigente;4;Resto;Transferencias;Miles mm COP;79.839,463
+2023;Vigente;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;1.365,020
+2023;Vigente;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;655,720
+2023;Vigente;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;423,485
+2023;Vigente;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;1.127,250
+2023;Vigente;2;Servicio de la Deuda;Total PGN;Miles mm COP;77.997,999
+2023;Vigente;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,049
+2023;Vigente;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;24.018,988
+2023;Vigente;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;10.723,022
+2023;Vigente;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;13.182,204
+2023;Vigente;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;113,762
+2023;Vigente;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;53.979,011
+2023;Vigente;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;21.219,296
+2023;Vigente;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;28.951,400
+2023;Vigente;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;295,177
+2023;Vigente;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;3.513,138
+2023;Vigente;2;Inversión;Total PGN;Miles mm COP;74.222,233
+2023;Vigente;2;Inversión como % del PIB;Inversión;% PIB;0,047
+2023;Comprometido;1;Total PGN;;Miles mm COP;272.000,641
+2023;Comprometido;1;PGN como % del PIB;Total PGN;% PIB;0,171
+2023;Comprometido;2;Funcionamiento;Total PGN;Miles mm COP;208.393,555
+2023;Comprometido;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,131
+2023;Comprometido;3;Gastos de Personal;Funcionamiento;Miles mm COP;8.978,103
+2023;Comprometido;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;6.107,829
+2023;Comprometido;3;Transferencias;Funcionamiento;Miles mm COP;192.336,379
+2023;Comprometido;4;SGP;Transferencias;Miles mm COP;14.233,314
+2023;Comprometido;4;Pensiones;Transferencias;Miles mm COP;13.209,574
+2023;Comprometido;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;3.625,921
+2023;Comprometido;4;Resto;Transferencias;Miles mm COP;161.267,570
+2023;Comprometido;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;609,337
+2023;Comprometido;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;120,673
+2023;Comprometido;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;76,360
+2023;Comprometido;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;164,873
+2023;Comprometido;2;Servicio de la Deuda;Total PGN;Miles mm COP;32.026,682
+2023;Comprometido;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,020
+2023;Comprometido;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;10.342,388
+2023;Comprometido;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;6.494,608
+2023;Comprometido;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;3.792,816
+2023;Comprometido;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;54,964
+2023;Comprometido;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;21.684,294
+2023;Comprometido;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;13.624,332
+2023;Comprometido;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;7.226,147
+2023;Comprometido;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;9,762
+2023;Comprometido;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;824,054
+2023;Comprometido;2;Inversión;Total PGN;Miles mm COP;31.580,404
+2023;Comprometido;2;Inversión como % del PIB;Inversión;% PIB;0,020
+2023;Obligado;1;Total PGN;;Miles mm COP;226.927,859
+2023;Obligado;1;PGN como % del PIB;Total PGN;% PIB;0,143
+2023;Obligado;2;Funcionamiento;Total PGN;Miles mm COP;186.816,108
+2023;Obligado;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,118
+2023;Obligado;3;Gastos de Personal;Funcionamiento;Miles mm COP;8.127,158
+2023;Obligado;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;1.584,140
+2023;Obligado;3;Transferencias;Funcionamiento;Miles mm COP;176.629,535
+2023;Obligado;4;SGP;Transferencias;Miles mm COP;14.232,897
+2023;Obligado;4;Pensiones;Transferencias;Miles mm COP;6.401,018
+2023;Obligado;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;2.286,127
+2023;Obligado;4;Resto;Transferencias;Miles mm COP;153.709,493
+2023;Obligado;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;141,383
+2023;Obligado;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;119,093
+2023;Obligado;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;56,446
+2023;Obligado;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;158,352
+2023;Obligado;2;Servicio de la Deuda;Total PGN;Miles mm COP;31.606,133
+2023;Obligado;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,020
+2023;Obligado;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;9.933,640
+2023;Obligado;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;6.182,379
+2023;Obligado;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;3.717,158
+2023;Obligado;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;34,102
+2023;Obligado;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;21.672,493
+2023;Obligado;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;13.624,332
+2023;Obligado;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;7.226,147
+2023;Obligado;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;0,000
+2023;Obligado;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;822,014
+2023;Obligado;2;Inversión;Total PGN;Miles mm COP;8.505,618
+2023;Obligado;2;Inversión como % del PIB;Inversión;% PIB;0,005
+2023;Pagado;1;Total PGN;;Miles mm COP;223.188,005
+2023;Pagado;1;PGN como % del PIB;Total PGN;% PIB;0,141
+2023;Pagado;2;Funcionamiento;Total PGN;Miles mm COP;186.601,438
+2023;Pagado;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,118
+2023;Pagado;3;Gastos de Personal;Funcionamiento;Miles mm COP;8.095,867
+2023;Pagado;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;1.496,980
+2023;Pagado;3;Transferencias;Funcionamiento;Miles mm COP;176.567,043
+2023;Pagado;4;SGP;Transferencias;Miles mm COP;13.665,985
+2023;Pagado;4;Pensiones;Transferencias;Miles mm COP;6.398,052
+2023;Pagado;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;1.415,869
+2023;Pagado;4;Resto;Transferencias;Miles mm COP;155.087,137
+2023;Pagado;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;109,932
+2023;Pagado;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;119,071
+2023;Pagado;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;55,569
+2023;Pagado;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;156,976
+2023;Pagado;2;Servicio de la Deuda;Total PGN;Miles mm COP;28.167,935
+2023;Pagado;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,018
+2023;Pagado;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;8.055,160
+2023;Pagado;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;5.347,078
+2023;Pagado;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;2.674,441
+2023;Pagado;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;33,641
+2023;Pagado;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;20.112,775
+2023;Pagado;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;13.597,019
+2023;Pagado;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;5.693,742
+2023;Pagado;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;0,000
+2023;Pagado;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;822,014
+2023;Pagado;2;Inversión;Total PGN;Miles mm COP;8.418,631
+2023;Pagado;2;Inversión como % del PIB;Inversión;% PIB;0,005
+2024;Vigente;1;Total PGN;;Miles mm COP;484.265,643
+2024;Vigente;1;PGN como % del PIB;Total PGN;% PIB;0,283
+2024;Vigente;2;Funcionamiento;Total PGN;Miles mm COP;289.892,487
+2024;Vigente;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,169
+2024;Vigente;3;Gastos de Personal;Funcionamiento;Miles mm COP;54.945,194
+2024;Vigente;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;13.608,210
+2024;Vigente;3;Transferencias;Funcionamiento;Miles mm COP;217.697,336
+2024;Vigente;4;SGP;Transferencias;Miles mm COP;70.540,880
+2024;Vigente;4;Pensiones;Transferencias;Miles mm COP;66.523,475
+2024;Vigente;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;6.401,575
+2024;Vigente;4;Resto;Transferencias;Miles mm COP;74.231,406
+2024;Vigente;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;1.337,218
+2024;Vigente;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;730,072
+2024;Vigente;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;350,166
+2024;Vigente;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;1.224,292
+2024;Vigente;2;Servicio de la Deuda;Total PGN;Miles mm COP;94.521,847
+2024;Vigente;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,055
+2024;Vigente;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;37.259,837
+2024;Vigente;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;19.509,579
+2024;Vigente;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;17.520,950
+2024;Vigente;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;229,308
+2024;Vigente;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;57.262,010
+2024;Vigente;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;20.422,056
+2024;Vigente;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;35.117,708
+2024;Vigente;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;295,225
+2024;Vigente;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;1.427,021
+2024;Vigente;2;Inversión;Total PGN;Miles mm COP;99.851,309
+2024;Vigente;2;Inversión como % del PIB;Inversión;% PIB;0,058
+2024;Comprometido;1;Total PGN;;Miles mm COP;284.530,905
+2024;Comprometido;1;PGN como % del PIB;Total PGN;% PIB;0,166
+2024;Comprometido;2;Funcionamiento;Total PGN;Miles mm COP;227.680,513
+2024;Comprometido;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,133
+2024;Comprometido;3;Gastos de Personal;Funcionamiento;Miles mm COP;10.961,250
+2024;Comprometido;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;7.479,000
+2024;Comprometido;3;Transferencias;Funcionamiento;Miles mm COP;207.890,350
+2024;Comprometido;4;SGP;Transferencias;Miles mm COP;19.000,885
+2024;Comprometido;4;Pensiones;Transferencias;Miles mm COP;7.671,357
+2024;Comprometido;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;3.184,055
+2024;Comprometido;4;Resto;Transferencias;Miles mm COP;178.034,054
+2024;Comprometido;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;623,710
+2024;Comprometido;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;517,237
+2024;Comprometido;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;70,308
+2024;Comprometido;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;138,658
+2024;Comprometido;2;Servicio de la Deuda;Total PGN;Miles mm COP;18.268,243
+2024;Comprometido;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,011
+2024;Comprometido;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;7.573,666
+2024;Comprometido;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;3.502,777
+2024;Comprometido;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;4.045,163
+2024;Comprometido;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;25,726
+2024;Comprometido;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;10.694,577
+2024;Comprometido;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;688,011
+2024;Comprometido;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;9.820,595
+2024;Comprometido;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;12,811
+2024;Comprometido;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;173,161
+2024;Comprometido;2;Inversión;Total PGN;Miles mm COP;38.582,149
+2024;Comprometido;2;Inversión como % del PIB;Inversión;% PIB;0,023
+2024;Obligado;1;Total PGN;;Miles mm COP;234.443,244
+2024;Obligado;1;PGN como % del PIB;Total PGN;% PIB;0,137
+2024;Obligado;2;Funcionamiento;Total PGN;Miles mm COP;207.177,991
+2024;Obligado;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,121
+2024;Obligado;3;Gastos de Personal;Funcionamiento;Miles mm COP;9.900,481
+2024;Obligado;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;1.764,780
+2024;Obligado;3;Transferencias;Funcionamiento;Miles mm COP;194.645,950
+2024;Obligado;4;SGP;Transferencias;Miles mm COP;19.000,885
+2024;Obligado;4;Pensiones;Transferencias;Miles mm COP;7.465,652
+2024;Obligado;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;2.034,073
+2024;Obligado;4;Resto;Transferencias;Miles mm COP;166.145,340
+2024;Obligado;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;163,736
+2024;Obligado;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;507,171
+2024;Obligado;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;61,844
+2024;Obligado;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;134,029
+2024;Obligado;2;Servicio de la Deuda;Total PGN;Miles mm COP;18.183,619
+2024;Obligado;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,011
+2024;Obligado;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;7.504,923
+2024;Obligado;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;3.500,066
+2024;Obligado;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;3.987,943
+2024;Obligado;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;16,913
+2024;Obligado;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;10.678,697
+2024;Obligado;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;688,011
+2024;Obligado;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;9.817,307
+2024;Obligado;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;0,219
+2024;Obligado;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;173,161
+2024;Obligado;2;Inversión;Total PGN;Miles mm COP;9.081,633
+2024;Obligado;2;Inversión como % del PIB;Inversión;% PIB;0,005
+2024;Pagado;1;Total PGN;;Miles mm COP;231.495,876
+2024;Pagado;1;PGN como % del PIB;Total PGN;% PIB;0,135
+2024;Pagado;2;Funcionamiento;Total PGN;Miles mm COP;206.828,667
+2024;Pagado;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,121
+2024;Pagado;3;Gastos de Personal;Funcionamiento;Miles mm COP;9.742,326
+2024;Pagado;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;1.665,298
+2024;Pagado;3;Transferencias;Funcionamiento;Miles mm COP;194.601,331
+2024;Pagado;4;SGP;Transferencias;Miles mm COP;18.300,574
+2024;Pagado;4;Pensiones;Transferencias;Miles mm COP;7.453,590
+2024;Pagado;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;1.529,095
+2024;Pagado;4;Resto;Transferencias;Miles mm COP;167.318,072
+2024;Pagado;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;119,411
+2024;Pagado;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;507,124
+2024;Pagado;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;60,214
+2024;Pagado;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;132,961
+2024;Pagado;2;Servicio de la Deuda;Total PGN;Miles mm COP;15.988,332
+2024;Pagado;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,009
+2024;Pagado;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;6.971,729
+2024;Pagado;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;3.197,362
+2024;Pagado;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;3.759,260
+2024;Pagado;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;15,107
+2024;Pagado;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;9.016,604
+2024;Pagado;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;688,011
+2024;Pagado;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;8.155,214
+2024;Pagado;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;0,219
+2024;Pagado;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;173,161
+2024;Pagado;2;Inversión;Total PGN;Miles mm COP;8.678,876
+2024;Pagado;2;Inversión como % del PIB;Inversión;% PIB;0,005
+2025;Vigente;1;Total PGN;;Miles mm COP;515.757,071
+2025;Vigente;1;PGN como % del PIB;Total PGN;% PIB;0,278
+2025;Vigente;2;Funcionamiento;Total PGN;Miles mm COP;319.190,746
+2025;Vigente;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,172
+2025;Vigente;3;Gastos de Personal;Funcionamiento;Miles mm COP;60.242,852
+2025;Vigente;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;16.804,684
+2025;Vigente;3;Transferencias;Funcionamiento;Miles mm COP;237.695,217
+2025;Vigente;4;SGP;Transferencias;Miles mm COP;81.984,183
+2025;Vigente;4;Pensiones;Transferencias;Miles mm COP;77.395,877
+2025;Vigente;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;7.120,185
+2025;Vigente;4;Resto;Transferencias;Miles mm COP;71.194,972
+2025;Vigente;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;2.050,774
+2025;Vigente;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;759,156
+2025;Vigente;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;358,659
+2025;Vigente;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;1.279,404
+2025;Vigente;2;Servicio de la Deuda;Total PGN;Miles mm COP;112.605,186
+2025;Vigente;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,061
+2025;Vigente;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;41.029,422
+2025;Vigente;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;21.772,590
+2025;Vigente;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;19.104,458
+2025;Vigente;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;152,374
+2025;Vigente;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;71.575,764
+2025;Vigente;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;28.993,667
+2025;Vigente;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;40.380,190
+2025;Vigente;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;294,810
+2025;Vigente;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;1.907,098
+2025;Vigente;2;Inversión;Total PGN;Miles mm COP;83.961,138
+2025;Vigente;2;Inversión como % del PIB;Inversión;% PIB;0,045
+2025;Comprometido;1;Total PGN;;Miles mm COP;311.723,637
+2025;Comprometido;1;PGN como % del PIB;Total PGN;% PIB;0,168
+2025;Comprometido;2;Funcionamiento;Total PGN;Miles mm COP;256.862,145
+2025;Comprometido;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,139
+2025;Comprometido;3;Gastos de Personal;Funcionamiento;Miles mm COP;12.169,970
+2025;Comprometido;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;8.260,777
+2025;Comprometido;3;Transferencias;Funcionamiento;Miles mm COP;235.014,660
+2025;Comprometido;4;SGP;Transferencias;Miles mm COP;17.597,262
+2025;Comprometido;4;Pensiones;Transferencias;Miles mm COP;22.785,789
+2025;Comprometido;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;3.958,314
+2025;Comprometido;4;Resto;Transferencias;Miles mm COP;190.673,295
+2025;Comprometido;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;674,303
+2025;Comprometido;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;514,152
+2025;Comprometido;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;63,839
+2025;Comprometido;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;164,446
+2025;Comprometido;2;Servicio de la Deuda;Total PGN;Miles mm COP;18.498,660
+2025;Comprometido;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,010
+2025;Comprometido;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;5.589,144
+2025;Comprometido;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;2.731,141
+2025;Comprometido;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;2.819,326
+2025;Comprometido;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;38,676
+2025;Comprometido;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;12.909,517
+2025;Comprometido;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;1.486,898
+2025;Comprometido;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;11.160,405
+2025;Comprometido;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;12,824
+2025;Comprometido;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;249,389
+2025;Comprometido;2;Inversión;Total PGN;Miles mm COP;36.362,831
+2025;Comprometido;2;Inversión como % del PIB;Inversión;% PIB;0,020
+2025;Obligado;1;Total PGN;;Miles mm COP;256.775,161
+2025;Obligado;1;PGN como % del PIB;Total PGN;% PIB;0,139
+2025;Obligado;2;Funcionamiento;Total PGN;Miles mm COP;232.425,239
+2025;Obligado;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,125
+2025;Obligado;3;Gastos de Personal;Funcionamiento;Miles mm COP;11.045,382
+2025;Obligado;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;2.035,420
+2025;Obligado;3;Transferencias;Funcionamiento;Miles mm COP;218.885,661
+2025;Obligado;4;SGP;Transferencias;Miles mm COP;17.562,952
+2025;Obligado;4;Pensiones;Transferencias;Miles mm COP;12.305,655
+2025;Obligado;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;2.760,986
+2025;Obligado;4;Resto;Transferencias;Miles mm COP;186.256,068
+2025;Obligado;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;227,494
+2025;Obligado;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;12,600
+2025;Obligado;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;62,516
+2025;Obligado;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;156,167
+2025;Obligado;2;Servicio de la Deuda;Total PGN;Miles mm COP;17.721,909
+2025;Obligado;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,010
+2025;Obligado;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;4.824,696
+2025;Obligado;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;2.574,428
+2025;Obligado;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;2.233,598
+2025;Obligado;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;16,670
+2025;Obligado;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;12.897,213
+2025;Obligado;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;1.486,898
+2025;Obligado;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;11.160,405
+2025;Obligado;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;0,520
+2025;Obligado;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;249,389
+2025;Obligado;2;Inversión;Total PGN;Miles mm COP;6.628,013
+2025;Obligado;2;Inversión como % del PIB;Inversión;% PIB;0,004
+2025;Pagado;1;Total PGN;;Miles mm COP;254.037,428
+2025;Pagado;1;PGN como % del PIB;Total PGN;% PIB;0,137
+2025;Pagado;2;Funcionamiento;Total PGN;Miles mm COP;232.170,515
+2025;Pagado;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,125
+2025;Pagado;3;Gastos de Personal;Funcionamiento;Miles mm COP;11.024,942
+2025;Pagado;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;1.934,133
+2025;Pagado;3;Transferencias;Funcionamiento;Miles mm COP;218.824,487
+2025;Pagado;4;SGP;Transferencias;Miles mm COP;17.561,824
+2025;Pagado;4;Pensiones;Transferencias;Miles mm COP;12.305,536
+2025;Pagado;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;1.805,368
+2025;Pagado;4;Resto;Transferencias;Miles mm COP;187.151,760
+2025;Pagado;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;157,739
+2025;Pagado;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;12,447
+2025;Pagado;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;62,411
+2025;Pagado;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;154,356
+2025;Pagado;2;Servicio de la Deuda;Total PGN;Miles mm COP;15.334,747
+2025;Pagado;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,008
+2025;Pagado;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;4.401,569
+2025;Pagado;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;2.539,399
+2025;Pagado;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;1.845,890
+2025;Pagado;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;16,280
+2025;Pagado;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;10.933,178
+2025;Pagado;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;1.285,127
+2025;Pagado;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;9.398,142
+2025;Pagado;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;0,520
+2025;Pagado;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;249,389
+2025;Pagado;2;Inversión;Total PGN;Miles mm COP;6.532,166
+2025;Pagado;2;Inversión como % del PIB;Inversión;% PIB;0,004
+2026;Vigente;1;Total PGN;;Miles mm COP;516.165,220
+2026;Vigente;1;PGN como % del PIB;Total PGN;% PIB;0,256
+2026;Vigente;2;Funcionamiento;Total PGN;Miles mm COP;327.314,280
+2026;Vigente;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,162
+2026;Vigente;3;Gastos de Personal;Funcionamiento;Miles mm COP;66.677,814
+2026;Vigente;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;18.373,507
+2026;Vigente;3;Transferencias;Funcionamiento;Miles mm COP;237.695,217
+2026;Vigente;4;SGP;Transferencias;Miles mm COP;88.352,506
+2026;Vigente;4;Pensiones;Transferencias;Miles mm COP;83.126,345
+2026;Vigente;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;11.949,382
+2026;Vigente;4;Resto;Transferencias;Miles mm COP;54.266,983
+2026;Vigente;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;2.106,118
+2026;Vigente;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;759,543
+2026;Vigente;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;372,372
+2026;Vigente;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;1.329,709
+2026;Vigente;2;Servicio de la Deuda;Total PGN;Miles mm COP;100.449,708
+2026;Vigente;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,050
+2026;Vigente;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;38.406,045
+2026;Vigente;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;17.273,045
+2026;Vigente;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;19.987,062
+2026;Vigente;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;1.145,938
+2026;Vigente;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;62.043,663
+2026;Vigente;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;10.342,874
+2026;Vigente;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;48.777,532
+2026;Vigente;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;257,929
+2026;Vigente;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;2.665,328
+2026;Vigente;2;Inversión;Total PGN;Miles mm COP;88.401,231
+2026;Vigente;2;Inversión como % del PIB;Inversión;% PIB;0,044
+2026;Comprometido;1;Total PGN;;Miles mm COP;345.345,912
+2026;Comprometido;1;PGN como % del PIB;Total PGN;% PIB;0,171
+2026;Comprometido;2;Funcionamiento;Total PGN;Miles mm COP;260.473,402
+2026;Comprometido;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,129
+2026;Comprometido;3;Gastos de Personal;Funcionamiento;Miles mm COP;14.033,414
+2026;Comprometido;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;10.275,595
+2026;Comprometido;3;Transferencias;Funcionamiento;Miles mm COP;235.014,660
+2026;Comprometido;4;SGP;Transferencias;Miles mm COP;19.307,683
+2026;Comprometido;4;Pensiones;Transferencias;Miles mm COP;22.416,473
+2026;Comprometido;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;6.153,251
+2026;Comprometido;4;Resto;Transferencias;Miles mm COP;187.137,253
+2026;Comprometido;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;877,224
+2026;Comprometido;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;16,303
+2026;Comprometido;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;74,582
+2026;Comprometido;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;181,625
+2026;Comprometido;2;Servicio de la Deuda;Total PGN;Miles mm COP;39.886,104
+2026;Comprometido;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,020
+2026;Comprometido;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;17.117,356
+2026;Comprometido;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;8.662,101
+2026;Comprometido;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;8.384,691
+2026;Comprometido;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;70,564
+2026;Comprometido;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;22.768,748
+2026;Comprometido;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;549,539
+2026;Comprometido;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;22.004,464
+2026;Comprometido;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;9,307
+2026;Comprometido;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;205,439
+2026;Comprometido;2;Inversión;Total PGN;Miles mm COP;44.986,407
+2026;Comprometido;2;Inversión como % del PIB;Inversión;% PIB;0,022
+2026;Obligado;1;Total PGN;;Miles mm COP;277.300,888
+2026;Obligado;1;PGN como % del PIB;Total PGN;% PIB;0,137
+2026;Obligado;2;Funcionamiento;Total PGN;Miles mm COP;234.644,519
+2026;Obligado;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,116
+2026;Obligado;3;Gastos de Personal;Funcionamiento;Miles mm COP;12.764,399
+2026;Obligado;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;2.462,045
+2026;Obligado;3;Transferencias;Funcionamiento;Miles mm COP;218.885,661
+2026;Obligado;4;SGP;Transferencias;Miles mm COP;19.278,821
+2026;Obligado;4;Pensiones;Transferencias;Miles mm COP;12.241,675
+2026;Obligado;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;2.764,906
+2026;Obligado;4;Resto;Transferencias;Miles mm COP;184.600,259
+2026;Obligado;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;269,319
+2026;Obligado;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;16,233
+2026;Obligado;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;73,358
+2026;Obligado;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;173,504
+2026;Obligado;2;Servicio de la Deuda;Total PGN;Miles mm COP;32.694,265
+2026;Obligado;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,016
+2026;Obligado;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;10.157,780
+2026;Obligado;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;6.124,309
+2026;Obligado;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;3.996,201
+2026;Obligado;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;37,270
+2026;Obligado;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;22.536,484
+2026;Obligado;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;531,843
+2026;Obligado;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;22.004,464
+2026;Obligado;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;0,177
+2026;Obligado;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;0,000
+2026;Obligado;2;Inversión;Total PGN;Miles mm COP;9.962,104
+2026;Obligado;2;Inversión como % del PIB;Inversión;% PIB;0,005
+2026;Pagado;1;Total PGN;;Miles mm COP;273.651,352
+2026;Pagado;1;PGN como % del PIB;Total PGN;% PIB;0,136
+2026;Pagado;2;Funcionamiento;Total PGN;Miles mm COP;234.295,193
+2026;Pagado;2;Funcionamiento como % del PIB;Funcionamiento;% PIB;0,116
+2026;Pagado;3;Gastos de Personal;Funcionamiento;Miles mm COP;12.691,969
+2026;Pagado;3;Adquisición de Bienes y Servicios;Funcionamiento;Miles mm COP;2.331,984
+2026;Pagado;3;Transferencias;Funcionamiento;Miles mm COP;218.824,487
+2026;Pagado;4;SGP;Transferencias;Miles mm COP;19.278,318
+2026;Pagado;4;Pensiones;Transferencias;Miles mm COP;12.241,004
+2026;Pagado;4;IES Pública sin Pensiones;Transferencias;Miles mm COP;2.034,316
+2026;Pagado;4;Resto;Transferencias;Miles mm COP;185.270,849
+2026;Pagado;3;Gastos de Comercialización y Producción;Funcionamiento;Miles mm COP;190,471
+2026;Pagado;3;Adquisición de Activos Financieros;Funcionamiento;Miles mm COP;16,233
+2026;Pagado;3;Disminución de Pasivos;Funcionamiento;Miles mm COP;73,171
+2026;Pagado;3;Gastos por Tributos, Multas, Sanciones e Intereses de Mora;Funcionamiento;Miles mm COP;166,879
+2026;Pagado;2;Servicio de la Deuda;Total PGN;Miles mm COP;29.822,902
+2026;Pagado;2;Servicio de la Deuda como % del PIB;Servicio de la Deuda;% PIB;0,015
+2026;Pagado;3;Servicio de la Deuda Pública Externa;Servicio de la Deuda;Miles mm COP;8.764,093
+2026;Pagado;4;Principal - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;5.827,694
+2026;Pagado;4;Intereses - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;2.899,583
+2026;Pagado;4;Comisiones y Otros Gastos - Deuda Externa;Servicio de la Deuda Pública Externa;Miles mm COP;36,817
+2026;Pagado;3;Servicio de la Deuda Pública Interna;Servicio de la Deuda;Miles mm COP;21.058,808
+2026;Pagado;4;Principal - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;530,429
+2026;Pagado;4;Intereses - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;20.528,202
+2026;Pagado;4;Comisiones y Otros Gastos - Deuda Interna;Servicio de la Deuda Pública Interna;Miles mm COP;0,177
+2026;Pagado;3;Fondo de Contingencias;Servicio de la Deuda;Miles mm COP;0,000
+2026;Pagado;2;Inversión;Total PGN;Miles mm COP;9.533,256
+2026;Pagado;2;Inversión como % del PIB;Inversión;% PIB;0,005
