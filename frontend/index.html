@@ -535,7 +535,7 @@ footer strong{color:#fff}
     <p class="ss">Vigencia 2025 · PND <strong>"Colombia, potencia mundial de la vida"</strong> · Miles de millones COP corrientes. Fuente: DPIP–SIIF.</p>
     <div class="g2 rv">
       <div class="card bt">
-        <div class="ct">Distribución porcentual inversión 2025
+        <div class="ct"><span class="ct-text">Distribución porcentual inversión 2025</span>
           <button class="card-expand" onclick="openCardModal('donut-sec1')" title="Ver en pantalla completa">
             <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg>
           </button>
@@ -546,7 +546,7 @@ footer strong{color:#fff}
         </div>
       </div>
       <div class="card bm">
-        <div class="ct">Ejecución por transformador — corte marzo 2025
+        <div class="ct"><span class="ct-text">Ejecución por transformador — corte marzo 2025</span>
           <button class="card-expand" onclick="openCardModal('tabla-sec1')" title="Ver en pantalla completa">
             <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg>
           </button>
@@ -572,11 +572,11 @@ footer strong{color:#fff}
     <h2 class="st">PGN 2022 – 2026</h2>
     <p class="ss">Estructura del Presupuesto General de la Nación. Apropiación vigente acumulada a marzo. Miles de millones COP corrientes. Fuente: MHCP – DNP.</p>
     <div class="g2 rv">
-      <div class="card bt"><div class="ct">Apropiación vigente PGN por componente</div><div style="position:relative;height:230px"><canvas id="barPGN"></canvas></div></div>
-      <div class="card bm"><div class="ct">Inversión % del PIB y del gasto total</div><div style="position:relative;height:230px"><canvas id="lineInv"></canvas></div></div>
+      <div class="card bt"><div class="ct">Apropiación vigente PGN por componente<button class="card-expand" onclick="openCardModal('bar-sec2')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div style="position:relative;height:230px"><canvas id="barPGN"></canvas></div></div>
+      <div class="card bm"><div class="ct">Inversión % del PIB y del gasto total<button class="card-expand" onclick="openCardModal('line-sec2')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div style="position:relative;height:230px"><canvas id="lineInv"></canvas></div></div>
     </div>
     <div class="card rv" style="margin-top:18px">
-      <div class="ct">Resumen PGN 2022-2026 · Vigente a marzo (miles de millones COP corrientes)</div>
+      <div class="ct">Resumen PGN 2022-2026 · Vigente a marzo (miles de millones COP corrientes)<button class="card-expand" onclick="openCardModal('tbl-sec2')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div>
       <div class="tbl-wrap">
         <table class="tbl">
           <thead><tr><th>Componente</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026</th><th>% 2026</th></tr></thead>
@@ -927,8 +927,9 @@ const D={
   ],
 };
 
-/* ── Cache datos Sec 1 para re-render en modal ── */
+/* ── Cache datos Sec 1 y Sec 2 para re-render en modal ── */
 const _s1={};
+const _s2={};
 
 /* ── Renders ── */
 function rDonut(d){
@@ -1011,6 +1012,17 @@ function openCardModal(key){
       <tfoot><tr class="tr"><td colspan="5"></td></tr></tfoot>
     </table></div>`;
     if(_s1.tabla) _rTablaTModal(_s1.tabla);
+  } else if(key==='bar-sec2'){
+    title.textContent='Apropiación vigente PGN por componente · 2022–2026';
+    body.innerHTML=`<div style="position:relative;height:calc(88vh - 80px)"><canvas id="barPGN-m"></canvas></div>`;
+    if(_s2.ev) requestAnimationFrame(()=>_buildBarPGN('barPGN-m',_s2.ev));
+  } else if(key==='line-sec2'){
+    title.textContent='Inversión como % del PIB y del gasto total · 2022–2026';
+    body.innerHTML=`<div style="position:relative;height:calc(88vh - 80px)"><canvas id="lineInv-m"></canvas></div>`;
+    if(_s2.ej) requestAnimationFrame(()=>_buildLineInv('lineInv-m',_s2.ej));
+  } else if(key==='tbl-sec2'){
+    title.textContent='Resumen PGN 2022-2026 · Vigente a marzo';
+    body.innerHTML=document.querySelector('#sec2 .card.rv .tbl-wrap').outerHTML;
   }
 }
 
@@ -1018,13 +1030,13 @@ function closeCardModal(e){
   if(e&&e.target!==document.getElementById('cardModal'))return;
   document.getElementById('cardModal').classList.remove('active');
   document.body.style.overflow='';
-  destroyChart('donutT-m');
+  ['donutT-m','barPGN-m','lineInv-m'].forEach(id=>destroyChart(id));
 }
 
-function rBarPGN(ev){
-  destroyChart('barPGN');
+function _buildBarPGN(canvasId,ev){
+  destroyChart(canvasId);
   const R=['Funcionamiento','Inversión','Servicio Deuda'],CL=[P.t,P.m,P.a],Y=[2022,2023,2024,2025,2026];
-  const c=new Chart(document.getElementById('barPGN').getContext('2d'),{type:'bar',
+  const c=new Chart(document.getElementById(canvasId).getContext('2d'),{type:'bar',
     data:{labels:['2022','2023','2024','2025','2026'],
       datasets:R.map((r,i)=>({label:r,data:Y.map(y=>{const row=ev.find(d=>d.y===y&&d.r===r);return row?row.v:0}),
         backgroundColor:CL[i]+'99',borderColor:CL[i],borderWidth:1}))},
@@ -1034,10 +1046,11 @@ function rBarPGN(ev){
       plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:12}}}}});
   c._evtAnnot=CHART_EVENTS.barPGN;
 }
+function rBarPGN(ev){_s2.ev=ev;_buildBarPGN('barPGN',ev);}
 
-function rLineInv(ej){
-  destroyChart('lineInv');
-  new Chart(document.getElementById('lineInv').getContext('2d'),{type:'line',
+function _buildLineInv(canvasId,ej){
+  destroyChart(canvasId);
+  new Chart(document.getElementById(canvasId).getContext('2d'),{type:'line',
     data:{labels:['2022','2023','2024','2025','2026'],datasets:[
       {label:'% Gasto total',data:ej.map(d=>d.g), borderColor:P.m,backgroundColor:'rgba(254,27,123,.07)',tension:.35,pointRadius:4,fill:true},
       {label:'% PIB',        data:ej.map(d=>d.pib),borderColor:P.t,backgroundColor:'rgba(0,195,193,.05)', tension:.35,pointRadius:4,fill:true}]},
@@ -1045,6 +1058,7 @@ function rLineInv(ej){
       scales:{x:{grid:{color:P.gc}},y:{grid:{color:P.gc},ticks:{callback:v=>v+'%'}}},
       plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:12}}}}});
 }
+function rLineInv(ej){_s2.ej=ej;_buildLineInv('lineInv',ej);}
 
 function toggleChildren(pid,btn){
   document.querySelectorAll(`tr[data-pid="${pid}"]`).forEach(r=>{
@@ -1447,9 +1461,9 @@ async function init(bid){
     const v=resRaw.vigencia;
     const ss1=document.querySelector('#sec1 .ss');
     if(ss1)ss1.innerHTML=`Vigencia ${v} · PND <strong>"Colombia, potencia mundial de la vida"</strong> · Miles de millones COP corrientes. Fuente: DPIP–SIIF.`;
-    const ct1=document.querySelector('#sec1 .card.bt .ct');
+    const ct1=document.querySelector('#sec1 .card.bt .ct .ct-text');
     if(ct1)ct1.textContent=`Distribución porcentual inversión ${v}`;
-    const ct2=document.querySelector('#sec1 .card.bm .ct');
+    const ct2=document.querySelector('#sec1 .card.bm .ct .ct-text');
     if(ct2)ct2.textContent=`Ejecución por transformador — corte marzo ${v}`;
     const ss6=document.querySelector('#sec6 .st');
     if(ss6)ss6.textContent=`Ejecución por Sector — ${v}`;
@@ -2007,7 +2021,7 @@ document.addEventListener('keydown', function(e) {
     ['tablaModal','cardModal'].forEach(id=>{
       document.getElementById(id).classList.remove('active');
     });
-    destroyChart('donutT-m');
+    ['donutT-m','barPGN-m','lineInv-m'].forEach(id=>destroyChart(id));
     document.body.style.overflow='';
   }
 });
