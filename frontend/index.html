@@ -99,6 +99,26 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 /* tablas */
 .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
 .tbl{width:100%;border-collapse:collapse;font-size:13px}
+/* tabla completa sección 2 */
+.tbl-pgn{min-width:1320px;border-collapse:collapse;font-size:11px}
+.tbl-pgn th,.tbl-pgn td{padding:4px 7px;border:1px solid #dde;text-align:right;white-space:nowrap}
+.tbl-pgn td:first-child,.tbl-pgn th.tc-label{text-align:left;min-width:210px;position:sticky;left:0;background:var(--bl);z-index:1;border-right:2px solid #ccd}
+.tbl-pgn .th-yr{text-align:center;background:var(--t);color:#fff;font-weight:800;font-size:11px;border-left:3px solid var(--bl)}
+.tbl-pgn .th-fase{text-align:center;background:#1a2b3c;color:#9cc;font-size:9px;font-weight:700;letter-spacing:.04em}
+.tbl-pgn tr.tp-hdr td{font-weight:700;font-style:italic;color:#fff}
+.tbl-pgn tr.tp-hdr td:first-child{position:sticky;left:0;background:inherit;z-index:1;border-right:2px solid rgba(255,255,255,.3)}
+.tbl-pgn tr.tp-pgn td{background:#004f4e}
+.tbl-pgn tr.tp-func td{background:#5e3397}
+.tbl-pgn tr.tp-deuda td{background:#1a4070}
+.tbl-pgn tr.tp-inv td{background:#c01060}
+.tbl-pgn tr.tp-tot td{background:#0a1f2e;color:#fff;font-weight:700}
+.tbl-pgn tr.tp-tot td:first-child{background:#0a1f2e;position:sticky;left:0;z-index:1}
+.tbl-pgn tr.tp-n2 td:first-child{font-weight:700}
+.tbl-pgn tr.tp-n3 td:first-child{padding-left:16px;color:#334}
+.tbl-pgn tr.tp-n4 td:first-child{padding-left:28px;color:#556;font-size:10px}
+.tbl-pgn tr:hover td{filter:brightness(0.93)}
+.btn-tabla{display:inline-flex;align-items:center;gap:6px;padding:9px 22px;border-radius:8px;border:1.5px solid var(--t);background:transparent;color:var(--t);font-weight:700;cursor:pointer;font-size:13px;font-family:inherit;transition:background .2s,color .2s}
+.btn-tabla:hover{background:var(--t);color:#fff}
 .tbl thead th{background:var(--t);color:#fff;font-weight:800;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:8px 10px;text-align:right}
 .tbl thead th:first-child{text-align:left;border-radius:5px 0 0 0}.tbl thead th:last-child{border-radius:0 5px 0 0}
 .tbl td{padding:8px 10px;border-bottom:1px solid var(--gc);color:var(--gm);text-align:right}
@@ -548,6 +568,15 @@ footer strong{color:#fff}
         </table>
       </div>
     </div>
+    <div style="text-align:center;margin-top:22px">
+      <button id="btnTablaCompleta" class="btn-tabla" onclick="toggleTablaCompleta()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M0 2h16v2H0zM0 7h16v2H0zM0 12h16v2H0z"/></svg>
+        <span id="btnTablaLabel">Ver tabla detallada</span>
+      </button>
+    </div>
+    <div id="tablaCompletaWrap" style="display:none;margin-top:14px">
+      <p class="ss" style="text-align:center">Cargando…</p>
+    </div>
   </div>
 </section>
 
@@ -907,6 +936,70 @@ function rLineInv(ej){
     options:{responsive:true,maintainAspectRatio:false,
       scales:{x:{grid:{color:P.gc}},y:{grid:{color:P.gc},ticks:{callback:v=>v+'%'}}},
       plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:12}}}}});
+}
+
+function rTablaCompleta(raw){
+  const el=document.getElementById('tablaCompletaWrap');
+  if(!raw||!raw.length){el.innerHTML='<p class="ss" style="text-align:center;color:#c00">Sin datos disponibles.</p>';return;}
+  const Y=[2022,2023,2024,2025,2026];
+  const F=['vigente','comprometido','obligado','pagado'];
+  const FL=['Vig.','Comp.','Obl.','Pago'];
+  // Reordenar: filas % PIB antes de su par COP (en CSV van después, índice impar)
+  const sorted=[...raw].sort((a,b)=>{
+    const ga=a.unidad==='% PIB'?a.orden-1:a.orden;
+    const gb=b.unidad==='% PIB'?b.orden-1:b.orden;
+    if(ga!==gb)return ga-gb;
+    return a.unidad==='% PIB'?-1:1;
+  });
+  const fmtN=v=>v==null?'–':Math.round(v).toLocaleString('es-CO');
+  const fmtP=v=>v==null?'–':(v*100).toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1})+'%';
+  const rowCls=r=>{
+    if(r.unidad==='% PIB'){
+      const n=r.nombre;
+      if(n.includes('PGN'))return 'tp-hdr tp-pgn';
+      if(n.includes('Funcionamiento'))return 'tp-hdr tp-func';
+      if(n.includes('Deuda'))return 'tp-hdr tp-deuda';
+      return 'tp-hdr tp-inv';
+    }
+    if(r.nombre==='Total PGN')return 'tp-tot';
+    if(r.nivel===2)return 'tp-n2';
+    if(r.nivel===3)return 'tp-n3';
+    return 'tp-n4';
+  };
+  let h=`<div class="tbl-wrap"><table class="tbl tbl-pgn">
+  <thead>
+    <tr>
+      <th class="tc-label th-fase" rowspan="2">Concepto</th>
+      ${Y.map(y=>`<th colspan="4" class="th-yr">${y}</th>`).join('')}
+    </tr>
+    <tr>${Y.flatMap(()=>FL.map(f=>`<th class="th-fase">${f}</th>`)).join('')}</tr>
+  </thead><tbody>`;
+  for(const r of sorted){
+    const cls=rowCls(r);
+    const fmt=r.unidad==='% PIB'?fmtP:fmtN;
+    h+=`<tr class="${cls}"><td>${r.nombre}</td>`;
+    for(const y of Y)for(const f of F)h+=`<td>${fmt(r[f+'_'+y])}</td>`;
+    h+=`</tr>`;
+  }
+  h+=`</tbody></table></div>
+  <p class="ss" style="margin-top:6px;text-align:right">Vigente acumulado a marzo. Fuente: MHCP – DNP.</p>`;
+  el.innerHTML=h;
+}
+
+async function toggleTablaCompleta(){
+  const el=document.getElementById('tablaCompletaWrap');
+  const lbl=document.getElementById('btnTablaLabel');
+  if(el.style.display==='none'){
+    el.style.display='';
+    lbl.textContent='Ocultar tabla detallada';
+    if(el.textContent.trim().startsWith('Cargando')){
+      const raw=await af('/api/evolucion/tabla_completa',null);
+      rTablaCompleta(raw);
+    }
+  }else{
+    el.style.display='none';
+    lbl.textContent='Ver tabla detallada';
+  }
 }
 
 function rRegiones(d){

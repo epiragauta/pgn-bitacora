@@ -225,6 +225,14 @@ def get_evolucion_drilldown(
     return rows_to_list(rows)
 
 
+@app.get("/api/evolucion/tabla_completa", tags=["Sec 2 - Evolución Presupuestal"])
+def get_tabla_completa():
+    """Todos los conceptos × años × fases en formato pivot (pgn_vista_crosstab)."""
+    db = get_db()
+    rows = db.execute("SELECT * FROM pgn_vista_crosstab ORDER BY orden").fetchall()
+    return rows_to_list(rows)
+
+
 @app.get("/api/evolucion/inversion_historica", tags=["Sec 2 - Evolución Presupuestal"])
 def get_inversion_historica(bitacora_id: Optional[int] = None):
     """Serie histórica de inversión con indicadores macroeconómicos (2022-2026)."""
