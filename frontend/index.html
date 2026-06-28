@@ -1031,10 +1031,14 @@ function openCardModal(key){
     const sentinel=document.createElement('div');
     sentinel.id='mapSentinel';sentinel.style.height='450px';
     mapEl.parentElement.insertBefore(sentinel,mapEl);
-    body.style.cssText='padding:0;height:calc(88vh - 70px)';
-    mapEl.style.height='100%';
+    body.style.cssText='padding:0;height:calc(88vh - 70px);overflow:hidden';
+    mapEl.style.cssText='height:100%;border-radius:0;overflow:hidden';
     body.appendChild(mapEl);
-    if(_leafletMap) setTimeout(()=>_leafletMap.invalidateSize(),120);
+    // Esperar que termine la animación del modal (250ms) antes de invalidar
+    if(_leafletMap){
+      setTimeout(()=>_leafletMap.invalidateSize({animate:false}),300);
+      setTimeout(()=>_leafletMap.invalidateSize({animate:false}),650);
+    }
   } else if(key==='line-sec4'){
     title.textContent='% Compromisos · Obligaciones · Pagos — Ejecución inversión 2022-2025';
     body.innerHTML=`<div style="position:relative;height:calc(88vh - 80px)"><canvas id="lineEj-m"></canvas></div>`;
@@ -1066,9 +1070,9 @@ function closeCardModal(e){
     const mapEl=document.getElementById('mapContainer');
     sentinel.parentElement.insertBefore(mapEl,sentinel);
     sentinel.remove();
-    mapEl.style.height='450px';
+    mapEl.style.cssText='height:450px;border-radius:8px;overflow:hidden';
     document.getElementById('cardModalBody').style.cssText='';
-    if(_leafletMap) setTimeout(()=>_leafletMap.invalidateSize(),120);
+    if(_leafletMap) setTimeout(()=>_leafletMap.invalidateSize({animate:false}),150);
   }
 }
 
