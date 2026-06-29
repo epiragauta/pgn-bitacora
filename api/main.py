@@ -321,6 +321,29 @@ def get_regionalizacion_historico(bitacora_id: Optional[int] = None):
     return rows_to_list(rows)
 
 
+@app.get("/api/regionalizacion/sectores", tags=["Sec 3 - Regionalización"])
+def get_regionalizacion_sectores(
+    vigencia: int = Query(2026, description="Año de corte"),
+    region: Optional[str] = None,
+    bitacora_id: Optional[int] = None,
+):
+    """Sectores por región. Filtra por vigencia y opcionalmente por región."""
+    db = get_db()
+    bid, _ = resolve_bitacora(db, bitacora_id)
+    sql = """
+        SELECT vigencia, region, sector,
+               apropiacion_mmm, compromisos_mmm, obligaciones_mmm, pagos_mmm
+        FROM regionalizacion_sectores
+        WHERE bitacora_id=? AND vigencia=?
+    """
+    params: list = [bid, vigencia]
+    if region:
+        sql += " AND region=?"
+        params.append(region.upper())
+    sql += " ORDER BY region, apropiacion_mmm DESC"
+    return rows_to_list(db.execute(sql, params).fetchall())
+
+
 @app.get("/api/regionalizacion/mapa", tags=["Sec 3 - Regionalización"])
 def get_regionalizacion_mapa(
     vigencia: int = Query(2025, description="Año de corte"),

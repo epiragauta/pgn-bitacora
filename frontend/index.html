@@ -2095,65 +2095,126 @@ async function showComponentes(transformador) {
 
 /* ── Departamentos Modal ── */
 async function showDepartamentos(region) {
-  const modal = document.getElementById('infoModal');
+  const modal      = document.getElementById('infoModal');
   const modalTitle = document.getElementById('modalTitle');
-  const modalText = document.getElementById('modalText');
+  const modalText  = document.getElementById('modalText');
 
-  // Show loading state
-  modalTitle.textContent = `Departamentos de la región ${region}`;
-  modalText.innerHTML = '<div style="text-align:center;padding:20px;color:var(--gs)">Cargando departamentos...</div>';
+  modalTitle.textContent = `Región ${region}`;
+  modalText.innerHTML = '<div style="text-align:center;padding:20px;color:var(--gs)">Cargando...</div>';
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 
-  // Fetch departamentos via nuevo endpoint
-  const data = await af(`/regionalizacion?vigencia=${_reVigencia}&region=${encodeURIComponent(region)}`, []);
-  const deptos = data.filter(x => x.tipo === 'departamento')
-                     .sort((a,b)=>a.departamento.localeCompare(b.departamento,'es'));
+  // Fetch paralelo: departamentos + sectores
+  const [data, sectData] = await Promise.all([
+    af(`/regionalizacion?vigencia=${_reVigencia}&region=${encodeURIComponent(region)}`, []),
+    af(`/regionalizacion/sectores?vigencia=${_reVigencia}&region=${encodeURIComponent(region)}`, [])
+  ]);
 
-  if (deptos.length === 0) {
-    modalText.innerHTML = '<p style="color:var(--gs);text-align:center;padding:20px">No hay departamentos disponibles para esta región.</p>';
-    return;
-  }
+  const deptos  = (data||[]).filter(x=>x.tipo==='departamento')
+                            .sort((a,b)=>a.departamento.localeCompare(b.departamento,'es'));
+  const sectores = (sectData||[]).sort((a,b)=>(b.apropiacion_mmm||0)-(a.apropiacion_mmm||0));
 
-  // Valores en mmm (miles de millones); mostrar redondeados
-  const fM = n => n != null ? Math.round(n).toLocaleString('es-CO') + ' mmm' : '—';
-  const fp = p => p != null ? p.toFixed(1) + '%' : '—';
+  const fM = n => n!=null ? Math.round(n).toLocaleString('es-CO')+' mmm' : '—';
+  const fp = p => p!=null ? p.toFixed(1)+'%' : '—';
 
-  const tableHTML = `
-    <div style="margin-bottom:12px">
-      <strong style="font-size:13px;color:var(--gt)">Región ${region}</strong>
-      <div style="font-size:12px;color:var(--gs);margin-top:3px">${deptos.length} departamento${deptos.length !== 1 ? 's' : ''} · Corte marzo ${_reVigencia}</div>
-    </div>
-    <div style="max-height:400px;overflow-y:auto">
+  // ── HTML tabla departamentos ──
+  const tablaHTML = deptos.length ? `
+    <div style="margin-bottom:10px;font-size:12px;color:var(--gs)">${deptos.length} departamento${deptos.length!==1?'s':''} · Corte marzo ${_reVigencia}</div>
+    <div style="max-height:360px;overflow-y:auto">
       <table class="tbl" style="font-size:11px">
-        <thead>
+        <thead><tr>
+          <th style="text-align:left;min-width:130px">Departamento</th>
+          <th>Aprop. (mmm)</th><th>Comp. (mmm)</th><th>Oblig. (mmm)</th>
+          <th>% Comp</th><th>% Oblig</th><th>% Part.</th>
+        </tr></thead>
+        <tbody>${deptos.map(d=>`
           <tr>
-            <th style="text-align:left;min-width:130px">Departamento</th>
-            <th>Aprop. (mmm)</th>
-            <th>Comp. (mmm)</th>
-            <th>Oblig. (mmm)</th>
-            <th>% Comp</th>
-            <th>% Oblig</th>
-            <th>% Part.</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${deptos.map(d => `
-            <tr>
-              <td style="text-align:left;font-weight:600">${d.departamento}</td>
-              <td>${fM(d.apropiacion_mmm)}</td>
-              <td>${fM(d.compromisos_mmm)}</td>
-              <td>${fM(d.obligaciones_mmm)}</td>
-              <td>${fp(d.pct_compromisos)}</td>
-              <td>${fp(d.pct_obligaciones)}</td>
-              <td>${fp(d.pct_participacion)}</td>
-            </tr>`).join('')}
+            <td style="text-align:left;font-weight:600">${d.departamento}</td>
+            <td>${fM(d.apropiacion_mmm)}</td><td>${fM(d.compromisos_mmm)}</td>
+            <td>${fM(d.obligaciones_mmm)}</td>
+            <td>${fp(d.pct_compromisos)}</td><td>${fp(d.pct_obligaciones)}</td>
+            <td>${fp(d.pct_participacion)}</td>
+          </tr>`).join('')}
         </tbody>
       </table>
-    </div>
-  `;
+    </div>` :
+    '<p style="color:var(--gs);text-align:center;padding:20px">Sin datos de departamentos.</p>';
 
-  modalText.innerHTML = tableHTML;
+  // ── Estructura con tabs ──
+  modalText.innerHTML = `
+    <div style="display:flex;gap:8px;margin-bottom:16px;border-bottom:1px solid var(--gc);padding-bottom:8px">
+      <button id="tabSect" onclick="switchRegTab('sect')"
+        style="background:var(--t);color:#fff;border:none;border-radius:6px;padding:5px 14px;font-size:12px;font-weight:700;cursor:pointer">
+        Sectores
+      </button>
+      <button id="tabDept" onclick="switchRegTab('dept')"
+        style="background:transparent;color:var(--gs);border:1px solid var(--gc);border-radius:6px;padding:5px 14px;font-size:12px;font-weight:700;cursor:pointer">
+        Departamentos
+      </button>
+    </div>
+    <div id="panelSect">
+      ${sectores.length ? `
+        <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+          <div style="position:relative;width:260px;height:260px;flex-shrink:0">
+            <canvas id="pieSect"></canvas>
+          </div>
+          <div id="pieLegend" style="flex:1;min-width:180px"></div>
+        </div>` :
+        '<p style="color:var(--gs);text-align:center;padding:20px">Sin datos de sectores para esta región.</p>'}
+    </div>
+    <div id="panelDept" style="display:none">${tablaHTML}</div>`;
+
+  // ── Torta de sectores ──
+  if(sectores.length){
+    const TOP = 6;
+    const top6   = sectores.slice(0, TOP);
+    const otros  = sectores.slice(TOP);
+    const otrosV = otros.reduce((s,x)=>s+(x.apropiacion_mmm||0), 0);
+    const labels  = [...top6.map(x=>x.sector), ...(otros.length?['Otros Sectores']:[])];
+    const values  = [...top6.map(x=>x.apropiacion_mmm||0), ...(otros.length?[otrosV]:[])];
+    const total   = values.reduce((s,v)=>s+v, 0);
+    const COLORS  = ['#0d2b52','#1a3a6e','#1e5799','#2980b9','#5b9bd5','#85b7e0','#c5daf0'];
+
+    // Leyenda
+    document.getElementById('pieLegend').innerHTML = labels.map((l,i)=>{
+      const pct = total ? (values[i]/total*100).toFixed(1) : 0;
+      return `<div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+        <span style="width:12px;height:12px;border-radius:2px;background:${COLORS[i]};flex-shrink:0"></span>
+        <span style="font-size:11px;color:var(--gt);flex:1">${l}</span>
+        <span style="font-size:11px;font-weight:900;color:var(--gt);min-width:36px;text-align:right">${pct}%</span>
+      </div>`;
+    }).join('');
+
+    requestAnimationFrame(()=>{
+      destroyChart('pieSect');
+      new Chart(document.getElementById('pieSect').getContext('2d'),{
+        type:'pie',
+        data:{labels, datasets:[{data:values, backgroundColor:COLORS, borderWidth:2, borderColor:'#1a1f2e'}]},
+        options:{
+          responsive:true,
+          maintainAspectRatio:false,
+          plugins:{
+            legend:{display:false},
+            tooltip:{callbacks:{label:ctx=>{
+              const pct=(ctx.parsed/total*100).toFixed(1);
+              return ` ${ctx.label}: ${Math.round(ctx.parsed).toLocaleString('es-CO')} mmm (${pct}%)`;
+            }}}
+          }
+        }
+      });
+    });
+  }
+}
+
+function switchRegTab(tab){
+  document.getElementById('panelSect').style.display = tab==='sect'?'':'none';
+  document.getElementById('panelDept').style.display = tab==='dept'?'':'none';
+  document.getElementById('tabSect').style.cssText =
+    tab==='sect' ? 'background:var(--t);color:#fff;border:none;border-radius:6px;padding:5px 14px;font-size:12px;font-weight:700;cursor:pointer'
+                 : 'background:transparent;color:var(--gs);border:1px solid var(--gc);border-radius:6px;padding:5px 14px;font-size:12px;font-weight:700;cursor:pointer';
+  document.getElementById('tabDept').style.cssText =
+    tab==='dept' ? 'background:var(--t);color:#fff;border:none;border-radius:6px;padding:5px 14px;font-size:12px;font-weight:700;cursor:pointer'
+                 : 'background:transparent;color:var(--gs);border:1px solid var(--gc);border-radius:6px;padding:5px 14px;font-size:12px;font-weight:700;cursor:pointer';
 }
 
 /* ── Modal Info System ── */
@@ -2284,6 +2345,7 @@ function closeInfoModal() {
   const modal = document.getElementById('infoModal');
   modal.classList.remove('active');
   document.body.style.overflow = '';
+  destroyChart('pieSect');
 }
 
 // Cerrar modal al hacer clic fuera del contenido
