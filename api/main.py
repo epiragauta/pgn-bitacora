@@ -268,44 +268,96 @@ def get_inversion_historica(bitacora_id: Optional[int] = None):
 # SECCIÓN 3 – REGIONALIZACIÓN
 # ──────────────────────────────────────────────
 @app.get("/api/regionalizacion", tags=["Sec 3 - Regionalización"])
-def get_regionalizacion(bitacora_id: Optional[int] = None, region: Optional[str] = None):
-    """Regionalización por región y departamento."""
+def get_regionalizacion(
+    vigencia: int = Query(2025, description="Año de corte"),
+    region: Optional[str] = Query(None, description="Filtrar por región"),
+    bitacora_id: Optional[int] = None,
+):
+    """
+    Departamentos regionalizados para un año dado.
+    Incluye código DANE para integración con capas GeoJSON.
+    Nota: datos 2023 tienen compromisos muy bajos por diferencia en fecha de corte.
+    """
     db = get_db()
     bid, _ = resolve_bitacora(db, bitacora_id)
     sql = """
-        SELECT region, departamento, vigente_mm, compromisos_mm, obligaciones_mm, pagos_mm,
-               pct_ejec_compromisos, pct_ejec_obligaciones, pct_ejec_pagos,
-               pct_participacion, principales_sectores
-        FROM regionalizacion_detalle_2025
-        WHERE bitacora_id=?
+        SELECT r.vigencia, r.tipo, r.region, r.departamento,
+               r.codigo_dane, d.nombre AS nombre_dane,
+               r.apropiacion_mmm, r.compromisos_mmm, r.obligaciones_mmm, r.pagos_mmm,
+               r.pct_compromisos, r.pct_obligaciones, r.pct_pagos, r.pct_participacion
+        FROM regionalizacion r
+        LEFT JOIN dane_departamentos d ON d.codigo = r.codigo_dane
+        WHERE r.bitacora_id=? AND r.vigencia=?
     """
-    params: list = [bid]
+    params: list = [bid, vigencia]
     if region:
-        sql += " AND region=?"
+        sql += " AND r.region=?"
         params.append(region.upper())
-    sql += " ORDER BY region, pct_participacion DESC NULLS LAST"
-    result = []
-    for r in db.execute(sql, params).fetchall():
-        d = dict(r)
-        if d.get("principales_sectores"):
-            try:
-                d["principales_sectores"] = json.loads(d["principales_sectores"])
-            except Exception:
-                pass
-        result.append(d)
-    return result
+    sql += " ORDER BY r.region, r.departamento COLLATE NOCASE"
+    return rows_to_list(db.execute(sql, params).fetchall())
 
 
 @app.get("/api/regionalizacion/historico", tags=["Sec 3 - Regionalización"])
 def get_regionalizacion_historico(bitacora_id: Optional[int] = None):
-    """Histórico regionalización (totales regionales)."""
+    """
+    Totales por región, todos los años 2022-2026.
+    Agrupa sumando todos los departamentos de cada región.
+    Excluye 'POR_REGIONALIZAR' y 'NACIONAL'.
+    """
     db = get_db()
     bid, _ = resolve_bitacora(db, bitacora_id)
     rows = db.execute("""
-        SELECT vigencia, region, departamento, apropiacion_mm, compromisos_mm,
-               obligaciones_mm, pagos_mm
-        FROM regionalizacion_resumen WHERE bitacora_id=? ORDER BY vigencia, region
+        SELECT vigencia, region, tipo,
+               ROUND(SUM(apropiacion_mmm), 3)  AS apropiacion_mmm,
+               ROUND(SUM(compromisos_mmm), 3)  AS compromisos_mmm,
+               ROUND(SUM(obligaciones_mmm), 3) AS obligaciones_mmm,
+               ROUND(SUM(pagos_mmm), 3)        AS pagos_mmm,
+               ROUND(SUM(compromisos_mmm)*100.0/NULLIF(SUM(apropiacion_mmm),0), 2) AS pct_compromisos
+        FROM regionalizacion
+        WHERE bitacora_id=? AND tipo IN ('departamento','por_regionalizar','nacional')
+        GROUP BY vigencia, region
+        ORDER BY vigencia, region
     """, (bid,)).fetchall()
+    return rows_to_list(rows)
+
+
+@app.get("/api/regionalizacion/mapa", tags=["Sec 3 - Regionalización"])
+def get_regionalizacion_mapa(
+    vigencia: int = Query(2025, description="Año de corte"),
+    bitacora_id: Optional[int] = None,
+):
+    """
+    Datos para coloreado del mapa GeoJSON por departamento.
+    Devuelve codigo_dane + métricas de ejecución.
+    """
+    db = get_db()
+    bid, _ = resolve_bitacora(db, bitacora_id)
+    rows = db.execute("""
+        SELECT r.codigo_dane, r.departamento, r.region,
+               r.apropiacion_mmm, r.compromisos_mmm,
+               r.pct_compromisos, r.pct_participacion
+        FROM regionalizacion r
+        WHERE r.bitacora_id=? AND r.vigencia=? AND r.tipo='departamento'
+        ORDER BY r.region, r.departamento
+    """, (bid, vigencia)).fetchall()
+    return rows_to_list(rows)
+
+
+@app.get("/api/regionalizacion/departamento/{codigo_dane}", tags=["Sec 3 - Regionalización"])
+def get_regionalizacion_departamento(codigo_dane: str, bitacora_id: Optional[int] = None):
+    """Serie histórica 2022-2026 para un departamento específico (código DANE)."""
+    db = get_db()
+    bid, _ = resolve_bitacora(db, bitacora_id)
+    rows = db.execute("""
+        SELECT r.vigencia, r.departamento, r.region,
+               r.apropiacion_mmm, r.compromisos_mmm, r.obligaciones_mmm, r.pagos_mmm,
+               r.pct_compromisos, r.pct_obligaciones, r.pct_participacion
+        FROM regionalizacion r
+        WHERE r.bitacora_id=? AND r.codigo_dane=?
+        ORDER BY r.vigencia
+    """, (bid, codigo_dane)).fetchall()
+    if not rows:
+        raise HTTPException(404, f"Departamento con código DANE '{codigo_dane}' no encontrado")
     return rows_to_list(rows)
 
 

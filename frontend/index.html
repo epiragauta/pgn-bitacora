@@ -143,7 +143,12 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 .rc:hover{box-shadow:0 4px 14px rgba(0,195,193,.13);transform:translateY(-2px)}
 .rc[onclick]{cursor:pointer}
 .rc[onclick]:hover{box-shadow:0 6px 18px rgba(0,195,193,.18)}
-.rc-total{background:linear-gradient(135deg,rgba(0,195,193,.08) 0%,rgba(254,27,123,.05) 100%);border-left:4px solid var(--m);border:2px solid var(--m);box-shadow:0 2px 12px rgba(254,27,123,.12);grid-column:1/-1}
+.rc-total{background:linear-gradient(135deg,rgba(0,195,193,.08) 0%,rgba(254,27,123,.05) 100%);border-left:4px solid var(--m);border:2px solid var(--m);box-shadow:0 2px 12px rgba(254,27,123,.12)}
+.rc-pr{border-left:4px solid var(--nr);background:rgba(251,176,59,.04)}
+.rc-pr:hover{box-shadow:0 4px 14px rgba(251,176,59,.15);transform:translateY(-2px)}
+.ry-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:12px;border:1.5px solid var(--gc);font-size:11px;font-weight:700;color:var(--gs);cursor:pointer;transition:all .18s;user-select:none}
+.ry-pill input{display:none}
+.ry-pill.active{background:var(--t);border-color:var(--t);color:#fff}
 .rc-total:hover{box-shadow:0 4px 18px rgba(254,27,123,.2);transform:translateY(-1px)}
 .rc-total .rn{font-size:13px;color:var(--m);text-transform:uppercase;letter-spacing:.02em}
 .rc-total .rsv{color:var(--m)}
@@ -378,6 +383,28 @@ footer strong{color:#fff}
 .leaflet-tooltip-right:before{
   border-right-color:var(--t);
 }
+.leaflet-control-layers{
+  background:var(--bl) !important;
+  border:1px solid var(--gc) !important;
+  border-radius:var(--rs) !important;
+  box-shadow:0 2px 12px rgba(0,0,0,.3) !important;
+  padding:2px 4px !important;
+}
+.leaflet-control-layers-expanded{
+  padding:6px 10px !important;
+}
+.leaflet-control-layers-list label{
+  color:var(--gt);
+  font-family:'Nunito Sans',sans-serif;
+  font-size:12px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  margin:3px 0;
+  cursor:pointer;
+}
+.leaflet-control-layers-separator{display:none}
 
 @keyframes fadeIn{
   from{opacity:0}
@@ -609,7 +636,7 @@ footer strong{color:#fff}
 
     <!-- Mapa interactivo de regiones -->
     <div class="card ba rv" style="margin-bottom:24px">
-      <div class="ct">Mapa de ejecución regional — % Compromisos / Apropiación Vigente<button class="card-expand" onclick="openCardModal('map-sec3')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div>
+      <div class="ct">Mapa de ejecución regional — % Compromisos / Apropiación Vigente</div>
       <div id="mapContainer" style="height:450px;border-radius:8px;overflow:hidden"></div>
       <div style="margin-top:12px;font-size:11px;color:var(--gs);text-align:center">
         Haz clic en una región para ver el detalle de sus departamentos
@@ -617,6 +644,17 @@ footer strong{color:#fff}
     </div>
 
     <div class="rg rv" id="regGrid"></div>
+
+    <div class="card bt rv" style="margin-top:18px">
+      <div class="ct">Distribución presupuestal: Regionalizado vs Nacional</div>
+      <div id="regYearSel" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px"></div>
+      <div style="position:relative;height:300px"><canvas id="barReg"></canvas></div>
+    </div>
+
+    <div class="card bt rv" style="margin-top:18px">
+      <div class="ct" id="mixRegTitle">Evolución % Vigente y % Compromisos — Regionalizado vs Nacional</div>
+      <div style="position:relative;height:320px"><canvas id="mixReg"></canvas></div>
+    </div>
   </div>
 </section>
 
@@ -893,12 +931,13 @@ const D={
     {y:2026,vg:88401,c:44986,o: 9962,p: 9533,pc:50.89,po:11.27,pp:10.78,pib:4.4,g:17.1},
   ],
   re:[
-    {r:'AMAZONAS',  v:2124156, c:410848, pc:19.3,pp:99.9, s:'Transporte 19%·Minas 19%·Igualdad 13%'},
-    {r:'ANDINA',    v:22904919,c:7928802,pc:34.6,pp:99.5, s:'Transporte 23%·Trabajo 19%·Igualdad 14%'},
-    {r:'CARIBE',    v:11509903,c:2540747,pc:22.1,pp:97.5, s:'Igualdad 22%·Minas 17%·Inclusión 16%'},
-    {r:'ORINOQUÍA', v:2133287, c:606828, pc:28.4,pp:100.0,s:'Transporte 26%·Igualdad 15%·Minas 14%'},
-    {r:'PACÍFICO',  v:8652873, c:1951833,pc:22.6,pp:99.4, s:'Transporte 21%·Inclusión 16%·Igualdad 16%'},
-    {r:'NACIONAL',  v:25623712,c:8407022,pc:null, pp:null,  s:'Cobertura nacional'},
+    // Formato actualizado: valores en mmm (miles de millones), compatible con /api/regionalizacion/historico
+    {vigencia:2025,region:'ANDINA',    apropiacion_mmm:22904.9, compromisos_mmm:7928.8,  obligaciones_mmm:1869.6, pagos_mmm:1857.5, pct_compromisos:34.6},
+    {vigencia:2025,region:'CARIBE',    apropiacion_mmm:11153.3, compromisos_mmm:2491.9,  obligaciones_mmm:373.4,  pagos_mmm:363.6,  pct_compromisos:22.3},
+    {vigencia:2025,region:'PACÍFICO',  apropiacion_mmm:8652.9,  compromisos_mmm:1951.8,  obligaciones_mmm:350.4,  pagos_mmm:346.5,  pct_compromisos:22.6},
+    {vigencia:2025,region:'ORINOQUÍA', apropiacion_mmm:2133.3,  compromisos_mmm:606.8,   obligaciones_mmm:110.7,  pagos_mmm:109.5,  pct_compromisos:28.4},
+    {vigencia:2025,region:'AMAZONIA',  apropiacion_mmm:2124.2,  compromisos_mmm:410.8,   obligaciones_mmm:49.1,   pagos_mmm:49.0,   pct_compromisos:19.3},
+    {vigencia:2025,region:'INSULAR',   apropiacion_mmm:356.6,   compromisos_mmm:48.9,    obligaciones_mmm:0.3,    pagos_mmm:0.3,    pct_compromisos:13.7},
   ],
   vft:[
     {y:2026,t:18578,pib:1.01},{y:2027,t:15125,pib:0.80},{y:2028,t:15882,pib:0.81},
@@ -931,7 +970,7 @@ const D={
 };
 
 /* ── Cache datos Sec 1-6 para re-render en modal ── */
-const _s1={},_s2={},_s4={},_s5={};
+const _s1={},_s2={},_s3={},_s4={},_s5={};
 
 /* ── Renders ── */
 function rDonut(d){
@@ -1031,8 +1070,8 @@ function openCardModal(key){
     const sentinel=document.createElement('div');
     sentinel.id='mapSentinel';sentinel.style.height='450px';
     mapEl.parentElement.insertBefore(sentinel,mapEl);
-    body.style.cssText='padding:0;height:calc(88vh - 70px);overflow:hidden';
-    mapEl.style.cssText='height:100%;border-radius:0;overflow:hidden';
+    body.style.cssText='padding:0;overflow:hidden;display:flex;flex-direction:column';
+    mapEl.style.cssText='flex:1;min-height:0;border-radius:0;overflow:hidden';
     body.appendChild(mapEl);
     // Esperar que termine la animación del modal (250ms) antes de invalidar
     if(_leafletMap){
@@ -1183,133 +1222,308 @@ function closeTablaModal(e){
 }
 
 function rRegiones(d){
-  const f=n=>n?(n/1000000).toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1})+' Bill':'—';
+  const fB=n=>n!=null?(n/1000).toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1})+' Bill':'—';
   const fp=p=>p!=null?p.toFixed(1)+'%':'—';
-  document.getElementById('regGrid').innerHTML=d.map(x=>`
-    <div class="rc${x.isTotal?' rc-total':''}" ${!x.isTotal?`style="cursor:pointer" onclick="showDepartamentos('${x.r}')"`:''}>
-      <div class="rn">${x.r}${!x.isTotal?`<span class="rp">${fp(x.pc)}</span>`:''}</div>
-      <div class="rs"><span class="rsl">Vigente</span><span class="rsv">${f(x.v)}</span></div>
-      <div class="rs"><span class="rsl">Compromisos</span><span class="rsv">${f(x.c)}</span></div>
-      ${!x.isTotal?`<div class="rs"><span class="rsl">Ejec. pagos</span><span class="rsv">${fp(x.pp)}</span></div>`:''}
-      ${x.s && x.s!=='Sin datos' && !x.isTotal?`<div class="rsect">${x.s}</div>`:''}
+
+  const regiones  = d.filter(x=>x.tipo==='departamento');
+  const prRow     = d.find(x=>x.tipo==='por_regionalizar');
+  const nacRow    = d.find(x=>x.tipo==='nacional');
+
+  // Total: suma de las 6 regiones + por_regionalizar + nacional
+  const sum = f => [regiones, prRow?[prRow]:[], nacRow?[nacRow]:[]]
+    .flat().reduce((s,x)=>s+(x[f]||0), 0);
+  const totAprop = sum('apropiacion_mmm');
+  const totComp  = sum('compromisos_mmm');
+  const totObl   = sum('obligaciones_mmm');
+  const totPag   = sum('pagos_mmm');
+  const totPct   = totAprop ? totComp*100/totAprop : null;
+
+  const regionCards = regiones.map(x=>`
+    <div class="rc" style="cursor:pointer" onclick="showDepartamentos('${x.region}')">
+      <div class="rn">${x.region}<span class="rp">${fp(x.pct_compromisos)}</span></div>
+      <div class="rs"><span class="rsl">Apropiación</span><span class="rsv">${fB(x.apropiacion_mmm)}</span></div>
+      <div class="rs"><span class="rsl">Compromisos</span><span class="rsv">${fB(x.compromisos_mmm)}</span></div>
+      <div class="rs"><span class="rsl">Obligaciones</span><span class="rsv">${fB(x.obligaciones_mmm)}</span></div>
+      <div class="rs"><span class="rsl">Pagos</span><span class="rsv">${fB(x.pagos_mmm)}</span></div>
     </div>`).join('');
+
+  const prCard = prRow ? `
+    <div class="rc rc-pr">
+      <div class="rn" style="color:var(--nr)">Por Regionalizar<span class="rp" style="background:var(--nr)">${fp(prRow.pct_compromisos)}</span></div>
+      <div class="rs"><span class="rsl">Apropiación</span><span class="rsv">${fB(prRow.apropiacion_mmm)}</span></div>
+      <div class="rs"><span class="rsl">Compromisos</span><span class="rsv">${fB(prRow.compromisos_mmm)}</span></div>
+      <div class="rs"><span class="rsl">Obligaciones</span><span class="rsv">${fB(prRow.obligaciones_mmm)}</span></div>
+      <div class="rs"><span class="rsl">Pagos</span><span class="rsv">${fB(prRow.pagos_mmm)}</span></div>
+    </div>` : '';
+
+  const nacCard = nacRow ? `
+    <div class="rc rc-pr" style="border-left-color:var(--mo)">
+      <div class="rn" style="color:var(--mo)">Nacional<span class="rp" style="background:var(--mo)">${fp(nacRow.pct_compromisos)}</span></div>
+      <div class="rs"><span class="rsl">Apropiación</span><span class="rsv">${fB(nacRow.apropiacion_mmm)}</span></div>
+      <div class="rs"><span class="rsl">Compromisos</span><span class="rsv">${fB(nacRow.compromisos_mmm)}</span></div>
+      <div class="rs"><span class="rsl">Obligaciones</span><span class="rsv">${fB(nacRow.obligaciones_mmm)}</span></div>
+      <div class="rs"><span class="rsl">Pagos</span><span class="rsv">${fB(nacRow.pagos_mmm)}</span></div>
+    </div>` : '';
+
+  const totalCard = `
+    <div class="rc rc-total">
+      <div class="rn">Total Inversión<span class="rp" style="background:var(--m)">${fp(totPct)}</span></div>
+      <div class="rs"><span class="rsl">Apropiación</span><span class="rsv">${fB(totAprop)}</span></div>
+      <div class="rs"><span class="rsl">Compromisos</span><span class="rsv">${fB(totComp)}</span></div>
+      <div class="rs"><span class="rsl">Obligaciones</span><span class="rsv">${fB(totObl)}</span></div>
+      <div class="rs"><span class="rsl">Pagos</span><span class="rsv">${fB(totPag)}</span></div>
+    </div>`;
+
+  document.getElementById('regGrid').innerHTML = regionCards + prCard + nacCard + totalCard;
 }
 
-async function rMapa(regionesData){
+function rMixReg(data){
+  _s3.mixData=data;
+  const ys=Object.keys(data).map(Number).sort();
+  const maxYr=Math.max(...ys);
+  document.getElementById('mixRegTitle').textContent=`Evolución % Vigente y % Compromisos — Regionalizado vs Nacional (2022–${maxYr})`;
+  destroyChart('mixReg');
+  const gc='rgba(255,255,255,.08)';
+  const ds=[
+    {
+      type:'bar',label:'Vigente Regionalizado',order:2,
+      data:ys.map(y=>data[y]?.pctVigenteReg??null),
+      backgroundColor:'rgba(201,168,245,.75)',borderRadius:3,
+      barPercentage:.7,categoryPercentage:.75
+    },
+    {
+      type:'bar',label:'Vigente Nacional',order:2,
+      data:ys.map(y=>data[y]?.pctVigenteNac??null),
+      backgroundColor:'rgba(30,58,110,.80)',borderRadius:3,
+      barPercentage:.7,categoryPercentage:.75
+    },
+    {
+      type:'line',label:'Compromisos Regionalizado',order:1,
+      data:ys.map(y=>data[y]?.pctCompReg??null),
+      borderColor:'#7f47dd',backgroundColor:'#7f47dd',
+      pointBackgroundColor:'#7f47dd',pointRadius:5,pointHoverRadius:7,
+      tension:.3,fill:false,borderWidth:2.5
+    },
+    {
+      type:'line',label:'Compromisos Nacional',order:1,
+      data:ys.map(y=>data[y]?.pctCompNac??null),
+      borderColor:'#00c3c1',backgroundColor:'#00c3c1',
+      pointBackgroundColor:'#00c3c1',pointRadius:5,pointHoverRadius:7,
+      tension:.3,fill:false,borderWidth:2.5
+    }
+  ];
+  new Chart(document.getElementById('mixReg').getContext('2d'),{
+    type:'bar',
+    data:{labels:ys.map(String),datasets:ds},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      layout:{padding:{top:20,right:10}},
+      scales:{
+        x:{grid:{color:gc},ticks:{color:P.gt}},
+        y:{grid:{color:gc},ticks:{color:P.gt,callback:v=>v+'%'},min:0,max:90,
+           title:{display:false}}
+      },
+      plugins:{
+        legend:{position:'bottom',labels:{boxWidth:12,padding:16,color:P.gt,
+          generateLabels:chart=>chart.data.datasets.map((ds,i)=>({
+            text:ds.label,
+            fillStyle:ds.type==='bar'?ds.backgroundColor:ds.borderColor,
+            strokeStyle:ds.type==='line'?ds.borderColor:'transparent',
+            lineWidth:ds.type==='line'?2:0,
+            hidden:!chart.isDatasetVisible(i),
+            datasetIndex:i,
+            pointStyle:ds.type==='line'?'circle':'rect'
+          }))
+        }},
+        tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y!=null?Math.round(ctx.parsed.y)+'%':'—'}`}}
+      }
+    }
+  });
+}
+
+/* ── Plugin datalabels inline para barReg ── */
+const _barLabelsPlugin={
+  id:'barLabels',
+  afterDatasetsDraw(chart){
+    const ctx=chart.ctx;
+    chart.data.datasets.forEach((ds,i)=>{
+      const meta=chart.getDatasetMeta(i);
+      if(meta.hidden)return;
+      meta.data.forEach((bar,j)=>{
+        const v=ds.data[j];
+        if(v==null||isNaN(v))return;
+        ctx.save();
+        ctx.fillStyle=ds.backgroundColor;
+        ctx.font='bold 10px "Nunito Sans",sans-serif';
+        ctx.textAlign='center';
+        ctx.textBaseline='bottom';
+        ctx.fillText(Math.round(v)+'%',bar.x,bar.y-3);
+        ctx.restore();
+      });
+    });
+  }
+};
+
+function _buildBarReg(canvasId, data, selYears){
+  destroyChart(canvasId);
+  const ys=selYears.filter(y=>data[y]).map(Number);
+  const C=['#fe1b7b','#00c3c1','#9aa5b0','#4a90d9'];
+  const labels=['% Vigente Regionalizado','% Compromisos Regionalizados','% Vigente Nacional','% Compromisos Nacionales'];
+  const keys=['pctVigenteReg','pctCompReg','pctVigenteNac','pctCompNac'];
+  const datasets=keys.map((k,i)=>({
+    label:labels[i],
+    data:ys.map(y=>data[y]?.[k]??null),
+    backgroundColor:C[i],
+    borderRadius:3,
+    barPercentage:.85,
+    categoryPercentage:.8
+  }));
+  new Chart(document.getElementById(canvasId).getContext('2d'),{
+    type:'bar',
+    plugins:[_barLabelsPlugin],
+    data:{labels:ys.map(String),datasets},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      layout:{padding:{top:18}},
+      scales:{
+        x:{grid:{color:P.gc},ticks:{color:P.gt}},
+        y:{grid:{color:P.gc},ticks:{color:P.gt,callback:v=>v+'%'},max:100,min:0}
+      },
+      plugins:{
+        legend:{position:'bottom',labels:{boxWidth:10,padding:14,color:P.gt}},
+        tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${Math.round(ctx.parsed.y)}%`}}
+      }
+    }
+  });
+}
+
+function rBarReg(data){
+  _s3.barData=data;
+  _s3.selYears=[_reVigencia];
+  const allYears=Object.keys(data).map(Number).sort();
+  document.getElementById('regYearSel').innerHTML=allYears.map(y=>`
+    <label class="ry-pill${y===_reVigencia?' active':''}">
+      <input type="checkbox" value="${y}"${y===_reVigencia?' checked':''} onchange="toggleRegYear(this)">
+      ${y}
+    </label>`).join('');
+  _buildBarReg('barReg',data,_s3.selYears);
+}
+
+function toggleRegYear(el){
+  const y=parseInt(el.value);
+  if(el.checked){
+    _s3.selYears.push(y);
+    _s3.selYears.sort((a,b)=>a-b);
+    el.closest('label').classList.add('active');
+  }else{
+    if(_s3.selYears.length===1){el.checked=true;return;}
+    _s3.selYears=_s3.selYears.filter(v=>v!==y);
+    el.closest('label').classList.remove('active');
+  }
+  _buildBarReg('barReg',_s3.barData,_s3.selYears);
+}
+
+async function rMapa(deptData, regionData){
   if(_leafletMap){_leafletMap.remove();_leafletMap=null;}
-  const f=n=>n?(n/1000000).toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1}):' —';
+  const fB=n=>n!=null?(n/1000).toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1}):' —';
   const fp=p=>p!=null?p.toFixed(1)+'%':'—';
 
-  // Límites geográficos de Colombia (con margen)
-  const colombiaBounds=L.latLngBounds(
-    L.latLng(-5.0,-80.0), // Suroeste (sur, oeste)
-    L.latLng(13.5,-66.0)  // Noreste (norte, este)
-  );
+  // Índices rápidos
+  const byDane=Object.fromEntries((deptData||[]).map(d=>[d.codigo_dane,d]));
+  // Mapeo de nombres GeoJSON → clave DB normalizada
+  const GEO_TO_DB={'AMAZONAS':'AMAZONIA','Región Insular':'INSULAR'};
+  const geoKey=r=>GEO_TO_DB[r]||r;
+  const byRegion=Object.fromEntries((regionData||[]).map(d=>[d.region,d]));
 
-  // Crear mapa centrado en Colombia con restricciones
+  const colombiaBounds=L.latLngBounds(L.latLng(-5.0,-80.0),L.latLng(13.5,-66.0));
   const map=_leafletMap=L.map('mapContainer',{
-    center:[4.5,-74],
-    zoom:5.5,
-    minZoom:5,
-    maxZoom:10,
-    maxBounds:colombiaBounds,
-    maxBoundsViscosity:0.9
+    center:[4.5,-74],zoom:5.5,minZoom:5,maxZoom:10,
+    maxBounds:colombiaBounds,maxBoundsViscosity:0.9
   });
-
-  // Tile layer en tonos grises
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
     attribution:'©OpenStreetMap ©CARTO'
   }).addTo(map);
 
-  // Cargar GeoJSON
+  const getColor=pct=>{
+    if(pct==null||pct===0)return '#d0d0d0';
+    return pct>=40?P.t:pct>=25?'#4dd5d3':pct>=12?'#9ae5e4':'#cef3f2';
+  };
+
   try{
-    const response=await fetch('/data/regiones.geojson');
-    const geojson=await response.json();
+    // ── Capa Regiones ──────────────────────────
+    const geojsonReg=fetch('/data/regiones.geojson').then(r=>r.json());
+    const geojsonDep=fetch('/data/dptos.geojson').then(r=>r.json());
+    const [gReg, gDep]=await Promise.all([geojsonReg,geojsonDep]);
 
-    // Función para obtener color según % ejecución
-    const getColor=pct=>{
-      if(!pct)return '#d0d0d0';
-      return pct>=40?P.t:pct>=30?'#4dd5d3':pct>=20?'#9ae5e4':'#cef3f2';
-    };
+    let regionesLayer, deptosLayer;
 
-    // Estilo de cada región
-    const style=feature=>{
-      const region=feature.properties.REGION;
-      const data=regionesData.find(r=>r.r===region);
-      return {
-        fillColor:getColor(data?.pc),
-        weight:2,
-        opacity:1,
-        color:'white',
-        fillOpacity:0.7
-      };
-    };
-
-    // Eventos de interacción
-    const highlightFeature=e=>{
-      const layer=e.target;
-      layer.setStyle({weight:4,color:P.a,fillOpacity:0.9});
-      layer.bringToFront();
-    };
-
-    const resetHighlight=e=>{
-      geojsonLayer.resetStyle(e.target);
-    };
-
-    const onEachFeature=(feature,layer)=>{
-      const region=feature.properties.REGION;
-      const data=regionesData.find(r=>r.r===region);
-
-      if(data){
-        // Tooltip para hover (no se abre en click)
-        const tooltipContent=`
-          <div style="font-weight:900;font-size:13px;color:var(--t);margin-bottom:4px">${region}</div>
+    // Regiones
+    regionesLayer=L.geoJSON(gReg,{
+      style:feature=>{
+        const d=byRegion[geoKey(feature.properties.REGION)];
+        return{fillColor:getColor(d?.pct_compromisos),weight:2,opacity:1,color:'white',fillOpacity:0.78};
+      },
+      onEachFeature:(feature,layer)=>{
+        const d=byRegion[geoKey(feature.properties.REGION)];
+        if(!d)return;
+        layer.bindTooltip(`
+          <div style="font-weight:900;font-size:13px;color:var(--t);margin-bottom:4px">${d.region}</div>
           <div style="font-size:12px">
-            <div style="display:flex;justify-content:space-between;margin:2px 0">
-              <span style="color:var(--gs)">Vigente:</span>
-              <span style="font-weight:800;margin-left:8px">${f(data.v)} Bill</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;margin:2px 0">
-              <span style="color:var(--gs)">Compromisos:</span>
-              <span style="font-weight:800;margin-left:8px">${f(data.c)} Bill</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;margin:2px 0">
-              <span style="color:var(--gs)">% Ejec:</span>
-              <span style="font-weight:800;margin-left:8px">${fp(data.pc)}</span>
-            </div>
+            <div style="display:flex;justify-content:space-between;margin:2px 0"><span style="color:var(--gs)">Apropiación:</span><span style="font-weight:800;margin-left:8px">${fB(d.apropiacion_mmm)} Bill</span></div>
+            <div style="display:flex;justify-content:space-between;margin:2px 0"><span style="color:var(--gs)">Compromisos:</span><span style="font-weight:800;margin-left:8px">${fB(d.compromisos_mmm)} Bill</span></div>
+            <div style="display:flex;justify-content:space-between;margin:2px 0"><span style="color:var(--gs)">Pagos:</span><span style="font-weight:800;margin-left:8px">${fB(d.pagos_mmm)} Bill</span></div>
+            <div style="display:flex;justify-content:space-between;margin:2px 0"><span style="color:var(--gs)">% Comp/Aprop:</span><span style="font-weight:800;margin-left:8px">${fp(d.pct_compromisos)}</span></div>
           </div>
-          <div style="margin-top:6px;font-size:9px;color:var(--gs);text-align:center;font-style:italic">
-            Clic para ver departamentos
-          </div>
-        `;
-
-        layer.bindTooltip(tooltipContent,{
-          sticky:true,
-          direction:'top',
-          offset:[0,-10]
-        });
-
+          <div style="margin-top:6px;font-size:9px;color:var(--gs);text-align:center;font-style:italic">Clic para ver departamentos</div>
+        `,{sticky:true,direction:'top',offset:[0,-10]});
         layer.on({
-          mouseover:highlightFeature,
-          mouseout:resetHighlight,
-          click:()=>{
-            map.closePopup();
-            showDepartamentos(region);
-          }
+          mouseover:e=>{e.target.setStyle({weight:3,color:P.a,fillOpacity:0.92});e.target.bringToFront();},
+          mouseout:e=>regionesLayer.resetStyle(e.target),
+          click:()=>{map.closePopup();showDepartamentos(d.region);}
         });
       }
-    };
+    });
 
-    const geojsonLayer=L.geoJSON(geojson,{
-      style:style,
-      onEachFeature:onEachFeature
-    }).addTo(map);
+    // Departamentos
+    deptosLayer=L.geoJSON(gDep,{
+      style:feature=>{
+        const d=byDane[feature.properties.dpto_ccdgo];
+        return{fillColor:getColor(d?.pct_compromisos),weight:1,opacity:1,color:'white',fillOpacity:0.75};
+      },
+      onEachFeature:(feature,layer)=>{
+        const d=byDane[feature.properties.dpto_ccdgo];
+        if(!d)return;
+        layer.bindTooltip(`
+          <div style="font-weight:900;font-size:13px;color:var(--t);margin-bottom:4px">${d.departamento}</div>
+          <div style="font-size:11px;color:var(--gs);margin-bottom:5px">${d.region}</div>
+          <div style="font-size:12px">
+            <div style="display:flex;justify-content:space-between;margin:2px 0"><span style="color:var(--gs)">Apropiación:</span><span style="font-weight:800;margin-left:8px">${fB(d.apropiacion_mmm)} Bill</span></div>
+            <div style="display:flex;justify-content:space-between;margin:2px 0"><span style="color:var(--gs)">Compromisos:</span><span style="font-weight:800;margin-left:8px">${fB(d.compromisos_mmm)} Bill</span></div>
+            <div style="display:flex;justify-content:space-between;margin:2px 0"><span style="color:var(--gs)">% Comp/Aprop:</span><span style="font-weight:800;margin-left:8px">${fp(d.pct_compromisos)}</span></div>
+            <div style="display:flex;justify-content:space-between;margin:2px 0"><span style="color:var(--gs)">% del total:</span><span style="font-weight:800;margin-left:8px">${fp(d.pct_participacion)}</span></div>
+          </div>
+          <div style="margin-top:6px;font-size:9px;color:var(--gs);text-align:center;font-style:italic">Clic para ver departamentos de la región</div>
+        `,{sticky:true,direction:'top',offset:[0,-10]});
+        layer.on({
+          mouseover:e=>{e.target.setStyle({weight:3,color:P.a,fillOpacity:0.92});e.target.bringToFront();},
+          mouseout:e=>deptosLayer.resetStyle(e.target),
+          click:()=>{map.closePopup();showDepartamentos(d.region);}
+        });
+      }
+    });
 
-    // Reset highlight cuando se arrastra el mapa
+    // Capa por defecto: Regiones
+    regionesLayer.addTo(map);
+
+    // Control de capas (overlays con checkbox, expandido)
+    L.control.layers(null,{
+      'Regiones':regionesLayer,
+      'Departamentos':deptosLayer
+    },{position:'topright',collapsed:false}).addTo(map);
+
     map.on('movestart',()=>{
-      geojsonLayer.eachLayer(layer=>{
-        geojsonLayer.resetStyle(layer);
-      });
+      if(map.hasLayer(regionesLayer)) regionesLayer.eachLayer(l=>regionesLayer.resetStyle(l));
+      if(map.hasLayer(deptosLayer))  deptosLayer.eachLayer(l=>deptosLayer.resetStyle(l));
     });
 
   }catch(err){
@@ -1318,7 +1532,7 @@ async function rMapa(regionesData){
   }
 }
 
-let ejData=null,tlMode='pct',_leafletMap=null;
+let ejData=null,tlMode='pct',_leafletMap=null,_reVigencia=2026;
 
 function rTimeline(ej){
   ejData=ej;
@@ -1499,7 +1713,10 @@ async function init(bid){
   const trRaw = await af(`/transformaciones${q}`, null);
   const evRaw = await af(`/evolucion${q}`, null);
   const ejRaw = await af(`/ejecucion${q}`, null);
-  const reRaw = await af(`/regionalizacion${q}`, null);
+  const reRaw = await af(`/regionalizacion/historico`, null);
+  // Determinar el año más reciente disponible en los datos de regionalización
+  if(reRaw && reRaw.length) _reVigencia=Math.max(...reRaw.map(x=>x.vigencia));
+  const reMapaRaw = await af(`/regionalizacion/mapa?vigencia=${_reVigencia}`, null);
   const vftRaw = await af(`/vigencias_futuras/totales${q}`, null);
   const seRaw  = await af(`/sectorial${q}`, null);
   const resRaw = await af(`/resumen${q}`, null);
@@ -1525,13 +1742,12 @@ async function init(bid){
   const tr = hasRows(trRaw) ? trRaw.map(x=>({t:x.transformador,v:x.inversion_mmm,p:x.peso_pct,c:x.compromisos_mmm,pc:x.pct_c_av,po:x.pct_o_av})) : D.tr;
   const ev = hasRows(evRaw) ? evRaw.map(x=>({y:x.vigencia,r:x.rubro,v:x.vigente_mmm})) : D.ev;
   const ej = hasRows(ejRaw) ? ejRaw.map(x=>({y:x.vigencia,vg:x.vigente_mmm,c:x.compromisos_mmm,o:x.obligaciones_mmm,p:x.pagos_mmm,pc:x.pct_compromisos,po:x.pct_obligaciones,pp:x.pct_pagos,pib:x.inv_pct_pib,g:x.inv_pct_gasto_total})) : D.ej;
-  const re = hasRows(reRaw) ? reRaw.filter(x=>x.pct_participacion===100||x.pct_participacion===null).map(x=>{
-    let sectores = 'Sin datos';
-    if(Array.isArray(x.principales_sectores) && x.principales_sectores.length>0){
-      sectores = x.principales_sectores.map(s=>`${s.sector} ${s.pct}%`).join('·');
-    }
-    return {r:x.region,v:x.vigente_mm,c:x.compromisos_mm,pc:x.pct_ejec_compromisos,pp:x.pct_ejec_pagos,s:sectores,isTotal:x.region==='NACIONAL'};
-  }).sort((a,b)=>a.isTotal?1:b.isTotal?-1:0) : D.re;
+  const _RORD=['ANDINA','CARIBE','PACÍFICO','ORINOQUÍA','AMAZONIA','INSULAR'];
+  const re = hasRows(reRaw)
+    ? reRaw.filter(x=>x.vigencia===_reVigencia)
+        .sort((a,b)=>{const ia=_RORD.indexOf(a.region),ib=_RORD.indexOf(b.region);return(ia<0?99:ia)-(ib<0?99:ib);})
+    : D.re;
+  const reMapa = hasRows(reMapaRaw) ? reMapaRaw : [];
   const vft = hasRows(vftRaw) ? vftRaw.map(x=>({y:x.vigencia_exec,t:x.total_mmm,pib:x.pct_pib||0})) : D.vft;
   const se  = hasRows(seRaw)  ? [...seRaw.reduce((m,x)=>{const k=x.sector;if(!m.has(k))m.set(k,{s:x.sector,v:0,pc:null,po:null});const g=m.get(k);g.v+=x.apr_vigente_mmm||0;if(x.pct_c_av!=null){g.pc=(g.pc||0)+x.pct_c_av;g.po=(g.po||0)+x.pct_o_av;}return m;},new Map()).values()].map(x=>({...x,v:parseFloat(x.v.toFixed(3)),pc:x.pc!=null?parseFloat(x.pc.toFixed(2)):null,po:x.po!=null?parseFloat(x.po.toFixed(2)):null})) : D.se;
 
@@ -1539,7 +1755,32 @@ async function init(bid){
   rBarPGN(ev);rLineInv(ej);
   rTimeline(ej);rLineEj(ej);rHBars();
   rRegiones(re);
-  rMapa(re);
+
+  // Calcular datos gráfico distribución regional vs nacional (todos los años)
+  const regChartData={};
+  if(hasRows(reRaw)){
+    const vigencias=[...new Set(reRaw.map(x=>x.vigencia))].sort();
+    vigencias.forEach(yr=>{
+      const dep=reRaw.filter(x=>x.vigencia===yr&&x.tipo==='departamento');
+      const pr =reRaw.find(x=>x.vigencia===yr&&x.tipo==='por_regionalizar');
+      const nac=reRaw.find(x=>x.vigencia===yr&&x.tipo==='nacional');
+      const dA=dep.reduce((s,x)=>s+(x.apropiacion_mmm||0),0);
+      const dC=dep.reduce((s,x)=>s+(x.compromisos_mmm||0),0);
+      const nA=nac?.apropiacion_mmm||0, nC=nac?.compromisos_mmm||0;
+      const prA=pr?.apropiacion_mmm||0, prC=pr?.compromisos_mmm||0;
+      const tA=dA+nA+prA, tC=dC+nC+prC;
+      regChartData[yr]={
+        pctVigenteReg: tA?parseFloat((dA/tA*100).toFixed(1)):null,
+        pctCompReg:    tC?parseFloat((dC/tC*100).toFixed(1)):null,
+        pctVigenteNac: tA?parseFloat((nA/tA*100).toFixed(1)):null,
+        pctCompNac:    tC?parseFloat((nC/tC*100).toFixed(1)):null,
+      };
+    });
+  }
+  rBarReg(regChartData);
+  rMixReg(regChartData);
+
+  rMapa(reMapa, re);
   rVF(vft,D.vfs);
   rSectorial(se);
 }
@@ -1864,58 +2105,49 @@ async function showDepartamentos(region) {
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 
-  // Fetch departamentos
-  const bq2=activeBit?`&bitacora_id=${activeBit.id}`:'';
-  const data = await af(`/regionalizacion?region=${encodeURIComponent(region)}${bq2}`, []);
+  // Fetch departamentos via nuevo endpoint
+  const data = await af(`/regionalizacion?vigencia=${_reVigencia}&region=${encodeURIComponent(region)}`, []);
+  const deptos = data.filter(x => x.tipo === 'departamento')
+                     .sort((a,b)=>a.departamento.localeCompare(b.departamento,'es'));
 
-  // Filter out regional total (pct_participacion = 100)
-  const deptos = data.filter(x => x.pct_participacion !== 100);
-
-  // Build table
   if (deptos.length === 0) {
     modalText.innerHTML = '<p style="color:var(--gs);text-align:center;padding:20px">No hay departamentos disponibles para esta región.</p>';
     return;
   }
 
-  const f = n => n ? n.toLocaleString('es-CO', {minimumFractionDigits:0, maximumFractionDigits:0}) : '—';
+  // Valores en mmm (miles de millones); mostrar redondeados
+  const fM = n => n != null ? Math.round(n).toLocaleString('es-CO') + ' mmm' : '—';
   const fp = p => p != null ? p.toFixed(1) + '%' : '—';
 
   const tableHTML = `
     <div style="margin-bottom:12px">
       <strong style="font-size:13px;color:var(--gt)">Región ${region}</strong>
-      <div style="font-size:12px;color:var(--gs);margin-top:3px">${deptos.length} departamento${deptos.length !== 1 ? 's' : ''}</div>
+      <div style="font-size:12px;color:var(--gs);margin-top:3px">${deptos.length} departamento${deptos.length !== 1 ? 's' : ''} · Corte marzo ${_reVigencia}</div>
     </div>
     <div style="max-height:400px;overflow-y:auto">
       <table class="tbl" style="font-size:11px">
         <thead>
           <tr>
-            <th style="text-align:left;min-width:120px">Departamento</th>
-            <th>Vigente (mm)</th>
-            <th>Comp. (mm)</th>
-            <th>% Ejec C</th>
-            <th>% Ejec P</th>
+            <th style="text-align:left;min-width:130px">Departamento</th>
+            <th>Aprop. (mmm)</th>
+            <th>Comp. (mmm)</th>
+            <th>Oblig. (mmm)</th>
+            <th>% Comp</th>
+            <th>% Oblig</th>
             <th>% Part.</th>
           </tr>
         </thead>
         <tbody>
-          ${deptos.map(d => {
-            let sectoresHTML = '';
-            if (Array.isArray(d.principales_sectores) && d.principales_sectores.length > 0) {
-              sectoresHTML = `<div style="font-size:9px;color:var(--gs);margin-top:3px;line-height:1.4">${d.principales_sectores.map(s => `${s.sector} ${s.pct}%`).join(' · ')}</div>`;
-            }
-            return `
+          ${deptos.map(d => `
             <tr>
-              <td style="text-align:left;font-weight:600">
-                ${d.departamento}
-                ${sectoresHTML}
-              </td>
-              <td>${f(d.vigente_mm)}</td>
-              <td>${f(d.compromisos_mm)}</td>
-              <td>${fp(d.pct_ejec_compromisos)}</td>
-              <td>${fp(d.pct_ejec_pagos)}</td>
+              <td style="text-align:left;font-weight:600">${d.departamento}</td>
+              <td>${fM(d.apropiacion_mmm)}</td>
+              <td>${fM(d.compromisos_mmm)}</td>
+              <td>${fM(d.obligaciones_mmm)}</td>
+              <td>${fp(d.pct_compromisos)}</td>
+              <td>${fp(d.pct_obligaciones)}</td>
               <td>${fp(d.pct_participacion)}</td>
-            </tr>`;
-          }).join('')}
+            </tr>`).join('')}
         </tbody>
       </table>
     </div>
