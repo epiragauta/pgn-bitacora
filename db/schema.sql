@@ -194,8 +194,10 @@ CREATE TABLE IF NOT EXISTS ejecucion_sectorial_entidades (
     apr_vigente_mmm     DECIMAL(12,3),
     compromisos_mmm     DECIMAL(12,3),
     obligaciones_mmm    DECIMAL(12,3),
+    pagos_mmm           DECIMAL(12,3),
     pct_c_av            DECIMAL(5,2),
     pct_o_av            DECIMAL(5,2),
+    pct_p_av            DECIMAL(5,2),
     UNIQUE(bitacora_id, vigencia, entidad)
 );
 
@@ -208,7 +210,11 @@ CREATE TABLE IF NOT EXISTS ejecucion_sectorial_mensual (
     pct_compromisos_2025  DECIMAL(5,2),
     pct_compromisos_2024  DECIMAL(5,2),
     pct_compromisos_prom  DECIMAL(5,2),
-    pct_compromisos_mejor DECIMAL(5,2)
+    pct_compromisos_mejor DECIMAL(5,2),
+    pct_obligaciones_2025  DECIMAL(5,2),
+    pct_obligaciones_2024  DECIMAL(5,2),
+    pct_obligaciones_prom  DECIMAL(5,2),
+    pct_obligaciones_mejor DECIMAL(5,2)
 );
 
 -- ------------------------------------------------------------

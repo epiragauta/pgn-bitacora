@@ -445,6 +445,78 @@ def get_compromisos_pct(bitacora_id: Optional[int] = None):
     return rows_to_list(rows)
 
 
+@app.get("/api/ejecucion/sectores/obligaciones_pct", tags=["Sec 4 - Ejecución"])
+def get_obligaciones_pct(bitacora_id: Optional[int] = None):
+    """% de obligaciones sobre apropiación por sector."""
+    db = get_db()
+    bid, vigencia = resolve_bitacora(db, bitacora_id)
+    rows = db.execute("""
+        SELECT vigencia, sector, pct_obligaciones
+        FROM obligaciones_pct_por_sector
+        WHERE bitacora_id=? AND vigencia=?
+        ORDER BY pct_obligaciones DESC
+    """, (bid, vigencia)).fetchall()
+    return rows_to_list(rows)
+
+
+@app.get("/api/ejecucion/sectores/pagos_pct", tags=["Sec 4 - Ejecución"])
+def get_pagos_pct(bitacora_id: Optional[int] = None):
+    """% de pagos sobre apropiación por sector."""
+    db = get_db()
+    bid, vigencia = resolve_bitacora(db, bitacora_id)
+    rows = db.execute("""
+        SELECT vigencia, sector, pct_pagos
+        FROM pagos_pct_por_sector
+        WHERE bitacora_id=? AND vigencia=?
+        ORDER BY pct_pagos DESC
+    """, (bid, vigencia)).fetchall()
+    return rows_to_list(rows)
+
+
+@app.get("/api/ejecucion/sectores/matriz", tags=["Sec 4 - Ejecución"])
+def get_sectores_matriz(bitacora_id: Optional[int] = None):
+    """Matriz completa por sector y vigencia: apropiación (mmm), %C, %O, %P."""
+    db = get_db()
+    bid, _ = resolve_bitacora(db, bitacora_id)
+
+    apr = db.execute(
+        "SELECT vigencia, sector, vigente_mmm FROM apropiacion_por_sector WHERE bitacora_id=? ORDER BY vigencia, sector",
+        (bid,)
+    ).fetchall()
+    cmp = db.execute(
+        "SELECT vigencia, sector, pct_compromisos FROM compromisos_pct_por_sector WHERE bitacora_id=? ORDER BY vigencia, sector",
+        (bid,)
+    ).fetchall()
+    obl = db.execute(
+        "SELECT vigencia, sector, pct_obligaciones FROM obligaciones_pct_por_sector WHERE bitacora_id=? ORDER BY vigencia, sector",
+        (bid,)
+    ).fetchall()
+    pag = db.execute(
+        "SELECT vigencia, sector, pct_pagos FROM pagos_pct_por_sector WHERE bitacora_id=? ORDER BY vigencia, sector",
+        (bid,)
+    ).fetchall()
+
+    vigencias = sorted(set(r["vigencia"] for r in apr))
+    sectores  = sorted(set(r["sector"]   for r in apr))
+
+    apr_m = {(r["vigencia"], r["sector"]): r["vigente_mmm"]      for r in apr}
+    cmp_m = {(r["vigencia"], r["sector"]): r["pct_compromisos"]  for r in cmp}
+    obl_m = {(r["vigencia"], r["sector"]): r["pct_obligaciones"] for r in obl}
+    pag_m = {(r["vigencia"], r["sector"]): r["pct_pagos"]        for r in pag}
+
+    result = []
+    for sector in sectores:
+        result.append({
+            "sector": sector,
+            "apr":   [apr_m.get((v, sector)) for v in vigencias],
+            "pct_c": [cmp_m.get((v, sector)) for v in vigencias],
+            "pct_o": [obl_m.get((v, sector)) for v in vigencias],
+            "pct_p": [pag_m.get((v, sector)) for v in vigencias],
+        })
+
+    return {"vigencias": vigencias, "sectores": result}
+
+
 # ──────────────────────────────────────────────
 # SECCIÓN 5 – VIGENCIAS FUTURAS
 # ──────────────────────────────────────────────
@@ -501,13 +573,15 @@ def get_sectorial(bitacora_id: Optional[int] = None, sector: Optional[str] = Non
 
 @app.get("/api/sectorial/mensual", tags=["Sec 6 - Ejecución Sectorial"])
 def get_sectorial_mensual(bitacora_id: Optional[int] = None, sector: Optional[str] = None):
-    """Ejecución mensual sectorial comparada con años anteriores."""
+    """Ejecución mensual sectorial comparada con años anteriores (compromisos y obligaciones)."""
     db = get_db()
     bid, vigencia = resolve_bitacora(db, bitacora_id)
     sql = """
         SELECT vigencia, sector, mes,
                pct_compromisos_2025, pct_compromisos_2024,
-               pct_compromisos_prom, pct_compromisos_mejor
+               pct_compromisos_prom, pct_compromisos_mejor,
+               pct_obligaciones_2025, pct_obligaciones_2024,
+               pct_obligaciones_prom, pct_obligaciones_mejor
         FROM ejecucion_sectorial_mensual
         WHERE bitacora_id=? AND vigencia=?
     """
@@ -516,6 +590,26 @@ def get_sectorial_mensual(bitacora_id: Optional[int] = None, sector: Optional[st
         sql += " AND sector=?"
         params.append(sector.upper())
     sql += " ORDER BY sector, mes"
+    return rows_to_list(db.execute(sql, params).fetchall())
+
+
+@app.get("/api/sectorial/historico", tags=["Sec 6 - Ejecución Sectorial"])
+def get_sectorial_historico(bitacora_id: Optional[int] = None, sector: Optional[str] = None):
+    """Entidades por sector con todas las vigencias disponibles (para tabla multi-año)."""
+    db = get_db()
+    bid, _ = resolve_bitacora(db, bitacora_id)
+    sql = """
+        SELECT vigencia, sector, entidad,
+               apr_vigente_mmm, compromisos_mmm, obligaciones_mmm,
+               pct_c_av, pct_o_av
+        FROM ejecucion_sectorial_entidades
+        WHERE bitacora_id=? AND vigencia >= 2022
+    """
+    params: list = [bid]
+    if sector:
+        sql += " AND sector=?"
+        params.append(sector.upper())
+    sql += " ORDER BY sector, entidad, vigencia"
     return rows_to_list(db.execute(sql, params).fetchall())
 
 

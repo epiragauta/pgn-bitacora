@@ -120,6 +120,9 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 .btn-tabla:hover{background:var(--t);color:#fff}
 .tgl-btn{background:none;border:none;color:inherit;font-weight:800;cursor:pointer;padding:0 2px;font-size:11px;font-family:monospace;line-height:1;vertical-align:middle;opacity:.85}
 .tgl-btn:hover{opacity:1}
+.s4m-tab{background:transparent;border:1px solid var(--gc);border-radius:4px;padding:3px 10px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;color:var(--gm);font-family:inherit;transition:background .15s,color .15s,border-color .15s}
+.s4m-tab:hover{border-color:var(--t);color:var(--t)}
+.s4m-tab.active{background:var(--t);color:#fff;border-color:var(--t)}
 .tbl thead th{background:var(--t);color:#fff;font-weight:800;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:8px 10px;text-align:right}
 .tbl thead th:first-child{text-align:left;border-radius:5px 0 0 0}.tbl thead th:last-child{border-radius:0 5px 0 0}
 .tbl td{padding:8px 10px;border-bottom:1px solid var(--gc);color:var(--gm);text-align:right}
@@ -204,6 +207,26 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 .sc.sc-hidden{display:none}
 .si-fa{font-size:26px;color:var(--m);margin-bottom:10px;display:block;line-height:1}
 .si-init{width:36px;height:36px;border-radius:50%;background:rgba(254,27,123,.1);border:1.5px solid rgba(254,27,123,.2);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#fe1b7b;margin-bottom:10px}
+.sc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:6px;margin-bottom:6px}
+.sc-badges{display:flex;flex-direction:column;gap:3px;flex-shrink:0;align-items:flex-end}
+.sc-badge{font-size:9px;font-weight:900;padding:2px 6px;border-radius:10px;white-space:nowrap;letter-spacing:.02em}
+.sc-bc{background:rgba(0,195,193,.12);color:#007a78}
+.sc-bo{background:rgba(254,27,123,.12);color:#b5155a}
+.sc-body{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;margin:8px 0 6px}
+.sc-spark{overflow:visible}
+.sc-bars{width:88px}
+.sc-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--gc);padding-top:6px;margin-top:4px}
+.sc-det{background:transparent;border:1px solid var(--gc);border-radius:3px;padding:2px 8px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;color:var(--gs);font-family:inherit;transition:border-color .15s,color .15s}
+.sc-det:hover{border-color:var(--t);color:var(--t)}
+.sc-tbl{width:100%;border-collapse:collapse;font-size:10px;margin-top:4px}
+.sc-tbl th{background:var(--t);color:#fff;padding:4px 6px;text-align:right;font-weight:800;font-size:9px;letter-spacing:.04em;white-space:nowrap}
+.sc-tbl th:first-child{text-align:left;position:sticky;left:0;background:var(--t);z-index:1}
+.sc-tbl td{padding:3px 6px;text-align:right;border-bottom:1px solid var(--gc);vertical-align:middle;white-space:nowrap}
+.sc-tbl td:first-child{text-align:left;font-weight:700;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;position:sticky;left:0;background:var(--bl);z-index:1}
+.sc-tbl tr:hover td{background:rgba(0,195,193,.05)}
+.sc-tbl tr.sc-tr-sec td{background:rgba(0,195,193,.08);font-weight:900}
+.sc-tbl .yr-hdr{background:rgba(0,195,193,.15);color:var(--gt);padding:3px 6px;font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;text-align:center}
+.sc-tbl-wrap{overflow-x:auto;max-height:280px;overflow-y:auto;margin-top:8px}
 
 /* hbars */
 .hr-row{margin-bottom:12px}
@@ -268,6 +291,30 @@ footer strong{color:#fff}
   background:var(--a);
   color:#fff;
   border-color:var(--a);
+}
+.help-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:18px;
+  height:18px;
+  background:rgba(127,71,221,.12);
+  border:1.5px solid rgba(127,71,221,.32);
+  color:var(--mo);
+  font-size:12px;
+  font-weight:900;
+  font-style:normal;
+  border-radius:50%;
+  margin-left:4px;
+  cursor:pointer;
+  transition:all .2s;
+  vertical-align:middle;
+}
+.help-icon:hover{
+  background:var(--mo);
+  color:#fff;
+  border-color:var(--mo);
+  transform:scale(1.1);
 }
 
 .modal-overlay{
@@ -663,13 +710,32 @@ footer strong{color:#fff}
   <div class="pw">
     <div class="stag"><span class="n">4</span>Ejecución de la inversión
       <i class="info-icon" onclick="openDrawer('sec4-info')">i</i>
+      <i class="help-icon" onclick="openInfoModal('Ciclo de la Ejecución del Gasto','sec4-info')" title="Ver ciclo de ejecución del gasto">?</i>
     </div>
     <h2 class="st">Ejecución Presupuestal 2022 – 2025</h2>
     <p class="ss">Comparativo histórico corte primer trimestre. Fuente: SIIF Nación.</p>
     <div class="tg rv" id="tlGrid"></div>
     <div class="g2 rv" style="margin-top:18px">
-      <div class="card bt"><div class="ct">% Compromisos · Obligaciones · Pagos<button class="card-expand" onclick="openCardModal('line-sec4')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div style="position:relative;height:220px"><canvas id="lineEj"></canvas></div></div>
-      <div class="card bm"><div class="ct">Apropiación sectores principales 2022-2025<button class="card-expand" onclick="openCardModal('hb-sec4')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div id="hbSect"></div></div>
+      <div class="card bt"><div class="ct"><span class="ct-text">Ejecución presupuestal histórica · Vigente y porcentajes</span><button class="card-expand" onclick="openCardModal('mix-sec4-ej')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div style="position:relative;height:220px"><canvas id="mixEjHist"></canvas></div></div>
+      <div class="card bm"><div class="ct"><span class="ct-text">Apropiación top sectores 2022-2025</span><button class="card-expand" onclick="openCardModal('hb-sec4')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div id="hbSect"></div></div>
+    </div>
+    <div class="card rv" style="margin-top:18px">
+      <div class="ct"><span class="ct-text">Apropiación histórica inversión 2022-2025 · Precios corrientes</span><button class="card-expand" onclick="openCardModal('mix-sec4')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div>
+      <div style="position:relative;height:280px"><canvas id="mixAprHist"></canvas></div>
+      <div id="aprHistTbl"></div>
+    </div>
+    <div class="card rv" style="margin-top:18px">
+      <div class="ct" style="flex-wrap:wrap;gap:8px">
+        <span class="ct-text">Ejecución por sector · 2022-2025</span>
+        <div id="s4mTabs" style="display:flex;gap:4px;flex-wrap:wrap">
+          <button class="s4m-tab active" onclick="switchMatrixTab('apr')">Apropiación</button>
+          <button class="s4m-tab" onclick="switchMatrixTab('pct_c')">% Compromisos</button>
+          <button class="s4m-tab" onclick="switchMatrixTab('pct_o')">% Obligaciones</button>
+          <button class="s4m-tab" onclick="switchMatrixTab('pct_p')">% Pagos</button>
+        </div>
+        <button class="card-expand" onclick="openCardModal('tbl-sec4-mtz')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button>
+      </div>
+      <div id="sectMatrix"></div>
     </div>
   </div>
 </section>
@@ -841,7 +907,7 @@ const CHART_EVENTS={
     {x:'2025',label:'Ajuste fiscal',desc:'Reducción de $15,9 bill. en inversión frente a 2024 como parte del ajuste de gasto del Gobierno Nacional Central.',color:P.nr},
     {x:'2026',label:'Estabilización',desc:'PGN 2026 prácticamente igual al de 2025 ($516 bill.), con leve recomposición: cae Servicio de la Deuda ($12 bill.) y sube inversión ($4,4 bill.).',color:P.t},
   ],
-  lineEj:[
+  mixEjHist:[
     {x:'2022',label:'Inicio PND',desc:'Primer corte Q1 del PND "Colombia, potencia mundial de la vida". Ejecución Q1 en rangos históricos esperados para el inicio de un cuatrienio.',color:P.mo},
     {x:'2024',label:'Rezago Q1',desc:'Con la apropiación más alta del cuatrienio ($99,8 bill.), el %C/AV al Q1 fue el más bajo: comprometer volúmenes tan altos en 3 meses es estructuralmente difícil.',color:P.m},
     {x:'2025',label:'Mejor ritmo Q1',desc:'43% de compromisos al corte de marzo — el mejor arranque Q1 del cuatrienio, a pesar del ajuste presupuestal de $15,9 bill.',color:P.t},
@@ -1078,13 +1144,25 @@ function openCardModal(key){
       setTimeout(()=>_leafletMap.invalidateSize({animate:false}),300);
       setTimeout(()=>_leafletMap.invalidateSize({animate:false}),650);
     }
-  } else if(key==='line-sec4'){
-    title.textContent='% Compromisos · Obligaciones · Pagos — Ejecución inversión 2022-2025';
-    body.innerHTML=`<div style="position:relative;height:calc(88vh - 80px)"><canvas id="lineEj-m"></canvas></div>`;
-    if(_s4.ej) requestAnimationFrame(()=>_buildLineEj('lineEj-m',_s4.ej));
+  } else if(key==='mix-sec4-ej'){
+    title.textContent='Ejecución presupuestal histórica · Vigente y %C/%O/%P';
+    body.innerHTML=`<div style="position:relative;height:calc(88vh - 80px)"><canvas id="mixEjHist-m"></canvas></div>`;
+    if(_s4.ejMix) requestAnimationFrame(()=>_buildMixEjHist('mixEjHist-m',_s4.ejMix));
   } else if(key==='hb-sec4'){
-    title.textContent='Apropiación sectores principales 2022-2025';
+    title.textContent='Apropiación top sectores 2022-2025';
     body.innerHTML=`<div style="max-width:700px;margin:0 auto">${document.getElementById('hbSect').innerHTML}</div>`;
+  } else if(key==='tbl-sec4-mtz'){
+    const tabLabel={'apr':'Apropiación','pct_c':'% Compromisos','pct_o':'% Obligaciones','pct_p':'% Pagos'};
+    title.textContent=`Ejecución por sector 2022-2025 · ${tabLabel[_s4MatrixTab]||''}`;
+    body.innerHTML=`<div id="sectMatrix-m"></div>`;
+    if(_s4.mtz) requestAnimationFrame(()=>_renderSectorMatrix('sectMatrix-m',_s4.mtz,_s4MatrixTab));
+  } else if(key==='mix-sec4'){
+    title.textContent='Apropiación histórica inversión 2022-2025 · Precios corrientes';
+    body.innerHTML=`<div style="position:relative;height:calc(88vh - 140px)"><canvas id="mixAprHist-m"></canvas></div><div id="aprHistTbl-m"></div>`;
+    if(_s4.aprHist) requestAnimationFrame(()=>{
+      _buildAprHist('mixAprHist-m',_s4.aprHist);
+      _renderAprHistTbl('aprHistTbl-m',_s4.aprHist);
+    });
   } else if(key==='bar-sec5'){
     title.textContent='Vigencias futuras por sector y año (mmm COP constantes 2025)';
     body.innerHTML=`<div style="position:relative;height:calc(88vh - 80px)"><canvas id="barVF-m"></canvas></div>`;
@@ -1095,6 +1173,10 @@ function openCardModal(key){
   } else if(key==='grid-sec6'){
     title.textContent='Ejecución por Sector — 2025';
     body.innerHTML=`<div class="sg" style="padding:4px">${document.getElementById('sectGrid').innerHTML}</div>`;
+  } else if(key==='_sector_det_'){
+    // openSectorDetail pasa title y html como 2º y 3º argumento
+    title.textContent=arguments[1]||'Detalle de sector';
+    body.innerHTML=arguments[2]||'';
   }
 }
 
@@ -1102,7 +1184,7 @@ function closeCardModal(e){
   if(e&&e.target!==document.getElementById('cardModal'))return;
   document.getElementById('cardModal').classList.remove('active');
   document.body.style.overflow='';
-  ['donutT-m','barPGN-m','lineInv-m','lineEj-m','barVF-m'].forEach(id=>destroyChart(id));
+  ['donutT-m','barPGN-m','lineInv-m','mixEjHist-m','mixAprHist-m','barVF-m'].forEach(id=>destroyChart(id));
   // Restaurar mapa si fue movido al modal
   const sentinel=document.getElementById('mapSentinel');
   if(sentinel){
@@ -1364,6 +1446,104 @@ const _barLabelsPlugin={
   }
 };
 
+/* ── Sec 4: Apropiación histórica inversión (bar + 2 lines, eje dual) ── */
+const _aprHistPlugin={
+  id:'aprHistLabels',
+  afterDatasetsDraw(chart){
+    const ctx=chart.ctx;
+    chart.data.datasets.forEach((ds,i)=>{
+      if(ds.type!=='line')return;
+      const meta=chart.getDatasetMeta(i);
+      if(meta.hidden)return;
+      meta.data.forEach((pt,j)=>{
+        const v=ds.data[j];
+        if(v==null||isNaN(v))return;
+        ctx.save();
+        ctx.fillStyle=ds.borderColor;
+        ctx.font='bold 10.5px "Nunito Sans",sans-serif';
+        ctx.textAlign='center';
+        ctx.textBaseline='bottom';
+        ctx.fillText(v+'%', pt.x, pt.y-6);
+        ctx.restore();
+      });
+    });
+  }
+};
+
+function _buildAprHist(canvasId, ej){
+  destroyChart(canvasId);
+  const data=ej.filter(d=>d.y<=2025);
+  new Chart(document.getElementById(canvasId).getContext('2d'),{
+    type:'bar',
+    plugins:[_aprHistPlugin],
+    data:{
+      labels:data.map(d=>String(d.y)),
+      datasets:[
+        {type:'bar',  label:'Apr. Vigente',
+         data:data.map(d=>d.vg), backgroundColor:'#1c3d7e',
+         borderRadius:3, yAxisID:'yL', order:2},
+        {type:'line', label:'Inversión como % del PIB',
+         data:data.map(d=>d.pib), borderColor:P.nr,
+         backgroundColor:'rgba(251,176,59,.08)', tension:.35,
+         pointRadius:5, pointBackgroundColor:P.nr,
+         yAxisID:'yR', order:1},
+        {type:'line', label:'Inversión como % del gasto total',
+         data:data.map(d=>d.g), borderColor:P.m,
+         backgroundColor:'rgba(254,27,123,.06)', tension:.35,
+         pointRadius:5, pointBackgroundColor:P.m,
+         yAxisID:'yR', order:0}
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      layout:{padding:{top:26, right:8}},
+      scales:{
+        yL:{type:'linear',position:'left',
+            grid:{color:P.gc}, ticks:{color:P.gt,
+              callback:v=>v===0?'0':v.toLocaleString('es-CO')},
+            title:{display:true,text:'Miles de millones de pesos',
+                   color:P.gs,font:{size:10}}},
+        yR:{type:'linear',position:'right',
+            grid:{drawOnChartArea:false},
+            min:0, max:25,
+            ticks:{color:P.gt,callback:v=>v+'%'}},
+        x:{grid:{color:P.gc},ticks:{color:P.gt}}
+      },
+      plugins:{
+        legend:{position:'bottom',labels:{boxWidth:10,padding:14,color:P.gt}},
+        tooltip:{callbacks:{
+          label:ctx=>ctx.dataset.type==='bar'
+            ?`Apr. Vigente: ${Math.round(ctx.parsed.y).toLocaleString('es-CO')} mmm`
+            :`${ctx.dataset.label}: ${ctx.parsed.y}%`
+        }}
+      }
+    }
+  });
+}
+
+function _renderAprHistTbl(containerId, ej){
+  const el=document.getElementById(containerId);
+  if(!el)return;
+  const data=ej.filter(d=>d.y<=2025);
+  const fn=v=>Math.round(v).toLocaleString('es-CO');
+  el.innerHTML=`<div class="tbl-wrap" style="margin-top:12px">
+    <table class="tbl" style="font-size:12px">
+      <thead><tr><th></th>${data.map(d=>`<th>${d.y}</th>`).join('')}</tr></thead>
+      <tbody>
+        <tr><td>Apr. Vigente</td>${data.map(d=>`<td>${fn(d.vg)}</td>`).join('')}</tr>
+        <tr><td>Inversión como % del PIB</td>${data.map(d=>`<td>${d.pib}%</td>`).join('')}</tr>
+        <tr><td>Inversión como % del gasto total</td>${data.map(d=>`<td>${d.g}%</td>`).join('')}</tr>
+      </tbody>
+    </table>
+  </div>`;
+}
+
+function rAprHist(ej){
+  _s4.aprHist=ej;
+  _buildAprHist('mixAprHist',ej);
+  _renderAprHistTbl('aprHistTbl',ej);
+}
+
 function _buildBarReg(canvasId, data, selYears){
   destroyChart(canvasId);
   const ys=selYears.filter(y=>data[y]).map(Number);
@@ -1565,40 +1745,183 @@ function toggleTlMode(){
   rTimeline(ejData);
 }
 
-function _buildLineEj(canvasId,ej){
-  destroyChart(canvasId);
-  const c=new Chart(document.getElementById(canvasId).getContext('2d'),{type:'line',
-    data:{labels:['2022','2023','2024','2025'],datasets:[
-      {label:'% Compromisos', data:ej.map(d=>d.pc),borderColor:P.t,tension:.3,pointRadius:4},
-      {label:'% Obligaciones',data:ej.map(d=>d.po),borderColor:P.m,tension:.3,pointRadius:4},
-      {label:'% Pagos',       data:ej.map(d=>d.pp),borderColor:P.a,tension:.3,pointRadius:4}]},
-    options:{responsive:true,maintainAspectRatio:false,
-      layout:{padding:{top:22}},
-      scales:{x:{grid:{color:P.gc}},y:{grid:{color:P.gc},ticks:{callback:v=>v+'%'}}},
-      plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:12}}}}});
-  c._evtAnnot=CHART_EVENTS.lineEj;
-}
-function rLineEj(ej){_s4.ej=ej;_buildLineEj('lineEj',ej);}
+/* ── Sec 4: Gráfico mixto ejecución histórica (barras Vigente + 3 líneas %) ── */
+const _mixEjHistPlugin={
+  id:'mixEjHistLabels',
+  afterDatasetsDraw(chart){
+    const ctx=chart.ctx;
+    chart.data.datasets.forEach((ds,i)=>{
+      if(ds.type!=='line')return;
+      const meta=chart.getDatasetMeta(i);
+      if(meta.hidden)return;
+      meta.data.forEach((pt,j)=>{
+        const v=ds.data[j];
+        if(v==null||isNaN(v))return;
+        ctx.save();
+        ctx.fillStyle=ds.borderColor;
+        ctx.font='bold 10px "Nunito Sans",sans-serif';
+        ctx.textAlign='center';
+        ctx.textBaseline='bottom';
+        ctx.fillText(v+'%',pt.x,pt.y-5);
+        ctx.restore();
+      });
+    });
+  }
+};
 
-function rHBars(){
-  const S=[
-    {n:'Transporte',      v:[11233,11304,12777,13748]},
-    {n:'Igualdad y Equidad',v:[0,0,9968,10151]},
-    {n:'Inclusión Social',  v:[9788,21728,11152,8243]},
-    {n:'Educación',         v:[5535,7404,8081,8267]},
-    {n:'Minas y Energía',   v:[4787,7287,7526,7419]},
-    {n:'Trabajo',           v:[4333,5121,5663,6642]},
-  ];
-  const mx=22000,CL=[P.t,P.m,P.a,P.nr];
+function _buildMixEjHist(canvasId,ej){
+  destroyChart(canvasId);
+  const data=ej.filter(d=>d.y>=2018&&d.y<=2025);
+  const c=new Chart(document.getElementById(canvasId).getContext('2d'),{
+    type:'bar',
+    plugins:[_mixEjHistPlugin],
+    data:{
+      labels:data.map(d=>String(d.y)),
+      datasets:[
+        {type:'bar',  label:'Apr. Vigente (mmm)',
+         data:data.map(d=>d.vg),backgroundColor:'#1c3d7e',
+         borderRadius:3,yAxisID:'yL',order:2},
+        {type:'line', label:'% Compromisos',
+         data:data.map(d=>d.pc),borderColor:P.t,
+         backgroundColor:'rgba(0,195,193,.07)',tension:.3,
+         pointRadius:4,pointBackgroundColor:P.t,yAxisID:'yR',order:1},
+        {type:'line', label:'% Obligaciones',
+         data:data.map(d=>d.po),borderColor:P.m,
+         backgroundColor:'rgba(254,27,123,.05)',tension:.3,
+         pointRadius:4,pointBackgroundColor:P.m,yAxisID:'yR',order:1},
+        {type:'line', label:'% Pagos',
+         data:data.map(d=>d.pp),borderColor:P.a,
+         backgroundColor:'rgba(255,202,0,.05)',tension:.3,
+         pointRadius:4,pointBackgroundColor:P.a,yAxisID:'yR',order:1}
+      ]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      layout:{padding:{top:26,right:8}},
+      scales:{
+        yL:{type:'linear',position:'left',
+            grid:{color:P.gc},
+            ticks:{color:P.gs,callback:v=>v===0?'0':v.toLocaleString('es-CO')},
+            title:{display:true,text:'Miles de millones de pesos',color:P.gs,font:{size:10}}},
+        yR:{type:'linear',position:'right',
+            grid:{drawOnChartArea:false},
+            min:0,max:80,
+            ticks:{color:P.gs,callback:v=>v+'%'}},
+        x:{grid:{color:P.gc},ticks:{color:P.gs}}
+      },
+      plugins:{
+        legend:{position:'bottom',labels:{boxWidth:10,padding:12,color:P.gs}},
+        tooltip:{callbacks:{
+          label:ctx=>ctx.dataset.type==='bar'
+            ?`Apr. Vigente: ${Math.round(ctx.parsed.y).toLocaleString('es-CO')} mmm`
+            :`${ctx.dataset.label}: ${ctx.parsed.y}%`
+        }}
+      }
+    }
+  });
+  c._evtAnnot=CHART_EVENTS.mixEjHist;
+}
+function rMixEjHist(ej){_s4.ejMix=ej;_buildMixEjHist('mixEjHist',ej);}
+
+/* Helper: Title Case respetando preposiciones */
+function toTitle(s){
+  if(!s)return'';
+  const skip=new Set(['y','e','de','del','la','el','las','los','en','a','o','por','para','i','ii']);
+  return s.toLowerCase().split(/\s+/).map((w,i)=>
+    i===0||!skip.has(w)?w.charAt(0).toUpperCase()+w.slice(1):w
+  ).join(' ');
+}
+
+function rHBars(mtz){
+  const CL=[P.t,P.m,P.a,P.nr];
+  let S,mx,vigs;
+  if(mtz&&mtz.sectores&&mtz.sectores.length){
+    const vigsAll=mtz.vigencias;
+    vigs=vigsAll.filter(v=>v>=2022&&v<=2025);
+    const visIdx=vigs.map(v=>vigsAll.indexOf(v));
+    const lastIdx=visIdx[visIdx.length-1];
+    const top6=[...mtz.sectores]
+      .sort((a,b)=>(b.apr[lastIdx]||0)-(a.apr[lastIdx]||0))
+      .slice(0,6);
+    mx=Math.max(...top6.flatMap(s=>visIdx.map(vi=>s.apr[vi]||0)))*1.05;
+    S=top6.map(s=>({n:toTitle(s.sector),v:visIdx.map(vi=>Math.round(s.apr[vi]||0))}));
+  }else{
+    vigs=[2022,2023,2024,2025];
+    S=[
+      {n:'Transporte',           v:[11233,11304,12777,13748]},
+      {n:'Igualdad y Equidad',   v:[0,0,9968,10151]},
+      {n:'Inclusión Social',     v:[9788,21728,11152,8243]},
+      {n:'Educación',            v:[5535,7404,8081,8267]},
+      {n:'Minas y Energía',      v:[4787,7287,7526,7419]},
+      {n:'Trabajo',              v:[4333,5121,5663,6642]},
+    ];
+    mx=22000;
+  }
   document.getElementById('hbSect').innerHTML=S.map(s=>`
     <div class="hr-row">
-      <div class="hr-lbl"><span>${s.n}</span><span>${(s.v[3]/1000).toFixed(1)} Bill. 2025</span></div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px">
-        ${s.v.map((v,i)=>`<div><div style="font-size:8px;color:${P.gs};margin-bottom:2px;font-weight:700">${[2022,2023,2024,2025][i]}</div>
+      <div class="hr-lbl"><span>${s.n}</span><span>${(s.v[s.v.length-1]/1000).toFixed(1)} Bill. ${vigs[vigs.length-1]}</span></div>
+      <div style="display:grid;grid-template-columns:repeat(${vigs.length},1fr);gap:2px">
+        ${s.v.map((v,i)=>`<div><div style="font-size:8px;color:${P.gs};margin-bottom:2px;font-weight:700">${vigs[i]}</div>
         <div class="hr-tr"><div class="hr-fi" style="width:${(v/mx*100).toFixed(1)}%;background:${CL[i]}"></div></div></div>`).join('')}
       </div>
     </div>`).join('');
 }
+
+/* ── Sec 4: Matriz interactiva de ejecución por sector ── */
+let _s4MatrixTab='apr';
+
+function switchMatrixTab(tab){
+  _s4MatrixTab=tab;
+  _renderSectorMatrix('sectMatrix',_s4.mtz,tab);
+  document.querySelectorAll('#s4mTabs .s4m-tab').forEach(b=>{
+    const fn=b.getAttribute('onclick')||'';
+    b.classList.toggle('active',fn.includes(`'${tab}'`));
+  });
+}
+
+function _renderSectorMatrix(containerId,mtz,tab){
+  const el=document.getElementById(containerId);
+  if(!el||!mtz)return;
+  const vigsAll=mtz.vigencias||[];
+  const vigs=vigsAll.filter(v=>v>=2022);
+  const visIdx=vigs.map(v=>vigsAll.indexOf(v));
+  const cfg={
+    apr:  {key:'apr',  fmt:v=>v==null?'—':Math.round(v).toLocaleString('es-CO'),pct:false},
+    pct_c:{key:'pct_c',fmt:v=>v==null?'—':v.toFixed(1)+'%',pct:true},
+    pct_o:{key:'pct_o',fmt:v=>v==null?'—':v.toFixed(1)+'%',pct:true},
+    pct_p:{key:'pct_p',fmt:v=>v==null?'—':v.toFixed(1)+'%',pct:true}
+  }[tab];
+  const top10Sets=cfg.pct?visIdx.map(vi=>{
+    const top10=[...mtz.sectores]
+      .filter(s=>s[cfg.key][vi]!=null)
+      .sort((a,b)=>b[cfg.key][vi]-a[cfg.key][vi])
+      .slice(0,10).map(s=>s.sector);
+    return new Set(top10);
+  }):[];
+  const lastVi=visIdx[visIdx.length-1];
+  const sorted=[...mtz.sectores].sort((a,b)=>(b[cfg.key][lastVi]??-1)-(a[cfg.key][lastVi]??-1));
+  const sn=n=>{const t=toTitle(n);return t.length>28?t.slice(0,27)+'…':t;};
+  el.innerHTML=`<div class="tbl-wrap" style="margin-top:8px">
+    <table class="tbl" style="font-size:11px">
+      <thead><tr>
+        <th style="text-align:left;min-width:155px;position:sticky;left:0;background:var(--t)">Sector</th>
+        ${vigs.map(v=>`<th>${v}</th>`).join('')}
+      </tr></thead>
+      <tbody>
+        ${sorted.map(s=>{
+          const cells=visIdx.map((vi,ci)=>{
+            const v=s[cfg.key][vi];
+            const hl=cfg.pct&&top10Sets[ci]&&top10Sets[ci].has(s.sector);
+            const bg=hl?'background:rgba(0,195,193,.15);font-weight:700':'';
+            return`<td style="${bg}">${cfg.fmt(v)}</td>`;
+          });
+          return`<tr><td title="${s.sector}" style="text-align:left;position:sticky;left:0;background:var(--bl)">${sn(s.sector)}</td>${cells.join('')}</tr>`;
+        }).join('')}
+      </tbody>
+    </table>
+  </div>`;
+}
+function rSectMatrix(mtz){_s4.mtz=mtz;_renderSectorMatrix('sectMatrix',mtz,_s4MatrixTab);}
 
 function _buildBarVF(canvasId,tot,sect){
   destroyChart(canvasId);
@@ -1673,19 +1996,73 @@ function sIcon(name){
   return `<i class="fas ${getSectorIcon(name)} si-fa"></i>`;
 }
 
-function rSectorial(d){
-  document.getElementById('sectGrid').innerHTML=d.map(x=>`
-    <div class="sc" data-letter="${sFL(x.s)}">
-      ${sIcon(x.s)}
-      <div class="sn">${x.s}</div>
-      <div class="skv"><span class="ll">Apropiación vigente</span><span class="vv">${x.v.toLocaleString('es-CO',{minimumFractionDigits:3})} mmm</span></div>
-      ${x.pc!=null?`
-      <div class="gr"><div class="gl"><span>% Compromisos</span><span style="color:${P.t}">${x.pc}%</span></div>
-      <div class="gtr"><div class="gf gft" style="width:${x.pc}%"></div></div></div>
-      <div class="gr"><div class="gl"><span>% Obligaciones</span><span style="color:${P.m}">${x.po}%</span></div>
-      <div class="gtr"><div class="gf gfm" style="width:${x.po}%"></div></div></div>
-      `:`<div class="snd">Datos de ejecución en actualización</div>`}
-    </div>`).join('');
+/* ── Sparkline SVG ENE-FEB-MAR (4 series de obligaciones) ─────────────── */
+function _sparkSVG(mensRows){
+  const W=130,H=68,PX=10,PY=10;
+  const months=[1,2,3];
+  const lbl=['ENE','FEB','MAR'];
+  const series=[
+    {k:'pct_obligaciones_prom',  c:'#bbb',   d:'4,2', w:1.2},
+    {k:'pct_obligaciones_2024',  c:P.a,      d:null,  w:1.5},
+    {k:'pct_obligaciones_2025',  c:P.t,      d:null,  w:2},
+    {k:'pct_obligaciones_mejor', c:'#c9a0dc',d:'2,2', w:1},
+  ];
+  const vals=series.flatMap(s=>months.map(m=>{const r=mensRows.find(x=>x.mes===m)||{};return r[s.k]||0;}));
+  const yMax=Math.max(30,...vals)*1.1||30;
+  const cx=i=>PX+(i*(W-2*PX)/2);
+  const cy=v=>H-PY-((v||0)/yMax*(H-2*PY));
+  const lines=series.map(s=>{
+    const pts=months.map((_,i)=>{const r=mensRows.find(x=>x.mes===months[i])||{};return`${cx(i).toFixed(1)},${cy(r[s.k]||0).toFixed(1)}`;}).join(' ');
+    const da=s.d?`stroke-dasharray="${s.d}"`:'';
+    return`<polyline points="${pts}" fill="none" stroke="${s.c}" stroke-width="${s.w}" stroke-linejoin="round" ${da}/>`;
+  });
+  const lbls=lbl.map((l,i)=>`<text x="${cx(i).toFixed(1)}" y="${H}" text-anchor="middle" font-size="7" fill="#aaa">${l}</text>`);
+  return`<svg class="sc-spark" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${lines.join('')}${lbls.join('')}</svg>`;
+}
+
+/* ── Leyenda de la sparkline ────────────────────────────────────────────── */
+function _sparkLegend(anioActual,anioAnt){
+  const items=[
+    {c:'#bbb',d:true, l:`Prom. 2018-${anioAnt-1}`},
+    {c:P.a,  d:false,l:`Año ${anioAnt}`},
+    {c:P.t,  d:false,l:`Año ${anioActual}`},
+    {c:'#c9a0dc',d:true,l:'Mejor año'},
+  ];
+  return`<div style="display:flex;flex-wrap:wrap;gap:4px 8px;margin-top:2px">`+
+    items.map(it=>`<span style="display:flex;align-items:center;gap:3px;font-size:8px;color:var(--gs)"><svg width="14" height="6"><line x1="0" y1="3" x2="14" y2="3" stroke="${it.c}" stroke-width="${it.d?'1.2':'1.8'}" ${it.d?'stroke-dasharray="3,2"':''}/></svg>${it.l}</span>`).join('')+
+  '</div>';
+}
+
+const _EXPAND_ICON=`<svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg>`;
+
+function rSectorial(d, menMap, anioActual, anioAnt){
+  _seMenMap   = menMap || {};
+  _seSectors  = d;
+  document.getElementById('sectGrid').innerHTML=d.map(x=>{
+    const mens=(menMap&&menMap[x.s])||[];
+    const hasObl=mens.some(r=>r.pct_obligaciones_2025!=null||r.pct_obligaciones_2024!=null);
+    const sEsc=x.s.replace(/'/g,"\\'");
+    return`<div class="sc" data-letter="${sFL(x.s)}" data-sector="${x.s}">
+      <div class="sc-head">
+        <div>${sIcon(x.s)}<div class="sn" style="margin-bottom:0">${toTitle(x.s)}</div></div>
+        <button class="card-expand" onclick="openSectorFull('${sEsc}')" title="Ver en pantalla completa">${_EXPAND_ICON}</button>
+      </div>
+      <div class="sc-body">
+        ${hasObl?_sparkSVG(mens):'<div style="width:130px;height:68px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--gs)">Sin datos históricos</div>'}
+        <div class="sc-bars">
+          ${x.pc!=null?`
+          <div class="gr" style="margin-bottom:5px"><div class="gl"><span>%C</span><span style="color:${P.t}">${x.pc}%</span></div><div class="gtr"><div class="gf gft" style="width:${Math.min(x.pc,100)}%"></div></div></div>
+          <div class="gr"><div class="gl"><span>%O</span><span style="color:${P.m}">${x.po}%</span></div><div class="gtr"><div class="gf gfm" style="width:${Math.min(x.po,100)}%"></div></div></div>
+          `:'<div class="snd">En actualización</div>'}
+        </div>
+      </div>
+      ${hasObl?_sparkLegend(anioActual,anioAnt):''}
+      <div class="sc-foot">
+        <div class="skv" style="margin-bottom:0"><span class="ll">Apr. vigente</span><span class="vv" style="font-size:12px">${x.v.toLocaleString('es-CO',{minimumFractionDigits:3})} mmm</span></div>
+        <button class="sc-det" onclick="openSectorDetail('${sEsc}')">Ver entidades ↗</button>
+      </div>
+    </div>`;
+  }).join('');
 
   const letters=[...new Set(d.map(x=>sFL(x.s)))].sort();
   document.getElementById('sec6Filter').innerHTML=
@@ -1704,6 +2081,168 @@ function filterSectors(letter){
     c.classList.toggle('sc-hidden',!!(letter&&c.dataset.letter!==letter)));
 }
 
+/* ── Detalle de sector: tabla multi-año de entidades ───────────────────── */
+let _seHist = null;
+let _seMenMap = {};
+let _seSectors = [];
+let _anioActualG = null;
+let _anioAntG = null;
+function openSectorDetail(sectorKey){
+  if(!_seHist||!_seHist.length){alert('Datos históricos no disponibles.');return;}
+  const rows=_seHist.filter(r=>r.sector===sectorKey);
+  if(!rows.length){alert('Sin datos para este sector.');return;}
+
+  const vigs=[...new Set(rows.map(r=>r.vigencia))].sort();
+  const ents=[...new Set(rows.map(r=>r.entidad))];
+  const lastVig=vigs[vigs.length-1];
+  ents.sort((a,b)=>{
+    const av=(e)=>(rows.find(r=>r.vigencia===lastVig&&r.entidad===e)||{}).apr_vigente_mmm||0;
+    return av(b)-av(a);
+  });
+
+  const fmt=(v)=>v!=null?v.toLocaleString('es-CO',{minimumFractionDigits:3}):'—';
+  const fmtP=(v)=>v!=null?v.toFixed(1)+'%':'—';
+
+  const colHeader=vigs.map(y=>`<th class="yr-hdr" colspan="3">${y}</th>`).join('');
+  const subHeader=vigs.map(()=>`<th>AV</th><th>%C</th><th>%O</th>`).join('');
+
+  const dataRows=ents.map(e=>{
+    const cells=vigs.map(y=>{
+      const r=rows.find(x=>x.vigencia===y&&x.entidad===e)||{};
+      return`<td>${fmt(r.apr_vigente_mmm)}</td><td>${fmtP(r.pct_c_av)}</td><td>${fmtP(r.pct_o_av)}</td>`;
+    }).join('');
+    return`<tr><td title="${e}">${toTitle(e)}</td>${cells}</tr>`;
+  }).join('');
+
+  const html=`<div style="padding:4px 0 8px">
+    <p style="font-size:11px;color:var(--gs);margin-bottom:8px">AV = Apropiación vigente (miles de millones COP) · %C = % Compromisos · %O = % Obligaciones · Corte: marzo de cada año. Fuente: SIIF Nación.</p>
+    <div class="sc-tbl-wrap">
+      <table class="sc-tbl">
+        <thead><tr><th>Entidad</th>${colHeader}</tr><tr><th></th>${subHeader}</tr></thead>
+        <tbody>${dataRows}</tbody>
+      </table>
+    </div>
+  </div>`;
+
+  openCardModal('_sector_det_', toTitle(sectorKey), html);
+}
+
+let _sectChartC = null;
+let _sectChartO = null;
+function openSectorFull(sectorKey){
+  const anioActual = _anioActualG || new Date().getFullYear();
+  const anioAnt    = _anioAntG    || (anioActual - 1);
+  const mens       = (_seMenMap && _seMenMap[sectorKey]) || [];
+  const MES_LBL    = ['ENE','FEB','MAR'];
+  const meses      = [1,2,3];
+
+  /* ── helper para armar datasets de una métrica ── */
+  function mkDatasets(prefix, colorMain, colorAnt){
+    const defs=[
+      {k:`${prefix}_prom`,  label:`Prom. 2018-${anioAnt-1}`, color:'#ccc',      dash:[5,3], w:1.2},
+      {k:`${prefix}_2024`,  label:`Año ${anioAnt}`,           color:colorAnt,   dash:[],    w:1.5},
+      {k:`${prefix}_2025`,  label:`Año ${anioActual}`,        color:colorMain,  dash:[],    w:2.5},
+      {k:`${prefix}_mejor`, label:'Mejor año',                color:'#c9a0dc',  dash:[4,4], w:1.2},
+    ];
+    return defs.map(s=>({
+      label:s.label,
+      data:meses.map(m=>{const r=mens.find(x=>x.mes===m)||{};return r[s.k]??null;}),
+      borderColor:s.color, backgroundColor:s.color+'18',
+      borderWidth:s.w, borderDash:s.dash,
+      pointRadius:4, pointHoverRadius:6, tension:0.2, fill:false,
+    }));
+  }
+
+  /* ── tabla entidades ── */
+  let tblHtml = '<p style="font-size:11px;color:var(--gs)">Sin datos históricos para este sector.</p>';
+  if(_seHist && _seHist.length){
+    const rows = _seHist.filter(r=>r.sector===sectorKey);
+    if(rows.length){
+      const vigs=[...new Set(rows.map(r=>r.vigencia))].sort();
+      const ents=[...new Set(rows.map(r=>r.entidad))];
+      const lastVig=vigs[vigs.length-1];
+      ents.sort((a,b)=>{const av=e=>(rows.find(r=>r.vigencia===lastVig&&r.entidad===e)||{}).apr_vigente_mmm||0;return av(b)-av(a);});
+      const fmt=v=>v!=null?v.toLocaleString('es-CO',{minimumFractionDigits:3}):'—';
+      const fmtP=v=>v!=null?v.toFixed(1)+'%':'—';
+      const colH=vigs.map(y=>`<th class="yr-hdr" colspan="3">${y}</th>`).join('');
+      const subH=vigs.map(()=>'<th>AV</th><th>%C</th><th>%O</th>').join('');
+      const bodyR=ents.map(e=>{
+        const cells=vigs.map(y=>{const r=rows.find(x=>x.vigencia===y&&x.entidad===e)||{};return`<td>${fmt(r.apr_vigente_mmm)}</td><td>${fmtP(r.pct_c_av)}</td><td>${fmtP(r.pct_o_av)}</td>`;}).join('');
+        return`<tr><td title="${e}">${toTitle(e)}</td>${cells}</tr>`;
+      }).join('');
+      tblHtml=`<div class="sc-tbl-wrap"><table class="sc-tbl"><thead><tr><th>Entidad</th>${colH}</tr><tr><th></th>${subH}</tr></thead><tbody>${bodyR}</tbody></table></div>`;
+    }
+  }
+
+  const _sec = (_seSectors||[]).find(x=>x.s===sectorKey);
+  const kpiBlock = _sec?.pc!=null
+    ? `<div style="display:flex;gap:16px;margin-bottom:16px">
+        <div style="display:flex;flex-direction:column;align-items:center;background:rgba(0,195,193,.08);border:1.5px solid var(--t);border-radius:8px;padding:10px 24px">
+          <span style="font-size:11px;font-weight:700;color:var(--t);text-transform:uppercase;letter-spacing:.05em">% Compromisos</span>
+          <span style="font-size:32px;font-weight:900;color:var(--t);line-height:1.1">${_sec.pc}%</span>
+          <span style="font-size:10px;color:var(--gs)">Sobre apropiación vigente</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;background:rgba(254,27,123,.08);border:1.5px solid var(--m);border-radius:8px;padding:10px 24px">
+          <span style="font-size:11px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.05em">% Obligaciones</span>
+          <span style="font-size:32px;font-weight:900;color:var(--m);line-height:1.1">${_sec.po}%</span>
+          <span style="font-size:10px;color:var(--gs)">Sobre apropiación vigente</span>
+        </div>
+        ${_sec.v!=null?`<div style="display:flex;flex-direction:column;align-items:center;background:var(--bg);border:1.5px solid var(--gc);border-radius:8px;padding:10px 24px">
+          <span style="font-size:11px;font-weight:700;color:var(--gs);text-transform:uppercase;letter-spacing:.05em">Apr. Vigente</span>
+          <span style="font-size:28px;font-weight:900;color:var(--gd);line-height:1.1">${_sec.v.toLocaleString('es-CO',{minimumFractionDigits:3})}</span>
+          <span style="font-size:10px;color:var(--gs)">Miles de millones COP</span>
+        </div>`:''}
+      </div>`
+    : '';
+
+  const ts = Date.now();
+  const cIdC = `sfChartC_${ts}`;
+  const cIdO = `sfChartO_${ts}`;
+  const chartBlock = mens.length
+    ? `<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+        <div>
+          <p style="font-size:10px;font-weight:800;color:var(--t);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">% Compromisos / Apropiación Vigente · Evolución mensual</p>
+          <div style="position:relative;height:200px"><canvas id="${cIdC}"></canvas></div>
+        </div>
+        <div>
+          <p style="font-size:10px;font-weight:800;color:var(--m);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">% Obligaciones / Apropiación Vigente · Evolución mensual</p>
+          <div style="position:relative;height:200px"><canvas id="${cIdO}"></canvas></div>
+        </div>
+      </div>`
+    : '<p style="font-size:11px;color:var(--gs);margin-bottom:16px">Sin datos mensuales disponibles.</p>';
+
+  const html = `<p style="font-size:11px;color:var(--gs);margin-bottom:12px">Corte: marzo de ${anioActual} · Fuente: SIIF Nación</p>
+  ${kpiBlock}
+  ${chartBlock}
+  <div>
+    <p style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--gs);margin-bottom:6px">Distribución por entidades</p>
+    <p style="font-size:10px;color:var(--gs);margin-bottom:6px">AV = Apropiación vigente (mmm COP) · %C = % Compromisos · %O = % Obligaciones · Corte: marzo de cada año.</p>
+    ${tblHtml}
+  </div>`;
+
+  openCardModal('_sector_det_', toTitle(sectorKey), html);
+
+  if(mens.length) setTimeout(()=>{
+    if(_sectChartC){_sectChartC.destroy();_sectChartC=null;}
+    if(_sectChartO){_sectChartO.destroy();_sectChartO=null;}
+    const chartOpts=(title)=>({
+      responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{display:true,position:'top',labels:{boxWidth:24,font:{size:10},padding:8}},
+        tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y!=null?ctx.parsed.y.toFixed(1)+'%':'—'}`}}
+      },
+      scales:{
+        y:{ticks:{callback:v=>v+'%',font:{size:9}},grid:{color:'#eee'}},
+        x:{ticks:{font:{size:10}},grid:{display:false}}
+      }
+    });
+    const canvasC=document.getElementById(cIdC);
+    if(canvasC) _sectChartC=new Chart(canvasC,{type:'line',data:{labels:MES_LBL,datasets:mkDatasets('pct_compromisos',P.t,P.a)},options:chartOpts()});
+    const canvasO=document.getElementById(cIdO);
+    if(canvasO) _sectChartO=new Chart(canvasO,{type:'line',data:{labels:MES_LBL,datasets:mkDatasets('pct_obligaciones',P.m,'#ff8c69')},options:chartOpts()});
+  },80);
+}
+
 /* Scroll reveal */
 const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')})},{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
@@ -1718,8 +2257,11 @@ async function init(bid){
   if(reRaw && reRaw.length) _reVigencia=Math.max(...reRaw.map(x=>x.vigencia));
   const reMapaRaw = await af(`/regionalizacion/mapa?vigencia=${_reVigencia}`, null);
   const vftRaw = await af(`/vigencias_futuras/totales${q}`, null);
-  const seRaw  = await af(`/sectorial${q}`, null);
-  const resRaw = await af(`/resumen${q}`, null);
+  const seRaw     = await af(`/sectorial${q}`, null);
+  const seMenRaw  = await af(`/sectorial/mensual${q}`, null);
+  const seHistRaw = await af(`/sectorial/historico${q}`, null);
+  const mtzRaw    = await af(`/ejecucion/sectores/matriz${q}`, null);
+  const resRaw    = await af(`/resumen${q}`, null);
 
   if(resRaw){
     updateHero(resRaw);
@@ -1749,11 +2291,12 @@ async function init(bid){
     : D.re;
   const reMapa = hasRows(reMapaRaw) ? reMapaRaw : [];
   const vft = hasRows(vftRaw) ? vftRaw.map(x=>({y:x.vigencia_exec,t:x.total_mmm,pib:x.pct_pib||0})) : D.vft;
-  const se  = hasRows(seRaw)  ? [...seRaw.reduce((m,x)=>{const k=x.sector;if(!m.has(k))m.set(k,{s:x.sector,v:0,pc:null,po:null});const g=m.get(k);g.v+=x.apr_vigente_mmm||0;if(x.pct_c_av!=null){g.pc=(g.pc||0)+x.pct_c_av;g.po=(g.po||0)+x.pct_o_av;}return m;},new Map()).values()].map(x=>({...x,v:parseFloat(x.v.toFixed(3)),pc:x.pc!=null?parseFloat(x.pc.toFixed(2)):null,po:x.po!=null?parseFloat(x.po.toFixed(2)):null})) : D.se;
+  const se  = hasRows(seRaw)  ? [...seRaw.reduce((m,x)=>{const k=x.sector;if(!m.has(k))m.set(k,{s:x.sector,v:0,sc:0,so:0});const g=m.get(k);g.v+=x.apr_vigente_mmm||0;g.sc+=x.compromisos_mmm||0;g.so+=x.obligaciones_mmm||0;return m;},new Map()).values()].map(x=>({s:x.s,v:parseFloat(x.v.toFixed(3)),pc:x.v>0?parseFloat((x.sc/x.v*100).toFixed(1)):null,po:x.v>0?parseFloat((x.so/x.v*100).toFixed(1)):null})) : D.se;
 
   rDonut(tr);rTablaT(tr);
   rBarPGN(ev);rLineInv(ej);
-  rTimeline(ej);rLineEj(ej);rHBars();
+  const mtz = mtzRaw && mtzRaw.sectores && mtzRaw.sectores.length ? mtzRaw : null;
+  rTimeline(ej);rMixEjHist(ej);rHBars(mtz);rAprHist(ej);rSectMatrix(mtz);
   rRegiones(re);
 
   // Calcular datos gráfico distribución regional vs nacional (todos los años)
@@ -1782,7 +2325,20 @@ async function init(bid){
 
   rMapa(reMapa, re);
   rVF(vft,D.vfs);
-  rSectorial(se);
+
+  // Construir mapa sector→meses para sparklines
+  const menMap={};
+  if(seMenRaw&&seMenRaw.length){
+    seMenRaw.forEach(r=>{if(!menMap[r.sector])menMap[r.sector]=[];menMap[r.sector].push(r);});
+  }
+  // Guardar histórico de entidades para modales de detalle
+  _seHist = seHistRaw&&seHistRaw.length ? seHistRaw : null;
+  // Determinar años actual y anterior desde los metadatos
+  const _anioActual = resRaw?.vigencia || (new Date().getFullYear());
+  const _anioAnt    = _anioActual - 1;
+  _anioActualG = _anioActual;
+  _anioAntG    = _anioAnt;
+  rSectorial(se, menMap, _anioActual, _anioAnt);
 }
 
 /* ── Glosario presupuestal ── */
@@ -2363,7 +2919,7 @@ document.addEventListener('keydown', function(e) {
     ['tablaModal','cardModal'].forEach(id=>{
       document.getElementById(id).classList.remove('active');
     });
-    ['donutT-m','barPGN-m','lineInv-m','lineEj-m','barVF-m'].forEach(id=>destroyChart(id));
+    ['donutT-m','barPGN-m','lineInv-m','mixEjHist-m','mixAprHist-m','barVF-m'].forEach(id=>destroyChart(id));
     document.body.style.overflow='';
   }
 });
