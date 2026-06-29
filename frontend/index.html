@@ -747,8 +747,8 @@ footer strong{color:#fff}
       <i class="info-icon" onclick="openDrawer('sec5-info')">i</i>
     </div>
     <h2 class="st">Compromisos 2026 – 2040</h2>
-    <div class="vfh"><div class="vfb"><em>136,7</em> billones</div><p class="vfd"><span class="def" data-def="vigencias-futuras">COP constantes 2025</span> comprometidos 2026-2040. Principal sector: <strong>Transporte</strong>.</p></div>
-    <div class="card bt rv"><div class="ct">Vigencias futuras por sector y año (mmm COP constantes 2025)<button class="card-expand" onclick="openCardModal('bar-sec5')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div style="position:relative;height:270px"><canvas id="barVF"></canvas></div></div>
+    <div class="vfh"><div class="vfb"><em>—</em> billones</div><p class="vfd"><span class="def" data-def="vigencias-futuras">COP constantes 2026</span> comprometidos 2027-2040. Principal sector: <strong>Transporte</strong>.</p></div>
+    <div class="card bt rv"><div class="ct">Vigencias futuras por sector y año (mmm COP constantes 2026)<button class="card-expand" onclick="openCardModal('bar-sec5')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div style="position:relative;height:270px"><canvas id="barVF"></canvas></div></div>
     <div class="card rv" style="margin-top:18px"><div class="ct">Tabla de vigencias futuras comprometidas<button class="card-expand" onclick="openCardModal('tbl-sec5')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div class="tbl-wrap"><table class="tbl" id="tblVF"></table></div></div>
   </div>
 </section>
@@ -1005,19 +1005,18 @@ const D={
     {vigencia:2025,region:'AMAZONIA',  apropiacion_mmm:2124.2,  compromisos_mmm:410.8,   obligaciones_mmm:49.1,   pagos_mmm:49.0,   pct_compromisos:19.3},
     {vigencia:2025,region:'INSULAR',   apropiacion_mmm:356.6,   compromisos_mmm:48.9,    obligaciones_mmm:0.3,    pagos_mmm:0.3,    pct_compromisos:13.7},
   ],
-  vft:[
-    {y:2026,t:18578,pib:1.01},{y:2027,t:15125,pib:0.80},{y:2028,t:15882,pib:0.81},
-    {y:2029,t:14633,pib:0.72},{y:2030,t:12822,pib:0.61},{y:2031,t:11158,pib:0.52},
-    {y:2032,t:10722,pib:0.48},{y:2033,t: 9356,pib:0.41},{y:2034,t: 6355,pib:0.27},
-    {y:2035,t: 4756,pib:0.19},{y:2036,t: 4635,pib:0.18},{y:2037,t: 4167,pib:0.16},
-    {y:2038,t: 3731,pib:0.14},{y:2039,t: 2669,pib:0.10},{y:2040,t: 2105,pib:0.07},
-  ],
-  vfs:{
-    TRANSPORTE:      [9651,9172,8777,8373,8542,7208,6921,6452,4067,2495,2401,1958,1939,1205,656],
-    HACIENDA:        [4433,3545,5057,4302,2827,2796,2766,2852,2236,2209,2183,2157,1741,1412,1397],
-    'DEF. Y POLICÍA':[1170,983,983,983,983,983,983,0,0,0,0,0,0,0,0],
-    VIVIENDA:        [391,524,548,571,226,75,0,0,0,0,0,0,0,0,0],
-    OTROS:           [911,314,52,52,52,52,52,52,52,52,52,52,52,52,52],
+  vfc:{
+    anios:[2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040],
+    series:[
+      {sector:'TRANSPORTE',                valores:[10435,10633,10570,10528,9450,9271,8884,6516,4949,3361,2885,2839,2071,1491]},
+      {sector:'IGUALDAD Y EQUIDAD',        valores:[211,0,0,0,0,0,0,0,0,0,0,0,0,0]},
+      {sector:'HACIENDA',                  valores:[4352,3755,3061,3416,3547,3441,3093,2746,2544,2502,2491,2388,2010,923]},
+      {sector:'DEFENSA Y POLICÍA',         valores:[4980,5253,5200,5488,5394,3249,1181,986,0,0,0,0,0,0]},
+      {sector:'SALUD Y PROTECCIÓN SOCIAL', valores:[671,555,359,1499,476,289,162,159,94,0,0,0,0,0]},
+      {sector:'OTROS SECTORES',            valores:[6248,4829,3325,2616,1474,1333,1356,1381,1307,1097,53,53,53,53]},
+    ],
+    totales:[26895,25026,22515,23547,20341,17582,14676,11789,8894,6960,5429,5280,4134,2466],
+    pct_pib:[1.37,1.24,1.08,1.10,0.92,0.77,0.63,0.49,0.36,0.28,0.21,0.20,0.15,0.09],
   },
   se:[
     {s:'TRANSPORTE',              v:13.748,pc:66,po:10},
@@ -1164,9 +1163,9 @@ function openCardModal(key){
       _renderAprHistTbl('aprHistTbl-m',_s4.aprHist);
     });
   } else if(key==='bar-sec5'){
-    title.textContent='Vigencias futuras por sector y año (mmm COP constantes 2025)';
+    title.textContent='Vigencias futuras por sector y año (mmm COP constantes 2026)';
     body.innerHTML=`<div style="position:relative;height:calc(88vh - 80px)"><canvas id="barVF-m"></canvas></div>`;
-    if(_s5.tot) requestAnimationFrame(()=>_buildBarVF('barVF-m',_s5.tot,_s5.sect));
+    if(_s5.chart) requestAnimationFrame(()=>_buildBarVF('barVF-m',_s5.chart));
   } else if(key==='tbl-sec5'){
     title.textContent='Tabla de vigencias futuras comprometidas';
     body.innerHTML=document.querySelector('#sec5 .card.rv .tbl-wrap').outerHTML;
@@ -1923,28 +1922,57 @@ function _renderSectorMatrix(containerId,mtz,tab){
 }
 function rSectMatrix(mtz){_s4.mtz=mtz;_renderSectorMatrix('sectMatrix',mtz,_s4MatrixTab);}
 
-function _buildBarVF(canvasId,tot,sect){
+const _VF_COLORS=['#00c3c1','#fe1b7b','#ffca00','#fbb03b','#7f47dd','#999999'];
+const _VF_SHORT={
+  'TRANSPORTE':'Transporte','IGUALDAD Y EQUIDAD':'Igualdad',
+  'HACIENDA':'Hacienda','DEFENSA Y POLICÍA':'Defensa',
+  'SALUD Y PROTECCIÓN SOCIAL':'Salud','OTROS SECTORES':'Otros',
+};
+function _buildBarVF(canvasId,d){
   destroyChart(canvasId);
-  const SN=Object.keys(sect),SC=[P.t,P.a,P.m,P.nr,P.gs];
-  new Chart(document.getElementById(canvasId).getContext('2d'),{type:'bar',
-    data:{labels:tot.map(d=>String(d.y)),
-      datasets:SN.map((s,i)=>({label:s.charAt(0)+s.slice(1).toLowerCase(),data:sect[s],
-        backgroundColor:SC[i]+'bb',borderColor:SC[i],borderWidth:1}))},
+  const barDs=d.series.map((s,i)=>({
+    type:'bar',label:_VF_SHORT[s.sector]||s.sector,data:s.valores,
+    backgroundColor:_VF_COLORS[i]+'cc',borderColor:_VF_COLORS[i],
+    borderWidth:1,stack:'vf',yAxisID:'y',
+  }));
+  const lineDs={
+    type:'line',label:'% PIB',data:d.pct_pib,
+    borderColor:'#333',backgroundColor:'#33333318',
+    borderWidth:2,pointRadius:4,pointHoverRadius:6,
+    yAxisID:'y2',tension:0.3,fill:false,
+  };
+  new Chart(document.getElementById(canvasId).getContext('2d'),{
+    type:'bar',
+    data:{labels:d.anios.map(String),datasets:[...barDs,lineDs]},
     options:{responsive:true,maintainAspectRatio:false,
-      scales:{x:{stacked:true,grid:{color:P.gc}},y:{stacked:true,grid:{color:P.gc},ticks:{callback:v=>v.toLocaleString('es-CO')}}},
-      plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:11}}}}});
+      scales:{
+        x:{stacked:true,grid:{color:P.gc}},
+        y:{stacked:true,grid:{color:P.gc},ticks:{callback:v=>v.toLocaleString('es-CO')}},
+        y2:{position:'right',grid:{drawOnChartArea:false},
+          ticks:{callback:v=>v.toFixed(1)+'%'}},
+      },
+      plugins:{
+        legend:{position:'bottom',labels:{boxWidth:10,padding:11}},
+        tooltip:{callbacks:{label:ctx=>ctx.dataset.yAxisID==='y2'
+          ?`${ctx.dataset.label}: ${ctx.parsed.y?.toFixed(2)}%`
+          :`${ctx.dataset.label}: ${(ctx.parsed.y||0).toLocaleString('es-CO',{maximumFractionDigits:0})} mmm`}},
+      }},
+  });
 }
-function rVF(tot,sect){
-  _s5.tot=tot;_s5.sect=sect;
-  const totalVF=tot.reduce((s,x)=>s+(x.t||0),0);
+function rVF(chartData){
+  const d=chartData||D.vfc;
+  _s5.chart=d;
+  const totalVF=d.totales.reduce((s,x)=>s+(x||0),0);
   const vfb=document.querySelector('.vfb');
   if(vfb)vfb.innerHTML=`<em>${(totalVF/1000).toFixed(1)}</em> billones`;
-  _buildBarVF('barVF',tot,sect);
-  const SN=Object.keys(sect);
+  _buildBarVF('barVF',d);
+  const SN=d.series.map(s=>s.sector);
   document.getElementById('tblVF').innerHTML=`
-    <thead><tr><th>Año</th>${SN.map(s=>`<th>${s}</th>`).join('')}<th>TOTAL</th><th>% PIB</th></tr></thead>
-    <tbody>${tot.map((d,i)=>`<tr><td><strong>${d.y}</strong></td>${SN.map(s=>`<td>${(sect[s][i]||0).toLocaleString('es-CO')}</td>`).join('')}
-    <td><strong>${d.t.toLocaleString('es-CO')}</strong></td><td>${d.pib.toFixed(2)}%</td></tr>`).join('')}</tbody>`;
+    <thead><tr><th>Año</th>${SN.map(s=>`<th>${_VF_SHORT[s]||s}</th>`).join('')}<th>TOTAL</th><th>% PIB</th></tr></thead>
+    <tbody>${d.anios.map((y,i)=>`<tr><td><strong>${y}</strong></td>
+      ${d.series.map(s=>`<td>${(s.valores[i]||0).toLocaleString('es-CO',{maximumFractionDigits:0})}</td>`).join('')}
+      <td><strong>${(d.totales[i]||0).toLocaleString('es-CO',{maximumFractionDigits:0})}</strong></td>
+      <td>${d.pct_pib[i]!=null?d.pct_pib[i].toFixed(2)+'%':'-'}</td></tr>`).join('')}</tbody>`;
 }
 
 function sFL(n){
@@ -2256,7 +2284,7 @@ async function init(bid){
   // Determinar el año más reciente disponible en los datos de regionalización
   if(reRaw && reRaw.length) _reVigencia=Math.max(...reRaw.map(x=>x.vigencia));
   const reMapaRaw = await af(`/regionalizacion/mapa?vigencia=${_reVigencia}`, null);
-  const vftRaw = await af(`/vigencias_futuras/totales${q}`, null);
+  const vftRaw = await af(`/vigencias_futuras/chart${q}`, null);
   const seRaw     = await af(`/sectorial${q}`, null);
   const seMenRaw  = await af(`/sectorial/mensual${q}`, null);
   const seHistRaw = await af(`/sectorial/historico${q}`, null);
@@ -2324,7 +2352,7 @@ async function init(bid){
   rMixReg(regChartData);
 
   rMapa(reMapa, re);
-  rVF(vft,D.vfs);
+  rVF(vftRaw);
 
   // Construir mapa sector→meses para sparklines
   const menMap={};

@@ -520,33 +520,119 @@ def get_sectores_matriz(bitacora_id: Optional[int] = None):
 # ──────────────────────────────────────────────
 # SECCIÓN 5 – VIGENCIAS FUTURAS
 # ──────────────────────────────────────────────
+
+# Sectores individuales que se muestran solos; el resto se agrupa como OTROS
+_VF_SECT_NAMED = [
+    "TRANSPORTE",
+    "IGUALDAD Y EQUIDAD",
+    "HACIENDA",
+    "DEFENSA Y POLICÍA",
+    "SALUD Y PROTECCIÓN SOCIAL",
+]
+_VF_AÑOS = list(range(2027, 2041))
+
+
 @app.get("/api/vigencias_futuras", tags=["Sec 5 - Vigencias Futuras"])
 def get_vigencias_futuras(bitacora_id: Optional[int] = None, sector: Optional[str] = None):
-    """Vigencias futuras comprometidas (miles de millones COP corrientes)."""
+    """Vigencias futuras por sector en pesos corrientes (mmm)."""
     db = get_db()
     bid, _ = resolve_bitacora(db, bitacora_id)
-    sql = "SELECT vigencia_exec, sector, valor_mmm_ctes, pct_pib FROM vigencias_futuras WHERE bitacora_id=?"
+    sql = "SELECT vigencia_exec, sector, valor_corriente_mmm FROM vigencias_futuras WHERE bitacora_id=?"
     params: list = [bid]
     if sector:
         sql += " AND sector=?"
         params.append(sector.upper())
-    sql += " ORDER BY vigencia_exec, valor_mmm_ctes DESC"
+    sql += " ORDER BY vigencia_exec, valor_corriente_mmm DESC"
     return rows_to_list(db.execute(sql, params).fetchall())
 
 
 @app.get("/api/vigencias_futuras/totales", tags=["Sec 5 - Vigencias Futuras"])
 def get_vigencias_totales(bitacora_id: Optional[int] = None):
-    """Total vigencias futuras por año."""
+    """Total de vigencias futuras por año (corrientes mmm + deflactor + % PIB)."""
     db = get_db()
     bid, _ = resolve_bitacora(db, bitacora_id)
     rows = db.execute("""
-        SELECT vigencia_exec,
-               ROUND(SUM(valor_mmm_ctes), 3) AS total_mmm,
-               MAX(pct_pib) AS pct_pib
-        FROM vigencias_futuras WHERE bitacora_id=?
-        GROUP BY vigencia_exec ORDER BY vigencia_exec
+        SELECT v.vigencia_exec,
+               ROUND(SUM(v.valor_corriente_mmm), 3)          AS total_corriente_mmm,
+               d.deflactor,
+               ROUND(SUM(v.valor_corriente_mmm) / d.deflactor, 3) AS total_constante_mmm,
+               CASE WHEN d.pib_constante_mmm > 0
+                    THEN ROUND(SUM(v.valor_corriente_mmm) / d.deflactor / d.pib_constante_mmm * 100, 4)
+                    ELSE NULL END AS pct_pib
+        FROM vigencias_futuras v
+        LEFT JOIN deflactores_pib d
+               ON d.bitacora_id = v.bitacora_id AND d.anio = v.vigencia_exec
+        WHERE v.bitacora_id = ?
+          AND v.vigencia_exec BETWEEN 2027 AND 2040
+        GROUP BY v.vigencia_exec
+        ORDER BY v.vigencia_exec
     """, (bid,)).fetchall()
     return rows_to_list(rows)
+
+
+@app.get("/api/vigencias_futuras/chart", tags=["Sec 5 - Vigencias Futuras"])
+def get_vigencias_chart(bitacora_id: Optional[int] = None):
+    """Datos del gráfico: 6 series en constantes 2026 + % PIB (2027-2040)."""
+    db = get_db()
+    bid, _ = resolve_bitacora(db, bitacora_id)
+
+    # Leer pivot crudo + deflactores en un solo query
+    rows = db.execute("""
+        SELECT v.vigencia_exec,
+               v.sector,
+               ROUND(v.valor_corriente_mmm / d.deflactor, 3) AS valor_ctes
+        FROM vigencias_futuras v
+        JOIN deflactores_pib d
+          ON d.bitacora_id = v.bitacora_id AND d.anio = v.vigencia_exec
+        WHERE v.bitacora_id = ?
+          AND v.vigencia_exec BETWEEN 2027 AND 2040
+        ORDER BY v.vigencia_exec, v.sector
+    """, (bid,)).fetchall()
+
+    # PIB constante por año (para % PIB)
+    pib_rows = db.execute("""
+        SELECT anio, pib_constante_mmm FROM deflactores_pib
+        WHERE bitacora_id = ? AND anio BETWEEN 2027 AND 2040
+        ORDER BY anio
+    """, (bid,)).fetchall()
+    pib_map = {r["anio"]: r["pib_constante_mmm"] for r in pib_rows}
+
+    # Agrupar en 6 series
+    from collections import defaultdict
+    pivot: dict = {s: defaultdict(float) for s in _VF_SECT_NAMED}
+    pivot["OTROS SECTORES"] = defaultdict(float)
+
+    for r in rows:
+        sect = r["sector"]
+        year = r["vigencia_exec"]
+        val  = r["valor_ctes"] or 0.0
+        if sect in _VF_SECT_NAMED:
+            pivot[sect][year] += val
+        else:
+            pivot["OTROS SECTORES"][year] += val
+
+    series = []
+    for s in _VF_SECT_NAMED + ["OTROS SECTORES"]:
+        series.append({
+            "sector":  s,
+            "valores": [round(pivot[s].get(y, 0.0), 1) for y in _VF_AÑOS],
+        })
+
+    totales = [
+        round(sum(pivot[s].get(y, 0.0) for s in _VF_SECT_NAMED + ["OTROS SECTORES"]), 1)
+        for y in _VF_AÑOS
+    ]
+    pct_pib = [
+        round(totales[i] / pib_map[y] * 100, 4) if pib_map.get(y) else None
+        for i, y in enumerate(_VF_AÑOS)
+    ]
+
+    return {
+        "anios":   _VF_AÑOS,
+        "series":  series,
+        "totales": totales,
+        "pct_pib": pct_pib,
+    }
 
 
 # ──────────────────────────────────────────────
@@ -657,7 +743,10 @@ def get_resumen(bitacora_id: Optional[int] = None):
         (bid, vigencia)
     ).fetchone()
     vf_total = db.execute(
-        "SELECT ROUND(SUM(valor_mmm_ctes),1) AS total FROM vigencias_futuras WHERE bitacora_id=?",
+        """SELECT ROUND(SUM(v.valor_corriente_mmm / d.deflactor), 1) AS total
+           FROM vigencias_futuras v
+           JOIN deflactores_pib d ON d.bitacora_id=v.bitacora_id AND d.anio=v.vigencia_exec
+           WHERE v.bitacora_id=? AND v.vigencia_exec BETWEEN 2027 AND 2040""",
         (bid,)
     ).fetchone()
 

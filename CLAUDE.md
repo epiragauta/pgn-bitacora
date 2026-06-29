@@ -83,10 +83,15 @@ The Dockerfile automatically runs `seed_data.py` during build to initialize the 
 2. **Evolución Presupuestal** (`evolucion_presupuestal`, `ejecucion_historica`)
 3. **Regionalización** (`regionalizacion_resumen`, `regionalizacion_detalle_2025`)
 4. **Ejecución** (`ejecucion_historica`, `apropiacion_por_sector`, `compromisos_pct_por_sector`)
-5. **Vigencias Futuras** (`vigencias_futuras`)
+5. **Vigencias Futuras** (`vigencias_futuras`, `deflactores_pib`)
 6. **Ejecución Sectorial** (`ejecucion_sectorial_entidades`, `ejecucion_sectorial_mensual`)
 
-**Units:** All monetary values in thousands of millions of COP (miles de millones), except vigencias futuras which are in constant 2025 pesos.
+**Units:** All monetary values in thousands of millions of COP (miles de millones). Vigencias futuras are stored as raw current prices (`valor_corriente_mmm`); the API converts to constant 2026 prices on the fly using `deflactores_pib`.
+
+**Vigencias Futuras — two-table design:**
+- `vigencias_futuras`: raw pivot from SIIF (29 individual sectors × years, current prices mmm)
+- `deflactores_pib`: DEFLACTOR PIB BASE 2026 + PIB corriente/constante by year
+- The API endpoint `/api/vigencias_futuras/chart` applies `valor_constante = valor_corriente / deflactor` and groups into 6 series for the chart.
 
 ### ETL Pipeline
 
@@ -98,8 +103,18 @@ The Dockerfile automatically runs `seed_data.py` during build to initialize the 
 **Update Script** (`etl/update_bitacora.py`):
 - CSV-based ETL for new quarterly reports
 - Reads from `etl/data/*.csv`
-- Inserts new `metadatos_bitacora` record and loads associated data
 - Uses `INSERT OR REPLACE` for upserts
+
+**Excel ETLs** (each loads a specific section from source Excel files in `BASES_BITACORA/`):
+
+| Script | Sección | Fuente Excel |
+|--------|---------|--------------|
+| `etl/load_bitacora_excel.py` | Sec 1, 4, 6 | Varios archivos por sección |
+| `etl/load_regionalizacion.py` | Sec 3 | `3. REGIONALIZACIÓN/Consolidado Reg-Ejec-*.xlsx` |
+| `etl/load_ejecucion_sectorial.py` | Sec 4, 6 | `BASE DETALLE MENSUAL INVERSIÓN *.xlsx` |
+| `etl/load_vigencias_futuras.py` | Sec 5 | `5. VIGENCIAS FUTURAS/*.xlsx` hojas `BASE_SIIF_2` y `TD BITACORA` |
+
+See `docs/etl_uso.md` for detailed usage instructions per script.
 
 **CSV Structure:** See README.md sections on CSV formats for exact column names per table.
 
@@ -133,7 +148,7 @@ Endpoints are organized by dashboard section (tagged in FastAPI):
 - **Sec 2:** `/api/evolucion`, `/api/evolucion/inversion_historica`
 - **Sec 3:** `/api/regionalizacion`, `/api/regionalizacion/historico`
 - **Sec 4:** `/api/ejecucion`, `/api/ejecucion/sectores/apropiacion`, `/api/ejecucion/sectores/compromisos_pct`
-- **Sec 5:** `/api/vigencias_futuras`, `/api/vigencias_futuras/totales`
+- **Sec 5:** `/api/vigencias_futuras`, `/api/vigencias_futuras/totales`, `/api/vigencias_futuras/chart`
 - **Sec 6:** `/api/sectorial`, `/api/sectorial/mensual`
 - **Dashboard:** `/api/resumen` (KPIs for hero section)
 - **Metadata:** `/api/bitacoras`, `/api/bitacoras/{periodo}`

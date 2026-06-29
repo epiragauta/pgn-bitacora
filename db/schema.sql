@@ -173,13 +173,25 @@ CREATE TABLE IF NOT EXISTS pagos_pct_por_sector (
 -- SECCIÓN 5 – Vigencias Futuras
 -- ------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS vigencias_futuras (
-    id              INTEGER PRIMARY KEY AUTOINCREMENT,
-    bitacora_id     INTEGER REFERENCES metadatos_bitacora(id),
-    vigencia_exec   INTEGER NOT NULL,           -- año en que se ejecutará (2026-2040)
-    sector          TEXT    NOT NULL,
-    valor_mmm_ctes  DECIMAL(12,3),             -- miles de millones pesos constantes 2025
-    pct_pib         DECIMAL(5,3),
+    id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+    bitacora_id          INTEGER REFERENCES metadatos_bitacora(id),
+    vigencia_exec        INTEGER NOT NULL,   -- año de ejecución
+    sector               TEXT    NOT NULL,   -- sector individual (SIIF)
+    valor_corriente_mmm  DECIMAL(14,3),      -- pesos corrientes / 1e9 (sin deflactar)
     UNIQUE(bitacora_id, vigencia_exec, sector)
+);
+
+-- ------------------------------------------------------------
+-- SECCIÓN 5 – Deflactores PIB (base 2026)
+-- ------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS deflactores_pib (
+    id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+    bitacora_id          INTEGER REFERENCES metadatos_bitacora(id),
+    anio                 INTEGER NOT NULL,
+    deflactor            DECIMAL(14,9),        -- DEFLACTOR PIB BASE 2026
+    pib_corriente_mmm    DECIMAL(14,3),        -- PIB en pesos corrientes (miles de millones)
+    pib_constante_mmm    DECIMAL(14,3),        -- PIB en pesos constantes 2026 (miles de millones)
+    UNIQUE(bitacora_id, anio)
 );
 
 -- ------------------------------------------------------------
