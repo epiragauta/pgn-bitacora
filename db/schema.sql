@@ -230,6 +230,51 @@ CREATE TABLE IF NOT EXISTS ejecucion_sectorial_mensual (
 );
 
 -- ------------------------------------------------------------
+-- SECCIÓN 7 – Crédito Externo (SCCI)
+-- ------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS credito_portafolio (
+    id                INTEGER PRIMARY KEY AUTOINCREMENT,
+    bitacora_id       INTEGER REFERENCES metadatos_bitacora(id),
+    nombre            TEXT    NOT NULL,
+    nombre_corto      TEXT,
+    fuente            TEXT    NOT NULL,       -- BID, BM, CAF
+    contrato          TEXT,
+    sector            TEXT    NOT NULL,
+    monto_usd         DECIMAL(16,2),
+    desembolsado_usd  DECIMAL(16,2)
+);
+
+CREATE TABLE IF NOT EXISTS credito_ejecucion_entidad (
+    id                  INTEGER PRIMARY KEY AUTOINCREMENT,
+    bitacora_id         INTEGER REFERENCES metadatos_bitacora(id),
+    entidad             TEXT    NOT NULL,
+    sector              TEXT    NOT NULL,
+    apr_inicial_mmm     DECIMAL(14,3),
+    apr_vigente_mmm     DECIMAL(14,3),
+    compromiso_mmm      DECIMAL(14,3),
+    obligacion_mmm      DECIMAL(14,3),
+    pago_mmm            DECIMAL(14,3),
+    pct_com             DECIMAL(6,2),
+    pct_ejec            DECIMAL(6,2),
+    pct_pago            DECIMAL(6,2),
+    UNIQUE(bitacora_id, entidad)
+);
+
+CREATE TABLE IF NOT EXISTS credito_ejecucion_historica (
+    id                INTEGER PRIMARY KEY AUTOINCREMENT,
+    bitacora_id       INTEGER REFERENCES metadatos_bitacora(id),
+    anio              INTEGER NOT NULL,
+    pct_comprometido  DECIMAL(6,2),
+    pct_ejecutado     DECIMAL(6,2),
+    pct_pagado        DECIMAL(6,2),
+    vigente_mmm       DECIMAL(14,3),
+    comprometido_mmm  DECIMAL(14,3),
+    ejecutado_mmm     DECIMAL(14,3),
+    pagado_mmm        DECIMAL(14,3),
+    UNIQUE(bitacora_id, anio)
+);
+
+-- ------------------------------------------------------------
 -- Índices para consultas frecuentes
 -- ------------------------------------------------------------
 CREATE INDEX IF NOT EXISTS idx_ejecucion_historica_vigencia   ON ejecucion_historica(vigencia);
@@ -237,3 +282,4 @@ CREATE INDEX IF NOT EXISTS idx_regional_vigencia              ON regionalizacion
 CREATE INDEX IF NOT EXISTS idx_sector_vigencia                ON apropiacion_por_sector(vigencia, sector);
 CREATE INDEX IF NOT EXISTS idx_sectorial_entidad              ON ejecucion_sectorial_entidades(vigencia, sector, entidad);
 CREATE INDEX IF NOT EXISTS idx_vigencias_futuras_año          ON vigencias_futuras(vigencia_exec);
+CREATE INDEX IF NOT EXISTS idx_credito_entidad               ON credito_ejecucion_entidad(entidad);

@@ -700,6 +700,105 @@ def get_sectorial_historico(bitacora_id: Optional[int] = None, sector: Optional[
 
 
 # ──────────────────────────────────────────────
+# SECCIÓN 7 – CRÉDITO EXTERNO (SCCI)
+# ──────────────────────────────────────────────
+@app.get("/api/credito", tags=["Sec 7 - Crédito Externo"])
+def get_credito(bitacora_id: Optional[int] = None, fuente: Optional[str] = None, sector: Optional[str] = None):
+    """Portafolio de créditos externos vigentes (BID, BM, CAF). Montos en USD."""
+    db = get_db()
+    bid, _ = resolve_bitacora(db, bitacora_id)
+    sql = """
+        SELECT nombre, nombre_corto, fuente, contrato, sector, monto_usd, desembolsado_usd
+        FROM credito_portafolio WHERE bitacora_id=?
+    """
+    params: list = [bid]
+    if fuente:
+        sql += " AND fuente=?"
+        params.append(fuente.upper())
+    if sector:
+        sql += " AND sector=?"
+        params.append(sector)
+    sql += " ORDER BY monto_usd DESC"
+    return rows_to_list(db.execute(sql, params).fetchall())
+
+
+@app.get("/api/credito/fuentes", tags=["Sec 7 - Crédito Externo"])
+def get_credito_fuentes(bitacora_id: Optional[int] = None):
+    """Operaciones de crédito agrupadas por fuente de financiación (BID/BM/CAF), para el donut."""
+    db = get_db()
+    bid, _ = resolve_bitacora(db, bitacora_id)
+    rows = db.execute("""
+        SELECT fuente,
+               COUNT(*) AS n_creditos,
+               ROUND(SUM(monto_usd), 2)        AS monto_usd,
+               ROUND(SUM(desembolsado_usd), 2) AS desembolsado_usd
+        FROM credito_portafolio WHERE bitacora_id=?
+        GROUP BY fuente ORDER BY monto_usd DESC
+    """, (bid,)).fetchall()
+    return rows_to_list(rows)
+
+
+@app.get("/api/credito/sectores", tags=["Sec 7 - Crédito Externo"])
+def get_credito_sectores(bitacora_id: Optional[int] = None):
+    """Créditos y desembolsos agrupados por sector."""
+    db = get_db()
+    bid, _ = resolve_bitacora(db, bitacora_id)
+    rows = db.execute("""
+        SELECT sector,
+               COUNT(*) AS n_creditos,
+               ROUND(SUM(monto_usd), 2)        AS monto_usd,
+               ROUND(SUM(desembolsado_usd), 2) AS desembolsado_usd,
+               ROUND(SUM(desembolsado_usd) * 100.0 / SUM(monto_usd), 2) AS pct_desembolsado
+        FROM credito_portafolio WHERE bitacora_id=?
+        GROUP BY sector ORDER BY monto_usd DESC
+    """, (bid,)).fetchall()
+    return rows_to_list(rows)
+
+
+@app.get("/api/credito/resumen", tags=["Sec 7 - Crédito Externo"])
+def get_credito_resumen(bitacora_id: Optional[int] = None):
+    """KPIs del portafolio de crédito externo (cartera vigente, montos, % desembolsado)."""
+    db = get_db()
+    bid, _ = resolve_bitacora(db, bitacora_id)
+    row = db.execute("""
+        SELECT COUNT(*) AS n_creditos,
+               ROUND(SUM(monto_usd), 2)        AS monto_total_usd,
+               ROUND(SUM(desembolsado_usd), 2) AS desembolsado_total_usd,
+               ROUND(SUM(desembolsado_usd) * 100.0 / SUM(monto_usd), 2) AS pct_desembolsado
+        FROM credito_portafolio WHERE bitacora_id=?
+    """, (bid,)).fetchone()
+    return dict(row) if row else {}
+
+
+@app.get("/api/credito/ejecucion_entidad", tags=["Sec 7 - Crédito Externo"])
+def get_credito_ejecucion_entidad(bitacora_id: Optional[int] = None):
+    """Ejecución presupuestal por entidad de los recursos de crédito externo (recurso 13 y 14). Cifras en mmm COP."""
+    db = get_db()
+    bid, _ = resolve_bitacora(db, bitacora_id)
+    rows = db.execute("""
+        SELECT entidad, sector, apr_inicial_mmm, apr_vigente_mmm, compromiso_mmm,
+               obligacion_mmm, pago_mmm, pct_com, pct_ejec, pct_pago
+        FROM credito_ejecucion_entidad
+        WHERE bitacora_id=? ORDER BY apr_vigente_mmm DESC
+    """, (bid,)).fetchall()
+    return rows_to_list(rows)
+
+
+@app.get("/api/credito/ejecucion_historica", tags=["Sec 7 - Crédito Externo"])
+def get_credito_ejecucion_historica(bitacora_id: Optional[int] = None):
+    """Comparativo histórico de ejecución presupuestal de crédito externo (% y valores por año)."""
+    db = get_db()
+    bid, _ = resolve_bitacora(db, bitacora_id)
+    rows = db.execute("""
+        SELECT anio, pct_comprometido, pct_ejecutado, pct_pagado,
+               vigente_mmm, comprometido_mmm, ejecutado_mmm, pagado_mmm
+        FROM credito_ejecucion_historica
+        WHERE bitacora_id=? ORDER BY anio
+    """, (bid,)).fetchall()
+    return rows_to_list(rows)
+
+
+# ──────────────────────────────────────────────
 # ENDPOINT RESUMEN
 # ──────────────────────────────────────────────
 @app.get("/api/resumen", tags=["Dashboard"])

@@ -563,6 +563,7 @@ footer strong{color:#fff}
     <a href="#sec4" class="lk">Ejecución</a>
     <a href="#sec5" class="lk">Vigencias</a>
     <a href="#sec6" class="lk">Sectorial</a>
+    <a href="#sec7" class="lk">Crédito</a>
     <span class="corte-badge" id="corteBadge">Mar 2026</span>
   </div>
   <div class="franja"></div>
@@ -767,6 +768,84 @@ footer strong{color:#fff}
       <button class="card-expand" style="flex-shrink:0;margin-left:8px" onclick="openCardModal('grid-sec6')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button>
     </div>
     <div class="sg rv" id="sectGrid"></div>
+  </div>
+</section>
+
+<!-- SEC 7: CRÉDITO EXTERNO -->
+<section id="sec7" class="sec">
+  <div class="pw">
+    <div class="stag"><span class="n">7</span>Crédito Externo
+      <i class="info-icon" onclick="openDrawer('sec7-info')">i</i>
+    </div>
+    <h2 class="st">Portafolio de Crédito Externo</h2>
+    <p class="ss">Cartera vigente de operaciones de crédito externo de la Nación — BID, Banco Mundial y CAF. Cifras en millones de USD. Fuente: Subdirección de Crédito y Cooperación Internacional, DNP.</p>
+
+    <div class="g3 rv" style="margin-bottom:18px">
+      <div class="kpi kt" id="kpiCredN"><div class="kl">Cartera vigente</div><div class="kv">17 <small>operaciones</small></div><div class="kd">BID · BM · CAF</div></div>
+      <div class="kpi km" id="kpiCredMonto"><div class="kl">Total contratado (USD)</div><div class="kv">$1.316,9 <small>M</small></div><div class="kd">Monto de los créditos vigentes</div></div>
+      <div class="kpi ka" id="kpiCredDesem"><div class="kl">Desembolsado (USD)</div><div class="kv">$534,0 <small>M</small></div><div class="kd" id="kpiCredDesemPct">40,6% del total contratado</div></div>
+    </div>
+
+    <div class="g2 rv">
+      <div class="card bt">
+        <div class="ct"><span class="ct-text">Operaciones por fuente de financiación</span>
+          <button class="card-expand" onclick="openCardModal('donut-sec7')" title="Ver en pantalla completa">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg>
+          </button>
+        </div>
+        <div class="dl">
+          <div class="donut-wrap"><canvas id="donutCredFuente"></canvas></div>
+          <div id="leyCredFuente"></div>
+        </div>
+      </div>
+      <div class="card bm">
+        <div class="ct"><span class="ct-text">Créditos y desembolsos por sector (USD)</span>
+          <button class="card-expand" onclick="openCardModal('bar-sec7-sector')" title="Ver en pantalla completa">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg>
+          </button>
+        </div>
+        <div style="position:relative;height:230px"><canvas id="barCredSector"></canvas></div>
+      </div>
+    </div>
+
+    <div class="card rv" style="margin-top:18px">
+      <div class="ct"><span class="ct-text">Tabla de créditos y desembolsos por sector</span>
+        <button class="card-expand" onclick="openCardModal('tbl-sec7-sector')" title="Ver en pantalla completa">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg>
+        </button>
+      </div>
+      <div class="tbl-wrap"><table class="tbl" id="tblCredSectores"></table></div>
+    </div>
+
+    <h2 class="st" style="margin-top:36px">Ejecución Presupuestal — Recurso 13 y 14</h2>
+    <p class="ss">Apropiación, compromisos, obligaciones y pagos de los recursos asociados a crédito externo, por entidad ejecutora. Miles de millones COP. Fuente: SIIF Nación.</p>
+
+    <div class="card rv">
+      <div class="ct"><span class="ct-text">Ejecución por entidad — Apr. vigente, %Com, %Ejec, %Pago</span>
+        <button class="card-expand" onclick="openCardModal('tbl-sec7-entidad')" title="Ver en pantalla completa">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg>
+        </button>
+      </div>
+      <div class="tbl-wrap"><table class="tbl" id="tblCredEntidad"></table></div>
+    </div>
+
+    <div class="card bm rv" style="margin-top:18px">
+      <div class="ct"><span class="ct-text">Ejecución presupuestal por entidad — % Compromisos / Ejecución / Pago</span>
+        <button class="card-expand" onclick="openCardModal('bar-sec7-ejec')" title="Ver en pantalla completa">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg>
+        </button>
+      </div>
+      <div style="position:relative;height:320px"><canvas id="barCredEjec"></canvas></div>
+    </div>
+
+    <div class="card ba rv" style="margin-top:18px">
+      <div class="ct"><span class="ct-text">Ejecución presupuestal comparativo 2023-2026</span>
+        <button class="card-expand" onclick="openCardModal('hbar-sec7-hist')" title="Ver en pantalla completa">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg>
+        </button>
+      </div>
+      <div style="position:relative;height:260px"><canvas id="hbarCredHist"></canvas></div>
+    </div>
   </div>
 </section>
 
@@ -1035,10 +1114,54 @@ const D={
     {s:'INTERIOR',                v:0.483, pc:10,  po:1},
     {s:'PRESIDENCIA',             v:0.604, pc:7,   po:0.4},
   ],
+  credF:[
+    {fuente:'BM', n:4,  monto:578600000.00,   desem:242013624.06},
+    {fuente:'BID',n:10, monto:546977372.87,   desem:258590257.85},
+    {fuente:'CAF',n:3,  monto:191300000.00,   desem:33423539.00},
+  ],
+  credS:[
+    {sector:'Salud',              n:2, monto:450000000.00,  desem:156333333.00, pctDesem:34.74},
+    {sector:'Educación',          n:3, monto:240100000.00,  desem:108023744.84, pctDesem:44.99},
+    {sector:'APSB',               n:3, monto:156000000.00,  desem:64308771.00,  pctDesem:41.22},
+    {sector:'Catastro',           n:2, monto:150000000.00,  desem:77911972.24,  pctDesem:51.94},
+    {sector:'Territorial',        n:1, monto:100000000.00,  desem:33468197.60,  pctDesem:33.47},
+    {sector:'Justicia',           n:1, monto:90977372.87,   desem:40865768.85,  pctDesem:44.92},
+    {sector:'Agricultura',        n:1, monto:35300000.00,   desem:0.00,         pctDesem:0.00},
+    {sector:'Energía',            n:1, monto:34500000.00,   desem:10540143.00,  pctDesem:30.55},
+    {sector:'Planeación',         n:2, monto:30000000.00,   desem:20305885.00,  pctDesem:67.69},
+    {sector:'Organos de Control', n:1, monto:30000000.00,   desem:22269605.38,  pctDesem:74.23},
+  ],
+  credE:[
+    {entidad:'MINEDUCACION',       sector:'Educación',          aprVigente:155.086, pctCom:99.77, pctEjec:88.32, pctPago:88.32},
+    {entidad:'MINSALUDL',          sector:'Salud',               aprVigente:125.370, pctCom:100,   pctEjec:32.88, pctPago:32.88},
+    {entidad:'CONS SUP JUDICATURA',sector:'Justicia',            aprVigente:114.481, pctCom:94.02, pctEjec:28.28, pctPago:28.27},
+    {entidad:'FONVIVIENDA',        sector:'Vivienda',            aprVigente:71.759,  pctCom:100,   pctEjec:0,     pctPago:0},
+    {entidad:'MINAGRICULTURA',     sector:'Agricultura',         aprVigente:54.349,  pctCom:99.95, pctEjec:15.01, pctPago:15.01},
+    {entidad:'IGAC',               sector:'Catastro',            aprVigente:41.387,  pctCom:99.91, pctEjec:20.95, pctPago:20.89},
+    {entidad:'MINMINAS',           sector:'Minas y energía',     aprVigente:37.478,  pctCom:90.72, pctEjec:90.72, pctPago:90.72},
+    {entidad:'CGR',                sector:'Organos de control',  aprVigente:36.000,  pctCom:55.84, pctEjec:26.90, pctPago:26.90},
+    {entidad:'MINVIVIENDA',        sector:'Vivienda',            aprVigente:33.911,  pctCom:99.98, pctEjec:42.62, pctPago:42.62},
+    {entidad:'ANT',                sector:'Agricultura',         aprVigente:28.598,  pctCom:90.03, pctEjec:87.23, pctPago:84.89},
+    {entidad:'SUPERNOTARIADO',     sector:'Justicia',            aprVigente:27.645,  pctCom:99.48, pctEjec:46.91, pctPago:46.91},
+    {entidad:'MINTRABAJO',         sector:'Trabajo',             aprVigente:20.043,  pctCom:80.47, pctEjec:55.11, pctPago:55.11},
+    {entidad:'DNP',                sector:'Planeación',          aprVigente:13.812,  pctCom:93.21, pctEjec:84.63, pctPago:78.82},
+    {entidad:'ANDJE',              sector:'Justicia',            aprVigente:7.789,   pctCom:100,   pctEjec:100,   pctPago:100},
+    {entidad:'MINJUSTICIA',        sector:'Justicia',            aprVigente:6.862,   pctCom:99.47, pctEjec:59.98, pctPago:58.58},
+    {entidad:'PRESIDENCIA',        sector:'Presidencia',         aprVigente:4.947,   pctCom:98.22, pctEjec:98.22, pctPago:97.33},
+    {entidad:'MINTRANSPORTE',      sector:'Transporte',          aprVigente:3.362,   pctCom:91.39, pctEjec:91.39, pctPago:91.39},
+    {entidad:'UApA',               sector:'Educación',           aprVigente:3.085,   pctCom:94.11, pctEjec:32.73, pctPago:32.73},
+  ],
+  credH:[
+    {anio:2023, pctComp:26.48, pctEjec:1.51, pctPag:1.50},
+    {anio:2024, pctComp:14.38, pctEjec:0.66, pctPag:0.61},
+    {anio:2025, pctComp:15.66, pctEjec:0.82, pctPag:0.76},
+    {anio:2026, pctComp:27.59, pctEjec:1.89, pctPag:1.88},
+  ],
+  credResumen:{n:17, monto:1316877372.87, desem:534027420.91, pct:40.55},
 };
 
 /* ── Cache datos Sec 1-6 para re-render en modal ── */
-const _s1={},_s2={},_s3={},_s4={},_s5={};
+const _s1={},_s2={},_s3={},_s4={},_s5={},_s7={};
 
 /* ── Renders ── */
 function rDonut(d){
@@ -1175,6 +1298,36 @@ function openCardModal(key){
   } else if(key==='grid-sec6'){
     title.textContent='Ejecución por Sector — 2026';
     body.innerHTML=`<div class="sg" style="padding:4px">${document.getElementById('sectGrid').innerHTML}</div>`;
+  } else if(key==='donut-sec7'){
+    title.textContent='Operaciones por fuente de financiación';
+    body.innerHTML=`<div style="display:flex;flex-direction:column;gap:20px;height:calc(88vh - 80px)">
+      <div style="position:relative;height:340px;width:340px;margin:0 auto;flex-shrink:0"><canvas id="donutCredFuente-m"></canvas></div>
+      <div id="leyCredFuente-m" style="overflow-y:auto;padding-right:4px;flex:1"></div>
+    </div>`;
+    if(_s7.fuentes){
+      requestAnimationFrame(()=>{
+        _buildDonutCredFuente('donutCredFuente-m',_s7.fuentes);
+        document.getElementById('leyCredFuente-m').innerHTML=document.getElementById('leyCredFuente').innerHTML;
+      });
+    }
+  } else if(key==='bar-sec7-sector'){
+    title.textContent='Créditos y desembolsos por sector (USD)';
+    body.innerHTML=`<div style="position:relative;height:calc(88vh - 80px)"><canvas id="barCredSector-m"></canvas></div>`;
+    if(_s7.sectores) requestAnimationFrame(()=>_buildBarCredSector('barCredSector-m',_s7.sectores));
+  } else if(key==='tbl-sec7-sector'){
+    title.textContent='Tabla de créditos y desembolsos por sector';
+    body.innerHTML=document.querySelector('#sec7 .card.rv .tbl-wrap').outerHTML;
+  } else if(key==='tbl-sec7-entidad'){
+    title.textContent='Ejecución por entidad — Recurso 13 y 14';
+    body.innerHTML=document.getElementById('tblCredEntidad').parentElement.outerHTML;
+  } else if(key==='bar-sec7-ejec'){
+    title.textContent='Ejecución presupuestal por entidad — % Compromisos / Ejecución / Pago';
+    body.innerHTML=`<div style="position:relative;height:calc(88vh - 80px)"><canvas id="barCredEjec-m"></canvas></div>`;
+    if(_s7.entidad) requestAnimationFrame(()=>_buildBarCredEjec('barCredEjec-m',_s7.entidad));
+  } else if(key==='hbar-sec7-hist'){
+    title.textContent='Ejecución presupuestal comparativo 2023-2026';
+    body.innerHTML=`<div style="position:relative;height:calc(88vh - 80px)"><canvas id="hbarCredHist-m"></canvas></div>`;
+    if(_s7.hist) requestAnimationFrame(()=>_buildHbarCredHist('hbarCredHist-m',_s7.hist));
   } else if(key==='_sector_det_'){
     // openSectorDetail pasa title y html como 2º y 3º argumento
     title.textContent=arguments[1]||'Detalle de sector';
@@ -1186,7 +1339,7 @@ function closeCardModal(e){
   if(e&&e.target!==document.getElementById('cardModal'))return;
   document.getElementById('cardModal').classList.remove('active');
   document.body.style.overflow='';
-  ['donutT-m','barPGN-m','lineInv-m','mixEjHist-m','mixAprHist-m','barVF-m'].forEach(id=>destroyChart(id));
+  ['donutT-m','barPGN-m','lineInv-m','mixEjHist-m','mixAprHist-m','barVF-m','donutCredFuente-m','barCredSector-m','barCredEjec-m','hbarCredHist-m'].forEach(id=>destroyChart(id));
   // Restaurar mapa si fue movido al modal
   const sentinel=document.getElementById('mapSentinel');
   if(sentinel){
@@ -2112,6 +2265,124 @@ function filterSectors(letter){
     c.classList.toggle('sc-hidden',!!(letter&&c.dataset.letter!==letter)));
 }
 
+/* ── SEC 7: Crédito Externo ─────────────────────────────────────────────── */
+const fmtUsdM=v=>'$'+(v/1e6).toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1});
+
+function rCredResumen(d){
+  if(!d)return;
+  _s7.resumen=d;
+  const kn=document.querySelector('#kpiCredN .kv');
+  if(kn)kn.innerHTML=`${d.n} <small>operaciones</small>`;
+  const km=document.querySelector('#kpiCredMonto .kv');
+  if(km)km.innerHTML=`${fmtUsdM(d.monto)} <small>M</small>`;
+  const kd=document.querySelector('#kpiCredDesem .kv');
+  if(kd)kd.innerHTML=`${fmtUsdM(d.desem)} <small>M</small>`;
+  const kdp=document.getElementById('kpiCredDesemPct');
+  if(kdp)kdp.textContent=`${d.pct.toFixed(1)}% del total contratado`;
+}
+
+function _buildDonutCredFuente(canvasId,d){
+  destroyChart(canvasId);
+  new Chart(document.getElementById(canvasId).getContext('2d'),{
+    type:'doughnut',
+    data:{labels:d.map(x=>x.fuente),
+      datasets:[{data:d.map(x=>x.monto),backgroundColor:P.all,borderColor:'#fff',borderWidth:2,hoverOffset:5}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'65%',
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>{
+        const x=d[c.dataIndex];
+        return `${x.fuente}: ${fmtUsdM(x.monto)} (${x.n} créditos)`;
+      }}}}}
+  });
+}
+function rCredFuente(d){
+  _s7.fuentes=d;
+  _buildDonutCredFuente('donutCredFuente',d);
+  const total=d.reduce((s,x)=>s+x.monto,0);
+  document.getElementById('leyCredFuente').innerHTML=d.map((x,i)=>`
+    <div class="li"><div class="ld" style="background:${P.all[i]}"></div>
+    <div class="ln">${x.fuente} — ${x.n} operaciones</div>
+    <span class="lp">${total>0?(x.monto/total*100).toFixed(1):'0.0'}%</span></div>`).join('');
+}
+
+function _buildBarCredSector(canvasId,d){
+  destroyChart(canvasId);
+  new Chart(document.getElementById(canvasId).getContext('2d'),{
+    type:'bar',
+    data:{labels:d.map(x=>x.sector),
+      datasets:[
+        {label:'Monto',       data:d.map(x=>x.monto/1e6), backgroundColor:P.m+'cc',borderColor:P.m,borderWidth:1},
+        {label:'Desembolsado',data:d.map(x=>x.desem/1e6), backgroundColor:P.t+'cc',borderColor:P.t,borderWidth:1},
+      ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{x:{grid:{display:false},ticks:{maxRotation:45,minRotation:45,font:{size:10}}},
+        y:{grid:{color:P.gc},ticks:{callback:v=>'$'+v.toLocaleString('es-CO')}}},
+      plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:11}},
+        tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: $${(ctx.parsed.y||0).toLocaleString('es-CO',{maximumFractionDigits:1})} M`}}}}
+  });
+}
+function rCredSectores(d){
+  _s7.sectores=d;
+  _buildBarCredSector('barCredSector',d);
+  const totN=d.reduce((s,x)=>s+x.n,0),totM=d.reduce((s,x)=>s+x.monto,0),totD=d.reduce((s,x)=>s+x.desem,0);
+  document.getElementById('tblCredSectores').innerHTML=`
+    <thead><tr><th>Sector</th><th># Créditos</th><th>Monto (USD M)</th><th>Desembolsado (USD M)</th><th>% Desembolsado</th></tr></thead>
+    <tbody>${d.map(x=>`<tr><td>${x.sector}</td><td>${x.n}</td>
+      <td>${(x.monto/1e6).toLocaleString('es-CO',{maximumFractionDigits:1})}</td>
+      <td>${(x.desem/1e6).toLocaleString('es-CO',{maximumFractionDigits:1})}</td>
+      <td><span class="pb">${x.pctDesem.toFixed(1)}%</span></td></tr>`).join('')}</tbody>
+    <tfoot><tr class="tr"><td>TOTAL</td><td>${totN}</td>
+      <td>${(totM/1e6).toLocaleString('es-CO',{maximumFractionDigits:1})}</td>
+      <td>${(totD/1e6).toLocaleString('es-CO',{maximumFractionDigits:1})}</td>
+      <td>${totM>0?(totD/totM*100).toFixed(1):'0.0'}%</td></tr></tfoot>`;
+}
+
+function _buildBarCredEjec(canvasId,d){
+  destroyChart(canvasId);
+  new Chart(document.getElementById(canvasId).getContext('2d'),{
+    type:'bar',
+    data:{labels:d.map(x=>x.entidad),
+      datasets:[
+        {label:'% Com', data:d.map(x=>x.pctCom),  backgroundColor:P.m+'cc',borderColor:P.m,borderWidth:1},
+        {label:'% Ejec',data:d.map(x=>x.pctEjec), backgroundColor:P.a+'cc',borderColor:P.a,borderWidth:1},
+        {label:'% Pago',data:d.map(x=>x.pctPago), backgroundColor:P.t+'cc',borderColor:P.t,borderWidth:1},
+      ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{x:{grid:{display:false},ticks:{maxRotation:60,minRotation:60,font:{size:9}}},
+        y:{grid:{color:P.gc},ticks:{callback:v=>v+'%'}}},
+      plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:11}},
+        tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${(ctx.parsed.y??0).toFixed(1)}%`}}}}
+  });
+}
+function rCredEntidad(d){
+  _s7.entidad=d;
+  document.getElementById('tblCredEntidad').innerHTML=`
+    <thead><tr><th>Entidad</th><th>Sector</th><th class="def" data-def="apr-vigente">Apr. Vigente</th><th class="def" data-def="pct-comp">%Com</th><th>%Ejec</th><th>%Pago</th></tr></thead>
+    <tbody>${d.map(x=>`<tr><td>${x.entidad}</td><td>${x.sector}</td>
+      <td>${x.aprVigente!=null?x.aprVigente.toLocaleString('es-CO',{minimumFractionDigits:3}):'—'}</td>
+      <td><span class="pb">${x.pctCom!=null?Math.round(x.pctCom)+'%':'—'}</span></td>
+      <td>${x.pctEjec!=null?Math.round(x.pctEjec)+'%':'—'}</td>
+      <td>${x.pctPago!=null?Math.round(x.pctPago)+'%':'—'}</td></tr>`).join('')}</tbody>`;
+  _buildBarCredEjec('barCredEjec',d);
+}
+
+function _buildHbarCredHist(canvasId,d){
+  destroyChart(canvasId);
+  new Chart(document.getElementById(canvasId).getContext('2d'),{
+    type:'bar',
+    data:{labels:d.map(x=>String(x.anio)),
+      datasets:[
+        {label:'Comprometido',data:d.map(x=>x.pctComp),backgroundColor:P.t+'cc',borderColor:P.t,borderWidth:1},
+        {label:'Ejecutado',   data:d.map(x=>x.pctEjec),backgroundColor:P.m+'cc',borderColor:P.m,borderWidth:1},
+        {label:'Pagado',      data:d.map(x=>x.pctPag), backgroundColor:P.gs+'cc',borderColor:P.gs,borderWidth:1},
+      ]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      scales:{x:{grid:{color:P.gc},ticks:{callback:v=>v+'%'}},y:{grid:{display:false}}},
+      plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:11}},
+        tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${(ctx.parsed.x??0).toFixed(1)}%`}}}}
+  });
+}
+function rCredHist(d){_s7.hist=d;_buildHbarCredHist('hbarCredHist',d);}
+
 /* ── Detalle de sector: tabla multi-año de entidades ───────────────────── */
 let _seHist = null;
 let _seMenMap = {};
@@ -2307,6 +2578,11 @@ async function init(bid){
   const seHistRaw = await af(`/sectorial/historico${q}`, null);
   const mtzRaw    = await af(`/ejecucion/sectores/matriz${q}`, null);
   const resRaw    = await af(`/resumen${q}`, null);
+  const credFuenteRaw = await af(`/credito/fuentes${q}`, null);
+  const credSectorRaw = await af(`/credito/sectores${q}`, null);
+  const credEntRaw    = await af(`/credito/ejecucion_entidad${q}`, null);
+  const credHistRaw   = await af(`/credito/ejecucion_historica${q}`, null);
+  const credResumenRaw= await af(`/credito/resumen${q}`, null);
 
   if(resRaw){
     updateHero(resRaw);
@@ -2390,6 +2666,21 @@ async function init(bid){
   _anioActualG = _anioActual;
   _anioAntG    = _anioAnt;
   rSectorial(se, menMap, _anioActual, _anioAnt);
+
+  // Sección 7 — Crédito Externo
+  const credF = hasRows(credFuenteRaw) ? credFuenteRaw.map(x=>({fuente:x.fuente,n:x.n_creditos,monto:x.monto_usd,desem:x.desembolsado_usd})) : D.credF;
+  const credS = hasRows(credSectorRaw) ? credSectorRaw.map(x=>({sector:x.sector,n:x.n_creditos,monto:x.monto_usd,desem:x.desembolsado_usd,pctDesem:x.pct_desembolsado})) : D.credS;
+  const credE = hasRows(credEntRaw) ? credEntRaw.map(x=>({entidad:x.entidad,sector:x.sector,aprVigente:x.apr_vigente_mmm,pctCom:x.pct_com,pctEjec:x.pct_ejec,pctPago:x.pct_pago})) : D.credE;
+  const credH = hasRows(credHistRaw) ? credHistRaw.map(x=>({anio:x.anio,pctComp:x.pct_comprometido,pctEjec:x.pct_ejecutado,pctPag:x.pct_pagado})) : D.credH;
+  const credR = credResumenRaw && credResumenRaw.n_creditos!=null
+    ? {n:credResumenRaw.n_creditos,monto:credResumenRaw.monto_total_usd,desem:credResumenRaw.desembolsado_total_usd,pct:credResumenRaw.pct_desembolsado}
+    : D.credResumen;
+
+  rCredResumen(credR);
+  rCredFuente(credF);
+  rCredSectores(credS);
+  rCredEntidad(credE);
+  rCredHist(credH);
 }
 
 /* ── Glosario presupuestal ── */
@@ -2604,6 +2895,28 @@ const DC={
         <div class="dr-src-item"><span class="dr-src-name">SIIF Nación</span><span class="dr-src-desc">Sistema Integrado de Información Financiera — ejecución presupuestal por entidad, rubro y objeto de gasto al corte de la bitácora.</span></div>
         <div class="dr-src-item"><span class="dr-src-name">DPIP · DNP</span><span class="dr-src-desc">Clasificación sectorial de entidades y consolidación para la Bitácora PGN.</span></div>
         <div class="dr-src-item"><span class="dr-src-name">CHIP · CGR</span><span class="dr-src-desc">Contaduría General de la República — información complementaria de entidades de régimen especial.</span></div>`
+      }
+    ]
+  },
+  'sec7-info':{
+    title:'Crédito Externo',
+    etq:'Sección 7 · Portafolio SCCI',
+    tabs:[
+      {label:'Contexto',html:`
+        <p>El <strong>crédito externo</strong> es una fuente de financiación complementaria al PGN: recursos que la Nación contrata con la banca multilateral para respaldar proyectos de inversión de gran envergadura, generalmente de ejecución plurianual.</p>
+        <p>La cartera vigente de la Nación está integrada por operaciones financiadas por el <strong>Banco Interamericano de Desarrollo (BID)</strong>, el <strong>Banco Mundial (BM)</strong> y el <strong>Banco de Desarrollo de América Latina y el Caribe (CAF)</strong>.</p>
+        <div class="dr-note">Los créditos se contratan en dólares (USD); su ejecución presupuestal interna se registra en pesos a través de los recursos 13 (crédito externo) y 14 (crédito externo — otros) del SIIF Nación.</div>`
+      },
+      {label:'Indicadores',html:`
+        <p>El portafolio se analiza en dos niveles:</p>
+        <div class="dr-src-item"><span class="dr-src-name">Monto / Desembolsado</span><span class="dr-src-desc">Monto total contratado por crédito y lo efectivamente girado por el banco a la fecha de corte (USD). El % desembolsado mide el avance financiero del préstamo frente al banco.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">Recurso 13 y 14</span><span class="dr-src-desc">Ejecución presupuestal interna (COP) de los recursos de crédito externo por entidad ejecutora: apropiación vigente, %Compromisos, %Ejecución (obligaciones) y %Pago.</span></div>
+        <div class="dr-note">Una brecha amplia entre el % desembolsado por el banco y el %Ejecución interno puede indicar recursos ya girados por el prestamista que aún no se traducen en ejecución presupuestal de la entidad.</div>`
+      },
+      {label:'Fuentes',html:`
+        <div class="dr-src-item"><span class="dr-src-name">SCCI · DNP</span><span class="dr-src-desc">Subdirección de Crédito y Cooperación Internacional — registro y seguimiento del portafolio de crédito externo de la Nación.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">SIIF Nación</span><span class="dr-src-desc">Ejecución presupuestal de los recursos 13 y 14 (crédito externo) por entidad.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">BID · BM · CAF</span><span class="dr-src-desc">Bancos multilaterales financiadores — reportan los desembolsos efectivos de cada operación de crédito.</span></div>`
       }
     ]
   }
@@ -3016,7 +3329,7 @@ document.addEventListener('keydown', function(e) {
     ['tablaModal','cardModal'].forEach(id=>{
       document.getElementById(id).classList.remove('active');
     });
-    ['donutT-m','barPGN-m','lineInv-m','mixEjHist-m','mixAprHist-m','barVF-m'].forEach(id=>destroyChart(id));
+    ['donutT-m','barPGN-m','lineInv-m','mixEjHist-m','mixAprHist-m','barVF-m','donutCredFuente-m','barCredSector-m','barCredEjec-m','hbarCredHist-m'].forEach(id=>destroyChart(id));
     document.body.style.overflow='';
   }
 });
