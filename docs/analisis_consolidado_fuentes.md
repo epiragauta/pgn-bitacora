@@ -19,7 +19,7 @@ El problema más recurrente en todas las fuentes es que **cada archivo usa una u
 | `Inversiones 2026 - PND 2022-2026.xlsx` hoja `Base` | Sec 1 | No declarada | Pesos COP | ÷ 1 000 000 000 |
 | `seed_data.py` (datos embebidos) | Sec 1 y 2 | mmm (en comentario) | mmm | — |
 | `2026-03-31Estructura_Evolución PGN y Reg-Ejec-marzo.xlsx` hoja `Evolucion PGN` | Sec 2 | **Miles de millones** (declarado en fila 2) | mmm | — *(ya en mmm)* |
-| `Consolidado Reg-Ejec-Marzo-2022-2026.xlsx` | Sec 3 | Millones de pesos | Millones COP | ÷ 1 000 |
+| `Consolidado Reg-Ejec-Marzo-2022-2026_v_2.0.xlsx` | Sec 3 | Millones de pesos | Millones COP | ÷ 1 000 |
 | `BASE DETALLE MENSUAL INVERSIÓN 2018-2026.xlsx` | Sec 4 y 6 | No declarada | Pesos COP | ÷ 1 000 000 000 |
 | `20260513 Nueva Base VF - Validada.xlsx` hoja `BASE_SIIF_2` | Sec 5 | No declarada | Pesos COP | ÷ 1 000 000 000 |
 | `20260513 Nueva Base VF - Validada.xlsx` hoja `TD BITACORA` — PIB corrientes | Sec 5 | Millones de pesos | Millones COP | ÷ 1 000 |
@@ -135,7 +135,7 @@ El ETL `load_ejecucion_sectorial.py` implementa este mapeo en `SECTOR_MAP`. Los 
 
 ### 3.2 MAYÚSCULAS vs Título Case en los mismos datos
 
-El archivo de regionalización (`Consolidado Reg-Ejec-Marzo-2022-2026.xlsx`) entrega **cada fila de región duplicada**: una en MAYÚSCULAS (que es el total de la región según el Excel) y otra en Título Case (que el ETL trata como el dato real). Por ejemplo:
+El archivo de regionalización (`Consolidado Reg-Ejec-Marzo-2022-2026_v_2.0.xlsx`) entrega **cada fila de región duplicada**: una en MAYÚSCULAS (que es el total de la región según el Excel) y otra en Título Case (que el ETL trata como el dato real). Por ejemplo:
 
 ```
 Fila 1: ANDINA  →  apropiacion=133.44  (total de región calculado por Excel)
@@ -347,7 +347,7 @@ Resumen de la trazabilidad fuente → tabla para la Bitácora 2026-I:
 |---|---|---|---|---|
 | Sec 1 | `Inversiones 2026 - PND 2022-2026.xlsx` | `Base`, `Ejecución transformaciones` | `load_bitacora_excel.py` | `inversion_transformaciones`, `inversion_componentes_pnd`, `ejecucion_transformaciones` |
 | Sec 2 | `2026-03-31Estructura_Evolución PGN y Reg-Ejec-marzo.xlsx` *(fuente identificada; ETL pendiente)* | `Evolucion PGN` | `seed_data.py` (hardcoded) | `evolucion_presupuestal` |
-| Sec 3 | `Consolidado Reg-Ejec-Marzo-2022-2026.xlsx` | `Regionalizacion Mar-2022-2026`, `sectores_por_region` | `load_regionalizacion.py` | `regionalizacion_resumen`, `regionalizacion_detalle_2025` |
+| Sec 3 | `Consolidado Reg-Ejec-Marzo-2022-2026_v_2.0.xlsx` (`sectores_por_region` se lee de la versión sin sufijo) | `Regionalizacion Mar-2022-2026`, `sectores_por_region` | `load_regionalizacion.py`, `load_sectores_region.py` | `regionalizacion`, `regionalizacion_sectores` |
 | Sec 4 | `BASE DETALLE MENSUAL INVERSIÓN 2018-2026.xlsx` | `BASE` | `load_ejecucion_sectorial.py` | `ejecucion_historica`, `apropiacion_por_sector`, `compromisos_pct_por_sector` |
 | Sec 5 | `20260513 Nueva Base VF - Validada.xlsx` | `BASE_SIIF_2`, `TD BITACORA` | `load_vigencias_futuras.py` | `vigencias_futuras`, `deflactores_pib` |
 | Sec 6 | `BASE DETALLE MENSUAL INVERSIÓN 2018-2026.xlsx` | `BASE` | `load_ejecucion_sectorial.py` | `ejecucion_sectorial_entidades`, `ejecucion_sectorial_mensual` |

@@ -21,7 +21,7 @@ La carpeta `Marzo\` contiene 8 subcarpetas que corresponden 1:1 con las seccione
 |---|---|---|---|
 | 1 | `1. INVERSIONES 2026 - PND 2022 - 2026` | Sec 1 – Transformaciones PND | ✅ `Inversiones 2026 - PND 2022-2026.xlsx` |
 | 2 | `2. EVOLUCIÓN PRESUPUESTAL` | Sec 2 – Evolución histórica | ✅ `2026-03-31Estructura_Evolución PGN y Reg-Ejec-marzo.xlsx` *(ETL pendiente)* |
-| 3 | `3. REGIONALIZACIÓN` | Sec 3 – Mapa regional | ✅ `Consolidado Reg-Ejec-Marzo-2022-2026.xlsx` |
+| 3 | `3. REGIONALIZACIÓN` | Sec 3 – Mapa regional | ✅ `Consolidado Reg-Ejec-Marzo-2022-2026_v_2.0.xlsx` *(reemplaza la versión sin sufijo, que tenía datos inconsistentes en 2022/2026 — ver nota 2026-07-06 en `docs/3. integracion_datos_regiones.md`)* |
 | 4 | `4. EJECUCIÓN DE LA INVERSIÓN` | Sec 4 – Timeline histórico | ✅ `BASE DETALLE MENSUAL INVERSIÓN 2018-2026.xlsx` |
 | 5 | `5. VIGENCIAS FUTURAS` | Sec 5 – Vigencias futuras | ✅ `20260513 Nueva Base VF - Validada - Revisión Analistas.xlsx` |
 | 6 | `6. EJECUCIÓN SECTORIAL` | Sec 6 – Tarjetas por sector | ✅ `BASE DETALLE MENSUAL INVERSIÓN 2018-2026.xlsx` *(mismo que Sec 4)* |

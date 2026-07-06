@@ -72,16 +72,39 @@ Carga datos de regionalización de inversión 2022–2026 desde Excel.
 python etl/load_regionalizacion.py
 
 # Ruta personalizada
-python etl/load_regionalizacion.py --xlsx "ruta/al/Consolidado Reg-Ejec-Marzo-2022-2026.xlsx"
+python etl/load_regionalizacion.py --xlsx "ruta/al/Consolidado Reg-Ejec-Marzo-2022-2026_v_2.0.xlsx"
 ```
 
 **Archivo fuente:**
 ```
 BASES_BITACORA\{año}\{mes}\3. REGIONALIZACIÓN\
-  └── Consolidado Reg-Ejec-Marzo-2022-2026.xlsx
+  └── Consolidado Reg-Ejec-Marzo-2022-2026_v_2.0.xlsx
 ```
 
-**Tablas que carga:** `regionalizacion_resumen`, `regionalizacion_detalle_2025`
+**Nota (2026-07-06):** se detectó una inconsistencia de datos en las columnas
+2022 y 2026 del archivo original `Consolidado Reg-Ejec-Marzo-2022-2026.xlsx`
+(sin sufijo de versión). El total nacional 2026 pasó de 418.315 mmm a 85.236 mmm
+tras la corrección — el valor original superaba incluso el total del PGN,
+mientras que el corregido es coherente con el total de inversión (88.401 mmm).
+Las columnas 2023-2025 no cambiaron entre versiones. El archivo fuente vigente
+es `Consolidado Reg-Ejec-Marzo-2022-2026_v_2.0.xlsx`.
+
+**Tablas que carga:** `regionalizacion` (ver `db/migrations/003_regionalizacion_multiagno.sql`)
+
+---
+
+## load_sectores_region.py — Sec 3 (sectores por región)
+
+Carga la hoja `sectores_por_region` del Excel de regionalización hacia la
+tabla `regionalizacion_sectores`. La ruta está hardcodeada en la constante
+`EXCEL` al inicio del script (no acepta `--xlsx`).
+
+**Archivo fuente:** intencionalmente sigue apuntando a
+`Consolidado Reg-Ejec-Marzo-2022-2026.xlsx` (sin sufijo de versión), porque
+la hoja `sectores_por_region` **no existe** en `_v_2.0.xlsx` — la corrección
+de datos de esa versión solo tocó la hoja `Regionalizacion Mar-2022-2026`
+(ver nota arriba). Si en el futuro aparece una versión corregida que también
+incluya `sectores_por_region`, actualizar la constante `EXCEL` en el script.
 
 ---
 

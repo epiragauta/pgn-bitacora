@@ -1,6 +1,11 @@
 """
 ETL: carga hoja sectores_por_region del Excel de regionalización.
 Valores en pesos → divide por 1_000_000_000 para obtener mmm.
+
+Nota: sigue apuntando al Consolidado sin sufijo de versión (no al _v_2.0)
+porque la hoja "sectores_por_region" no existe en Consolidado Reg-Ejec-
+Marzo-2022-2026_v_2.0.xlsx. La corrección de datos que motivó la v_2.0
+solo afectó la hoja "Regionalizacion Mar-2022-2026" (ver load_regionalizacion.py).
 """
 import sqlite3
 import openpyxl

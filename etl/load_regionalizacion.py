@@ -1,7 +1,11 @@
 """
 etl/load_regionalizacion.py
 Carga datos de regionalización de inversión 2022-2026 desde Excel.
-Fuente: BASES_BITACORA/2026/Marzo/3. REGIONALIZACIÓN/Consolidado Reg-Ejec-Marzo-2022-2026.xlsx
+Fuente: BASES_BITACORA/2026/Marzo/3. REGIONALIZACIÓN/Consolidado Reg-Ejec-Marzo-2022-2026_v_2.0.xlsx
+
+Nota: el archivo _v_2.0 corrige una inconsistencia de datos detectada en las
+columnas de 2022 y 2026 del archivo original (Consolidado Reg-Ejec-Marzo-2022-2026.xlsx,
+sin sufijo de versión). Las columnas 2023-2025 no cambiaron entre versiones.
 
 Uso:
     python etl/load_regionalizacion.py
@@ -18,7 +22,7 @@ except ImportError:
     raise SystemExit("Instala openpyxl: pip install openpyxl")
 
 # ── Rutas por defecto ──────────────────────────────────────────
-DEFAULT_XLSX = Path(r"C:\ws\dnp\ws\BASES_BITACORA\2026\Marzo\3. REGIONALIZACIÓN\Consolidado Reg-Ejec-Marzo-2022-2026.xlsx")
+DEFAULT_XLSX = Path(r"C:\ws\dnp\ws\BASES_BITACORA\2026\Marzo\3. REGIONALIZACIÓN\Consolidado Reg-Ejec-Marzo-2022-2026_v_2.0.xlsx")
 DB_PATH = Path(__file__).parent.parent / "db" / "pgn.db"
 
 # ── Mapeo nombre Excel → código DANE ──────────────────────────

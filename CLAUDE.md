@@ -81,7 +81,7 @@ The Dockerfile automatically runs `seed_data.py` during build to initialize the 
 **Section Tables:**
 1. **Transformaciones PND** (`inversion_transformaciones`, `inversion_componentes_pnd`, `ejecucion_transformaciones`)
 2. **Evolución Presupuestal** (`evolucion_presupuestal`, `ejecucion_historica`)
-3. **Regionalización** (`regionalizacion_resumen`, `regionalizacion_detalle_2025`)
+3. **Regionalización** (`regionalizacion`, `regionalizacion_sectores`)
 4. **Ejecución** (`ejecucion_historica`, `apropiacion_por_sector`, `compromisos_pct_por_sector`)
 5. **Vigencias Futuras** (`vigencias_futuras`, `deflactores_pib`)
 6. **Ejecución Sectorial** (`ejecucion_sectorial_entidades`, `ejecucion_sectorial_mensual`)
