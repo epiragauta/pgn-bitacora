@@ -28,7 +28,7 @@
   --sh:  0 2px 14px rgba(0,0,0,.07);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{overflow-x:hidden}
+body{overflow-x:hidden}
 html{scroll-behavior:smooth}
 body{background:var(--fw);color:var(--gt);font-family:'Nunito Sans',Arial,sans-serif;font-size:15px;line-height:1.6}
 
@@ -45,8 +45,9 @@ nav{position:sticky;top:0;z-index:100;background:var(--bl);box-shadow:0 1px 0 va
 .nav-inner{display:flex;align-items:center;gap:24px;max-width:1200px;margin:0 auto;padding:0 32px;height:54px}
 .nav-logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:14px;color:var(--gt);text-decoration:none;margin-right:auto}
 .logo-badge{background:var(--t);color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:4px;letter-spacing:.06em}
-nav a.lk{color:var(--gm);font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;transition:color .2s}
+nav a.lk{color:var(--gm);font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;transition:color .2s,border-color .2s;padding:4px 0;border-bottom:2px solid transparent}
 nav a.lk:hover{color:var(--t)}
+nav a.lk.active{color:var(--t);border-bottom-color:var(--t)}
 .corte-badge{background:var(--m);color:#fff;font-size:10px;font-weight:900;padding:2px 9px;border-radius:4px;letter-spacing:.04em}
 
 /* ── Wrap ── */
@@ -2274,6 +2275,20 @@ function openSectorFull(sectorKey){
 /* Scroll reveal */
 const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')})},{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* Scrollspy: resalta en el nav la sección activa al hacer scroll */
+const navLinks=[...document.querySelectorAll('nav a.lk')];
+const spySections=navLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const navH=document.querySelector('nav').offsetHeight;
+const spyIo=new IntersectionObserver(entries=>{
+  entries.forEach(en=>{
+    const link=navLinks.find(a=>a.getAttribute('href')==='#'+en.target.id);
+    if(!link)return;
+    if(en.isIntersecting) navLinks.forEach(a=>a.classList.toggle('active',a===link));
+    else link.classList.remove('active');
+  });
+},{rootMargin:`-${navH+1}px 0px -70% 0px`,threshold:0});
+spySections.forEach(s=>spyIo.observe(s));
 
 async function init(bid){
   const q=bid?`?bitacora_id=${bid}`:'';
