@@ -344,12 +344,12 @@ def load_sec5(conn, bid, ws_vf, año_inicio, año_fin):
 
     conn.executemany(
         """INSERT OR REPLACE INTO vigencias_futuras
-               (bitacora_id, vigencia_exec, sector, valor_mmm_ctes, pct_pib)
-           VALUES (?,?,?,?,?)""",
-        rows_vf,
+               (bitacora_id, vigencia_exec, sector, valor_corriente_mmm)
+           VALUES (?,?,?,?)""",
+        [(b, a, s, v) for b, a, s, v, _ in rows_vf],
     )
     print(f"  [OK] vigencias_futuras               : {len(rows_vf):>4} filas  (anos {año_inicio}-{año_fin})")
-    print("       [!] Valores en pesos corrientes. Aplicar deflactor IPC si se requieren pesos constantes 2025.")
+    print("       [!] Valores en pesos corrientes. Deflactación aplicada en API (/api/vigencias_futuras/chart).")
 
 
 # ---------------------------------------------------------------------------

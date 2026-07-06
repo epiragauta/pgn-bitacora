@@ -334,7 +334,9 @@ def load_db(conn, bid, anio_max, mes_corte, tot, sec_agg, ent_agg, mens_agg, pib
     #   - año actual (anio_max): meses 1..mes_corte_num  → datos reales
     #                            meses mes_corte_num+1..12 → NULL (aún no ocurridos)
     #   - año anterior (anio_max-1): todos los meses disponibles en el Excel
-    #   - histórico (2018..anio_max-2): promedio y mejor por mes
+    #   - histórico (2022..anio_max-2): promedio y mejor por mes — el promedio se
+    #     limita al cuatrienio del PND vigente (2022-2026), no a la serie completa
+    #     desde 2018, para que la referencia comparativa sea del gobierno actual.
     print(f"\n→ ejecucion_sectorial_mensual (vigencia={anio_max})")
 
     # Mes de corte del año actual (columna 'pct_compromisos_2025')
@@ -358,10 +360,10 @@ def load_db(conn, bid, anio_max, mes_corte, tot, sec_agg, ent_agg, mens_agg, pib
             # Año anterior: datos reales hasta donde llega el Excel
             vb, cb, ob, pb = mens_agg.get((anio_max - 1, mes_num, sector), [0, 0, 0, 0])
 
-            # Promedio y mejor sobre años históricos (2018 … anio_max-2)
+            # Promedio y mejor sobre años históricos (2022 … anio_max-2)
             hist_comp = []
             hist_obl  = []
-            for ay in range(2018, anio_max - 1):
+            for ay in range(2022, anio_max - 1):
                 vh, ch, oh, ph = mens_agg.get((ay, mes_num, sector), [0, 0, 0, 0])
                 if vh > 0:
                     hist_comp.append(ch / vh * 100)

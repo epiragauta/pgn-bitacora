@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Bitácora PGN 2025-I — Comportamiento de la Inversión Pública · DNP</title>
+<title>Bitácora PGN 2026-I — Comportamiento de la Inversión Pública · DNP</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
@@ -38,7 +38,7 @@ body{background:var(--fw);color:var(--gt);font-family:'Nunito Sans',Arial,sans-s
 /* ── Nav ── */
 nav{position:sticky;top:0;z-index:100;background:var(--bl);box-shadow:0 1px 0 var(--gc)}
 .bit-sel{background:#f4f4f4;border-bottom:1px solid #e4e4e4;padding:7px 32px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.bit-lbl{font-size:11px;font-weight:900;color:#9b9b9b;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.bit-lbl{font-size:12px;font-weight:900;color:#9b9b9b;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
 .bit-btn{padding:4px 14px;border-radius:20px;border:1.5px solid #ddd;background:#fff;cursor:pointer;font-family:'Nunito Sans',sans-serif;font-size:12px;font-weight:700;color:#5e5e5e;transition:all .15s;line-height:1.4}
 .bit-btn.active{background:#00c3c1;border-color:#00c3c1;color:#fff}
 .bit-btn:hover:not(.active){border-color:#00c3c1;color:#00c3c1}
@@ -56,7 +56,7 @@ nav a.lk:hover{color:var(--t)}
 #hero{background:var(--bl);border-bottom:1px solid var(--gc)}
 .hero-inner{display:grid;grid-template-columns:1fr 1fr;min-height:90vh}
 .hl{padding:60px 44px 60px 32px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--gc)}
-.eyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--t);margin-bottom:18px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--t);margin-bottom:18px}
 .hl h1{font-size:clamp(30px,3.8vw,50px);font-weight:900;line-height:1.06;letter-spacing:-.02em;color:var(--gt);margin-bottom:12px}
 .hl h1 strong{color:var(--m)}
 .hl p{font-size:14px;color:var(--gm);max-width:420px;line-height:1.7;margin-bottom:36px}
@@ -64,15 +64,15 @@ nav a.lk:hover{color:var(--t)}
 .kpi{background:var(--fw);border:1px solid var(--gc);border-radius:var(--rs);padding:16px 14px 12px;position:relative;overflow:hidden}
 .kpi::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
 .kpi.kt::after{background:var(--t)}.kpi.km::after{background:var(--m)}.kpi.ka::after{background:var(--a)}.kpi.kg::after{background:var(--gc)}
-.kl{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--gs);margin-bottom:5px}
+.kl{font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--gs);margin-bottom:5px}
 .kv{font-size:clamp(20px,2.5vw,28px);font-weight:900;line-height:1;color:var(--gt)}
 .kv small{font-size:.42em;font-weight:400;color:var(--gm)}
-.kd{font-size:11px;color:var(--gs);margin-top:4px}
+.kd{font-size:12px;color:var(--gs);margin-top:4px}
 .hr{background:var(--t);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 36px;position:relative;overflow:hidden}
 .hr::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0,rgba(255,255,255,.04) 1px,transparent 0,transparent 50%);background-size:20px 20px}
 .hr-c{position:relative;z-index:1;text-align:center;color:#fff}
 .hr-num{font-size:clamp(52px,8vw,90px);font-weight:900;line-height:1;letter-spacing:-.03em}
-.hr .hr-lbl{font-size:clamp(11px,1.4vw,15px);font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-top:4px;opacity:.9}
+.hr .hr-lbl{font-size:clamp(12px,1.4vw,15px);font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-top:4px;opacity:.9}
 .hr-sub{font-size:14px;opacity:.72;margin-top:10px}
 .etq{margin-top:28px;background:var(--m);color:#fff;font-weight:900;font-size:13px;padding:7px 18px;border-radius:20px;display:inline-block;letter-spacing:.02em}
 
@@ -94,7 +94,7 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 /* cards */
 .card{background:var(--bl);border:1px solid var(--gc);border-radius:var(--r);padding:22px;box-shadow:var(--sh)}
 .card.bt{border-top:3px solid var(--t)}.card.bm{border-top:3px solid var(--m)}.card.ba{border-top:3px solid var(--a)}
-.ct{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gs);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ct{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gs);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:8px}
 .card-expand{flex-shrink:0;background:none;border:1px solid var(--gc);border-radius:4px;padding:2px 6px;cursor:pointer;color:var(--gs);opacity:.6;transition:opacity .15s,border-color .15s,color .15s;line-height:1}
 .card-expand:hover{opacity:1;color:var(--t);border-color:var(--t)}
 
@@ -102,10 +102,10 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
 .tbl{width:100%;border-collapse:collapse;font-size:13px}
 /* tabla completa sección 2 */
-.tbl-pgn{min-width:1320px;border-collapse:collapse;font-size:11px}
+.tbl-pgn{min-width:1320px;border-collapse:collapse;font-size:12px}
 .tbl-pgn th,.tbl-pgn td{padding:4px 7px;border:1px solid #dde;text-align:right;white-space:nowrap}
 .tbl-pgn td:first-child,.tbl-pgn th.tc-label{text-align:left;min-width:210px;position:sticky;left:0;background:var(--bl);z-index:1;border-right:2px solid #ccd}
-.tbl-pgn .th-yr{text-align:center;background:var(--t);color:#fff;font-weight:800;font-size:11px;border-left:3px solid var(--bl)}
+.tbl-pgn .th-yr{text-align:center;background:var(--t);color:#fff;font-weight:800;font-size:12px;border-left:3px solid var(--bl)}
 .tbl-pgn .th-fase{text-align:center;background:#1a2b3c;color:#9cc;font-size:9px;font-weight:700;letter-spacing:.04em}
 .tbl-pgn tr.tp-hdr td{font-weight:700;font-style:italic;color:#fff;background:#c01060}
 .tbl-pgn tr.tp-hdr td:first-child{position:sticky;left:0;z-index:2;background:#c01060;color:#fff;border-right:2px solid rgba(255,255,255,.3)}
@@ -118,7 +118,7 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 .tbl-pgn tr.tp-hdr:hover td{filter:brightness(1.3);color:#4a0020!important}
 .btn-tabla{display:inline-flex;align-items:center;gap:6px;padding:9px 22px;border-radius:8px;border:1.5px solid var(--t);background:transparent;color:var(--t);font-weight:700;cursor:pointer;font-size:13px;font-family:inherit;transition:background .2s,color .2s}
 .btn-tabla:hover{background:var(--t);color:#fff}
-.tgl-btn{background:none;border:none;color:inherit;font-weight:800;cursor:pointer;padding:0 2px;font-size:11px;font-family:monospace;line-height:1;vertical-align:middle;opacity:.85}
+.tgl-btn{background:none;border:none;color:inherit;font-weight:800;cursor:pointer;padding:0 2px;font-size:12px;font-family:monospace;line-height:1;vertical-align:middle;opacity:.85}
 .tgl-btn:hover{opacity:1}
 .s4m-tab{background:transparent;border:1px solid var(--gc);border-radius:4px;padding:3px 10px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;color:var(--gm);font-family:inherit;transition:background .15s,color .15s,border-color .15s}
 .s4m-tab:hover{border-color:var(--t);color:var(--t)}
@@ -133,8 +133,8 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 .pb{background:var(--m);color:#fff;font-size:9px;font-weight:900;padding:1px 6px;border-radius:8px}
 
 /* donut legend */
-.dl{display:grid;grid-template-columns:170px 1fr;gap:18px;align-items:center}
-.donut-wrap{position:relative;height:185px;width:100%;overflow:hidden}
+.dl{display:flex;flex-direction:column;gap:14px}
+.donut-wrap{position:relative;height:185px;width:100%;max-width:220px;margin:0 auto;overflow:hidden}
 .li{display:flex;align-items:flex-start;gap:7px;margin-bottom:8px}
 .ld{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:4px}
 .ln{font-size:13px;color:var(--gm);flex:1;line-height:1.3}
@@ -149,7 +149,7 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 .rc-total{background:linear-gradient(135deg,rgba(0,195,193,.08) 0%,rgba(254,27,123,.05) 100%);border-left:4px solid var(--m);border:2px solid var(--m);box-shadow:0 2px 12px rgba(254,27,123,.12)}
 .rc-pr{border-left:4px solid var(--nr);background:rgba(251,176,59,.04)}
 .rc-pr:hover{box-shadow:0 4px 14px rgba(251,176,59,.15);transform:translateY(-2px)}
-.ry-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:12px;border:1.5px solid var(--gc);font-size:11px;font-weight:700;color:var(--gs);cursor:pointer;transition:all .18s;user-select:none}
+.ry-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:12px;border:1.5px solid var(--gc);font-size:12px;font-weight:700;color:var(--gs);cursor:pointer;transition:all .18s;user-select:none}
 .ry-pill input{display:none}
 .ry-pill.active{background:var(--t);border-color:var(--t);color:#fff}
 .rc-total:hover{box-shadow:0 4px 18px rgba(254,27,123,.2);transform:translateY(-1px)}
@@ -163,17 +163,17 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 .rsect{font-size:12px;color:var(--gs);margin-top:7px;line-height:1.5}
 
 /* timeline */
-.tg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.tg{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .tc{background:var(--bl);border:1px solid var(--gc);border-top:4px solid var(--t);border-radius:var(--rs);padding:16px;cursor:pointer;transition:box-shadow .2s,border-color .2s}
 .tc:hover{box-shadow:0 4px 14px rgba(0,0,0,.1)}
 .tc:nth-child(2){border-top-color:var(--m)}.tc:nth-child(3){border-top-color:var(--a)}
 .tcy{font-size:26px;font-weight:900;color:var(--gt);line-height:1}
-.tcv{font-size:9px;color:var(--gs);margin-top:2px;margin-bottom:12px;font-weight:700;letter-spacing:.03em}
-.tcs{display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px}
+.tcv{font-size:10px;color:var(--gs);margin-top:2px;margin-bottom:12px;font-weight:700;letter-spacing:.03em}
+.tcs{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
 .tcs .ll{color:var(--gs)}.tcs .vv{font-weight:900;color:var(--m)}
 .tcs .vvt{font-weight:900;color:var(--t)}
-.tcp{display:inline-block;margin-top:8px;background:rgba(0,195,193,.1);border:1px solid rgba(0,195,193,.2);color:var(--t);font-size:9px;font-weight:800;padding:2px 8px;border-radius:8px}
-.tc-hint{font-size:9px;color:var(--gs);text-align:center;margin-top:10px;padding-top:8px;border-top:1px dashed var(--gc);letter-spacing:.05em;text-transform:uppercase;opacity:.7}
+.tcp{display:inline-block;margin-top:8px;background:rgba(0,195,193,.1);border:1px solid rgba(0,195,193,.2);color:var(--t);font-size:10px;font-weight:800;padding:2px 8px;border-radius:8px}
+.tc-hint{font-size:10px;color:var(--gs);text-align:center;margin-top:10px;padding-top:8px;border-top:1px dashed var(--gc);letter-spacing:.05em;text-transform:uppercase;opacity:.7}
 
 /* VF */
 .vfh{margin-bottom:28px}
@@ -196,7 +196,7 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 .gtr{background:var(--gc);border-radius:3px;height:5px;overflow:hidden}
 .gf{height:100%;border-radius:3px;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
 .gft{background:var(--t)}.gfm{background:var(--m)}
-.snd{font-size:11px;color:var(--gs);font-style:italic;margin-top:6px}
+.snd{font-size:12px;color:var(--gs);font-style:italic;margin-top:6px}
 .sec6-filter{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:20px;align-items:center}
 .sf-lbl{font-size:9px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--gs);margin-right:3px;flex-shrink:0}
 .sf-btn{background:none;border:1px solid var(--gc);border-radius:6px;padding:3px 9px;font-size:12px;font-weight:800;cursor:pointer;color:var(--gs);transition:all .15s;line-height:1.5}
@@ -402,7 +402,7 @@ footer strong{color:#fff}
   margin:0;
 }
 .modal-tabs{display:flex;border-bottom:2px solid var(--gc);margin:-24px -24px 20px;padding:0 24px;overflow-x:auto}
-.modal-tab-btn{padding:10px 16px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;color:var(--gs);transition:color .2s;white-space:nowrap;flex-shrink:0}
+.modal-tab-btn{padding:10px 16px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;color:var(--gs);transition:color .2s;white-space:nowrap;flex-shrink:0}
 .modal-tab-btn.active{color:var(--t);border-bottom-color:var(--t)}
 .modal-tab-btn:hover:not(.active){color:var(--gt)}
 
@@ -477,12 +477,12 @@ footer strong{color:#fff}
   .g2,.g3{grid-template-columns:1fr}
   .g2>*,.g3>*{min-width:0}
   .tg{grid-template-columns:repeat(2,1fr)}
-  .dl{grid-template-columns:1fr;overflow:hidden}
+  .dl{overflow:hidden}
   .dl>*{min-width:0}
   .donut-wrap{max-width:185px;height:185px;margin:0 auto}
   .li{flex-wrap:wrap;row-gap:2px}
   .ln{flex:1 0 80%;min-width:0;font-size:12px}
-  .lv{font-size:11px;margin-left:16px}
+  .lv{font-size:12px;margin-left:16px}
   .pw,.nav-inner,.bit-sel{padding-left:16px;padding-right:16px}
   .nav-inner{gap:12px;overflow-x:auto;scrollbar-width:none}
   .nav-inner::-webkit-scrollbar{display:none}
@@ -520,7 +520,7 @@ footer strong{color:#fff}
 #defTip.vis{opacity:1}
 .dt-term{font-size:9px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--t);margin-bottom:8px}
 .dt-body{font-size:13px;color:var(--gt);line-height:1.55}
-.dt-fml{font-size:11px;color:var(--m);margin-top:9px;font-style:italic;font-weight:700;line-height:1.4}
+.dt-fml{font-size:12px;color:var(--m);margin-top:9px;font-style:italic;font-weight:700;line-height:1.4}
 .dt-src{font-size:9px;color:var(--gs);margin-top:6px;letter-spacing:.05em;text-transform:uppercase}
 
 /* ── Drawer lateral contextual ── */
@@ -535,7 +535,7 @@ footer strong{color:#fff}
 .dr-close:hover{background:rgba(255,255,255,.35)}
 .dr-title{font-size:17px;font-weight:900;color:#fff;line-height:1.2;letter-spacing:-.01em}
 .dr-tabs{display:flex;border-bottom:2px solid var(--gc);flex-shrink:0;background:var(--bl);overflow-x:auto}
-.dr-tab{padding:11px 18px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;color:var(--gs);transition:color .15s;white-space:nowrap;flex-shrink:0}
+.dr-tab{padding:12px 18px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;color:var(--gs);transition:color .15s;white-space:nowrap;flex-shrink:0}
 .dr-tab.active{color:var(--t);border-bottom-color:var(--t)}
 .dr-tab:hover:not(.active){color:var(--gt)}
 .dr-body{flex:1;overflow-y:auto;padding:22px 22px 40px;font-size:14px;color:var(--gt);line-height:1.7}
@@ -554,7 +554,7 @@ footer strong{color:#fff}
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">
       <span class="logo-badge">DNP</span>
-      Bitácora PGN 2025-I
+      <span id="navPeriodo">Bitácora PGN 2026-I</span>
     </a>
     <a href="#sec1" class="lk">Transformaciones</a>
     <a href="#sec2" class="lk">Evolución</a>
@@ -562,7 +562,7 @@ footer strong{color:#fff}
     <a href="#sec4" class="lk">Ejecución</a>
     <a href="#sec5" class="lk">Vigencias</a>
     <a href="#sec6" class="lk">Sectorial</a>
-    <span class="corte-badge" id="corteBadge">Mar 2025</span>
+    <span class="corte-badge" id="corteBadge">Mar 2026</span>
   </div>
   <div class="franja"></div>
 </nav>
@@ -579,19 +579,19 @@ footer strong{color:#fff}
     <div class="hl pw" style="max-width:none">
       <div class="eyebrow">Dirección de Programación de Inversiones Públicas · DNP</div>
       <h1>Comportamiento<br>de la <strong>Inversión<br>Pública</strong></h1>
-      <p id="heroPara">Evolución del presupuesto de inversión financiado a través del Presupuesto General de la Nación. Corte al 31 de marzo de 2025. Vigencias 2022–2025.</p>
+      <p id="heroPara">Evolución del presupuesto de inversión financiado a través del Presupuesto General de la Nación. Corte al 31 de marzo de 2026. Vigencias 2022–2026.</p>
       <div class="kpi-g">
-        <div class="kpi kt" id="kpiVig"><div class="kl def" data-def="apr-vigente">Apropiación vigente 2025</div><div class="kv">83,9 <small>Bill. COP</small></div><div class="kd">4,6% del PIB · 16% del gasto total</div></div>
-        <div class="kpi km" id="kpiComp"><div class="kl def" data-def="compromisos">Compromisos</div><div class="kv">36,4 <small>Bill. COP</small></div><div class="kd">43% de la apropiación vigente</div></div>
-        <div class="kpi ka" id="kpiObl"><div class="kl def" data-def="obligaciones">Obligaciones</div><div class="kv">6,6 <small>Bill. COP</small></div><div class="kd">8% de la apropiación vigente</div></div>
-        <div class="kpi kg" id="kpiPag"><div class="kl def" data-def="pagos">Pagos</div><div class="kv">6,5 <small>Bill. COP</small></div><div class="kd">7,8% de la apropiación vigente</div></div>
+        <div class="kpi kt" id="kpiVig"><div class="kl def" data-def="apr-vigente">Apropiación vigente 2026</div><div class="kv">88,4 <small>Bill. COP</small></div><div class="kd">Fuente: SIIF Nación</div></div>
+        <div class="kpi km" id="kpiComp"><div class="kl def" data-def="compromisos">Compromisos</div><div class="kv">45,0 <small>Bill. COP</small></div><div class="kd">50,9% de la apropiación vigente</div></div>
+        <div class="kpi ka" id="kpiObl"><div class="kl def" data-def="obligaciones">Obligaciones</div><div class="kv">10,0 <small>Bill. COP</small></div><div class="kd">11,3% de la apropiación vigente</div></div>
+        <div class="kpi kg" id="kpiPag"><div class="kl def" data-def="pagos">Pagos</div><div class="kv">9,5 <small>Bill. COP</small></div><div class="kd">10,8% de la apropiación vigente</div></div>
       </div>
     </div>
     <div class="hr">
       <div class="hr-c">
-        <div class="hr-num" id="hrNum">83,9</div>
+        <div class="hr-num" id="hrNum">88,4</div>
         <div class="hr-lbl">Billones de pesos corrientes</div>
-        <div class="hr-sub" id="hrSub">Inversión pública vigencia 2025<br>Presupuesto General de la Nación</div>
+        <div class="hr-sub" id="hrSub">Inversión pública vigencia 2026<br>Presupuesto General de la Nación</div>
         <span class="etq">Colombia tiene un plan</span>
       </div>
     </div>
@@ -679,13 +679,13 @@ footer strong{color:#fff}
       <i class="info-icon" onclick="openDrawer('sec3-info')">i</i>
     </div>
     <h2 class="st">Distribución por Regiones y Departamentos</h2>
-    <p class="ss">Apropiación, compromisos y participación regional. Millones COP. Corte marzo 2025. Fuente: DPIP-PIIP.</p>
+    <p class="ss">Apropiación, compromisos y participación regional. Miles de millones COP. Corte marzo 2026. Fuente: DPIP-PIIP.</p>
 
     <!-- Mapa interactivo de regiones -->
     <div class="card ba rv" style="margin-bottom:24px">
       <div class="ct">Mapa de ejecución regional — % Compromisos / Apropiación Vigente</div>
       <div id="mapContainer" style="height:450px;border-radius:8px;overflow:hidden"></div>
-      <div style="margin-top:12px;font-size:11px;color:var(--gs);text-align:center">
+      <div style="margin-top:12px;font-size:12px;color:var(--gs);text-align:center">
         Haz clic en una región para ver el detalle de sus departamentos
       </div>
     </div>
@@ -712,11 +712,11 @@ footer strong{color:#fff}
       <i class="info-icon" onclick="openDrawer('sec4-info')">i</i>
       <i class="help-icon" onclick="openInfoModal('Ciclo de la Ejecución del Gasto','sec4-info')" title="Ver ciclo de ejecución del gasto">?</i>
     </div>
-    <h2 class="st">Ejecución Presupuestal 2022 – 2025</h2>
+    <h2 class="st">Ejecución Presupuestal 2022 – 2026</h2>
     <p class="ss">Comparativo histórico corte primer trimestre. Fuente: SIIF Nación.</p>
     <div class="tg rv" id="tlGrid"></div>
     <div class="g2 rv" style="margin-top:18px">
-      <div class="card bt"><div class="ct"><span class="ct-text">Ejecución presupuestal histórica · Vigente y porcentajes</span><button class="card-expand" onclick="openCardModal('mix-sec4-ej')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div style="position:relative;height:220px"><canvas id="mixEjHist"></canvas></div></div>
+      <div class="card bt"><div class="ct"><span class="ct-text">Ejecución presupuestal histórica · Vigente y porcentajes</span><button class="card-expand" onclick="openCardModal('mix-sec4-ej')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div style="position:relative;height:300px"><canvas id="mixEjHist"></canvas></div></div>
       <div class="card bm"><div class="ct"><span class="ct-text">Apropiación top sectores 2022-2025</span><button class="card-expand" onclick="openCardModal('hb-sec4')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div id="hbSect"></div></div>
     </div>
     <div class="card rv" style="margin-top:18px">
@@ -747,7 +747,7 @@ footer strong{color:#fff}
       <i class="info-icon" onclick="openDrawer('sec5-info')">i</i>
     </div>
     <h2 class="st">Compromisos 2026 – 2040</h2>
-    <div class="vfh"><div class="vfb"><em>—</em> billones</div><p class="vfd"><span class="def" data-def="vigencias-futuras">COP constantes 2026</span> comprometidos 2027-2040. Principal sector: <strong>Transporte</strong>.</p></div>
+    <div class="vfh"><div class="vfb"><em>—</em> billones</div><p class="vfd"><span class="def" data-def="vigencias-futuras">COP constantes 2026</span> comprometidos 2027-2040. Sector con mayor participación: <strong>Transporte</strong>.</p></div>
     <div class="card bt rv"><div class="ct">Vigencias futuras por sector y año (mmm COP constantes 2026)<button class="card-expand" onclick="openCardModal('bar-sec5')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div style="position:relative;height:270px"><canvas id="barVF"></canvas></div></div>
     <div class="card rv" style="margin-top:18px"><div class="ct">Tabla de vigencias futuras comprometidas<button class="card-expand" onclick="openCardModal('tbl-sec5')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div class="tbl-wrap"><table class="tbl" id="tblVF"></table></div></div>
   </div>
@@ -759,8 +759,8 @@ footer strong{color:#fff}
     <div class="stag sa"><span class="n">6</span>Ejecución Sectorial
       <i class="info-icon" onclick="openDrawer('sec6-info')">i</i>
     </div>
-    <h2 class="st">Ejecución por Sector — 2025</h2>
-    <p class="ss">% Compromisos y Obligaciones sobre apropiación vigente. Corte: 31 de marzo de 2025. Fuente: SIIF Nación.</p>
+    <h2 class="st">Ejecución por Sector — 2026</h2>
+    <p class="ss">% Compromisos y Obligaciones sobre apropiación vigente. Corte: 31 de marzo de 2026. Fuente: SIIF Nación.</p>
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
       <div id="sec6Filter" class="sec6-filter" style="margin-bottom:0"></div>
       <button class="card-expand" style="flex-shrink:0;margin-left:8px" onclick="openCardModal('grid-sec6')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button>
@@ -776,8 +776,8 @@ footer strong{color:#fff}
     <div>
       <div class="fm">Departamento Nacional de Planeación</div>
       <strong>Dirección de Programación de Inversiones Públicas (DPIP)</strong><br>
-      <span id="footerMeta">Bitácora 2 · PGN 2025-I · Corte 31 de marzo de 2025</span><br>
-      Cifras en miles de millones COP corrientes (vigencias futuras: constantes 2025)
+      <span id="footerMeta">Bitácora 3 · PGN 2026-I · Corte 31 de marzo de 2026</span><br>
+      Cifras en miles de millones COP corrientes (vigencias futuras: constantes 2026)
     </div>
     <div style="text-align:right">
       Fuentes: SIIF Nación · MHCP · DPIP<br>
@@ -817,7 +817,7 @@ footer strong{color:#fff}
     <div class="modal-header">
       <div>
         <h3>Evolución del PGN por tipo de gasto · 2022–2026</h3>
-        <div style="font-size:11px;opacity:.8;font-weight:400;margin-top:2px">Acumulada a marzo · Cifras en miles de millones de pesos corrientes</div>
+        <div style="font-size:12px;opacity:.8;font-weight:400;margin-top:2px">Acumulada a marzo · Cifras en miles de millones de pesos corrientes</div>
       </div>
       <button class="modal-close" onclick="closeTablaModal()">&times;</button>
     </div>
@@ -1046,12 +1046,12 @@ function rDonut(d){
     data:{labels:d.map(x=>x.t.substring(0,28)),
       datasets:[{data:d.map(x=>x.v),backgroundColor:P.all,borderColor:'#fff',borderWidth:2,hoverOffset:5}]},
     options:{responsive:true,maintainAspectRatio:false,cutout:'65%',
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${(c.parsed).toLocaleString('es-CO',{minimumFractionDigits:3})} mmm (${d[c.dataIndex].p}%)`}}}}
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${(c.parsed).toLocaleString('es-CO',{minimumFractionDigits:3})} mmm (${d[c.dataIndex].p.toFixed(1)}%)`}}}}
   });
   document.getElementById('leyT').innerHTML=d.map((x,i)=>`
     <div class="li"><div class="ld" style="background:${P.all[i]}"></div>
-    <div class="ln">${x.t.substring(0,36)}</div>
-    <div><span class="lv">${x.v.toLocaleString('es-CO',{minimumFractionDigits:3})}</span><span class="lp">${x.p}%</span></div></div>`).join('');
+    <div class="ln">${x.t.substring(0,60)}</div>
+    <span class="lp">${x.p.toFixed(1)}%</span></div>`).join('');
 }
 
 function rTablaT(d){
@@ -1075,12 +1075,12 @@ function _rDonutModal(d){
     data:{labels:d.map(x=>x.t),
       datasets:[{data:d.map(x=>x.v),backgroundColor:P.all,borderColor:'#fff',borderWidth:2,hoverOffset:8}]},
     options:{responsive:true,maintainAspectRatio:false,cutout:'62%',
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${(c.parsed).toLocaleString('es-CO',{minimumFractionDigits:3})} mmm (${d[c.dataIndex].p}%)`}}}}
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${(c.parsed).toLocaleString('es-CO',{minimumFractionDigits:3})} mmm (${d[c.dataIndex].p.toFixed(1)}%)`}}}}
   });
   document.getElementById('leyT-m').innerHTML=d.map((x,i)=>`
     <div class="li"><div class="ld" style="background:${P.all[i]}"></div>
     <div class="ln">${x.t}</div>
-    <div><span class="lv">${x.v.toLocaleString('es-CO',{minimumFractionDigits:3})}</span><span class="lp">${x.p}%</span></div></div>`).join('');
+    <div><span class="lv">${x.v.toLocaleString('es-CO',{minimumFractionDigits:3})}</span><span class="lp">${x.p.toFixed(1)}%</span></div></div>`).join('');
 }
 
 function _rTablaTModal(d){
@@ -1105,9 +1105,9 @@ function openCardModal(key){
   document.body.style.overflow='hidden';
   if(key==='donut-sec1'){
     title.textContent='Distribución porcentual inversión 2025';
-    body.innerHTML=`<div style="display:grid;grid-template-columns:min(320px,45%) 1fr;gap:28px;height:calc(88vh - 80px)">
-      <div style="position:relative"><canvas id="donutT-m"></canvas></div>
-      <div id="leyT-m" style="overflow-y:auto;padding-right:4px"></div>
+    body.innerHTML=`<div style="display:flex;flex-direction:column;gap:20px;height:calc(88vh - 80px)">
+      <div style="position:relative;height:340px;width:340px;margin:0 auto;flex-shrink:0"><canvas id="donutT-m"></canvas></div>
+      <div id="leyT-m" style="overflow-y:auto;padding-right:4px;flex:1"></div>
     </div>`;
     if(_s1.donut) requestAnimationFrame(()=>_rDonutModal(_s1.donut));
   } else if(key==='tabla-sec1'){
@@ -1674,19 +1674,19 @@ async function rMapa(deptData, regionData){
         if(!d)return;
         layer.bindTooltip(`
           <div style="font-weight:900;font-size:13px;color:var(--t);margin-bottom:4px">${d.departamento}</div>
-          <div style="font-size:11px;color:var(--gs);margin-bottom:5px">${d.region}</div>
+          <div style="font-size:12px;color:var(--gs);margin-bottom:5px">${d.region}</div>
           <div style="font-size:12px">
             <div style="display:flex;justify-content:space-between;margin:2px 0"><span style="color:var(--gs)">Apropiación:</span><span style="font-weight:800;margin-left:8px">${fB(d.apropiacion_mmm)} Bill</span></div>
             <div style="display:flex;justify-content:space-between;margin:2px 0"><span style="color:var(--gs)">Compromisos:</span><span style="font-weight:800;margin-left:8px">${fB(d.compromisos_mmm)} Bill</span></div>
             <div style="display:flex;justify-content:space-between;margin:2px 0"><span style="color:var(--gs)">% Comp/Aprop:</span><span style="font-weight:800;margin-left:8px">${fp(d.pct_compromisos)}</span></div>
             <div style="display:flex;justify-content:space-between;margin:2px 0"><span style="color:var(--gs)">% del total:</span><span style="font-weight:800;margin-left:8px">${fp(d.pct_participacion)}</span></div>
           </div>
-          <div style="margin-top:6px;font-size:9px;color:var(--gs);text-align:center;font-style:italic">Clic para ver departamentos de la región</div>
+          <div style="margin-top:6px;font-size:9px;color:var(--gs);text-align:center;font-style:italic">Clic para ver detalle del departamento</div>
         `,{sticky:true,direction:'top',offset:[0,-10]});
         layer.on({
           mouseover:e=>{e.target.setStyle({weight:3,color:P.a,fillOpacity:0.92});e.target.bringToFront();},
           mouseout:e=>deptosLayer.resetStyle(e.target),
-          click:()=>{map.closePopup();showDepartamentos(d.region);}
+          click:()=>{map.closePopup();showDepartamentoDetail(d.codigo_dane);}
         });
       }
     });
@@ -1899,11 +1899,11 @@ function _renderSectorMatrix(containerId,mtz,tab){
   }):[];
   const lastVi=visIdx[visIdx.length-1];
   const sorted=[...mtz.sectores].sort((a,b)=>(b[cfg.key][lastVi]??-1)-(a[cfg.key][lastVi]??-1));
-  const sn=n=>{const t=toTitle(n);return t.length>28?t.slice(0,27)+'…':t;};
+  const sn=n=>{const t=toTitle(n);return t.length>75?t.slice(0,74)+'…':t;};
   el.innerHTML=`<div class="tbl-wrap" style="margin-top:8px">
-    <table class="tbl" style="font-size:11px">
+    <table class="tbl" style="font-size:12px">
       <thead><tr>
-        <th style="text-align:left;min-width:155px;position:sticky;left:0;background:var(--t)">Sector</th>
+        <th style="text-align:left;min-width:60ch;position:sticky;left:0;background:var(--t)">Sector</th>
         ${vigs.map(v=>`<th>${v}</th>`).join('')}
       </tr></thead>
       <tbody>
@@ -1954,7 +1954,7 @@ function _buildBarVF(canvasId,d){
       plugins:{
         legend:{position:'bottom',labels:{boxWidth:10,padding:11}},
         tooltip:{callbacks:{label:ctx=>ctx.dataset.yAxisID==='y2'
-          ?`${ctx.dataset.label}: ${ctx.parsed.y?.toFixed(2)}%`
+          ?`${ctx.dataset.label}: ${ctx.parsed.y?.toFixed(1)}%`
           :`${ctx.dataset.label}: ${(ctx.parsed.y||0).toLocaleString('es-CO',{maximumFractionDigits:0})} mmm`}},
       }},
   });
@@ -1972,7 +1972,7 @@ function rVF(chartData){
     <tbody>${d.anios.map((y,i)=>`<tr><td><strong>${y}</strong></td>
       ${d.series.map(s=>`<td>${(s.valores[i]||0).toLocaleString('es-CO',{maximumFractionDigits:0})}</td>`).join('')}
       <td><strong>${(d.totales[i]||0).toLocaleString('es-CO',{maximumFractionDigits:0})}</strong></td>
-      <td>${d.pct_pib[i]!=null?d.pct_pib[i].toFixed(2)+'%':'-'}</td></tr>`).join('')}</tbody>`;
+      <td>${d.pct_pib[i]!=null?d.pct_pib[i].toFixed(1)+'%':'-'}</td></tr>`).join('')}</tbody>`;
 }
 
 function sFL(n){
@@ -2051,7 +2051,7 @@ function _sparkSVG(mensRows){
 /* ── Leyenda de la sparkline ────────────────────────────────────────────── */
 function _sparkLegend(anioActual,anioAnt){
   const items=[
-    {c:'#bbb',d:true, l:`Prom. 2018-${anioAnt-1}`},
+    {c:'#bbb',d:true, l:`Prom. 2022-${anioAnt-1}`},
     {c:P.a,  d:false,l:`Año ${anioAnt}`},
     {c:P.t,  d:false,l:`Año ${anioActual}`},
     {c:'#c9a0dc',d:true,l:'Mejor año'},
@@ -2143,7 +2143,7 @@ function openSectorDetail(sectorKey){
   }).join('');
 
   const html=`<div style="padding:4px 0 8px">
-    <p style="font-size:11px;color:var(--gs);margin-bottom:8px">AV = Apropiación vigente (miles de millones COP) · %C = % Compromisos · %O = % Obligaciones · Corte: marzo de cada año. Fuente: SIIF Nación.</p>
+    <p style="font-size:12px;color:var(--gs);margin-bottom:8px">AV = Apropiación vigente (miles de millones COP) · %C = % Compromisos · %O = % Obligaciones · Corte: marzo de cada año. Fuente: SIIF Nación.</p>
     <div class="sc-tbl-wrap">
       <table class="sc-tbl">
         <thead><tr><th>Entidad</th>${colHeader}</tr><tr><th></th>${subHeader}</tr></thead>
@@ -2167,7 +2167,7 @@ function openSectorFull(sectorKey){
   /* ── helper para armar datasets de una métrica ── */
   function mkDatasets(prefix, colorMain, colorAnt){
     const defs=[
-      {k:`${prefix}_prom`,  label:`Prom. 2018-${anioAnt-1}`, color:'#ccc',      dash:[5,3], w:1.2},
+      {k:`${prefix}_prom`,  label:`Prom. 2022-${anioAnt-1}`, color:'#ccc',      dash:[5,3], w:1.2},
       {k:`${prefix}_2024`,  label:`Año ${anioAnt}`,           color:colorAnt,   dash:[],    w:1.5},
       {k:`${prefix}_2025`,  label:`Año ${anioActual}`,        color:colorMain,  dash:[],    w:2.5},
       {k:`${prefix}_mejor`, label:'Mejor año',                color:'#c9a0dc',  dash:[4,4], w:1.2},
@@ -2182,7 +2182,7 @@ function openSectorFull(sectorKey){
   }
 
   /* ── tabla entidades ── */
-  let tblHtml = '<p style="font-size:11px;color:var(--gs)">Sin datos históricos para este sector.</p>';
+  let tblHtml = '<p style="font-size:12px;color:var(--gs)">Sin datos históricos para este sector.</p>';
   if(_seHist && _seHist.length){
     const rows = _seHist.filter(r=>r.sector===sectorKey);
     if(rows.length){
@@ -2206,17 +2206,17 @@ function openSectorFull(sectorKey){
   const kpiBlock = _sec?.pc!=null
     ? `<div style="display:flex;gap:16px;margin-bottom:16px">
         <div style="display:flex;flex-direction:column;align-items:center;background:rgba(0,195,193,.08);border:1.5px solid var(--t);border-radius:8px;padding:10px 24px">
-          <span style="font-size:11px;font-weight:700;color:var(--t);text-transform:uppercase;letter-spacing:.05em">% Compromisos</span>
+          <span style="font-size:12px;font-weight:700;color:var(--t);text-transform:uppercase;letter-spacing:.05em">% Compromisos</span>
           <span style="font-size:32px;font-weight:900;color:var(--t);line-height:1.1">${_sec.pc}%</span>
           <span style="font-size:10px;color:var(--gs)">Sobre apropiación vigente</span>
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;background:rgba(254,27,123,.08);border:1.5px solid var(--m);border-radius:8px;padding:10px 24px">
-          <span style="font-size:11px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.05em">% Obligaciones</span>
+          <span style="font-size:12px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.05em">% Obligaciones</span>
           <span style="font-size:32px;font-weight:900;color:var(--m);line-height:1.1">${_sec.po}%</span>
           <span style="font-size:10px;color:var(--gs)">Sobre apropiación vigente</span>
         </div>
         ${_sec.v!=null?`<div style="display:flex;flex-direction:column;align-items:center;background:var(--bg);border:1.5px solid var(--gc);border-radius:8px;padding:10px 24px">
-          <span style="font-size:11px;font-weight:700;color:var(--gs);text-transform:uppercase;letter-spacing:.05em">Apr. Vigente</span>
+          <span style="font-size:12px;font-weight:700;color:var(--gs);text-transform:uppercase;letter-spacing:.05em">Apr. Vigente</span>
           <span style="font-size:28px;font-weight:900;color:var(--gd);line-height:1.1">${_sec.v.toLocaleString('es-CO',{minimumFractionDigits:3})}</span>
           <span style="font-size:10px;color:var(--gs)">Miles de millones COP</span>
         </div>`:''}
@@ -2237,9 +2237,9 @@ function openSectorFull(sectorKey){
           <div style="position:relative;height:200px"><canvas id="${cIdO}"></canvas></div>
         </div>
       </div>`
-    : '<p style="font-size:11px;color:var(--gs);margin-bottom:16px">Sin datos mensuales disponibles.</p>';
+    : '<p style="font-size:12px;color:var(--gs);margin-bottom:16px">Sin datos mensuales disponibles.</p>';
 
-  const html = `<p style="font-size:11px;color:var(--gs);margin-bottom:12px">Corte: marzo de ${anioActual} · Fuente: SIIF Nación</p>
+  const html = `<p style="font-size:12px;color:var(--gs);margin-bottom:12px">Corte: marzo de ${anioActual} · Fuente: SIIF Nación</p>
   ${kpiBlock}
   ${chartBlock}
   <div>
@@ -2294,12 +2294,18 @@ async function init(bid){
   if(resRaw){
     updateHero(resRaw);
     const v=resRaw.vigencia;
+    const navP=document.getElementById('navPeriodo');
+    if(navP)navP.textContent=`Bitácora PGN ${resRaw.periodo}`;
     const ss1=document.querySelector('#sec1 .ss');
     if(ss1)ss1.innerHTML=`Vigencia ${v} · PND <strong>"Colombia, potencia mundial de la vida"</strong> · Miles de millones COP corrientes. Fuente: DPIP–SIIF.`;
     const ct1=document.querySelector('#sec1 .card.bt .ct .ct-text');
     if(ct1)ct1.textContent=`Distribución porcentual inversión ${v}`;
     const ct2=document.querySelector('#sec1 .card.bm .ct .ct-text');
     if(ct2)ct2.textContent=`Ejecución por transformador — corte marzo ${v}`;
+    const ss3=document.querySelector('#sec3 .ss');
+    if(ss3)ss3.textContent=`Apropiación, compromisos y participación regional. Miles de millones COP. Corte marzo ${v}. Fuente: DPIP-PIIP.`;
+    const st4=document.querySelector('#sec4 .st');
+    if(st4)st4.textContent=`Ejecución Presupuestal 2022 – ${v}`;
     const ss6=document.querySelector('#sec6 .st');
     if(ss6)ss6.textContent=`Ejecución por Sector — ${v}`;
     const p6=document.querySelector('#sec6 .ss');
@@ -2319,7 +2325,7 @@ async function init(bid){
     : D.re;
   const reMapa = hasRows(reMapaRaw) ? reMapaRaw : [];
   const vft = hasRows(vftRaw) ? vftRaw.map(x=>({y:x.vigencia_exec,t:x.total_mmm,pib:x.pct_pib||0})) : D.vft;
-  const se  = hasRows(seRaw)  ? [...seRaw.reduce((m,x)=>{const k=x.sector;if(!m.has(k))m.set(k,{s:x.sector,v:0,sc:0,so:0});const g=m.get(k);g.v+=x.apr_vigente_mmm||0;g.sc+=x.compromisos_mmm||0;g.so+=x.obligaciones_mmm||0;return m;},new Map()).values()].map(x=>({s:x.s,v:parseFloat(x.v.toFixed(3)),pc:x.v>0?parseFloat((x.sc/x.v*100).toFixed(1)):null,po:x.v>0?parseFloat((x.so/x.v*100).toFixed(1)):null})) : D.se;
+  const se  = hasRows(seRaw)  ? [...seRaw.reduce((m,x)=>{const k=x.sector;if(!m.has(k))m.set(k,{s:x.sector,v:0,sc:0,so:0});const g=m.get(k);g.v+=x.apr_vigente_mmm||0;g.sc+=x.compromisos_mmm||0;g.so+=x.obligaciones_mmm||0;return m;},new Map()).values()].map(x=>({s:x.s,v:parseFloat(x.v.toFixed(1)),pc:x.v>0?parseFloat((x.sc/x.v*100).toFixed(1)):null,po:x.v>0?parseFloat((x.so/x.v*100).toFixed(1)):null})) : D.se;
 
   rDonut(tr);rTablaT(tr);
   rBarPGN(ev);rLineInv(ej);
@@ -2666,8 +2672,8 @@ async function showComponentes(transformador) {
         ${componentes.map(c => `
           <tr>
             <td style="text-align:left;font-weight:600">${c.componente}</td>
-            <td>${c.vigente_mmm.toLocaleString('es-CO', {minimumFractionDigits:3})}</td>
-            <td>${c.peso_pct.toFixed(2)}%</td>
+            <td>${c.vigente_mmm.toLocaleString('es-CO', {minimumFractionDigits:1, maximumFractionDigits:1})}</td>
+            <td>${c.peso_pct.toFixed(1)}%</td>
           </tr>
         `).join('')}
       </tbody>
@@ -2698,14 +2704,14 @@ async function showDepartamentos(region) {
                             .sort((a,b)=>a.departamento.localeCompare(b.departamento,'es'));
   const sectores = (sectData||[]).sort((a,b)=>(b.apropiacion_mmm||0)-(a.apropiacion_mmm||0));
 
-  const fM = n => n!=null ? Math.round(n).toLocaleString('es-CO')+' mmm' : '—';
+  const fM = n => n!=null ? n.toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1})+' mmm' : '—';
   const fp = p => p!=null ? p.toFixed(1)+'%' : '—';
 
   // ── HTML tabla departamentos ──
   const tablaHTML = deptos.length ? `
     <div style="margin-bottom:10px;font-size:12px;color:var(--gs)">${deptos.length} departamento${deptos.length!==1?'s':''} · Corte marzo ${_reVigencia}</div>
     <div style="max-height:360px;overflow-y:auto">
-      <table class="tbl" style="font-size:11px">
+      <table class="tbl" style="font-size:12px">
         <thead><tr>
           <th style="text-align:left;min-width:130px">Departamento</th>
           <th>Aprop. (mmm)</th><th>Comp. (mmm)</th><th>Oblig. (mmm)</th>
@@ -2764,8 +2770,8 @@ async function showDepartamentos(region) {
       const pct = total ? (values[i]/total*100).toFixed(1) : 0;
       return `<div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
         <span style="width:12px;height:12px;border-radius:2px;background:${COLORS[i]};flex-shrink:0"></span>
-        <span style="font-size:11px;color:var(--gt);flex:1">${l}</span>
-        <span style="font-size:11px;font-weight:900;color:var(--gt);min-width:36px;text-align:right">${pct}%</span>
+        <span style="font-size:12px;color:var(--gt);flex:1">${l}</span>
+        <span style="font-size:12px;font-weight:900;color:var(--gt);min-width:36px;text-align:right">${pct}%</span>
       </div>`;
     }).join('');
 
@@ -2788,6 +2794,52 @@ async function showDepartamentos(region) {
       });
     });
   }
+}
+
+async function showDepartamentoDetail(codigoDane) {
+  const modal      = document.getElementById('infoModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalText  = document.getElementById('modalText');
+
+  modalTitle.textContent = 'Departamento';
+  modalText.innerHTML = '<div style="text-align:center;padding:20px;color:var(--gs)">Cargando...</div>';
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  const data = await af(`/regionalizacion/departamento/${encodeURIComponent(codigoDane)}`, []);
+
+  if(!data || !data.length){
+    modalText.innerHTML = '<p style="color:var(--gs);text-align:center;padding:20px">Sin datos disponibles para este departamento.</p>';
+    return;
+  }
+
+  const ultimo = data[data.length - 1];
+  modalTitle.textContent = ultimo.departamento;
+
+  const fM = n => n!=null ? n.toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1})+' mmm' : '—';
+  const fp = p => p!=null ? p.toFixed(1)+'%' : '—';
+
+  modalText.innerHTML = `
+    <div style="margin-bottom:10px;font-size:12px;color:var(--gs)">Región ${ultimo.region} · Serie histórica ${data[0].vigencia}–${ultimo.vigencia}</div>
+    <div style="max-height:360px;overflow-y:auto">
+      <table class="tbl" style="font-size:12px">
+        <thead><tr>
+          <th>Vigencia</th>
+          <th>Aprop. (mmm)</th><th>Comp. (mmm)</th><th>Oblig. (mmm)</th><th>Pagos (mmm)</th>
+          <th>% Comp</th><th>% Oblig</th><th>% Part.</th>
+        </tr></thead>
+        <tbody>${data.map(x=>`
+          <tr>
+            <td style="font-weight:600">${x.vigencia}</td>
+            <td>${fM(x.apropiacion_mmm)}</td><td>${fM(x.compromisos_mmm)}</td>
+            <td>${fM(x.obligaciones_mmm)}</td><td>${fM(x.pagos_mmm)}</td>
+            <td>${fp(x.pct_compromisos)}</td><td>${fp(x.pct_obligaciones)}</td>
+            <td>${fp(x.pct_participacion)}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+    <p class="ss" style="margin-top:8px;text-align:right">Vigente acumulado a marzo. Fuente: MHCP – DNP.</p>`;
 }
 
 function switchRegTab(tab){
@@ -2866,7 +2918,7 @@ const infoTexts = {
     <div style="display:flex;flex-direction:column;gap:10px">
       <div style="border-radius:8px;overflow:hidden;border:1.5px solid rgba(254,27,123,.25)">
         <div style="background:#9a1050;color:#fff;text-align:center;font-weight:900;font-size:12px;padding:7px 12px;letter-spacing:.04em">Pérdida de apropiación</div>
-        <div style="background:rgba(254,27,123,.06);padding:11px;font-size:12px;line-height:1.5;color:#5e5e5e">Las apropiaciones son autorizaciones máximas de gasto que el Congreso de la República aprueba para ser comprometidas durante la vigencia fiscal respectiva. Después del 31 de diciembre de cada año estas autorizaciones expiran y en consecuencia no podrán comprometerse, adicionarse, transferirse ni contracreditarse.</div>
+        <div style="background:rgba(254,27,123,.06);padding:12px;font-size:12px;line-height:1.5;color:#5e5e5e">Las apropiaciones son autorizaciones máximas de gasto que el Congreso de la República aprueba para ser comprometidas durante la vigencia fiscal respectiva. Después del 31 de diciembre de cada año estas autorizaciones expiran y en consecuencia no podrán comprometerse, adicionarse, transferirse ni contracreditarse.</div>
       </div>
       <div style="display:flex;justify-content:center;padding:6px 0">
         <div style="background:#1c2d5e;border-radius:50%;width:84px;height:84px;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;flex-shrink:0">
@@ -2875,13 +2927,13 @@ const infoTexts = {
       </div>
       <div style="border-radius:8px;overflow:hidden;border:1.5px solid rgba(254,27,123,.25)">
         <div style="background:#9a1050;color:#fff;text-align:center;font-weight:900;font-size:12px;padding:7px 12px;letter-spacing:.04em">Cuentas por Pagar</div>
-        <div style="background:rgba(254,27,123,.06);padding:11px;font-size:12px;line-height:1.5;color:#5e5e5e">Obligaciones pendientes de pago para la siguiente vigencia fiscal, y se presentan en los casos en que el bien o servicio se ha recibido a satisfacción a 31 de diciembre o cuando en desarrollo de un contrato se han pactado anticipos y estos no fueron cancelados al cierre de la vigencia fiscal.</div>
+        <div style="background:rgba(254,27,123,.06);padding:12px;font-size:12px;line-height:1.5;color:#5e5e5e">Obligaciones pendientes de pago para la siguiente vigencia fiscal, y se presentan en los casos en que el bien o servicio se ha recibido a satisfacción a 31 de diciembre o cuando en desarrollo de un contrato se han pactado anticipos y estos no fueron cancelados al cierre de la vigencia fiscal.</div>
       </div>
     </div>
     <div style="display:flex;flex-direction:column;gap:10px">
       <div style="border-radius:8px;overflow:hidden;border:1.5px solid rgba(127,71,221,.25)">
         <div style="background:#5a2080;color:#fff;text-align:center;font-weight:900;font-size:12px;padding:7px 12px;letter-spacing:.04em">Reserva Presupuestal</div>
-        <div style="background:rgba(127,71,221,.07);padding:11px;font-size:12px;line-height:1.5;color:#5e5e5e">Compromisos legalmente constituidos por los órganos que conforman el PGN, que tienen registro presupuestal, pero cuyo objeto no fue cumplido dentro del año fiscal que termina y, por lo mismo, se pagarán dentro de la vigencia siguiente con cargo al presupuesto de la vigencia anterior; es decir, con cargo al presupuesto que las originó.<br><br><strong style="color:#5a2080">Compromisos &#8722; Obligaciones</strong></div>
+        <div style="background:rgba(127,71,221,.07);padding:12px;font-size:12px;line-height:1.5;color:#5e5e5e">Compromisos legalmente constituidos por los órganos que conforman el PGN, que tienen registro presupuestal, pero cuyo objeto no fue cumplido dentro del año fiscal que termina y, por lo mismo, se pagarán dentro de la vigencia siguiente con cargo al presupuesto de la vigencia anterior; es decir, con cargo al presupuesto que las originó.<br><br><strong style="color:#5a2080">Compromisos &#8722; Obligaciones</strong></div>
       </div>
       <div style="border-radius:8px;overflow:hidden;border:1.5px solid rgba(28,45,94,.22)">
         <div style="background:#1c2d5e;color:#fff;text-align:center;font-weight:900;font-size:12px;padding:7px 12px;letter-spacing:.04em">Rezago Presupuestal</div>
