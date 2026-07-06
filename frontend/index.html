@@ -1223,6 +1223,28 @@ const D={
     {y:2025,educ:46158.590,salud:19060.915,agua:4212.202,prop:9048.433,alim:406.269,riber:65.003, resg:422.520,fonpet:2610.250,total:81984.183},
     {y:2026,educ:47209.299,salud:20622.282,agua:4556.340,prop:9787.692,alim:439.462,riber:70.314, resg:457.040,fonpet:72.359,  total:83214.788},
   ],
+  // [orden, participación padre, componente, esTotal, [2022,2023,2024,2025,2026]]
+  sgpComponentesSrc:[
+    [1, 'Educación','Educación',1,                     [27883.626,30740.559,39685.899,46158.590,47209.299]],
+    [2, 'Educación','Prestación Servicios',0,           [26756.880,29615.986,38297.407,44199.520,45614.421]],
+    [3, 'Educación','Calidad (Gratuidad)',0,            [535.146,  532.972,  725.347,  1188.501, 770.216]],
+    [4, 'Educación','Calidad (Matrícula)',0,            [591.600,  591.600,  663.145,  770.569,  824.663]],
+    [5, 'Salud','Salud',1,                               [11631.923,12821.600,16394.200,19060.915,20622.282]],
+    [6, 'Salud','Régimen Subsidiado',0,                  [10119.773,11148.292,14256.454,16576.496,17934.885]],
+    [7, 'Salud','Salud Pública',0,                       [1163.192, 1287.160, 1644.420, 1911.091, 2067.228]],
+    [8, 'Salud','Subsidio a la Oferta',0,                [348.958,  386.148,  493.326,  573.327,  620.168]],
+    [9, 'Agua Potable','Agua Potable',1,                 [2563.771, 2837.006, 3624.436, 4212.202, 4556.340]],
+    [10,'Propósito General','Propósito General',1,       [5507.360, 6094.309, 7785.825, 9048.433, 9787.692]],
+    [11,'Propósito General','Libre Inversión',0,         [3058.709, 3416.174, 4372.652, 5099.942, 5628.263]],
+    [12,'Propósito General','Deporte',0,                 [220.267,  245.990,  314.700,  364.454,  394.542]],
+    [13,'Propósito General','Cultura',0,                 [165.200,  184.493,  236.025,  273.340,  295.907]],
+    [14,'Propósito General','Libre Destinación',0,       [1817.777, 1983.400, 2528.491, 2954.527, 3192.007]],
+    [15,'Propósito General','Fonpet',0,                  [245.407,  264.252,  333.958,  356.169,  276.973]],
+    [16,'Alimentación Escolar','Alimentación Escolar',1, [247.277,  273.631,  349.579,  406.269,  439.462]],
+    [17,'Ribereños','Ribereños',1,                       [39.564,   43.781,   55.933,   65.003,   70.314]],
+    [18,'Resguardos Indígenas','Resguardos Indígenas',1, [257.168,  284.576,  363.562,  422.520,  457.040]],
+    [19,'Fonpet Asignaciones Especiales','Fonpet Asignaciones Especiales',1,[1434.208,1840.947,2281.446,2610.250,72.359]],
+  ],
 };
 
 /* ── Cache datos Sec 1-6 para re-render en modal ── */
@@ -1402,8 +1424,9 @@ function openCardModal(key){
     body.innerHTML=`<div style="position:relative;height:calc(88vh - 80px)"><canvas id="hbarSgpComp-m"></canvas></div>`;
     if(_s8.hist) requestAnimationFrame(()=>_buildHbarSgpComp('hbarSgpComp-m',_s8.hist));
   } else if(key==='tbl-sec8-hist'){
-    title.textContent='Tabla histórica del SGP por participación';
-    body.innerHTML=document.querySelector('#sec8 .card.rv .tbl-wrap').outerHTML;
+    title.textContent='Histórico del SGP por componente — 2022-2026';
+    body.innerHTML=`<p style="font-size:12px;color:var(--gs);margin-bottom:10px">Desagregación de cada participación en sus componentes internos. Miles de millones COP corrientes. Fuente: DNP — SDRT.</p><div class="tbl-wrap"><table class="tbl" id="tblSgpComp"></table></div>`;
+    if(_s8.comp) requestAnimationFrame(()=>_renderTblSgpComponentes('tblSgpComp',_s8.comp));
   } else if(key==='_sector_det_'){
     // openSectorDetail pasa title y html como 2º y 3º argumento
     title.textContent=arguments[1]||'Detalle de sector';
@@ -2608,6 +2631,34 @@ function _renderSgpMensajes(d){
     `<li style="padding:4px 0 4px 22px;position:relative"><span style="position:absolute;left:0;color:${P.t};font-weight:900">✓</span>${m}</li>`).join('');
 }
 
+function _groupSgpComponentes(flatRows){
+  const m=new Map();
+  flatRows.forEach(r=>{
+    if(!m.has(r.orden)) m.set(r.orden,{orden:r.orden,participacion:r.participacion,componente:r.componente,esTotal:!!r.es_total,vals:{}});
+    m.get(r.orden).vals[r.vigencia]=r.valor_mmm;
+  });
+  return [...m.values()]
+    .sort((a,b)=>a.orden-b.orden)
+    .map(x=>({...x,v:[2022,2023,2024,2025,2026].map(y=>x.vals[y])}));
+}
+
+function _renderTblSgpComponentes(tableId,d){
+  const years=[2022,2023,2024,2025,2026];
+  const fmt=v=>(v||0).toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1});
+  const rows=d.map(x=>{
+    const total=x.v.reduce((s,y)=>s+(y||0),0);
+    return `<tr${x.esTotal?' class="tr"':''}><td${x.esTotal?'':' style="padding-left:26px;font-weight:400;color:var(--gm)"'}>${x.componente}</td>${x.v.map(v=>`<td>${fmt(v)}</td>`).join('')}<td>${fmt(total)}</td></tr>`;
+  }).join('');
+  const grandRow=`<tr class="tr"><td>TOTAL SGP</td>${years.map(y=>{
+    const yr=(_s8.hist||[]).find(x=>x.y===y);
+    return `<td>${fmt(yr?yr.total:0)}</td>`;
+  }).join('')}<td>${fmt((_s8.hist||[]).reduce((s,x)=>s+(x.total||0),0))}</td></tr>`;
+  document.getElementById(tableId).innerHTML=`
+    <thead><tr><th>Componente</th>${years.map(y=>`<th>${y}</th>`).join('')}<th>Total 2022-2026</th></tr></thead>
+    <tbody>${rows}</tbody>
+    <tfoot>${grandRow}</tfoot>`;
+}
+
 function rSGP(d){
   _s8.hist=d;
   const last=d[d.length-1],prev=d[d.length-2];
@@ -2830,6 +2881,7 @@ async function init(bid){
   const credHistRaw   = await af(`/credito/ejecucion_historica${q}`, null);
   const credResumenRaw= await af(`/credito/resumen${q}`, null);
   const sgpRaw         = await af(`/sgp/historico${q}`, null);
+  const sgpCompRaw     = await af(`/sgp/historico_componentes${q}`, null);
 
   if(resRaw){
     updateHero(resRaw);
@@ -2936,6 +2988,10 @@ async function init(bid){
     resg:x.resguardos_indigenas_mmm, fonpet:x.fonpet_ae_mmm, total:x.total_mmm,
   })) : D.sgpHist;
   rSGP(sgp);
+
+  _s8.comp = hasRows(sgpCompRaw)
+    ? _groupSgpComponentes(sgpCompRaw)
+    : D.sgpComponentesSrc.map(([orden,participacion,componente,esTotal,v])=>({orden,participacion,componente,esTotal:!!esTotal,v}));
 }
 
 /* ── Glosario presupuestal ── */
@@ -3194,10 +3250,10 @@ const DC={
       },
       {label:'Qué encontrará aquí',html:`
         <p>Esta sección de la Bitácora reúne la información histórica y territorial de las distribuciones del SGP:</p>
-        <div class="dr-src-item"><span class="dr-src-name">Histórico por participación</span><span class="dr-src-desc">Evolución 2022-2026 de los recursos distribuidos por cada participación y asignación especial del SGP, en precios corrientes. Disponible en esta versión de la Bitácora.</span></div>
-        <div class="dr-src-item"><span class="dr-src-name">Histórico por componente</span><span class="dr-src-desc">Evolución de los recursos distribuidos por los componentes internos de cada participación (p. ej. Calidad, Prestación de Servicios).</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">Histórico por participación</span><span class="dr-src-desc">Evolución 2022-2026 de los recursos distribuidos por cada participación y asignación especial del SGP, en precios corrientes.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">Histórico por componente</span><span class="dr-src-desc">Evolución 2022-2026 de los componentes internos de cada participación (p. ej. Calidad, Prestación de Servicios, Régimen Subsidiado). Disponible en el detalle de pantalla completa de la tabla histórica.</span></div>
         <div class="dr-src-item"><span class="dr-src-name">Regionalizado</span><span class="dr-src-desc">Distribuciones del SGP por región y departamento, y su participación individual en el total nacional.</span></div>
-        <div class="dr-note">El histórico por componente y el detalle regionalizado se incorporarán en próximas actualizaciones de la Bitácora.</div>`
+        <div class="dr-note">El detalle regionalizado se incorporará en próximas actualizaciones de la Bitácora.</div>`
       },
       {label:'Fuentes',html:`
         <div class="dr-src-item"><span class="dr-src-name">SICODIS</span><span class="dr-src-desc">Sistema de Información y Consulta de Distribuciones — consulta agregada y detallada de las distribuciones del SGP desde el año 2002.</span></div>

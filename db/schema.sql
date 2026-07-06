@@ -293,6 +293,18 @@ CREATE TABLE IF NOT EXISTS sgp_historico_participacion (
     UNIQUE(bitacora_id, vigencia)
 );
 
+CREATE TABLE IF NOT EXISTS sgp_historico_componentes (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    bitacora_id     INTEGER REFERENCES metadatos_bitacora(id),
+    vigencia        INTEGER NOT NULL,
+    orden           INTEGER NOT NULL,   -- orden de la fila tal como aparece en la hoja fuente
+    participacion   TEXT    NOT NULL,   -- participación/asignación a la que pertenece (padre)
+    componente      TEXT    NOT NULL,   -- nombre del componente (igual a la participación si no tiene desagregación)
+    es_total        BOOLEAN DEFAULT 0,  -- 1 = fila totalizadora de la participación, 0 = componente específico
+    valor_mmm       DECIMAL(14,3),
+    UNIQUE(bitacora_id, vigencia, orden)
+);
+
 -- ------------------------------------------------------------
 -- Índices para consultas frecuentes
 -- ------------------------------------------------------------
@@ -303,3 +315,4 @@ CREATE INDEX IF NOT EXISTS idx_sectorial_entidad              ON ejecucion_secto
 CREATE INDEX IF NOT EXISTS idx_vigencias_futuras_año          ON vigencias_futuras(vigencia_exec);
 CREATE INDEX IF NOT EXISTS idx_credito_entidad               ON credito_ejecucion_entidad(entidad);
 CREATE INDEX IF NOT EXISTS idx_sgp_historico_vigencia        ON sgp_historico_participacion(vigencia);
+CREATE INDEX IF NOT EXISTS idx_sgp_componentes_orden         ON sgp_historico_componentes(orden, vigencia);

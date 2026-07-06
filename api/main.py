@@ -816,6 +816,20 @@ def get_sgp_historico(bitacora_id: Optional[int] = None):
     return rows_to_list(rows)
 
 
+@app.get("/api/sgp/historico_componentes", tags=["Sec 8 - SGP"])
+def get_sgp_historico_componentes(bitacora_id: Optional[int] = None):
+    """Histórico 2022-2026 del SGP desagregado por componente interno de cada participación."""
+    db = get_db()
+    bid, _ = resolve_bitacora(db, bitacora_id)
+    rows = db.execute("""
+        SELECT vigencia, orden, participacion, componente, es_total, valor_mmm
+        FROM sgp_historico_componentes
+        WHERE bitacora_id=?
+        ORDER BY orden, vigencia
+    """, (bid,)).fetchall()
+    return rows_to_list(rows)
+
+
 @app.get("/api/sgp/resumen", tags=["Sec 8 - SGP"])
 def get_sgp_resumen(bitacora_id: Optional[int] = None):
     """KPIs del SGP: total último año, crecimiento vs año anterior, total acumulado 2022-2026."""
