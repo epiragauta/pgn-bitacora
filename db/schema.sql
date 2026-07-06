@@ -275,6 +275,25 @@ CREATE TABLE IF NOT EXISTS credito_ejecucion_historica (
 );
 
 -- ------------------------------------------------------------
+-- SECCIÓN 8 – Sistema General de Participaciones (SGP)
+-- ------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS sgp_historico_participacion (
+    id                          INTEGER PRIMARY KEY AUTOINCREMENT,
+    bitacora_id                 INTEGER REFERENCES metadatos_bitacora(id),
+    vigencia                    INTEGER NOT NULL,
+    educacion_mmm               DECIMAL(14,3),
+    salud_mmm                   DECIMAL(14,3),
+    agua_potable_mmm            DECIMAL(14,3),
+    proposito_general_mmm       DECIMAL(14,3),
+    alimentacion_escolar_mmm    DECIMAL(14,3),
+    riberenos_mmm               DECIMAL(14,3),
+    resguardos_indigenas_mmm    DECIMAL(14,3),
+    fonpet_ae_mmm               DECIMAL(14,3),
+    total_mmm                   DECIMAL(14,3),
+    UNIQUE(bitacora_id, vigencia)
+);
+
+-- ------------------------------------------------------------
 -- Índices para consultas frecuentes
 -- ------------------------------------------------------------
 CREATE INDEX IF NOT EXISTS idx_ejecucion_historica_vigencia   ON ejecucion_historica(vigencia);
@@ -283,3 +302,4 @@ CREATE INDEX IF NOT EXISTS idx_sector_vigencia                ON apropiacion_por
 CREATE INDEX IF NOT EXISTS idx_sectorial_entidad              ON ejecucion_sectorial_entidades(vigencia, sector, entidad);
 CREATE INDEX IF NOT EXISTS idx_vigencias_futuras_año          ON vigencias_futuras(vigencia_exec);
 CREATE INDEX IF NOT EXISTS idx_credito_entidad               ON credito_ejecucion_entidad(entidad);
+CREATE INDEX IF NOT EXISTS idx_sgp_historico_vigencia        ON sgp_historico_participacion(vigencia);

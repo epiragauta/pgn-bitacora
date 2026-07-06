@@ -86,6 +86,7 @@ nav a.lk.active{color:var(--t);border-bottom-color:var(--t)}
 .stag.sa{background:rgba(255,202,0,.1);border-color:rgba(255,202,0,.28);color:#9a7200}.stag.sa .n{background:var(--a)}
 h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;color:var(--gt);margin-bottom:6px;line-height:1.15}
 .ss{font-size:14px;color:var(--gm);margin-bottom:28px;max-width:780px;line-height:1.6}
+.sst{font-size:15px;font-weight:800;color:var(--gt);margin:0 0 12px;letter-spacing:-.005em}
 .ss strong{color:var(--gt)}
 
 /* grids */
@@ -564,6 +565,7 @@ footer strong{color:#fff}
     <a href="#sec5" class="lk">Vigencias</a>
     <a href="#sec6" class="lk">Sectorial</a>
     <a href="#sec7" class="lk">Crédito</a>
+    <a href="#sec8" class="lk">SGP</a>
     <span class="corte-badge" id="corteBadge">Mar 2026</span>
   </div>
   <div class="franja"></div>
@@ -845,6 +847,62 @@ footer strong{color:#fff}
         </button>
       </div>
       <div style="position:relative;height:260px"><canvas id="hbarCredHist"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEC 8: SISTEMA GENERAL DE PARTICIPACIONES (SGP) -->
+<section id="sec8" class="sec nf">
+  <div class="pw">
+    <div class="stag sa"><span class="n">8</span>Sistema General de Participaciones (SGP)
+      <i class="info-icon" onclick="openDrawer('sec8-info')">i</i>
+    </div>
+    <h2 class="st">Distribución Histórica del SGP 2022-2026</h2>
+    <p class="ss">Recursos distribuidos por participaciones sectoriales y asignaciones especiales del SGP. Miles de millones COP corrientes. Fuente: DNP — Subdirección de Descentralización y Desarrollo Regional (SDRT).</p>
+
+    <div class="g3 rv" style="margin-bottom:18px">
+      <div class="kpi kt" id="kpiSgpTotal"><div class="kl">Total SGP distribuido</div><div class="kv">— <small>mmm</small></div><div class="kd" id="kpiSgpTotalD">Vigencia más reciente</div></div>
+      <div class="kpi km" id="kpiSgpCrec"><div class="kl">Crecimiento anual</div><div class="kv">— <small>%</small></div><div class="kd" id="kpiSgpCrecD">Frente a la vigencia anterior</div></div>
+      <div class="kpi ka" id="kpiSgpAcum"><div class="kl">Total acumulado 2022-2026</div><div class="kv">— <small>mmm</small></div><div class="kd">Suma de las cinco vigencias</div></div>
+    </div>
+
+    <div class="g2 rv">
+      <div class="card bt">
+        <div class="ct"><span class="ct-text">Evolución total de recursos distribuidos del SGP</span>
+          <button class="card-expand" onclick="openCardModal('bar-sec8-total')" title="Ver en pantalla completa">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg>
+          </button>
+        </div>
+        <div style="position:relative;height:260px"><canvas id="barSgpTotal"></canvas></div>
+      </div>
+      <div class="card bm">
+        <div class="ct"><span class="ct-text">Composición del SGP — Participación % (vigencia reciente)</span>
+          <button class="card-expand" onclick="openCardModal('hbar-sec8-comp')" title="Ver en pantalla completa">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg>
+          </button>
+        </div>
+        <div style="position:relative;height:260px"><canvas id="hbarSgpComp"></canvas></div>
+      </div>
+    </div>
+
+    <h3 class="sst">Participaciones Sectoriales</h3>
+    <div class="sg" id="sgpSectorialesGrid"></div>
+
+    <h3 class="sst" style="margin-top:22px">Asignaciones Especiales</h3>
+    <div class="sg" id="sgpEspecialesGrid"></div>
+
+    <div class="card rv" style="margin-top:18px">
+      <div class="ct"><span class="ct-text">Tabla histórica del SGP por participación (miles de millones COP)</span>
+        <button class="card-expand" onclick="openCardModal('tbl-sec8-hist')" title="Ver en pantalla completa">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg>
+        </button>
+      </div>
+      <div class="tbl-wrap"><table class="tbl" id="tblSgpHist"></table></div>
+    </div>
+
+    <div class="card ba rv" style="margin-top:18px">
+      <div class="ct"><span class="ct-text">Mensajes clave</span></div>
+      <ul id="sgpMensajes" style="list-style:none;margin:0;padding:2px 0 0;font-size:13px;line-height:1.65"></ul>
     </div>
   </div>
 </section>
@@ -1158,10 +1216,17 @@ const D={
     {anio:2026, pctComp:27.59, pctEjec:1.89, pctPag:1.88},
   ],
   credResumen:{n:17, monto:1316877372.87, desem:534027420.91, pct:40.55},
+  sgpHist:[
+    {y:2022,educ:27883.626,salud:11631.923,agua:2563.771,prop:5507.360,alim:247.277,riber:39.564, resg:257.168,fonpet:1434.208,total:49564.897},
+    {y:2023,educ:30740.559,salud:12821.600,agua:2837.006,prop:6094.309,alim:273.631,riber:43.781, resg:284.576,fonpet:1840.947,total:54936.408},
+    {y:2024,educ:39685.899,salud:16394.200,agua:3624.436,prop:7785.825,alim:349.579,riber:55.933, resg:363.562,fonpet:2281.446,total:70540.880},
+    {y:2025,educ:46158.590,salud:19060.915,agua:4212.202,prop:9048.433,alim:406.269,riber:65.003, resg:422.520,fonpet:2610.250,total:81984.183},
+    {y:2026,educ:47209.299,salud:20622.282,agua:4556.340,prop:9787.692,alim:439.462,riber:70.314, resg:457.040,fonpet:72.359,  total:83214.788},
+  ],
 };
 
 /* ── Cache datos Sec 1-6 para re-render en modal ── */
-const _s1={},_s2={},_s3={},_s4={},_s5={},_s7={};
+const _s1={},_s2={},_s3={},_s4={},_s5={},_s7={},_s8={};
 
 /* ── Renders ── */
 function rDonut(d){
@@ -1328,6 +1393,17 @@ function openCardModal(key){
     title.textContent='Ejecución presupuestal comparativo 2023-2026';
     body.innerHTML=`<div style="position:relative;height:calc(88vh - 80px)"><canvas id="hbarCredHist-m"></canvas></div>`;
     if(_s7.hist) requestAnimationFrame(()=>_buildHbarCredHist('hbarCredHist-m',_s7.hist));
+  } else if(key==='bar-sec8-total'){
+    title.textContent='Evolución total de recursos distribuidos del SGP';
+    body.innerHTML=`<div style="position:relative;height:calc(88vh - 80px)"><canvas id="barSgpTotal-m"></canvas></div>`;
+    if(_s8.hist) requestAnimationFrame(()=>_buildBarSgpTotal('barSgpTotal-m',_s8.hist));
+  } else if(key==='hbar-sec8-comp'){
+    title.textContent='Composición del SGP — Participación %';
+    body.innerHTML=`<div style="position:relative;height:calc(88vh - 80px)"><canvas id="hbarSgpComp-m"></canvas></div>`;
+    if(_s8.hist) requestAnimationFrame(()=>_buildHbarSgpComp('hbarSgpComp-m',_s8.hist));
+  } else if(key==='tbl-sec8-hist'){
+    title.textContent='Tabla histórica del SGP por participación';
+    body.innerHTML=document.querySelector('#sec8 .card.rv .tbl-wrap').outerHTML;
   } else if(key==='_sector_det_'){
     // openSectorDetail pasa title y html como 2º y 3º argumento
     title.textContent=arguments[1]||'Detalle de sector';
@@ -1339,7 +1415,7 @@ function closeCardModal(e){
   if(e&&e.target!==document.getElementById('cardModal'))return;
   document.getElementById('cardModal').classList.remove('active');
   document.body.style.overflow='';
-  ['donutT-m','barPGN-m','lineInv-m','mixEjHist-m','mixAprHist-m','barVF-m','donutCredFuente-m','barCredSector-m','barCredEjec-m','hbarCredHist-m'].forEach(id=>destroyChart(id));
+  ['donutT-m','barPGN-m','lineInv-m','mixEjHist-m','mixAprHist-m','barVF-m','donutCredFuente-m','barCredSector-m','barCredEjec-m','hbarCredHist-m','barSgpTotal-m','hbarSgpComp-m'].forEach(id=>destroyChart(id));
   // Restaurar mapa si fue movido al modal
   const sentinel=document.getElementById('mapSentinel');
   if(sentinel){
@@ -2383,6 +2459,176 @@ function _buildHbarCredHist(canvasId,d){
 }
 function rCredHist(d){_s7.hist=d;_buildHbarCredHist('hbarCredHist',d);}
 
+/* ── SEC 8: Sistema General de Participaciones (SGP) ───────────────────── */
+const SGP_SECTORIALES=[
+  {key:'educ', label:'Educación',        color:P.all[0]},
+  {key:'salud',label:'Salud',             color:P.all[1]},
+  {key:'agua', label:'Agua Potable',      color:P.all[2]},
+  {key:'prop', label:'Propósito General', color:P.all[3]},
+];
+const SGP_ESPECIALES=[
+  {key:'alim',  label:'Alimentación Escolar',     color:P.all[4]},
+  {key:'riber', label:'Ribereños',                 color:P.all[5]},
+  {key:'resg',  label:'Resguardos Indígenas',     color:P.all[6]},
+  {key:'fonpet',label:'Fonpet Asig. Especiales',  color:P.all[7]},
+];
+
+function _buildMiniBarSgp(canvasId,d,key,color){
+  destroyChart(canvasId);
+  new Chart(document.getElementById(canvasId).getContext('2d'),{
+    type:'bar',
+    data:{labels:d.map(x=>String(x.y)),
+      datasets:[{data:d.map(x=>x[key]),backgroundColor:color+'cc',borderColor:color,borderWidth:1,borderRadius:2}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>`$${(ctx.parsed.y||0).toLocaleString('es-CO',{maximumFractionDigits:0})} mmm`}}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:9}}},
+        y:{grid:{color:P.gc},ticks:{font:{size:9},callback:v=>v.toLocaleString('es-CO')}}}}
+  });
+}
+
+function _renderSgpGrid(containerId,groups,d){
+  const el=document.getElementById(containerId);
+  el.innerHTML=groups.map(g=>`
+    <div class="card" style="padding:14px">
+      <div class="ct" style="margin-bottom:8px"><span class="ct-text" style="font-size:12px">${g.label}</span></div>
+      <div style="position:relative;height:130px"><canvas id="sgpMini_${g.key}"></canvas></div>
+    </div>`).join('');
+  groups.forEach(g=>_buildMiniBarSgp(`sgpMini_${g.key}`,d,g.key,g.color));
+}
+
+const _sgpTotalLabelPlugin={
+  id:'sgpTotalLabels',
+  afterDatasetsDraw(chart){
+    const meta=chart.getDatasetMeta(0);
+    if(meta.hidden)return;
+    const ctx=chart.ctx;
+    ctx.save();
+    ctx.fillStyle=P.gs;
+    ctx.font='bold 10px "Nunito Sans",sans-serif';
+    ctx.textAlign='center';
+    ctx.textBaseline='bottom';
+    meta.data.forEach((pt,i)=>{
+      const v=chart.data.datasets[0].data[i];
+      if(v==null)return;
+      ctx.fillText('$'+v.toLocaleString('es-CO',{maximumFractionDigits:0}),pt.x,pt.y-6);
+    });
+    ctx.restore();
+  }
+};
+
+function _linreg(ys){
+  const n=ys.length,xs=ys.map((_,i)=>i);
+  const sumX=xs.reduce((a,b)=>a+b,0),sumY=ys.reduce((a,b)=>a+b,0);
+  const sumXY=xs.reduce((s,x,i)=>s+x*ys[i],0),sumXX=xs.reduce((s,x)=>s+x*x,0);
+  const slope=(n*sumXY-sumX*sumY)/(n*sumXX-sumX*sumX);
+  const intercept=(sumY-slope*sumX)/n;
+  return xs.map(x=>Math.round(slope*x+intercept));
+}
+
+function _buildBarSgpTotal(canvasId,d){
+  destroyChart(canvasId);
+  new Chart(document.getElementById(canvasId).getContext('2d'),{
+    type:'bar',
+    plugins:[_sgpTotalLabelPlugin],
+    data:{labels:d.map(x=>String(x.y)),
+      datasets:[
+        {type:'bar', label:'Total SGP',data:d.map(x=>x.total),backgroundColor:'#1c3d7e',borderRadius:3,order:2},
+        {type:'line',label:'Tendencia', data:_linreg(d.map(x=>x.total)),borderColor:P.gs,borderDash:[5,4],
+         pointRadius:0,borderWidth:1.5,tension:0,order:1},
+      ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      layout:{padding:{top:22}},
+      scales:{x:{grid:{display:false}},
+        y:{grid:{color:P.gc},ticks:{callback:v=>v.toLocaleString('es-CO')}}},
+      plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:11}},
+        tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: $${(ctx.parsed.y||0).toLocaleString('es-CO',{maximumFractionDigits:0})} mmm`}}}}
+  });
+}
+
+function _buildHbarSgpComp(canvasId,d){
+  destroyChart(canvasId);
+  const last=d[d.length-1];
+  const especiales=(last.alim||0)+(last.riber||0)+(last.resg||0)+(last.fonpet||0);
+  const cats=[
+    {label:'Educación',              v:last.educ, c:P.all[0]},
+    {label:'Salud',                   v:last.salud,c:P.all[1]},
+    {label:'Propósito General',      v:last.prop, c:P.all[3]},
+    {label:'Agua Potable',           v:last.agua, c:P.all[2]},
+    {label:'Asignaciones Especiales',v:especiales,c:P.all[4]},
+  ];
+  const total=cats.reduce((s,x)=>s+x.v,0);
+  new Chart(document.getElementById(canvasId).getContext('2d'),{
+    type:'bar',
+    data:{labels:cats.map(x=>x.label),
+      datasets:[{label:'Participación %',data:cats.map(x=>total>0?parseFloat((x.v/total*100).toFixed(1)):0),
+        backgroundColor:cats.map(x=>x.c+'cc'),borderColor:cats.map(x=>x.c),borderWidth:1}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      scales:{x:{grid:{color:P.gc},ticks:{callback:v=>v+'%'}},y:{grid:{display:false}}},
+      plugins:{legend:{display:false},
+        tooltip:{callbacks:{label:ctx=>`${(ctx.parsed.x??0).toFixed(1)}%`}}}}
+  });
+}
+
+function _renderTblSgpHist(tableId,d){
+  const cols=[
+    {k:'total',l:'Total SGP'},{k:'educ',l:'Educación'},{k:'salud',l:'Salud'},
+    {k:'agua',l:'Agua Potable'},{k:'prop',l:'Propósito General'},{k:'alim',l:'Alim. Escolar'},
+    {k:'riber',l:'Ribereños'},{k:'resg',l:'Resg. Indígenas'},{k:'fonpet',l:'Fonpet AE'},
+  ];
+  const fmt=v=>(v||0).toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1});
+  const rows=d.map(x=>`<tr><td>${x.y}</td>${cols.map(c=>`<td>${fmt(x[c.k])}</td>`).join('')}</tr>`).join('');
+  const totals=cols.map(c=>d.reduce((s,x)=>s+(x[c.k]||0),0));
+  document.getElementById(tableId).innerHTML=`
+    <thead><tr><th>Vigencia</th>${cols.map(c=>`<th>${c.l}</th>`).join('')}</tr></thead>
+    <tbody>${rows}</tbody>
+    <tfoot><tr class="tr"><td>TOTAL</td>${totals.map(t=>`<td>${fmt(t)}</td>`).join('')}</tr></tfoot>`;
+}
+
+function _renderSgpMensajes(d){
+  const last=d[d.length-1],prev=d[d.length-2],first=d[0];
+  const crec=prev&&prev.total?((last.total/prev.total-1)*100):null;
+  const educPct=last.total?last.educ/last.total*100:0;
+  const especiales=(last.alim||0)+(last.riber||0)+(last.resg||0)+(last.fonpet||0);
+  const especialesPct=last.total?especiales/last.total*100:0;
+  const growth=[
+    {label:'Educación',          v:last.educ-first.educ},
+    {label:'Salud',               v:last.salud-first.salud},
+    {label:'Agua Potable',       v:last.agua-first.agua},
+    {label:'Propósito General',  v:last.prop-first.prop},
+  ].sort((a,b)=>b.v-a.v)[0];
+  const totalAcum=d.reduce((s,x)=>s+(x.total||0),0);
+  const msgs=[
+    `El SGP distribuido alcanzó <strong>$${last.total.toLocaleString('es-CO',{maximumFractionDigits:0})} mmm</strong> en ${last.y}${crec!=null?`, con un crecimiento de ${crec.toFixed(1)}% frente a ${prev.y}`:''}.`,
+    `La participación de Educación concentra el <strong>${educPct.toFixed(1)}%</strong> del total distribuido en ${last.y}.`,
+    `<strong>${growth.label}</strong> registra el mayor crecimiento absoluto entre ${first.y} y ${last.y} (+$${growth.v.toLocaleString('es-CO',{maximumFractionDigits:0})} mmm).`,
+    `Las asignaciones especiales representan el <strong>${especialesPct.toFixed(1)}%</strong> del total distribuido en ${last.y}.`,
+    `El total distribuido entre ${first.y} y ${last.y} asciende a <strong>$${totalAcum.toLocaleString('es-CO',{maximumFractionDigits:0})} mmm</strong>.`,
+  ];
+  document.getElementById('sgpMensajes').innerHTML=msgs.map(m=>
+    `<li style="padding:4px 0 4px 22px;position:relative"><span style="position:absolute;left:0;color:${P.t};font-weight:900">✓</span>${m}</li>`).join('');
+}
+
+function rSGP(d){
+  _s8.hist=d;
+  const last=d[d.length-1],prev=d[d.length-2];
+  document.querySelector('#kpiSgpTotal .kv').innerHTML=`$${last.total.toLocaleString('es-CO',{maximumFractionDigits:0})} <small>mmm</small>`;
+  document.getElementById('kpiSgpTotalD').textContent=`Vigencia ${last.y}`;
+  if(prev&&prev.total){
+    const crec=(last.total/prev.total-1)*100;
+    document.querySelector('#kpiSgpCrec .kv').innerHTML=`${crec>=0?'+':''}${crec.toFixed(1)} <small>%</small>`;
+    document.getElementById('kpiSgpCrecD').textContent=`${prev.y} → ${last.y}`;
+  }
+  const acum=d.reduce((s,x)=>s+(x.total||0),0);
+  document.querySelector('#kpiSgpAcum .kv').innerHTML=`$${acum.toLocaleString('es-CO',{maximumFractionDigits:0})} <small>mmm</small>`;
+
+  _buildBarSgpTotal('barSgpTotal',d);
+  _buildHbarSgpComp('hbarSgpComp',d);
+  _renderSgpGrid('sgpSectorialesGrid',SGP_SECTORIALES,d);
+  _renderSgpGrid('sgpEspecialesGrid',SGP_ESPECIALES,d);
+  _renderTblSgpHist('tblSgpHist',d);
+  _renderSgpMensajes(d);
+}
+
 /* ── Detalle de sector: tabla multi-año de entidades ───────────────────── */
 let _seHist = null;
 let _seMenMap = {};
@@ -2583,6 +2829,7 @@ async function init(bid){
   const credEntRaw    = await af(`/credito/ejecucion_entidad${q}`, null);
   const credHistRaw   = await af(`/credito/ejecucion_historica${q}`, null);
   const credResumenRaw= await af(`/credito/resumen${q}`, null);
+  const sgpRaw         = await af(`/sgp/historico${q}`, null);
 
   if(resRaw){
     updateHero(resRaw);
@@ -2681,6 +2928,14 @@ async function init(bid){
   rCredSectores(credS);
   rCredEntidad(credE);
   rCredHist(credH);
+
+  // Sección 8 — Sistema General de Participaciones (SGP)
+  const sgp = hasRows(sgpRaw) ? sgpRaw.map(x=>({
+    y:x.vigencia, educ:x.educacion_mmm, salud:x.salud_mmm, agua:x.agua_potable_mmm,
+    prop:x.proposito_general_mmm, alim:x.alimentacion_escolar_mmm, riber:x.riberenos_mmm,
+    resg:x.resguardos_indigenas_mmm, fonpet:x.fonpet_ae_mmm, total:x.total_mmm,
+  })) : D.sgpHist;
+  rSGP(sgp);
 }
 
 /* ── Glosario presupuestal ── */
@@ -2917,6 +3172,38 @@ const DC={
         <div class="dr-src-item"><span class="dr-src-name">SCCI · DNP</span><span class="dr-src-desc">Subdirección de Crédito y Cooperación Internacional — registro y seguimiento del portafolio de crédito externo de la Nación.</span></div>
         <div class="dr-src-item"><span class="dr-src-name">SIIF Nación</span><span class="dr-src-desc">Ejecución presupuestal de los recursos 13 y 14 (crédito externo) por entidad.</span></div>
         <div class="dr-src-item"><span class="dr-src-name">BID · BM · CAF</span><span class="dr-src-desc">Bancos multilaterales financiadores — reportan los desembolsos efectivos de cada operación de crédito.</span></div>`
+      }
+    ]
+  },
+  'sec8-info':{
+    title:'Sistema General de Participaciones (SGP)',
+    etq:'Sección 8 · SDRT',
+    tabs:[
+      {label:'Contexto',html:`
+        <p>El <strong>Sistema General de Participaciones (SGP)</strong> es el mecanismo por el cual la Nación transfiere recursos a los departamentos, distritos, municipios y resguardos indígenas para financiar servicios esenciales a su cargo.</p>
+        <p>Se compone de dos grandes bloques:</p>
+        <div class="dr-src-item"><span class="dr-src-name">Participaciones sectoriales</span><span class="dr-src-desc">Educación, Salud, Agua Potable y Saneamiento Básico, y Propósito General — financian servicios esenciales y competencias definidas por ley.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">Asignaciones especiales</span><span class="dr-src-desc">Alimentación Escolar (PAE), Resguardos Indígenas, municipios y distritos Ribereños del río Magdalena, y Fonpet — recursos con destinación específica para poblaciones y territorios con condiciones particulares.</span></div>`
+      },
+      {label:'Distribución y normativa',html:`
+        <p>El ciclo de distribución sigue cuatro pasos: el <strong>Ministerio de Hacienda y Crédito Público</strong> calcula los montos del SGP conforme al artículo 85 de la Ley 715 de 2001 y comunica la estimación al DNP; el <strong>DNP</strong> elabora los documentos de distribución aplicando los criterios de la norma y la información certificada; y las <strong>entidades territoriales</strong> reciben los recursos para financiar la prestación de servicios.</p>
+        <div class="dr-note">La distribución se realiza de acuerdo con la normativa vigente y la información certificada por las entidades competentes para cada componente del sistema.</div>
+        <div class="dr-src-item"><span class="dr-src-name">Constitución Política</span><span class="dr-src-desc">Artículos 356 y 357.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">Leyes</span><span class="dr-src-desc">Ley 715 de 2001 y Ley 1176 de 2007.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">Decretos reglamentarios</span><span class="dr-src-desc">Decretos 1068 de 2015, 1075 de 2015, 1077 de 2015, 1082 de 2015 y 780 de 2016.</span></div>`
+      },
+      {label:'Qué encontrará aquí',html:`
+        <p>Esta sección de la Bitácora reúne la información histórica y territorial de las distribuciones del SGP:</p>
+        <div class="dr-src-item"><span class="dr-src-name">Histórico por participación</span><span class="dr-src-desc">Evolución 2022-2026 de los recursos distribuidos por cada participación y asignación especial del SGP, en precios corrientes. Disponible en esta versión de la Bitácora.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">Histórico por componente</span><span class="dr-src-desc">Evolución de los recursos distribuidos por los componentes internos de cada participación (p. ej. Calidad, Prestación de Servicios).</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">Regionalizado</span><span class="dr-src-desc">Distribuciones del SGP por región y departamento, y su participación individual en el total nacional.</span></div>
+        <div class="dr-note">El histórico por componente y el detalle regionalizado se incorporarán en próximas actualizaciones de la Bitácora.</div>`
+      },
+      {label:'Fuentes',html:`
+        <div class="dr-src-item"><span class="dr-src-name">SICODIS</span><span class="dr-src-desc">Sistema de Información y Consulta de Distribuciones — consulta agregada y detallada de las distribuciones del SGP desde el año 2002.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">Portal DNP</span><span class="dr-src-desc">Documentos de distribución del SGP y sus anexos, publicados por el DNP.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">DNP · SDRT</span><span class="dr-src-desc">Subdirección de Descentralización y Desarrollo Regional — consolidación y análisis de las cifras del SGP para la Bitácora PGN.</span></div>
+        <div class="dr-note">Cifras en pesos corrientes. Corte a 31 de diciembre de cada vigencia.</div>`
       }
     ]
   }
@@ -3329,7 +3616,7 @@ document.addEventListener('keydown', function(e) {
     ['tablaModal','cardModal'].forEach(id=>{
       document.getElementById(id).classList.remove('active');
     });
-    ['donutT-m','barPGN-m','lineInv-m','mixEjHist-m','mixAprHist-m','barVF-m','donutCredFuente-m','barCredSector-m','barCredEjec-m','hbarCredHist-m'].forEach(id=>destroyChart(id));
+    ['donutT-m','barPGN-m','lineInv-m','mixEjHist-m','mixAprHist-m','barVF-m','donutCredFuente-m','barCredSector-m','barCredEjec-m','hbarCredHist-m','barSgpTotal-m','hbarSgpComp-m'].forEach(id=>destroyChart(id));
     document.body.style.overflow='';
   }
 });

@@ -799,6 +799,49 @@ def get_credito_ejecucion_historica(bitacora_id: Optional[int] = None):
 
 
 # ──────────────────────────────────────────────
+# SECCIÓN 8 – SISTEMA GENERAL DE PARTICIPACIONES (SGP)
+# ──────────────────────────────────────────────
+@app.get("/api/sgp/historico", tags=["Sec 8 - SGP"])
+def get_sgp_historico(bitacora_id: Optional[int] = None):
+    """Serie histórica 2022-2026 del SGP por participación. Miles de millones COP corrientes."""
+    db = get_db()
+    bid, _ = resolve_bitacora(db, bitacora_id)
+    rows = db.execute("""
+        SELECT vigencia, educacion_mmm, salud_mmm, agua_potable_mmm, proposito_general_mmm,
+               alimentacion_escolar_mmm, riberenos_mmm, resguardos_indigenas_mmm, fonpet_ae_mmm, total_mmm
+        FROM sgp_historico_participacion
+        WHERE bitacora_id=?
+        ORDER BY vigencia
+    """, (bid,)).fetchall()
+    return rows_to_list(rows)
+
+
+@app.get("/api/sgp/resumen", tags=["Sec 8 - SGP"])
+def get_sgp_resumen(bitacora_id: Optional[int] = None):
+    """KPIs del SGP: total último año, crecimiento vs año anterior, total acumulado 2022-2026."""
+    db = get_db()
+    bid, _ = resolve_bitacora(db, bitacora_id)
+    rows = db.execute("""
+        SELECT vigencia, total_mmm FROM sgp_historico_participacion
+        WHERE bitacora_id=? ORDER BY vigencia
+    """, (bid,)).fetchall()
+    if not rows:
+        return {}
+    ultimo = rows[-1]
+    anterior = rows[-2] if len(rows) > 1 else None
+    total_acumulado = sum(r["total_mmm"] or 0 for r in rows)
+    return {
+        "vigencia_reciente": ultimo["vigencia"],
+        "total_reciente_mmm": ultimo["total_mmm"],
+        "vigencia_anterior": anterior["vigencia"] if anterior else None,
+        "total_anterior_mmm": anterior["total_mmm"] if anterior else None,
+        "crecimiento_pct": round((ultimo["total_mmm"] / anterior["total_mmm"] - 1) * 100, 2)
+                            if anterior and anterior["total_mmm"] else None,
+        "total_acumulado_mmm": round(total_acumulado, 3),
+    }
+
+
+# ──────────────────────────────────────────────
 # ENDPOINT RESUMEN
 # ──────────────────────────────────────────────
 @app.get("/api/resumen", tags=["Dashboard"])
