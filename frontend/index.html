@@ -607,10 +607,10 @@ footer strong{color:#fff}
       <i class="info-icon" onclick="openDrawer('sec1-info')">i</i>
     </div>
     <h2 class="st">Distribución por Transformaciones</h2>
-    <p class="ss">Vigencia 2025 · PND <strong>"Colombia, potencia mundial de la vida"</strong> · Miles de millones COP corrientes. Fuente: DPIP–SIIF.</p>
+    <p class="ss">Vigencia 2026 · PND <strong>"Colombia, potencia mundial de la vida"</strong> · Miles de millones COP corrientes. Fuente: DPIP–SIIF.</p>
     <div class="g2 rv">
       <div class="card bt">
-        <div class="ct"><span class="ct-text">Distribución porcentual inversión 2025</span>
+        <div class="ct"><span class="ct-text">Distribución porcentual inversión 2026</span>
           <button class="card-expand" onclick="openCardModal('donut-sec1')" title="Ver en pantalla completa">
             <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg>
           </button>
@@ -621,7 +621,7 @@ footer strong{color:#fff}
         </div>
       </div>
       <div class="card bm">
-        <div class="ct"><span class="ct-text">Ejecución por transformador — corte marzo 2025</span>
+        <div class="ct"><span class="ct-text">Ejecución por transformador — corte marzo 2026</span>
           <button class="card-expand" onclick="openCardModal('tabla-sec1')" title="Ver en pantalla completa">
             <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg>
           </button>
@@ -894,7 +894,7 @@ async function selectBit(bid){
 
 /* Paleta DNP exacta */
 const P={t:'#00c3c1',m:'#fe1b7b',a:'#ffca00',nr:'#fbb03b',mo:'#7f47dd',gs:'#9b9b9b',gc:'#ebebeb',
-  all:['#00c3c1','#fe1b7b','#ffca00','#fbb03b','#7f47dd','#5e5e5e']};
+  all:['#00c3c1','#fe1b7b','#ffca00','#fbb03b','#7f47dd','#5e5e5e','#2a9d8f','#e07a5f']};
 
 Chart.defaults.font.family="'Nunito Sans',Arial,sans-serif";
 Chart.defaults.font.size=12;
@@ -976,12 +976,14 @@ function hideEvtTip(){document.getElementById('defTip').classList.remove('vis');
 
 const D={
   tr:[
-    {t:'SEGURIDAD HUMANA Y JUSTICIA SOCIAL',v:32.149,p:38.29,c:10.096,pc:31,po:9},
-    {t:'CONVERGENCIA REGIONAL',             v:25.544,p:30.42,c:14.336,pc:56,po:7},
-    {t:'OTRAS TRANSF. Y EJES TRANSVERSALES',v:10.725,p:12.77,c: 7.948,pc:74,po:13},
-    {t:'TRANSF. PRODUCTIVA E INTERNAC.',    v: 9.552,p:11.38,c: 2.277,pc:24,po:1},
-    {t:'ORDENAMIENTO TERRITORIO Y AGUA',    v: 3.529,p: 4.20,c: 1.037,pc:29,po:4},
-    {t:'DERECHO HUMANO A LA ALIMENTACIÓN',  v: 2.462,p: 2.93,c: 0.668,pc:27,po:2},
+    {t:'2. SEGURIDAD HUMANA Y JUSTICIA SOCIAL',                              v:35503.304,p:40.16,c:16572.041,pc:46.7,po:11.5},
+    {t:'5. CONVERGENCIA REGIONAL',                                          v:25915.254,p:29.32,c:15113.276,pc:58.3,po: 7.1},
+    {t:'4. TRANSFORMACIÓN PRODUCTIVA, INTERNACIONALIZACIÓN Y ACCIÓN CLIMÁTICA',v:12448.769,p:14.08,c: 4931.831,pc:39.6,po:15.6},
+    {t:'7. ACTORES DIFERENCIALES PARA EL CAMBIO',                           v: 8929.251,p:10.10,c: 5465.586,pc:61.2,po:19.4},
+    {t:'1. ORDENAMIENTO DEL TERRITORIO ALREDEDOR DEL AGUA Y JUSTICIA AMBIENTAL',v:2638.933,p: 2.99,c: 1165.309,pc:44.2,po: 7.4},
+    {t:'3. DERECHO HUMANO A LA ALIMENTACIÓN',                               v: 1803.058,p: 2.04,c: 1010.666,pc:56.1,po: 5.3},
+    {t:'8. ESTABILIDAD MACROECONÓMICA',                                     v: 1040.136,p: 1.18,c:  714.822,pc:68.7,po: 6.3},
+    {t:'6. PAZ TOTAL E INTEGRAL',                                           v:  122.526,p: 0.14,c:   12.876,pc:10.5,po: 1.1},
   ],
   ev:[
     {y:2022,r:'Funcionamiento',v:208808},{y:2022,r:'Inversión',v:69626},{y:2022,r:'Servicio Deuda',v:71665},
@@ -999,12 +1001,12 @@ const D={
   ],
   re:[
     // Formato actualizado: valores en mmm (miles de millones), compatible con /api/regionalizacion/historico
-    {vigencia:2025,region:'ANDINA',    apropiacion_mmm:22904.9, compromisos_mmm:7928.8,  obligaciones_mmm:1869.6, pagos_mmm:1857.5, pct_compromisos:34.6},
-    {vigencia:2025,region:'CARIBE',    apropiacion_mmm:11153.3, compromisos_mmm:2491.9,  obligaciones_mmm:373.4,  pagos_mmm:363.6,  pct_compromisos:22.3},
-    {vigencia:2025,region:'PACÍFICO',  apropiacion_mmm:8652.9,  compromisos_mmm:1951.8,  obligaciones_mmm:350.4,  pagos_mmm:346.5,  pct_compromisos:22.6},
-    {vigencia:2025,region:'ORINOQUÍA', apropiacion_mmm:2133.3,  compromisos_mmm:606.8,   obligaciones_mmm:110.7,  pagos_mmm:109.5,  pct_compromisos:28.4},
-    {vigencia:2025,region:'AMAZONIA',  apropiacion_mmm:2124.2,  compromisos_mmm:410.8,   obligaciones_mmm:49.1,   pagos_mmm:49.0,   pct_compromisos:19.3},
-    {vigencia:2025,region:'INSULAR',   apropiacion_mmm:356.6,   compromisos_mmm:48.9,    obligaciones_mmm:0.3,    pagos_mmm:0.3,    pct_compromisos:13.7},
+    {vigencia:2026,region:'ANDINA',    apropiacion_mmm:133435.152, compromisos_mmm:65959.277, obligaciones_mmm:19241.997, pagos_mmm:19189.984, pct_compromisos:49.43},
+    {vigencia:2026,region:'CARIBE',    apropiacion_mmm: 71982.433, compromisos_mmm:34654.948, obligaciones_mmm: 9999.632, pagos_mmm: 9716.194, pct_compromisos:48.14},
+    {vigencia:2026,region:'PACÍFICO',  apropiacion_mmm: 49939.065, compromisos_mmm:22705.920, obligaciones_mmm: 6951.958, pagos_mmm: 6633.102, pct_compromisos:45.47},
+    {vigencia:2026,region:'ORINOQUÍA', apropiacion_mmm: 12531.378, compromisos_mmm: 6614.762, obligaciones_mmm: 1775.751, pagos_mmm: 1757.531, pct_compromisos:52.79},
+    {vigencia:2026,region:'AMAZONIA',  apropiacion_mmm: 13142.434, compromisos_mmm: 5698.287, obligaciones_mmm: 1706.598, pagos_mmm: 1697.750, pct_compromisos:43.36},
+    {vigencia:2026,region:'INSULAR',   apropiacion_mmm:  1999.552, compromisos_mmm:  510.444, obligaciones_mmm:  135.957, pagos_mmm:  135.534, pct_compromisos:25.53},
   ],
   vfc:{
     anios:[2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040],
@@ -1105,14 +1107,14 @@ function openCardModal(key){
   modal.classList.add('active');
   document.body.style.overflow='hidden';
   if(key==='donut-sec1'){
-    title.textContent='Distribución porcentual inversión 2025';
+    title.textContent='Distribución porcentual inversión 2026';
     body.innerHTML=`<div style="display:flex;flex-direction:column;gap:20px;height:calc(88vh - 80px)">
       <div style="position:relative;height:340px;width:340px;margin:0 auto;flex-shrink:0"><canvas id="donutT-m"></canvas></div>
       <div id="leyT-m" style="overflow-y:auto;padding-right:4px;flex:1"></div>
     </div>`;
     if(_s1.donut) requestAnimationFrame(()=>_rDonutModal(_s1.donut));
   } else if(key==='tabla-sec1'){
-    title.textContent='Ejecución por transformador — corte marzo 2025';
+    title.textContent='Ejecución por transformador — corte marzo 2026';
     body.innerHTML=`<div class="tbl-wrap"><table class="tbl" id="tblT-m">
       <thead><tr><th>Transformador</th><th>Vigente</th><th>Compromisos</th><th>%C/AV</th><th>%O/AV</th></tr></thead>
       <tbody></tbody>
@@ -1171,7 +1173,7 @@ function openCardModal(key){
     title.textContent='Tabla de vigencias futuras comprometidas';
     body.innerHTML=document.querySelector('#sec5 .card.rv .tbl-wrap').outerHTML;
   } else if(key==='grid-sec6'){
-    title.textContent='Ejecución por Sector — 2025';
+    title.textContent='Ejecución por Sector — 2026';
     body.innerHTML=`<div class="sg" style="padding:4px">${document.getElementById('sectGrid').innerHTML}</div>`;
   } else if(key==='_sector_det_'){
     // openSectorDetail pasa title y html como 2º y 3º argumento
