@@ -158,6 +158,30 @@ python etl/update_bitacora.py \
 
 ---
 
+## load_evolucion_presupuestal.py — Sec 2 (pendiente)
+
+> **Estado:** archivo fuente identificado; script ETL **pendiente de crear**.
+
+**Archivo fuente:**
+```
+BASES_BITACORA\{año}\{mes}\2. EVOLUCIÓN PRESUPUESTAL\
+  └── 2026-03-31Estructura_Evolución PGN y Reg-Ejec-marzo.xlsx
+        └── Evolucion PGN   ← hoja única con datos PGN
+```
+
+**Tablas que cargará:** `evolucion_presupuestal`
+
+**Especificación:** ver `docs/2. Integracion_datos_evolucion_presupuestal.md` sección 7 (jerarquía de conceptos, filas a omitir, columnas por año/fase, nota sobre fila duplicada F35).
+
+**Notas clave:**
+- Unidades ya en mmm (declaradas en fila 2 del Excel) — sin conversión
+- Omitir fila duplicada F35 (idéntica a F34, "Inversión")
+- Omitir filas de porcentaje: F6, F8, F22, F33
+- Omitir sub-encabezado de fases: F9
+- Año 2026 disponible en el Excel (cols 17–20) pero no está en la BD actual
+
+---
+
 ## Orden de ejecución para nueva bitácora
 
 Para cargar una bitácora completa desde cero con todos los ETLs Excel:
@@ -166,17 +190,20 @@ Para cargar una bitácora completa desde cero con todos los ETLs Excel:
 # 1. Carga principal (Sec 1, 4, 6)
 python etl/load_bitacora_excel.py --periodo 2026-II --corte 2026-06-30
 
-# 2. Regionalización (Sec 3)
+# 2. Evolución presupuestal (Sec 2) — pendiente: crear el script
+# python etl/load_evolucion_presupuestal.py
+
+# 3. Regionalización (Sec 3)
 python etl/load_regionalizacion.py --xlsx "ruta/Consolidado Reg-Ejec-*.xlsx"
 
-# 3. Ejecución sectorial mensual (Sec 4, 6 detalle)
+# 4. Ejecución sectorial mensual (Sec 4, 6 detalle)
 python etl/load_ejecucion_sectorial.py \
   --excel "ruta/BASE DETALLE MENSUAL INVERSIÓN *.xlsx" \
   --bitacora-id <nuevo_id> --mes-corte JUN
 
-# 4. Vigencias Futuras (Sec 5)
+# 5. Vigencias Futuras (Sec 5)
 python etl/load_vigencias_futuras.py   # editar FILE al inicio si cambió el Excel
 
-# 5. Reiniciar API
+# 6. Reiniciar API
 uvicorn api.main:app --reload --port 8000
 ```

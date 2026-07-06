@@ -20,16 +20,16 @@ La carpeta `Marzo\` contiene 8 subcarpetas que corresponden 1:1 con las seccione
 | # | Carpeta | Sección Dashboard | Archivo(s) disponible(s) |
 |---|---|---|---|
 | 1 | `1. INVERSIONES 2026 - PND 2022 - 2026` | Sec 1 – Transformaciones PND | ✅ `Inversiones 2026 - PND 2022-2026.xlsx` |
-| 2 | `2. EVOLUCIÓN PRESUPUESTAL` | Sec 2 – Evolución histórica | ❌ Sin archivos |
-| 3 | `3. REGIONALIZACIÓN` | Sec 3 – Mapa regional | ❌ Sin archivos |
-| 4 | `4. EJECUCIÓN DE LA INVERSIÓN` | Sec 4 – Timeline histórico | ❌ Sin archivos |
+| 2 | `2. EVOLUCIÓN PRESUPUESTAL` | Sec 2 – Evolución histórica | ✅ `2026-03-31Estructura_Evolución PGN y Reg-Ejec-marzo.xlsx` *(ETL pendiente)* |
+| 3 | `3. REGIONALIZACIÓN` | Sec 3 – Mapa regional | ✅ `Consolidado Reg-Ejec-Marzo-2022-2026.xlsx` |
+| 4 | `4. EJECUCIÓN DE LA INVERSIÓN` | Sec 4 – Timeline histórico | ✅ `BASE DETALLE MENSUAL INVERSIÓN 2018-2026.xlsx` |
 | 5 | `5. VIGENCIAS FUTURAS` | Sec 5 – Vigencias futuras | ✅ `20260513 Nueva Base VF - Validada - Revisión Analistas.xlsx` |
-| 6 | `6. EJECUCIÓN SECTORIAL` | Sec 6 – Tarjetas por sector | ❌ Sin archivos |
+| 6 | `6. EJECUCIÓN SECTORIAL` | Sec 6 – Tarjetas por sector | ✅ `BASE DETALLE MENSUAL INVERSIÓN 2018-2026.xlsx` *(mismo que Sec 4)* |
 | 7 | `7. SDRT` | — | ❌ Sin archivos |
 | 8 | `8. SCCI` | — | ❌ Sin archivos |
 | — | Raíz `Marzo\` | — | `data 2022_2026_SGP.xlsx` (pendiente de analizar) |
 
-**Conclusión:** Solo están disponibles los datos para las secciones 1 y 5. Las secciones 2, 3, 4 y 6 dependen de archivos que aún no han sido cargados en el directorio.
+**Estado actualizado (2026-06-29):** Todos los archivos de las secciones 1–6 han sido identificados. Se han implementado ETLs para Secciones 1, 3, 4, 5 y 6. Sección 2 tiene archivo fuente identificado pero ETL pendiente (`etl/load_evolucion_presupuestal.py`). Ver `docs/analisis_consolidado_fuentes.md` para el mapa completo fuente → tabla → ETL.
 
 ---
 
@@ -162,22 +162,18 @@ La carpeta `Marzo\` contiene 8 subcarpetas que corresponden 1:1 con las seccione
 | `TD Gobierno Comparado (Nuevo)` | Comparación entre gobiernos |
 | `Conpes EGP %` | Porcentajes relacionados con Conpes |
 
-### 4.2 Estructura de la hoja BASE_SIIF (columnas clave)
+### 4.2 Hojas de datos crudos — `BASE_SIIF` y `BASE_SIIF_2`
 
-| Columna | Descripción |
-|---|---|
-| `Codigo_Sector` / `Nombre_Sector` | Sector |
-| `Nombre_Unidad_Ejecutora` | Entidad |
-| `BPIN` / `Nombre_Proyecto` | Proyecto |
-| `Vigencia` | Año de la VF (2025-2054) |
-| `Fuente` | Nación / Propios |
-| `Tipo_VF` | Ordinaria / Excepcional, Nuevo / Adición |
-| `Clasif_Gobierno` | Petro / Santos-Duque / anterior |
-| `Valor_VF_Autorizada_SIIF` | Valor aprobado |
-| `Valor_VF_Utilizada_SIIF` | Valor utilizado/comprometido |
-| `Valor_VF_ACTUAL_SIIF` | Valor vigente actual |
+> **Nota (2026-06-29):** el análisis inicial de junio identificó la hoja `BASE_SIIF`. El ETL definitivo (`etl/load_vigencias_futuras.py`) usa la hoja `BASE_SIIF_2` (1 974 registros, 31 columnas), que es la versión validada con el archivo actualizado `20260513 Nueva Base VF - Validada - Revisión Analistas.xlsx`. Columnas clave de `BASE_SIIF_2`:
 
-> **Unidades:** Pesos COP. Dividir por 1e9 para mmm o 1e12 para billones.
+| Columna | idx | Descripción |
+|---|---|---|
+| `Nombre_Sector` | 0 | Sector (29 sectores únicos) |
+| `Vigencia` | 7 | Año de ejecución del compromiso (2025–2054) |
+| `Valor_VF_Final (Actual)` *(con espacio al final)* | 24 | Valor a sumar — pesos COP |
+| `Filtro Fecha Bitácora` | 29 | `Incluir` / `Excluir` — no se filtra (pivot usa `(Todas)`) |
+
+> **Unidades:** Pesos COP. El ETL divide por `1e9` para obtener mmm. La deflactación a pesos constantes 2026 ocurre en la API, no en el ETL.
 
 ### 4.3 Sectores con mayor VF 2026 (hoja TD BITACORA)
 
@@ -192,24 +188,29 @@ La carpeta `Marzo\` contiene 8 subcarpetas que corresponden 1:1 con las seccione
 
 ---
 
-## 5. Brechas y Pendientes
+## 5. Brechas y Pendientes (actualizado 2026-06-29)
 
-| Pendiente | Descripción | Impacto |
-|---|---|---|
-| Verificar filtro pivot (Sec 1) | La hoja pivot suma 62,621 mmm vs 88,401 mmm en Base — identificar criterio | Alto |
-| Archivos secciones 2, 3, 4, 6 | No están disponibles en la carpeta | Bloquea actualización completa de la app |
-| `data 2022_2026_SGP.xlsx` | Archivo en raíz `Marzo\` sin analizar — posiblemente contiene SGP (Sistema General de Participaciones) | Medio |
-| Constantes pesos 2025 | Sec 5 en la app usa precios constantes 2025; BASE_SIIF tiene valores corrientes — verificar deflactor | Alto |
+| Pendiente | Descripción | Impacto | Estado |
+|---|---|---|---|
+| Filtro pivot Sec 1 | La hoja pivot suma 62,621 mmm vs 88,401 mmm en `Base` — diferencia por filtros activos en tabla dinámica | Alto | ✅ Resuelto: ETL usa `Base` sin filtros; 88,401 mmm es el total correcto |
+| Archivos Sec 2, 3, 4, 6 | No disponibles en el análisis inicial | Bloqueante | ✅ Resuelto: todos los archivos identificados y ETLs implementados (ver sección 6) |
+| `data 2022_2026_SGP.xlsx` | Archivo en raíz `Marzo\` sin analizar — posiblemente contiene SGP | Medio | ⏳ Pendiente de analizar |
+| Constantes pesos | App usaba precios constantes 2025; BASE_SIIF tiene corrientes | Alto | ✅ Resuelto: deflactación en API vía `deflactores_pib` (base 2026); ver `docs/5. Integracion_datos_vigencias_futuras.md` |
+| ETL Sec 2 | Archivo fuente identificado pero falta el script de carga | Medio | ⏳ Pendiente: crear `etl/load_evolucion_presupuestal.py`; especificación en `docs/2. Integracion_datos_evolucion_presupuestal.md` §7 |
 
 ---
 
-## 6. Plan de Integración
+## 6. Estado de implementación (actualizado 2026-06-29)
 
-Con los archivos disponibles, se puede construir el ETL para la Bitácora 2026-I que cargue:
+> Esta sección reemplaza el "Plan de integración" original (que proponía leer Sec 1 de hojas pivot). El ETL definitivo lee directamente de la hoja `Base` y agrega en Python, evitando los filtros ocultos de las tablas dinámicas.
 
-1. **Metadatos** — nuevo registro `bitacora_id` (número=3 o siguiente, período=2026-I, corte=2026-03-31)
-2. **Sección 1** — desde hoja `Ejecución transformaciones` y `% Distribución por componente` del Archivo 1
-3. **Sección 6** — derivado de la hoja `Base` del Archivo 1, agregado por sector
-4. **Sección 5** — desde hoja `TD BITACORA` o `TD SECT` del Archivo 5
+| Sección | ETL implementado | Hoja fuente usada | Estado |
+|---|---|---|---|
+| Sec 1 (Transformaciones) | `load_bitacora_excel.py` → `read_base_sheet()` | `Base` | ✅ Operativo |
+| Sec 2 (Evolución) | `load_evolucion_presupuestal.py` | `Evolucion PGN` | ⏳ Pendiente de crear |
+| Sec 3 (Regionalización) | `load_regionalizacion.py` | `Regionalizacion Mar-2022-2026` | ✅ Operativo |
+| Sec 4 (Ejecución histórica) | `load_ejecucion_sectorial.py` | `BASE` | ✅ Operativo |
+| Sec 5 (Vigencias Futuras) | `load_vigencias_futuras.py` | `BASE_SIIF_2` + `TD BITACORA` | ✅ Operativo |
+| Sec 6 (Ejecución sectorial) | `load_bitacora_excel.py` + `load_ejecucion_sectorial.py` | `Base` / `BASE` | ✅ Operativo |
 
-Las secciones 2, 3 y 4 se dejarán con los datos de la bitácora anterior (fallback) hasta recibir los archivos faltantes.
+**Nota sobre la diferencia de totales (sección 3.4):** la hoja pivot `Ejecución transformaciones` suma 62,621 mmm vs 88,401 mmm en `Base`. La diferencia se debe a que la tabla dinámica tiene filtros activos por fuente o tipo de recurso. El ETL usa `Base` sin filtros → 88,401 mmm es el total correcto de apropiación vigente inversión 2026.

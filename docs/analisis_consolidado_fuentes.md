@@ -18,6 +18,7 @@ El problema más recurrente en todas las fuentes es que **cada archivo usa una u
 |---|---|---|---|---|
 | `Inversiones 2026 - PND 2022-2026.xlsx` hoja `Base` | Sec 1 | No declarada | Pesos COP | ÷ 1 000 000 000 |
 | `seed_data.py` (datos embebidos) | Sec 1 y 2 | mmm (en comentario) | mmm | — |
+| `2026-03-31Estructura_Evolución PGN y Reg-Ejec-marzo.xlsx` hoja `Evolucion PGN` | Sec 2 | **Miles de millones** (declarado en fila 2) | mmm | — *(ya en mmm)* |
 | `Consolidado Reg-Ejec-Marzo-2022-2026.xlsx` | Sec 3 | Millones de pesos | Millones COP | ÷ 1 000 |
 | `BASE DETALLE MENSUAL INVERSIÓN 2018-2026.xlsx` | Sec 4 y 6 | No declarada | Pesos COP | ÷ 1 000 000 000 |
 | `20260513 Nueva Base VF - Validada.xlsx` hoja `BASE_SIIF_2` | Sec 5 | No declarada | Pesos COP | ÷ 1 000 000 000 |
@@ -221,13 +222,28 @@ CREATE TABLE ejecucion_sectorial_mensual_v2 (
 
 Ver sección 2.4. Consolidar en una tabla `ejecucion_por_sector` reduciría el esquema de 4 a 1 tabla sin pérdida de información.
 
-### 4.5 Datos de Sec 2 sin fuente primaria conectada
+### 4.5 Fuente de Sec 2 identificada — ETL pendiente
 
-**Situación actual:** los datos de evolución presupuestal (`evolucion_presupuestal`) se cargan únicamente desde `seed_data.py` con valores hardcodeados. No existe un ETL que los lea desde un archivo fuente.
+**Actualización 2026-06-29:** se identificó y analizó el archivo fuente de la Sección 2.
 
-El documento `2. Integracion_datos_evolucion_presupuestal.md` describe un esquema `pgn_concepto` / `pgn_ejecucion` **que no fue implementado**. La fuente correspondiente (`2. EVOLUCIÓN PRESUPUESTAL/`) tampoco tenía archivos disponibles al momento del análisis inicial.
+**Archivo fuente:**
+```
+BASES_BITACORA\2026\Marzo\2. EVOLUCIÓN PRESUPUESTAL\
+  └── 2026-03-31Estructura_Evolución PGN y Reg-Ejec-marzo.xlsx
+        └── hoja: Evolucion PGN
+```
 
-**Recomendación:** cuando se disponga del archivo fuente, crear `etl/load_evolucion_presupuestal.py` siguiendo el patrón de los demás ETLs de Excel.
+**Hallazgos del análisis:**
+- Unidades: **miles de millones de pesos** (declaradas en el propio archivo; no requiere conversión)
+- Estructura: 5 años (2022–2026) × 4 fases (Vigente, Compromisos, Obligaciones, Pagos) × 28 conceptos en 3 niveles jerárquicos
+- La BD actual solo usa los 4 rubros de nivel 1; el Excel tiene 24 conceptos adicionales de detalle sin explotar
+- Año 2026 disponible en el Excel pero **no cargado en la BD** (seed_data solo cubre 2022–2025)
+- Problemas de calidad: fila duplicada (F34=F35, ambas "Inversión") y error tipográfico en "Serivicio de la Deuda Pública Interna" (F28)
+- Los valores de Inversión y Servicio de la Deuda del seed coinciden con el Excel; Funcionamiento y Total difieren porque el seed proviene de la Bitácora 2025-I (corte distinto)
+
+**Situación actual:** los datos de `evolucion_presupuestal` siguen cargándose desde `seed_data.py` con valores hardcodeados. No existe aún un ETL para esta sección.
+
+**Recomendación:** crear `etl/load_evolucion_presupuestal.py` siguiendo el patrón de los demás ETLs de Excel. La lectura es directa (sin conversión de unidades); el único preprocesamiento es omitir la fila duplicada F35, las filas de porcentaje (F6, F8, F22, F33) y el sub-encabezado (F9). Ver sección 7 de `docs/2. Integracion_datos_evolucion_presupuestal.md` para la especificación detallada.
 
 ### 4.6 `inv_pct_pib` e `inv_pct_gasto_total` sin fuente ETL
 
@@ -330,7 +346,7 @@ Resumen de la trazabilidad fuente → tabla para la Bitácora 2026-I:
 | Sección | Fuente Excel | Hoja | ETL | Tablas BD |
 |---|---|---|---|---|
 | Sec 1 | `Inversiones 2026 - PND 2022-2026.xlsx` | `Base`, `Ejecución transformaciones` | `load_bitacora_excel.py` | `inversion_transformaciones`, `inversion_componentes_pnd`, `ejecucion_transformaciones` |
-| Sec 2 | ❌ Sin fuente Excel disponible | — | `seed_data.py` (hardcoded) | `evolucion_presupuestal` |
+| Sec 2 | `2026-03-31Estructura_Evolución PGN y Reg-Ejec-marzo.xlsx` *(fuente identificada; ETL pendiente)* | `Evolucion PGN` | `seed_data.py` (hardcoded) | `evolucion_presupuestal` |
 | Sec 3 | `Consolidado Reg-Ejec-Marzo-2022-2026.xlsx` | `Regionalizacion Mar-2022-2026`, `sectores_por_region` | `load_regionalizacion.py` | `regionalizacion_resumen`, `regionalizacion_detalle_2025` |
 | Sec 4 | `BASE DETALLE MENSUAL INVERSIÓN 2018-2026.xlsx` | `BASE` | `load_ejecucion_sectorial.py` | `ejecucion_historica`, `apropiacion_por_sector`, `compromisos_pct_por_sector` |
 | Sec 5 | `20260513 Nueva Base VF - Validada.xlsx` | `BASE_SIIF_2`, `TD BITACORA` | `load_vigencias_futuras.py` | `vigencias_futuras`, `deflactores_pib` |
@@ -345,7 +361,7 @@ Resumen de la trazabilidad fuente → tabla para la Bitácora 2026-I:
 | # | Acción | Tablas afectadas | Esfuerzo |
 |---|---|---|---|
 | 1 | Estandarizar unidades de regionalización de `_mm` a `_mmm` | `regionalizacion_resumen`, `regionalizacion_detalle_2025` | Medio |
-| 2 | Crear ETL para Sec 2 (evolución presupuestal) desde Excel fuente | `evolucion_presupuestal` | Alto |
+| 2 | Crear `etl/load_evolucion_presupuestal.py` desde `2026-03-31Estructura_Evolución PGN y Reg-Ejec-marzo.xlsx` (fuente identificada) | `evolucion_presupuestal` | Medio |
 | 3 | Calcular `inv_pct_pib` automáticamente desde `deflactores_pib` | `ejecucion_historica` | Bajo |
 | 4 | Aplicar `.strip()` a todos los nombres de columna en ETLs | Todos los ETLs | Bajo |
 
