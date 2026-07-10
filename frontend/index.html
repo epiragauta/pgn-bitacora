@@ -659,10 +659,10 @@ footer strong{color:#fff}
         <table class="tbl">
           <thead><tr><th>Componente</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026</th><th>% 2026</th></tr></thead>
           <tbody>
-            <tr><td>Funcionamiento</td><td>208.808</td><td>258.069</td><td>289.892</td><td>319.191</td><td>327.314</td><td>63,4%</td></tr>
-            <tr><td>Inversión</td><td>69.626</td><td>74.222</td><td>99.851</td><td>83.961</td><td>88.401</td><td>17,1%</td></tr>
-            <tr><td>Servicio de la Deuda</td><td>71.665</td><td>77.998</td><td>94.522</td><td>112.605</td><td>100.450</td><td>19,5%</td></tr>
-            <tr class="tr"><td>TOTAL PGN</td><td>350.098</td><td>410.290</td><td>484.266</td><td>515.757</td><td>516.165</td><td>100%</td></tr>
+            <tr><td>Funcionamiento</td><td>208.808</td><td>258.069</td><td>289.892</td><td>319.191</td><td>358.166</td><td>65,5%</td></tr>
+            <tr><td>Inversión</td><td>69.626</td><td>74.222</td><td>99.851</td><td>83.961</td><td>88.401</td><td>16,2%</td></tr>
+            <tr><td>Servicio de la Deuda</td><td>71.665</td><td>77.998</td><td>94.522</td><td>112.605</td><td>100.450</td><td>18,4%</td></tr>
+            <tr class="tr"><td>TOTAL PGN</td><td>350.098</td><td>410.290</td><td>484.266</td><td>515.757</td><td>547.017</td><td>100%</td></tr>
           </tbody>
         </table>
       </div>
@@ -721,16 +721,16 @@ footer strong{color:#fff}
     <div class="tg rv" id="tlGrid"></div>
     <div class="g2 rv" style="margin-top:18px">
       <div class="card bt"><div class="ct"><span class="ct-text">Ejecución presupuestal histórica · Vigente y porcentajes</span><button class="card-expand" onclick="openCardModal('mix-sec4-ej')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div style="position:relative;height:300px"><canvas id="mixEjHist"></canvas></div></div>
-      <div class="card bm"><div class="ct"><span class="ct-text">Apropiación top sectores 2022-2025</span><button class="card-expand" onclick="openCardModal('hb-sec4')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div id="hbSect"></div></div>
+      <div class="card bm"><div class="ct"><span class="ct-text">Apropiación top sectores 2022-2026</span><button class="card-expand" onclick="openCardModal('hb-sec4')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div><div id="hbSect"></div></div>
     </div>
     <div class="card rv" style="margin-top:18px">
-      <div class="ct"><span class="ct-text">Apropiación histórica inversión 2022-2025 · Precios corrientes</span><button class="card-expand" onclick="openCardModal('mix-sec4')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div>
+      <div class="ct"><span class="ct-text">Apropiación histórica inversión 2022-2026 · Precios corrientes</span><button class="card-expand" onclick="openCardModal('mix-sec4')" title="Ver en pantalla completa"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h5v1.5H2.5V7H1zm9 0h5v6h-1.5V2.5H10zM1 9h1.5v4.5H7V15H1zm12.5 4.5H10V15h6V9h-1.5z"/></svg></button></div>
       <div style="position:relative;height:280px"><canvas id="mixAprHist"></canvas></div>
       <div id="aprHistTbl"></div>
     </div>
     <div class="card rv" style="margin-top:18px">
       <div class="ct" style="flex-wrap:wrap;gap:8px">
-        <span class="ct-text">Ejecución por sector · 2022-2025</span>
+        <span class="ct-text">Ejecución por sector · 2022-2026</span>
         <div id="s4mTabs" style="display:flex;gap:4px;flex-wrap:wrap">
           <button class="s4m-tab active" onclick="switchMatrixTab('apr')">Apropiación</button>
           <button class="s4m-tab" onclick="switchMatrixTab('pct_c')">% Compromisos</button>
@@ -1127,7 +1127,7 @@ const D={
     {y:2023,r:'Funcionamiento',v:258069},{y:2023,r:'Inversión',v:74222},{y:2023,r:'Servicio Deuda',v:77998},
     {y:2024,r:'Funcionamiento',v:289892},{y:2024,r:'Inversión',v:99851},{y:2024,r:'Servicio Deuda',v:94522},
     {y:2025,r:'Funcionamiento',v:319191},{y:2025,r:'Inversión',v:83961},{y:2025,r:'Servicio Deuda',v:112605},
-    {y:2026,r:'Funcionamiento',v:327314},{y:2026,r:'Inversión',v:88401},{y:2026,r:'Servicio Deuda',v:100450},
+    {y:2026,r:'Funcionamiento',v:358166},{y:2026,r:'Inversión',v:88401},{y:2026,r:'Servicio Deuda',v:100450},
   ],
   ej:[
     {y:2022,vg:69626,c:36610,o:11380,p:11143,pc:52.6,po:16.3,pp:16.0,pib:4.7,g:19.9},
@@ -1138,12 +1138,11 @@ const D={
   ],
   re:[
     // Formato actualizado: valores en mmm (miles de millones), compatible con /api/regionalizacion/historico
-    {vigencia:2026,region:'ANDINA',    apropiacion_mmm: 27201.829, compromisos_mmm:14462.947, obligaciones_mmm: 3764.375, pagos_mmm: 3751.706, pct_compromisos:53.17},
-    {vigencia:2026,region:'CARIBE',    apropiacion_mmm: 15186.541, compromisos_mmm: 7817.119, obligaciones_mmm: 1992.640, pagos_mmm: 1733.174, pct_compromisos:51.47},
-    {vigencia:2026,region:'PACÍFICO',  apropiacion_mmm: 10445.649, compromisos_mmm: 5060.730, obligaciones_mmm: 1309.697, pagos_mmm: 1228.847, pct_compromisos:48.45},
-    {vigencia:2026,region:'ORINOQUÍA', apropiacion_mmm:  2614.494, compromisos_mmm: 1402.900, obligaciones_mmm:  345.893, pagos_mmm:  341.171, pct_compromisos:53.66},
-    {vigencia:2026,region:'AMAZONIA',  apropiacion_mmm:  2821.230, compromisos_mmm: 1260.827, obligaciones_mmm:  300.906, pagos_mmm:  297.037, pct_compromisos:44.69},
-    {vigencia:2026,region:'INSULAR',   apropiacion_mmm:   402.300, compromisos_mmm:   97.976, obligaciones_mmm:   19.824, pagos_mmm:   19.810, pct_compromisos:24.35},
+    {vigencia:2026,region:'ANDINA',          apropiacion_mmm: 27201.829, compromisos_mmm:14462.947, obligaciones_mmm: 3764.375, pagos_mmm: 3751.706, pct_compromisos:53.17},
+    {vigencia:2026,region:'CARIBE - INSULAR',apropiacion_mmm: 15588.841, compromisos_mmm: 7915.095, obligaciones_mmm: 2012.464, pagos_mmm: 1752.984, pct_compromisos:50.77},
+    {vigencia:2026,region:'PACÍFICO',        apropiacion_mmm: 10445.649, compromisos_mmm: 5060.730, obligaciones_mmm: 1309.697, pagos_mmm: 1228.847, pct_compromisos:48.45},
+    {vigencia:2026,region:'ORINOQUÍA',       apropiacion_mmm:  2614.494, compromisos_mmm: 1402.900, obligaciones_mmm:  345.893, pagos_mmm:  341.171, pct_compromisos:53.66},
+    {vigencia:2026,region:'AMAZONIA',        apropiacion_mmm:  2821.230, compromisos_mmm: 1260.827, obligaciones_mmm:  300.906, pagos_mmm:  297.037, pct_compromisos:44.69},
   ],
   vfc:{
     anios:[2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040],
@@ -1361,15 +1360,16 @@ function openCardModal(key){
     body.innerHTML=`<div style="position:relative;height:calc(88vh - 80px)"><canvas id="mixEjHist-m"></canvas></div>`;
     if(_s4.ejMix) requestAnimationFrame(()=>_buildMixEjHist('mixEjHist-m',_s4.ejMix));
   } else if(key==='hb-sec4'){
-    title.textContent='Apropiación top sectores 2022-2025';
-    body.innerHTML=`<div style="max-width:700px;margin:0 auto">${document.getElementById('hbSect').innerHTML}</div>`;
+    title.textContent='Apropiación por sector 2022-2026 · Todos los sectores';
+    body.innerHTML=`<div style="max-width:700px;margin:0 auto" id="hbSect-m"></div>`;
+    _renderHBars('hbSect-m',_s4.mtz,null);
   } else if(key==='tbl-sec4-mtz'){
     const tabLabel={'apr':'Apropiación','pct_c':'% Compromisos','pct_o':'% Obligaciones','pct_p':'% Pagos'};
-    title.textContent=`Ejecución por sector 2022-2025 · ${tabLabel[_s4MatrixTab]||''}`;
+    title.textContent=`Ejecución por sector 2022-2026 · ${tabLabel[_s4MatrixTab]||''}`;
     body.innerHTML=`<div id="sectMatrix-m"></div>`;
     if(_s4.mtz) requestAnimationFrame(()=>_renderSectorMatrix('sectMatrix-m',_s4.mtz,_s4MatrixTab));
   } else if(key==='mix-sec4'){
-    title.textContent='Apropiación histórica inversión 2022-2025 · Precios corrientes';
+    title.textContent='Apropiación histórica inversión 2022-2026 · Precios corrientes';
     body.innerHTML=`<div style="position:relative;height:calc(88vh - 140px)"><canvas id="mixAprHist-m"></canvas></div><div id="aprHistTbl-m"></div>`;
     if(_s4.aprHist) requestAnimationFrame(()=>{
       _buildAprHist('mixAprHist-m',_s4.aprHist);
@@ -1726,7 +1726,7 @@ const _aprHistPlugin={
 
 function _buildAprHist(canvasId, ej){
   destroyChart(canvasId);
-  const data=ej.filter(d=>d.y<=2025);
+  const data=ej;
   new Chart(document.getElementById(canvasId).getContext('2d'),{
     type:'bar',
     plugins:[_aprHistPlugin],
@@ -1778,7 +1778,7 @@ function _buildAprHist(canvasId, ej){
 function _renderAprHistTbl(containerId, ej){
   const el=document.getElementById(containerId);
   if(!el)return;
-  const data=ej.filter(d=>d.y<=2025);
+  const data=ej;
   const fn=v=>Math.round(v).toLocaleString('es-CO');
   el.innerHTML=`<div class="tbl-wrap" style="margin-top:12px">
     <table class="tbl" style="font-size:12px">
@@ -1865,7 +1865,7 @@ async function rMapa(deptData, regionData){
   // Índices rápidos
   const byDane=Object.fromEntries((deptData||[]).map(d=>[d.codigo_dane,d]));
   // Mapeo de nombres GeoJSON → clave DB normalizada
-  const GEO_TO_DB={'AMAZONAS':'AMAZONIA','Región Insular':'INSULAR'};
+  const GEO_TO_DB={'AMAZONAS':'AMAZONIA','Región Insular':'CARIBE - INSULAR','CARIBE':'CARIBE - INSULAR'};
   const geoKey=r=>GEO_TO_DB[r]||r;
   const byRegion=Object.fromEntries((regionData||[]).map(d=>[d.region,d]));
 
@@ -2025,7 +2025,7 @@ const _mixEjHistPlugin={
 
 function _buildMixEjHist(canvasId,ej){
   destroyChart(canvasId);
-  const data=ej.filter(d=>d.y>=2018&&d.y<=2025);
+  const data=ej.filter(d=>d.y>=2018);
   const c=new Chart(document.getElementById(canvasId).getContext('2d'),{
     type:'bar',
     plugins:[_mixEjHistPlugin],
@@ -2086,19 +2086,19 @@ function toTitle(s){
   ).join(' ');
 }
 
-function rHBars(mtz){
-  const CL=[P.t,P.m,P.a,P.nr];
+function _renderHBars(containerId,mtz,limit){
+  const CL=[P.t,P.m,P.a,P.nr,'#4a90d9','#9b59b6'];
   let S,mx,vigs;
   if(mtz&&mtz.sectores&&mtz.sectores.length){
     const vigsAll=mtz.vigencias;
-    vigs=vigsAll.filter(v=>v>=2022&&v<=2025);
+    vigs=vigsAll.filter(v=>v>=2022);
     const visIdx=vigs.map(v=>vigsAll.indexOf(v));
     const lastIdx=visIdx[visIdx.length-1];
-    const top6=[...mtz.sectores]
-      .sort((a,b)=>(b.apr[lastIdx]||0)-(a.apr[lastIdx]||0))
-      .slice(0,6);
-    mx=Math.max(...top6.flatMap(s=>visIdx.map(vi=>s.apr[vi]||0)))*1.05;
-    S=top6.map(s=>({n:toTitle(s.sector),v:visIdx.map(vi=>Math.round(s.apr[vi]||0))}));
+    const sorted=[...mtz.sectores]
+      .sort((a,b)=>(b.apr[lastIdx]||0)-(a.apr[lastIdx]||0));
+    const top=limit?sorted.slice(0,limit):sorted;
+    mx=Math.max(...top.flatMap(s=>visIdx.map(vi=>s.apr[vi]||0)))*1.05;
+    S=top.map(s=>({n:toTitle(s.sector),v:visIdx.map(vi=>Math.round(s.apr[vi]||0))}));
   }else{
     vigs=[2022,2023,2024,2025];
     S=[
@@ -2111,15 +2111,17 @@ function rHBars(mtz){
     ];
     mx=22000;
   }
-  document.getElementById('hbSect').innerHTML=S.map(s=>`
+  const cl=n=>CL[n%CL.length];
+  document.getElementById(containerId).innerHTML=S.map(s=>`
     <div class="hr-row">
       <div class="hr-lbl"><span>${s.n}</span><span>${(s.v[s.v.length-1]/1000).toFixed(1)} Bill. ${vigs[vigs.length-1]}</span></div>
       <div style="display:grid;grid-template-columns:repeat(${vigs.length},1fr);gap:2px">
         ${s.v.map((v,i)=>`<div><div style="font-size:8px;color:${P.gs};margin-bottom:2px;font-weight:700">${vigs[i]}</div>
-        <div class="hr-tr"><div class="hr-fi" style="width:${(v/mx*100).toFixed(1)}%;background:${CL[i]}"></div></div></div>`).join('')}
+        <div class="hr-tr"><div class="hr-fi" style="width:${(v/mx*100).toFixed(1)}%;background:${cl(i)}"></div></div></div>`).join('')}
       </div>
     </div>`).join('');
 }
+function rHBars(mtz){_s4.mtz=mtz;_renderHBars('hbSect',mtz,6);}
 
 /* ── Sec 4: Matriz interactiva de ejecución por sector ── */
 let _s4MatrixTab='apr';
@@ -2910,7 +2912,19 @@ async function init(bid){
   const tr = hasRows(trRaw) ? trRaw.map(x=>({t:x.transformador,v:x.inversion_mmm,p:x.peso_pct,c:x.compromisos_mmm,pc:x.pct_c_av,po:x.pct_o_av})) : D.tr;
   const ev = hasRows(evRaw) ? evRaw.map(x=>({y:x.vigencia,r:x.rubro,v:x.vigente_mmm})) : D.ev;
   const ej = hasRows(ejRaw) ? ejRaw.map(x=>({y:x.vigencia,vg:x.vigente_mmm,c:x.compromisos_mmm,o:x.obligaciones_mmm,p:x.pagos_mmm,pc:x.pct_compromisos,po:x.pct_obligaciones,pp:x.pct_pagos,pib:x.inv_pct_pib,g:x.inv_pct_gasto_total})) : D.ej;
-  const _RORD=['ANDINA','CARIBE','PACÍFICO','ORINOQUÍA','AMAZONIA','INSULAR'];
+
+  // Sincronizar los paneles informativos (drawers) con la vigencia de la bitácora seleccionada
+  {
+    const v = resRaw ? resRaw.vigencia : (ej.length ? ej[ej.length-1].y : 2026);
+    const lastEj = ej.find(x=>x.y===v) || ej[ej.length-1];
+    _drVars = {
+      V: v,
+      V_ANT: v-1,
+      INV_BILL: lastEj ? (lastEj.vg/1000).toFixed(1).replace('.',',') : ''
+    };
+  }
+
+  const _RORD=['ANDINA','CARIBE - INSULAR','PACÍFICO','ORINOQUÍA','AMAZONIA'];
   const re = hasRows(reRaw)
     ? reRaw.filter(x=>x.vigencia===_reVigencia)
         .sort((a,b)=>{const ia=_RORD.indexOf(a.region),ib=_RORD.indexOf(b.region);return(ia<0?99:ia)-(ib<0?99:ib);})
@@ -3083,7 +3097,7 @@ const DC={
     etq:'Sección 1 · Transformaciones',
     tabs:[
       {label:'Contexto',html:`
-        <p>En la vigencia 2025, con corte al 31 de marzo, el presupuesto de inversión ascendió a <strong>83,9 billones de pesos</strong>, destinados a dar cumplimiento a las apuestas del Plan Nacional de Desarrollo 2022-2026, <em>"Colombia, potencia mundial de la vida"</em>.</p>
+        <p>En la vigencia {{V}}, con corte al 31 de marzo, el presupuesto de inversión ascendió a <strong>{{INV_BILL}} billones de pesos</strong>, destinados a dar cumplimiento a las apuestas del Plan Nacional de Desarrollo 2022-2026, <em>"Colombia, potencia mundial de la vida"</em>.</p>
         <p>El PND tiene como objetivo central la superación de las injusticias históricas y el cierre de brechas entre regiones y territorios, promoviendo un crecimiento económico sostenible y respetuoso con el medio ambiente.</p>
         <p>La mayor parte de la inversión se concentra en las transformaciones orientadas a la reducción de la pobreza, el impulso de la economía popular, la conexión territorial mediante infraestructura vial y el fortalecimiento de la educación de calidad.</p>`
       },
@@ -3128,7 +3142,7 @@ const DC={
       {label:'Contexto',html:`
         <p>El <strong>Presupuesto General de la Nación (PGN)</strong> es el principal instrumento de política fiscal del Estado colombiano. Determina cuánto puede gastar el Gobierno Nacional Central en un año y en qué lo gasta.</p>
         <p>Está compuesto por tres grandes componentes que reflejan prioridades distintas del Estado: atender su funcionamiento ordinario, pagar las deudas contraídas y ejecutar inversiones que transformen el territorio.</p>
-        <div class="dr-note">El análisis histórico 2022-2025 permite identificar tendencias estructurales en la composición del gasto público y evaluar la priorización de la inversión frente a otros compromisos.</div>`
+        <div class="dr-note">El análisis histórico 2022-{{V}} permite identificar tendencias estructurales en la composición del gasto público y evaluar la priorización de la inversión frente a otros compromisos.</div>`
       },
       {label:'Componentes',html:`
         <div class="dr-src-item"><span class="dr-src-name">Funcionamiento</span><span class="dr-src-desc">Gastos para que el Estado opere: nómina, transferencias a entidades territoriales, pensiones y gastos generales. Es el componente de mayor peso relativo en el PGN.</span></div>
@@ -3145,10 +3159,10 @@ const DC={
   },
   'sec4-info':{
     title:'Ejecución Presupuestal',
-    etq:'Sección 4 · Histórico 2022-2025',
+    etq:'Sección 4 · Histórico 2022-{{V}}',
     tabs:[
       {label:'Contexto',html:`
-        <p>El análisis compara el comportamiento del <strong>primer trimestre</strong> de cada vigencia entre 2022 y 2025. Permite responder: ¿cómo va 2025 respecto a años anteriores a la misma fecha de corte?</p>
+        <p>El análisis compara el comportamiento del <strong>primer trimestre</strong> de cada vigencia entre 2022 y {{V}}. Permite responder: ¿cómo va {{V}} respecto a años anteriores a la misma fecha de corte?</p>
         <p>El ciclo presupuestal colombiano concentra históricamente la ejecución en el segundo semestre, por lo que los porcentajes de primer trimestre son bajos en términos absolutos pero relevantes como señal temprana de ritmo.</p>
         <div class="dr-note">Una brecha amplia entre %C/AV y %P/AV puede indicar acumulación de cuentas por pagar o rezago de caja en la Tesorería General.</div>`
       },
@@ -3178,7 +3192,7 @@ const DC={
         <p>El régimen de vigencias futuras está regulado por el <strong>Estatuto Orgánico del Presupuesto (Decreto 111 de 1996)</strong> y desarrollado por la <strong>Ley 819 de 2003</strong> de responsabilidad fiscal.</p>
         <div class="dr-src-item"><span class="dr-src-name">Ordinarias</span><span class="dr-src-desc">Autorizadas por el CONFIS. Aplican para proyectos de inversión del Plan Nacional de Desarrollo. Pueden comprometer hasta el 100% de la apropiación de vigencias futuras.</span></div>
         <div class="dr-src-item"><span class="dr-src-name">Excepcionales</span><span class="dr-src-desc">Autorizadas por el MHCP. Para proyectos de interés nacional no incluidos en el PND. Requieren concepto previo de la Comisión Económica del Congreso.</span></div>
-        <div class="dr-note">Las cifras se expresan en <strong>pesos constantes de 2025</strong> para facilitar la comparación entre distintos años de vigencia futura.</div>`
+        <div class="dr-note">Las cifras se expresan en <strong>pesos constantes de {{V}}</strong> para facilitar la comparación entre distintos años de vigencia futura.</div>`
       },
       {label:'Fuentes',html:`
         <div class="dr-src-item"><span class="dr-src-name">DPIP · DNP</span><span class="dr-src-desc">Dirección de Programación de Inversiones Públicas — registro y consolidación de vigencias futuras por sector y año de vencimiento.</span></div>
@@ -3250,8 +3264,8 @@ const DC={
       },
       {label:'Qué encontrará aquí',html:`
         <p>Esta sección de la Bitácora reúne la información histórica y territorial de las distribuciones del SGP:</p>
-        <div class="dr-src-item"><span class="dr-src-name">Histórico por participación</span><span class="dr-src-desc">Evolución 2022-2026 de los recursos distribuidos por cada participación y asignación especial del SGP, en precios corrientes.</span></div>
-        <div class="dr-src-item"><span class="dr-src-name">Histórico por componente</span><span class="dr-src-desc">Evolución 2022-2026 de los componentes internos de cada participación (p. ej. Calidad, Prestación de Servicios, Régimen Subsidiado). Disponible en el detalle de pantalla completa de la tabla histórica.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">Histórico por participación</span><span class="dr-src-desc">Evolución 2022-{{V}} de los recursos distribuidos por cada participación y asignación especial del SGP, en precios corrientes.</span></div>
+        <div class="dr-src-item"><span class="dr-src-name">Histórico por componente</span><span class="dr-src-desc">Evolución 2022-{{V}} de los componentes internos de cada participación (p. ej. Calidad, Prestación de Servicios, Régimen Subsidiado). Disponible en el detalle de pantalla completa de la tabla histórica.</span></div>
         <div class="dr-src-item"><span class="dr-src-name">Regionalizado</span><span class="dr-src-desc">Distribuciones del SGP por región y departamento, y su participación individual en el total nacional.</span></div>
         <div class="dr-note">El detalle regionalizado se incorporará en próximas actualizaciones de la Bitácora.</div>`
       },
@@ -3267,17 +3281,22 @@ const DC={
 
 /* ── Motor del drawer ── */
 let _drKey=null,_drTab=0;
+let _drVars={V:2026,V_ANT:2025,INV_BILL:'88,4'};
+
+function _drRender(s){
+  return s==null?s:s.replace(/\{\{(\w+)\}\}/g,(m,k)=>_drVars[k]!=null?_drVars[k]:m);
+}
 
 function openDrawer(key){
   const c=DC[key];
   if(!c)return;
   _drKey=key;_drTab=0;
-  document.getElementById('drEtq').textContent=c.etq;
-  document.getElementById('drTitle').textContent=c.title;
+  document.getElementById('drEtq').textContent=_drRender(c.etq);
+  document.getElementById('drTitle').textContent=_drRender(c.title);
   document.getElementById('drTabs').innerHTML=c.tabs.map((t,i)=>
     `<button class="dr-tab${i===0?' active':''}" onclick="switchDrTab(${i})">${t.label}</button>`
   ).join('');
-  document.getElementById('drBody').innerHTML=c.tabs[0].html;
+  document.getElementById('drBody').innerHTML=_drRender(c.tabs[0].html);
   document.getElementById('drawer').classList.add('open');
   document.getElementById('drawerBackdrop').classList.add('open');
   document.body.style.overflow='hidden';
@@ -3292,7 +3311,7 @@ function closeDrawer(){
 function switchDrTab(i){
   _drTab=i;
   document.querySelectorAll('.dr-tab').forEach((b,j)=>b.classList.toggle('active',i===j));
-  document.getElementById('drBody').innerHTML=DC[_drKey].tabs[i].html;
+  document.getElementById('drBody').innerHTML=_drRender(DC[_drKey].tabs[i].html);
 }
 
 async function initApp(){

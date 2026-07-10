@@ -389,32 +389,42 @@ def get_regionalizacion_departamento(codigo_dane: str, bitacora_id: Optional[int
 # ──────────────────────────────────────────────
 @app.get("/api/ejecucion", tags=["Sec 4 - Ejecución"])
 def get_ejecucion(bitacora_id: Optional[int] = None):
-    """Ejecución histórica de inversión 2022-2026 (pgn_ejecucion)."""
+    """Ejecución histórica de inversión por vigencia, para la bitácora seleccionada.
+
+    inv_pct_pib / inv_pct_gasto_total no siempre están poblados en
+    ejecucion_historica (dependen de que el ETL los haya heredado de una
+    carga previa para esa bitácora); si faltan, se completan desde la
+    serie global pgn_ejecucion/pgn_concepto como respaldo.
+    """
     db = get_db()
+    bid, _ = resolve_bitacora(db, bitacora_id)
     rows = db.execute("""
-        SELECT
-            v.anio                                          AS vigencia,
-            v.valor                                         AS vigente_mmm,
-            com.valor                                       AS compromisos_mmm,
-            obl.valor                                       AS obligaciones_mmm,
-            pag.valor                                       AS pagos_mmm,
-            ROUND(com.valor * 100.0 / v.valor, 2)          AS pct_compromisos,
-            ROUND(obl.valor * 100.0 / v.valor, 2)          AS pct_obligaciones,
-            ROUND(pag.valor * 100.0 / v.valor, 2)          AS pct_pagos,
-            ROUND(pib.valor * 100, 1)                      AS inv_pct_pib,
-            ROUND(v.valor * 100.0 / tot.valor, 1)          AS inv_pct_gasto_total
-        FROM pgn_ejecucion v
-        JOIN pgn_ejecucion com ON com.anio=v.anio AND com.concepto_id=v.concepto_id AND com.fase='Comprometido'
-        JOIN pgn_ejecucion obl ON obl.anio=v.anio AND obl.concepto_id=v.concepto_id AND obl.fase='Obligado'
-        JOIN pgn_ejecucion pag ON pag.anio=v.anio AND pag.concepto_id=v.concepto_id AND pag.fase='Pagado'
-        JOIN pgn_ejecucion pib ON pib.anio=v.anio AND pib.fase='Vigente'
-        JOIN pgn_concepto  cpib ON cpib.id=pib.concepto_id AND cpib.nombre='Inversión como % del PIB'
-        JOIN pgn_ejecucion tot ON tot.anio=v.anio AND tot.fase='Vigente'
-        JOIN pgn_concepto  ctot ON ctot.id=tot.concepto_id AND ctot.nombre='Total PGN' AND ctot.unidad='Miles mm COP'
-        JOIN pgn_concepto  c    ON c.id=v.concepto_id AND c.nombre='Inversión' AND c.unidad='Miles mm COP'
-        WHERE v.fase = 'Vigente'
-        ORDER BY v.anio
-    """).fetchall()
+        SELECT eh.vigencia, eh.vigente_mmm, eh.compromisos_mmm,
+               eh.obligaciones_mmm, eh.pagos_mmm,
+               ROUND(eh.compromisos_mmm  * 100.0 / eh.vigente_mmm, 2) AS pct_compromisos,
+               ROUND(eh.obligaciones_mmm * 100.0 / eh.vigente_mmm, 2) AS pct_obligaciones,
+               ROUND(eh.pagos_mmm        * 100.0 / eh.vigente_mmm, 2) AS pct_pagos,
+               COALESCE(eh.inv_pct_pib, (
+                   SELECT ROUND(pib.valor * 100, 1)
+                   FROM pgn_ejecucion pib
+                   JOIN pgn_concepto cpib ON cpib.id=pib.concepto_id
+                        AND cpib.nombre='Inversión como % del PIB'
+                   WHERE pib.anio=eh.vigencia AND pib.fase='Vigente'
+               )) AS inv_pct_pib,
+               COALESCE(eh.inv_pct_gasto_total, (
+                   SELECT ROUND(v.valor * 100.0 / tot.valor, 1)
+                   FROM pgn_ejecucion v
+                   JOIN pgn_concepto c ON c.id=v.concepto_id
+                        AND c.nombre='Inversión' AND c.unidad='Miles mm COP'
+                   JOIN pgn_ejecucion tot ON tot.anio=v.anio AND tot.fase='Vigente'
+                   JOIN pgn_concepto ctot ON ctot.id=tot.concepto_id
+                        AND ctot.nombre='Total PGN' AND ctot.unidad='Miles mm COP'
+                   WHERE v.anio=eh.vigencia AND v.fase='Vigente'
+               )) AS inv_pct_gasto_total
+        FROM ejecucion_historica eh
+        WHERE eh.bitacora_id=? AND eh.vigencia >= 2022
+        ORDER BY eh.vigencia
+    """, (bid,)).fetchall()
     return rows_to_list(rows)
 
 

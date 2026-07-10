@@ -15,14 +15,14 @@ DB    = r'C:\ws\dnp\ws\pgn-bitacora\db\pgn.db'
 
 REGION_NORM = {
     'andina':    'ANDINA',
-    'caribe':    'CARIBE',
+    'caribe':    'CARIBE - INSULAR',
     'pacifico':  'PACÍFICO',
     'pacífico':  'PACÍFICO',
     'orinoquia': 'ORINOQUÍA',
     'orinoquía': 'ORINOQUÍA',
     'amazonas':  'AMAZONIA',
     'amazonia':  'AMAZONIA',
-    'insular':   'INSULAR',
+    'insular':   'CARIBE - INSULAR',
 }
 
 def normalize_region(name):

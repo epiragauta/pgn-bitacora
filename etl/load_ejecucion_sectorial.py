@@ -201,6 +201,42 @@ def agg_entidades(records_corte):
     return ent
 
 
+def _accent_score(s):
+    """Cuenta caracteres con tilde/diacrítico (para preferir la grafía correcta)."""
+    return sum(1 for ch in s if len(unicodedata.normalize('NFD', ch)) > 1)
+
+
+def canonicalize_entidades(ent_agg):
+    """
+    El histórico de 'U. Ejec.-Homo' trae, para una misma entidad, años con
+    tildes y años sin tildes (p. ej. 'COMISIÓN...' vs 'COMISION...'). Eso
+    fragmenta la serie histórica en el frontend, que agrupa por texto exacto
+    de entidad. Se agrupa por (sector, nombre sin tildes en mayúsculas) y se
+    reescribe todo el grupo a la grafía con más tildes (ortografía correcta).
+    """
+    def norm_key(s):
+        s2 = unicodedata.normalize('NFD', s)
+        s2 = ''.join(ch for ch in s2 if unicodedata.category(ch) != 'Mn')
+        return ' '.join(s2.upper().split())
+
+    variants_by_group = defaultdict(set)
+    for (anio, sector, entidad) in ent_agg:
+        variants_by_group[(sector, norm_key(entidad))].add(entidad)
+
+    canonical_for = {}
+    for (sector, _key), variants in variants_by_group.items():
+        canonical = max(variants, key=_accent_score).upper()
+        for v in variants:
+            canonical_for[(sector, v)] = canonical
+
+    merged = defaultdict(lambda: [0.0, 0.0, 0.0, 0.0])
+    for (anio, sector, entidad), (v, c, o, p) in ent_agg.items():
+        canon = canonical_for[(sector, entidad)]
+        t = merged[(anio, sector, canon)]
+        t[0] += v; t[1] += c; t[2] += o; t[3] += p
+    return merged
+
+
 def agg_mensual(records_mensual):
     """SUM por (año, mes, sector) → [vig, comp, obl, pago]."""
     mens = defaultdict(lambda: [0.0, 0.0, 0.0, 0.0])
@@ -310,6 +346,7 @@ def load_db(conn, bid, anio_max, mes_corte, tot, sec_agg, ent_agg, mens_agg, pib
 
     # ── 3C: ejecucion_sectorial_entidades (todos los años) ───────────────────
     print("\n→ ejecucion_sectorial_entidades (todos los años)")
+    ent_agg = canonicalize_entidades(ent_agg)
     ent_rows = []
     for (anio, sector, entidad), (v, c, o, p) in ent_agg.items():
         ent_rows.append((
@@ -437,7 +474,7 @@ def run(args):
 
     bid = args.bitacora_id
     row = conn.execute(
-        "SELECT periodo FROM metadatos_bitacora WHERE id=?", (bid,)
+        "SELECT periodo, corte_fecha FROM metadatos_bitacora WHERE id=?", (bid,)
     ).fetchone()
     if not row:
         print(f"ERROR: bitacora_id={bid} no existe en metadatos_bitacora")
@@ -450,6 +487,22 @@ def run(args):
     ensure_columns(conn)
 
     records_corte, records_mensual = load_excel(args.excel, args.mes_corte)
+
+    # El Excel maestro es un archivo acumulativo que crece cada bitácora (p. ej.
+    # "BASE DETALLE MENSUAL INVERSIÓN 2018-2026.xlsx"). Si se recarga una
+    # bitácora antigua usando una copia más nueva del archivo, éste ya trae
+    # filas de vigencias posteriores al corte de esa bitácora. Sin este tope,
+    # 'anio_max' (usado como año "actual" en toda la carga) terminaba siendo el
+    # año más reciente del Excel en vez del año propio de la bitácora,
+    # colando vigencias futuras en tablas de bitácoras ya publicadas.
+    vigencia_bitacora = int(str(row[1])[:4])
+    n_antes = len(records_corte) + len(records_mensual)
+    records_corte   = [r for r in records_corte   if r[0] <= vigencia_bitacora]
+    records_mensual = [r for r in records_mensual if r[0] <= vigencia_bitacora]
+    n_descartadas = n_antes - len(records_corte) - len(records_mensual)
+    if n_descartadas:
+        print(f"  ⚠ {n_descartadas} filas posteriores a {vigencia_bitacora} "
+              f"descartadas (no corresponden a esta bitácora)")
 
     # Preservar inv_pct_pib e inv_pct_gasto_total para vigencias que ya las tienen
     pib_prev   = {}
