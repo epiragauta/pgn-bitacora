@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Bitácora PGN 2026-I — Comportamiento de la Inversión Pública · DNP</title>
+<title>Bitácora de Inversión Pública · 2026-I — DNP</title>
 <link href="vendor/nunito-sans.css" rel="stylesheet"/>
 <link rel="stylesheet" href="vendor/leaflet.css"/>
 <script src="vendor/leaflet.js"></script>
@@ -42,12 +42,14 @@ nav{position:sticky;top:0;z-index:100;background:var(--bl);box-shadow:0 1px 0 va
 .bit-btn{padding:4px 14px;border-radius:20px;border:1.5px solid #ddd;background:#fff;cursor:pointer;font-family:'Nunito Sans',sans-serif;font-size:12px;font-weight:700;color:#5e5e5e;transition:all .15s;line-height:1.4}
 .bit-btn.active{background:#00c3c1;border-color:#00c3c1;color:#fff}
 .bit-btn:hover:not(.active){border-color:#00c3c1;color:#00c3c1}
-.nav-inner{display:flex;align-items:center;gap:24px;max-width:1200px;margin:0 auto;padding:0 32px;height:54px}
+.nav-inner{display:flex;align-items:center;gap:17px;max-width:1200px;margin:0 auto;padding:0 32px;height:54px}
 .nav-logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:14px;color:var(--gt);text-decoration:none;margin-right:auto}
 .logo-badge{background:var(--t);color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:4px;letter-spacing:.06em}
 nav a.lk{color:var(--gm);font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;transition:color .2s,border-color .2s;padding:4px 0;border-bottom:2px solid transparent}
 nav a.lk:hover{color:var(--t)}
 nav a.lk.active{color:var(--t);border-bottom-color:var(--t)}
+.nav-grp{font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gs);white-space:nowrap;margin-right:-12px}
+.nav-split{width:1px;height:18px;background:var(--gc);flex-shrink:0}
 .corte-badge{background:var(--m);color:#fff;font-size:10px;font-weight:900;padding:2px 9px;border-radius:4px;letter-spacing:.04em}
 
 /* ── Wrap ── */
@@ -84,6 +86,12 @@ nav a.lk.active{color:var(--t);border-bottom-color:var(--t)}
 .stag .n{background:var(--t);color:#fff;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700}
 .stag.sm{background:rgba(254,27,123,.07);border-color:rgba(254,27,123,.18);color:var(--m)}.stag.sm .n{background:var(--m)}
 .stag.sa{background:rgba(255,202,0,.1);border-color:rgba(255,202,0,.28);color:#9a7200}.stag.sa .n{background:var(--a)}
+.stag.sp{background:rgba(127,71,221,.09);border-color:rgba(127,71,221,.26);color:var(--mo)}.stag.sp .n{background:var(--mo)}
+.transition-band{background:linear-gradient(135deg,rgba(127,71,221,.06),rgba(127,71,221,.015));border-top:1px solid rgba(127,71,221,.16);border-bottom:1px solid rgba(127,71,221,.16);padding:26px 0}
+.transition-band .tb-inner{display:flex;align-items:flex-start;gap:16px}
+.transition-band .tb-icon{flex-shrink:0;width:38px;height:38px;border-radius:50%;background:rgba(127,71,221,.12);border:1.5px solid rgba(127,71,221,.3);display:grid;place-items:center;color:var(--mo);font-size:17px}
+.transition-band .tb-eyebrow{font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--mo);margin-bottom:5px}
+.transition-band p{font-size:13.5px;color:var(--gm);line-height:1.6;max-width:760px;margin:0}
 h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;color:var(--gt);margin-bottom:6px;line-height:1.15}
 .ss{font-size:14px;color:var(--gm);margin-bottom:28px;max-width:780px;line-height:1.6}
 .sst{font-size:15px;font-weight:800;color:var(--gt);margin:0 0 12px;letter-spacing:-.005em}
@@ -294,6 +302,16 @@ footer strong{color:#fff}
   color:#fff;
   border-color:var(--a);
 }
+.stag.sp .info-icon{
+  background:rgba(127,71,221,.14);
+  border-color:rgba(127,71,221,.32);
+  color:var(--mo);
+}
+.stag.sp .info-icon:hover{
+  background:var(--mo);
+  color:#fff;
+  border-color:var(--mo);
+}
 .help-icon{
   display:inline-flex;
   align-items:center;
@@ -501,6 +519,7 @@ footer strong{color:#fff}
   .pw,.nav-inner,.bit-sel{padding-left:12px;padding-right:12px}
   .nav-inner{height:48px}
   nav a.lk{display:none}
+  .nav-grp,.nav-split{display:none}
   .eyebrow{display:none}
   .kpi-g{grid-template-columns:1fr}
   .tg{grid-template-columns:1fr}
@@ -556,7 +575,7 @@ footer strong{color:#fff}
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">
       <span class="logo-badge">DNP</span>
-      <span id="navPeriodo">Bitácora PGN 2026-I</span>
+      <span id="navPeriodo">Bitácora de Inversión Pública</span>
     </a>
     <a href="#sec1" class="lk">Transformaciones</a>
     <a href="#sec2" class="lk">Evolución</a>
@@ -564,6 +583,8 @@ footer strong{color:#fff}
     <a href="#sec4" class="lk">Ejecución</a>
     <a href="#sec5" class="lk">Vigencias</a>
     <a href="#sec6" class="lk">Sectorial</a>
+    <span class="nav-split"></span>
+    <span class="nav-grp">Complementario</span>
     <a href="#sec7" class="lk">Crédito</a>
     <a href="#sec8" class="lk">SGP</a>
     <span class="corte-badge" id="corteBadge">Mar 2026</span>
@@ -583,7 +604,7 @@ footer strong{color:#fff}
     <div class="hl pw" style="max-width:none">
       <div class="eyebrow">Dirección de Programación de Inversiones Públicas · DNP</div>
       <h1>Comportamiento<br>de la <strong>Inversión<br>Pública</strong></h1>
-      <p id="heroPara">Evolución del presupuesto de inversión financiado a través del Presupuesto General de la Nación. Corte al 31 de marzo de 2026. Vigencias 2022–2026.</p>
+      <p id="heroPara">Evolución del presupuesto de inversión financiado a través del Presupuesto General de la Nación. Corte al 31 de marzo de 2026. Vigencias 2022–2026. Incluye además el seguimiento a Crédito Externo y al Sistema General de Participaciones (SGP), que se administran por fuera del PGN.</p>
       <div class="kpi-g">
         <div class="kpi kt" id="kpiVig"><div class="kl def" data-def="apr-vigente">Apropiación vigente 2026</div><div class="kv">88,4 <small>Bill. COP</small></div><div class="kd">Fuente: SIIF Nación</div></div>
         <div class="kpi km" id="kpiComp"><div class="kl def" data-def="compromisos">Compromisos</div><div class="kv">45,0 <small>Bill. COP</small></div><div class="kd">50,9% de la apropiación vigente</div></div>
@@ -773,10 +794,21 @@ footer strong{color:#fff}
   </div>
 </section>
 
+<!-- TRANSICIÓN: fuentes complementarias al PGN -->
+<div class="transition-band">
+  <div class="pw tb-inner">
+    <span class="tb-icon">↴</span>
+    <div>
+      <div class="tb-eyebrow">Más allá del PGN</div>
+      <p>Las dos secciones siguientes reportan Crédito Externo y el Sistema General de Participaciones (SGP): fuentes de financiación y transferencias que se hacen seguimiento junto con el PGN, pero que se administran y ejecutan por fuera de él.</p>
+    </div>
+  </div>
+</div>
+
 <!-- SEC 7: CRÉDITO EXTERNO -->
 <section id="sec7" class="sec">
   <div class="pw">
-    <div class="stag"><span class="n">7</span>Crédito Externo
+    <div class="stag sp"><span class="n">7</span>Crédito Externo
       <i class="info-icon" onclick="openDrawer('sec7-info')">i</i>
     </div>
     <h2 class="st">Portafolio de Crédito Externo</h2>
@@ -854,7 +886,7 @@ footer strong{color:#fff}
 <!-- SEC 8: SISTEMA GENERAL DE PARTICIPACIONES (SGP) -->
 <section id="sec8" class="sec nf">
   <div class="pw">
-    <div class="stag sa"><span class="n">8</span>Sistema General de Participaciones (SGP)
+    <div class="stag sp"><span class="n">8</span>Sistema General de Participaciones (SGP)
       <i class="info-icon" onclick="openDrawer('sec8-info')">i</i>
     </div>
     <h2 class="st">Distribución Histórica del SGP 2022-2026</h2>
@@ -996,7 +1028,7 @@ function updateHero(res){
   const pctStr=(v,base)=>v!=null?`${v}% de la apropiación vigente`:'';
   document.getElementById('hrNum').textContent=res.inversion_vigente_mmm?(res.inversion_vigente_mmm/1000).toFixed(1):'—';
   document.getElementById('hrSub').innerHTML=`Inversión pública vigencia ${res.vigencia}<br>Presupuesto General de la Nación`;
-  document.getElementById('heroPara').textContent=`Evolución del presupuesto de inversión financiado a través del Presupuesto General de la Nación. Corte al ${fmtFecha(res.corte_fecha)}. Vigencias 2022–${res.vigencia}.`;
+  document.getElementById('heroPara').textContent=`Evolución del presupuesto de inversión financiado a través del Presupuesto General de la Nación. Corte al ${fmtFecha(res.corte_fecha)}. Vigencias 2022–${res.vigencia}. Incluye además el seguimiento a Crédito Externo y al Sistema General de Participaciones (SGP), que se administran por fuera del PGN.`;
   const qv=document.getElementById('kpiVig');
   qv.querySelector('.kl').textContent=`Apropiación vigente ${res.vigencia}`;
   qv.querySelector('.kv').innerHTML=bill(res.inversion_vigente_mmm);
@@ -2889,7 +2921,7 @@ async function init(bid){
     updateHero(resRaw);
     const v=resRaw.vigencia;
     const navP=document.getElementById('navPeriodo');
-    if(navP)navP.textContent=`Bitácora PGN ${resRaw.periodo}`;
+    if(navP)navP.textContent=`Bitácora de Inversión Pública`;
     const ss1=document.querySelector('#sec1 .ss');
     if(ss1)ss1.innerHTML=`Vigencia ${v} · PND <strong>"Colombia, potencia mundial de la vida"</strong> · Miles de millones COP corrientes. Fuente: DPIP–SIIF.`;
     const ct1=document.querySelector('#sec1 .card.bt .ct .ct-text');
@@ -2904,7 +2936,7 @@ async function init(bid){
     if(ss6)ss6.textContent=`Ejecución por Sector — ${v}`;
     const p6=document.querySelector('#sec6 .ss');
     if(p6)p6.innerHTML=`% Compromisos y Obligaciones sobre apropiación vigente. Corte: 31 de marzo de ${v}. Fuente: SIIF Nación.`;
-    document.title=`Bitácora PGN ${resRaw.periodo} — Comportamiento de la Inversión Pública — DNP`;
+    document.title=`Bitácora de Inversión Pública · ${resRaw.periodo} — DNP`;
   }
 
   // Fallback: usa datos embebidos si la API no devuelve filas
