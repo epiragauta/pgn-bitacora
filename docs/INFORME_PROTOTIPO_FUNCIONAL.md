@@ -1,15 +1,16 @@
 # Informe Técnico: Prototipo Funcional
-## Bitácora PGN 2025-I — Digitalización Infográfica del Presupuesto General de la Nación
+## Bitácora de Inversión Pública — Digitalización Infográfica de la Inversión Pública (PGN, Crédito Externo y SGP)
 
 ---
 
 **Entidad:** Departamento Nacional de Planeación (DNP)
 **Dependencia:** Dirección de Programación de Inversiones Públicas (DPIP)
-**Período:** 2025-I (Enero - Marzo 2025)
-**Corte de datos:** 31 de marzo de 2025
-**Versión del prototipo:** 2.0.0
+**Bitácoras cubiertas:** 2025-I (corte 31-mar-2025) y 2026-I (corte 31-mar-2026), seleccionables desde la aplicación
+**Versión del prototipo:** 3.0.0
 **Fecha del informe inicial:** 27 de abril de 2026
-**Última actualización:** 28 de junio de 2026
+**Última actualización:** 18 de julio de 2026
+
+> **Nota de consolidación (v3.0):** esta versión integra los cambios documentados en los informes de sesión `INFORME_SESION_2026-07-06_CREDITO_EXTERNO.md`, `INFORME_SESION_2026-07-06_SGP.md` e `INFORME_SESION_2026-07-10_OBSERVACIONES_USUARIOS.md` (ver Anexo E — Historial de actualizaciones), además del renombramiento de la aplicación a **"Bitácora de Inversión Pública"** (commit `86e7f69`).
 
 ---
 
@@ -19,26 +20,31 @@
 
 La Bitácora del Presupuesto General de la Nación es un documento técnico trimestral elaborado por la Dirección de Programación de Inversiones Públicas (DPIP) del DNP, que presenta el comportamiento de la inversión pública en Colombia en el marco del Plan Nacional de Desarrollo 2022-2026 "Colombia, potencia mundial de la vida".
 
-El presente prototipo funcional constituye una **digitalización interactiva** de la Bitácora tradicional (formato PDF), transformando datos presupuestales estáticos en una **aplicación web infográfica** que permite la exploración dinámica de 83.9 billones de pesos en inversión pública.
+El presente prototipo funcional constituye una **digitalización interactiva** de la Bitácora tradicional (formato PDF), transformando datos presupuestales estáticos en una **aplicación web infográfica**. Desde julio de 2026 la aplicación se denomina **"Bitácora de Inversión Pública"**, pues su alcance superó el PGN: además de las 6 secciones presupuestales originales, incorpora el seguimiento al **Crédito Externo** (Sección 7) y al **Sistema General de Participaciones — SGP** (Sección 8), fuentes que se administran por fuera del PGN y se presentan en un bloque "Complementario" claramente diferenciado en la navegación.
 
 ### 1.2 Alcance del Prototipo
 
 **Datos implementados:**
-- ✅ Bitácora 2 (2025-I) con corte al 31 de marzo de 2025
-- ✅ Serie histórica 2022-2026 (5 vigencias en regionalización)
+- ✅ Dos bitácoras completas seleccionables: 2025-I (corte 31-mar-2025) y 2026-I (corte 31-mar-2026)
+- ✅ Serie histórica 2022-2026 (5 vigencias en regionalización, evolución y ejecución)
 - ✅ Proyecciones de vigencias futuras 2026-2040 (15 años)
-- ✅ 6 regiones + departamentos + Por Regionalizar + Nacional
+- ✅ 5 regiones (Caribe-Insular consolidada) + Por Regionalizar + Nacional
 - ✅ 32 departamentos con código DANE
-- ✅ Sectores de inversión por región (135 registros, vigencia 2026)
-- ✅ 12 sectores principales de ejecución sectorial
-- ✅ 6 transformadores del Plan Nacional de Desarrollo
+- ✅ Sectores de inversión por región (vigencia 2026)
+- ✅ Ejecución sectorial por entidad, con histórico y detalle mensual
+- ✅ 6 transformadores del Plan Nacional de Desarrollo con 95 componentes
+- ✅ Portafolio de crédito externo: 17 operaciones BID/BM/CAF (USD 1.316,88 M contratados) y ejecución de recursos 13/14
+- ✅ SGP 2022-2026: 8 participaciones/asignaciones especiales y 19 componentes internos ($340.241 mmm acumulados)
 
 **Características técnicas:**
 - 🌐 Aplicación web de tres capas (base de datos, API REST, frontend)
-- 📊 20+ visualizaciones interactivas (Chart.js + Leaflet.js)
+- 📊 30+ visualizaciones interactivas (Chart.js + Leaflet.js)
 - 🗺️ Mapa coroplético con capas de regiones y departamentos
+- 🔀 Selector de bitácora (2025-I / 2026-I) que sincroniza KPIs, gráficos, tablas y paneles informativos
+- 🗂️ Paneles laterales (drawers) informativos con pestañas en las 8 secciones, con textos dinámicos según la bitácora activa
 - 📱 Diseño responsive para dispositivos móviles
 - 🎨 Sistema de diseño DNP 2026 / BDC GOV.CO v5.0
+- 📴 Modo offline completo: librerías vendorizadas (Chart.js, Leaflet, FontAwesome, Nunito Sans) y datos de respaldo embebidos
 - 🔄 Arquitectura preparada para actualizaciones trimestrales automáticas
 - 🚀 Desplegable en múltiples plataformas (Fly.io, Docker, hosting estático)
 
@@ -46,7 +52,7 @@ El presente prototipo funcional constituye una **digitalización interactiva** d
 
 ## 2. ESTRUCTURA DE LA BITÁCORA DIGITALIZADA
 
-El prototipo replica fielmente las **6 secciones analíticas** de la Bitácora oficial del PGN, añadiendo interactividad y capacidades de exploración de datos:
+El prototipo replica fielmente las **6 secciones analíticas** de la Bitácora oficial del PGN y añade **2 secciones complementarias** (Crédito Externo y SGP) sobre fuentes administradas por fuera del PGN, con interactividad y capacidades de exploración de datos:
 
 ### SECCIÓN 1: Inversiones PND 2022-2026
 **Transformaciones y Ejes del Plan Nacional de Desarrollo**
@@ -130,6 +136,8 @@ El prototipo replica fielmente las **6 secciones analíticas** de la Bitácora o
 | **Total** | **418.31** | **188.95** | **49.41** | **48.44** |
 
 **Serie histórica cargada:** 5 vigencias completas (2022–2026), 32 departamentos con código DANE.
+
+> **Actualización (10-jul-2026):** la región Insular (Archipiélago de San Andrés, Providencia y Santa Catalina) se reporta consolidada dentro de la región Caribe bajo la etiqueta **"CARIBE - INSULAR"**, según el archivo fuente vigente. La app muestra por tanto **5 tarjetas de región** y el mapa colorea ambos polígonos (continental e insular) como una sola región. Los ETL aplican la fusión automáticamente en futuras recargas.
 
 **Sectores por región:** 135 registros para vigencia 2026 (6 regiones × ~20 sectores c/u), fuente: hoja `sectores_por_region` del Excel consolidado.
 
@@ -254,6 +262,40 @@ El prototipo replica fielmente las **6 secciones analíticas** de la Bitácora o
 
 ---
 
+### SECCIÓN 7: Crédito Externo (SCCI) — *Complementaria*
+**Portafolio y ejecución de los recursos de crédito externo de la Nación**
+
+Incorporada el 6 de julio de 2026 (commit `11cf45a`). Fuente: `Datos informe II 2026.xlsx` (hojas `Portafolio`, `Ejecución Entidad`, `Comp Ejección Anual Marzo`) de la carpeta SCCI, verificada contra el PDF `BITACORA CR EXT.pdf`.
+
+**Contenido digital:**
+- Panel introductorio (drawer) con el contexto del crédito externo como fuente complementaria al PGN (BID, Banco Mundial, CAF) y su relación con los recursos presupuestales 13 y 14 — 3 pestañas: Contexto, Indicadores, Fuentes
+- Bloque de **portafolio**: 3 KPIs (cartera vigente de 17 operaciones, USD 1.316,88 M contratados, USD 534,03 M desembolsados), donut de operaciones por fuente (BID/BM/CAF), gráfico y tabla de créditos/desembolsos por sector
+- Bloque de **ejecución presupuestal** (recursos 13 y 14): tabla y gráfico de %Compromisos/%Ejecución/%Pago por entidad ejecutora (18 entidades) y comparativo histórico 2023-2026
+- Botones de pantalla completa en cada gráfico/tabla
+
+**Soporte técnico:** 3 tablas (`credito_portafolio`, `credito_ejecucion_entidad`, `credito_ejecucion_historica`), ETL `etl/load_credito.py`, 6 endpoints bajo el tag `Sec 7 - Crédito Externo`.
+
+---
+
+### SECCIÓN 8: Sistema General de Participaciones (SGP) — *Complementaria*
+**Histórico 2022-2026 por participación y por componente**
+
+Incorporada el 6 de julio de 2026 (commits `a4cdbfd`, `ac2756f`). Fuente: `SGP_2022-2026_Bitacora.xlsx` (hojas `8.1. Historico_Participacion` y `8.2. Historico_Componentes`).
+
+**Contenido digital:**
+- Panel introductorio (drawer) con el contexto normativo del SGP — 4 pestañas: Contexto, Distribución y normativa, Qué encontrará aquí, Fuentes
+- KPIs: total SGP de la vigencia reciente, crecimiento anual y total acumulado 2022-2026 ($340.241 mmm)
+- Evolución del total (barras + línea de tendencia) y composición porcentual por participación
+- 8 mini-gráficos agrupados en "Participaciones Sectoriales" y "Asignaciones Especiales"
+- Tabla histórica completa; en pantalla completa se despliega la **tabla jerárquica por componente** (19 componentes, participación-padre en negrita y componentes indentados)
+- Mensajes clave calculados dinámicamente a partir de los datos reales
+
+**Soporte técnico:** 2 tablas (`sgp_historico_participacion`, `sgp_historico_componentes`), ETLs `etl/load_sgp.py` y `etl/load_sgp_componentes.py`, 3 endpoints bajo el tag `Sec 8 - SGP`.
+
+**Pendiente:** detalle regionalizado del SGP (hojas 8.3/8.4 del Excel fuente).
+
+---
+
 ## 3. ARQUITECTURA TÉCNICA DEL PROTOTIPO
 
 ### 3.1 Stack Tecnológico
@@ -302,40 +344,41 @@ evolucion_presupuestal      apropiacion_por_sector  vigencias_futuras
 - **Índices:** Optimización en campos de consulta frecuente
 - **Tipos de datos:** DECIMAL para precisión monetaria
 
-**Tablas implementadas (16 total):**
-1. `metadatos_bitacora` - Control de versiones
-2. `inversion_transformaciones` - Sec 1
-3. `inversion_componentes_pnd` - Sec 1 (detalle)
-4. `ejecucion_transformaciones` - Sec 1 (ejecución)
-5. `evolucion_presupuestal` - Sec 2
-6. `ejecucion_historica` - Sec 2 y 4
-7. `regionalizacion_resumen` - Sec 3 (legado, conservada)
-8. `regionalizacion_detalle_2025` - Sec 3 (legado, conservada)
-9. `dane_departamentos` - Catálogo códigos DANE (nueva — migración 003)
-10. `regionalizacion` - Sec 3 unificada multi-año (nueva — migración 003)
-11. `regionalizacion_sectores` - Sec 3 sectores por región (nueva — migración 004)
-12. `apropiacion_por_sector` - Sec 4
-13. `compromisos_pct_por_sector` - Sec 4
-14. `vigencias_futuras` - Sec 5
-15. `ejecucion_sectorial_entidades` - Sec 6
-16. `ejecucion_sectorial_mensual` - Sec 6 (tendencias)
+**Tablas en la base de datos (27 total):**
+
+| Tabla | Sección / uso |
+|---|---|
+| `metadatos_bitacora` | Control de bitácoras (2 registros: 2025-I y 2026-I) |
+| `inversion_transformaciones`, `inversion_componentes_pnd`, `ejecucion_transformaciones` | Sec 1 |
+| `evolucion_presupuestal` | Sec 2 |
+| `pgn_concepto`, `pgn_ejecucion` | Sec 2 (jerarquía de 28 conceptos × 5 años × 4 fases; sin `bitacora_id` — ver pendientes) |
+| `regionalizacion`, `regionalizacion_sectores`, `dane_departamentos` | Sec 3 (multi-año, migraciones 003/004) |
+| `legacy_regionalizacion_resumen`, `legacy_regionalizacion_detalle_2025` | Sec 3 (legado, conservadas) |
+| `ejecucion_historica` | Sec 2 y 4 |
+| `apropiacion_por_sector`, `compromisos_pct_por_sector`, `obligaciones_pct_por_sector`, `pagos_pct_por_sector` | Sec 4 (matriz sectorial por fase) |
+| `ejecucion_mensual_sectorial` | Sec 4 (detalle mensual) |
+| `vigencias_futuras`, `deflactores_pib` | Sec 5 (precios corrientes + conversión a constantes) |
+| `ejecucion_sectorial_entidades`, `ejecucion_sectorial_mensual` | Sec 6 |
+| `credito_portafolio`, `credito_ejecucion_entidad`, `credito_ejecucion_historica` | Sec 7 — Crédito Externo |
+| `sgp_historico_participacion`, `sgp_historico_componentes` | Sec 8 — SGP |
 
 ### 3.3 API REST
 
-**Endpoints implementados: 21**
+**Endpoints implementados: 38** (más `/` para archivos estáticos)
 
 **Categorías:**
 - Metadatos (2): `/api/bitacoras`, `/api/bitacoras/{periodo}`
-- Transformaciones (2): `/api/transformaciones`, `/api/transformaciones/{transformador}/componentes`
-- Evolución (2): `/api/evolucion`, `/api/evolucion/inversion_historica`
-- Regionalización (4): `/api/regionalizacion`, `/api/regionalizacion/historico`, `/api/regionalizacion/mapa`, `/api/regionalizacion/sectores`
-- Ejecución (3): `/api/ejecucion`, `/api/ejecucion/sectores/apropiacion`, `/api/ejecucion/sectores/compromisos_pct`
-- Vigencias Futuras (2): `/api/vigencias_futuras`, `/api/vigencias_futuras/totales`
-- Sectorial (2): `/api/sectorial`, `/api/sectorial/mensual`
+- Sec 1 — Transformaciones (2): `/api/transformaciones`, `/api/transformaciones/{transformador}/componentes`
+- Sec 2 — Evolución (7): `/api/evolucion`, `/composicion`, `/tasa_ejecucion`, `/pct_pib`, `/drilldown`, `/tabla_completa`, `/inversion_historica`
+- Sec 3 — Regionalización (5): `/api/regionalizacion`, `/historico`, `/sectores`, `/mapa`, `/departamento/{codigo_dane}`
+- Sec 4 — Ejecución (6): `/api/ejecucion`, `/sectores/apropiacion`, `/sectores/compromisos_pct`, `/sectores/obligaciones_pct`, `/sectores/pagos_pct`, `/sectores/matriz`
+- Sec 5 — Vigencias Futuras (3): `/api/vigencias_futuras`, `/totales`, `/chart`
+- Sec 6 — Sectorial (3): `/api/sectorial`, `/mensual`, `/historico`
+- Sec 7 — Crédito Externo (6): `/api/credito`, `/fuentes`, `/sectores`, `/resumen`, `/ejecucion_entidad`, `/ejecucion_historica`
+- Sec 8 — SGP (3): `/api/sgp/historico`, `/historico_componentes`, `/resumen`
 - Dashboard (1): `/api/resumen`
-- Frontend (1): `/` (static files)
 
-> Los 4 nuevos endpoints de regionalización admiten parámetros `vigencia`, `region` y `bitacora_id` opcionales; resuelven la bitácora activa con `resolve_bitacora()` cuando `bitacora_id` se omite.
+> Los endpoints admiten parámetros `vigencia`, `region` y/o `bitacora_id` opcionales según el caso; resuelven la bitácora activa con `resolve_bitacora()` cuando `bitacora_id` se omite. **Excepción conocida:** los endpoints `/api/evolucion*` (Sec 2) leen de las tablas `pgn_concepto`/`pgn_ejecucion`, que no tienen columna `bitacora_id` (ver 10.1).
 
 **Características:**
 - **CORS habilitado** para integraciones externas
@@ -356,11 +399,11 @@ def get_transformaciones(vigencia: int = 2025):
 ### 3.4 Frontend Standalone
 
 **Arquitectura:**
-- **Archivo único:** `frontend/index.html` (2000+ líneas)
-- **CSS inline:** Sistema de diseño completo embebido (600+ líneas, incluye estilos Leaflet, modales, pills, capas)
-- **JavaScript inline:** Lógica de aplicación y renderizado (1000+ líneas)
+- **Archivo único:** `frontend/index.html` (3700+ líneas)
+- **CSS inline:** Sistema de diseño completo embebido (incluye estilos Leaflet, modales, drawers, pills, capas)
+- **JavaScript inline:** Lógica de aplicación y renderizado
 - **Datos embebidos:** Objeto `D` con fallback data para modo offline
-- **Librería adicional:** Leaflet.js 1.9 (CDN) para mapas GeoJSON
+- **Librerías vendorizadas** en `frontend/vendor/` (sin CDN, funciona sin internet): Chart.js, Leaflet.js 1.9, FontAwesome, Nunito Sans
 
 **Características avanzadas:**
 
@@ -705,14 +748,16 @@ function openInfoModal(title, contentKey) {
 
 ### 6.1 Cobertura de Datos
 
-✅ **100% de las 6 secciones oficiales** de la Bitácora PGN implementadas
-✅ **83.9 billones COP** en inversión 2025 digitalizados
+✅ **100% de las 6 secciones oficiales** de la Bitácora PGN implementadas + **2 secciones complementarias** (Crédito Externo y SGP)
+✅ **2 bitácoras completas** seleccionables (2025-I y 2026-I)
+✅ **88.4 billones COP** de inversión vigente 2026 digitalizados (83.9 billones en 2025)
 ✅ **136.7 billones COP** en vigencias futuras estructurados
-✅ **4 vigencias históricas** completas (2022-2025)
+✅ **5 vigencias históricas** completas (2022-2026)
 ✅ **15 años de proyección** (2026-2040)
-✅ **6 regiones y departamentos** con datos desagregados
-✅ **12 sectores principales** con ejecución detallada
+✅ **5 regiones** (Caribe-Insular consolidada) y 32 departamentos con datos desagregados
 ✅ **6 transformadores PND** con 95 componentes
+✅ **17 operaciones de crédito externo** (USD 1.316,88 M) con ejecución por entidad
+✅ **SGP 2022-2026**: 8 participaciones y 19 componentes ($340.241 mmm acumulados)
 
 ### 6.2 Indicadores Técnicos
 
@@ -735,8 +780,8 @@ function openInfoModal(title, contentKey) {
 - 🔄 Frontend standalone deployable en CDN
 
 **Mantenibilidad:**
-- 📝 16 tablas con esquema documentado
-- 📝 21 endpoints con documentación OpenAPI
+- 📝 27 tablas con esquema documentado
+- 📝 38 endpoints con documentación OpenAPI
 - 📝 Sistema de diseño consistente y reutilizable
 - 📝 4 documentos técnicos en `docs/`
 
@@ -1001,34 +1046,39 @@ jobs:
 
 ### 9.1 Funcionalidades Implementadas ✅
 
-- [x] 6 secciones completas de la Bitácora PGN
-- [x] 21 endpoints API REST con documentación
-- [x] 12+ tipos de visualizaciones interactivas
-- [x] Sistema de modales informativos (2 secciones + modal de detalle de región)
+- [x] 6 secciones completas de la Bitácora PGN + 2 complementarias (Crédito Externo y SGP)
+- [x] 38 endpoints API REST con documentación
+- [x] 30+ visualizaciones interactivas
+- [x] Paneles informativos (drawers) con pestañas en las 8 secciones, con textos dinámicos según bitácora activa
+- [x] Selector de bitácora 2025-I / 2026-I en toda la aplicación
 - [x] Responsive design completo
-- [x] ETL automatizado con scripts Python + Excel
-- [x] Base de datos normalizada SQLite (16 tablas)
+- [x] ETL automatizado con scripts Python + Excel (con normalización automática de entidades y tope de vigencia por corte)
+- [x] Base de datos normalizada SQLite (27 tablas)
 - [x] Docker containerization
 - [x] Fly.io deployment configurado
 - [x] Sistema de diseño DNP 2026
-- [x] Fallback mode para frontend offline
+- [x] Fallback mode para frontend offline (librerías vendorizadas, sin CDN)
 - [x] Mapa coroplético Leaflet con capas de regiones y departamentos
-- [x] Serie histórica regionalización 2022-2026 (5 vigencias)
-- [x] Sectores por región (135 registros, vigencia 2026)
+- [x] Serie histórica regionalización 2022-2026 (5 vigencias), con fusión Caribe-Insular
+- [x] Sectores por región (vigencia 2026)
 - [x] Tarjetas Por Regionalizar, Nacional y Total Inversión
-- [x] Botón expandir en tarjetas de las 6 secciones
+- [x] Botón expandir (pantalla completa) en tarjetas de las 8 secciones
 - [x] Gráfico barras agrupadas regionalizado vs nacional con selector de años
+- [x] Nav con scrollspy y bloque "Complementario" diferenciado
 
 ### 9.2 Mejoras Propuestas 🚀
 
 **Corto plazo (1-2 meses):**
 
-- [ ] **Modales informativos completos:** Agregar iconos "i" a las 4 secciones restantes (2, 4, 5, 6)
+- [x] **Mejoras visuales (18-jul-2026):** ilustraciones SVG institucionales por fuente (hero/PGN, Crédito, SGP), favicon, iconos por sección, contadores animados en KPIs, barra de progreso de lectura, botón "volver arriba" y diagramas de flujo en los drawers de Crédito y SGP. Pendiente: ilustración SGR cuando se construya esa sección
+- [ ] **Detalle regionalizado del SGP:** hojas 8.3/8.4 del Excel fuente (mencionado como contenido futuro en el drawer de la Sec 8)
+- [ ] **Sección SDRT/Regalías (SGR):** desarrollar la sección de la carpeta fuente "7. SDRT", aún sin implementar en la app
+- [ ] **Sec 2 bitácora-consciente:** completar `evolucion_presupuestal` para 2026-I y migrar los endpoints `/api/evolucion*` fuera de las tablas legadas sin `bitacora_id`
 - [ ] **Exportación de datos:** Botones para descargar CSV/Excel por sección
-- [ ] **Filtros interactivos:** Selector de vigencia en dashboard principal
-- [ ] **Comparador de vigencias:** Vista side-by-side 2024 vs 2025
+- [ ] **Detalle individual de créditos:** tabla expandible con las 17 operaciones (nombre, contrato, contratante)
 - [ ] **Buscador de sectores:** Input de búsqueda con autocomplete
 - [ ] **Sectores por región histórico:** Cargar datos 2022-2025 en `regionalizacion_sectores`
+- [ ] **Mojibake en API:** corregir doble codificación UTF-8 de "ORINOQUÍA"/"PACÍFICO" en algunas respuestas JSON
 
 **Mediano plazo (3-6 meses):**
 
@@ -1037,6 +1087,7 @@ jobs:
 - [ ] **Panel de administración:** CRUD de bitácoras sin código
 - [ ] **Alertas presupuestales:** Notificaciones de cambios significativos
 - [ ] ~~**Gráficos adicionales:** Mapas geográficos de regionalización~~ ✅ Completado
+- [ ] ~~**Modales informativos completos**~~ ✅ Completado (drawers en las 8 secciones)
 - [ ] **Histórico completo:** Cargar bitácoras desde 2018
 
 **Largo plazo (6-12 meses):**
@@ -1244,9 +1295,9 @@ El verdadero valor del proyecto radica no solo en la tecnología implementada, s
 
 **Elaborado por:** Equipo Técnico DNP - Prototipo Funcional
 **Tecnologías utilizadas:** Python 3.11, FastAPI, SQLite, Chart.js, Leaflet.js, HTML5/CSS3/ES6
-**Líneas de código:** ~5,000+ (backend + frontend + ETL)
-**Fecha inicial:** 27 de abril de 2026 · **Última actualización:** 28 de junio de 2026
-**Versión del documento:** 2.0
+**Líneas de código:** ~7,000+ (backend + frontend + ETL)
+**Fecha inicial:** 27 de abril de 2026 · **Última actualización:** 18 de julio de 2026
+**Versión del documento:** 3.0
 
 ---
 
@@ -1266,29 +1317,32 @@ El verdadero valor del proyecto radica no solo en la tecnología implementada, s
 pgn-bitacora/
 ├── api/
 │   ├── __init__.py
-│   └── main.py                       # FastAPI app (~450 líneas, 21 endpoints)
+│   └── main.py                       # FastAPI app (38 endpoints)
 ├── db/
-│   ├── schema.sql                    # Esquema BD original
+│   ├── schema.sql                    # Esquema BD (22 CREATE TABLE + migraciones)
 │   ├── migrations/
 │   │   ├── 003_regionalizacion_multiagno.sql  # dane_departamentos + regionalizacion
 │   │   └── 004_regionalizacion_sectores.sql   # regionalizacion_sectores
-│   └── pgn.db                        # SQLite database
+│   └── pgn.db                        # SQLite database (27 tablas)
 ├── etl/
 │   ├── seed_data.py                  # Carga inicial Bitácora 2
 │   ├── update_bitacora.py            # Update script CSV-based
 │   ├── load_regionalizacion.py       # ETL regionalización multi-año (Excel)
 │   ├── load_sectores_region.py       # ETL sectores por región (Excel)
+│   ├── load_ejecucion_sectorial.py   # ETL Sec 4 y 6 (con canonicalize_entidades)
+│   ├── load_vigencias_futuras.py     # ETL Sec 5
+│   ├── load_credito.py               # ETL Sec 7 — Crédito Externo
+│   ├── load_sgp.py                   # ETL Sec 8 — SGP por participación
+│   ├── load_sgp_componentes.py       # ETL Sec 8 — SGP por componente
+│   ├── importar_pgn.py               # ETL Sec 2 (pgn_concepto/pgn_ejecucion)
 │   └── data/                         # CSVs para actualizaciones
 ├── frontend/
-│   ├── index.html                    # Frontend completo (2000+ líneas)
+│   ├── index.html                    # Frontend completo (3700+ líneas)
+│   ├── vendor/                       # Librerías vendorizadas (Chart.js, Leaflet, FontAwesome, Nunito Sans)
 │   └── data/
-│       ├── regiones.geojson          # Geometrías de 6 regiones
+│       ├── regiones.geojson          # Geometrías de regiones
 │       └── dptos.geojson             # Geometrías de 32 departamentos
-├── docs/
-│   ├── 2. Integracion_datos_evolucion_presupuestal.md
-│   ├── 3. integracion_datos_regiones.md
-│   ├── INFORME_IMPLEMENTACION_MODAL.md
-│   └── INFORME_PROTOTIPO_FUNCIONAL.md  # Este documento
+├── docs/                             # Documentación técnica e informes (ver Anexo E)
 ├── CLAUDE.md                         # Guía para IA
 ├── README.md                         # Documentación usuario
 ├── Dockerfile                        # Container config
@@ -1296,7 +1350,7 @@ pgn-bitacora/
 ├── requirements.txt                  # Dependencias Python
 └── .gitignore
 
-Total: ~5,000+ líneas de código + documentación
+Total: ~7,000+ líneas de código + documentación
 ```
 
 ### C. Variables de Entorno
@@ -1331,6 +1385,21 @@ fly deploy
 python etl/update_bitacora.py \
   --numero 3 --periodo 2025-II --corte 2025-06-30
 ```
+
+### E. Historial de Actualizaciones (informes de sesión)
+
+Este informe consolida el estado del producto; el detalle de cada sesión de trabajo queda en los informes históricos de `docs/`, que se conservan como anexos:
+
+| Fecha | Informe | Contenido | Commits |
+|---|---|---|---|
+| 06-jul-2026 | `INFORME_SESION_2026-07-06_CREDITO_EXTERNO.md` | Nueva Sección 7 — Crédito Externo (SCCI): 3 tablas, ETL `load_credito.py`, 6 endpoints, frontend con KPIs/donut/tablas/drawer | `11cf45a` |
+| 06-jul-2026 | `INFORME_SESION_2026-07-06_SGP.md` | Nueva Sección 8 — SGP: histórico por participación y por componente, 2 tablas, 2 ETLs, 3 endpoints | `a4cdbfd`, `ac2756f` |
+| 10-jul-2026 | `INFORME_SESION_2026-07-10_OBSERVACIONES_USUARIOS.md` | Correcciones por observaciones de usuarios (Sec 2, 3, 4, 6): fusión Caribe-Insular, normalización de 110 entidades con tildes inconsistentes, drawers con plantillas dinámicas, reescritura de `/api/ejecucion` por bitácora, limpieza de 676 filas de vigencia 2026 en la bitácora 2025-I, corrección del rubro Transferencias 2026 | `ad32646` |
+| 12-jul-2026 (aprox.) | — (sin informe de sesión) | Renombramiento a **"Bitácora de Inversión Pública"** y diferenciación visual/narrativa de Crédito y SGP frente al PGN (grupo "Complementario" en nav, banda de transición) | `86e7f69` |
+
+Otros documentos técnicos vigentes en `docs/`: `INFORME_IMPLEMENTACION_MODAL.md`, `etl_uso.md`, los documentos de integración de datos por sección (`2.`, `3.`, `4.`, `5.`), `analisis_consolidado_fuentes.md`, `analisis_fuentes_2026_marzo.md` y `guion_presentacion_bitacora.md`.
+
+> ⚠️ Nota: `docs/2. Integracion_datos_evolucion_presupuestal.md` afirma en su sección 6 que las tablas `pgn_concepto`/`pgn_ejecucion` no existen; en realidad existen y son las que usa la API desde el 27 de junio de 2026 (pendiente de corrección documental).
 
 ---
 

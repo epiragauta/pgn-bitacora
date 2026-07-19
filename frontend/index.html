@@ -4,6 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Bitácora de Inversión Pública · 2026-I — DNP</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300c3c1'/%3E%3Crect x='12' y='34' width='10' height='18' rx='2' fill='%23ffffff' opacity='.85'/%3E%3Crect x='27' y='24' width='10' height='28' rx='2' fill='%23ffca00'/%3E%3Crect x='42' y='14' width='10' height='38' rx='2' fill='%23fe1b7b'/%3E%3C/svg%3E"/>
 <link href="vendor/nunito-sans.css" rel="stylesheet"/>
 <link rel="stylesheet" href="vendor/leaflet.css"/>
 <script src="vendor/leaflet.js"></script>
@@ -53,7 +54,7 @@ nav a.lk.active{color:var(--t);border-bottom-color:var(--t)}
 .corte-badge{background:var(--m);color:#fff;font-size:10px;font-weight:900;padding:2px 9px;border-radius:4px;letter-spacing:.04em}
 
 /* ── Wrap ── */
-.pw{max-width:1200px;margin: 10px auto;padding:0 32px}
+.pw{max-width:1200px;margin: 10px auto;padding:0 32px;position:relative}
 
 /* ── Hero ── */
 #hero{background:var(--bl);border-bottom:1px solid var(--gc)}
@@ -244,6 +245,24 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 .hr-lbl span:first-child{color:var(--gm);font-weight:700}.hr-lbl span:last-child{font-weight:900;color:var(--gt)}
 .hr-tr{background:var(--gc);border-radius:3px;height:7px}
 .hr-fi{height:100%;border-radius:3px;background:var(--t)}
+
+/* ── Mejoras visuales: iconos de sección, ilustraciones, progreso ── */
+.stag .stag-fa{font-size:10px;opacity:.9}
+.sec-illus{position:absolute;top:2px;right:32px;width:170px;pointer-events:none;opacity:.92}
+.sec-illus svg{width:100%;height:auto;display:block}
+@media(max-width:1080px){.sec-illus{display:none}}
+.hr-illus{position:absolute;left:0;right:0;bottom:0;width:100%;height:58%;z-index:0;pointer-events:none}
+#progressBar{position:fixed;top:0;left:0;height:3px;width:0;z-index:300;background:linear-gradient(90deg,var(--t),var(--m),var(--a))}
+#backTop{position:fixed;right:22px;bottom:22px;width:42px;height:42px;border-radius:50%;background:var(--t);color:#fff;border:none;box-shadow:0 4px 14px rgba(0,0,0,.18);cursor:pointer;font-size:15px;display:grid;place-items:center;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .25s,transform .25s,visibility .25s;z-index:900}
+#backTop.show{opacity:1;visibility:visible;transform:none}
+#backTop:hover{background:var(--m)}
+/* diagramas de flujo en drawers */
+.dr-flow{display:flex;flex-direction:column;gap:5px;margin:14px 0 4px}
+.dr-flow-step{display:flex;align-items:center;gap:11px;background:var(--bl);border:1px solid var(--gc);border-left:3px solid var(--t);border-radius:8px;padding:9px 12px}
+.dr-flow-step>i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(0,195,193,.1);color:var(--t);font-size:13px;flex-shrink:0}
+.dr-flow-step .fs-t{font-weight:800;font-size:12.5px;color:var(--gt)}
+.dr-flow-step .fs-d{font-size:11.5px;color:var(--gm);line-height:1.45}
+.dr-flow-arrow{text-align:center;color:var(--gs);font-size:11px;line-height:1}
 
 /* footer */
 footer{background:var(--gt);color:rgba(255,255,255,.7);padding:36px 32px}
@@ -570,6 +589,9 @@ footer strong{color:#fff}
 </head>
 <body>
 
+<div id="progressBar"></div>
+<button id="backTop" title="Volver arriba" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></button>
+
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
@@ -613,6 +635,20 @@ footer strong{color:#fff}
       </div>
     </div>
     <div class="hr">
+      <svg class="hr-illus" viewBox="0 0 420 240" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <g fill="rgba(255,255,255,.13)">
+          <rect x="18"  y="150" width="52" height="90"  rx="7"/>
+          <rect x="90"  y="118" width="52" height="122" rx="7"/>
+          <rect x="162" y="86"  width="52" height="154" rx="7"/>
+          <rect x="234" y="54"  width="52" height="186" rx="7"/>
+          <rect x="306" y="22"  width="52" height="218" rx="7"/>
+        </g>
+        <path d="M44 126 L116 94 L188 62 L298 16" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="6" stroke-linecap="round"/>
+        <path d="M317 8 L302 26 L294 6 Z" fill="rgba(255,255,255,.4)"/>
+        <g fill="rgba(255,255,255,.35)">
+          <circle cx="44" cy="126" r="7"/><circle cx="116" cy="94" r="7"/><circle cx="188" cy="62" r="7"/>
+        </g>
+      </svg>
       <div class="hr-c">
         <div class="hr-num" id="hrNum">88,4</div>
         <div class="hr-lbl">Billones de pesos corrientes</div>
@@ -627,8 +663,25 @@ footer strong{color:#fff}
 <section id="sec1" class="sec">
   <div class="pw">
     <div class="stag">
-      <span class="n">1</span>Inversiones PND 2022-2026
+      <span class="n">1</span><i class="fas fa-diagram-project stag-fa"></i>Inversiones PND 2022-2026
       <i class="info-icon" onclick="openDrawer('sec1-info')">i</i>
+    </div>
+    <div class="sec-illus" aria-hidden="true">
+      <svg viewBox="0 0 170 110">
+        <g stroke="#00c3c1" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 94 h84"/>
+          <path d="M26 86 h72"/>
+          <path d="M32 86 V56 M48 86 V56 M64 86 V56 M80 86 V56 M96 86 V56"/>
+          <path d="M26 56 h72"/>
+          <path d="M20 56 L64 28 L108 56"/>
+        </g>
+        <g>
+          <circle cx="136" cy="80" r="14" fill="#ffca00" opacity=".92"/>
+          <text x="136" y="85" text-anchor="middle" font-size="14" font-weight="900" fill="#fff">$</text>
+          <circle cx="152" cy="55" r="10" fill="#fe1b7b" opacity=".78"/>
+          <circle cx="130" cy="40" r="7"  fill="#00c3c1" opacity=".82"/>
+        </g>
+      </svg>
     </div>
     <h2 class="st">Distribución por Transformaciones</h2>
     <p class="ss">Vigencia 2026 · PND <strong>"Colombia, potencia mundial de la vida"</strong> · Miles de millones COP corrientes. Fuente: DPIP–SIIF.</p>
@@ -665,7 +718,7 @@ footer strong{color:#fff}
 <!-- SEC 2: EVOLUCIÓN -->
 <section id="sec2" class="sec nf">
   <div class="pw">
-    <div class="stag sm"><span class="n">2</span>Evolución Presupuestal
+    <div class="stag sm"><span class="n">2</span><i class="fas fa-chart-column stag-fa"></i>Evolución Presupuestal
       <i class="info-icon" onclick="openDrawer('sec2-info')">i</i>
     </div>
     <h2 class="st">PGN 2022 – 2026</h2>
@@ -700,7 +753,7 @@ footer strong{color:#fff}
 <!-- SEC 3: REGIONALIZACIÓN -->
 <section id="sec3" class="sec">
   <div class="pw">
-    <div class="stag sa"><span class="n">3</span>Regionalización
+    <div class="stag sa"><span class="n">3</span><i class="fas fa-map-location-dot stag-fa"></i>Regionalización
       <i class="info-icon" onclick="openDrawer('sec3-info')">i</i>
     </div>
     <h2 class="st">Distribución por Regiones y Departamentos</h2>
@@ -733,7 +786,7 @@ footer strong{color:#fff}
 <!-- SEC 4: EJECUCIÓN -->
 <section id="sec4" class="sec nf">
   <div class="pw">
-    <div class="stag"><span class="n">4</span>Ejecución de la inversión
+    <div class="stag"><span class="n">4</span><i class="fas fa-gauge-high stag-fa"></i>Ejecución de la inversión
       <i class="info-icon" onclick="openDrawer('sec4-info')">i</i>
       <i class="help-icon" onclick="openInfoModal('Ciclo de la Ejecución del Gasto','sec4-info')" title="Ver ciclo de ejecución del gasto">?</i>
     </div>
@@ -768,7 +821,7 @@ footer strong{color:#fff}
 <!-- SEC 5: VIGENCIAS FUTURAS -->
 <section id="sec5" class="sec">
   <div class="pw">
-    <div class="stag sm"><span class="n">5</span>Vigencias Futuras
+    <div class="stag sm"><span class="n">5</span><i class="fas fa-calendar-days stag-fa"></i>Vigencias Futuras
       <i class="info-icon" onclick="openDrawer('sec5-info')">i</i>
     </div>
     <h2 class="st">Compromisos 2026 – 2040</h2>
@@ -781,7 +834,7 @@ footer strong{color:#fff}
 <!-- SEC 6: SECTORIAL -->
 <section id="sec6" class="sec nf">
   <div class="pw">
-    <div class="stag sa"><span class="n">6</span>Ejecución Sectorial
+    <div class="stag sa"><span class="n">6</span><i class="fas fa-building-columns stag-fa"></i>Ejecución Sectorial
       <i class="info-icon" onclick="openDrawer('sec6-info')">i</i>
     </div>
     <h2 class="st">Ejecución por Sector — 2026</h2>
@@ -808,8 +861,26 @@ footer strong{color:#fff}
 <!-- SEC 7: CRÉDITO EXTERNO -->
 <section id="sec7" class="sec">
   <div class="pw">
-    <div class="stag sp"><span class="n">7</span>Crédito Externo
+    <div class="stag sp"><span class="n">7</span><i class="fas fa-hand-holding-dollar stag-fa"></i>Crédito Externo
       <i class="info-icon" onclick="openDrawer('sec7-info')">i</i>
+    </div>
+    <div class="sec-illus" aria-hidden="true">
+      <svg viewBox="0 0 170 110">
+        <g stroke="#7f47dd" stroke-width="2.5" fill="none">
+          <circle cx="38" cy="55" r="24"/>
+          <ellipse cx="38" cy="55" rx="10" ry="24"/>
+          <path d="M16 47 h44 M16 63 h44"/>
+        </g>
+        <path d="M68 55 h28" stroke="#00c3c1" stroke-width="3" stroke-linecap="round"/>
+        <path d="M94 47 L106 55 L94 63 Z" fill="#00c3c1"/>
+        <circle cx="82" cy="36" r="9" fill="#ffca00"/>
+        <text x="82" y="40" text-anchor="middle" font-size="11" font-weight="900" fill="#8a6d00">$</text>
+        <g stroke="#7f47dd" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M112 84 h50"/>
+          <path d="M120 76 V58 M132 76 V58 M144 76 V58 M156 76 V58"/>
+          <path d="M116 58 h44 M112 58 L138 38 L164 58"/>
+        </g>
+      </svg>
     </div>
     <h2 class="st">Portafolio de Crédito Externo</h2>
     <p class="ss">Cartera vigente de operaciones de crédito externo de la Nación — BID, Banco Mundial y CAF. Cifras en millones de USD. Fuente: Subdirección de Crédito y Cooperación Internacional, DNP.</p>
@@ -886,8 +957,28 @@ footer strong{color:#fff}
 <!-- SEC 8: SISTEMA GENERAL DE PARTICIPACIONES (SGP) -->
 <section id="sec8" class="sec nf">
   <div class="pw">
-    <div class="stag sp"><span class="n">8</span>Sistema General de Participaciones (SGP)
+    <div class="stag sp"><span class="n">8</span><i class="fas fa-people-roof stag-fa"></i>Sistema General de Participaciones (SGP)
       <i class="info-icon" onclick="openDrawer('sec8-info')">i</i>
+    </div>
+    <div class="sec-illus" aria-hidden="true">
+      <svg viewBox="0 0 170 110">
+        <g stroke="#7f47dd" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M62 32 h46"/>
+          <path d="M68 32 V16 M80 32 V16 M92 32 V16 M104 32 V16"/>
+          <path d="M64 16 h42 M60 16 L85 4 L110 16"/>
+        </g>
+        <g stroke="#9b9b9b" stroke-width="2.4" stroke-linecap="round" fill="none" stroke-dasharray="1 6">
+          <path d="M85 38 V50"/>
+          <path d="M85 50 L35 64"/>
+          <path d="M85 50 V64"/>
+          <path d="M85 50 L135 64"/>
+        </g>
+        <g fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="#00c3c1" d="M22 80 L35 69 L48 80 V96 H22 Z"/>
+          <path stroke="#ffca00" d="M72 84 L85 73 L98 84 V100 H72 Z"/>
+          <path stroke="#fe1b7b" d="M122 80 L135 69 L148 80 V96 H122 Z"/>
+        </g>
+      </svg>
     </div>
     <h2 class="st">Distribución Histórica del SGP 2022-2026</h2>
     <p class="ss">Recursos distribuidos por participaciones sectoriales y asignaciones especiales del SGP. Miles de millones COP corrientes. Fuente: DNP — Subdirección de Descentralización y Desarrollo Regional (SDRT).</p>
@@ -1023,24 +1114,44 @@ function fmtFecha(f){
   const[y,m,d]=f.split('-');return `${parseInt(d)} de ${M[parseInt(m)-1]} de ${y}`;
 }
 
+/* contador animado (count-up) con easing */
+function countUp(el,v,dec=1,dur=900){
+  if(!el)return;
+  if(v==null||isNaN(v)){el.textContent='—';return;}
+  const t0=performance.now();
+  const fmt=x=>x.toFixed(dec).replace('.',',');
+  const step=n=>{
+    const p=Math.min((n-t0)/dur,1),e=1-Math.pow(1-p,3);
+    el.textContent=fmt(v*e);
+    if(p<1)requestAnimationFrame(step);else el.textContent=fmt(v);
+  };
+  requestAnimationFrame(step);
+}
+
 function updateHero(res){
-  const bill=v=>v!=null?`${(v/1000).toFixed(1)} <small>Bill. COP</small>`:'— <small>Bill. COP</small>';
+  const setBill=(card,v)=>{
+    const kv=card.querySelector('.kv');
+    if(v==null){kv.innerHTML='— <small>Bill. COP</small>';return;}
+    kv.innerHTML='<span class="cnt"></span> <small>Bill. COP</small>';
+    countUp(kv.querySelector('.cnt'),v/1000);
+  };
   const pctStr=(v,base)=>v!=null?`${v}% de la apropiación vigente`:'';
-  document.getElementById('hrNum').textContent=res.inversion_vigente_mmm?(res.inversion_vigente_mmm/1000).toFixed(1):'—';
+  const hn=document.getElementById('hrNum');
+  if(res.inversion_vigente_mmm)countUp(hn,res.inversion_vigente_mmm/1000);else hn.textContent='—';
   document.getElementById('hrSub').innerHTML=`Inversión pública vigencia ${res.vigencia}<br>Presupuesto General de la Nación`;
   document.getElementById('heroPara').textContent=`Evolución del presupuesto de inversión financiado a través del Presupuesto General de la Nación. Corte al ${fmtFecha(res.corte_fecha)}. Vigencias 2022–${res.vigencia}. Incluye además el seguimiento a Crédito Externo y al Sistema General de Participaciones (SGP), que se administran por fuera del PGN.`;
   const qv=document.getElementById('kpiVig');
   qv.querySelector('.kl').textContent=`Apropiación vigente ${res.vigencia}`;
-  qv.querySelector('.kv').innerHTML=bill(res.inversion_vigente_mmm);
+  setBill(qv,res.inversion_vigente_mmm);
   qv.querySelector('.kd').textContent=res.inv_pct_pib?`${res.inv_pct_pib}% del PIB · ${res.inv_pct_gasto_total||'—'}% del gasto total`:`Fuente: SIIF Nación`;
   const qc=document.getElementById('kpiComp');
-  qc.querySelector('.kv').innerHTML=bill(res.inversion_compromisos_mmm);
+  setBill(qc,res.inversion_compromisos_mmm);
   qc.querySelector('.kd').textContent=pctStr(res.pct_compromisos);
   const qo=document.getElementById('kpiObl');
-  qo.querySelector('.kv').innerHTML=bill(res.inversion_obligaciones_mmm);
+  setBill(qo,res.inversion_obligaciones_mmm);
   qo.querySelector('.kd').textContent=pctStr(res.pct_obligaciones);
   const qp=document.getElementById('kpiPag');
-  qp.querySelector('.kv').innerHTML=bill(res.inversion_pagos_mmm);
+  setBill(qp,res.inversion_pagos_mmm);
   qp.querySelector('.kd').textContent=pctStr(res.pct_pagos);
   const fm=document.getElementById('footerMeta');
   if(fm)fm.textContent=`Bitácora ${res.numero_bitacora} · PGN ${res.periodo} · Corte ${fmtFecha(res.corte_fecha)}`;
@@ -3262,6 +3373,13 @@ const DC={
       {label:'Contexto',html:`
         <p>El <strong>crédito externo</strong> es una fuente de financiación complementaria al PGN: recursos que la Nación contrata con la banca multilateral para respaldar proyectos de inversión de gran envergadura, generalmente de ejecución plurianual.</p>
         <p>La cartera vigente de la Nación está integrada por operaciones financiadas por el <strong>Banco Interamericano de Desarrollo (BID)</strong>, el <strong>Banco Mundial (BM)</strong> y el <strong>Banco de Desarrollo de América Latina y el Caribe (CAF)</strong>.</p>
+        <div class="dr-flow">
+          <div class="dr-flow-step" style="border-left-color:var(--mo)"><i class="fas fa-globe" style="background:rgba(127,71,221,.1);color:var(--mo)"></i><div><div class="fs-t">Banca multilateral</div><div class="fs-d">BID · Banco Mundial · CAF — contratan y desembolsan los créditos en USD.</div></div></div>
+          <div class="dr-flow-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="dr-flow-step"><i class="fas fa-landmark"></i><div><div class="fs-t">Nación — Presupuesto</div><div class="fs-d">Los recursos ingresan al presupuesto como recursos 13 y 14 del SIIF Nación (COP).</div></div></div>
+          <div class="dr-flow-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="dr-flow-step" style="border-left-color:var(--a)"><i class="fas fa-hard-hat" style="background:rgba(255,202,0,.14);color:#9a7200"></i><div><div class="fs-t">Entidades ejecutoras</div><div class="fs-d">Proyectos de inversión de gran envergadura, generalmente plurianuales.</div></div></div>
+        </div>
         <div class="dr-note">Los créditos se contratan en dólares (USD); su ejecución presupuestal interna se registra en pesos a través de los recursos 13 (crédito externo) y 14 (crédito externo — otros) del SIIF Nación.</div>`
       },
       {label:'Indicadores',html:`
@@ -3288,7 +3406,14 @@ const DC={
         <div class="dr-src-item"><span class="dr-src-name">Asignaciones especiales</span><span class="dr-src-desc">Alimentación Escolar (PAE), Resguardos Indígenas, municipios y distritos Ribereños del río Magdalena, y Fonpet — recursos con destinación específica para poblaciones y territorios con condiciones particulares.</span></div>`
       },
       {label:'Distribución y normativa',html:`
-        <p>El ciclo de distribución sigue cuatro pasos: el <strong>Ministerio de Hacienda y Crédito Público</strong> calcula los montos del SGP conforme al artículo 85 de la Ley 715 de 2001 y comunica la estimación al DNP; el <strong>DNP</strong> elabora los documentos de distribución aplicando los criterios de la norma y la información certificada; y las <strong>entidades territoriales</strong> reciben los recursos para financiar la prestación de servicios.</p>
+        <p>El ciclo de distribución sigue estos pasos:</p>
+        <div class="dr-flow">
+          <div class="dr-flow-step" style="border-left-color:var(--m)"><i class="fas fa-coins" style="background:rgba(254,27,123,.09);color:var(--m)"></i><div><div class="fs-t">MHCP</div><div class="fs-d">Calcula los montos del SGP (art. 85, Ley 715 de 2001) y comunica la estimación al DNP.</div></div></div>
+          <div class="dr-flow-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="dr-flow-step"><i class="fas fa-chart-pie"></i><div><div class="fs-t">DNP</div><div class="fs-d">Elabora los documentos de distribución aplicando los criterios de la norma y la información certificada.</div></div></div>
+          <div class="dr-flow-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="dr-flow-step" style="border-left-color:var(--mo)"><i class="fas fa-people-roof" style="background:rgba(127,71,221,.1);color:var(--mo)"></i><div><div class="fs-t">Entidades territoriales</div><div class="fs-d">Departamentos, distritos, municipios y resguardos indígenas financian educación, salud, agua potable y propósito general.</div></div></div>
+        </div>
         <div class="dr-note">La distribución se realiza de acuerdo con la normativa vigente y la información certificada por las entidades competentes para cada componente del sistema.</div>
         <div class="dr-src-item"><span class="dr-src-name">Constitución Política</span><span class="dr-src-desc">Artículos 356 y 357.</span></div>
         <div class="dr-src-item"><span class="dr-src-name">Leyes</span><span class="dr-src-desc">Ley 715 de 2001 y Ley 1176 de 2007.</span></div>
@@ -3357,6 +3482,18 @@ async function initApp(){
   }
 }
 initApp();
+
+/* ── Barra de progreso de lectura + botón volver arriba ── */
+(function(){
+  const pb=document.getElementById('progressBar'),bt=document.getElementById('backTop');
+  window.addEventListener('scroll',()=>{
+    const h=document.documentElement;
+    const max=h.scrollHeight-h.clientHeight;
+    if(pb)pb.style.width=(max>0?(h.scrollTop/max)*100:0).toFixed(2)+'%';
+    if(bt)bt.classList.toggle('show',h.scrollTop>600);
+  },{passive:true});
+  if(bt)bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+})();
 
 /* ── Componentes Modal ── */
 async function showComponentes(transformador) {
