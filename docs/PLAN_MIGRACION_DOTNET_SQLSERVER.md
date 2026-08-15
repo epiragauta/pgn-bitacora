@@ -450,11 +450,10 @@ python etl/load_sgp.py && python etl/load_sgp_componentes.py   # Sec 8
 3. Cadena de conexión vía variable de entorno / `env_file` fuera del repositorio (`.env` en `.gitignore`).
 4. Añadir el bloque al `Caddyfile` siguiendo el patrón existente:
    ```
-   bitacora.skaphe.com {
+   dnp-btcr.skaphe.com {
          reverse_proxy localhost:5080
      }
    ```
-   *(subdominio a confirmar con quien administre el DNS)*
 5. **Eliminar** `fly.toml` y `render.yaml`; ambos asumen Python + SQLite y ya no aplican. *(Nota: `fly.toml` declara `app = 'pgn-bitacora'` mientras `CLAUDE.md` documenta `app-old-dream-8565` — la inconsistencia se resuelve al retirarlos.)*
 6. Reinicio automático: `restart: unless-stopped` en compose.
 7. Actualizar `README.md` y `CLAUDE.md` (secciones de despliegue, comandos y arquitectura).
@@ -475,9 +474,11 @@ La suite de paridad se volvió a correr **contra el contenedor**, no contra el `
 **Archivos añadidos:** `backend/Dockerfile`, `docker-compose.yml`, `.env.example`, `deploy/Caddyfile.snippet`.
 **Archivos eliminados:** `fly.toml`, `render.yaml`.
 
-#### Publicación por Caddy — pendiente de una decisión, no de trabajo
+#### Publicación por Caddy — preparada y validada, falta aplicarla con sudo
 
-El bloque está escrito en `deploy/Caddyfile.snippet` pero **no se aplicó**, por dos razones: falta definir el subdominio con quien administre el DNS (pregunta abierta 7) y editar `/etc/caddy/Caddyfile` expone el servicio a internet, que es un cambio de cara al exterior. Cuando el nombre esté decidido:
+**Subdominio definido: `dnp-btcr.skaphe.com`** (2026-08-15). Resuelve a `23.239.11.244`, la misma IP que los dominios ya publicados desde este servidor, así que Caddy podrá emitir el certificado sin más trámite.
+
+El bloque está en `deploy/Caddyfile.snippet` y la configuración fusionada **ya se validó** contra el `Caddyfile` real (`caddy validate` → *Valid configuration*). No se aplicó porque escribir en `/etc/caddy/Caddyfile` requiere `sudo` con contraseña. Los tres comandos:
 
 ```bash
 sudo tee -a /etc/caddy/Caddyfile < deploy/Caddyfile.snippet
@@ -533,7 +534,7 @@ Los ETL en Python cargan directamente en SQL Server y `tools/compare_apis.py` pr
 
 | # | Pendiente |
 |---|---|
-| 7 | Subdominio público y aplicación del bloque de Caddy (§6) |
+| 7 | Aplicar el bloque de Caddy con `sudo` (subdominio ya definido y configuración validada — §6) |
 | 9 | Destino de producción: este servidor es de desarrollo y pruebas |
 | — | Revisión visual del tablero en navegador (§ Fase 4) |
 | — | Autenticación, si alguna vez deja de ser una API pública de solo lectura (§6.1) |

@@ -218,6 +218,7 @@ All return JSON. Rows come back from Dapper as dictionaries so SQL column aliase
 | Image build | `backend/Dockerfile`, context = repo root |
 | Published port | `127.0.0.1:5080` → container `8080` |
 | Reverse proxy | Caddy on the host (`/etc/caddy/Caddyfile`), snippet in `deploy/Caddyfile.snippet` |
+| Public URL | `https://dnp-btcr.skaphe.com` |
 | Docker network | `sbn-ecp_umbraco-network` (external), SQL Server alias `sqlserver` |
 | Restart policy | `unless-stopped`, with a `HEALTHCHECK` against `/health` |
 

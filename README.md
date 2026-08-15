@@ -146,7 +146,7 @@ Todos aceptan `bitacora_id` opcional; sin él responden con la bitácora más re
 
 **On-premise**, detrás del Caddy del host. El contenedor publica **solo en loopback** (`127.0.0.1:5080`) y se une a la red del SQL Server para alcanzarlo por el alias `sqlserver`, sin depender del 1433 publicado.
 
-Para exponerlo públicamente, añadir el bloque de [`deploy/Caddyfile.snippet`](deploy/Caddyfile.snippet) a `/etc/caddy/Caddyfile` y recargar Caddy. Caddy gestiona el certificado TLS automáticamente.
+Se publica en **https://dnp-btcr.skaphe.com** añadiendo el bloque de [`deploy/Caddyfile.snippet`](deploy/Caddyfile.snippet) a `/etc/caddy/Caddyfile` y recargando Caddy, que gestiona el certificado TLS automáticamente.
 
 > Fly.io y Render quedaron descartados: la instancia de SQL Server no es alcanzable desde ellos.
 
