@@ -61,9 +61,12 @@ def run():
         )
     ws = wb[HOJA]
 
+    VIGENCIA_MIN, VIGENCIA_MAX = 2000, 2100
+
     filas = []
     skipped = 0
-    for row in ws.iter_rows(min_row=2, values_only=True):
+    vigencias_invalidas = []
+    for n_fila, row in enumerate(ws.iter_rows(min_row=2, values_only=True), start=2):
         region_raw, sector, aprop, comp, obl, pag, vigencia = row
         if not region_raw or not sector or not vigencia:
             continue
@@ -74,13 +77,38 @@ def run():
             skipped += 1
             continue
 
+        # Un año fuera de rango es casi siempre una celda mal digitada. Cargarlo
+        # no daría error —la columna admite cualquier entero— pero dejaría la
+        # fila fuera del año consultado por la API, así que ese sector
+        # desaparecería del tablero sin ninguna señal.
+        try:
+            anio = int(vigencia)
+        except (TypeError, ValueError):
+            anio = None
+        if anio is None or not (VIGENCIA_MIN <= anio <= VIGENCIA_MAX):
+            vigencias_invalidas.append((n_fila, region_raw, str(sector).strip(), vigencia))
+            continue
+
         filas.append((
-            bid, int(vigencia), region, sector.strip(),
+            bid, anio, region, sector.strip(),
             round((aprop or 0) / 1e9, 3),
             round((comp  or 0) / 1e9, 3),
             round((obl   or 0) / 1e9, 3),
             round((pag   or 0) / 1e9, 3),
         ))
+
+    if vigencias_invalidas:
+        detalle = "\n".join(
+            f"    fila {n} (celda G{n}): {reg} / {sec} -> Año = {v!r}"
+            for n, reg, sec, v in vigencias_invalidas
+        )
+        raise SystemExit(
+            f"ERROR: {len(vigencias_invalidas)} fila(s) de '{HOJA}' con un año "
+            f"fuera del rango {VIGENCIA_MIN}-{VIGENCIA_MAX}:\n{detalle}\n\n"
+            "Corregir la celda en el Excel y volver a ejecutar. No se carga nada:\n"
+            "una vigencia equivocada saca a ese sector del año que consulta la\n"
+            "API y desaparecería del tablero sin ningún error visible."
+        )
 
     # El ON CONFLICT DO UPDATE de SQLite equivale al upsert por clave natural.
     n = conn.upsert(
