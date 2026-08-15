@@ -323,7 +323,7 @@ Se compararon byte a byte (SHA-256) los 8 recursos que `index.html` referencia y
 
 La comprobación automatizada en navegador no fue posible en esta sesión (extensión de Chrome no disponible). **Queda por hacer manualmente**: abrir `http://127.0.0.1:5080/` y recorrer las 8 secciones, el mapa Leaflet, los modales de información y el selector de bitácoras. Todo lo que el navegador solicita —API y estáticos— ya está verificado como idéntico, así que es una confirmación visual, no una búsqueda de fallos.
 
-### Fase 5 — ETL contra SQL Server — ✅ **COMPLETADA** (2026-08-15), con un cargador bloqueado por su archivo fuente
+### Fase 5 — ETL contra SQL Server — ✅ **COMPLETADA** (2026-08-15)
 
 Dos módulos nuevos concentran todo lo que cambiaba de motor, para que los cargadores conserven su lógica de lectura de Excel, que es donde vive el conocimiento del negocio:
 
@@ -344,7 +344,7 @@ Dos módulos nuevos concentran todo lo que cambiaba de motor, para que los carga
 
 Se cargaron los Excel en una base `dnp_dpip_pruebas` y se contrastó contra `dnp_dpip` con `tools/compare_bd.py`, que compara filas y suma de cada columna numérica por bitácora.
 
-**Resultado: 20 de 21 tablas idénticas**, incluidas todas las sumas. La única restante es la del cargador que sigue bloqueado (ver abajo).
+**Resultado: 21 de 21 tablas idénticas**, incluidas las sumas de todas las columnas numéricas.
 
 | Tabla | Migrado | ETL |
 |---|---|---|
@@ -356,7 +356,7 @@ Se cargaron los Excel en una base `dnp_dpip_pruebas` y se contrastó contra `dnp
 | `credito_*` | 17 / 18 / 4 | 17 / 18 / 4 ✅ |
 | `vigencias_futuras` | 193 | 193 ✅ |
 | `deflactores_pib` | 30 | 30 ✅ |
-| `regionalizacion_sectores` | 135 | **0** ⛔ |
+| `regionalizacion_sectores` | 135 | 135 ✅ |
 
 #### ✅ Sección 5 validada (2026-08-15, tras regenerar `BASE_SIIF_2`)
 
@@ -371,11 +371,30 @@ El usuario regeneró la hoja `BASE_SIIF_2` en `5. VIGENCIAS FUTURAS/20260513 Nue
 
 Un detalle que no estorbó: la columna viene con un espacio final (`'Valor_VF_Final (Actual) '`), que el cargador ya contemplaba.
 
-#### ⛔ Un cargador aún bloqueado por su archivo fuente
+#### ✅ Sección 3 validada (2026-08-15, tras generar `sectores_por_region`)
 
-`load_sectores_region.py` necesita la hoja **`sectores_por_region`** (tabla ya consolidada: región, sector, apropiación, compromisos, obligaciones, pagos, vigencia) en `3. REGIONALIZACIÓN/Consolidado Reg-Ejec-Marzo-2022-2026vf.xlsx`. El libro solo trae `Regionalizacion Mar-2022-2026`, y el archivo hermano de gráficas trae hojas por región sin consolidar. Consolidarlas aquí exigiría reimplementar un criterio de agregación no documentado, así que el cargador falla con un mensaje explícito en vez de publicar cifras dudosas. Afecta a `regionalizacion_sectores` (135 filas).
+Con la hoja añadida a `3. REGIONALIZACIÓN/Consolidado Reg-Ejec-Marzo-2022-2026vf.xlsx`, `regionalizacion_sectores` carga sus 135 filas y coincide con lo migrado clave por clave, sin diferencias de apropiación.
 
-**Qué hace falta:** la versión del libro que incluya esa hoja, o la definición de cómo se consolida.
+> **Error de digitación detectado y corregido:** la celda `G2` traía `Año = 1` en lugar de `2026`. No habría fallado —la columna admite cualquier entero— pero habría dejado a Transporte (6.408 mmm, el mayor sector de ANDINA) fuera del año que consulta la API, desapareciendo del tablero sin ningún mensaje. Se añadió al cargador una validación de rango 2000-2100 que aborta señalando la celda exacta.
+
+#### Verificación de punta a punta
+
+Con las 21 tablas cargadas por el ETL, se levantó la API contra esa base y se compararon las rutas aplicables contra la línea base. Se excluyen las que fijan `bitacora_id` o listan metadatos, porque la base de pruebas tiene una sola bitácora y con otro id.
+
+| Sobre 298 rutas | |
+|---|---|
+| Idénticas | **251** |
+| Solo orden entre filas empatadas (§3.9) | 4 |
+| Difieren **solo por tildes** en nombres de entidad | 35 |
+| Difieren por **renombres institucionales** en la fuente | 8 |
+| **Diferencias en cifras** | **0** |
+
+**Ninguna diferencia es numérica.** Las 43 restantes son de texto y provienen de que el libro entregado es una **revisión posterior** al que originó los datos migrados:
+
+- **Tildes:** 67 de 179 entidades vienen sin acentos en el nuevo libro (`GESTION` en vez de `GESTIÓN`). No es del ETL: `canonicalize_entidades()` está escrita justamente para elegir la grafía más acentuada, pero solo puede escoger entre las variantes que el archivo contenga, y para esas entidades solo existe la versión sin tildes (385 ocurrencias, ninguna acentuada). El archivo no está globalmente sin tildes: 34.040 de 148.214 valores sí las llevan.
+- **Renombres:** por ejemplo `MINISTERIO DE CULTURA - GESTIÓN GENERAL` → `MINISTERIO DE LAS CULTURAS, LAS ARTES Y LOS SABERES - GESTIÓN GENERAL`, aplicado retroactivamente a 2022-2023. Son actualizaciones legítimas del origen, no defectos.
+
+**Decisión pendiente:** si el tablero debe mostrar la grafía tal como viene del SIIF (fiel al origen) o conservar la ortografía acentuada histórica. Lo segundo es viable extendiendo `canonicalize_entidades()` para considerar también las grafías ya presentes en la base, no solo las del archivo en curso.
 
 #### Mejoras de robustez aplicadas de paso
 
@@ -396,7 +415,7 @@ export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};SERVER=127.0.0.1,14
 python etl/load_bitacora_excel.py --numero 3 --periodo 2026-I --corte 2026-03-31   # crea la bitácora
 python etl/importar_pgn.py                 # Sec 2
 python etl/load_regionalizacion.py         # Sec 3
-python etl/load_sectores_region.py         # Sec 3 (requiere la hoja consolidada)
+python etl/load_sectores_region.py         # Sec 3
 python etl/load_ejecucion_sectorial.py     # Sec 4 y 6
 python etl/load_vigencias_futuras.py       # Sec 5 — debe ir DESPUÉS del primero
 python etl/load_credito.py                 # Sec 7
