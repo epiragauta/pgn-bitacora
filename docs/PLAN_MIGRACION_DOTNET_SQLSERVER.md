@@ -288,11 +288,40 @@ Conexión desde Python vía **pyodbc + ODBC Driver 18**, ya instalado en el serv
 3. **Conversor `decimal` a medida** que recorta ceros de relleno, para que `547017.088000` se emita como `547017.088`.
 4. `GROUP BY` completos donde SQLite permitía columnas sin agregar (`/regionalizacion/historico`, `/vigencias_futuras/totales`). Verificado que no parten filas: cero grupos `(vigencia, region)` con más de un `tipo`.
 
-### Fase 4 — Verificación de paridad *(1 día)*
-- `tools/compare_apis.py`: para cada endpoint y cada combinación de parámetros reales (vigencias 2022–2026, las 6 regiones + `POR_REGIONALIZAR`/`NACIONAL`, los 33 códigos DANE, cada sector y cada transformador presentes en la BD) llama a ambas APIs y compara el JSON con tolerancia numérica, reportando diferencias de clave, de tipo y de valor.
-- Verificación visual: abrir `index.html` apuntando al backend .NET y recorrer las 8 secciones, el mapa Leaflet, los modales y el selector de bitácoras.
+### Fase 4 — Verificación de paridad — ✅ **COMPLETADA** (2026-08-15)
 
-**Criterio de aceptación:** cero diferencias de estructura; diferencias numéricas solo por redondeo dentro de la tolerancia; el dashboard renderiza idéntico.
+`tools/compare_apis.py` recorre las 322 rutas y **clasifica cada diferencia por tipo**, porque mezclarlas oculta las que importan:
+
+| Tipo | Significado | Bloquea |
+|---|---|---|
+| `claves` | Cambió el conjunto de campos del JSON | Sí — el frontend cae en silencio a sus datos embebidos |
+| `valores` | Mismas claves, distinto dato | Sí — error de traducción de SQL |
+| `estado` | Códigos HTTP distintos | Sí |
+| `orden` | Mismas filas, distinta secuencia | No — empates sin desempate en el original (§3.9) |
+
+Dos modos: contra la API Python en vivo, o contra la línea base congelada (`--contra-linea-base`), que no requiere levantar FastAPI.
+
+**Resultado — criterio de aceptación cumplido:**
+
+| | |
+|---|---|
+| Rutas idénticas | **318 / 322** |
+| Diferencias de **claves** | **0** |
+| Diferencias de **valores** | **0** |
+| Diferencias de **estado HTTP** | **0** |
+| Diferencias solo de orden | 4 (`/api/credito` y variantes, por empate en `monto_usd`) |
+
+#### Recursos estáticos
+
+Se compararon byte a byte (SHA-256) los 8 recursos que `index.html` referencia y los 13 de segundo nivel dentro de los CSS. **Todos se sirven igual en ambos backends.**
+
+> **Fallo encontrado y corregido:** `data/dptos.geojson` y `data/regiones.geojson` respondían **404 en .NET**. `StaticFileMiddleware` solo sirve extensiones con MIME conocido y `.geojson` no está en su tabla, mientras que `StaticFiles` de FastAPI sirve cualquier archivo. El mapa Leaflet habría quedado en blanco **sin ningún error en consola**. Se registró el tipo `application/geo+json` y se activó `ServeUnknownFileTypes` para replicar la permisividad del original y no volver a perder un recurso en silencio.
+
+> **Nota, sin relación con la migración:** seis variantes de FontAwesome (`fa-brands`, `fa-regular`, `fa-v4compatibility`) dan 404 **en ambos backends** — nunca se vendorizaron en el repositorio; solo existe `fa-solid-900`. El comportamiento es idéntico al actual, así que no es una regresión, pero conviene saberlo si alguna vez se usa un icono de esas familias.
+
+#### Pendiente: revisión visual
+
+La comprobación automatizada en navegador no fue posible en esta sesión (extensión de Chrome no disponible). **Queda por hacer manualmente**: abrir `http://127.0.0.1:5080/` y recorrer las 8 secciones, el mapa Leaflet, los modales de información y el selector de bitácoras. Todo lo que el navegador solicita —API y estáticos— ya está verificado como idéntico, así que es una confirmación visual, no una búsqueda de fallos.
 
 ### Fase 5 — ETL contra SQL Server *(1–2 días)*
 - Instalar el driver **ODBC Driver 18 for SQL Server** y `pyodbc`.

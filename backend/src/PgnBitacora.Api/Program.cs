@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.FileProviders;
 using PgnBitacora.Api.Data;
 using PgnBitacora.Api.Endpoints;
@@ -69,20 +70,36 @@ var raiz = RaizDelRepositorio(app.Environment.ContentRootPath, app.Configuration
 var dirFrontend = Path.Combine(raiz, "frontend");
 var dirData = Path.Combine(raiz, "data");
 
+// StaticFileMiddleware solo sirve extensiones con MIME conocido y .geojson
+// no está en la tabla por defecto: sin esto, las capas del mapa Leaflet
+// responden 404 y el mapa queda en blanco sin ningún error visible.
+// StaticFiles de FastAPI servía cualquier archivo, así que se replica esa
+// permisividad para no volver a perder un recurso en silencio.
+var tiposContenido = new FileExtensionContentTypeProvider();
+tiposContenido.Mappings[".geojson"] = "application/geo+json";
+
+StaticFileOptions Opciones(string directorio, string rutaPeticion) => new()
+{
+    FileProvider = new PhysicalFileProvider(directorio),
+    RequestPath = rutaPeticion,
+    ContentTypeProvider = tiposContenido,
+    ServeUnknownFileTypes = true,
+    DefaultContentType = "application/octet-stream",
+};
+
 if (Directory.Exists(dirData))
 {
-    app.UseStaticFiles(new StaticFileOptions
-    {
-        FileProvider = new PhysicalFileProvider(dirData),
-        RequestPath = "/data",
-    });
+    app.UseStaticFiles(Opciones(dirData, "/data"));
 }
 
 if (Directory.Exists(dirFrontend))
 {
-    var proveedor = new PhysicalFileProvider(dirFrontend);
-    app.UseDefaultFiles(new DefaultFilesOptions { FileProvider = proveedor, RequestPath = "" });
-    app.UseStaticFiles(new StaticFileOptions { FileProvider = proveedor, RequestPath = "" });
+    app.UseDefaultFiles(new DefaultFilesOptions
+    {
+        FileProvider = new PhysicalFileProvider(dirFrontend),
+        RequestPath = "",
+    });
+    app.UseStaticFiles(Opciones(dirFrontend, ""));
 }
 else
 {
