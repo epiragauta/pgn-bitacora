@@ -1,2 +1,7 @@
-fastapi==0.115.12
-uvicorn[standard]==0.34.0
+# Dependencias de los ETL y las herramientas de verificación.
+# El backend es .NET 8 y no necesita Python; FastAPI y uvicorn se
+# retiraron en la fase 7 junto con api/main.py.
+#
+# pyodbc requiere el paquete del sistema "ODBC Driver 18 for SQL Server".
+pyodbc==5.3.0
+openpyxl==3.1.5

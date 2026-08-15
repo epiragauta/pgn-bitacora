@@ -1,7 +1,7 @@
 """
 etl/migrate_sqlite_to_mssql.py — Carga inicial SQLite -> SQL Server (Fase 2).
 
-Copia las 23 tablas vivas de db/pgn.db a la base dnp_dpip preservando los
+Copia las 23 tablas vivas de db/legacy/pgn.db a la base dnp_dpip preservando los
 `id` originales, porque son referencias reales: pgn_ejecucion.concepto_id
 apunta a pgn_concepto.id y todos los bitacora_id apuntan a
 metadatos_bitacora.id. Por eso cada tabla se carga con IDENTITY_INSERT.
@@ -35,7 +35,7 @@ try:
 except ImportError:
     raise SystemExit("Falta pyodbc. Instalar con: pip install pyodbc")
 
-SQLITE_PATH = Path(__file__).parent.parent / "db" / "pgn.db"
+SQLITE_PATH = Path(__file__).parent.parent / "db" / "legacy" / "pgn.db"
 
 CONN_DEFAULT = (
     "DRIVER={ODBC Driver 18 for SQL Server};"

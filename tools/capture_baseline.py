@@ -1,14 +1,18 @@
 """
-tools/capture_baseline.py — Congela la respuesta de la API actual (Fase 0).
+tools/capture_baseline.py — Congela las respuestas de referencia.
 
 Guarda en tools/baseline/ la respuesta JSON de cada una de las rutas que
-enumera tools/endpoints.py. Ese conjunto es la referencia contra la cual
-la Fase 4 valida el backend .NET: si un valor cambia durante la
-migración, la comparación lo delata.
+enumera tools/endpoints.py. Ese conjunto es contra el que compara
+tools/compare_apis.py: si un cambio en el backend altera un valor, la
+comparación lo delata.
+
+La referencia actual se capturó de la API FastAPI antes de migrar, y por
+eso sirve de red de seguridad. **Regenerarla solo cuando los datos
+cambien a propósito** (una bitácora nueva), nunca para "arreglar" una
+diferencia: eso borraría justamente la evidencia que se busca.
 
 Uso:
-    uvicorn api.main:app --port 8000     # en otra terminal
-    python tools/capture_baseline.py [--base http://127.0.0.1:8000]
+    python tools/capture_baseline.py [--base http://127.0.0.1:5080]
 """
 
 from __future__ import annotations
@@ -41,7 +45,7 @@ def fetch(base: str, path: str, timeout: float) -> tuple[int, object]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--base", default="http://127.0.0.1:8000")
+    ap.add_argument("--base", default="http://127.0.0.1:5080")
     ap.add_argument("--timeout", type=float, default=30.0)
     args = ap.parse_args()
 

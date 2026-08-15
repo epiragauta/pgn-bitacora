@@ -1,10 +1,13 @@
 """
-tools/compare_apis.py — Verificación de paridad entre las dos APIs (Fase 4).
+tools/compare_apis.py — Verificación de no regresión de la API.
 
-Recorre las 322 rutas de tools/endpoints.py y compara la respuesta de la
-API Python (FastAPI/SQLite) con la del backend .NET (SQL Server),
-clasificando cada diferencia por tipo. Alternativamente compara el .NET
-contra la línea base congelada, sin necesidad de levantar la Python.
+Recorre las 322 rutas de tools/endpoints.py y compara cada respuesta
+contra la línea base congelada, clasificando las diferencias por tipo.
+Esa línea base se capturó de la API FastAPI antes de migrar, así que
+sigue siendo la vara con la que se mide cualquier cambio del backend.
+
+También puede comparar dos instancias en vivo (--base-a), útil para
+contrastar un despliegue contra otro.
 
 Las diferencias NO son todas iguales, y mezclarlas oculta las que
 importan:
@@ -19,11 +22,11 @@ importan:
   · estado   — códigos HTTP distintos.
 
 Uso:
-    # A vs B, con las dos APIs levantadas
-    python tools/compare_apis.py
-
-    # .NET contra la línea base congelada (no requiere la API Python)
+    # Contra la línea base congelada (lo habitual)
     python tools/compare_apis.py --contra-linea-base
+
+    # Entre dos instancias en vivo
+    python tools/compare_apis.py --base-a http://otra:5080 --base-b http://127.0.0.1:5080
 
 Código de salida: 0 si no hay diferencias de claves, valores ni estado
 (las de orden se reportan pero no hacen fallar).
@@ -101,10 +104,10 @@ def primera_fila_distinta(a, b) -> str | None:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--base-a", default="http://127.0.0.1:8000", help="API de referencia (Python)")
+    ap.add_argument("--base-a", default="http://127.0.0.1:5080", help="API de referencia")
     ap.add_argument("--base-b", default="http://127.0.0.1:5080", help="API a verificar (.NET)")
     ap.add_argument("--contra-linea-base", action="store_true",
-                    help="Usa tools/baseline/ como referencia en lugar de la API Python")
+                    help="Usa tools/baseline/ como referencia en lugar de otra API")
     ap.add_argument("--timeout", type=float, default=60.0)
     ap.add_argument("--detalle", type=int, default=10, help="Cuántas diferencias detallar por tipo")
     args = ap.parse_args()

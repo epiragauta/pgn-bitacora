@@ -4,15 +4,9 @@
 
 Dashboard web sobre el Presupuesto General de la Nación, con seguimiento adicional a Crédito Externo y al Sistema General de Participaciones.
 
-> **Migración en curso.** El backend está pasando de FastAPI/SQLite a **.NET 8 / SQL Server**. Ambos conviven mientras se verifica la paridad. Estado detallado y decisiones en [`docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md`](docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md).
->
-> | Componente | Estado |
-> |---|---|
-> | Base de datos SQL Server (`dnp_dpip`) | ✅ migrada, 5.320 filas |
-> | Backend .NET 8 | ✅ 30 endpoints, paridad verificada |
-> | Frontend | ✅ sin cambios |
-> | ETL | ⏳ sigue escribiendo en SQLite (fase 5 pendiente) |
-> | API FastAPI | ⏳ activa hasta el retiro (fase 7) |
+**Arquitectura:** base de datos SQL Server (`dnp_dpip`), API REST en .NET 8 y frontend HTML autónomo.
+
+> La migración desde FastAPI/SQLite se completó el 2026-08-15. El histórico de decisiones, el catálogo de incompatibilidades entre motores y los resultados de cada fase están en [`docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md`](docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md) — vale la pena leerlo antes de tocar el backend.
 
 ---
 
@@ -27,14 +21,12 @@ Dashboard web sobre el Presupuesto General de la Nación, con seguimiento adicio
 │       ├── Services/              ← lógica que no cabe en SQL
 │       ├── Data/                  ← Dapper + resolución de bitácora
 │       └── Json/
-├── api/main.py                    ← API FastAPI (legado, se retira en fase 7)
 ├── db/
-│   ├── mssql/                     ← DDL de SQL Server
+│   ├── mssql/                     ← DDL de SQL Server (fuente de verdad)
 │   │   ├── 001_schema.sql
 │   │   ├── 002_views.sql
 │   │   └── 003_seed_dane.sql
-│   ├── schema.sql                 ← esquema SQLite (desactualizado, ver plan §2.1)
-│   └── pgn.db                     ← SQLite (origen de la migración)
+│   └── legacy/                    ← archivo histórico SQLite (ver su README)
 ├── etl/                           ← cargadores desde Excel + migrador de datos
 │   └── migrate_sqlite_to_mssql.py
 ├── tools/
@@ -88,7 +80,7 @@ done
 
 ```bash
 pip install pyodbc                       # requiere ODBC Driver 18
-python etl/migrate_sqlite_to_mssql.py    # migra desde db/pgn.db y valida
+python etl/migrate_sqlite_to_mssql.py    # migra desde db/legacy/pgn.db y valida
 ```
 
 ### 3. Levantar la API
@@ -109,9 +101,9 @@ dotnet run --project backend/src/PgnBitacora.Api --urls http://127.0.0.1:5080
 
 ---
 
-## Verificar paridad con la API anterior
+## Verificar que nada cambió
 
-Cualquier cambio en el backend debe pasar esta comprobación antes de darse por bueno:
+Cualquier modificación del backend debe pasar esta comprobación antes de darse por buena. La referencia es el comportamiento congelado de la API anterior, que se conserva como red de seguridad:
 
 ```bash
 python tools/compare_apis.py --contra-linea-base
@@ -119,14 +111,13 @@ python tools/compare_apis.py --contra-linea-base
 
 Recorre 322 rutas y clasifica las diferencias por tipo. Las de **claves**, **valores** o **estado HTTP** hacen fallar el comando; las de **orden** entre filas empatadas se reportan sin bloquear (el original no define desempate — ver §3.9 del plan).
 
-Para comparar contra la API Python en vivo:
+También compara dos instancias en vivo, útil para contrastar un despliegue contra otro:
 
 ```bash
-uvicorn api.main:app --port 8000        # en otra terminal
-python tools/compare_apis.py
+python tools/compare_apis.py --base-a http://otra-instancia:5080
 ```
 
-Si se cambian los datos a propósito, hay que regenerar la referencia con `python tools/capture_baseline.py` apuntando a la API que se considere correcta.
+Si se cambian los datos a propósito, hay que regenerar la referencia con `python tools/capture_baseline.py`, que apunta al backend .NET.
 
 ---
 

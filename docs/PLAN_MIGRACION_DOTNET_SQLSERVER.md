@@ -492,11 +492,53 @@ sudo systemctl reload caddy
 - **Autenticación:** por decisión explícita, la API queda pública y de solo lectura, igual que hoy. Para facilitar el aseguramiento posterior, los endpoints se agrupan con `MapGroup("/api")`, de forma que añadir `.RequireAuthorization()` más adelante sea un cambio de una línea. Se mantiene CORS restringido a `GET`.
 - **Contraseña del login:** `dnp_dpip_app` se creó con `CHECK_POLICY = OFF` para admitir exactamente la contraseña definida por el usuario, que no cumple la política de complejidad de SQL Server (exige 3 de 4 categorías: mayúsculas, minúsculas, dígitos, símbolos). Es aceptable en dev/test; al pasar a producción conviene una contraseña conforme y `CHECK_POLICY = ON`.
 
-### Fase 7 — Retiro de FastAPI *(0,5 día)*
-- Eliminar `api/`, `requirements.txt` (queda el de ETL), `db/pgn.db` del flujo activo (conservar un respaldo etiquetado).
-- Commit final y etiqueta de versión.
+### Fase 7 — Retiro de FastAPI — ✅ **COMPLETADA** (2026-08-15)
 
-**Total estimado: 8–10 días de trabajo.**
+**Última comparación en vivo antes del corte** (FastAPI :8000 vs .NET :5080, 17:44): 318/322 idénticas, 0 diferencias de claves, valores o estado HTTP. Es la evidencia de que el reemplazo se hizo sobre una API verificada, no supuesta.
+
+| Elemento | Destino |
+|---|---|
+| `api/main.py`, `api/__init__.py` | eliminados |
+| `Dockerfile` (raíz, Python) | eliminado; queda `backend/Dockerfile` |
+| `requirements.txt` | ahora solo `pyodbc` y `openpyxl`; fuera FastAPI y uvicorn |
+| `db/pgn.db`, `schema.sql`, `schema_pgn.sql`, `migrations/`, `queries_evolucion.sql` | movidos a **`db/legacy/`** con un README que explica qué es cada uno y advierte que nada del sistema los lee |
+
+#### Una dependencia que había que resolver antes de borrar
+
+`tools/endpoints.py` leía `db/pgn.db` para derivar los parámetros de las 322 rutas. Retirar SQLite lo habría dejado inservible y, con él, toda la verificación de no regresión. Se reescribió contra SQL Server.
+
+Al hacerlo apareció un detalle de orden: SQL Server ordena texto por diccionario y SQLite lo hacía por bytes, de modo que la lista salía con el mismo contenido en otra secuencia. Se forzó `COLLATE Latin1_General_BIN2` —el mismo criterio que ya usa la API (§3.9)— y la lista quedó **byte a byte idéntica** a la de la línea base. Requirió subconsultas: `SELECT DISTINCT` no admite ordenar por una expresión ausente de la lista de selección.
+
+#### Estado tras el corte
+
+| Comprobación | Resultado |
+|---|---|
+| `docker compose build` + arranque | imagen reconstruida, contenedor `healthy` |
+| Raíz, `/api/resumen`, `/api/sectorial`, `/data/*.geojson`, `/swagger`, `/health` | 200 en todas |
+| `compare_apis.py --contra-linea-base` | 318/322, **0 diferencias bloqueantes** |
+
+La línea base de `tools/baseline/` **se conserva**: es la captura congelada del comportamiento de la API previa y sigue siendo la vara con la que se mide cualquier cambio futuro del backend. Regenerarla para hacer desaparecer una diferencia destruiría justamente esa garantía.
+
+---
+
+## 8. Cierre
+
+Las siete fases están completas. El sistema en marcha es:
+
+**SQL Server `dnp_dpip`** (23 tablas, collation `Modern_Spanish_CS_AS`) → **API .NET 8** en contenedor, publicada solo en loopback → **Caddy** (pendiente de subdominio) → **frontend sin una sola modificación**.
+
+Los ETL en Python cargan directamente en SQL Server y `tools/compare_apis.py` protege contra regresiones.
+
+**Lo que queda abierto**, ninguno bloqueante:
+
+| # | Pendiente |
+|---|---|
+| 7 | Subdominio público y aplicación del bloque de Caddy (§6) |
+| 9 | Destino de producción: este servidor es de desarrollo y pruebas |
+| — | Revisión visual del tablero en navegador (§ Fase 4) |
+| — | Autenticación, si alguna vez deja de ser una API pública de solo lectura (§6.1) |
+
+**Total estimado inicialmente: 8–10 días.**
 
 ---
 

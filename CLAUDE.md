@@ -8,25 +8,17 @@ This is the **Bitácora de Inversión Pública**, a web infographic dashboard fo
 
 **Architecture:** Three-tier system with SQL Server database, .NET 8 REST API, and standalone HTML frontend.
 
-## ⚠️ Migration in progress — read this first
+## ⚠️ Read this before touching the backend
 
-The backend is being migrated **FastAPI/SQLite → .NET 8/SQL Server**. Both stacks coexist until the cutover. The authoritative plan, decisions, and per-phase results are in **`docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md`** — read it before touching the backend.
+The migration **FastAPI/SQLite → .NET 8/SQL Server** completed on 2026-08-15. SQLite and FastAPI are gone; `db/legacy/` keeps them only as a historical record. The decisions, the cross-engine incompatibility catalogue and the per-phase evidence live in **`docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md`**.
 
-| Component | State |
-|---|---|
-| SQL Server DB `dnp_dpip` | ✅ migrated (5,320 rows, 23 tables) |
-| .NET 8 backend (`backend/`) | ✅ 30 endpoints, parity verified |
-| Frontend | ✅ unchanged — do not modify for the migration |
-| ETL scripts (`etl/`) | ⏳ still write to SQLite (phase 5 pending) |
-| FastAPI (`api/main.py`) | ⏳ legacy, retired in phase 7 |
-
-**Three rules that are load-bearing.** Each was a real bug found during migration:
+**Three rules that are load-bearing.** Each was a real bug found during the migration, and each fails *silently* if broken:
 
 1. **All computed SQL arithmetic must be `CAST(... AS FLOAT)`.** SQLite computes in double precision; `DECIMAL` produced `1.2367` where the original gave `1.2368`. Storage stays `DECIMAL(18,6)`; only expressions are cast.
 2. **The database collation must stay `Modern_Spanish_CS_AS`.** With an accent-insensitive collation, `PACÍFICO` and `PACIFICO` collapse into one value and `GROUP BY region` silently merges rows.
 3. **The SQL column aliases *are* the JSON keys.** The frontend reads exact snake_case keys and falls back to embedded data **silently, with no error**, if one is missing. Dapper returns dictionaries precisely so no rename can slip through. Never introduce a JSON naming policy.
 
-Any backend change must pass `python tools/compare_apis.py --contra-linea-base` before being considered done.
+Any backend change must pass `python tools/compare_apis.py --contra-linea-base` before being considered done. That baseline is a frozen capture of the pre-migration API — it is the safety net, so **never regenerate it to make a difference go away**.
 
 ## Key Commands
 
@@ -46,7 +38,7 @@ API docs at `/swagger`; the dashboard is served at `/`.
 ### Verifying parity (mandatory after backend changes)
 ```bash
 python tools/compare_apis.py --contra-linea-base   # vs frozen baseline
-python tools/compare_apis.py                       # vs live FastAPI on :8000
+python tools/compare_apis.py --base-a http://otra:5080   # vs another live instance
 ```
 Differences in **keys**, **values** or **HTTP status** fail the command. Differences in **row order among tied rows** are reported but do not block — the original defines no tiebreaker there.
 
@@ -59,27 +51,25 @@ for f in db/mssql/*.sql; do
 done
 ```
 
-### Migrating data from SQLite
+### Comparing two databases (after an ETL run)
 ```bash
-python etl/migrate_sqlite_to_mssql.py                 # migrate + validate
-python etl/migrate_sqlite_to_mssql.py --solo-validar  # validate only
+python tools/compare_bd.py --a dnp_dpip --b dnp_dpip_pruebas --periodo 2026-I
 ```
-Preserves original `id` values via `IDENTITY_INSERT` — they are real references (`pgn_ejecucion.concepto_id`, every `bitacora_id`).
+Compares row counts and the sum of every numeric column, per bitácora.
 
-### Running the legacy FastAPI (comparison only)
-```bash
-uvicorn api.main:app --reload --port 8000
-```
+`etl/migrate_sqlite_to_mssql.py` is kept for the record: it already did its job, and it documents the exact equivalence between both schemas.
 
 ### Updating Data (New Bitácora)
 ```bash
-# Load new bitácora from CSV files in etl/data/
-python etl/update_bitacora.py \
-  --numero 3 \
-  --periodo 2025-II \
-  --corte 2025-06-30 \
-  --notas "Primer semestre 2025"
+export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};SERVER=127.0.0.1,1433;DATABASE=dnp_dpip;UID=dnp_dpip_app;PWD=...;TrustServerCertificate=yes"
+
+python etl/load_bitacora_excel.py --numero 3 --periodo 2026-I --corte 2026-03-31
+python etl/importar_pgn.py && python etl/load_regionalizacion.py
+python etl/load_sectores_region.py && python etl/load_ejecucion_sectorial.py
+python etl/load_vigencias_futuras.py && python etl/load_credito.py
+python etl/load_sgp.py && python etl/load_sgp_componentes.py
 ```
+Order matters — see the ETL Pipeline section below.
 
 ### Docker Deployment (on-premise)
 ```bash
@@ -100,7 +90,7 @@ docker compose logs -f api
 1. **Data Layer:**
    - SQL Server database `dnp_dpip`, collation `Modern_Spanish_CS_AS` (see rule 2 above)
    - DDL in `db/mssql/` — `001_schema.sql`, `002_views.sql`, `003_seed_dane.sql`, all idempotent
-   - `db/pgn.db` (SQLite) is the migration source; `db/schema.sql` is **outdated** — the real schema was `db/pgn.db`
+   - `db/legacy/` is an archive, not a source: nothing running reads it (see its README)
    - All tables reference `metadatos_bitacora` via `bitacora_id`, declared `NOT NULL`
    - Supports multiple bitácoras (quarterly reports) in a single database
 

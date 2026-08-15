@@ -2,33 +2,67 @@
 tools/endpoints.py — Enumeración de todas las rutas de la API.
 
 Fuente única de verdad de "qué hay que probar". La usan:
-  · tools/capture_baseline.py  (Fase 0) — congela la respuesta de la API Python
-  · tools/compare_apis.py      (Fase 4) — compara Python vs .NET
+  · tools/capture_baseline.py — congela las respuestas de referencia
+  · tools/compare_apis.py     — verifica la API contra esa referencia
 
-Los parámetros no se inventan: se derivan de los datos reales en
-db/pgn.db, de modo que al cargar una bitácora nueva la cobertura crece
-sola en lugar de quedarse obsoleta.
+Los parámetros no se inventan: se derivan de los datos reales de la base,
+de modo que al cargar una bitácora nueva la cobertura crece sola en lugar
+de quedarse obsoleta.
 """
 
 from __future__ import annotations
 
-import sqlite3
+import os
+import sys
 from pathlib import Path
 from urllib.parse import quote
 
-DB_PATH = Path(__file__).parent.parent / "db" / "pgn.db"
+sys.path.insert(0, str(Path(__file__).parent.parent / "etl"))
 
 FASES = ["Vigente", "Comprometido", "Obligado", "Pagado"]
 
 
-def _col(conn: sqlite3.Connection, sql: str) -> list:
+def _conectar():
+    """Conexión a SQL Server, con la misma convención que los ETL.
+
+    Antes esto leía db/pgn.db. Al retirarse SQLite en la fase 7, los
+    parámetros se derivan de la base viva: es la que define qué vigencias,
+    regiones y sectores existen realmente.
+    """
+    import pyodbc  # se importa aquí para no exigirlo si solo se lee el módulo
+
+    cadena = os.environ.get("DNP_DPIP_CONN")
+    if not cadena:
+        from db import CONN_DEFAULT  # etl/db.py
+        cadena = CONN_DEFAULT
+    return pyodbc.connect(cadena)
+
+
+def _col(conn, sql: str) -> list:
     """Primera columna de una consulta, sin NULLs."""
-    return [r[0] for r in conn.execute(sql).fetchall() if r[0] is not None]
+    return [r[0] for r in conn.cursor().execute(sql).fetchall() if r[0] is not None]
 
 
-def build_urls(db_path: Path = DB_PATH) -> list[str]:
+def _distintos(conn, expr: str, tabla: str, where: str = "") -> list:
+    """Valores distintos de una columna de texto, en orden binario.
+
+    El orden importa: define la secuencia de rutas y, con ella, la
+    comparabilidad entre ejecuciones. SQL Server ordena por diccionario y
+    SQLite lo hacía por bytes, así que se fuerza Latin1_General_BIN2 para
+    que la lista no cambie respecto de la línea base. Hace falta la
+    subconsulta porque SELECT DISTINCT no admite ordenar por una expresión
+    que no esté en la lista de selección.
+    """
+    filtro = f" WHERE {where}" if where else ""
+    return _col(conn, (
+        f"SELECT v FROM (SELECT DISTINCT {expr} AS v FROM {tabla}{filtro}) t "
+        f"ORDER BY v COLLATE Latin1_General_BIN2"
+    ))
+
+
+def build_urls(conn=None) -> list[str]:
     """Devuelve todas las rutas a verificar, en orden estable."""
-    conn = sqlite3.connect(db_path)
+    conn = conn or _conectar()
 
     bitacoras = _col(conn, "SELECT id FROM metadatos_bitacora ORDER BY id")
     periodos = _col(conn, "SELECT periodo FROM metadatos_bitacora ORDER BY id")
@@ -36,23 +70,25 @@ def build_urls(db_path: Path = DB_PATH) -> list[str]:
     # REGIONAL' en la 1, '5. CONVERGENCIA REGIONAL' en la 2), así que el
     # transformador se empareja con su bitácora: consultarlo contra otra
     # devuelve vacío y no verifica nada.
-    transformadores = conn.execute(
-        "SELECT DISTINCT bitacora_id, transformador FROM inversion_transformaciones ORDER BY 1, 2"
+    transformadores = conn.cursor().execute(
+        "SELECT bitacora_id, t FROM ("
+        "  SELECT DISTINCT bitacora_id, transformador AS t FROM inversion_transformaciones"
+        ") x ORDER BY bitacora_id, t COLLATE Latin1_General_BIN2"
     ).fetchall()
     conceptos = _col(conn, "SELECT nombre FROM pgn_concepto ORDER BY orden")
-    anios_pgn = _col(conn, "SELECT DISTINCT anio FROM pgn_ejecucion ORDER BY 1")
-    rubros = _col(conn, """SELECT DISTINCT REPLACE(nombre,'Servicio de la Deuda','Servicio Deuda')
-                           FROM pgn_concepto WHERE nivel=2 AND unidad='Miles mm COP' ORDER BY 1""")
-    vig_reg = _col(conn, "SELECT DISTINCT vigencia FROM regionalizacion ORDER BY 1")
-    regiones = _col(conn, "SELECT DISTINCT region FROM regionalizacion ORDER BY 1")
-    vig_reg_sec = _col(conn, "SELECT DISTINCT vigencia FROM regionalizacion_sectores ORDER BY 1")
-    reg_sec = _col(conn, "SELECT DISTINCT region FROM regionalizacion_sectores ORDER BY 1")
-    danes = _col(conn, "SELECT DISTINCT codigo_dane FROM regionalizacion WHERE codigo_dane IS NOT NULL ORDER BY 1")
-    sect_vf = _col(conn, "SELECT DISTINCT sector FROM vigencias_futuras ORDER BY 1")
-    sect_ent = _col(conn, "SELECT DISTINCT sector FROM ejecucion_sectorial_entidades ORDER BY 1")
-    sect_men = _col(conn, "SELECT DISTINCT sector FROM ejecucion_sectorial_mensual ORDER BY 1")
-    cred_fuentes = _col(conn, "SELECT DISTINCT fuente FROM credito_portafolio ORDER BY 1")
-    cred_sectores = _col(conn, "SELECT DISTINCT sector FROM credito_portafolio ORDER BY 1")
+    anios_pgn = _col(conn, "SELECT DISTINCT anio FROM pgn_ejecucion ORDER BY anio")
+    rubros = _distintos(conn, "REPLACE(nombre,'Servicio de la Deuda','Servicio Deuda')",
+                        "pgn_concepto", "nivel=2 AND unidad='Miles mm COP'")
+    vig_reg = _col(conn, "SELECT DISTINCT vigencia FROM regionalizacion ORDER BY vigencia")
+    regiones = _distintos(conn, "region", "regionalizacion")
+    vig_reg_sec = _col(conn, "SELECT DISTINCT vigencia FROM regionalizacion_sectores ORDER BY vigencia")
+    reg_sec = _distintos(conn, "region", "regionalizacion_sectores")
+    danes = _distintos(conn, "codigo_dane", "regionalizacion", "codigo_dane IS NOT NULL")
+    sect_vf = _distintos(conn, "sector", "vigencias_futuras")
+    sect_ent = _distintos(conn, "sector", "ejecucion_sectorial_entidades")
+    sect_men = _distintos(conn, "sector", "ejecucion_sectorial_mensual")
+    cred_fuentes = _distintos(conn, "fuente", "credito_portafolio")
+    cred_sectores = _distintos(conn, "sector", "credito_portafolio")
 
     conn.close()
 

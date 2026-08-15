@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-ETL: BASE DETALLE MENSUAL INVERSIÓN 2018-2026.xlsx → pgn.db
+ETL: BASE DETALLE MENSUAL INVERSIÓN 2018-2026.xlsx → SQL Server
 
 Carga datos de ejecución de inversión (Secciones 4 y 6) desde el archivo
 detallado de SIIF Nación. Filtra al mes de corte indicado (por defecto MAR).
 
 Uso:
     python etl/load_ejecucion_sectorial.py \\
-        --excel "ruta/BASE DETALLE MENSUAL INVERSIÓN 2018-2026.xlsx" \\
-        --db db/pgn.db \\
-        --bitacora-id 1 \\
         --mes-corte MAR
+
+Sin argumentos toma el Excel de la sección 6 y la bitácora más reciente.
+La conexión sale de DNP_DPIP_CONN (ver etl/db.py).
 """
 
 import argparse
