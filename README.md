@@ -163,9 +163,30 @@ Para exponerlo públicamente, añadir el bloque de [`deploy/Caddyfile.snippet`](
 
 ## Actualizar datos (nueva bitácora)
 
-Los cargadores de `etl/` leen los Excel de `BASES_BITACORA/`. Uso detallado por script en [`docs/etl_uso.md`](docs/etl_uso.md).
+Los cargadores escriben directamente en SQL Server. Toman la conexión de `DNP_DPIP_CONN` y localizan los Excel bajo `data/BASES_BITACORA/<corte>/` (o donde apunte la variable `BASES_BITACORA`).
 
-> ⚠️ **Los ETL todavía escriben en SQLite.** Su adaptación a SQL Server es la fase 5, pendiente. Hasta entonces el flujo es: cargar en `db/pgn.db` y volver a correr `etl/migrate_sqlite_to_mssql.py`.
+```bash
+export DNP_DPIP_CONN="Server=...;Database=dnp_dpip;..."   # formato ODBC, ver etl/db.py
+
+python etl/load_bitacora_excel.py --numero 3 --periodo 2026-I --corte 2026-03-31
+python etl/importar_pgn.py                 # Sec 2
+python etl/load_regionalizacion.py         # Sec 3
+python etl/load_sectores_region.py         # Sec 3
+python etl/load_ejecucion_sectorial.py     # Sec 4 y 6
+python etl/load_vigencias_futuras.py       # Sec 5
+python etl/load_credito.py                 # Sec 7
+python etl/load_sgp.py && python etl/load_sgp_componentes.py   # Sec 8
+```
+
+**El orden importa.** `load_bitacora_excel.py` crea la bitácora que los demás resuelven, y `load_vigencias_futuras.py` debe ir después porque reemplaza la carga parcial de la sección 5 que hace el primero.
+
+Para comprobar que una carga reprodujo lo esperado, contra otra base:
+
+```bash
+python tools/compare_bd.py --a dnp_dpip --b dnp_dpip_pruebas --periodo 2026-I
+```
+
+Uso detallado por script en [`docs/etl_uso.md`](docs/etl_uso.md).
 
 ---
 

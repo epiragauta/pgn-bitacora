@@ -3,10 +3,12 @@ ETL SGP — Histórico por Componente — Bitácora 2026-I
 Carga: sgp_historico_componentes ← hoja "8.2. Historico_Componentes"
        (tabla dinámica de componentes, columnas AE:AK, filas 1-21)
 """
-import openpyxl, sqlite3, sys, os, re
+import openpyxl, sys
 
-FILE = r"C:\ws\dnp\ws\BASES_BITACORA\2026\Marzo\7. SDRT\SGP_2022-2026_Bitacora.xlsx"
-DB   = os.path.join(os.path.dirname(__file__), '..', 'db', 'pgn.db')
+import bases
+import db as dbmod
+
+FILE = bases.excel(7, "SGP_*_Bitacora.xlsx")
 
 # (nombre de fila tal como aparece en la hoja, participación padre, es fila totalizadora)
 # La fila 21 ("Total") se excluye: ya está disponible en sgp_historico_participacion.total_mmm
@@ -61,27 +63,19 @@ for orden, ((nombre, padre, es_total), row) in enumerate(zip(_STRUCT, data_rows)
 print(f"Componentes leídos: {len(_STRUCT)} filas x {len(_AÑOS)} vigencias = {len(registros)} registros", file=sys.stderr)
 
 # ── Cargar en BD ──────────────────────────────────────────────────────────────
-conn = sqlite3.connect(DB)
+conn = dbmod.conectar()
 
-schema_path = os.path.join(os.path.dirname(__file__), '..', 'db', 'schema.sql')
-with open(schema_path, encoding='utf-8') as f:
-    schema_sql = f.read()
-
-conn.execute("DROP TABLE IF EXISTS sgp_historico_componentes")
-m = re.search(r'(CREATE TABLE IF NOT EXISTS sgp_historico_componentes[\s\S]+?;)', schema_sql)
-if not m:
-    sys.exit("ERROR: no se encontró CREATE TABLE sgp_historico_componentes en schema.sql")
-conn.execute(m.group(1))
-conn.commit()
-
-bid = conn.execute("SELECT id FROM metadatos_bitacora ORDER BY id DESC LIMIT 1").fetchone()[0]
+bid = dbmod.bitacora_reciente(conn)
 print(f"bitacora_id={bid}", file=sys.stderr)
 
-conn.executemany("""
-    INSERT INTO sgp_historico_componentes
-        (bitacora_id, vigencia, orden, participacion, componente, es_total, valor_mmm)
-    VALUES (?, ?, ?, ?, ?, ?, ?)
-""", [(bid, *r) for r in registros])
+# El esquema lo gobierna db/mssql/; aquí solo se reemplazan los datos de
+# esta bitácora.
+conn.upsert(
+    "sgp_historico_componentes",
+    ["bitacora_id", "vigencia", "orden", "participacion", "componente", "es_total", "valor_mmm"],
+    [(bid, *r) for r in registros],
+    claves=["bitacora_id", "vigencia", "orden"],
+)
 
 conn.commit()
 

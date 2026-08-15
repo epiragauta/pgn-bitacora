@@ -7,11 +7,19 @@ porque la hoja "sectores_por_region" no existe en Consolidado Reg-Ejec-
 Marzo-2022-2026_v_2.0.xlsx. La corrección de datos que motivó la v_2.0
 solo afectó la hoja "Regionalizacion Mar-2022-2026" (ver load_regionalizacion.py).
 """
-import sqlite3
 import openpyxl
 
-EXCEL = r'C:\ws\dnp\ws\BASES_BITACORA\2026\Marzo\3. REGIONALIZACIÓN\Consolidado Reg-Ejec-Marzo-2022-2026.xlsx'
-DB    = r'C:\ws\dnp\ws\pgn-bitacora\db\pgn.db'
+import bases
+import db as dbmod
+
+# El nombre del archivo varía entre entregas ('...2022-2026.xlsx',
+# '...2022-2026vf.xlsx'); se excluye el de gráficas, que usa otro cargador.
+EXCEL = next(
+    f for f in [bases.carpeta_seccion(3) / n for n in (
+        'Consolidado Reg-Ejec-Marzo-2022-2026.xlsx',
+        'Consolidado Reg-Ejec-Marzo-2022-2026vf.xlsx',
+    )] if f.exists()
+)
 
 REGION_NORM = {
     'andina':    'ANDINA',
@@ -31,34 +39,30 @@ def normalize_region(name):
     return REGION_NORM.get(name.strip().lower())
 
 def run():
-    conn = sqlite3.connect(DB)
-    conn.execute("PRAGMA foreign_keys = ON")
+    # El esquema de regionalizacion_sectores vive en db/mssql/001_schema.sql;
+    # este cargador ya no lo crea.
+    conn = dbmod.conectar()
 
-    # Aplicar migración si la tabla no existe
-    conn.executescript("""
-        CREATE TABLE IF NOT EXISTS regionalizacion_sectores (
-            id          INTEGER PRIMARY KEY AUTOINCREMENT,
-            bitacora_id INTEGER NOT NULL REFERENCES metadatos_bitacora(id),
-            vigencia    INTEGER NOT NULL,
-            region      TEXT    NOT NULL,
-            sector      TEXT    NOT NULL,
-            apropiacion_mmm  REAL,
-            compromisos_mmm  REAL,
-            obligaciones_mmm REAL,
-            pagos_mmm        REAL,
-            UNIQUE(bitacora_id, vigencia, region, sector)
-        );
-    """)
-
-    bid = conn.execute(
-        "SELECT id FROM metadatos_bitacora ORDER BY corte_fecha DESC LIMIT 1"
-    ).fetchone()[0]
+    bid = dbmod.bitacora_reciente(conn)
     print(f"Bitácora activa: id={bid}")
 
     wb = openpyxl.load_workbook(EXCEL, data_only=True)
-    ws = wb['sectores_por_region']
 
-    inserted = updated = skipped = 0
+    HOJA = 'sectores_por_region'
+    if HOJA not in wb.sheetnames:
+        raise SystemExit(
+            f"ERROR: la hoja '{HOJA}' no existe en {EXCEL.name}.\n"
+            f"Hojas disponibles: {wb.sheetnames}\n\n"
+            "Esa hoja es una tabla ya consolidada (región, sector, apropiación,\n"
+            "compromisos, obligaciones, pagos, vigencia). El libro entregado solo\n"
+            "trae las hojas por región sin consolidar, así que derivarla aquí\n"
+            "significaría reimplementar una agregación que no está documentada y\n"
+            "arriesgar cifras erróneas. Solicitar el libro que incluya la hoja."
+        )
+    ws = wb[HOJA]
+
+    filas = []
+    skipped = 0
     for row in ws.iter_rows(min_row=2, values_only=True):
         region_raw, sector, aprop, comp, obl, pag, vigencia = row
         if not region_raw or not sector or not vigencia:
@@ -70,40 +74,33 @@ def run():
             skipped += 1
             continue
 
-        conn.execute("""
-            INSERT INTO regionalizacion_sectores
-                (bitacora_id, vigencia, region, sector,
-                 apropiacion_mmm, compromisos_mmm, obligaciones_mmm, pagos_mmm)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-            ON CONFLICT(bitacora_id, vigencia, region, sector) DO UPDATE SET
-                apropiacion_mmm  = excluded.apropiacion_mmm,
-                compromisos_mmm  = excluded.compromisos_mmm,
-                obligaciones_mmm = excluded.obligaciones_mmm,
-                pagos_mmm        = excluded.pagos_mmm
-        """, (
+        filas.append((
             bid, int(vigencia), region, sector.strip(),
             round((aprop or 0) / 1e9, 3),
             round((comp  or 0) / 1e9, 3),
             round((obl   or 0) / 1e9, 3),
             round((pag   or 0) / 1e9, 3),
         ))
-        inserted += 1
 
+    # El ON CONFLICT DO UPDATE de SQLite equivale al upsert por clave natural.
+    n = conn.upsert(
+        "regionalizacion_sectores",
+        ["bitacora_id", "vigencia", "region", "sector",
+         "apropiacion_mmm", "compromisos_mmm", "obligaciones_mmm", "pagos_mmm"],
+        filas, claves=["bitacora_id", "vigencia", "region", "sector"],
+    )
     conn.commit()
-    conn.close()
-    print(f"Listo: {inserted} registros insertados/actualizados, {skipped} omitidos.")
+    print(f"Listo: {n} registros insertados/actualizados, {skipped} omitidos.")
 
-    # Verificación rápida
-    conn2 = sqlite3.connect(DB)
     print("\n--- Verificación: top 5 sectores ANDINA 2026 ---")
-    for r in conn2.execute("""
-        SELECT sector, apropiacion_mmm, compromisos_mmm
-        FROM regionalizacion_sectores
-        WHERE region='ANDINA' AND vigencia=2026
-        ORDER BY apropiacion_mmm DESC LIMIT 5
-    """):
+    for r in conn.execute("""
+        SELECT TOP 5 sector, apropiacion_mmm, compromisos_mmm
+        FROM dbo.regionalizacion_sectores
+        WHERE bitacora_id=? AND region='ANDINA' AND vigencia=2026
+        ORDER BY apropiacion_mmm DESC
+    """, (bid,)):
         print(f"  {r[0]:<45} aprop={r[1]:>8.1f} mmm  comp={r[2]:>8.1f} mmm")
-    conn2.close()
+    conn.close()
 
 if __name__ == '__main__':
     run()

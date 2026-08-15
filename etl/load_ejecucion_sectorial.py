@@ -15,11 +15,12 @@ Uso:
 """
 
 import argparse
-import sqlite3
 import unicodedata
 from collections import defaultdict
 from pathlib import Path
 
+import bases
+import db as dbmod
 import openpyxl
 
 
@@ -248,32 +249,34 @@ def agg_mensual(records_mensual):
 
 # ── Carga a SQLite ────────────────────────────────────────────────────────────
 
-def ensure_columns(conn):
-    """Agrega columnas nuevas si no existen en las tablas objetivo."""
-    cols_ent = {r[1] for r in conn.execute(
-        "PRAGMA table_info(ejecucion_sectorial_entidades)"
-    ).fetchall()}
-    if 'pagos_mmm' not in cols_ent:
-        conn.execute(
-            "ALTER TABLE ejecucion_sectorial_entidades ADD COLUMN pagos_mmm DECIMAL(12,3)"
-        )
-        print("  + pagos_mmm añadida a ejecucion_sectorial_entidades")
-    if 'pct_p_av' not in cols_ent:
-        conn.execute(
-            "ALTER TABLE ejecucion_sectorial_entidades ADD COLUMN pct_p_av DECIMAL(5,2)"
-        )
-        print("  + pct_p_av añadida a ejecucion_sectorial_entidades")
+def verificar_columnas(conn):
+    """Comprueba que el esquema tenga las columnas que este ETL escribe.
 
-    cols_men = {r[1] for r in conn.execute(
-        "PRAGMA table_info(ejecucion_sectorial_mensual)"
-    ).fetchall()}
-    for col in ('pct_obligaciones_2025', 'pct_obligaciones_2024',
-                'pct_obligaciones_prom', 'pct_obligaciones_mejor'):
-        if col not in cols_men:
-            conn.execute(
-                f"ALTER TABLE ejecucion_sectorial_mensual ADD COLUMN {col} DECIMAL(5,2)"
+    Antes esta función parcheaba la base con ALTER TABLE cuando venía del
+    esquema viejo. Ya no: el esquema es responsabilidad de db/mssql/ y una
+    columna que falte es un error de despliegue, no algo que el cargador
+    deba arreglar por su cuenta.
+    """
+    requeridas = {
+        'ejecucion_sectorial_entidades': {'pagos_mmm', 'pct_p_av'},
+        'ejecucion_sectorial_mensual': {
+            'pct_obligaciones_2025', 'pct_obligaciones_2024',
+            'pct_obligaciones_prom', 'pct_obligaciones_mejor',
+        },
+    }
+    for tabla, columnas in requeridas.items():
+        presentes = {
+            r[0] for r in conn.execute(
+                "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS "
+                "WHERE TABLE_SCHEMA='dbo' AND TABLE_NAME=?", (tabla,)
+            ).fetchall()
+        }
+        faltan = columnas - presentes
+        if faltan:
+            raise SystemExit(
+                f"ERROR: a la tabla {tabla} le faltan columnas: {sorted(faltan)}.\n"
+                "Aplicar db/mssql/001_schema.sql antes de cargar."
             )
-            print(f"  + {col} añadida a ejecucion_sectorial_mensual")
 
 
 def load_db(conn, bid, anio_max, mes_corte, tot, sec_agg, ent_agg, mens_agg, pib_prev, gasto_prev):
@@ -291,14 +294,14 @@ def load_db(conn, bid, anio_max, mes_corte, tot, sec_agg, ent_agg, mens_agg, pib
             gasto_prev.get(anio),
         ))
 
-    conn.execute("DELETE FROM ejecucion_historica WHERE bitacora_id=?", (bid,))
-    conn.executemany("""
-        INSERT INTO ejecucion_historica
-            (bitacora_id, vigencia, vigente_mmm, compromisos_mmm,
-             obligaciones_mmm, pagos_mmm, pct_compromisos, pct_obligaciones,
-             pct_pagos, inv_pct_pib, inv_pct_gasto_total)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?)
-    """, hist)
+    conn.vaciar_bitacora(("ejecucion_historica",), bid)
+    conn.upsert(
+        "ejecucion_historica",
+        ["bitacora_id", "vigencia", "vigente_mmm", "compromisos_mmm",
+         "obligaciones_mmm", "pagos_mmm", "pct_compromisos", "pct_obligaciones",
+         "pct_pagos", "inv_pct_pib", "inv_pct_gasto_total"],
+        hist, claves=["bitacora_id", "vigencia"],
+    )
     for r in hist:
         print(f"  {r[1]}: vig={r[2]:>10,.0f} mmm  "
               f"comp={r[3]:>10,.0f}  obl={r[4]:>10,.0f}  "
@@ -317,31 +320,20 @@ def load_db(conn, bid, anio_max, mes_corte, tot, sec_agg, ent_agg, mens_agg, pib
         obl_rows.append( (bid, anio, sector, pct(o, v)))
         pago_rows.append((bid, anio, sector, pct(p, v)))
 
-    conn.execute("DELETE FROM apropiacion_por_sector       WHERE bitacora_id=?", (bid,))
-    conn.execute("DELETE FROM compromisos_pct_por_sector   WHERE bitacora_id=?", (bid,))
-    conn.execute("DELETE FROM obligaciones_pct_por_sector  WHERE bitacora_id=?", (bid,))
-    conn.execute("DELETE FROM pagos_pct_por_sector         WHERE bitacora_id=?", (bid,))
+    conn.vaciar_bitacora((
+        "apropiacion_por_sector", "compromisos_pct_por_sector",
+        "obligaciones_pct_por_sector", "pagos_pct_por_sector",
+    ), bid)
 
-    conn.executemany(
-        "INSERT INTO apropiacion_por_sector "
-        "(bitacora_id,vigencia,sector,vigente_mmm) VALUES(?,?,?,?)",
-        apr_rows
-    )
-    conn.executemany(
-        "INSERT INTO compromisos_pct_por_sector "
-        "(bitacora_id,vigencia,sector,pct_compromisos) VALUES(?,?,?,?)",
-        comp_rows
-    )
-    conn.executemany(
-        "INSERT INTO obligaciones_pct_por_sector "
-        "(bitacora_id,vigencia,sector,pct_obligaciones) VALUES(?,?,?,?)",
-        obl_rows
-    )
-    conn.executemany(
-        "INSERT INTO pagos_pct_por_sector "
-        "(bitacora_id,vigencia,sector,pct_pagos) VALUES(?,?,?,?)",
-        pago_rows
-    )
+    claves_sector = ["bitacora_id", "vigencia", "sector"]
+    conn.upsert("apropiacion_por_sector",
+                claves_sector + ["vigente_mmm"], apr_rows, claves=claves_sector)
+    conn.upsert("compromisos_pct_por_sector",
+                claves_sector + ["pct_compromisos"], comp_rows, claves=claves_sector)
+    conn.upsert("obligaciones_pct_por_sector",
+                claves_sector + ["pct_obligaciones"], obl_rows, claves=claves_sector)
+    conn.upsert("pagos_pct_por_sector",
+                claves_sector + ["pct_pagos"], pago_rows, claves=claves_sector)
     print(f"  {len(apr_rows)} registros (sector × vigencia)")
 
     # ── 3C: ejecucion_sectorial_entidades (todos los años) ───────────────────
@@ -355,14 +347,14 @@ def load_db(conn, bid, anio_max, mes_corte, tot, sec_agg, ent_agg, mens_agg, pib
             pct(c, v), pct(o, v), pct(p, v),
         ))
 
-    conn.execute("DELETE FROM ejecucion_sectorial_entidades WHERE bitacora_id=?", (bid,))
-    conn.executemany("""
-        INSERT INTO ejecucion_sectorial_entidades
-            (bitacora_id, vigencia, sector, entidad,
-             apr_vigente_mmm, compromisos_mmm, obligaciones_mmm, pagos_mmm,
-             pct_c_av, pct_o_av, pct_p_av)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?)
-    """, ent_rows)
+    conn.vaciar_bitacora(("ejecucion_sectorial_entidades",), bid)
+    conn.upsert(
+        "ejecucion_sectorial_entidades",
+        ["bitacora_id", "vigencia", "sector", "entidad",
+         "apr_vigente_mmm", "compromisos_mmm", "obligaciones_mmm", "pagos_mmm",
+         "pct_c_av", "pct_o_av", "pct_p_av"],
+        ent_rows, claves=["bitacora_id", "vigencia", "entidad"],
+    )
     anios_ent = sorted({r[1] for r in ent_rows})
     print(f"  {len(ent_rows)} registros (entidad × vigencia) · años: {anios_ent}")
 
@@ -424,11 +416,13 @@ def load_db(conn, bid, anio_max, mes_corte, tot, sec_agg, ent_agg, mens_agg, pib
             ))
 
     conn.execute(
-        "DELETE FROM ejecucion_sectorial_mensual WHERE bitacora_id=? AND vigencia=?",
+        "DELETE FROM dbo.ejecucion_sectorial_mensual WHERE bitacora_id=? AND vigencia=?",
         (bid, anio_max)
     )
+    # Esta tabla no tiene clave natural única (un sector puede repetir mes),
+    # así que se inserta directo tras el borrado, sin upsert.
     conn.executemany("""
-        INSERT INTO ejecucion_sectorial_mensual
+        INSERT INTO dbo.ejecucion_sectorial_mensual
             (bitacora_id, vigencia, sector, mes,
              pct_compromisos_2025, pct_compromisos_2024,
              pct_compromisos_prom, pct_compromisos_mejor,
@@ -446,7 +440,7 @@ def verificar(conn, bid):
     rows = conn.execute("""
         SELECT vigencia, vigente_mmm, compromisos_mmm,
                pct_compromisos, pct_obligaciones
-        FROM ejecucion_historica WHERE bitacora_id=?
+        FROM dbo.ejecucion_historica WHERE bitacora_id=?
         ORDER BY vigencia
     """, (bid,)).fetchall()
     print(f"{'Año':>6}  {'Vigente mmm':>12}  {'Comp mmm':>12}  {'%Comp':>6}  {'%Obl':>6}")
@@ -454,13 +448,13 @@ def verificar(conn, bid):
         print(f"  {r[0]:>4}  {r[1]:>12,.0f}  {r[2]:>12,.0f}  {r[3]:>6}%  {r[4]:>6}%")
 
     n_sec = conn.execute(
-        "SELECT COUNT(*) FROM apropiacion_por_sector WHERE bitacora_id=?", (bid,)
+        "SELECT COUNT(*) FROM dbo.apropiacion_por_sector WHERE bitacora_id=?", (bid,)
     ).fetchone()[0]
     n_ent = conn.execute(
-        "SELECT COUNT(*) FROM ejecucion_sectorial_entidades WHERE bitacora_id=?", (bid,)
+        "SELECT COUNT(*) FROM dbo.ejecucion_sectorial_entidades WHERE bitacora_id=?", (bid,)
     ).fetchone()[0]
     n_men = conn.execute(
-        "SELECT COUNT(*) FROM ejecucion_sectorial_mensual WHERE bitacora_id=?", (bid,)
+        "SELECT COUNT(*) FROM dbo.ejecucion_sectorial_mensual WHERE bitacora_id=?", (bid,)
     ).fetchone()[0]
     print(f"\n  apropiacion_por_sector:        {n_sec:>5} registros")
     print(f"  ejecucion_sectorial_entidades: {n_ent:>5} registros")
@@ -470,11 +464,11 @@ def verificar(conn, bid):
 # ── Entry point ───────────────────────────────────────────────────────────────
 
 def run(args):
-    conn = sqlite3.connect(args.db)
+    conn = dbmod.conectar()
 
-    bid = args.bitacora_id
+    bid = args.bitacora_id if args.bitacora_id else dbmod.bitacora_reciente(conn)
     row = conn.execute(
-        "SELECT periodo, corte_fecha FROM metadatos_bitacora WHERE id=?", (bid,)
+        "SELECT periodo, corte_fecha FROM dbo.metadatos_bitacora WHERE id=?", (bid,)
     ).fetchone()
     if not row:
         print(f"ERROR: bitacora_id={bid} no existe en metadatos_bitacora")
@@ -484,9 +478,11 @@ def run(args):
     print(f"\n=== ETL ejecucion_sectorial -> bitacora_id={bid} ({row[0]}) ===\n")
 
     # Agregar columnas nuevas si la BD viene del schema anterior
-    ensure_columns(conn)
+    verificar_columnas(conn)
 
-    records_corte, records_mensual = load_excel(args.excel, args.mes_corte)
+    excel = Path(args.excel) if args.excel else bases.excel(6, "BASE DETALLE MENSUAL*.xlsx")
+    print(f"  Excel: {excel.name}")
+    records_corte, records_mensual = load_excel(excel, args.mes_corte)
 
     # El Excel maestro es un archivo acumulativo que crece cada bitácora (p. ej.
     # "BASE DETALLE MENSUAL INVERSIÓN 2018-2026.xlsx"). Si se recarga una
@@ -509,7 +505,7 @@ def run(args):
     gasto_prev = {}
     for r in conn.execute(
         "SELECT vigencia, inv_pct_pib, inv_pct_gasto_total "
-        "FROM ejecucion_historica WHERE bitacora_id=?",
+        "FROM dbo.ejecucion_historica WHERE bitacora_id=?",
         (bid,)
     ).fetchall():
         pib_prev[r[0]]   = r[1]
@@ -527,10 +523,7 @@ def run(args):
             pib_prev, gasto_prev)
 
     conn.commit()
-    conn.close()
 
-    # Re-abrir solo para verificar
-    conn = sqlite3.connect(args.db)
     verificar(conn, bid)
     conn.close()
 
@@ -541,9 +534,10 @@ if __name__ == '__main__':
     ap = argparse.ArgumentParser(
         description='Carga ejecución sectorial desde BASE DETALLE MENSUAL'
     )
-    ap.add_argument('--excel',        required=True,  help='Ruta al archivo .xlsx')
-    ap.add_argument('--db',           default='db/pgn.db')
-    ap.add_argument('--bitacora-id',  type=int, default=1, dest='bitacora_id')
+    ap.add_argument('--excel', default=None,
+                    help='Ruta al .xlsx (por defecto, el de la sección 6)')
+    ap.add_argument('--bitacora-id', type=int, default=None, dest='bitacora_id',
+                    help='Por defecto, la bitácora más reciente')
     ap.add_argument('--mes-corte',    default='MAR',  dest='mes_corte',
                     help='Mes del corte (ENE, FEB, MAR, …)')
     run(ap.parse_args())

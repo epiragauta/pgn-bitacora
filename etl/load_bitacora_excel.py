@@ -22,7 +22,8 @@ Uso:
 Requiere:  openpyxl  (pip install openpyxl)
 """
 
-import sqlite3
+import bases
+import db as dbmod
 import argparse
 from pathlib import Path
 from collections import defaultdict
@@ -35,15 +36,8 @@ except ImportError:
 # ---------------------------------------------------------------------------
 # Rutas
 # ---------------------------------------------------------------------------
-DB_PATH = Path(__file__).parent.parent / "db" / "pgn.db"
-
-# Ruta DNP (equipo institucional) con fallback al PC personal
-_BASES_DNP      = Path(r"D:\ws\Bases Bitácora\2026\Marzo")
-_BASES_PERSONAL = Path(r"C:\ws\dnp\ws\BASES_BITACORA\2026\Marzo")
-_BASES = _BASES_DNP if _BASES_DNP.exists() else _BASES_PERSONAL
-
-FILE1_DEFAULT = _BASES / "1. INVERSIONES 2026 - PND 2022 - 2026" / "Inversiones 2026 - PND 2022-2026.xlsx"
-FILE5_DEFAULT = _BASES / "5. VIGENCIAS FUTURAS" / "20260513 Nueva Base VF - Validada - Revisión Analistas.xlsx"
+FILE1_DEFAULT = bases.excel(1, "Inversiones*.xlsx")
+FILE5_DEFAULT = bases.excel(5, "*Base VF*.xlsx")
 
 MMM = 1_000_000_000  # pesos -> miles de millones
 TOP_COMPONENTES = 5  # cuántos componentes mostrar por transformación (resto -> "OTROS")
@@ -53,28 +47,25 @@ TOP_COMPONENTES = 5  # cuántos componentes mostrar por transformación (resto -
 # DB helpers
 # ---------------------------------------------------------------------------
 def get_conn():
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA foreign_keys = ON")
-    return conn
+    return dbmod.conectar()
 
 
 def delete_bitacora(conn, bid):
+    # Orden inverso a las FK. Ya no van evolucion_presupuestal ni las
+    # regionalizacion_* antiguas: se descartaron en la migración.
     tablas = [
         "inversion_transformaciones", "inversion_componentes_pnd",
         "ejecucion_transformaciones", "apropiacion_por_sector",
         "compromisos_pct_por_sector", "obligaciones_pct_por_sector",
-        "pagos_pct_por_sector", "vigencias_futuras",
+        "pagos_pct_por_sector", "vigencias_futuras", "deflactores_pib",
         "ejecucion_sectorial_entidades", "ejecucion_sectorial_mensual",
-        "ejecucion_historica", "evolucion_presupuestal",
-        "regionalizacion_detalle_2025", "regionalizacion_resumen",
+        "ejecucion_historica", "regionalizacion", "regionalizacion_sectores",
+        "credito_portafolio", "credito_ejecucion_entidad",
+        "credito_ejecucion_historica",
+        "sgp_historico_participacion", "sgp_historico_componentes",
     ]
-    for tbl in tablas:
-        try:
-            conn.execute(f"DELETE FROM {tbl} WHERE bitacora_id=?", (bid,))
-        except Exception:
-            pass
-    conn.execute("DELETE FROM metadatos_bitacora WHERE id=?", (bid,))
+    conn.vaciar_bitacora(tablas, bid)
+    conn.execute("DELETE FROM dbo.metadatos_bitacora WHERE id=?", (bid,))
     conn.commit()
 
 
@@ -83,15 +74,15 @@ def create_bitacora(conn, numero, periodo, corte, fuente, notas):
         "SELECT id FROM metadatos_bitacora WHERE periodo=?", (periodo,)
     ).fetchone()
     if existing:
-        return None, existing["id"]
-    cur = conn.execute(
-        """INSERT INTO metadatos_bitacora
+        return None, existing[0]
+    nuevo_id = conn.insertar_devolviendo_id(
+        """INSERT INTO dbo.metadatos_bitacora
                (numero_bitacora, periodo, corte_fecha, fuente_principal, notas)
            VALUES (?,?,?,?,?)""",
         (numero, periodo, corte, fuente, notas),
     )
     conn.commit()
-    return cur.lastrowid, None
+    return nuevo_id, None
 
 
 # ---------------------------------------------------------------------------
@@ -163,11 +154,10 @@ def load_sec1(conn, bid, vigencia, t_acc, tc_acc):
          round(d["v"] / total_v * 100, 2))
         for t, d in t_acc.items()
     ]
-    conn.executemany(
-        """INSERT OR REPLACE INTO inversion_transformaciones
-               (bitacora_id, vigencia, transformador, inversion_mmm, peso_pct)
-           VALUES (?,?,?,?,?)""",
-        rows,
+    conn.upsert(
+        "inversion_transformaciones",
+        ["bitacora_id", "vigencia", "transformador", "inversion_mmm", "peso_pct"],
+        rows, claves=["bitacora_id", "vigencia", "transformador"],
     )
     print(f"  [OK] inversion_transformaciones      : {len(rows):>4} filas")
 
@@ -188,11 +178,10 @@ def load_sec1(conn, bid, vigencia, t_acc, tc_acc):
                            round(otros_v / MMM, 3),
                            round(otros_v / t_total * 100, 2)))
 
-    conn.executemany(
-        """INSERT OR REPLACE INTO inversion_componentes_pnd
-               (bitacora_id, vigencia, transformador, componente, vigente_mmm, peso_pct)
-           VALUES (?,?,?,?,?,?)""",
-        rows_c,
+    conn.upsert(
+        "inversion_componentes_pnd",
+        ["bitacora_id", "vigencia", "transformador", "componente", "vigente_mmm", "peso_pct"],
+        rows_c, claves=["bitacora_id", "vigencia", "transformador", "componente"],
     )
     print(f"  [OK] inversion_componentes_pnd       : {len(rows_c):>4} filas")
 
@@ -210,13 +199,12 @@ def load_sec1(conn, bid, vigencia, t_acc, tc_acc):
             round(d["o"] / v * 100, 1),
             round(d["p"] / v * 100, 1),
         ))
-    conn.executemany(
-        """INSERT OR REPLACE INTO ejecucion_transformaciones
-               (bitacora_id, vigencia, transformador,
-                apr_vigente_mmm, compromisos_mmm, obligaciones_mmm, pagos_mmm,
-                pct_c_av, pct_o_av, pct_p_av)
-           VALUES (?,?,?,?,?,?,?,?,?,?)""",
-        rows_e,
+    conn.upsert(
+        "ejecucion_transformaciones",
+        ["bitacora_id", "vigencia", "transformador", "apr_vigente_mmm",
+         "compromisos_mmm", "obligaciones_mmm", "pagos_mmm",
+         "pct_c_av", "pct_o_av", "pct_p_av"],
+        rows_e, claves=["bitacora_id", "vigencia", "transformador"],
     )
     print(f"  [OK] ejecucion_transformaciones      : {len(rows_e):>4} filas")
 
@@ -230,11 +218,10 @@ def load_sec4_sec6(conn, bid, vigencia, s_acc, ent_acc):
         (bid, vigencia, s, round(d["v"] / MMM, 3))
         for s, d in s_acc.items()
     ]
-    conn.executemany(
-        """INSERT OR REPLACE INTO apropiacion_por_sector
-               (bitacora_id, vigencia, sector, vigente_mmm)
-           VALUES (?,?,?,?)""",
-        rows_ap,
+    conn.upsert(
+        "apropiacion_por_sector",
+        ["bitacora_id", "vigencia", "sector", "vigente_mmm"],
+        rows_ap, claves=["bitacora_id", "vigencia", "sector"],
     )
     print(f"  [OK] apropiacion_por_sector          : {len(rows_ap):>4} filas")
 
@@ -249,11 +236,10 @@ def load_sec4_sec6(conn, bid, vigencia, s_acc, ent_acc):
              round(d[clave] / d["v"] * 100, 1) if d["v"] else None)
             for s, d in s_acc.items()
         ]
-        conn.executemany(
-            f"""INSERT OR REPLACE INTO {tabla}
-                   (bitacora_id, vigencia, sector, {campo})
-               VALUES (?,?,?,?)""",
-            rows_pct,
+        conn.upsert(
+            tabla,
+            ["bitacora_id", "vigencia", "sector", campo],
+            rows_pct, claves=["bitacora_id", "vigencia", "sector"],
         )
     print(f"  [OK] compromisos/obligaciones/pagos_pct_por_sector: {len(rows_ap):>4} filas c/u")
 
@@ -285,13 +271,11 @@ def load_sec4_sec6(conn, bid, vigencia, s_acc, ent_acc):
             round(d["c"] / v * 100, 1),
             round(d["o"] / v * 100, 1),
         ))
-    conn.executemany(
-        """INSERT OR REPLACE INTO ejecucion_sectorial_entidades
-               (bitacora_id, vigencia, sector, entidad,
-                apr_vigente_mmm, compromisos_mmm, obligaciones_mmm,
-                pct_c_av, pct_o_av)
-           VALUES (?,?,?,?,?,?,?,?,?)""",
-        rows_ent,
+    conn.upsert(
+        "ejecucion_sectorial_entidades",
+        ["bitacora_id", "vigencia", "sector", "entidad", "apr_vigente_mmm",
+         "compromisos_mmm", "obligaciones_mmm", "pct_c_av", "pct_o_av"],
+        rows_ent, claves=["bitacora_id", "vigencia", "entidad"],
     )
     n_sectores = len(s_acc)
     n_entidades = len(rows_ent) - n_sectores
@@ -342,11 +326,11 @@ def load_sec5(conn, bid, ws_vf, año_inicio, año_fin):
             if val and isinstance(val, (int, float)) and val > 0:
                 rows_vf.append((bid, año, sector.upper(), round(val / MMM, 3), None))
 
-    conn.executemany(
-        """INSERT OR REPLACE INTO vigencias_futuras
-               (bitacora_id, vigencia_exec, sector, valor_corriente_mmm)
-           VALUES (?,?,?,?)""",
-        [(b, a, s, v) for b, a, s, v, _ in rows_vf],
+    conn.upsert(
+        "vigencias_futuras",
+        ["bitacora_id", "vigencia_exec", "sector", "valor_corriente_mmm"],
+        [(b, a, sec, v) for b, a, sec, v, _ in rows_vf],
+        claves=["bitacora_id", "vigencia_exec", "sector"],
     )
     print(f"  [OK] vigencias_futuras               : {len(rows_vf):>4} filas  (anos {año_inicio}-{año_fin})")
     print("       [!] Valores en pesos corrientes. Deflactación aplicada en API (/api/vigencias_futuras/chart).")
@@ -381,11 +365,11 @@ def main():
 
     if existing:
         if args.replace:
-            bid_old = existing["id"]
+            bid_old = existing[0]
             delete_bitacora(conn, bid_old)
             print(f"[DEL]   Bitácora {args.periodo} (id={bid_old}) eliminada para recarga")
         else:
-            print(f"[!]   Ya existe la bitácora '{args.periodo}' (id={existing['id']}).")
+            print(f"[!]   Ya existe la bitácora '{args.periodo}' (id={existing[0]}).")
             print("    Use --replace para eliminarla y recargar desde cero.")
             conn.close()
             return

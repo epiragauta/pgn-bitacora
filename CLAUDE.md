@@ -144,28 +144,38 @@ docker compose logs -f api
 
 ### ETL Pipeline
 
-**Seed Data** (`etl/seed_data.py`):
-- Hardcoded Python data for initial Bitácora 2 (2025-I)
-- Creates schema and populates all tables
-- Run once for initial setup
+All loaders write to **SQL Server** through two shared modules — never open a connection yourself:
 
-**Update Script** (`etl/update_bitacora.py`):
-- CSV-based ETL for new quarterly reports
-- Reads from `etl/data/*.csv`
-- Uses `INSERT OR REPLACE` for upserts
+- **`etl/db.py`** — connection plus the sqlite3-shaped helpers the loaders expect.
+  - `conectar()` reads `DNP_DPIP_CONN` (falls back to a local dev string).
+  - `conn.upsert(tabla, columnas, filas, claves)` replaces `INSERT OR REPLACE`. It **deduplicates the batch by key, keeping the last row**, because SQLite applied that statement row by row and duplicates inside one batch would otherwise trip the UNIQUE constraint. It warns on stderr when it drops one.
+  - `conn.insertar_devolviendo_id(sql, params)` replaces `cur.lastrowid`. `SCOPE_IDENTITY()` is scoped to the batch, not the session, so the INSERT and the lookup must travel together — a separate `execute` returns NULL.
+  - `conn.vaciar_bitacora(tablas, bid)` replaces the `DROP TABLE` + `CREATE` that several loaders used to do. **Loaders must not create or drop tables**: the schema belongs to `db/mssql/`, and dropping would break the FKs and `pgn_vista_crosstab`.
+  - `with conn:` commits or rolls back but does **not** close, matching sqlite3.
+- **`etl/bases.py`** — locates the source workbooks. Resolution order: `BASES_BITACORA` env var → `data/BASES_BITACORA/` → the historical Windows paths. Files are matched by glob inside each numbered section folder, since names carry dates and suffixes that change every quarter.
 
-**Excel ETLs** (each loads a specific section from source Excel files in `BASES_BITACORA/`):
+Note that pyodbc only supports positional `?` parameters — no `:named` parameters like sqlite3 — and its rows do not support `row["column"]` access.
+
+**Excel loaders** (source files under `data/BASES_BITACORA/<corte>/`):
 
 | Script | Sección | Fuente Excel |
 |--------|---------|--------------|
-| `etl/load_bitacora_excel.py` | Sec 1, 4, 6 | Varios archivos por sección |
-| `etl/load_regionalizacion.py` | Sec 3 | `3. REGIONALIZACIÓN/Consolidado Reg-Ejec-*.xlsx` |
-| `etl/load_ejecucion_sectorial.py` | Sec 4, 6 | `BASE DETALLE MENSUAL INVERSIÓN *.xlsx` |
-| `etl/load_vigencias_futuras.py` | Sec 5 | `5. VIGENCIAS FUTURAS/*.xlsx` hojas `BASE_SIIF_2` y `TD BITACORA` |
+| `etl/load_bitacora_excel.py` | Sec 1, 4, 5, 6 | Secciones 1 y 5; **crea la bitácora** — correr primero |
+| `etl/importar_pgn.py` | Sec 2 | CSV `data/evolucion_presupuestal.csv` |
+| `etl/load_regionalizacion.py` | Sec 3 | `3. REGIONALIZACIÓN/Consolidado Reg-Ejec-*Graficas*.xlsx` |
+| `etl/load_sectores_region.py` | Sec 3 | `3. REGIONALIZACIÓN/Consolidado Reg-Ejec-*.xlsx`, hoja `sectores_por_region` |
+| `etl/load_ejecucion_sectorial.py` | Sec 4, 6 | `6. EJECUCIÓN SECTORIAL/BASE DETALLE MENSUAL *.xlsx` |
+| `etl/load_vigencias_futuras.py` | Sec 5 | `5. VIGENCIAS FUTURAS/*.xlsx`, hojas `BASE_SIIF_2` y `TD BITACORA` |
+| `etl/load_credito.py` | Sec 7 | `8. SCCI/Datos informe*.xlsx` |
+| `etl/load_sgp.py`, `etl/load_sgp_componentes.py` | Sec 8 | `7. SDRT/SGP_*_Bitacora.xlsx` |
+
+**Order matters.** `load_bitacora_excel.py` creates the bitácora row that every other loader resolves via `bitacora_reciente()`. `load_vigencias_futuras.py` must run *after* it: both write `vigencias_futuras`, and the dedicated loader is authoritative (29 sectors, 2025-2054) over the partial `TD BITACORA` pass (38 sectors, 2026-2040), which it wipes and replaces.
+
+**`etl/update_bitacora.py`** (CSV path) now covers only transformaciones, ejecución histórica, apropiación sectorial and ejecución sectorial. Its regionalización and vigencias-futuras loaders were removed: they wrote to `regionalizacion_detalle_2025` (a dropped table) and to `valor_mmm_ctes`/`pct_pib` (columns that stopped existing well before the migration). Use the Excel loaders for those sections.
+
+**`etl/seed_data.py` was retired** — it seeded the 2025-I bitácora that now lives migrated in SQL Server, and inserted into two tables the migration dropped.
 
 See `docs/etl_uso.md` for detailed usage instructions per script.
-
-**CSV Structure:** See README.md sections on CSV formats for exact column names per table.
 
 ### Frontend-API Integration
 

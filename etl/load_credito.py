@@ -5,10 +5,12 @@ Carga tres tablas:
   credito_ejecucion_entidad   ← hoja "Ejecución Entidad" (recurso 13/14, COP → mmm)
   credito_ejecucion_historica ← hoja "Comp Ejecución Anual Marzo" (2023-2026, COP → mmm)
 """
-import openpyxl, sqlite3, sys, os, re
+import openpyxl, sys
 
-FILE = r"C:\ws\dnp\ws\BASES_BITACORA\2026\Marzo\8. SCCI\Datos informe II 2026.xlsx"
-DB   = os.path.join(os.path.dirname(__file__), '..', 'db', 'pgn.db')
+import bases
+import db as dbmod
+
+FILE = bases.excel(8, "Datos informe*.xlsx")
 
 def clean(v):
     return str(v).strip() if v is not None else ''
@@ -76,43 +78,38 @@ print(f"Ejecución histórica: {len(hist_rows)} años leídos", file=sys.stderr)
 wb.close()
 
 # ── 4. Cargar en BD ───────────────────────────────────────────────────────────
-conn = sqlite3.connect(DB)
+conn = dbmod.conectar()
 
-schema_path = os.path.join(os.path.dirname(__file__), '..', 'db', 'schema.sql')
-with open(schema_path, encoding='utf-8') as f:
-    schema_sql = f.read()
-
-for tabla in ('credito_portafolio', 'credito_ejecucion_entidad', 'credito_ejecucion_historica'):
-    conn.execute(f"DROP TABLE IF EXISTS {tabla}")
-    m = re.search(rf'(CREATE TABLE IF NOT EXISTS {tabla}[\s\S]+?;)', schema_sql)
-    if not m:
-        sys.exit(f"ERROR: no se encontró CREATE TABLE {tabla} en schema.sql")
-    conn.execute(m.group(1))
-
-conn.commit()
-
-bid = conn.execute("SELECT id FROM metadatos_bitacora ORDER BY id DESC LIMIT 1").fetchone()[0]
+bid = dbmod.bitacora_reciente(conn)
 print(f"bitacora_id={bid}", file=sys.stderr)
 
+# Antes se hacía DROP + CREATE de las tres tablas desde schema.sql; ahora el
+# esquema lo gobierna db/mssql/ y basta con vaciar esta bitácora.
+# credito_portafolio no tiene clave natural única, así que se recarga entera.
+conn.vaciar_bitacora(
+    ("credito_portafolio", "credito_ejecucion_entidad", "credito_ejecucion_historica"),
+    bid,
+)
+
 conn.executemany("""
-    INSERT INTO credito_portafolio
+    INSERT INTO dbo.credito_portafolio
         (bitacora_id, nombre, nombre_corto, fuente, contrato, sector, monto_usd, desembolsado_usd)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
 """, [(bid, *r) for r in port_rows])
 
-conn.executemany("""
-    INSERT INTO credito_ejecucion_entidad
-        (bitacora_id, entidad, sector, apr_inicial_mmm, apr_vigente_mmm, compromiso_mmm,
-         obligacion_mmm, pago_mmm, pct_com, pct_ejec, pct_pago)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-""", [(bid, *r) for r in ent_rows])
+conn.upsert(
+    "credito_ejecucion_entidad",
+    ["bitacora_id", "entidad", "sector", "apr_inicial_mmm", "apr_vigente_mmm",
+     "compromiso_mmm", "obligacion_mmm", "pago_mmm", "pct_com", "pct_ejec", "pct_pago"],
+    [(bid, *r) for r in ent_rows], claves=["bitacora_id", "entidad"],
+)
 
-conn.executemany("""
-    INSERT INTO credito_ejecucion_historica
-        (bitacora_id, anio, pct_comprometido, pct_ejecutado, pct_pagado,
-         vigente_mmm, comprometido_mmm, ejecutado_mmm, pagado_mmm)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-""", [(bid, *r) for r in hist_rows])
+conn.upsert(
+    "credito_ejecucion_historica",
+    ["bitacora_id", "anio", "pct_comprometido", "pct_ejecutado", "pct_pagado",
+     "vigente_mmm", "comprometido_mmm", "ejecutado_mmm", "pagado_mmm"],
+    [(bid, *r) for r in hist_rows], claves=["bitacora_id", "anio"],
+)
 
 conn.commit()
 

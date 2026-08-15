@@ -19,3 +19,6 @@ etl/data/*.csv
 # Compilados .NET
 backend/**/bin/
 backend/**/obj/
+
+# Excel fuente de las bitácoras (insumos, no versionados)
+data/BASES_BITACORA/

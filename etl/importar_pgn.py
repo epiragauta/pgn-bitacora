@@ -1,84 +1,28 @@
 #!/usr/bin/env python3
 """
-importar_pgn.py — Carga el CSV de evolución presupuestal PGN en SQLite.
+importar_pgn.py — Carga el CSV de evolución presupuestal PGN (sección 2).
 
 Uso:
-    python importar_pgn.py <ruta_csv> <ruta_db>
+    python importar_pgn.py [ruta_csv]
 
 Ejemplo:
-    python importar_pgn.py data/evolucion_presupuestal.csv db/pgn.db
+    python importar_pgn.py data/evolucion_presupuestal.csv
 
-El script ejecuta DROP + CREATE de las tablas pgn_concepto y pgn_ejecucion.
-El resto del schema (otras secciones de la app) no se modifica.
+Vacía y recarga pgn_concepto y pgn_ejecucion. El esquema lo gobierna
+db/mssql/001_schema.sql: el script ya no crea ni borra tablas, porque
+hacerlo rompería la vista pgn_vista_crosstab y las claves foráneas.
+
+Estas dos tablas no llevan bitacora_id: son la serie del PGN completa,
+compartida por todas las bitácoras.
 """
 
 import sys
 import csv
-import sqlite3
 import time
 from pathlib import Path
 
-# ── DDL ──────────────────────────────────────────────────────────────────────
+import db as dbmod
 
-DDL = """
-PRAGMA foreign_keys = OFF;
-
-DROP TABLE IF EXISTS pgn_ejecucion;
-DROP TABLE IF EXISTS pgn_concepto;
-DROP VIEW  IF EXISTS pgn_vista_crosstab;
-
-CREATE TABLE pgn_concepto (
-    id       INTEGER PRIMARY KEY AUTOINCREMENT,
-    nombre   TEXT    NOT NULL UNIQUE,
-    padre_id INTEGER REFERENCES pgn_concepto(id) ON DELETE SET NULL,
-    nivel    INTEGER NOT NULL CHECK(nivel BETWEEN 1 AND 4),
-    unidad   TEXT    NOT NULL CHECK(unidad IN ('Miles mm COP','% PIB')),
-    orden    INTEGER NOT NULL
-);
-
-CREATE TABLE pgn_ejecucion (
-    id          INTEGER PRIMARY KEY AUTOINCREMENT,
-    anio        INTEGER NOT NULL CHECK(anio BETWEEN 2022 AND 2030),
-    fase        TEXT    NOT NULL CHECK(fase IN ('Vigente','Comprometido','Obligado','Pagado')),
-    concepto_id INTEGER NOT NULL REFERENCES pgn_concepto(id),
-    valor       REAL    NOT NULL,
-    UNIQUE(anio, fase, concepto_id)
-);
-
-CREATE INDEX idx_pgn_ej_anio_fase ON pgn_ejecucion(anio, fase);
-CREATE INDEX idx_pgn_ej_concepto  ON pgn_ejecucion(concepto_id);
-CREATE INDEX idx_pgn_co_padre     ON pgn_concepto(padre_id);
-
-CREATE VIEW pgn_vista_crosstab AS
-SELECT
-    c.id, c.nombre, c.nivel, c.unidad, c.orden,
-    MAX(CASE WHEN e.anio=2022 AND e.fase='Vigente'       THEN e.valor END) AS vigente_2022,
-    MAX(CASE WHEN e.anio=2022 AND e.fase='Comprometido'  THEN e.valor END) AS comprometido_2022,
-    MAX(CASE WHEN e.anio=2022 AND e.fase='Obligado'      THEN e.valor END) AS obligado_2022,
-    MAX(CASE WHEN e.anio=2022 AND e.fase='Pagado'        THEN e.valor END) AS pagado_2022,
-    MAX(CASE WHEN e.anio=2023 AND e.fase='Vigente'       THEN e.valor END) AS vigente_2023,
-    MAX(CASE WHEN e.anio=2023 AND e.fase='Comprometido'  THEN e.valor END) AS comprometido_2023,
-    MAX(CASE WHEN e.anio=2023 AND e.fase='Obligado'      THEN e.valor END) AS obligado_2023,
-    MAX(CASE WHEN e.anio=2023 AND e.fase='Pagado'        THEN e.valor END) AS pagado_2023,
-    MAX(CASE WHEN e.anio=2024 AND e.fase='Vigente'       THEN e.valor END) AS vigente_2024,
-    MAX(CASE WHEN e.anio=2024 AND e.fase='Comprometido'  THEN e.valor END) AS comprometido_2024,
-    MAX(CASE WHEN e.anio=2024 AND e.fase='Obligado'      THEN e.valor END) AS obligado_2024,
-    MAX(CASE WHEN e.anio=2024 AND e.fase='Pagado'        THEN e.valor END) AS pagado_2024,
-    MAX(CASE WHEN e.anio=2025 AND e.fase='Vigente'       THEN e.valor END) AS vigente_2025,
-    MAX(CASE WHEN e.anio=2025 AND e.fase='Comprometido'  THEN e.valor END) AS comprometido_2025,
-    MAX(CASE WHEN e.anio=2025 AND e.fase='Obligado'      THEN e.valor END) AS obligado_2025,
-    MAX(CASE WHEN e.anio=2025 AND e.fase='Pagado'        THEN e.valor END) AS pagado_2025,
-    MAX(CASE WHEN e.anio=2026 AND e.fase='Vigente'       THEN e.valor END) AS vigente_2026,
-    MAX(CASE WHEN e.anio=2026 AND e.fase='Comprometido'  THEN e.valor END) AS comprometido_2026,
-    MAX(CASE WHEN e.anio=2026 AND e.fase='Obligado'      THEN e.valor END) AS obligado_2026,
-    MAX(CASE WHEN e.anio=2026 AND e.fase='Pagado'        THEN e.valor END) AS pagado_2026
-FROM pgn_concepto c
-LEFT JOIN pgn_ejecucion e ON e.concepto_id = c.id
-GROUP BY c.id
-ORDER BY c.orden;
-
-PRAGMA foreign_keys = ON;
-"""
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -124,13 +68,16 @@ def extraer_conceptos(rows: list[dict]) -> list[tuple]:
 
 # ── Main ─────────────────────────────────────────────────────────────────────
 
+CSV_DEFECTO = Path(__file__).resolve().parent.parent / 'data' / 'evolucion_presupuestal.csv'
+
+
 def main() -> None:
-    if len(sys.argv) != 3:
-        print(f'Uso: python {sys.argv[0]} <ruta_csv> <ruta_db>')
+    if len(sys.argv) > 2:
+        print(f'Uso: python {sys.argv[0]} [ruta_csv]')
         sys.exit(1)
 
-    csv_path = Path(sys.argv[1])
-    db_path  = Path(sys.argv[2])
+    # La base ya no es un argumento: se toma de DNP_DPIP_CONN (ver etl/db.py).
+    csv_path = Path(sys.argv[1]) if len(sys.argv) == 2 else CSV_DEFECTO
 
     if not csv_path.exists():
         print(f'Error: archivo CSV no encontrado: {csv_path}')
@@ -146,25 +93,28 @@ def main() -> None:
     conceptos = extraer_conceptos(rows)
     print(f'Conceptos únicos: {len(conceptos)}')
 
-    # 3. Conectar a la BD y ejecutar DDL
-    conn = sqlite3.connect(db_path)
-    conn.executescript(DDL)
+    # 3. Conectar y vaciar (en orden de FK: primero los hechos)
+    conn = dbmod.conectar()
+    conn.execute('DELETE FROM dbo.pgn_ejecucion')
+    conn.execute('DELETE FROM dbo.pgn_concepto')
+    conn.commit()
 
     advertencias = 0
 
     with conn:
         # Paso A: insertar todos los conceptos sin padre_id (se resuelve después)
         conn.executemany(
-            'INSERT INTO pgn_concepto(nombre, padre_id, nivel, unidad, orden) '
+            'INSERT INTO dbo.pgn_concepto(nombre, padre_id, nivel, unidad, orden) '
             'VALUES (?, NULL, ?, ?, ?)',
             [(nombre, nivel, unidad, orden)
              for nombre, _, nivel, unidad, orden in conceptos]
         )
 
         # Paso B: resolver padre_id por nombre y actualizar
-        nombre_a_id: dict[str, int] = dict(
-            conn.execute('SELECT nombre, id FROM pgn_concepto').fetchall()
-        )
+        nombre_a_id: dict[str, int] = {
+            r[0]: r[1]
+            for r in conn.execute('SELECT nombre, id FROM dbo.pgn_concepto').fetchall()
+        }
         actualizaciones: list[tuple[int, int]] = []
         for nombre, padre_nombre, *_ in conceptos:
             if not padre_nombre:
@@ -178,7 +128,7 @@ def main() -> None:
                 actualizaciones.append((padre_id, nombre_a_id[nombre]))
 
         conn.executemany(
-            'UPDATE pgn_concepto SET padre_id=? WHERE id=?',
+            'UPDATE dbo.pgn_concepto SET padre_id=? WHERE id=?',
             actualizaciones
         )
 
@@ -199,15 +149,15 @@ def main() -> None:
                 valor,
             ))
 
-        conn.executemany(
-            'INSERT OR REPLACE INTO pgn_ejecucion(anio, fase, concepto_id, valor) '
-            'VALUES (?, ?, ?, ?)',
-            hechos
+        conn.upsert(
+            'pgn_ejecucion',
+            ['anio', 'fase', 'concepto_id', 'valor'],
+            hechos, claves=['anio', 'fase', 'concepto_id'],
         )
 
     # 4. Verificar y reportar
-    n_conceptos = conn.execute('SELECT COUNT(*) FROM pgn_concepto').fetchone()[0]
-    n_hechos    = conn.execute('SELECT COUNT(*) FROM pgn_ejecucion').fetchone()[0]
+    n_conceptos = conn.execute('SELECT COUNT(*) FROM dbo.pgn_concepto').fetchone()[0]
+    n_hechos    = conn.execute('SELECT COUNT(*) FROM dbo.pgn_ejecucion').fetchone()[0]
     conn.close()
 
     t1 = time.perf_counter()
@@ -219,7 +169,7 @@ def main() -> None:
     print(f'  pgn_ejecucion : {n_hechos:>4} registros')
     if advertencias:
         print(f'  Advertencias  → {advertencias}')
-    print(f'  Base de datos : {db_path.resolve()}')
+    print(f'  Origen CSV    : {csv_path.resolve()}')
 
 
 if __name__ == '__main__':

@@ -4,11 +4,13 @@ Carga dos tablas:
   deflactores_pib   ← TD BITACORA (deflactor, PIB corriente, PIB constante)
   vigencias_futuras ← BASE_SIIF_2 pivot (sector × año) en pesos corrientes mmm
 """
-import openpyxl, sqlite3, sys, os, re
+import openpyxl, sys
 from collections import defaultdict
 
-FILE = r"C:\ws\dnp\ws\BASES_BITACORA\2026\Marzo\5. VIGENCIAS FUTURAS\20260513 Nueva Base VF - Validada - Revisión Analistas.xlsx"
-DB   = os.path.join(os.path.dirname(__file__), '..', 'db', 'pgn.db')
+import bases
+import db as dbmod
+
+FILE = bases.excel(5, "*Base VF*.xlsx")
 
 def clean(v):
     return str(v).strip() if v is not None else ''
@@ -73,12 +75,43 @@ print(f"Muestra deflactores: { {y: deflactor[y] for y in sorted(deflactor)[:5]} 
 print(f"PIB corrientes encontrados: {len(pib_corr)} años", file=sys.stderr)
 print(f"PIB constantes encontrados: {len(pib_ctes)} años", file=sys.stderr)
 
-# ── 2. BASE_SIIF_2: pivot (Nombre_Sector, Vigencia) → SUM(Valor_VF_Final) ───
-ws_src = wb["BASE_SIIF_2"]
+# ── 2. Hoja base SIIF: pivot (Nombre_Sector, Vigencia) → SUM(Valor_VF_Final) ──
+# El nombre de la hoja cambia entre entregas del archivo ('BASE_SIIF_2' en
+# la versión con la que se cargó la base original, 'BASE_SIIF' en la
+# entrega de marzo de 2026), así que se busca entre los alias conocidos y
+# se deja constancia de cuál se usó.
+_HOJAS_BASE = ("BASE_SIIF_2", "BASE_SIIF")
+_hoja = next((h for h in _HOJAS_BASE if h in wb.sheetnames), None)
+if _hoja is None:
+    sys.exit(
+        f"ERROR: no se encontró ninguna hoja base de SIIF ({', '.join(_HOJAS_BASE)}).\n"
+        f"Hojas disponibles: {wb.sheetnames}"
+    )
+print(f"Hoja base SIIF: '{_hoja}'", file=sys.stderr)
+ws_src = wb[_hoja]
 src_rows = list(ws_src.iter_rows(values_only=True))
 wb.close()
 
-src_header = src_rows[0]
+# La fila de encabezados no siempre es la primera: la entrega de marzo de
+# 2026 trae una fila en blanco arriba. Se localiza por contenido.
+def _fila_encabezado(filas, requeridas=('Nombre_Sector', 'Vigencia'), maximo=10):
+    for i, fila in enumerate(filas[:maximo]):
+        etiquetas = {clean(c) for c in fila if c is not None}
+        if all(r in etiquetas for r in requeridas):
+            return i
+    return None
+
+
+_i_header = _fila_encabezado(src_rows)
+if _i_header is None:
+    sys.exit(
+        "ERROR: no se encontró la fila de encabezados con 'Nombre_Sector' y "
+        f"'Vigencia' en las primeras filas de '{_hoja}'."
+    )
+if _i_header:
+    print(f"Encabezados en la fila {_i_header + 1} de '{_hoja}'", file=sys.stderr)
+
+src_header = src_rows[_i_header]
 SC = {clean(h): i for i, h in enumerate(src_header) if h is not None}
 
 VIG_C  = SC.get('Vigencia')
@@ -86,7 +119,19 @@ VAL_C  = SC.get('Valor_VF_Final (Actual)') or SC.get('Valor_VF_Final (Actual) ')
 SECT_C = SC.get('Nombre_Sector')
 
 if None in (VIG_C, VAL_C, SECT_C):
-    sys.exit(f"ERROR: columnas no encontradas. VIG={VIG_C}, VAL={VAL_C}, SECT={SECT_C}")
+    faltan = [n for n, c in (("Vigencia", VIG_C),
+                             ("Valor_VF_Final (Actual)", VAL_C),
+                             ("Nombre_Sector", SECT_C)) if c is None]
+    sys.exit(
+        f"ERROR: faltan columnas en la hoja '{_hoja}': {faltan}\n"
+        f"Encabezados leídos: {sorted(SC)}\n\n"
+        "'Valor_VF_Final (Actual)' es una columna CALCULADA que existe en la\n"
+        "hoja 'BASE_SIIF_2'. Si el libro solo trae 'BASE_SIIF' con las\n"
+        "columnas crudas de SIIF (ACTUAL/Autorizada/Utilizada), es una\n"
+        "versión anterior del archivo: no se puede derivar aquí el valor\n"
+        "final sin conocer la fórmula, y elegir una columna cruda daría\n"
+        "cifras equivocadas. Solicitar el libro que incluya 'BASE_SIIF_2'."
+    )
 
 pivot = defaultdict(lambda: defaultdict(float))
 filas = 0
@@ -116,29 +161,17 @@ print(f"\nPivot: {filas} filas leídas → {len(all_sectors)} sectores × {len(a
       file=sys.stderr)
 
 # ── 3. Cargar en BD ───────────────────────────────────────────────────────────
-conn = sqlite3.connect(DB)
+conn = dbmod.conectar()
 
-schema_path = os.path.join(os.path.dirname(__file__), '..', 'db', 'schema.sql')
-with open(schema_path, encoding='utf-8') as f:
-    schema_sql = f.read()
-
-# Recrear ambas tablas (DROP + CREATE)
-for tabla in ('deflactores_pib', 'vigencias_futuras'):
-    conn.execute(f"DROP TABLE IF EXISTS {tabla}")
-    m = re.search(
-        rf'(CREATE TABLE IF NOT EXISTS {tabla}[\s\S]+?;)',
-        schema_sql
-    )
-    if not m:
-        sys.exit(f"ERROR: no se encontró CREATE TABLE {tabla} en schema.sql")
-    conn.execute(m.group(1))
-
-conn.commit()
-
-bid = conn.execute(
-    "SELECT id FROM metadatos_bitacora ORDER BY id DESC LIMIT 1"
-).fetchone()[0]
+bid = dbmod.bitacora_reciente(conn)
 print(f"bitacora_id={bid}", file=sys.stderr)
+
+# Este cargador es la fuente autoritativa de la sección 5: reemplaza por
+# completo lo que haya, incluido lo que cargue load_bitacora_excel.py
+# desde la hoja TD BITACORA, que cubre menos años y más sectores.
+# Antes esto se conseguía con DROP TABLE; ahora se vacía por bitácora,
+# porque borrar la tabla rompería las claves foráneas.
+conn.vaciar_bitacora(("vigencias_futuras", "deflactores_pib"), bid)
 
 # Deflactores
 defl_rows = []
@@ -149,10 +182,11 @@ for y in sorted(year_col):
     if d is not None:
         defl_rows.append((bid, y, d, pc, pk))
 
-conn.executemany("""
-    INSERT INTO deflactores_pib (bitacora_id, anio, deflactor, pib_corriente_mmm, pib_constante_mmm)
-    VALUES (?, ?, ?, ?, ?)
-""", defl_rows)
+conn.upsert(
+    "deflactores_pib",
+    ["bitacora_id", "anio", "deflactor", "pib_corriente_mmm", "pib_constante_mmm"],
+    defl_rows, claves=["bitacora_id", "anio"],
+)
 
 # Vigencias futuras (pivot crudo)
 vf_rows = []
@@ -163,10 +197,11 @@ for sect in all_sectors:
             continue
         vf_rows.append((bid, year, sect, round(pesos / 1e9, 3)))
 
-conn.executemany("""
-    INSERT INTO vigencias_futuras (bitacora_id, vigencia_exec, sector, valor_corriente_mmm)
-    VALUES (?, ?, ?, ?)
-""", vf_rows)
+conn.upsert(
+    "vigencias_futuras",
+    ["bitacora_id", "vigencia_exec", "sector", "valor_corriente_mmm"],
+    vf_rows, claves=["bitacora_id", "vigencia_exec", "sector"],
+)
 
 conn.commit()
 

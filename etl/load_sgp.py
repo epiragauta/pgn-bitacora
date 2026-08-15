@@ -3,10 +3,12 @@ ETL Sistema General de Participaciones (SGP) — Bitácora 2026-I
 Carga: sgp_historico_participacion ← hoja "8.1. Historico_Participacion"
        (tabla dinámica de participaciones por año, columnas T:U)
 """
-import openpyxl, sqlite3, sys, os, re
+import openpyxl, sys
 
-FILE = r"C:\ws\dnp\ws\BASES_BITACORA\2026\Marzo\7. SDRT\SGP_2022-2026_Bitacora.xlsx"
-DB   = os.path.join(os.path.dirname(__file__), '..', 'db', 'pgn.db')
+import bases
+import db as dbmod
+
+FILE = bases.excel(7, "SGP_*_Bitacora.xlsx")
 
 # Etiqueta de la tabla dinámica -> clave de la serie
 _SERIES_MAP = {
@@ -71,28 +73,22 @@ for anio in años:
 print(f"Histórico SGP: {len(hist_rows)} vigencias leídas (2022-2026)", file=sys.stderr)
 
 # ── Cargar en BD ──────────────────────────────────────────────────────────────
-conn = sqlite3.connect(DB)
+conn = dbmod.conectar()
 
-schema_path = os.path.join(os.path.dirname(__file__), '..', 'db', 'schema.sql')
-with open(schema_path, encoding='utf-8') as f:
-    schema_sql = f.read()
-
-conn.execute("DROP TABLE IF EXISTS sgp_historico_participacion")
-m = re.search(r'(CREATE TABLE IF NOT EXISTS sgp_historico_participacion[\s\S]+?;)', schema_sql)
-if not m:
-    sys.exit("ERROR: no se encontró CREATE TABLE sgp_historico_participacion en schema.sql")
-conn.execute(m.group(1))
-conn.commit()
-
-bid = conn.execute("SELECT id FROM metadatos_bitacora ORDER BY id DESC LIMIT 1").fetchone()[0]
+bid = dbmod.bitacora_reciente(conn)
 print(f"bitacora_id={bid}", file=sys.stderr)
 
-conn.executemany("""
-    INSERT INTO sgp_historico_participacion
-        (bitacora_id, vigencia, educacion_mmm, salud_mmm, agua_potable_mmm, proposito_general_mmm,
-         alimentacion_escolar_mmm, riberenos_mmm, resguardos_indigenas_mmm, fonpet_ae_mmm, total_mmm)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-""", [(bid, *r) for r in hist_rows])
+# El esquema lo gobierna db/mssql/; aquí solo se reemplazan los datos de
+# esta bitácora. Antes se hacía DROP TABLE + CREATE desde schema.sql, que
+# en SQL Server rompería las claves foráneas.
+conn.upsert(
+    "sgp_historico_participacion",
+    ["bitacora_id", "vigencia", "educacion_mmm", "salud_mmm", "agua_potable_mmm",
+     "proposito_general_mmm", "alimentacion_escolar_mmm", "riberenos_mmm",
+     "resguardos_indigenas_mmm", "fonpet_ae_mmm", "total_mmm"],
+    [(bid, *r) for r in hist_rows],
+    claves=["bitacora_id", "vigencia"],
+)
 
 conn.commit()
 

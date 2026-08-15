@@ -11,37 +11,38 @@ El script:
 Estructura de CSV esperada por tabla:
   - data/inversion_transformaciones.csv
   - data/ejecucion_historica.csv
-  - data/regionalizacion.csv
   - data/apropiacion_sectores.csv
-  - data/vigencias_futuras.csv
   - data/ejecucion_sectorial.csv
+
+Secciones que este script YA NO carga:
+  · Regionalización — escribía en regionalizacion_detalle_2025, tabla
+    retirada en la migración. Usar etl/load_regionalizacion.py.
+  · Vigencias futuras — su CSV trae valor_mmm_ctes y pct_pib, columnas
+    que dejaron de existir hace tiempo (la tabla guarda pesos corrientes
+    en valor_corriente_mmm). Usar etl/load_vigencias_futuras.py.
 """
 
-import sqlite3
 import csv
 import argparse
 from pathlib import Path
-from datetime import datetime
 
-DB_PATH   = Path(__file__).parent.parent / "db" / "pgn.db"
-DATA_DIR  = Path(__file__).parent / "data"
+import db as dbmod
+
+DATA_DIR = Path(__file__).parent / "data"
 
 
 def get_conn():
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA foreign_keys = ON")
-    return conn
+    return dbmod.conectar()
 
 
 def create_bitacora(conn, numero, periodo, corte, fuente, notas):
-    cur = conn.execute("""
-        INSERT INTO metadatos_bitacora
+    nuevo_id = conn.insertar_devolviendo_id("""
+        INSERT INTO dbo.metadatos_bitacora
             (numero_bitacora, periodo, corte_fecha, fuente_principal, notas)
         VALUES (?,?,?,?,?)
     """, (numero, periodo, corte, fuente, notas))
     conn.commit()
-    return cur.lastrowid
+    return nuevo_id
 
 
 def load_csv(path, required_cols=None):
@@ -63,7 +64,7 @@ def load_csv(path, required_cols=None):
 def load_inversion_transformaciones(conn, bid, rows):
     for r in rows:
         conn.execute("""
-            INSERT OR REPLACE INTO inversion_transformaciones
+            INSERT INTO dbo.inversion_transformaciones
                 (bitacora_id, vigencia, transformador, inversion_mmm, peso_pct)
             VALUES (?,?,?,?,?)
         """, (bid, int(r["vigencia"]), r["transformador"],
@@ -75,7 +76,7 @@ def load_inversion_transformaciones(conn, bid, rows):
 def load_ejecucion_historica(conn, bid, rows):
     for r in rows:
         conn.execute("""
-            INSERT OR REPLACE INTO ejecucion_historica
+            INSERT INTO dbo.ejecucion_historica
                 (bitacora_id, vigencia, vigente_mmm, compromisos_mmm,
                  obligaciones_mmm, pagos_mmm, pct_compromisos, pct_obligaciones,
                  pct_pagos, inv_pct_pib, inv_pct_gasto_total)
@@ -94,34 +95,10 @@ def load_ejecucion_historica(conn, bid, rows):
     print(f"  ✅  ejecucion_historica: {len(rows)} filas")
 
 
-def load_regionalizacion(conn, bid, rows):
-    import json
-    for r in rows:
-        conn.execute("""
-            INSERT OR REPLACE INTO regionalizacion_detalle_2025
-                (bitacora_id, region, departamento, vigente_mm, compromisos_mm,
-                 obligaciones_mm, pagos_mm, pct_ejec_compromisos,
-                 pct_ejec_obligaciones, pct_ejec_pagos, pct_participacion,
-                 principales_sectores)
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
-        """, (bid,
-              r["region"], r["departamento"],
-              float(r.get("vigente_mm") or 0),
-              float(r.get("compromisos_mm") or 0),
-              float(r.get("obligaciones_mm") or 0),
-              float(r.get("pagos_mm") or 0),
-              float(r["pct_ejec_compromisos"]) if r.get("pct_ejec_compromisos") else None,
-              float(r["pct_ejec_obligaciones"]) if r.get("pct_ejec_obligaciones") else None,
-              float(r["pct_ejec_pagos"]) if r.get("pct_ejec_pagos") else None,
-              float(r["pct_participacion"]) if r.get("pct_participacion") else None,
-              r.get("principales_sectores", "[]")))
-    print(f"  ✅  regionalizacion_detalle_2025: {len(rows)} filas")
-
-
 def load_apropiacion_sectores(conn, bid, rows):
     for r in rows:
         conn.execute("""
-            INSERT OR REPLACE INTO apropiacion_por_sector
+            INSERT INTO dbo.apropiacion_por_sector
                 (bitacora_id, vigencia, sector, vigente_mmm)
             VALUES (?,?,?,?)
         """, (bid, int(r["vigencia"]), r["sector"],
@@ -129,22 +106,10 @@ def load_apropiacion_sectores(conn, bid, rows):
     print(f"  ✅  apropiacion_por_sector: {len(rows)} filas")
 
 
-def load_vigencias_futuras(conn, bid, rows):
-    for r in rows:
-        conn.execute("""
-            INSERT OR REPLACE INTO vigencias_futuras
-                (bitacora_id, vigencia_exec, sector, valor_mmm_ctes, pct_pib)
-            VALUES (?,?,?,?,?)
-        """, (bid, int(r["vigencia_exec"]), r["sector"],
-              float(r["valor_mmm_ctes"]) if r.get("valor_mmm_ctes") else None,
-              float(r["pct_pib"]) if r.get("pct_pib") else None))
-    print(f"  ✅  vigencias_futuras: {len(rows)} filas")
-
-
 def load_ejecucion_sectorial(conn, bid, rows):
     for r in rows:
         conn.execute("""
-            INSERT OR REPLACE INTO ejecucion_sectorial_entidades
+            INSERT INTO dbo.ejecucion_sectorial_entidades
                 (bitacora_id, vigencia, sector, entidad,
                  apr_vigente_mmm, compromisos_mmm, obligaciones_mmm,
                  pct_c_av, pct_o_av)
@@ -187,9 +152,7 @@ def main():
     loaders = [
         ("inversion_transformaciones.csv", load_inversion_transformaciones),
         ("ejecucion_historica.csv",        load_ejecucion_historica),
-        ("regionalizacion.csv",            load_regionalizacion),
         ("apropiacion_sectores.csv",       load_apropiacion_sectores),
-        ("vigencias_futuras.csv",          load_vigencias_futuras),
         ("ejecucion_sectorial.csv",        load_ejecucion_sectorial),
     ]
     for fname, fn in loaders:

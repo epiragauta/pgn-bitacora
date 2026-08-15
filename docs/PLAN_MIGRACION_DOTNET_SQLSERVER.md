@@ -323,13 +323,81 @@ Se compararon byte a byte (SHA-256) los 8 recursos que `index.html` referencia y
 
 La comprobación automatizada en navegador no fue posible en esta sesión (extensión de Chrome no disponible). **Queda por hacer manualmente**: abrir `http://127.0.0.1:5080/` y recorrer las 8 secciones, el mapa Leaflet, los modales de información y el selector de bitácoras. Todo lo que el navegador solicita —API y estáticos— ya está verificado como idéntico, así que es una confirmación visual, no una búsqueda de fallos.
 
-### Fase 5 — ETL contra SQL Server *(1–2 días)*
-- Instalar el driver **ODBC Driver 18 for SQL Server** y `pyodbc`.
-- Nuevo `etl/db.py` que centraliza la conexión y ofrece `upsert(tabla, claves, filas)` traduciendo `INSERT OR REPLACE` a `MERGE` (o `DELETE` + `INSERT` por `bitacora_id`, más simple y suficiente aquí).
-- Adaptar los 11 scripts: los placeholders `?` ya son compatibles con pyodbc; hay que sustituir `sqlite3.connect`, `INSERT OR REPLACE`, `INSERT OR IGNORE` y `cursor.lastrowid` (→ `SCOPE_IDENTITY()`).
-- Prueba de humo: recargar una sección completa desde su Excel de origen y volver a correr el comparador de la Fase 4.
+### Fase 5 — ETL contra SQL Server — ✅ **COMPLETADA** (2026-08-15), con dos cargadores bloqueados por los archivos fuente
 
-**Nota:** los archivos fuente (`BASES_BITACORA/`) **no están en el repositorio**; esta fase requiere que el usuario los provea para probar de extremo a extremo.
+Dos módulos nuevos concentran todo lo que cambiaba de motor, para que los cargadores conserven su lógica de lectura de Excel, que es donde vive el conocimiento del negocio:
+
+- **`etl/db.py`** — conexión y equivalencias:
+
+  | SQLite | Reemplazo | Por qué |
+  |---|---|---|
+  | `INSERT OR REPLACE` | `conn.upsert(...)` | No existe en SQL Server |
+  | `cur.lastrowid` | `conn.insertar_devolviendo_id(...)` | `SCOPE_IDENTITY()` está acotado al **lote**, no a la sesión: en un `execute` posterior devuelve NULL |
+  | `DROP TABLE` + `CREATE` | `conn.vaciar_bitacora(...)` | El esquema es de `db/mssql/`; borrar la tabla rompería las FK y la vista |
+  | `PRAGMA foreign_keys` | (nada) | Las FK están siempre activas |
+  | `:parametro` | `?` | pyodbc solo admite posicionales |
+  | `row["col"]` | `row[0]` | Las filas de pyodbc no se indexan por nombre |
+
+- **`etl/bases.py`** — localiza los Excel: variable `BASES_BITACORA` → `data/BASES_BITACORA/` → rutas históricas de Windows. Busca por patrón dentro de cada carpeta de sección, porque los nombres traen fechas y sufijos que cambian cada corte. **Elimina las rutas absolutas de Windows** que impedían ejecutar los ETL fuera del equipo original.
+
+#### Verificación: el ETL reproduce la base migrada
+
+Se cargaron los Excel en una base `dnp_dpip_pruebas` y se contrastó contra `dnp_dpip` con `tools/compare_bd.py`, que compara filas y suma de cada columna numérica por bitácora.
+
+**Resultado: 18 de 21 tablas idénticas**, incluidas todas las sumas. Las tres restantes son exactamente las de los cargadores bloqueados (ver abajo).
+
+| Tabla | Migrado | ETL |
+|---|---|---|
+| `ejecucion_sectorial_entidades` | 1.455 | 1.455 ✅ |
+| `apropiacion_por_sector` y las tres `*_pct_por_sector` | 273 c/u | 273 c/u ✅ |
+| `regionalizacion` | 175 | 175 ✅ |
+| `pgn_ejecucion` / `pgn_concepto` | 560 / 28 | 560 / 28 ✅ |
+| `sgp_historico_componentes` | 95 | 95 ✅ |
+| `credito_*` | 17 / 18 / 4 | 17 / 18 / 4 ✅ |
+| `deflactores_pib` | 30 | **0** ⛔ |
+| `regionalizacion_sectores` | 135 | **0** ⛔ |
+| `vigencias_futuras` | 193 | **271** ⛔ (carga parcial) |
+
+#### ⛔ Dos cargadores bloqueados: los libros entregados no son la versión de origen
+
+No es un problema de la migración: los Excel de `data/BASES_BITACORA/Marzo/` **no contienen las hojas que estos cargadores necesitan**, y derivarlas aquí significaría reimplementar agregaciones no documentadas, con riesgo de publicar cifras presupuestales equivocadas. Ambos fallan ahora con un mensaje explícito en lugar de cargar datos dudosos.
+
+| Cargador | Necesita | El libro trae | Efecto |
+|---|---|---|---|
+| `load_vigencias_futuras.py` | Hoja `BASE_SIIF_2` con la columna calculada `Valor_VF_Final (Actual)` | Solo `BASE_SIIF` con las columnas crudas `Valor_VF_ACTUAL_SIIF` / `Autorizada` / `Utilizada` | Sección 5 sin cargar |
+| `load_sectores_region.py` | Hoja `sectores_por_region` (tabla ya consolidada) | Solo hojas por región sin consolidar | `regionalizacion_sectores` vacía |
+
+Se comprobó que **ninguna** de las tres columnas crudas reproduce los valores migrados (desviación mínima de 95.009 mmm sobre el total), de modo que elegir una sería incorrecto.
+
+**Qué hace falta:** la versión de los dos libros que incluya esas hojas, o la definición de cómo se calculan.
+
+#### Mejoras de robustez aplicadas de paso
+
+- `load_vigencias_futuras.py` acepta la hoja base bajo cualquiera de sus nombres conocidos y **localiza la fila de encabezados por contenido**, en vez de asumir que es la primera (la entrega de marzo trae una fila en blanco arriba).
+- `load_ejecucion_sectorial.py` ya no parchea el esquema con `ALTER TABLE`: **verifica** contra `INFORMATION_SCHEMA` y falla si falta una columna. Que el cargador repare la base era encubrir un error de despliegue.
+- `conn.upsert()` **avisa** cuando el origen trae claves repetidas. SQLite las resolvía en silencio quedándose con la última; ahora se conserva el mismo comportamiento pero queda registrado (la hoja `TD BITACORA` trae 51 duplicados de sector-año).
+
+#### Scripts retirados o recortados
+
+- **`etl/seed_data.py` eliminado**: sembraba la bitácora 2025-I, que ya está migrada, e insertaba en dos tablas descartadas (`evolucion_presupuestal`, `regionalizacion_detalle_2025`).
+- **`etl/update_bitacora.py`**: se le quitaron los cargadores de regionalización y vigencias futuras. Escribían en `regionalizacion_detalle_2025` y en las columnas `valor_mmm_ctes` / `pct_pib` — **ya estaba roto contra el propio SQLite**, no por la migración. Conserva transformaciones, ejecución histórica, apropiación sectorial y ejecución sectorial.
+
+#### Orden de ejecución
+
+```bash
+export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};SERVER=127.0.0.1,1433;DATABASE=dnp_dpip;UID=dnp_dpip_app;PWD=...;TrustServerCertificate=yes"
+
+python etl/load_bitacora_excel.py --numero 3 --periodo 2026-I --corte 2026-03-31   # crea la bitácora
+python etl/importar_pgn.py                 # Sec 2
+python etl/load_regionalizacion.py         # Sec 3
+python etl/load_sectores_region.py         # Sec 3 (requiere la hoja consolidada)
+python etl/load_ejecucion_sectorial.py     # Sec 4 y 6
+python etl/load_vigencias_futuras.py       # Sec 5 (requiere BASE_SIIF_2) — debe ir DESPUÉS del primero
+python etl/load_credito.py                 # Sec 7
+python etl/load_sgp.py && python etl/load_sgp_componentes.py   # Sec 8
+```
+
+`load_bitacora_excel.py` va primero porque crea la bitácora que los demás resuelven. `load_vigencias_futuras.py` va después porque ambos escriben `vigencias_futuras` y el dedicado es el autoritativo: cubre 2025-2054 con 29 sectores, frente al pase parcial de `TD BITACORA` (2026-2040, 38 sectores) que reemplaza.
 
 ### Fase 6 — Empaquetado y despliegue on-premise — ✅ **COMPLETADA** (2026-08-15)
 

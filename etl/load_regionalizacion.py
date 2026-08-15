@@ -16,8 +16,10 @@ Uso:
 """
 
 import argparse
-import sqlite3
 from pathlib import Path
+
+import bases
+import db as dbmod
 
 try:
     import openpyxl
@@ -25,8 +27,7 @@ except ImportError:
     raise SystemExit("Instala openpyxl: pip install openpyxl")
 
 # ── Rutas por defecto ──────────────────────────────────────────
-DEFAULT_XLSX = Path(r"C:\ws\dnp\ws\BASES_BITACORA\2026\Marzo\3. REGIONALIZACIÓN\Consolidado Reg-Ejec-Marzo-2022-2026-Graficasvf.xlsx")
-DB_PATH = Path(__file__).parent.parent / "db" / "pgn.db"
+DEFAULT_XLSX = bases.excel(3, "Consolidado Reg-Ejec-*Graficas*.xlsx")
 
 # ── Mapeo nombre Excel → código DANE ──────────────────────────
 DANE_MAP: dict[str, str] = {
@@ -189,7 +190,7 @@ def parse_sheet(ws) -> list[dict]:
     return records
 
 
-def run(xlsx_path: Path, db_path: Path) -> None:
+def run(xlsx_path: Path) -> None:
     print(f"Leyendo: {xlsx_path}")
     wb = openpyxl.load_workbook(xlsx_path, data_only=True)
     ws = wb["Regionalizacion Mar-2022-2026"]
@@ -197,43 +198,38 @@ def run(xlsx_path: Path, db_path: Path) -> None:
     records = parse_sheet(ws)
     print(f"Registros extraídos: {len(records)}")
 
-    conn = sqlite3.connect(db_path)
-    conn.execute("PRAGMA foreign_keys = ON")
+    conn = dbmod.conectar()
 
-    # Obtener bitacora_id más reciente
-    row = conn.execute(
-        "SELECT id FROM metadatos_bitacora ORDER BY corte_fecha DESC LIMIT 1"
-    ).fetchone()
-    if not row:
-        raise SystemExit("No hay registros en metadatos_bitacora. Ejecuta seed_data.py primero.")
-    bid = row[0]
+    bid = dbmod.bitacora_reciente(conn)
     print(f"Cargando para bitacora_id={bid}")
 
     # Limpiar datos previos de esta bitácora
     deleted = conn.execute(
-        "DELETE FROM regionalizacion WHERE bitacora_id=?", (bid,)
+        "DELETE FROM dbo.regionalizacion WHERE bitacora_id=?", (bid,)
     ).rowcount
-    if deleted:
+    if deleted > 0:
         print(f"  Eliminados {deleted} registros previos")
 
-    # Insertar
-    conn.executemany("""
-        INSERT OR REPLACE INTO regionalizacion
-            (bitacora_id, vigencia, tipo, region, departamento, codigo_dane,
-             apropiacion_mmm, compromisos_mmm, obligaciones_mmm, pagos_mmm,
-             pct_compromisos, pct_obligaciones, pct_pagos, pct_participacion)
-        VALUES
-            (:bitacora_id, :vigencia, :tipo, :region, :departamento, :codigo_dane,
-             :apropiacion_mmm, :compromisos_mmm, :obligaciones_mmm, :pagos_mmm,
-             :pct_compromisos, :pct_obligaciones, :pct_pagos, :pct_participacion)
-    """, [{**r, "bitacora_id": bid} for r in records])
+    # pyodbc solo admite parámetros posicionales, no :nombre como sqlite3,
+    # así que los diccionarios se ordenan según COLUMNAS.
+    COLUMNAS = [
+        "bitacora_id", "vigencia", "tipo", "region", "departamento", "codigo_dane",
+        "apropiacion_mmm", "compromisos_mmm", "obligaciones_mmm", "pagos_mmm",
+        "pct_compromisos", "pct_obligaciones", "pct_pagos", "pct_participacion",
+    ]
+    conn.upsert(
+        "regionalizacion",
+        COLUMNAS,
+        [tuple({**r, "bitacora_id": bid}[c] for c in COLUMNAS) for r in records],
+        claves=["bitacora_id", "vigencia", "region", "departamento"],
+    )
 
     conn.commit()
 
     # Resumen
     counts = conn.execute("""
         SELECT vigencia, tipo, COUNT(*) AS n
-        FROM regionalizacion WHERE bitacora_id=?
+        FROM dbo.regionalizacion WHERE bitacora_id=?
         GROUP BY vigencia, tipo ORDER BY vigencia, tipo
     """, (bid,)).fetchall()
     print("\nResumen cargado:")
@@ -241,7 +237,7 @@ def run(xlsx_path: Path, db_path: Path) -> None:
         print(f"  {vigencia} - {tipo:<20} : {n} registros")
 
     total = conn.execute(
-        "SELECT COUNT(*) FROM regionalizacion WHERE bitacora_id=?", (bid,)
+        "SELECT COUNT(*) FROM dbo.regionalizacion WHERE bitacora_id=?", (bid,)
     ).fetchone()[0]
     print(f"\nTotal: {total} registros en tabla 'regionalizacion'")
     conn.close()
@@ -250,6 +246,5 @@ def run(xlsx_path: Path, db_path: Path) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Carga regionalización 2022-2026")
     parser.add_argument("--xlsx", type=Path, default=DEFAULT_XLSX)
-    parser.add_argument("--db",   type=Path, default=DB_PATH)
     args = parser.parse_args()
-    run(args.xlsx, args.db)
+    run(args.xlsx)
