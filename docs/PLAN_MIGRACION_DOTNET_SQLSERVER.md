@@ -101,10 +101,26 @@ SQLite compara texto de forma **binaria** (sensible a mayúsculas y tildes). Si 
 
 ### 3.5 Precisión numérica y `ROUND`
 
-`ROUND()` sobre `FLOAT` puede diferir del resultado de SQLite en el último dígito. Para que la comparación de paridad sea exacta:
-- Columnas monetarias/porcentuales como `DECIMAL(18,6)`.
-- Castear a `DECIMAL` antes de redondear: `ROUND(CAST(a AS DECIMAL(18,6)) * 100.0 / NULLIF(b,0), 2)`.
-- El comparador de la Fase 4 usa tolerancia numérica (1e-6), no comparación textual.
+**Corregido durante la Fase 3.** La suposición inicial —almacenar y calcular en `DECIMAL` para tener determinismo— resultó equivocada para la *paridad*: SQLite hace toda la aritmética en punto flotante de doble precisión, y `DECIMAL` da un resultado distinto en el último decimal por las reglas de escala de la división en SQL Server.
+
+Caso real detectado en `/api/vigencias_futuras/totales`: `pct_pib` daba **1.2367** en `DECIMAL` frente al **1.2368** del original.
+
+Regla definitiva, en dos niveles:
+
+| Nivel | Tipo | Motivo |
+|---|---|---|
+| **Almacenamiento** | `DECIMAL(18,6)` | Valores exactos, sin sorpresas binarias en la carga |
+| **Aritmética** | `CAST(x AS FLOAT)` | Reproduce el doble de SQLite en divisiones, sumas y `ROUND` |
+
+Aplicado a toda expresión calculada: porcentajes, `SUM()` que se redondean y conversiones por deflactor. En C#, los servicios que replican cálculos de Python (`VigenciasFuturasChart`) acumulan en `double` por la misma razón. `Math.Round` de .NET y `round()` de Python usan ambos redondeo al par más cercano, así que no hace falta ajuste adicional.
+
+### 3.9 Orden entre filas empatadas — divergencia aceptada
+
+Varias consultas del original ordenan por un campo que tiene valores repetidos (`ORDER BY monto_usd DESC`) sin criterio de desempate. En ese caso **el orden de las filas empatadas es arbitrario y depende del motor**: se verificó que SQLite devuelve `Planeación` antes que `Organos de Control` con idéntico `monto_usd`, orden que no corresponde ni al `id` de inserción ni al alfabético, es decir, no es reproducible por ninguna regla.
+
+Decisión: el backend .NET añade un **desempate explícito por la clave natural** (sector, entidad, nombre o componente, con `COLLATE Latin1_General_BIN2`). El resultado es estrictamente mejor que el original —estable entre ejecuciones y entre recargas del ETL— pero puede diferir del orden histórico en filas cuyo valor de ordenamiento es idéntico.
+
+El comparador de la Fase 4 debe **clasificar aparte** este caso: si las dos respuestas contienen exactamente el mismo conjunto de filas y solo cambia la secuencia, es una diferencia de orden, no de datos.
 
 ### 3.6 Restricciones `UNIQUE` con columnas nulables
 
@@ -231,19 +247,46 @@ tools/
 
 > **Hallazgo:** `pgn_concepto.padre_id` se autorreferencia con `ON DELETE SET NULL` en SQLite. SQL Server prohíbe acciones en cascada sobre una FK que apunta a su propia tabla (error 1785), así que se degradó a `NO ACTION`, documentado en el propio DDL. No afecta a la aplicación: no hay borrados de conceptos en el flujo actual.
 
-### Fase 2 — Migración de datos *(0,5 día)*
+### Fase 2 — Migración de datos — ✅ **COMPLETADA** (2026-08-15)
 - `etl/migrate_sqlite_to_mssql.py`: recorre tabla por tabla en orden de dependencia FK, con `SET IDENTITY_INSERT ON` para **preservar los `id` originales** (crítico: `pgn_ejecucion.concepto_id` y todos los `bitacora_id` son referencias por id).
 - Validación automática: conteo de filas por tabla + suma de cada columna numérica, SQLite vs SQL Server.
 
+**Resultado: 5.320 filas en 22 tablas, sin una sola diferencia.**
+
+| Comprobación | Resultado |
+|---|---|
+| Conteos por tabla | 22/22 iguales |
+| Sumas por columna numérica | todas dentro de 1e-6 |
+| `id` preservados (`max(id)`) | iguales en las 5 tablas verificadas, incluida `ejecucion_sectorial_entidades` (3862) |
+| Integridad referencial | 0 huérfanos en `pgn_ejecucion`; 0 filas de `regionalizacion` sin DANE |
+| Tildes | `ORINOQUÍA`, `DEFENSA Y POLICÍA` y demás intactos |
+| Vista | `pgn_vista_crosstab` devuelve las 28 filas; `Total PGN` 2026 = 547.017,088 |
+
+Conexión desde Python vía **pyodbc + ODBC Driver 18**, ya instalado en el servidor.
+
 **Criterio de aceptación:** los 22 conteos de tabla iguales y todas las sumas coincidiendo dentro de 1e-6 (23 tablas menos `dane_departamentos`, que la siembra `003_seed_dane.sql`).
 
-### Fase 3 — Backend .NET *(3–4 días)*
-- Scaffold del proyecto, DI, CORS, static files, Swagger, `/health`.
-- Portar los 30 endpoints agrupados por sección, aplicando el catálogo §3.
-- Portar a C# la lógica que hoy vive en Python: `vigencias_futuras/chart`, `ejecucion/sectores/matriz`, `resumen` (incluido el *fallback* cuando no hay `ejecucion_historica`) y `sgp/resumen`.
-- Servir en el puerto 5080 para poder correr en paralelo con FastAPI (8000).
+### Fase 3 — Backend .NET — ✅ **COMPLETADA** (2026-08-15)
+- Proyecto .NET 8 Minimal API en `backend/`, con Dapper, Microsoft.Data.SqlClient y Swashbuckle.
+- Los 30 endpoints portados y agrupados por sección, aplicando el catálogo §3.
+- Lógica que vivía en Python, portada a servicios C#: `VigenciasFuturasChart`, `MatrizSectores`, `Resumen` (con el respaldo para cuando falta `ejecucion_historica`) y `SgpResumen`.
+- Sirve en el puerto 5080, en paralelo con FastAPI (8000).
 
-**Criterio de aceptación:** los 30 endpoints responden 200 y `/swagger` los lista completos.
+**Criterio de aceptación — superado.** No solo responden las 322 rutas: la comparación completa contra la línea base ya arroja paridad casi total.
+
+| Resultado sobre las 322 rutas | |
+|---|---|
+| HTTP 200 | **322/322** |
+| Respuesta idéntica a la línea base | **318** |
+| Diferencia solo de orden entre filas empatadas (§3.9) | 4 (`/api/credito`, `?fuente=BID`, `?sector=Planeación`, `/api/credito/sectores`) |
+| **Diferencia de valor** | **0** |
+
+**Decisiones de diseño relevantes:**
+
+1. **El SQL es el contrato JSON.** Dapper devuelve diccionarios y los alias de columna se convierten literalmente en claves del JSON. Evita declarar 30 DTOs y elimina la clase de error más peligrosa: un renombre accidental haría que el frontend cayera en silencio a sus datos embebidos, sin error visible.
+2. **Fechas formateadas en SQL** (`CONVERT(char(10), …, 23)` y `CONVERT(char(19), …, 120)`): .NET habría serializado `DateTime` como `2026-03-31T00:00:00`, y el frontend hace `corte_fecha.split('-')`.
+3. **Conversor `decimal` a medida** que recorta ceros de relleno, para que `547017.088000` se emita como `547017.088`.
+4. `GROUP BY` completos donde SQLite permitía columnas sin agregar (`/regionalizacion/historico`, `/vigencias_futuras/totales`). Verificado que no parten filas: cero grupos `(vigencia, region)` con más de un `tipo`.
 
 ### Fase 4 — Verificación de paridad *(1 día)*
 - `tools/compare_apis.py`: para cada endpoint y cada combinación de parámetros reales (vigencias 2022–2026, las 6 regiones + `POR_REGIONALIZAR`/`NACIONAL`, los 33 códigos DANE, cada sector y cada transformador presentes en la BD) llama a ambas APIs y compara el JSON con tolerancia numérica, reportando diferencias de clave, de tipo y de valor.

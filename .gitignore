@@ -15,3 +15,7 @@ build/
 
 # CSVs de datos sensibles / actualizaciones
 etl/data/*.csv
+
+# Compilados .NET
+backend/**/bin/
+backend/**/obj/
