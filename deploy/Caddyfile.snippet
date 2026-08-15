@@ -10,7 +10,9 @@
 # El 5080 es el puerto que docker-compose publica en loopback; el
 # contenedor no está expuesto a la red por ningún otro medio.
 #
-# Aplicar (requiere sudo):
+# APLICADO el 2026-08-15. Se conserva como referencia de lo que hay en
+# /etc/caddy/Caddyfile y para poder reconstruirlo si se rehace el host.
+#
 #     sudo tee -a /etc/caddy/Caddyfile < deploy/Caddyfile.snippet
 #     sudo caddy validate --config /etc/caddy/Caddyfile
 #     sudo systemctl reload caddy

@@ -474,17 +474,20 @@ La suite de paridad se volvió a correr **contra el contenedor**, no contra el `
 **Archivos añadidos:** `backend/Dockerfile`, `docker-compose.yml`, `.env.example`, `deploy/Caddyfile.snippet`.
 **Archivos eliminados:** `fly.toml`, `render.yaml`.
 
-#### Publicación por Caddy — preparada y validada, falta aplicarla con sudo
+#### ✅ Publicado en https://dnp-btcr.skaphe.com (2026-08-15)
 
-**Subdominio definido: `dnp-btcr.skaphe.com`** (2026-08-15). Resuelve a `23.239.11.244`, la misma IP que los dominios ya publicados desde este servidor, así que Caddy podrá emitir el certificado sin más trámite.
+El bloque de `deploy/Caddyfile.snippet` está aplicado en `/etc/caddy/Caddyfile` y Caddy recargado. Verificación desde fuera:
 
-El bloque está en `deploy/Caddyfile.snippet` y la configuración fusionada **ya se validó** contra el `Caddyfile` real (`caddy validate` → *Valid configuration*). No se aplicó porque escribir en `/etc/caddy/Caddyfile` requiere `sudo` con contraseña. Los tres comandos:
+| Comprobación | Resultado |
+|---|---|
+| Certificado | Let's Encrypt (`CN=dnp-btcr.skaphe.com`), válido hasta 2026-11-13, emitido automáticamente |
+| HTTPS | 200 en la raíz y en `/api/resumen`, respuesta en ~110 ms |
+| Redirección HTTP → HTTPS | 308, automática |
+| **Paridad a través del proxy** | **318/322 idénticas, 0 diferencias de claves, valores o estado** |
+| Estáticos vía dominio público | 8/8 con SHA-256 idéntico al de loopback |
+| Contenedor | sigue publicado **solo** en `127.0.0.1:5080`; no se expuso a la red |
 
-```bash
-sudo tee -a /etc/caddy/Caddyfile < deploy/Caddyfile.snippet
-sudo caddy validate --config /etc/caddy/Caddyfile
-sudo systemctl reload caddy
-```
+La suite completa se corrió contra la URL pública, no contra loopback: confirma que el proxy no altera cuerpos, cabeceras ni codificación de las tildes en las rutas.
 
 #### 6.1 Notas
 
@@ -530,11 +533,12 @@ Las siete fases están completas. El sistema en marcha es:
 
 Los ETL en Python cargan directamente en SQL Server y `tools/compare_apis.py` protege contra regresiones.
 
+El tablero está publicado en **https://dnp-btcr.skaphe.com**.
+
 **Lo que queda abierto**, ninguno bloqueante:
 
 | # | Pendiente |
 |---|---|
-| 7 | Aplicar el bloque de Caddy con `sudo` (subdominio ya definido y configuración validada — §6) |
 | 9 | Destino de producción: este servidor es de desarrollo y pruebas |
 | — | Revisión visual del tablero en navegador (§ Fase 4) |
 | — | Autenticación, si alguna vez deja de ser una API pública de solo lectura (§6.1) |
