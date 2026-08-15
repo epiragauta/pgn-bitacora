@@ -1,20 +1,37 @@
 # ETLs — Guía de uso
 
-Scripts de carga de datos fuente hacia la base de datos `db/pgn.db`. Todos requieren Python 3.10+ y `openpyxl` (`pip install openpyxl`).
-
-Los archivos Excel fuente residen en `C:\ws\dnp\ws\BASES_BITACORA\{año}\{mes}\{N. SECCIÓN}\`.
-
----
-
-## seed_data.py — Carga inicial
-
-Inicializa la BD con datos embebidos (Bitácora 2, 2025-I). Se ejecuta una sola vez para crear el esquema y poblar todas las tablas.
+Scripts de carga de los Excel fuente hacia **SQL Server** (base `dnp_dpip`).
 
 ```bash
-python etl/seed_data.py
+pip install -r requirements.txt      # pyodbc + openpyxl; requiere ODBC Driver 18
+export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};SERVER=127.0.0.1,1433;DATABASE=dnp_dpip;UID=dnp_dpip_app;PWD=...;TrustServerCertificate=yes"
 ```
 
-**Cuándo usarlo:** configuración inicial del entorno o cuando se necesita resetear la BD a un estado base conocido.
+**Los archivos fuente ya no tienen ruta fija.** `etl/bases.py` los localiza en este
+orden: variable `BASES_BITACORA` → `data/BASES_BITACORA/` → rutas históricas de
+Windows. Dentro de cada carpeta de sección busca **por patrón**, porque los
+nombres traen fechas y sufijos que cambian en cada corte.
+
+```bash
+python etl/bases.py      # muestra qué archivos encuentra por sección
+```
+
+> **El orden de ejecución importa.** El procedimiento completo de cargue
+> trimestral, con sus precedencias y verificaciones, está en
+> [`MANUAL_OPERACION.md`](MANUAL_OPERACION.md). Esta guía documenta cada
+> cargador por separado.
+
+## Cómo escriben en la base
+
+Todos usan `etl/db.py`, que traduce lo que cambiaba entre motores:
+
+| Antes (SQLite) | Ahora |
+|---|---|
+| `INSERT OR REPLACE` | `conn.upsert(...)` — deduplica el lote por clave y avisa |
+| `cur.lastrowid` | `conn.insertar_devolviendo_id(...)` |
+| `DROP TABLE` + `CREATE` | `conn.vaciar_bitacora(...)` — el esquema es de `db/mssql/` |
+
+Ningún cargador crea ni borra tablas.
 
 ---
 
@@ -113,21 +130,18 @@ incluya `sectores_por_region`, actualizar la constante `EXCEL` en el script.
 Carga ejecución detallada mensual por entidad desde el archivo BASE DETALLE MENSUAL.
 
 ```bash
-python etl/load_ejecucion_sectorial.py \
-  --excel "ruta/BASE DETALLE MENSUAL INVERSIÓN 2018-2026.xlsx" \
-  --db db/pgn.db \
-  --bitacora-id 2 \
-  --mes-corte MAR
+python etl/load_ejecucion_sectorial.py --mes-corte MAR
 ```
 
-**Parámetros:**
+**Parámetros** (todos opcionales):
 
-| Parámetro | Descripción | Ejemplo |
-|-----------|-------------|---------|
-| `--excel` | Ruta al Excel fuente | `".../BASE DETALLE MENSUAL..."` |
-| `--db` | Ruta a la BD SQLite | `db/pgn.db` |
-| `--bitacora-id` | ID de la bitácora destino | `2` |
-| `--mes-corte` | Mes de corte (3 letras) | `MAR`, `JUN`, `SEP`, `DIC` |
+| Parámetro | Descripción | Por defecto |
+|-----------|-------------|-------------|
+| `--mes-corte` | Mes de corte, 3 letras | `MAR` |
+| `--excel` | Ruta al Excel, si se quiere forzar uno | el de la sección 6 |
+| `--bitacora-id` | Bitácora destino | la más reciente |
+
+Es el cargador más lento: procesa unas 148.000 filas y tarda varios minutos.
 
 **Archivo fuente:**
 ```

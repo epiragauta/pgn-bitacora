@@ -10,6 +10,22 @@ Dashboard web sobre el Presupuesto General de la Nación, con seguimiento adicio
 
 ---
 
+## Documentación
+
+| Documento | Para quién |
+|---|---|
+| [Arquitectura](docs/ARQUITECTURA.md) | Visión de conjunto, modelo de datos y decisiones de diseño |
+| [Manual técnico](docs/MANUAL_TECNICO.md) | Desarrolladores que modifican el backend, la base o los ETL |
+| [Manual de operación](docs/MANUAL_OPERACION.md) | Cargue trimestral, despliegue e incidencias |
+| [Manual de usuario](docs/MANUAL_USUARIO.md) | Analistas y directivos que consultan el tablero |
+| [Informe de la migración](docs/INFORME_MIGRACION_DOTNET_SQLSERVER.md) | Actividades, hallazgos y resultados del paso a .NET / SQL Server |
+| [Plan de migración](docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md) | Bitácora técnica con el catálogo de incompatibilidades entre motores |
+| [Guía de ETLs](docs/etl_uso.md) | Detalle de cada cargador |
+
+Las versiones web de arquitectura y de los dos manuales de usuario están en `docs/web/` y publicadas como páginas compartibles.
+
+---
+
 ## Estructura
 
 ```
