@@ -1,0 +1,20 @@
+# ============================================================
+# Bloque para /etc/caddy/Caddyfile
+#
+# NO está aplicado: falta definir el subdominio con quien administre el
+# DNS (pregunta abierta 7 del plan de migración). Cuando esté decidido,
+# reemplazar el nombre, añadir el bloque al Caddyfile del host y recargar:
+#
+#     sudo caddy validate --config /etc/caddy/Caddyfile
+#     sudo systemctl reload caddy
+#
+# Sigue el mismo patrón que los bloques ya existentes (sbn-ecp, vault).
+# Caddy obtiene y renueva el certificado TLS solo, siempre que el
+# subdominio ya resuelva a la IP de este servidor.
+#
+# El 5080 es el puerto que docker-compose publica en loopback.
+# ============================================================
+
+bitacora.skaphe.com {
+	reverse_proxy localhost:5080
+}

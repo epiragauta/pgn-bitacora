@@ -4,30 +4,72 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is **Bitácora PGN 2025-I**, a web infographic dashboard for tracking Colombia's public investment budget (Presupuesto General de la Nación) from 2022-2025, developed by DNP/DPIP (Departamento Nacional de Planeación / Dirección de Programación de Inversiones Públicas).
+This is the **Bitácora de Inversión Pública**, a web infographic dashboard for tracking Colombia's public investment budget (Presupuesto General de la Nación) from 2022-2026, developed by DNP/DPIP (Departamento Nacional de Planeación / Dirección de Programación de Inversiones Públicas).
 
-**Architecture:** Three-tier system with SQLite database, FastAPI REST API, and standalone HTML frontend.
+**Architecture:** Three-tier system with SQL Server database, .NET 8 REST API, and standalone HTML frontend.
+
+## ⚠️ Migration in progress — read this first
+
+The backend is being migrated **FastAPI/SQLite → .NET 8/SQL Server**. Both stacks coexist until the cutover. The authoritative plan, decisions, and per-phase results are in **`docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md`** — read it before touching the backend.
+
+| Component | State |
+|---|---|
+| SQL Server DB `dnp_dpip` | ✅ migrated (5,320 rows, 23 tables) |
+| .NET 8 backend (`backend/`) | ✅ 30 endpoints, parity verified |
+| Frontend | ✅ unchanged — do not modify for the migration |
+| ETL scripts (`etl/`) | ⏳ still write to SQLite (phase 5 pending) |
+| FastAPI (`api/main.py`) | ⏳ legacy, retired in phase 7 |
+
+**Three rules that are load-bearing.** Each was a real bug found during migration:
+
+1. **All computed SQL arithmetic must be `CAST(... AS FLOAT)`.** SQLite computes in double precision; `DECIMAL` produced `1.2367` where the original gave `1.2368`. Storage stays `DECIMAL(18,6)`; only expressions are cast.
+2. **The database collation must stay `Modern_Spanish_CS_AS`.** With an accent-insensitive collation, `PACÍFICO` and `PACIFICO` collapse into one value and `GROUP BY region` silently merges rows.
+3. **The SQL column aliases *are* the JSON keys.** The frontend reads exact snake_case keys and falls back to embedded data **silently, with no error**, if one is missing. Dapper returns dictionaries precisely so no rename can slip through. Never introduce a JSON naming policy.
+
+Any backend change must pass `python tools/compare_apis.py --contra-linea-base` before being considered done.
 
 ## Key Commands
 
-### Database Setup
+### Running the .NET API
 ```bash
-# Initialize database with seed data (Bitácora 2, 2025-I)
-python etl/seed_data.py
+# Container (production-like, on-premise)
+cp .env.example .env          # set the real password
+docker compose up -d --build  # http://127.0.0.1:5080
+
+# Local development
+export ConnectionStrings__DnpDpip="Server=127.0.0.1,1433;Database=dnp_dpip;User Id=dnp_dpip_app;Password=...;TrustServerCertificate=True"
+dotnet run --project backend/src/PgnBitacora.Api --urls http://127.0.0.1:5080
 ```
 
-This creates `db/pgn.db` with the complete schema and initial data.
+API docs at `/swagger`; the dashboard is served at `/`.
 
-### Running the API
+### Verifying parity (mandatory after backend changes)
 ```bash
-# Development mode with auto-reload
+python tools/compare_apis.py --contra-linea-base   # vs frozen baseline
+python tools/compare_apis.py                       # vs live FastAPI on :8000
+```
+Differences in **keys**, **values** or **HTTP status** fail the command. Differences in **row order among tied rows** are reported but do not block — the original defines no tiebreaker there.
+
+### SQL Server schema
+```bash
+# Idempotent; run in order
+for f in db/mssql/*.sql; do
+  docker exec -i umbraco-sqlserver /opt/mssql-tools18/bin/sqlcmd \
+      -S localhost -U sa -P "$SA_PASSWORD" -C -b -d dnp_dpip -i /dev/stdin < "$f"
+done
+```
+
+### Migrating data from SQLite
+```bash
+python etl/migrate_sqlite_to_mssql.py                 # migrate + validate
+python etl/migrate_sqlite_to_mssql.py --solo-validar  # validate only
+```
+Preserves original `id` values via `IDENTITY_INSERT` — they are real references (`pgn_ejecucion.concepto_id`, every `bitacora_id`).
+
+### Running the legacy FastAPI (comparison only)
+```bash
 uvicorn api.main:app --reload --port 8000
-
-# Production mode
-uvicorn api.main:app --host 0.0.0.0 --port 8080
 ```
-
-API documentation available at: `http://localhost:8000/docs`
 
 ### Updating Data (New Bitácora)
 ```bash
@@ -39,30 +81,37 @@ python etl/update_bitacora.py \
   --notas "Primer semestre 2025"
 ```
 
-### Docker Deployment
+### Docker Deployment (on-premise)
 ```bash
-# Build and run
-docker build -t pgn-bitacora .
-docker run -p 8080:8080 pgn-bitacora
+docker compose up -d --build       # builds backend/Dockerfile, context = repo root
+docker compose logs -f api
 ```
 
-The Dockerfile automatically runs `seed_data.py` during build to initialize the database.
+- The container publishes **only on loopback** (`127.0.0.1:5080`); Caddy on the host terminates TLS and proxies to it. Block to add: `deploy/Caddyfile.snippet`.
+- It joins the external network `sbn-ecp_umbraco-network` to reach SQL Server by its service alias `sqlserver`, instead of relying on the published 1433.
+- The connection string comes from `.env` (gitignored); `.env.example` is the template.
+- The image carries `frontend/` and `data/`; `Program.cs` locates them by walking up for `frontend/index.html`.
+- The root `Dockerfile` is the **legacy Python one** and is removed in phase 7.
 
 ## Architecture & Data Flow
 
 ### Three-Layer Architecture
 
-1. **Data Layer (`db/`):**
-   - SQLite database (`pgn.db`) with normalized schema
-   - Schema defined in `db/schema.sql`
-   - All tables reference `metadatos_bitacora` via `bitacora_id` foreign key
+1. **Data Layer:**
+   - SQL Server database `dnp_dpip`, collation `Modern_Spanish_CS_AS` (see rule 2 above)
+   - DDL in `db/mssql/` — `001_schema.sql`, `002_views.sql`, `003_seed_dane.sql`, all idempotent
+   - `db/pgn.db` (SQLite) is the migration source; `db/schema.sql` is **outdated** — the real schema was `db/pgn.db`
+   - All tables reference `metadatos_bitacora` via `bitacora_id`, declared `NOT NULL`
    - Supports multiple bitácoras (quarterly reports) in a single database
 
-2. **API Layer (`api/main.py`):**
-   - FastAPI REST API with 6 sections matching the frontend dashboard
-   - Connection pooling via `get_db()` helper
-   - CORS enabled for cross-origin requests
-   - Serves static frontend files via `/` route (must be defined last)
+2. **API Layer (`backend/src/PgnBitacora.Api/`):**
+   - .NET 8 Minimal API with Dapper, one `Endpoints/*.cs` class per dashboard section
+   - `Services/` holds the logic that does not fit in SQL: `VigenciasFuturasChart`, `MatrizSectores`, `Resumen`, `SgpResumen`
+   - `Data/Db.cs` returns dictionaries so SQL aliases become JSON keys (rule 3)
+   - `Data/BitacoraResolver.cs` ports `resolve_bitacora()`; no argument means the most recent bitácora
+   - Dates are formatted **in SQL** (`CONVERT(char(10), …, 23)`) — .NET would emit `2026-03-31T00:00:00` and the frontend does `corte_fecha.split('-')`
+   - Text `ORDER BY` uses `COLLATE Latin1_General_BIN2` to reproduce SQLite's binary ordering, where accented characters sort after all ASCII
+   - Serves the frontend and `/data` statically, with `.geojson` registered explicitly — otherwise the map layers 404 and Leaflet renders blank with no error
 
 3. **Frontend (`frontend/index.html`):**
    - **Standalone HTML file** with embedded CSS and JavaScript
@@ -80,7 +129,7 @@ The Dockerfile automatically runs `seed_data.py` during build to initialize the 
 
 **Section Tables:**
 1. **Transformaciones PND** (`inversion_transformaciones`, `inversion_componentes_pnd`, `ejecucion_transformaciones`)
-2. **Evolución Presupuestal** (`evolucion_presupuestal`, `ejecucion_historica`)
+2. **Evolución Presupuestal** (`pgn_concepto`, `pgn_ejecucion`, view `pgn_vista_crosstab`) — the old `evolucion_presupuestal` table was dropped in the migration
 3. **Regionalización** (`regionalizacion`, `regionalizacion_sectores`)
 4. **Ejecución** (`ejecucion_historica`, `apropiacion_por_sector`, `compromisos_pct_por_sector`)
 5. **Vigencias Futuras** (`vigencias_futuras`, `deflactores_pib`)
@@ -142,35 +191,39 @@ async function af(p,fb){
 
 ## API Endpoints Structure
 
-Endpoints are organized by dashboard section (tagged in FastAPI):
+30 endpoints, one `Endpoints/*.cs` class per dashboard section (tagged for Swagger). Full interactive listing at `/swagger`.
 
 - **Sec 1:** `/api/transformaciones`, `/api/transformaciones/{transformador}/componentes`
-- **Sec 2:** `/api/evolucion`, `/api/evolucion/inversion_historica`
-- **Sec 3:** `/api/regionalizacion`, `/api/regionalizacion/historico`
-- **Sec 4:** `/api/ejecucion`, `/api/ejecucion/sectores/apropiacion`, `/api/ejecucion/sectores/compromisos_pct`
-- **Sec 5:** `/api/vigencias_futuras`, `/api/vigencias_futuras/totales`, `/api/vigencias_futuras/chart`
-- **Sec 6:** `/api/sectorial`, `/api/sectorial/mensual`
+- **Sec 2:** `/api/evolucion` + `/composicion`, `/tasa_ejecucion`, `/pct_pib`, `/drilldown`, `/tabla_completa`, `/inversion_historica`
+- **Sec 3:** `/api/regionalizacion` + `/historico`, `/sectores`, `/mapa`, `/departamento/{codigo_dane}`
+- **Sec 4:** `/api/ejecucion` + `/sectores/{apropiacion,compromisos_pct,obligaciones_pct,pagos_pct,matriz}`
+- **Sec 5:** `/api/vigencias_futuras`, `/totales`, `/chart`
+- **Sec 6:** `/api/sectorial`, `/mensual`, `/historico`
+- **Sec 7:** `/api/credito` + `/fuentes`, `/sectores`, `/resumen`, `/ejecucion_entidad`, `/ejecucion_historica`
+- **Sec 8:** `/api/sgp/historico`, `/historico_componentes`, `/resumen`
 - **Dashboard:** `/api/resumen` (KPIs for hero section)
 - **Metadata:** `/api/bitacoras`, `/api/bitacoras/{periodo}`
 
-All endpoints return JSON. Row objects from SQLite are converted to dicts via `rows_to_list()` helper.
+All return JSON. Rows come back from Dapper as dictionaries so SQL column aliases are the JSON keys verbatim (rule 3). `codigo_dane` is a **string** with a leading zero (`'05'`), never an int.
 
-## Deployment Configurations
+`tools/endpoints.py` enumerates all 322 routes worth testing, deriving parameters from the data actually present in the database — so coverage grows on its own when a new bitácora is loaded.
 
-### Fly.io (`fly.toml`)
-- App name: `app-old-dream-8565`
-- Region: `mia` (Miami)
-- Port: 8080
-- Auto-start/stop enabled
-- Memory: 256MB
+## Deployment Configuration
 
-### Docker
-- Base: Python 3.11-slim
-- Runs `seed_data.py` at build time
-- Exposes port 8080
-- Command: `uvicorn api.main:app --host 0.0.0.0 --port 8080`
+**On-premise only.** Fly.io and Render were dropped: neither can reach the SQL Server instance, which listens on `127.0.0.1:1433`. `fly.toml` and `render.yaml` were removed — they assumed Python plus a local SQLite baked into the image.
 
-**Note:** For production deployment, database should be volume-mounted or use external database to persist data across container restarts.
+| Piece | Value |
+|---|---|
+| Compose file | `docker-compose.yml` (repo root) |
+| Image build | `backend/Dockerfile`, context = repo root |
+| Published port | `127.0.0.1:5080` → container `8080` |
+| Reverse proxy | Caddy on the host (`/etc/caddy/Caddyfile`), snippet in `deploy/Caddyfile.snippet` |
+| Docker network | `sbn-ecp_umbraco-network` (external), SQL Server alias `sqlserver` |
+| Restart policy | `unless-stopped`, with a `HEALTHCHECK` against `/health` |
+
+This server is a **development and test** environment. The production target is still undefined (open question 9 in the migration plan). Developer Edition is the correct, freely licensed edition for dev/test use.
+
+Data lives in the SQL Server volume, not in the image, so container restarts do not lose it.
 
 ## Design System (BDC GOV.CO v5.0 / DNP 2026)
 

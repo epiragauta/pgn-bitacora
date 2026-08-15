@@ -1,0 +1,35 @@
+# ============================================================
+# Bitácora de Inversión Pública — despliegue on-premise
+#
+#   docker compose up -d --build
+#
+# La API se publica SOLO en loopback: el único que debe alcanzarla
+# desde fuera es Caddy, que termina TLS en el host. Ver la sección de
+# despliegue en docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md.
+#
+# La cadena de conexión vive en .env (ignorado por git); .env.example
+# tiene la plantilla.
+# ============================================================
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    image: dnp-dpip-bitacora:latest
+    container_name: dnp-dpip-bitacora
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      # Solo loopback. Caddy hace de proxy inverso hacia este puerto.
+      - "127.0.0.1:5080:8080"
+    networks:
+      # Se une a la red del SQL Server existente para alcanzarlo por el
+      # alias de servicio 'sqlserver', sin depender del 1433 publicado.
+      - umbraco-network
+
+networks:
+  umbraco-network:
+    external: true
+    name: sbn-ecp_umbraco-network

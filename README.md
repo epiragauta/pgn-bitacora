@@ -1,173 +1,185 @@
-# Bitácora PGN 2025-I — Infografía Web DNP
+# Bitácora de Inversión Pública — DNP / DPIP
 
-**Inversión pública Colombia 2022-2025 · Dirección de Programación de Inversiones Públicas (DPIP)**
+**Inversión pública Colombia 2022-2026 · Dirección de Programación de Inversiones Públicas**
+
+Dashboard web sobre el Presupuesto General de la Nación, con seguimiento adicional a Crédito Externo y al Sistema General de Participaciones.
+
+> **Migración en curso.** El backend está pasando de FastAPI/SQLite a **.NET 8 / SQL Server**. Ambos conviven mientras se verifica la paridad. Estado detallado y decisiones en [`docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md`](docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md).
+>
+> | Componente | Estado |
+> |---|---|
+> | Base de datos SQL Server (`dnp_dpip`) | ✅ migrada, 5.320 filas |
+> | Backend .NET 8 | ✅ 30 endpoints, paridad verificada |
+> | Frontend | ✅ sin cambios |
+> | ETL | ⏳ sigue escribiendo en SQLite (fase 5 pendiente) |
+> | API FastAPI | ⏳ activa hasta el retiro (fase 7) |
 
 ---
 
-## Estructura del proyecto
+## Estructura
 
 ```
-pgn_infografia/
+.
+├── backend/                       ← API .NET 8 (destino)
+│   ├── Dockerfile
+│   └── src/PgnBitacora.Api/
+│       ├── Endpoints/             ← una clase por sección del dashboard
+│       ├── Services/              ← lógica que no cabe en SQL
+│       ├── Data/                  ← Dapper + resolución de bitácora
+│       └── Json/
+├── api/main.py                    ← API FastAPI (legado, se retira en fase 7)
 ├── db/
-│   ├── schema.sql          ← Esquema completo de la BD
-│   └── pgn.db              ← SQLite generado al correr seed_data.py
-├── etl/
-│   ├── seed_data.py        ← Carga inicial (Bitácora 2, 2025-I)
-│   ├── update_bitacora.py  ← Script para cargar nuevas bitácoras vía CSV
-│   └── data/               ← Aquí van los CSVs para actualizaciones futuras
-│       ├── inversion_transformaciones.csv
-│       ├── ejecucion_historica.csv
-│       ├── regionalizacion.csv
-│       ├── apropiacion_sectores.csv
-│       ├── vigencias_futuras.csv
-│       └── ejecucion_sectorial.csv
-├── api/
-│   ├── __init__.py
-│   └── main.py             ← FastAPI REST API
-└── frontend/
-    └── index.html          ← Infografía web completa (standalone)
+│   ├── mssql/                     ← DDL de SQL Server
+│   │   ├── 001_schema.sql
+│   │   ├── 002_views.sql
+│   │   └── 003_seed_dane.sql
+│   ├── schema.sql                 ← esquema SQLite (desactualizado, ver plan §2.1)
+│   └── pgn.db                     ← SQLite (origen de la migración)
+├── etl/                           ← cargadores desde Excel + migrador de datos
+│   └── migrate_sqlite_to_mssql.py
+├── tools/
+│   ├── endpoints.py               ← enumera las 322 rutas a verificar
+│   ├── capture_baseline.py        ← congela las respuestas de referencia
+│   ├── compare_apis.py            ← verifica paridad entre backends
+│   └── baseline/                  ← respuestas de referencia
+├── frontend/index.html            ← dashboard standalone
+├── data/                          ← GeoJSON de departamentos y regiones
+├── deploy/Caddyfile.snippet       ← bloque de proxy inverso
+└── docker-compose.yml
 ```
 
 ---
 
-## Instalación
+## Puesta en marcha
+
+### Requisitos
+- Docker con Compose
+- SQL Server accesible (en este servidor: contenedor `umbraco-sqlserver`, red `sbn-ecp_umbraco-network`)
+- Para desarrollo local sin contenedor: .NET SDK 8
+
+### 1. Preparar la base
 
 ```bash
-pip install fastapi uvicorn
+# Crear base y login (una sola vez, como sa)
+docker exec -i umbraco-sqlserver /opt/mssql-tools18/bin/sqlcmd \
+    -S localhost -U sa -P "$SA_PASSWORD" -C -i /dev/stdin <<'SQL'
+CREATE DATABASE dnp_dpip COLLATE Modern_Spanish_CS_AS;
+GO
+CREATE LOGIN dnp_dpip_app WITH PASSWORD='...', DEFAULT_DATABASE=dnp_dpip, CHECK_POLICY=OFF;
+GO
+USE dnp_dpip;
+CREATE USER dnp_dpip_app FOR LOGIN dnp_dpip_app;
+ALTER ROLE db_datareader ADD MEMBER dnp_dpip_app;
+ALTER ROLE db_datawriter ADD MEMBER dnp_dpip_app;
+ALTER ROLE db_ddladmin  ADD MEMBER dnp_dpip_app;
+GO
+SQL
+
+# Aplicar el esquema (idempotente)
+for f in db/mssql/*.sql; do
+  docker exec -i umbraco-sqlserver /opt/mssql-tools18/bin/sqlcmd \
+      -S localhost -U sa -P "$SA_PASSWORD" -C -b -d dnp_dpip -i /dev/stdin < "$f"
+done
+```
+
+**La collation `Modern_Spanish_CS_AS` no es opcional.** Con una collation insensible a tildes, `PACÍFICO` y `PACIFICO` pasan a ser el mismo valor y los `GROUP BY` por región fusionarían filas en silencio.
+
+### 2. Cargar los datos
+
+```bash
+pip install pyodbc                       # requiere ODBC Driver 18
+python etl/migrate_sqlite_to_mssql.py    # migra desde db/pgn.db y valida
+```
+
+### 3. Levantar la API
+
+```bash
+cp .env.example .env      # y poner la contraseña real
+docker compose up -d --build
+```
+
+Disponible en `http://127.0.0.1:5080` — dashboard en la raíz, API en `/api`, documentación en `/swagger`.
+
+#### Desarrollo sin contenedor
+
+```bash
+export ConnectionStrings__DnpDpip="Server=127.0.0.1,1433;Database=dnp_dpip;User Id=dnp_dpip_app;Password=...;TrustServerCertificate=True"
+dotnet run --project backend/src/PgnBitacora.Api --urls http://127.0.0.1:5080
 ```
 
 ---
 
-## Uso
+## Verificar paridad con la API anterior
 
-### 1. Crear la base de datos con datos iniciales
-
-```bash
-python3 etl/seed_data.py
-```
-
-Esto crea `db/pgn.db` con todos los datos de la Bitácora 2, 2025-I.
-
-### 2. Correr la API
+Cualquier cambio en el backend debe pasar esta comprobación antes de darse por bueno:
 
 ```bash
-uvicorn api.main:app --reload --port 8000
+python tools/compare_apis.py --contra-linea-base
 ```
 
-Documentación interactiva disponible en: `http://localhost:8000/docs`
+Recorre 322 rutas y clasifica las diferencias por tipo. Las de **claves**, **valores** o **estado HTTP** hacen fallar el comando; las de **orden** entre filas empatadas se reportan sin bloquear (el original no define desempate — ver §3.9 del plan).
 
-### 3. Abrir la infografía
+Para comparar contra la API Python en vivo:
 
-Abrir `frontend/index.html` en el navegador.  
-- **Con API corriendo**: los datos se cargan dinámicamente.
-- **Sin API**: la página funciona con datos embebidos (fallback automático).
+```bash
+uvicorn api.main:app --port 8000        # en otra terminal
+python tools/compare_apis.py
+```
+
+Si se cambian los datos a propósito, hay que regenerar la referencia con `python tools/capture_baseline.py` apuntando a la API que se considere correcta.
 
 ---
 
-## Endpoints principales
+## Endpoints
 
-| Endpoint | Descripción |
+30 endpoints agrupados por sección del dashboard. Listado completo e interactivo en `/swagger`.
+
+| Sección | Ruta base |
 |---|---|
-| `GET /api/resumen` | KPIs principales para el dashboard |
-| `GET /api/transformaciones?vigencia=2025` | Distribución por transformadores PND |
-| `GET /api/evolucion` | Evolución presupuestal 2022-2025 |
-| `GET /api/ejecucion` | Ejecución histórica inversión |
-| `GET /api/regionalizacion` | Regionalización por dpto |
-| `GET /api/vigencias_futuras/totales` | Totales VF 2026-2040 |
-| `GET /api/sectorial?vigencia=2025` | Ejecución sectorial por entidad |
+| Dashboard | `/api/resumen` |
+| Metadatos | `/api/bitacoras` |
+| 1 · Transformaciones PND | `/api/transformaciones` |
+| 2 · Evolución presupuestal | `/api/evolucion` |
+| 3 · Regionalización | `/api/regionalizacion` |
+| 4 · Ejecución | `/api/ejecucion` |
+| 5 · Vigencias futuras | `/api/vigencias_futuras` |
+| 6 · Ejecución sectorial | `/api/sectorial` |
+| 7 · Crédito externo | `/api/credito` |
+| 8 · SGP | `/api/sgp` |
 
----
-
-## Actualizar datos (nueva bitácora)
-
-### Opción A — Script ETL con CSVs
-
-1. Preparar CSVs en `etl/data/` con la estructura requerida (ver encabezados en seed_data.py)
-2. Correr:
-
-```bash
-python3 etl/update_bitacora.py \
-  --numero 3 \
-  --periodo 2025-II \
-  --corte 2025-06-30 \
-  --notas "Primer semestre 2025"
-```
-
-### Opción B — Actualización manual directa en SQLite
-
-```sql
--- 1. Crear registro de bitácora
-INSERT INTO metadatos_bitacora (numero_bitacora, periodo, corte_fecha)
-VALUES ('3', '2025-II', '2025-06-30');
-
--- 2. Insertar/actualizar datos usando el bid del paso anterior
-INSERT OR REPLACE INTO ejecucion_historica (bitacora_id, vigencia, ...) VALUES (...);
-```
-
-### Opción C — Conexión directa SIIF/API externa
-
-Modificar `etl/update_bitacora.py` para obtener los datos de la fuente en lugar de CSVs. La función de carga de cada tabla es idéntica.
-
----
-
-## Estructura de CSVs para actualización
-
-### `inversion_transformaciones.csv`
-```
-vigencia,transformador,inversion_mmm,peso_pct
-2025,SEGURIDAD HUMANA Y JUSTICIA SOCIAL,32.149,38.29
-```
-
-### `ejecucion_historica.csv`
-```
-vigencia,vigente_mmm,compromisos_mmm,obligaciones_mmm,pagos_mmm,pct_compromisos,pct_obligaciones,pct_pagos,inv_pct_pib,inv_pct_gasto_total
-2025,83961,36363,6628,6532,43,8,7.8,4.6,16
-```
-
-### `regionalizacion.csv`
-```
-region,departamento,vigente_mm,compromisos_mm,obligaciones_mm,pagos_mm,pct_ejec_compromisos,pct_ejec_obligaciones,pct_ejec_pagos,pct_participacion,principales_sectores
-ANDINA,Bogotá,5906100,1515429,484913,479668,25.7,32.0,98.9,25.8,"[]"
-```
-
-### `vigencias_futuras.csv`
-```
-vigencia_exec,sector,valor_mmm_ctes,pct_pib
-2026,TRANSPORTE,9651,1.01
-```
-
-### `ejecucion_sectorial.csv`
-```
-vigencia,sector,entidad,apr_vigente_mmm,compromisos_mmm,obligaciones_mmm,pct_c_av,pct_o_av
-2025,TRANSPORTE,ANI,7.382,5.859,1.085,79,15
-```
+Todos aceptan `bitacora_id` opcional; sin él responden con la bitácora más reciente.
 
 ---
 
 ## Despliegue
 
-### Frontend estático (GitHub Pages / Netlify)
-El archivo `frontend/index.html` es completamente standalone — no requiere servidor para visualizarse. Sube la carpeta `frontend/` a cualquier hosting estático.
+**On-premise**, detrás del Caddy del host. El contenedor publica **solo en loopback** (`127.0.0.1:5080`) y se une a la red del SQL Server para alcanzarlo por el alias `sqlserver`, sin depender del 1433 publicado.
 
-### API (Railway / Render / Fly.io)
-```bash
-# Procfile
-web: uvicorn api.main:app --host 0.0.0.0 --port $PORT
-```
+Para exponerlo públicamente, añadir el bloque de [`deploy/Caddyfile.snippet`](deploy/Caddyfile.snippet) a `/etc/caddy/Caddyfile` y recargar Caddy. Caddy gestiona el certificado TLS automáticamente.
 
-Cambiar `const API = 'http://localhost:8000/api'` en el HTML por la URL de producción.
+> Fly.io y Render quedaron descartados: la instancia de SQL Server no es alcanzable desde ellos.
+
+---
+
+## Actualizar datos (nueva bitácora)
+
+Los cargadores de `etl/` leen los Excel de `BASES_BITACORA/`. Uso detallado por script en [`docs/etl_uso.md`](docs/etl_uso.md).
+
+> ⚠️ **Los ETL todavía escriben en SQLite.** Su adaptación a SQL Server es la fase 5, pendiente. Hasta entonces el flujo es: cargar en `db/pgn.db` y volver a correr `etl/migrate_sqlite_to_mssql.py`.
 
 ---
 
 ## Fuentes de datos
 
-| Tabla | Fuente |
+| Sección | Fuente |
 |---|---|
 | Transformaciones PND | Cálculo propio DPIP a partir del SIIF |
 | Evolución presupuestal | MHCP – DNP |
-| Regionalización | DPIP a partir de información PIIP (cierre marzo 2025) |
+| Regionalización | DPIP a partir de información PIIP |
 | Ejecución | SIIF Nación |
 | Vigencias Futuras | DPIP – DNP |
 | Ejecución Sectorial | SIIF Nación |
+| Crédito Externo | SCCI |
+| SGP | DNP |
 
-**Cifras:** Miles de millones de pesos corrientes, salvo vigencias futuras (constantes 2025).
+**Cifras:** miles de millones de pesos corrientes, salvo vigencias futuras, que la API convierte a constantes 2026 aplicando el deflactor del PIB.

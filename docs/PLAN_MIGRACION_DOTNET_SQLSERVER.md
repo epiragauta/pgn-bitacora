@@ -331,7 +331,7 @@ La comprobación automatizada en navegador no fue posible en esta sesión (exten
 
 **Nota:** los archivos fuente (`BASES_BITACORA/`) **no están en el repositorio**; esta fase requiere que el usuario los provea para probar de extremo a extremo.
 
-### Fase 6 — Empaquetado y despliegue on-premise *(0,5–1 día)*
+### Fase 6 — Empaquetado y despliegue on-premise — ✅ **COMPLETADA** (2026-08-15)
 
 **Infraestructura verificada en el servidor (2026-08-15):**
 
@@ -357,7 +357,31 @@ La comprobación automatizada en navegador no fue posible en esta sesión (exten
 6. Reinicio automático: `restart: unless-stopped` en compose.
 7. Actualizar `README.md` y `CLAUDE.md` (secciones de despliegue, comandos y arquitectura).
 
-**Criterio de aceptación:** `docker compose up -d` levanta la API, Caddy la publica por HTTPS con certificado automático, y el dashboard carga contra la BD SQL Server.
+**Criterio de aceptación — cumplido**, salvo la publicación por Caddy, que depende del subdominio (ver más abajo).
+
+| Comprobación | Resultado |
+|---|---|
+| `docker compose up -d --build` | contenedor `Up (healthy)` |
+| Raíz, `/api/resumen`, `/data/dptos.geojson`, `/swagger` | 200 en los cuatro |
+| Conexión a SQL Server por alias `sqlserver` | correcta, sin usar el 1433 publicado |
+| **Paridad completa desde el contenedor** | **318/322 idénticas, 0 diferencias de claves, valores o estado** |
+| Estáticos servidos desde la imagen | 8/8 con SHA-256 idéntico al original |
+| `docker compose restart` | vuelve a `healthy` en ~12 s |
+
+La suite de paridad se volvió a correr **contra el contenedor**, no contra el `dotnet run` de desarrollo: confirma que la imagen resuelve bien las rutas de `frontend/` y `data/`, y que la globalización dentro del contenedor maneja las tildes igual (algo que `DOTNET_SYSTEM_GLOBALIZATION_INVARIANT` habría roto en silencio).
+
+**Archivos añadidos:** `backend/Dockerfile`, `docker-compose.yml`, `.env.example`, `deploy/Caddyfile.snippet`.
+**Archivos eliminados:** `fly.toml`, `render.yaml`.
+
+#### Publicación por Caddy — pendiente de una decisión, no de trabajo
+
+El bloque está escrito en `deploy/Caddyfile.snippet` pero **no se aplicó**, por dos razones: falta definir el subdominio con quien administre el DNS (pregunta abierta 7) y editar `/etc/caddy/Caddyfile` expone el servicio a internet, que es un cambio de cara al exterior. Cuando el nombre esté decidido:
+
+```bash
+sudo tee -a /etc/caddy/Caddyfile < deploy/Caddyfile.snippet
+sudo caddy validate --config /etc/caddy/Caddyfile
+sudo systemctl reload caddy
+```
 
 #### 6.1 Notas
 
