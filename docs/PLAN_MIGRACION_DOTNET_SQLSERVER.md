@@ -323,7 +323,7 @@ Se compararon byte a byte (SHA-256) los 8 recursos que `index.html` referencia y
 
 La comprobación automatizada en navegador no fue posible en esta sesión (extensión de Chrome no disponible). **Queda por hacer manualmente**: abrir `http://127.0.0.1:5080/` y recorrer las 8 secciones, el mapa Leaflet, los modales de información y el selector de bitácoras. Todo lo que el navegador solicita —API y estáticos— ya está verificado como idéntico, así que es una confirmación visual, no una búsqueda de fallos.
 
-### Fase 5 — ETL contra SQL Server — ✅ **COMPLETADA** (2026-08-15), con dos cargadores bloqueados por los archivos fuente
+### Fase 5 — ETL contra SQL Server — ✅ **COMPLETADA** (2026-08-15), con un cargador bloqueado por su archivo fuente
 
 Dos módulos nuevos concentran todo lo que cambiaba de motor, para que los cargadores conserven su lógica de lectura de Excel, que es donde vive el conocimiento del negocio:
 
@@ -344,7 +344,7 @@ Dos módulos nuevos concentran todo lo que cambiaba de motor, para que los carga
 
 Se cargaron los Excel en una base `dnp_dpip_pruebas` y se contrastó contra `dnp_dpip` con `tools/compare_bd.py`, que compara filas y suma de cada columna numérica por bitácora.
 
-**Resultado: 18 de 21 tablas idénticas**, incluidas todas las sumas. Las tres restantes son exactamente las de los cargadores bloqueados (ver abajo).
+**Resultado: 20 de 21 tablas idénticas**, incluidas todas las sumas. La única restante es la del cargador que sigue bloqueado (ver abajo).
 
 | Tabla | Migrado | ETL |
 |---|---|---|
@@ -354,22 +354,28 @@ Se cargaron los Excel en una base `dnp_dpip_pruebas` y se contrastó contra `dnp
 | `pgn_ejecucion` / `pgn_concepto` | 560 / 28 | 560 / 28 ✅ |
 | `sgp_historico_componentes` | 95 | 95 ✅ |
 | `credito_*` | 17 / 18 / 4 | 17 / 18 / 4 ✅ |
-| `deflactores_pib` | 30 | **0** ⛔ |
+| `vigencias_futuras` | 193 | 193 ✅ |
+| `deflactores_pib` | 30 | 30 ✅ |
 | `regionalizacion_sectores` | 135 | **0** ⛔ |
-| `vigencias_futuras` | 193 | **271** ⛔ (carga parcial) |
 
-#### ⛔ Dos cargadores bloqueados: los libros entregados no son la versión de origen
+#### ✅ Sección 5 validada (2026-08-15, tras regenerar `BASE_SIIF_2`)
 
-No es un problema de la migración: los Excel de `data/BASES_BITACORA/Marzo/` **no contienen las hojas que estos cargadores necesitan**, y derivarlas aquí significaría reimplementar agregaciones no documentadas, con riesgo de publicar cifras presupuestales equivocadas. Ambos fallan ahora con un mensaje explícito en lugar de cargar datos dudosos.
+El usuario regeneró la hoja `BASE_SIIF_2` en `5. VIGENCIAS FUTURAS/20260513 Nueva Base VF - Validada - Revisión Analistas.xlsx`, con la columna calculada `Valor_VF_Final (Actual)`. La fuente quedó validada en tres niveles:
 
-| Cargador | Necesita | El libro trae | Efecto |
-|---|---|---|---|
-| `load_vigencias_futuras.py` | Hoja `BASE_SIIF_2` con la columna calculada `Valor_VF_Final (Actual)` | Solo `BASE_SIIF` con las columnas crudas `Valor_VF_ACTUAL_SIIF` / `Autorizada` / `Utilizada` | Sección 5 sin cargar |
-| `load_sectores_region.py` | Hoja `sectores_por_region` (tabla ya consolidada) | Solo hojas por región sin consolidar | `regionalizacion_sectores` vacía |
+| Nivel | Resultado |
+|---|---|
+| Lectura | 1.974 filas → **29 sectores × 30 años**, exactamente la forma esperada |
+| Fila a fila | 193 claves `(año, sector)`: **0 faltantes, 0 sobrantes, 0 valores distintos** frente a lo migrado |
+| Deflactores | 30 años, **0 diferencias** en deflactor y PIB |
+| Extremo a extremo | `/api/vigencias_futuras`, `/totales` y `/chart` **idénticos a la línea base** sirviendo desde la base cargada por el ETL |
 
-Se comprobó que **ninguna** de las tres columnas crudas reproduce los valores migrados (desviación mínima de 95.009 mmm sobre el total), de modo que elegir una sería incorrecto.
+Un detalle que no estorbó: la columna viene con un espacio final (`'Valor_VF_Final (Actual) '`), que el cargador ya contemplaba.
 
-**Qué hace falta:** la versión de los dos libros que incluya esas hojas, o la definición de cómo se calculan.
+#### ⛔ Un cargador aún bloqueado por su archivo fuente
+
+`load_sectores_region.py` necesita la hoja **`sectores_por_region`** (tabla ya consolidada: región, sector, apropiación, compromisos, obligaciones, pagos, vigencia) en `3. REGIONALIZACIÓN/Consolidado Reg-Ejec-Marzo-2022-2026vf.xlsx`. El libro solo trae `Regionalizacion Mar-2022-2026`, y el archivo hermano de gráficas trae hojas por región sin consolidar. Consolidarlas aquí exigiría reimplementar un criterio de agregación no documentado, así que el cargador falla con un mensaje explícito en vez de publicar cifras dudosas. Afecta a `regionalizacion_sectores` (135 filas).
+
+**Qué hace falta:** la versión del libro que incluya esa hoja, o la definición de cómo se consolida.
 
 #### Mejoras de robustez aplicadas de paso
 
@@ -392,7 +398,7 @@ python etl/importar_pgn.py                 # Sec 2
 python etl/load_regionalizacion.py         # Sec 3
 python etl/load_sectores_region.py         # Sec 3 (requiere la hoja consolidada)
 python etl/load_ejecucion_sectorial.py     # Sec 4 y 6
-python etl/load_vigencias_futuras.py       # Sec 5 (requiere BASE_SIIF_2) — debe ir DESPUÉS del primero
+python etl/load_vigencias_futuras.py       # Sec 5 — debe ir DESPUÉS del primero
 python etl/load_credito.py                 # Sec 7
 python etl/load_sgp.py && python etl/load_sgp_componentes.py   # Sec 8
 ```
