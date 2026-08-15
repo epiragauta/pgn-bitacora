@@ -207,13 +207,36 @@ def _accent_score(s):
     return sum(1 for ch in s if len(unicodedata.normalize('NFD', ch)) > 1)
 
 
-def canonicalize_entidades(ent_agg):
+def grafias_en_bd(conn):
+    """Nombres de entidad ya presentes en la base, como (sector, entidad).
+
+    Se usan como candidatas adicionales al elegir la grafía canónica, para
+    que la ortografía acentuada no se pierda cuando una entrega del Excel
+    trae la entidad sin tildes. Solo influye en cómo se escribe el nombre;
+    no incorpora ninguna fila.
+    """
+    return [
+        (r[0], r[1]) for r in conn.execute(
+            "SELECT DISTINCT sector, entidad FROM dbo.ejecucion_sectorial_entidades"
+        ).fetchall()
+    ]
+
+
+def canonicalize_entidades(ent_agg, grafias_previas=()):
     """
     El histórico de 'U. Ejec.-Homo' trae, para una misma entidad, años con
     tildes y años sin tildes (p. ej. 'COMISIÓN...' vs 'COMISION...'). Eso
     fragmenta la serie histórica en el frontend, que agrupa por texto exacto
     de entidad. Se agrupa por (sector, nombre sin tildes en mayúsculas) y se
     reescribe todo el grupo a la grafía con más tildes (ortografía correcta).
+
+    `grafias_previas` añade al concurso los nombres que ya están en la base.
+    Sin eso, una entrega del Excel que traiga la entidad sin tildes impone su
+    grafía —no hay con qué compararla— y el tablero pasa a mostrar
+    'GESTION' donde antes decía 'GESTIÓN'. Como el agrupamiento ignora los
+    acentos, esto NO revierte renombres reales: 'MINISTERIO DE CULTURA' y
+    'MINISTERIO DE LAS CULTURAS...' caen en grupos distintos y el nombre
+    nuevo se respeta.
     """
     def norm_key(s):
         s2 = unicodedata.normalize('NFD', s)
@@ -223,6 +246,12 @@ def canonicalize_entidades(ent_agg):
     variants_by_group = defaultdict(set)
     for (anio, sector, entidad) in ent_agg:
         variants_by_group[(sector, norm_key(entidad))].add(entidad)
+
+    # Las grafías previas solo compiten en grupos que esta carga ya trae.
+    for sector, entidad in grafias_previas:
+        clave = (sector, norm_key(entidad))
+        if clave in variants_by_group:
+            variants_by_group[clave].add(entidad)
 
     canonical_for = {}
     for (sector, _key), variants in variants_by_group.items():
@@ -338,7 +367,10 @@ def load_db(conn, bid, anio_max, mes_corte, tot, sec_agg, ent_agg, mens_agg, pib
 
     # ── 3C: ejecucion_sectorial_entidades (todos los años) ───────────────────
     print("\n→ ejecucion_sectorial_entidades (todos los años)")
-    ent_agg = canonicalize_entidades(ent_agg)
+    # Las grafías ya cargadas entran al concurso para no perder las tildes
+    # cuando esta entrega del Excel traiga la entidad sin acentos.
+    previas = grafias_en_bd(conn)
+    ent_agg = canonicalize_entidades(ent_agg, previas)
     ent_rows = []
     for (anio, sector, entidad), (v, c, o, p) in ent_agg.items():
         ent_rows.append((

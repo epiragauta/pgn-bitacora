@@ -381,20 +381,29 @@ Con la hoja añadida a `3. REGIONALIZACIÓN/Consolidado Reg-Ejec-Marzo-2022-2026
 
 Con las 21 tablas cargadas por el ETL, se levantó la API contra esa base y se compararon las rutas aplicables contra la línea base. Se excluyen las que fijan `bitacora_id` o listan metadatos, porque la base de pruebas tiene una sola bitácora y con otro id.
 
-| Sobre 298 rutas | |
-|---|---|
-| Idénticas | **251** |
-| Solo orden entre filas empatadas (§3.9) | 4 |
-| Difieren **solo por tildes** en nombres de entidad | 35 |
-| Difieren por **renombres institucionales** en la fuente | 8 |
-| **Diferencias en cifras** | **0** |
+| Sobre 298 rutas | Antes | Final |
+|---|---|---|
+| Idénticas | 251 | **287** |
+| Solo orden entre filas empatadas (§3.9) | 4 | 4 |
+| Difieren **solo por tildes** en nombres de entidad | 35 | **0** |
+| Difieren por **renombres institucionales** en la fuente | 8 | 7 |
+| **Diferencias en cifras** | **0** | **0** |
 
-**Ninguna diferencia es numérica.** Las 43 restantes son de texto y provienen de que el libro entregado es una **revisión posterior** al que originó los datos migrados:
+**Ninguna diferencia es numérica.** Todas son de texto y provienen de que el libro entregado es una **revisión posterior** al que originó los datos migrados.
 
-- **Tildes:** 67 de 179 entidades vienen sin acentos en el nuevo libro (`GESTION` en vez de `GESTIÓN`). No es del ETL: `canonicalize_entidades()` está escrita justamente para elegir la grafía más acentuada, pero solo puede escoger entre las variantes que el archivo contenga, y para esas entidades solo existe la versión sin tildes (385 ocurrencias, ninguna acentuada). El archivo no está globalmente sin tildes: 34.040 de 148.214 valores sí las llevan.
-- **Renombres:** por ejemplo `MINISTERIO DE CULTURA - GESTIÓN GENERAL` → `MINISTERIO DE LAS CULTURAS, LAS ARTES Y LOS SABERES - GESTIÓN GENERAL`, aplicado retroactivamente a 2022-2023. Son actualizaciones legítimas del origen, no defectos.
+##### Tildes en nombres de entidad — resuelto
 
-**Decisión pendiente:** si el tablero debe mostrar la grafía tal como viene del SIIF (fiel al origen) o conservar la ortografía acentuada histórica. Lo segundo es viable extendiendo `canonicalize_entidades()` para considerar también las grafías ya presentes en la base, no solo las del archivo en curso.
+67 de 179 entidades venían sin acentos en el nuevo libro (`GESTION` en vez de `GESTIÓN`). No era un fallo del ETL: `canonicalize_entidades()` ya elegía la grafía más acentuada, pero solo entre las variantes del archivo en curso, y para esas entidades solo existe la versión sin tildes (385 ocurrencias, ninguna acentuada; el archivo no está globalmente sin tildes — 34.040 de 148.214 valores sí las llevan).
+
+**Decisión del usuario: conservar la ortografía acentuada que ya mostraba el tablero.** Se añadió `grafias_en_bd()`, que incorpora al concurso los nombres ya presentes en la base. Como el agrupamiento ignora los acentos, esto **no revierte renombres reales**: nombre viejo y nombre nuevo caen en grupos distintos.
+
+Resultado: los nombres acentuados pasaron de 68 a **144** de 216, y las 35 rutas que diferían por tildes quedaron en cero.
+
+##### Renombres institucionales — se respetan (7 rutas)
+
+Por ejemplo `MINISTERIO DE CULTURA - GESTIÓN GENERAL` → `MINISTERIO DE LAS CULTURAS, LAS ARTES Y LOS SABERES - GESTIÓN GENERAL`, que la fuente aplica retroactivamente a 2022-2023. Son actualizaciones legítimas del origen y el tablero debe reflejarlas.
+
+> Detalle menor: una entidad renombrada llega como `... - GESTION GENERAL` sin tilde, porque al ser un nombre nuevo no hay grafía previa con la cual compararlo. Corregirlo exigiría inventar ortografía en vez de preservarla; si molesta, lo natural es corregir el nombre en la fuente.
 
 #### Mejoras de robustez aplicadas de paso
 
