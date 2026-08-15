@@ -1,0 +1,236 @@
+[
+  {
+    "apropiacion_mmm": 668.319,
+    "compromisos_mmm": 419.168,
+    "obligaciones_mmm": 50.568,
+    "pagos_mmm": 50.568,
+    "region": "ORINOQUÍA",
+    "sector": "Transporte",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 423.636,
+    "compromisos_mmm": 107.876,
+    "obligaciones_mmm": 72.74,
+    "pagos_mmm": 72.703,
+    "region": "ORINOQUÍA",
+    "sector": "Inclusión Social y Reconciliación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 403.195,
+    "compromisos_mmm": 194.96,
+    "obligaciones_mmm": 80.049,
+    "pagos_mmm": 80.037,
+    "region": "ORINOQUÍA",
+    "sector": "Minas y Energía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 280.601,
+    "compromisos_mmm": 201.577,
+    "obligaciones_mmm": 65.382,
+    "pagos_mmm": 65.382,
+    "region": "ORINOQUÍA",
+    "sector": "Igualdad y Equidad",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 273.857,
+    "compromisos_mmm": 217.757,
+    "obligaciones_mmm": 40.781,
+    "pagos_mmm": 38.621,
+    "region": "ORINOQUÍA",
+    "sector": "Educación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 183.146,
+    "compromisos_mmm": 77.568,
+    "obligaciones_mmm": 13.605,
+    "pagos_mmm": 13.592,
+    "region": "ORINOQUÍA",
+    "sector": "Trabajo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 155.726,
+    "compromisos_mmm": 54.622,
+    "obligaciones_mmm": 12.183,
+    "pagos_mmm": 10.47,
+    "region": "ORINOQUÍA",
+    "sector": "Agricultura y Desarrollo Rural",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 59.352,
+    "compromisos_mmm": 5.753,
+    "obligaciones_mmm": 0.144,
+    "pagos_mmm": 0.144,
+    "region": "ORINOQUÍA",
+    "sector": "Presidencia de la República",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 38.24,
+    "compromisos_mmm": 38.24,
+    "obligaciones_mmm": 2.416,
+    "pagos_mmm": 1.756,
+    "region": "ORINOQUÍA",
+    "sector": "Vivienda, Ciudad y Territorio",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 27.748,
+    "compromisos_mmm": 25.834,
+    "obligaciones_mmm": 0.664,
+    "pagos_mmm": 0.664,
+    "region": "ORINOQUÍA",
+    "sector": "Salud y Protección Social",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 13.671,
+    "compromisos_mmm": 13.436,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "ORINOQUÍA",
+    "sector": "Tecnologías de la Información y las Comunicaciones",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 12.78,
+    "compromisos_mmm": 2.706,
+    "obligaciones_mmm": 1.61,
+    "pagos_mmm": 1.61,
+    "region": "ORINOQUÍA",
+    "sector": "Organismos de Control",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 11.931,
+    "compromisos_mmm": 10.736,
+    "obligaciones_mmm": 1.856,
+    "pagos_mmm": 1.856,
+    "region": "ORINOQUÍA",
+    "sector": "Deporte y Recreación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 10.788,
+    "compromisos_mmm": 8.717,
+    "obligaciones_mmm": 0.203,
+    "pagos_mmm": 0.203,
+    "region": "ORINOQUÍA",
+    "sector": "Registraduría",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 10.552,
+    "compromisos_mmm": 0.525,
+    "obligaciones_mmm": 0.271,
+    "pagos_mmm": 0.271,
+    "region": "ORINOQUÍA",
+    "sector": "Justicia y del Derecho",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 8.519,
+    "compromisos_mmm": 7.288,
+    "obligaciones_mmm": 1.426,
+    "pagos_mmm": 1.406,
+    "region": "ORINOQUÍA",
+    "sector": "Información Estadística",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 8.346,
+    "compromisos_mmm": 5.265,
+    "obligaciones_mmm": 0.958,
+    "pagos_mmm": 0.941,
+    "region": "ORINOQUÍA",
+    "sector": "Sistema Integral de Verdad, Justicia, Reparación y no Repetición",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 6.165,
+    "compromisos_mmm": 3.292,
+    "obligaciones_mmm": 0.656,
+    "pagos_mmm": 0.594,
+    "region": "ORINOQUÍA",
+    "sector": "Empleo Público",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 5.9,
+    "compromisos_mmm": 3.196,
+    "obligaciones_mmm": 0.018,
+    "pagos_mmm": 0.018,
+    "region": "ORINOQUÍA",
+    "sector": "Fiscalía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 4.13,
+    "compromisos_mmm": 0.0,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "ORINOQUÍA",
+    "sector": "Defensa y Policía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 3.166,
+    "compromisos_mmm": 0.949,
+    "obligaciones_mmm": 0.009,
+    "pagos_mmm": 0.006,
+    "region": "ORINOQUÍA",
+    "sector": "Interior",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 1.955,
+    "compromisos_mmm": 1.746,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "ORINOQUÍA",
+    "sector": "Cultura",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 1.307,
+    "compromisos_mmm": 0.911,
+    "obligaciones_mmm": 0.143,
+    "pagos_mmm": 0.124,
+    "region": "ORINOQUÍA",
+    "sector": "Comercio, Industria y Turismo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 0.784,
+    "compromisos_mmm": 0.207,
+    "obligaciones_mmm": 0.022,
+    "pagos_mmm": 0.016,
+    "region": "ORINOQUÍA",
+    "sector": "Relaciones Exteriores",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 0.447,
+    "compromisos_mmm": 0.447,
+    "obligaciones_mmm": 0.164,
+    "pagos_mmm": 0.164,
+    "region": "ORINOQUÍA",
+    "sector": "Ambiente y Desarrollo Sostenible",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 0.233,
+    "compromisos_mmm": 0.122,
+    "obligaciones_mmm": 0.024,
+    "pagos_mmm": 0.024,
+    "region": "ORINOQUÍA",
+    "sector": "Hacienda",
+    "vigencia": 2026
+  }
+]

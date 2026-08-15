@@ -1,0 +1,72 @@
+[
+  {
+    "apr_vigente_mmm": 9430.689,
+    "compromisos_mmm": 3563.798,
+    "entidad": "MINISTERIO DE MINAS Y ENERGÍA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 1784.912,
+    "pct_c_av": 37.8,
+    "pct_o_av": 18.9,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 423.761,
+    "compromisos_mmm": 21.583,
+    "entidad": "AGENCIA NACIONAL DE HIDROCARBUROS - ANH",
+    "obligaciones_mmm": 0.836,
+    "pct_c_av": 5.1,
+    "pct_o_av": 0.2,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 90.423,
+    "compromisos_mmm": 49.29,
+    "entidad": "AGENCIA NACIONAL DE MINERÍA - ANM",
+    "obligaciones_mmm": 8.47,
+    "pct_c_av": 54.5,
+    "pct_o_av": 9.4,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 80,
+    "compromisos_mmm": 32.788,
+    "entidad": "SERVICIO GEOLÓGICO COLOMBIANO",
+    "obligaciones_mmm": 6.002,
+    "pct_c_av": 41,
+    "pct_o_av": 7.5,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 50,
+    "compromisos_mmm": 45.453,
+    "entidad": "INSTITUTO DE PLANIFICACIÓN Y PROMOCIÓN DE SOLUCIONES  ENERGÉTICAS PARA LAS ZONAS NO INTERCONECTADAS - IPSE",
+    "obligaciones_mmm": 1.034,
+    "pct_c_av": 90.9,
+    "pct_o_av": 2.1,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 42.894,
+    "compromisos_mmm": 28.227,
+    "entidad": "UNIDAD DE PLANEACIÓN MINERO ENERGÉTICA - UPME",
+    "obligaciones_mmm": 2.716,
+    "pct_c_av": 65.8,
+    "pct_o_av": 6.3,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 24.053,
+    "compromisos_mmm": 11.731,
+    "entidad": "MINISTERIO DE MINAS Y ENERGIA - COMISION DE REGULACION DE ENERGIA Y GAS - CREG -",
+    "obligaciones_mmm": 1.484,
+    "pct_c_av": 48.8,
+    "pct_o_av": 6.2,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2026
+  }
+]

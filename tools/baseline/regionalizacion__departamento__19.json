@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 1334.652589,
+    "compromisos_mmm": 769.617229,
+    "departamento": "Cauca",
+    "obligaciones_mmm": 156.372263,
+    "pagos_mmm": 154.022828,
+    "pct_compromisos": 57.66,
+    "pct_obligaciones": 11.72,
+    "pct_participacion": 1.88,
+    "region": "PACÍFICO",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 1593.158803,
+    "compromisos_mmm": 42.076759,
+    "departamento": "Cauca",
+    "obligaciones_mmm": 29.173754,
+    "pagos_mmm": 28.341268,
+    "pct_compromisos": 2.64,
+    "pct_obligaciones": 1.83,
+    "pct_participacion": 2.94,
+    "region": "PACÍFICO",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 2372.673376,
+    "compromisos_mmm": 754.801251,
+    "departamento": "Cauca",
+    "obligaciones_mmm": 224.308741,
+    "pagos_mmm": 217.441373,
+    "pct_compromisos": 31.81,
+    "pct_obligaciones": 9.45,
+    "pct_participacion": 2.61,
+    "region": "PACÍFICO",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 2045.318071,
+    "compromisos_mmm": 587.798855,
+    "departamento": "Cauca",
+    "obligaciones_mmm": 46.918555,
+    "pagos_mmm": 46.367823,
+    "pct_compromisos": 28.74,
+    "pct_obligaciones": 2.29,
+    "pct_participacion": 2.8,
+    "region": "PACÍFICO",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 2418.409959,
+    "compromisos_mmm": 1311.658156,
+    "departamento": "Cauca",
+    "obligaciones_mmm": 333.786857,
+    "pagos_mmm": 262.048752,
+    "pct_compromisos": 54.24,
+    "pct_obligaciones": 13.8,
+    "pct_participacion": 2.84,
+    "region": "PACÍFICO",
+    "vigencia": 2026
+  }
+]

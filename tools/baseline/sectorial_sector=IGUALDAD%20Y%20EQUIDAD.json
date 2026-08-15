@@ -1,0 +1,32 @@
+[
+  {
+    "apr_vigente_mmm": 9406.591,
+    "compromisos_mmm": 5975.965,
+    "entidad": "INSTITUTO COLOMBIANO DE BIENESTAR FAMILIAR (ICBF)",
+    "obligaciones_mmm": 1772.477,
+    "pct_c_av": 63.5,
+    "pct_o_av": 18.8,
+    "sector": "IGUALDAD Y EQUIDAD",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 8.258,
+    "compromisos_mmm": 6.881,
+    "entidad": "INSTITUTO NACIONAL PARA SORDOS (INSOR)",
+    "obligaciones_mmm": 0.806,
+    "pct_c_av": 83.3,
+    "pct_o_av": 9.8,
+    "sector": "IGUALDAD Y EQUIDAD",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 3.158,
+    "compromisos_mmm": 1.115,
+    "entidad": "INSTITUTO NACIONAL PARA CIEGOS (INCI)",
+    "obligaciones_mmm": 0.165,
+    "pct_c_av": 35.3,
+    "pct_o_av": 5.2,
+    "sector": "IGUALDAD Y EQUIDAD",
+    "vigencia": 2026
+  }
+]

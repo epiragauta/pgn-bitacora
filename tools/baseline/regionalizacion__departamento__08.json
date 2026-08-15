@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 2249.173866,
+    "compromisos_mmm": 911.766424,
+    "departamento": "Atlántico",
+    "obligaciones_mmm": 394.044522,
+    "pagos_mmm": 389.192676,
+    "pct_compromisos": 40.54,
+    "pct_obligaciones": 17.52,
+    "pct_participacion": 3.17,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 1334.007498,
+    "compromisos_mmm": 32.78405,
+    "departamento": "Atlántico",
+    "obligaciones_mmm": 29.00237,
+    "pagos_mmm": 41.605894,
+    "pct_compromisos": 2.46,
+    "pct_obligaciones": 2.17,
+    "pct_participacion": 2.46,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 1820.050314,
+    "compromisos_mmm": 747.482854,
+    "departamento": "Atlántico",
+    "obligaciones_mmm": 272.154018,
+    "pagos_mmm": 265.421091,
+    "pct_compromisos": 41.07,
+    "pct_obligaciones": 14.95,
+    "pct_participacion": 2.0,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 1755.504975,
+    "compromisos_mmm": 352.176064,
+    "departamento": "Atlántico",
+    "obligaciones_mmm": 91.927118,
+    "pagos_mmm": 91.845313,
+    "pct_compromisos": 20.06,
+    "pct_obligaciones": 5.24,
+    "pct_participacion": 2.41,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 2714.159944,
+    "compromisos_mmm": 1474.616744,
+    "departamento": "Atlántico",
+    "obligaciones_mmm": 592.319048,
+    "pagos_mmm": 338.645206,
+    "pct_compromisos": 54.33,
+    "pct_obligaciones": 21.82,
+    "pct_participacion": 3.18,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2026
+  }
+]

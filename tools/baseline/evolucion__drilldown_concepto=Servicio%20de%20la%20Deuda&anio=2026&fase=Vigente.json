@@ -1,0 +1,68 @@
+[
+  {
+    "nivel": 2,
+    "nombre": "Servicio de la Deuda",
+    "padre": "Total PGN",
+    "valor": 100449.708
+  },
+  {
+    "nivel": 2,
+    "nombre": "Servicio de la Deuda como % del PIB",
+    "padre": "Servicio de la Deuda",
+    "valor": 0.05
+  },
+  {
+    "nivel": 3,
+    "nombre": "Servicio de la Deuda Pública Externa",
+    "padre": "Servicio de la Deuda",
+    "valor": 38406.045
+  },
+  {
+    "nivel": 4,
+    "nombre": "Principal - Deuda Externa",
+    "padre": "Servicio de la Deuda Pública Externa",
+    "valor": 17273.045
+  },
+  {
+    "nivel": 4,
+    "nombre": "Intereses - Deuda Externa",
+    "padre": "Servicio de la Deuda Pública Externa",
+    "valor": 19987.062
+  },
+  {
+    "nivel": 4,
+    "nombre": "Comisiones y Otros Gastos - Deuda Externa",
+    "padre": "Servicio de la Deuda Pública Externa",
+    "valor": 1145.938
+  },
+  {
+    "nivel": 3,
+    "nombre": "Servicio de la Deuda Pública Interna",
+    "padre": "Servicio de la Deuda",
+    "valor": 62043.663
+  },
+  {
+    "nivel": 4,
+    "nombre": "Principal - Deuda Interna",
+    "padre": "Servicio de la Deuda Pública Interna",
+    "valor": 10342.874
+  },
+  {
+    "nivel": 4,
+    "nombre": "Intereses - Deuda Interna",
+    "padre": "Servicio de la Deuda Pública Interna",
+    "valor": 48777.532
+  },
+  {
+    "nivel": 4,
+    "nombre": "Comisiones y Otros Gastos - Deuda Interna",
+    "padre": "Servicio de la Deuda Pública Interna",
+    "valor": 257.929
+  },
+  {
+    "nivel": 3,
+    "nombre": "Fondo de Contingencias",
+    "padre": "Servicio de la Deuda",
+    "valor": 2665.328
+  }
+]

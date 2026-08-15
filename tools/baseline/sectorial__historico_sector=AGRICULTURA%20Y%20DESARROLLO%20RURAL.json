@@ -1,0 +1,352 @@
+[
+  {
+    "apr_vigente_mmm": 223.008,
+    "compromisos_mmm": 62.715,
+    "entidad": "AGENCIA DE DESARROLLO RURAL - ADR",
+    "obligaciones_mmm": 8.436,
+    "pct_c_av": 28.1,
+    "pct_o_av": 3.8,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 607.453,
+    "compromisos_mmm": 58.735,
+    "entidad": "AGENCIA DE DESARROLLO RURAL - ADR",
+    "obligaciones_mmm": 6.867,
+    "pct_c_av": 9.7,
+    "pct_o_av": 1.1,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 894.893,
+    "compromisos_mmm": 95.347,
+    "entidad": "AGENCIA DE DESARROLLO RURAL - ADR",
+    "obligaciones_mmm": 6.161,
+    "pct_c_av": 10.7,
+    "pct_o_av": 0.7,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 704.174,
+    "compromisos_mmm": 51.909,
+    "entidad": "AGENCIA DE DESARROLLO RURAL - ADR",
+    "obligaciones_mmm": 10.785,
+    "pct_c_av": 7.4,
+    "pct_o_av": 1.5,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 495.277,
+    "compromisos_mmm": 190.586,
+    "entidad": "AGENCIA DE DESARROLLO RURAL - ADR",
+    "obligaciones_mmm": 20.44,
+    "pct_c_av": 38.5,
+    "pct_o_av": 4.1,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 271.339,
+    "compromisos_mmm": 142.093,
+    "entidad": "AGENCIA NACIONAL DE TIERRAS - ANT",
+    "obligaciones_mmm": 28.108,
+    "pct_c_av": 52.4,
+    "pct_o_av": 10.4,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 976.414,
+    "compromisos_mmm": 237.957,
+    "entidad": "AGENCIA NACIONAL DE TIERRAS - ANT",
+    "obligaciones_mmm": 26.878,
+    "pct_c_av": 24.4,
+    "pct_o_av": 2.8,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 4943.238,
+    "compromisos_mmm": 424.263,
+    "entidad": "AGENCIA NACIONAL DE TIERRAS - ANT",
+    "obligaciones_mmm": 50.455,
+    "pct_c_av": 8.6,
+    "pct_o_av": 1,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 1635.644,
+    "compromisos_mmm": 337.904,
+    "entidad": "AGENCIA NACIONAL DE TIERRAS - ANT",
+    "obligaciones_mmm": 31.572,
+    "pct_c_av": 20.7,
+    "pct_o_av": 1.9,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 1187.088,
+    "compromisos_mmm": 384.198,
+    "entidad": "AGENCIA NACIONAL DE TIERRAS - ANT",
+    "obligaciones_mmm": 59.533,
+    "pct_c_av": 32.4,
+    "pct_o_av": 5,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 51.052,
+    "compromisos_mmm": 26.66,
+    "entidad": "AUTORIDAD NACIONAL DE ACUICULTURA Y PESCA - AUNAP",
+    "obligaciones_mmm": 6.971,
+    "pct_c_av": 52.2,
+    "pct_o_av": 13.7,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 85.4,
+    "compromisos_mmm": 16.203,
+    "entidad": "AUTORIDAD NACIONAL DE ACUICULTURA Y PESCA - AUNAP",
+    "obligaciones_mmm": 6.048,
+    "pct_c_av": 19,
+    "pct_o_av": 7.1,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 150.217,
+    "compromisos_mmm": 13.901,
+    "entidad": "AUTORIDAD NACIONAL DE ACUICULTURA Y PESCA - AUNAP",
+    "obligaciones_mmm": 0.947,
+    "pct_c_av": 9.3,
+    "pct_o_av": 0.6,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 73.52,
+    "compromisos_mmm": 18.338,
+    "entidad": "AUTORIDAD NACIONAL DE ACUICULTURA Y PESCA - AUNAP",
+    "obligaciones_mmm": 1.226,
+    "pct_c_av": 24.9,
+    "pct_o_av": 1.7,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 70,
+    "compromisos_mmm": 29.501,
+    "entidad": "AUTORIDAD NACIONAL DE ACUICULTURA Y PESCA - AUNAP",
+    "obligaciones_mmm": 7.017,
+    "pct_c_av": 42.1,
+    "pct_o_av": 10,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 168.504,
+    "compromisos_mmm": 95.069,
+    "entidad": "INSTITUTO COLOMBIANO AGROPECUARIO (ICA)",
+    "obligaciones_mmm": 24.1,
+    "pct_c_av": 56.4,
+    "pct_o_av": 14.3,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 255.729,
+    "compromisos_mmm": 33.561,
+    "entidad": "INSTITUTO COLOMBIANO AGROPECUARIO (ICA)",
+    "obligaciones_mmm": 12.151,
+    "pct_c_av": 13.1,
+    "pct_o_av": 4.8,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 302.364,
+    "compromisos_mmm": 94.529,
+    "entidad": "INSTITUTO COLOMBIANO AGROPECUARIO (ICA)",
+    "obligaciones_mmm": 13.099,
+    "pct_c_av": 31.3,
+    "pct_o_av": 4.3,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 270.668,
+    "compromisos_mmm": 132.952,
+    "entidad": "INSTITUTO COLOMBIANO AGROPECUARIO (ICA)",
+    "obligaciones_mmm": 24.572,
+    "pct_c_av": 49.1,
+    "pct_o_av": 9.1,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 250,
+    "compromisos_mmm": 166.017,
+    "entidad": "INSTITUTO COLOMBIANO AGROPECUARIO (ICA)",
+    "obligaciones_mmm": 33.147,
+    "pct_c_av": 66.4,
+    "pct_o_av": 13.3,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 874.681,
+    "compromisos_mmm": 630.495,
+    "entidad": "MINAGRICULTURA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 129.733,
+    "pct_c_av": 72.1,
+    "pct_o_av": 14.8,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 826.83,
+    "compromisos_mmm": 283.683,
+    "entidad": "MINAGRICULTURA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 41.925,
+    "pct_c_av": 34.3,
+    "pct_o_av": 5.1,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 1254.038,
+    "compromisos_mmm": 606.794,
+    "entidad": "MINAGRICULTURA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 72.795,
+    "pct_c_av": 48.4,
+    "pct_o_av": 5.8,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 1107.573,
+    "compromisos_mmm": 258.464,
+    "entidad": "MINAGRICULTURA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 5.298,
+    "pct_c_av": 23.3,
+    "pct_o_av": 0.5,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 770.27,
+    "compromisos_mmm": 259.334,
+    "entidad": "MINAGRICULTURA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 21.728,
+    "pct_c_av": 33.7,
+    "pct_o_av": 2.8,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 214.982,
+    "compromisos_mmm": 149.599,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE GESTIÓN DE RESTITUCIÓN DE TIERRAS DESPOJADAS",
+    "obligaciones_mmm": 39.396,
+    "pct_c_av": 69.6,
+    "pct_o_av": 18.3,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 354.958,
+    "compromisos_mmm": 158.474,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE GESTIÓN DE RESTITUCIÓN DE TIERRAS DESPOJADAS",
+    "obligaciones_mmm": 50.165,
+    "pct_c_av": 44.6,
+    "pct_o_av": 14.1,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 399.023,
+    "compromisos_mmm": 206.242,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE GESTIÓN DE RESTITUCIÓN DE TIERRAS DESPOJADAS",
+    "obligaciones_mmm": 57.704,
+    "pct_c_av": 51.7,
+    "pct_o_av": 14.5,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 455.421,
+    "compromisos_mmm": 191.107,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE GESTIÓN DE RESTITUCIÓN DE TIERRAS DESPOJADAS",
+    "obligaciones_mmm": 48.628,
+    "pct_c_av": 42,
+    "pct_o_av": 10.7,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 390.926,
+    "compromisos_mmm": 249.117,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE GESTIÓN DE RESTITUCIÓN DE TIERRAS DESPOJADAS",
+    "obligaciones_mmm": 55.209,
+    "pct_c_av": 63.7,
+    "pct_o_av": 14.1,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 20.616,
+    "compromisos_mmm": 19.68,
+    "entidad": "UNIDAD DE PLANIFICACIÓN DE TIERRAS RURALES, ADECUACIÓN DE TIERRAS Y USOS AGROPECUARIOS (UPRA)",
+    "obligaciones_mmm": 2.352,
+    "pct_c_av": 95.5,
+    "pct_o_av": 11.4,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 43.164,
+    "compromisos_mmm": 27.931,
+    "entidad": "UNIDAD DE PLANIFICACIÓN DE TIERRAS RURALES, ADECUACIÓN DE TIERRAS Y USOS AGROPECUARIOS (UPRA)",
+    "obligaciones_mmm": 2.143,
+    "pct_c_av": 64.7,
+    "pct_o_av": 5,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 54.198,
+    "compromisos_mmm": 44.506,
+    "entidad": "UNIDAD DE PLANIFICACIÓN DE TIERRAS RURALES, ADECUACIÓN DE TIERRAS Y USOS AGROPECUARIOS (UPRA)",
+    "obligaciones_mmm": 3.168,
+    "pct_c_av": 82.1,
+    "pct_o_av": 5.8,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 41.2,
+    "compromisos_mmm": 37.119,
+    "entidad": "UNIDAD DE PLANIFICACIÓN DE TIERRAS RURALES, ADECUACIÓN DE TIERRAS Y USOS AGROPECUARIOS (UPRA)",
+    "obligaciones_mmm": 2.714,
+    "pct_c_av": 90.1,
+    "pct_o_av": 6.6,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 50,
+    "compromisos_mmm": 43.55,
+    "entidad": "UNIDAD DE PLANIFICACIÓN DE TIERRAS RURALES, ADECUACIÓN DE TIERRAS Y USOS AGROPECUARIOS (UPRA)",
+    "obligaciones_mmm": 5.102,
+    "pct_c_av": 87.1,
+    "pct_o_av": 10.2,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2026
+  }
+]

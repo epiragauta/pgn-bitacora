@@ -1,0 +1,20 @@
+[
+  {
+    "contrato": "9641",
+    "desembolsado_usd": 83333333,
+    "fuente": "BM",
+    "monto_usd": 300000000,
+    "nombre": "Programa para Mejorar el Acceso de la Población Vulnerable a Servicios de Salud y Aumentar la Resiliencia del Sistema de Salud",
+    "nombre_corto": "PforR Salud 2 - BM",
+    "sector": "Salud"
+  },
+  {
+    "contrato": "5853",
+    "desembolsado_usd": 73000000,
+    "fuente": "BID",
+    "monto_usd": 150000000,
+    "nombre": "Programa para Mejorar el Acceso de la Población Vulnerable a Servicios de Salud y Aumentar la Resiliencia del Sistema de Salud",
+    "nombre_corto": "PBR Salud 2 - BID",
+    "sector": "Salud"
+  }
+]

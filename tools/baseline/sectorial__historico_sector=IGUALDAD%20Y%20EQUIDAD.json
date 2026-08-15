@@ -1,0 +1,112 @@
+[
+  {
+    "apr_vigente_mmm": 9786.408,
+    "compromisos_mmm": 5960.453,
+    "entidad": "INSTITUTO COLOMBIANO DE BIENESTAR FAMILIAR (ICBF)",
+    "obligaciones_mmm": 1009.802,
+    "pct_c_av": 60.9,
+    "pct_o_av": 10.3,
+    "sector": "IGUALDAD Y EQUIDAD",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 9639.622,
+    "compromisos_mmm": 7765.185,
+    "entidad": "INSTITUTO COLOMBIANO DE BIENESTAR FAMILIAR (ICBF)",
+    "obligaciones_mmm": 1392.961,
+    "pct_c_av": 80.6,
+    "pct_o_av": 14.5,
+    "sector": "IGUALDAD Y EQUIDAD",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 9406.591,
+    "compromisos_mmm": 5975.965,
+    "entidad": "INSTITUTO COLOMBIANO DE BIENESTAR FAMILIAR (ICBF)",
+    "obligaciones_mmm": 1772.477,
+    "pct_c_av": 63.5,
+    "pct_o_av": 18.8,
+    "sector": "IGUALDAD Y EQUIDAD",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 3.515,
+    "compromisos_mmm": 1.663,
+    "entidad": "INSTITUTO NACIONAL PARA CIEGOS (INCI)",
+    "obligaciones_mmm": 0.115,
+    "pct_c_av": 47.3,
+    "pct_o_av": 3.3,
+    "sector": "IGUALDAD Y EQUIDAD",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 3.764,
+    "compromisos_mmm": 1.5,
+    "entidad": "INSTITUTO NACIONAL PARA CIEGOS (INCI)",
+    "obligaciones_mmm": 0.051,
+    "pct_c_av": 39.9,
+    "pct_o_av": 1.3,
+    "sector": "IGUALDAD Y EQUIDAD",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 3.158,
+    "compromisos_mmm": 1.115,
+    "entidad": "INSTITUTO NACIONAL PARA CIEGOS (INCI)",
+    "obligaciones_mmm": 0.165,
+    "pct_c_av": 35.3,
+    "pct_o_av": 5.2,
+    "sector": "IGUALDAD Y EQUIDAD",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 7.921,
+    "compromisos_mmm": 5.217,
+    "entidad": "INSTITUTO NACIONAL PARA SORDOS (INSOR)",
+    "obligaciones_mmm": 0.389,
+    "pct_c_av": 65.9,
+    "pct_o_av": 4.9,
+    "sector": "IGUALDAD Y EQUIDAD",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 8.359,
+    "compromisos_mmm": 5.39,
+    "entidad": "INSTITUTO NACIONAL PARA SORDOS (INSOR)",
+    "obligaciones_mmm": 0.357,
+    "pct_c_av": 64.5,
+    "pct_o_av": 4.3,
+    "sector": "IGUALDAD Y EQUIDAD",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 8.258,
+    "compromisos_mmm": 6.881,
+    "entidad": "INSTITUTO NACIONAL PARA SORDOS (INSOR)",
+    "obligaciones_mmm": 0.806,
+    "pct_c_av": 83.3,
+    "pct_o_av": 9.8,
+    "sector": "IGUALDAD Y EQUIDAD",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 400,
+    "compromisos_mmm": 0,
+    "entidad": "MINISTERIO DE IGUALDAD Y EQUIDAD - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "IGUALDAD Y EQUIDAD",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 498.912,
+    "compromisos_mmm": 5.812,
+    "entidad": "MINISTERIO DE IGUALDAD Y EQUIDAD - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0.092,
+    "pct_c_av": 1.2,
+    "pct_o_av": 0,
+    "sector": "IGUALDAD Y EQUIDAD",
+    "vigencia": 2025
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "compromisos_mmm": 36610.024,
+    "inv_pct_gasto_total": 19.8,
+    "inv_pct_pib": 4.7,
+    "obligaciones_mmm": 11380.375,
+    "pagados_mmm": 11143.16,
+    "pct_compromisos": 52.58,
+    "pct_obligaciones": 16.35,
+    "pct_pagos": 16.0,
+    "vigencia": 2022,
+    "vigente_mmm": 69625.548
+  },
+  {
+    "compromisos_mmm": 31580.404,
+    "inv_pct_gasto_total": 18.3,
+    "inv_pct_pib": 4.7,
+    "obligaciones_mmm": 8505.618,
+    "pagados_mmm": 8418.631,
+    "pct_compromisos": 42.55,
+    "pct_obligaciones": 11.46,
+    "pct_pagos": 11.34,
+    "vigencia": 2023,
+    "vigente_mmm": 74222.233
+  },
+  {
+    "compromisos_mmm": 38582.149,
+    "inv_pct_gasto_total": 19.9,
+    "inv_pct_pib": 5.8,
+    "obligaciones_mmm": 9081.633,
+    "pagados_mmm": 8678.876,
+    "pct_compromisos": 38.64,
+    "pct_obligaciones": 9.1,
+    "pct_pagos": 8.69,
+    "vigencia": 2024,
+    "vigente_mmm": 99851.309
+  },
+  {
+    "compromisos_mmm": 36362.831,
+    "inv_pct_gasto_total": 16.0,
+    "inv_pct_pib": 4.5,
+    "obligaciones_mmm": 6628.013,
+    "pagados_mmm": 6532.166,
+    "pct_compromisos": 43.31,
+    "pct_obligaciones": 7.89,
+    "pct_pagos": 7.78,
+    "vigencia": 2025,
+    "vigente_mmm": 83961.138
+  },
+  {
+    "compromisos_mmm": 44986.407,
+    "inv_pct_gasto_total": 16.2,
+    "inv_pct_pib": 4.4,
+    "obligaciones_mmm": 9962.104,
+    "pagados_mmm": 9533.256,
+    "pct_compromisos": 50.89,
+    "pct_obligaciones": 11.27,
+    "pct_pagos": 10.78,
+    "vigencia": 2026,
+    "vigente_mmm": 88401.231
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "apr_vigente_mmm": 0.691,
+    "compromisos_mmm": 0,
+    "entidad": "CONSEJO NACIONAL ELECTORAL- CNE",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 10.647,
+    "compromisos_mmm": 0,
+    "entidad": "CONSEJO NACIONAL ELECTORAL- CNE",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 8,
+    "compromisos_mmm": 0,
+    "entidad": "CONSEJO NACIONAL ELECTORAL- CNE",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 65.866,
+    "compromisos_mmm": 40.814,
+    "entidad": "FONDO ROTATORIO DE LA REGISTRADURÍA",
+    "obligaciones_mmm": 6.692,
+    "pct_c_av": 62,
+    "pct_o_av": 10.2,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 95.814,
+    "compromisos_mmm": 56.908,
+    "entidad": "FONDO ROTATORIO DE LA REGISTRADURÍA",
+    "obligaciones_mmm": 6.084,
+    "pct_c_av": 59.4,
+    "pct_o_av": 6.3,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 135.518,
+    "compromisos_mmm": 28.412,
+    "entidad": "FONDO ROTATORIO DE LA REGISTRADURÍA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 21,
+    "pct_o_av": 0,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 171.718,
+    "compromisos_mmm": 69.185,
+    "entidad": "FONDO ROTATORIO DE LA REGISTRADURÍA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 40.3,
+    "pct_o_av": 0,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 173.251,
+    "compromisos_mmm": 81.629,
+    "entidad": "FONDO ROTATORIO DE LA REGISTRADURÍA",
+    "obligaciones_mmm": 9.927,
+    "pct_c_av": 47.1,
+    "pct_o_av": 5.7,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 3,
+    "compromisos_mmm": 1.537,
+    "entidad": "REGISTRADURÍA NACIONAL DEL ESTADO CIVIL - CONSEJO NACIONAL ELECTORAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 51.2,
+    "pct_o_av": 0,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 0.816,
+    "compromisos_mmm": 0,
+    "entidad": "REGISTRADURÍA NACIONAL DEL ESTADO CIVIL - CONSEJO NACIONAL ELECTORAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 59.671,
+    "compromisos_mmm": 58.804,
+    "entidad": "REGISTRADURÍA NACIONAL DEL ESTADO CIVIL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 12.636,
+    "pct_c_av": 98.5,
+    "pct_o_av": 21.2,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 98.736,
+    "compromisos_mmm": 94.385,
+    "entidad": "REGISTRADURÍA NACIONAL DEL ESTADO CIVIL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 95.6,
+    "pct_o_av": 0,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 174.2,
+    "compromisos_mmm": 99.466,
+    "entidad": "REGISTRADURÍA NACIONAL DEL ESTADO CIVIL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 57.1,
+    "pct_o_av": 0,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 158.698,
+    "compromisos_mmm": 151.486,
+    "entidad": "REGISTRADURÍA NACIONAL DEL ESTADO CIVIL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 9.417,
+    "pct_c_av": 95.5,
+    "pct_o_av": 5.9,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 215.312,
+    "compromisos_mmm": 214.763,
+    "entidad": "REGISTRADURÍA NACIONAL DEL ESTADO CIVIL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 2,
+    "pct_c_av": 99.7,
+    "pct_o_av": 0.9,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2026
+  }
+]

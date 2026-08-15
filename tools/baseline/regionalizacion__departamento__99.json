@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 2664.495097,
+    "compromisos_mmm": 1968.085642,
+    "departamento": "Vichada",
+    "obligaciones_mmm": 472.55627,
+    "pagos_mmm": 469.993657,
+    "pct_compromisos": 73.86,
+    "pct_obligaciones": 17.74,
+    "pct_participacion": 3.76,
+    "region": "ORINOQUÍA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 204.759151,
+    "compromisos_mmm": 37.345615,
+    "departamento": "Vichada",
+    "obligaciones_mmm": 1.289464,
+    "pagos_mmm": 1.225824,
+    "pct_compromisos": 18.24,
+    "pct_obligaciones": 0.63,
+    "pct_participacion": 0.38,
+    "region": "ORINOQUÍA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 322.20476,
+    "compromisos_mmm": 115.222048,
+    "departamento": "Vichada",
+    "obligaciones_mmm": 6.022094,
+    "pagos_mmm": 5.831144,
+    "pct_compromisos": 35.76,
+    "pct_obligaciones": 1.87,
+    "pct_participacion": 0.35,
+    "region": "ORINOQUÍA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 293.496431,
+    "compromisos_mmm": 92.574216,
+    "departamento": "Vichada",
+    "obligaciones_mmm": 6.999224,
+    "pagos_mmm": 6.991644,
+    "pct_compromisos": 31.54,
+    "pct_obligaciones": 2.38,
+    "pct_participacion": 0.4,
+    "region": "ORINOQUÍA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 278.705346,
+    "compromisos_mmm": 112.438201,
+    "departamento": "Vichada",
+    "obligaciones_mmm": 14.005482,
+    "pagos_mmm": 13.609521,
+    "pct_compromisos": 40.34,
+    "pct_obligaciones": 5.03,
+    "pct_participacion": 0.33,
+    "region": "ORINOQUÍA",
+    "vigencia": 2026
+  }
+]

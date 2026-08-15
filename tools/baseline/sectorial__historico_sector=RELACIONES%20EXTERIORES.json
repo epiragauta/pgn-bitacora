@@ -1,0 +1,102 @@
+[
+  {
+    "apr_vigente_mmm": 30.6,
+    "compromisos_mmm": 8.2,
+    "entidad": "FONDO ROTATORIO DEL MINISTERIO DE RELACIONES EXTERIORES",
+    "obligaciones_mmm": 3.686,
+    "pct_c_av": 26.8,
+    "pct_o_av": 12,
+    "sector": "RELACIONES EXTERIORES",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 61.361,
+    "compromisos_mmm": 7.738,
+    "entidad": "FONDO ROTATORIO DEL MINISTERIO DE RELACIONES EXTERIORES",
+    "obligaciones_mmm": 5.674,
+    "pct_c_av": 12.6,
+    "pct_o_av": 9.2,
+    "sector": "RELACIONES EXTERIORES",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 72.353,
+    "compromisos_mmm": 8.164,
+    "entidad": "FONDO ROTATORIO DEL MINISTERIO DE RELACIONES EXTERIORES",
+    "obligaciones_mmm": 5.002,
+    "pct_c_av": 11.3,
+    "pct_o_av": 6.9,
+    "sector": "RELACIONES EXTERIORES",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 142.75,
+    "compromisos_mmm": 16.458,
+    "entidad": "FONDO ROTATORIO DEL MINISTERIO DE RELACIONES EXTERIORES",
+    "obligaciones_mmm": 10.008,
+    "pct_c_av": 11.5,
+    "pct_o_av": 7,
+    "sector": "RELACIONES EXTERIORES",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 132.459,
+    "compromisos_mmm": 29.492,
+    "entidad": "FONDO ROTATORIO DEL MINISTERIO DE RELACIONES EXTERIORES",
+    "obligaciones_mmm": 12.032,
+    "pct_c_av": 22.3,
+    "pct_o_av": 9.1,
+    "sector": "RELACIONES EXTERIORES",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 48.578,
+    "compromisos_mmm": 12.46,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL MIGRACIÓN COLOMBIA",
+    "obligaciones_mmm": 2.031,
+    "pct_c_av": 25.6,
+    "pct_o_av": 4.2,
+    "sector": "RELACIONES EXTERIORES",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 47.03,
+    "compromisos_mmm": 12.872,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL MIGRACIÓN COLOMBIA",
+    "obligaciones_mmm": 1.961,
+    "pct_c_av": 27.4,
+    "pct_o_av": 4.2,
+    "sector": "RELACIONES EXTERIORES",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 43.596,
+    "compromisos_mmm": 14.114,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL MIGRACIÓN COLOMBIA",
+    "obligaciones_mmm": 1.846,
+    "pct_c_av": 32.4,
+    "pct_o_av": 4.2,
+    "sector": "RELACIONES EXTERIORES",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 50.649,
+    "compromisos_mmm": 14.607,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL MIGRACIÓN COLOMBIA",
+    "obligaciones_mmm": 1.125,
+    "pct_c_av": 28.8,
+    "pct_o_av": 2.2,
+    "sector": "RELACIONES EXTERIORES",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 68.634,
+    "compromisos_mmm": 28.955,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL MIGRACIÓN COLOMBIA",
+    "obligaciones_mmm": 3.888,
+    "pct_c_av": 42.2,
+    "pct_o_av": 5.7,
+    "sector": "RELACIONES EXTERIORES",
+    "vigencia": 2026
+  }
+]

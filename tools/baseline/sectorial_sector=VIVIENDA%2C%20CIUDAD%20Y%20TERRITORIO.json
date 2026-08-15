@@ -1,0 +1,32 @@
+[
+  {
+    "apr_vigente_mmm": 1741.543,
+    "compromisos_mmm": 1453.401,
+    "entidad": "FONDO NACIONAL DE VIVIENDA - FONVIVIENDA",
+    "obligaciones_mmm": 96.539,
+    "pct_c_av": 83.5,
+    "pct_o_av": 5.5,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 820.459,
+    "compromisos_mmm": 452.739,
+    "entidad": "MINISTERIO DE VIVIENDA, CIUDAD Y TERRITORIO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 29.244,
+    "pct_c_av": 55.2,
+    "pct_o_av": 3.6,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 16.249,
+    "compromisos_mmm": 12.096,
+    "entidad": "COMISIÓN DE REGULACIÓN DE AGUA POTABLE Y SANEAMIENTO BÁSICO (CRA)",
+    "obligaciones_mmm": 1.709,
+    "pct_c_av": 74.4,
+    "pct_o_av": 10.5,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2026
+  }
+]

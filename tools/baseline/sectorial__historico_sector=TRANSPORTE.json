@@ -1,0 +1,352 @@
+[
+  {
+    "apr_vigente_mmm": 4505.182,
+    "compromisos_mmm": 4298.488,
+    "entidad": "AGENCIA NACIONAL DE INFRAESTRUCTURA",
+    "obligaciones_mmm": 323.595,
+    "pct_c_av": 95.4,
+    "pct_o_av": 7.2,
+    "sector": "TRANSPORTE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 5058.021,
+    "compromisos_mmm": 3835.197,
+    "entidad": "AGENCIA NACIONAL DE INFRAESTRUCTURA",
+    "obligaciones_mmm": 55.609,
+    "pct_c_av": 75.8,
+    "pct_o_av": 1.1,
+    "sector": "TRANSPORTE",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 7473.865,
+    "compromisos_mmm": 5841.638,
+    "entidad": "AGENCIA NACIONAL DE INFRAESTRUCTURA",
+    "obligaciones_mmm": 1783.082,
+    "pct_c_av": 78.2,
+    "pct_o_av": 23.9,
+    "sector": "TRANSPORTE",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 7382.207,
+    "compromisos_mmm": 5859.193,
+    "entidad": "AGENCIA NACIONAL DE INFRAESTRUCTURA",
+    "obligaciones_mmm": 1085.398,
+    "pct_c_av": 79.4,
+    "pct_o_av": 14.7,
+    "sector": "TRANSPORTE",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 7733.782,
+    "compromisos_mmm": 6504.202,
+    "entidad": "AGENCIA NACIONAL DE INFRAESTRUCTURA",
+    "obligaciones_mmm": 1025.972,
+    "pct_c_av": 84.1,
+    "pct_o_av": 13.3,
+    "sector": "TRANSPORTE",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 123.691,
+    "compromisos_mmm": 46.397,
+    "entidad": "AGENCIA NACIONAL DE SEGURIDAD VIAL",
+    "obligaciones_mmm": 46.397,
+    "pct_c_av": 37.5,
+    "pct_o_av": 37.5,
+    "sector": "TRANSPORTE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 147.204,
+    "compromisos_mmm": 65.824,
+    "entidad": "AGENCIA NACIONAL DE SEGURIDAD VIAL",
+    "obligaciones_mmm": 65.824,
+    "pct_c_av": 44.7,
+    "pct_o_av": 44.7,
+    "sector": "TRANSPORTE",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 168.269,
+    "compromisos_mmm": 104.514,
+    "entidad": "AGENCIA NACIONAL DE SEGURIDAD VIAL",
+    "obligaciones_mmm": 104.514,
+    "pct_c_av": 62.1,
+    "pct_o_av": 62.1,
+    "sector": "TRANSPORTE",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 174.456,
+    "compromisos_mmm": 104.272,
+    "entidad": "AGENCIA NACIONAL DE SEGURIDAD VIAL",
+    "obligaciones_mmm": 104.272,
+    "pct_c_av": 59.8,
+    "pct_o_av": 59.8,
+    "sector": "TRANSPORTE",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 238.743,
+    "compromisos_mmm": 213.315,
+    "entidad": "AGENCIA NACIONAL DE SEGURIDAD VIAL",
+    "obligaciones_mmm": 213.315,
+    "pct_c_av": 89.3,
+    "pct_o_av": 89.3,
+    "sector": "TRANSPORTE",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 5284.806,
+    "compromisos_mmm": 3049.727,
+    "entidad": "INSTITUTO NACIONAL DE VÍAS",
+    "obligaciones_mmm": 433.893,
+    "pct_c_av": 57.7,
+    "pct_o_av": 8.2,
+    "sector": "TRANSPORTE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 3799.192,
+    "compromisos_mmm": 1625.277,
+    "entidad": "INSTITUTO NACIONAL DE VÍAS",
+    "obligaciones_mmm": 362.07,
+    "pct_c_av": 42.8,
+    "pct_o_av": 9.5,
+    "sector": "TRANSPORTE",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 4318.696,
+    "compromisos_mmm": 1815.581,
+    "entidad": "INSTITUTO NACIONAL DE VÍAS",
+    "obligaciones_mmm": 45.556,
+    "pct_c_av": 42,
+    "pct_o_av": 1.1,
+    "sector": "TRANSPORTE",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 3723.558,
+    "compromisos_mmm": 1859.49,
+    "entidad": "INSTITUTO NACIONAL DE VÍAS",
+    "obligaciones_mmm": 89.64,
+    "pct_c_av": 49.9,
+    "pct_o_av": 2.4,
+    "sector": "TRANSPORTE",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 5236.922,
+    "compromisos_mmm": 2340.116,
+    "entidad": "INSTITUTO NACIONAL DE VÍAS",
+    "obligaciones_mmm": 18.015,
+    "pct_c_av": 44.7,
+    "pct_o_av": 0.3,
+    "sector": "TRANSPORTE",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 187.909,
+    "compromisos_mmm": 41.667,
+    "entidad": "MINISTERIO DE TRANSPORTE - GESTIÓN GENERAL",
+    "obligaciones_mmm": 5.458,
+    "pct_c_av": 22.2,
+    "pct_o_av": 2.9,
+    "sector": "TRANSPORTE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 139.944,
+    "compromisos_mmm": 18.242,
+    "entidad": "MINISTERIO DE TRANSPORTE - GESTIÓN GENERAL",
+    "obligaciones_mmm": 2.531,
+    "pct_c_av": 13,
+    "pct_o_av": 1.8,
+    "sector": "TRANSPORTE",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 194.843,
+    "compromisos_mmm": 62.971,
+    "entidad": "MINISTERIO DE TRANSPORTE - GESTIÓN GENERAL",
+    "obligaciones_mmm": 5.607,
+    "pct_c_av": 32.3,
+    "pct_o_av": 2.9,
+    "sector": "TRANSPORTE",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 129.575,
+    "compromisos_mmm": 37.527,
+    "entidad": "MINISTERIO DE TRANSPORTE - GESTIÓN GENERAL",
+    "obligaciones_mmm": 4.103,
+    "pct_c_av": 29,
+    "pct_o_av": 3.2,
+    "sector": "TRANSPORTE",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 152.722,
+    "compromisos_mmm": 65.427,
+    "entidad": "MINISTERIO DE TRANSPORTE - GESTIÓN GENERAL",
+    "obligaciones_mmm": 10.969,
+    "pct_c_av": 42.8,
+    "pct_o_av": 7.2,
+    "sector": "TRANSPORTE",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 14.188,
+    "compromisos_mmm": 8.818,
+    "entidad": "SUPERINTENDENCIA DE PUERTOS Y TRANSPORTE",
+    "obligaciones_mmm": 1.079,
+    "pct_c_av": 62.2,
+    "pct_o_av": 7.6,
+    "sector": "TRANSPORTE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 17.46,
+    "compromisos_mmm": 2.81,
+    "entidad": "SUPERINTENDENCIA DE PUERTOS Y TRANSPORTE",
+    "obligaciones_mmm": 0.621,
+    "pct_c_av": 16.1,
+    "pct_o_av": 3.6,
+    "sector": "TRANSPORTE",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 21.458,
+    "compromisos_mmm": 14.431,
+    "entidad": "SUPERINTENDENCIA DE PUERTOS Y TRANSPORTE",
+    "obligaciones_mmm": 1.351,
+    "pct_c_av": 67.3,
+    "pct_o_av": 6.3,
+    "sector": "TRANSPORTE",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 37.068,
+    "compromisos_mmm": 12.143,
+    "entidad": "SUPERINTENDENCIA DE PUERTOS Y TRANSPORTE",
+    "obligaciones_mmm": 1.474,
+    "pct_c_av": 32.8,
+    "pct_o_av": 4,
+    "sector": "TRANSPORTE",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 40.619,
+    "compromisos_mmm": 38.119,
+    "entidad": "SUPERINTENDENCIA DE PUERTOS Y TRANSPORTE",
+    "obligaciones_mmm": 8.984,
+    "pct_c_av": 93.8,
+    "pct_o_av": 22.1,
+    "sector": "TRANSPORTE",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 997.143,
+    "compromisos_mmm": 669.581,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE LA AERONÁUTICA CIVIL",
+    "obligaciones_mmm": 36.269,
+    "pct_c_av": 67.1,
+    "pct_o_av": 3.6,
+    "sector": "TRANSPORTE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 1192.063,
+    "compromisos_mmm": 295.448,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE LA AERONÁUTICA CIVIL",
+    "obligaciones_mmm": 26.996,
+    "pct_c_av": 24.8,
+    "pct_o_av": 2.3,
+    "sector": "TRANSPORTE",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 1768.182,
+    "compromisos_mmm": 688.352,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE LA AERONÁUTICA CIVIL",
+    "obligaciones_mmm": 23.677,
+    "pct_c_av": 38.9,
+    "pct_o_av": 1.3,
+    "sector": "TRANSPORTE",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 2284.751,
+    "compromisos_mmm": 1202.231,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE LA AERONÁUTICA CIVIL",
+    "obligaciones_mmm": 25.317,
+    "pct_c_av": 52.6,
+    "pct_o_av": 1.1,
+    "sector": "TRANSPORTE",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 2136.608,
+    "compromisos_mmm": 557.507,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE LA AERONÁUTICA CIVIL",
+    "obligaciones_mmm": 20.036,
+    "pct_c_av": 26.1,
+    "pct_o_av": 0.9,
+    "sector": "TRANSPORTE",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 2,
+    "compromisos_mmm": 0.833,
+    "entidad": "UNIDAD DE PLANEACION DEL SECTOR DE INFRAESTRUCTURA DE TRANSPORTE",
+    "obligaciones_mmm": 0.021,
+    "pct_c_av": 41.6,
+    "pct_o_av": 1,
+    "sector": "TRANSPORTE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 13.936,
+    "compromisos_mmm": 0.293,
+    "entidad": "UNIDAD DE PLANEACION DEL SECTOR DE INFRAESTRUCTURA DE TRANSPORTE",
+    "obligaciones_mmm": 0.006,
+    "pct_c_av": 2.1,
+    "pct_o_av": 0,
+    "sector": "TRANSPORTE",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 17.613,
+    "compromisos_mmm": 9.414,
+    "entidad": "UNIDAD DE PLANEACION DEL SECTOR DE INFRAESTRUCTURA DE TRANSPORTE",
+    "obligaciones_mmm": 0.202,
+    "pct_c_av": 53.4,
+    "pct_o_av": 1.1,
+    "sector": "TRANSPORTE",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 16.5,
+    "compromisos_mmm": 3.648,
+    "entidad": "UNIDAD DE PLANEACION DEL SECTOR DE INFRAESTRUCTURA DE TRANSPORTE",
+    "obligaciones_mmm": 0.53,
+    "pct_c_av": 22.1,
+    "pct_o_av": 3.2,
+    "sector": "TRANSPORTE",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 16,
+    "compromisos_mmm": 10.863,
+    "entidad": "UNIDAD DE PLANEACION DEL SECTOR DE INFRAESTRUCTURA DE TRANSPORTE",
+    "obligaciones_mmm": 1.37,
+    "pct_c_av": 67.9,
+    "pct_o_av": 8.6,
+    "sector": "TRANSPORTE",
+    "vigencia": 2026
+  }
+]

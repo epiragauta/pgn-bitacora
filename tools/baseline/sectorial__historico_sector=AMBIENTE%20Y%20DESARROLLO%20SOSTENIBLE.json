@@ -1,0 +1,452 @@
+[
+  {
+    "apr_vigente_mmm": 2.017,
+    "compromisos_mmm": 1.971,
+    "entidad": "AUTORIDAD NACIONAL DE LICENCIAS AMBIENTALES ANLA",
+    "obligaciones_mmm": 0.311,
+    "pct_c_av": 97.7,
+    "pct_o_av": 15.4,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 3.653,
+    "compromisos_mmm": 3.19,
+    "entidad": "AUTORIDAD NACIONAL DE LICENCIAS AMBIENTALES ANLA",
+    "obligaciones_mmm": 0.545,
+    "pct_c_av": 87.3,
+    "pct_o_av": 14.9,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 33.653,
+    "compromisos_mmm": 31.733,
+    "entidad": "AUTORIDAD NACIONAL DE LICENCIAS AMBIENTALES ANLA",
+    "obligaciones_mmm": 4.35,
+    "pct_c_av": 94.3,
+    "pct_o_av": 12.9,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 29.263,
+    "compromisos_mmm": 19.576,
+    "entidad": "AUTORIDAD NACIONAL DE LICENCIAS AMBIENTALES ANLA",
+    "obligaciones_mmm": 1.224,
+    "pct_c_av": 66.9,
+    "pct_o_av": 4.2,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 28.979,
+    "compromisos_mmm": 25.704,
+    "entidad": "AUTORIDAD NACIONAL DE LICENCIAS AMBIENTALES ANLA",
+    "obligaciones_mmm": 3.56,
+    "pct_c_av": 88.7,
+    "pct_o_av": 12.3,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 1.032,
+    "compromisos_mmm": 0,
+    "entidad": "CORPORACIÓN AUTÓNOMA REGIONAL DE BOYACÁ (CORPOBOYACÁ)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 0.7,
+    "compromisos_mmm": 0.026,
+    "entidad": "CORPORACIÓN AUTÓNOMA REGIONAL DE CHIVOR (CORPOCHIVOR)",
+    "obligaciones_mmm": 0.005,
+    "pct_c_av": 3.7,
+    "pct_o_av": 0.7,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 2.332,
+    "compromisos_mmm": 0,
+    "entidad": "CORPORACIÓN AUTÓNOMA REGIONAL DE CHIVOR (CORPOCHIVOR)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 1.901,
+    "compromisos_mmm": 0,
+    "entidad": "CORPORACIÓN AUTÓNOMA REGIONAL DE LA GUAJIRA (CORPOGUAJIRA)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 15.227,
+    "compromisos_mmm": 0,
+    "entidad": "CORPORACIÓN AUTÓNOMA REGIONAL DE LOS VALLES DEL SINÚ Y SAN JORGE (CVS)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 3.556,
+    "compromisos_mmm": 0,
+    "entidad": "CORPORACIÓN AUTÓNOMA REGIONAL DE LOS VALLES DEL SINÚ Y SAN JORGE (CVS)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 3.268,
+    "compromisos_mmm": 3.268,
+    "entidad": "CORPORACIÓN AUTÓNOMA REGIONAL DE SUCRE (CARSUCRE)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 100,
+    "pct_o_av": 0,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 11.987,
+    "compromisos_mmm": 11.987,
+    "entidad": "CORPORACIÓN AUTÓNOMA REGIONAL DE SUCRE (CARSUCRE)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 100,
+    "pct_o_av": 0,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 6.866,
+    "compromisos_mmm": 0,
+    "entidad": "CORPORACIÓN AUTÓNOMA REGIONAL DE SUCRE (CARSUCRE)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 7,
+    "compromisos_mmm": 0,
+    "entidad": "CORPORACIÓN AUTÓNOMA REGIONAL DEL CANAL DEL DIQUE (CARDIQUE)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 32.239,
+    "compromisos_mmm": 0,
+    "entidad": "CORPORACIÓN AUTÓNOMA REGIONAL DEL CESAR (CORPOCESAR)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 17.206,
+    "compromisos_mmm": 0,
+    "entidad": "CORPORACIÓN AUTÓNOMA REGIONAL DEL GUAVIO (CORPOGUAVIO)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 2.518,
+    "compromisos_mmm": 2.475,
+    "entidad": "CORPORACIÓN AUTÓNOMA REGIONAL PARA EL DESARROLLO SOSTENIBLE DEL CHOCO (CODECHOCO)",
+    "obligaciones_mmm": 1.107,
+    "pct_c_av": 98.3,
+    "pct_o_av": 44,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 3.741,
+    "compromisos_mmm": 3.676,
+    "entidad": "CORPORACIÓN AUTÓNOMA REGIONAL PARA EL DESARROLLO SOSTENIBLE DEL CHOCO (CODECHOCO)",
+    "obligaciones_mmm": 0.027,
+    "pct_c_av": 98.3,
+    "pct_o_av": 0.7,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 5.686,
+    "compromisos_mmm": 2.078,
+    "entidad": "CORPORACIÓN PARA EL DESARROLLO SOSTENIBLE DE LA MOJANA Y EL SAN JORGE (CORPOMOJANA)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 36.5,
+    "pct_o_av": 0,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 31.376,
+    "compromisos_mmm": 0,
+    "entidad": "CORPORACIÓN PARA EL DESARROLLO SOSTENIBLE DEL NORTE Y ORIENTE DE LA AMAZONIA (CDA)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 6.461,
+    "compromisos_mmm": 0,
+    "entidad": "CORPORACIÓN PARA EL DESARROLLO SOSTENIBLE DEL SUR DE LA AMAZONIA (CORPOAMAZONIA)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 9.183,
+    "compromisos_mmm": 0,
+    "entidad": "CORPORACIÓN PARA EL DESARROLLO SOSTENIBLE DEL SUR DE LA AMAZONIA (CORPOAMAZONIA)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 1.363,
+    "compromisos_mmm": 0,
+    "entidad": "CORPORACIÓN PARA EL DESARROLLO SOSTENIBLE DEL URABÁ (CORPOURABÁ)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 1.847,
+    "compromisos_mmm": 0,
+    "entidad": "CORPORACIÓN PARA EL DESARROLLO SOSTENIBLE DEL ÁREA DE MANEJO ESPECIAL LA MACARENA (CORMACARENA)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 420.761,
+    "compromisos_mmm": 93.525,
+    "entidad": "FONDO NACIONAL AMBIENTAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 13.372,
+    "pct_c_av": 22.2,
+    "pct_o_av": 3.2,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 532.206,
+    "compromisos_mmm": 79.677,
+    "entidad": "FONDO NACIONAL AMBIENTAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 10.377,
+    "pct_c_av": 15,
+    "pct_o_av": 1.9,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 179.089,
+    "compromisos_mmm": 80.113,
+    "entidad": "FONDO NACIONAL AMBIENTAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 6.508,
+    "pct_c_av": 44.7,
+    "pct_o_av": 3.6,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 175.098,
+    "compromisos_mmm": 97.718,
+    "entidad": "FONDO NACIONAL AMBIENTAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 10.387,
+    "pct_c_av": 55.8,
+    "pct_o_av": 5.9,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 189.546,
+    "compromisos_mmm": 118.644,
+    "entidad": "FONDO NACIONAL AMBIENTAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 17.051,
+    "pct_c_av": 62.6,
+    "pct_o_av": 9,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 32.228,
+    "compromisos_mmm": 15.714,
+    "entidad": "INSTITUTO DE HIDROLOGÍA, METEOROLOGÍA Y ESTUDIOS AMBIENTALES - IDEAM",
+    "obligaciones_mmm": 3.501,
+    "pct_c_av": 48.8,
+    "pct_o_av": 10.9,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 35.476,
+    "compromisos_mmm": 4.982,
+    "entidad": "INSTITUTO DE HIDROLOGÍA, METEOROLOGÍA Y ESTUDIOS AMBIENTALES - IDEAM",
+    "obligaciones_mmm": 0.452,
+    "pct_c_av": 14,
+    "pct_o_av": 1.3,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 36.161,
+    "compromisos_mmm": 18.732,
+    "entidad": "INSTITUTO DE HIDROLOGÍA, METEOROLOGÍA Y ESTUDIOS AMBIENTALES - IDEAM",
+    "obligaciones_mmm": 1.955,
+    "pct_c_av": 51.8,
+    "pct_o_av": 5.4,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 31.999,
+    "compromisos_mmm": 14.56,
+    "entidad": "INSTITUTO DE HIDROLOGÍA, METEOROLOGÍA Y ESTUDIOS AMBIENTALES - IDEAM",
+    "obligaciones_mmm": 1.134,
+    "pct_c_av": 45.5,
+    "pct_o_av": 3.5,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 57.563,
+    "compromisos_mmm": 35.123,
+    "entidad": "INSTITUTO DE HIDROLOGÍA, METEOROLOGÍA Y ESTUDIOS AMBIENTALES - IDEAM",
+    "obligaciones_mmm": 4.094,
+    "pct_c_av": 61,
+    "pct_o_av": 7.1,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 203.171,
+    "compromisos_mmm": 122.788,
+    "entidad": "MINISTERIO DE AMBIENTE Y DESARROLLO SOSTENIBLE - GESTIÓN GENERAL",
+    "obligaciones_mmm": 25.444,
+    "pct_c_av": 60.4,
+    "pct_o_av": 12.5,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 223.234,
+    "compromisos_mmm": 88.352,
+    "entidad": "MINISTERIO DE AMBIENTE Y DESARROLLO SOSTENIBLE - GESTIÓN GENERAL",
+    "obligaciones_mmm": 14.193,
+    "pct_c_av": 39.6,
+    "pct_o_av": 6.4,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 1119.317,
+    "compromisos_mmm": 120.615,
+    "entidad": "MINISTERIO DE AMBIENTE Y DESARROLLO SOSTENIBLE - GESTIÓN GENERAL",
+    "obligaciones_mmm": 17.53,
+    "pct_c_av": 10.8,
+    "pct_o_av": 1.6,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 653.259,
+    "compromisos_mmm": 113.136,
+    "entidad": "MINISTERIO DE AMBIENTE Y DESARROLLO SOSTENIBLE - GESTIÓN GENERAL",
+    "obligaciones_mmm": 18.521,
+    "pct_c_av": 17.3,
+    "pct_o_av": 2.8,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 770.307,
+    "compromisos_mmm": 295.436,
+    "entidad": "MINISTERIO DE AMBIENTE Y DESARROLLO SOSTENIBLE - GESTIÓN GENERAL",
+    "obligaciones_mmm": 27.699,
+    "pct_c_av": 38.4,
+    "pct_o_av": 3.6,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 90.011,
+    "compromisos_mmm": 45.828,
+    "entidad": "PARQUES NACIONALES NATURALES DE COLOMBIA",
+    "obligaciones_mmm": 5.351,
+    "pct_c_av": 50.9,
+    "pct_o_av": 5.9,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 90.011,
+    "compromisos_mmm": 38.599,
+    "entidad": "PARQUES NACIONALES NATURALES DE COLOMBIA",
+    "obligaciones_mmm": 1.654,
+    "pct_c_av": 42.9,
+    "pct_o_av": 1.8,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 90.011,
+    "compromisos_mmm": 55.367,
+    "entidad": "PARQUES NACIONALES NATURALES DE COLOMBIA",
+    "obligaciones_mmm": 3.433,
+    "pct_c_av": 61.5,
+    "pct_o_av": 3.8,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 84.943,
+    "compromisos_mmm": 57.148,
+    "entidad": "PARQUES NACIONALES NATURALES DE COLOMBIA",
+    "obligaciones_mmm": 4.614,
+    "pct_c_av": 67.3,
+    "pct_o_av": 5.4,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 67.899,
+    "compromisos_mmm": 54.973,
+    "entidad": "PARQUES NACIONALES NATURALES DE COLOMBIA",
+    "obligaciones_mmm": 8.549,
+    "pct_c_av": 81,
+    "pct_o_av": 12.6,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2026
+  }
+]

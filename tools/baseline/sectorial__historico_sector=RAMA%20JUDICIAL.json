@@ -1,0 +1,52 @@
+[
+  {
+    "apr_vigente_mmm": 580.822,
+    "compromisos_mmm": 174.064,
+    "entidad": "RAMA JUDICIAL - CONSEJO SUPERIOR DE LA JUDICATURA",
+    "obligaciones_mmm": 27.465,
+    "pct_c_av": 30,
+    "pct_o_av": 4.7,
+    "sector": "RAMA JUDICIAL",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 726.91,
+    "compromisos_mmm": 197.38,
+    "entidad": "RAMA JUDICIAL - CONSEJO SUPERIOR DE LA JUDICATURA",
+    "obligaciones_mmm": 0.572,
+    "pct_c_av": 27.2,
+    "pct_o_av": 0.1,
+    "sector": "RAMA JUDICIAL",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 1148.692,
+    "compromisos_mmm": 291.425,
+    "entidad": "RAMA JUDICIAL - CONSEJO SUPERIOR DE LA JUDICATURA",
+    "obligaciones_mmm": 1.382,
+    "pct_c_av": 25.4,
+    "pct_o_av": 0.1,
+    "sector": "RAMA JUDICIAL",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 1300,
+    "compromisos_mmm": 200.975,
+    "entidad": "RAMA JUDICIAL - CONSEJO SUPERIOR DE LA JUDICATURA",
+    "obligaciones_mmm": 19.798,
+    "pct_c_av": 15.5,
+    "pct_o_av": 1.5,
+    "sector": "RAMA JUDICIAL",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 1449.611,
+    "compromisos_mmm": 234.18,
+    "entidad": "RAMA JUDICIAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 15.584,
+    "pct_c_av": 16.2,
+    "pct_o_av": 1.1,
+    "sector": "RAMA JUDICIAL",
+    "vigencia": 2026
+  }
+]

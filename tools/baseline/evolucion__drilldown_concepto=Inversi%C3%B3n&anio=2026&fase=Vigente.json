@@ -1,0 +1,14 @@
+[
+  {
+    "nivel": 2,
+    "nombre": "Inversión",
+    "padre": "Total PGN",
+    "valor": 88401.231
+  },
+  {
+    "nivel": 2,
+    "nombre": "Inversión como % del PIB",
+    "padre": "Inversión",
+    "valor": 0.044
+  }
+]

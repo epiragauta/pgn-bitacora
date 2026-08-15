@@ -1,0 +1,152 @@
+[
+  {
+    "apr_vigente_mmm": 139.356,
+    "compromisos_mmm": 59.273,
+    "entidad": "FISCALÍA GENERAL DE LA NACIÓN - GESTIÓN GENERAL",
+    "obligaciones_mmm": 19.555,
+    "pct_c_av": 42.5,
+    "pct_o_av": 14,
+    "sector": "FISCALÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 143.537,
+    "compromisos_mmm": 99.126,
+    "entidad": "FISCALÍA GENERAL DE LA NACIÓN - GESTIÓN GENERAL",
+    "obligaciones_mmm": 14.835,
+    "pct_c_av": 69.1,
+    "pct_o_av": 10.3,
+    "sector": "FISCALÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 152.812,
+    "compromisos_mmm": 132.668,
+    "entidad": "FISCALÍA GENERAL DE LA NACIÓN - GESTIÓN GENERAL",
+    "obligaciones_mmm": 6.332,
+    "pct_c_av": 86.8,
+    "pct_o_av": 4.1,
+    "sector": "FISCALÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 206.232,
+    "compromisos_mmm": 126.632,
+    "entidad": "FISCALÍA GENERAL DE LA NACIÓN - GESTIÓN GENERAL",
+    "obligaciones_mmm": 9.665,
+    "pct_c_av": 61.4,
+    "pct_o_av": 4.7,
+    "sector": "FISCALÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 254.108,
+    "compromisos_mmm": 126.808,
+    "entidad": "FISCALÍA GENERAL DE LA NACIÓN - GESTIÓN GENERAL",
+    "obligaciones_mmm": 7.558,
+    "pct_c_av": 49.9,
+    "pct_o_av": 3,
+    "sector": "FISCALÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 15.148,
+    "compromisos_mmm": 2.45,
+    "entidad": "FONDO ESPECIAL PARA LA ADMINISTRACIÓN DE BIENES DE LA FISCALÍA GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 16.2,
+    "pct_o_av": 0,
+    "sector": "FISCALÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 22.199,
+    "compromisos_mmm": 17.588,
+    "entidad": "FONDO ESPECIAL PARA LA ADMINISTRACIÓN DE BIENES DE LA FISCALÍA GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 17.56,
+    "pct_c_av": 79.2,
+    "pct_o_av": 79.1,
+    "sector": "FISCALÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 21.557,
+    "compromisos_mmm": 14.871,
+    "entidad": "FONDO ESPECIAL PARA LA ADMINISTRACIÓN DE BIENES DE LA FISCALÍA GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 69,
+    "pct_o_av": 0,
+    "sector": "FISCALÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 19.276,
+    "compromisos_mmm": 13.208,
+    "entidad": "FONDO ESPECIAL PARA LA ADMINISTRACIÓN DE BIENES DE LA FISCALÍA GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 68.5,
+    "pct_o_av": 0,
+    "sector": "FISCALÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 16.072,
+    "compromisos_mmm": 1.608,
+    "entidad": "FONDO ESPECIAL PARA LA ADMINISTRACIÓN DE BIENES DE LA FISCALÍA GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 10,
+    "pct_o_av": 0,
+    "sector": "FISCALÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 46.051,
+    "compromisos_mmm": 11.402,
+    "entidad": "INSTITUTO NACIONAL DE MEDICINA LEGAL Y CIENCIAS FORENSES",
+    "obligaciones_mmm": 1.206,
+    "pct_c_av": 24.8,
+    "pct_o_av": 2.6,
+    "sector": "FISCALÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 73.59,
+    "compromisos_mmm": 12.222,
+    "entidad": "INSTITUTO NACIONAL DE MEDICINA LEGAL Y CIENCIAS FORENSES",
+    "obligaciones_mmm": 1.168,
+    "pct_c_av": 16.6,
+    "pct_o_av": 1.6,
+    "sector": "FISCALÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 96.593,
+    "compromisos_mmm": 17.158,
+    "entidad": "INSTITUTO NACIONAL DE MEDICINA LEGAL Y CIENCIAS FORENSES",
+    "obligaciones_mmm": 0.013,
+    "pct_c_av": 17.8,
+    "pct_o_av": 0,
+    "sector": "FISCALÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 114.156,
+    "compromisos_mmm": 34.975,
+    "entidad": "INSTITUTO NACIONAL DE MEDICINA LEGAL Y CIENCIAS FORENSES",
+    "obligaciones_mmm": 0.669,
+    "pct_c_av": 30.6,
+    "pct_o_av": 0.6,
+    "sector": "FISCALÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 136.871,
+    "compromisos_mmm": 41.084,
+    "entidad": "INSTITUTO NACIONAL DE MEDICINA LEGAL Y CIENCIAS FORENSES",
+    "obligaciones_mmm": 0.206,
+    "pct_c_av": 30,
+    "pct_o_av": 0.2,
+    "sector": "FISCALÍA",
+    "vigencia": 2026
+  }
+]

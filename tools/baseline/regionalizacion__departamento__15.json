@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 2221.33876,
+    "compromisos_mmm": 801.424622,
+    "departamento": "Boyacá",
+    "obligaciones_mmm": 319.830941,
+    "pagos_mmm": 306.070851,
+    "pct_compromisos": 36.08,
+    "pct_obligaciones": 14.4,
+    "pct_participacion": 3.14,
+    "region": "ANDINA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 830.24778,
+    "compromisos_mmm": 23.593826,
+    "departamento": "Boyacá",
+    "obligaciones_mmm": 26.841274,
+    "pagos_mmm": 37.40792,
+    "pct_compromisos": 2.84,
+    "pct_obligaciones": 3.23,
+    "pct_participacion": 1.53,
+    "region": "ANDINA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 1133.951381,
+    "compromisos_mmm": 429.260218,
+    "departamento": "Boyacá",
+    "obligaciones_mmm": 138.050749,
+    "pagos_mmm": 132.094552,
+    "pct_compromisos": 37.86,
+    "pct_obligaciones": 12.17,
+    "pct_participacion": 1.25,
+    "region": "ANDINA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 1170.401422,
+    "compromisos_mmm": 275.969693,
+    "departamento": "Boyacá",
+    "obligaciones_mmm": 73.213569,
+    "pagos_mmm": 73.15435,
+    "pct_compromisos": 23.58,
+    "pct_obligaciones": 6.26,
+    "pct_participacion": 1.6,
+    "region": "ANDINA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 1917.216989,
+    "compromisos_mmm": 1147.7087,
+    "departamento": "Boyacá",
+    "obligaciones_mmm": 197.937058,
+    "pagos_mmm": 197.527543,
+    "pct_compromisos": 59.86,
+    "pct_obligaciones": 10.32,
+    "pct_participacion": 2.25,
+    "region": "ANDINA",
+    "vigencia": 2026
+  }
+]

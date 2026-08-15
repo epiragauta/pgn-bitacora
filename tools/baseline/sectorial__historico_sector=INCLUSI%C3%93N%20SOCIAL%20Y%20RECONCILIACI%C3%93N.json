@@ -1,0 +1,172 @@
+[
+  {
+    "apr_vigente_mmm": 53.79,
+    "compromisos_mmm": 46.252,
+    "entidad": "CENTRO DE MEMORIA HISTÓRICA",
+    "obligaciones_mmm": 2.555,
+    "pct_c_av": 86,
+    "pct_o_av": 4.7,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 34.465,
+    "compromisos_mmm": 13.879,
+    "entidad": "CENTRO DE MEMORIA HISTÓRICA",
+    "obligaciones_mmm": 1.829,
+    "pct_c_av": 40.3,
+    "pct_o_av": 5.3,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 38.743,
+    "compromisos_mmm": 22.634,
+    "entidad": "CENTRO DE MEMORIA HISTÓRICA",
+    "obligaciones_mmm": 2.187,
+    "pct_c_av": 58.4,
+    "pct_o_av": 5.6,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 60.906,
+    "compromisos_mmm": 31.035,
+    "entidad": "CENTRO DE MEMORIA HISTÓRICA",
+    "obligaciones_mmm": 1.906,
+    "pct_c_av": 51,
+    "pct_o_av": 3.1,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 65.654,
+    "compromisos_mmm": 59.184,
+    "entidad": "CENTRO DE MEMORIA HISTÓRICA",
+    "obligaciones_mmm": 24.773,
+    "pct_c_av": 90.1,
+    "pct_o_av": 37.7,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 12916.249,
+    "compromisos_mmm": 3556.657,
+    "entidad": "DEPARTAMENTO ADMINISTRATIVO PARA LA PROSPERIDAD SOCIAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 2502.985,
+    "pct_c_av": 27.5,
+    "pct_o_av": 19.4,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 6468.38,
+    "compromisos_mmm": 806.808,
+    "entidad": "DEPARTAMENTO ADMINISTRATIVO PARA LA PROSPERIDAD SOCIAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 377.752,
+    "pct_c_av": 12.5,
+    "pct_o_av": 5.8,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 10519.741,
+    "compromisos_mmm": 604.056,
+    "entidad": "DEPARTAMENTO ADMINISTRATIVO PARA LA PROSPERIDAD SOCIAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 417.898,
+    "pct_c_av": 5.7,
+    "pct_o_av": 4,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 5452.475,
+    "compromisos_mmm": 871.138,
+    "entidad": "DEPARTAMENTO ADMINISTRATIVO PARA LA PROSPERIDAD SOCIAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 667.321,
+    "pct_c_av": 16,
+    "pct_o_av": 12.2,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 8038.304,
+    "compromisos_mmm": 1980.584,
+    "entidad": "DEPARTAMENTO ADMINISTRATIVO PARA LA PROSPERIDAD SOCIAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 1607.604,
+    "pct_c_av": 24.6,
+    "pct_o_av": 20,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 7120.188,
+    "compromisos_mmm": 4190.447,
+    "entidad": "INSTITUTO COLOMBIANO DE BIENESTAR FAMILIAR (ICBF)",
+    "obligaciones_mmm": 1506.391,
+    "pct_c_av": 58.9,
+    "pct_o_av": 21.2,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 7768.675,
+    "compromisos_mmm": 6208.594,
+    "entidad": "INSTITUTO COLOMBIANO DE BIENESTAR FAMILIAR (ICBF)",
+    "obligaciones_mmm": 1522.47,
+    "pct_c_av": 79.9,
+    "pct_o_av": 19.6,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 1398.957,
+    "compromisos_mmm": 459.359,
+    "entidad": "UNIDAD DE ATENCIÓN Y REPARACIÓN INTEGRAL A LAS VÍCTIMAS",
+    "obligaciones_mmm": 304.703,
+    "pct_c_av": 32.8,
+    "pct_o_av": 21.8,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 1660.174,
+    "compromisos_mmm": 240.264,
+    "entidad": "UNIDAD DE ATENCIÓN Y REPARACIÓN INTEGRAL A LAS VÍCTIMAS",
+    "obligaciones_mmm": 129.004,
+    "pct_c_av": 14.5,
+    "pct_o_av": 7.8,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 2376.888,
+    "compromisos_mmm": 419.624,
+    "entidad": "UNIDAD DE ATENCIÓN Y REPARACIÓN INTEGRAL A LAS VÍCTIMAS",
+    "obligaciones_mmm": 133.898,
+    "pct_c_av": 17.7,
+    "pct_o_av": 5.6,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 2729.851,
+    "compromisos_mmm": 432.316,
+    "entidad": "UNIDAD DE ATENCIÓN Y REPARACIÓN INTEGRAL A LAS VÍCTIMAS",
+    "obligaciones_mmm": 152.927,
+    "pct_c_av": 15.8,
+    "pct_o_av": 5.6,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 2715.655,
+    "compromisos_mmm": 783.507,
+    "entidad": "UNIDAD DE ATENCIÓN Y REPARACIÓN INTEGRAL A LAS VÍCTIMAS",
+    "obligaciones_mmm": 74.577,
+    "pct_c_av": 28.9,
+    "pct_o_av": 2.7,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2026
+  }
+]

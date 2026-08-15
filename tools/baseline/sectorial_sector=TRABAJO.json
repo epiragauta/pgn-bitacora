@@ -1,0 +1,52 @@
+[
+  {
+    "apr_vigente_mmm": 6254.634,
+    "compromisos_mmm": 2399.112,
+    "entidad": "SERVICIO NACIONAL DE APRENDIZAJE (SENA)",
+    "obligaciones_mmm": 676.507,
+    "pct_c_av": 38.4,
+    "pct_o_av": 10.8,
+    "sector": "TRABAJO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 434.173,
+    "compromisos_mmm": 78.423,
+    "entidad": "MINISTERIO DEL TRABAJO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 19.061,
+    "pct_c_av": 18.1,
+    "pct_o_av": 4.4,
+    "sector": "TRABAJO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 44.459,
+    "compromisos_mmm": 16.566,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE ORGANIZACIONES SOLIDARIAS",
+    "obligaciones_mmm": 1.425,
+    "pct_c_av": 37.3,
+    "pct_o_av": 3.2,
+    "sector": "TRABAJO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 32.801,
+    "compromisos_mmm": 21.725,
+    "entidad": "MINISTERIO DEL TRABAJO - SUPERINTENDENCIA DE SUBSIDIO FAMILIAR",
+    "obligaciones_mmm": 6.632,
+    "pct_c_av": 66.2,
+    "pct_o_av": 20.2,
+    "sector": "TRABAJO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 16.1,
+    "compromisos_mmm": 11.096,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DEL SERVICIO PÚBLICO DE EMPLEO",
+    "obligaciones_mmm": 1.508,
+    "pct_c_av": 68.9,
+    "pct_o_av": 9.4,
+    "sector": "TRABAJO",
+    "vigencia": 2026
+  }
+]

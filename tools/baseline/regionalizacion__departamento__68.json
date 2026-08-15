@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 1819.169996,
+    "compromisos_mmm": 918.872208,
+    "departamento": "Santander",
+    "obligaciones_mmm": 253.917682,
+    "pagos_mmm": 251.640212,
+    "pct_compromisos": 50.51,
+    "pct_obligaciones": 13.96,
+    "pct_participacion": 2.57,
+    "region": "ANDINA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 1208.060564,
+    "compromisos_mmm": 44.517896,
+    "departamento": "Santander",
+    "obligaciones_mmm": 36.686925,
+    "pagos_mmm": 44.619697,
+    "pct_compromisos": 3.69,
+    "pct_obligaciones": 3.04,
+    "pct_participacion": 2.23,
+    "region": "ANDINA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 2080.82054,
+    "compromisos_mmm": 1018.125366,
+    "departamento": "Santander",
+    "obligaciones_mmm": 248.913495,
+    "pagos_mmm": 221.917347,
+    "pct_compromisos": 48.93,
+    "pct_obligaciones": 11.96,
+    "pct_participacion": 2.29,
+    "region": "ANDINA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 1973.363003,
+    "compromisos_mmm": 929.552032,
+    "departamento": "Santander",
+    "obligaciones_mmm": 59.065255,
+    "pagos_mmm": 58.943069,
+    "pct_compromisos": 47.1,
+    "pct_obligaciones": 2.99,
+    "pct_participacion": 2.71,
+    "region": "ANDINA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 2577.598531,
+    "compromisos_mmm": 1489.423458,
+    "departamento": "Santander",
+    "obligaciones_mmm": 286.846306,
+    "pagos_mmm": 286.220123,
+    "pct_compromisos": 57.78,
+    "pct_obligaciones": 11.13,
+    "pct_participacion": 3.02,
+    "region": "ANDINA",
+    "vigencia": 2026
+  }
+]

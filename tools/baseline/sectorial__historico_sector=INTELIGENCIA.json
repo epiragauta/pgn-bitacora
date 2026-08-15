@@ -1,0 +1,52 @@
+[
+  {
+    "apr_vigente_mmm": 8,
+    "compromisos_mmm": 5.052,
+    "entidad": "DEPARTAMENTO ADMINISTRATIVO DIRECCIÓN NACIONAL DE INTELIGENCIA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 2.068,
+    "pct_c_av": 63.1,
+    "pct_o_av": 25.9,
+    "sector": "INTELIGENCIA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 29,
+    "compromisos_mmm": 4.514,
+    "entidad": "DEPARTAMENTO ADMINISTRATIVO DIRECCIÓN NACIONAL DE INTELIGENCIA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0.6,
+    "pct_c_av": 15.6,
+    "pct_o_av": 2.1,
+    "sector": "INTELIGENCIA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 41.538,
+    "compromisos_mmm": 13.049,
+    "entidad": "DEPARTAMENTO ADMINISTRATIVO DIRECCIÓN NACIONAL DE INTELIGENCIA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0.048,
+    "pct_c_av": 31.4,
+    "pct_o_av": 0.1,
+    "sector": "INTELIGENCIA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 38.231,
+    "compromisos_mmm": 20.727,
+    "entidad": "DEPARTAMENTO ADMINISTRATIVO DIRECCIÓN NACIONAL DE INTELIGENCIA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 54.2,
+    "pct_o_av": 0,
+    "sector": "INTELIGENCIA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 23.155,
+    "compromisos_mmm": 7.398,
+    "entidad": "DEPARTAMENTO ADMINISTRATIVO DIRECCIÓN NACIONAL DE INTELIGENCIA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 2.204,
+    "pct_c_av": 32,
+    "pct_o_av": 9.5,
+    "sector": "INTELIGENCIA",
+    "vigencia": 2026
+  }
+]

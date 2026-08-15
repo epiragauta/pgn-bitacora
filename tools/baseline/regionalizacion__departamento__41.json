@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 1803.592585,
+    "compromisos_mmm": 752.928268,
+    "departamento": "Huila",
+    "obligaciones_mmm": 293.819069,
+    "pagos_mmm": 285.342979,
+    "pct_compromisos": 41.75,
+    "pct_obligaciones": 16.29,
+    "pct_participacion": 2.55,
+    "region": "ANDINA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 868.410472,
+    "compromisos_mmm": 30.880706,
+    "departamento": "Huila",
+    "obligaciones_mmm": 24.524805,
+    "pagos_mmm": 23.913045,
+    "pct_compromisos": 3.56,
+    "pct_obligaciones": 2.82,
+    "pct_participacion": 1.6,
+    "region": "ANDINA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 1224.017013,
+    "compromisos_mmm": 460.269028,
+    "departamento": "Huila",
+    "obligaciones_mmm": 136.592967,
+    "pagos_mmm": 131.625751,
+    "pct_compromisos": 37.6,
+    "pct_obligaciones": 11.16,
+    "pct_participacion": 1.35,
+    "region": "ANDINA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 1172.394756,
+    "compromisos_mmm": 351.760958,
+    "departamento": "Huila",
+    "obligaciones_mmm": 41.435915,
+    "pagos_mmm": 41.33105,
+    "pct_compromisos": 30.0,
+    "pct_obligaciones": 3.53,
+    "pct_participacion": 1.61,
+    "region": "ANDINA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 1496.896184,
+    "compromisos_mmm": 867.723812,
+    "departamento": "Huila",
+    "obligaciones_mmm": 287.854269,
+    "pagos_mmm": 287.106611,
+    "pct_compromisos": 57.97,
+    "pct_obligaciones": 19.23,
+    "pct_participacion": 1.76,
+    "region": "ANDINA",
+    "vigencia": 2026
+  }
+]

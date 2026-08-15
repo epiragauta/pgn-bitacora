@@ -1,0 +1,32 @@
+[
+  {
+    "componente": "REDUCCIÓN DE LA VULNERABILIDAD FISCAL Y FINANCIERA ANTE RIESGOS CLIMÁTICOS",
+    "peso_pct": 6,
+    "vigente_mmm": 568
+  },
+  {
+    "componente": "DIVERSIFICACIÓN PRODUCTIVA ASOCIADA A LAS ACTIVIDADES EXTRACTIVAS",
+    "peso_pct": 5,
+    "vigente_mmm": 469
+  },
+  {
+    "componente": "SEGURIDAD Y CONFIABILIDAD ENERGÉTICA",
+    "peso_pct": 5,
+    "vigente_mmm": 460
+  },
+  {
+    "componente": "CIERRE DE BRECHAS ENERGÉTICAS",
+    "peso_pct": 51,
+    "vigente_mmm": 4.904
+  },
+  {
+    "componente": "OTROS COMPONENTES",
+    "peso_pct": 21,
+    "vigente_mmm": 1.966
+  },
+  {
+    "componente": "GENERACIÓN DE ENERGÍA A PARTIR DE FUENTES NO CONVENCIONALES (FNCER)",
+    "peso_pct": 12,
+    "vigente_mmm": 1.184
+  }
+]

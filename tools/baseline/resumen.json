@@ -1,0 +1,19 @@
+{
+  "bitacora_id": 2,
+  "corte_fecha": "2026-03-31",
+  "fuente": "SIIF Nación / DPIP - DNP",
+  "inv_pct_gasto_total": null,
+  "inv_pct_pib": null,
+  "inversion_compromisos_mmm": 44986.407,
+  "inversion_obligaciones_mmm": 9962.104,
+  "inversion_pagos_mmm": 9533.256,
+  "inversion_vigente_mmm": 88401.231,
+  "numero_bitacora": "3",
+  "pct_compromisos": 50.9,
+  "pct_obligaciones": 11.3,
+  "pct_pagos": 10.8,
+  "periodo": "2026-I",
+  "total_transformaciones_mmm": 88401.231,
+  "vigencia": 2026,
+  "vigencias_futuras_total_mmm": 195531.9
+}

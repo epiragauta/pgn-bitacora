@@ -1,0 +1,32 @@
+[
+  {
+    "nivel": 3,
+    "nombre": "Transferencias",
+    "padre": "Funcionamiento",
+    "valor": 268547.085
+  },
+  {
+    "nivel": 4,
+    "nombre": "SGP",
+    "padre": "Transferencias",
+    "valor": 88352.506
+  },
+  {
+    "nivel": 4,
+    "nombre": "Pensiones",
+    "padre": "Transferencias",
+    "valor": 83126.345
+  },
+  {
+    "nivel": 4,
+    "nombre": "IES Pública sin Pensiones",
+    "padre": "Transferencias",
+    "valor": 11949.382
+  },
+  {
+    "nivel": 4,
+    "nombre": "Resto",
+    "padre": "Transferencias",
+    "valor": 85118.852
+  }
+]

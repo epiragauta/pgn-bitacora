@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 752.351232,
+    "compromisos_mmm": 294.587206,
+    "departamento": "Quindio",
+    "obligaciones_mmm": 107.526909,
+    "pagos_mmm": 106.228589,
+    "pct_compromisos": 39.16,
+    "pct_obligaciones": 14.29,
+    "pct_participacion": 1.06,
+    "region": "ANDINA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 331.878539,
+    "compromisos_mmm": 10.983367,
+    "departamento": "Quindio",
+    "obligaciones_mmm": 10.078288,
+    "pagos_mmm": 10.059195,
+    "pct_compromisos": 3.31,
+    "pct_obligaciones": 3.04,
+    "pct_participacion": 0.61,
+    "region": "ANDINA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 432.997941,
+    "compromisos_mmm": 152.858948,
+    "departamento": "Quindio",
+    "obligaciones_mmm": 38.128129,
+    "pagos_mmm": 36.23647,
+    "pct_compromisos": 35.3,
+    "pct_obligaciones": 8.81,
+    "pct_participacion": 0.48,
+    "region": "ANDINA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 392.852081,
+    "compromisos_mmm": 105.581062,
+    "departamento": "Quindio",
+    "obligaciones_mmm": 21.06755,
+    "pagos_mmm": 20.786072,
+    "pct_compromisos": 26.88,
+    "pct_obligaciones": 5.36,
+    "pct_participacion": 0.54,
+    "region": "ANDINA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 514.420148,
+    "compromisos_mmm": 296.995171,
+    "departamento": "Quindio",
+    "obligaciones_mmm": 78.293809,
+    "pagos_mmm": 78.230941,
+    "pct_compromisos": 57.73,
+    "pct_obligaciones": 15.22,
+    "pct_participacion": 0.6,
+    "region": "ANDINA",
+    "vigencia": 2026
+  }
+]

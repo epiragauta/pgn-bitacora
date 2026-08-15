@@ -1,0 +1,282 @@
+[
+  {
+    "apr_vigente_mmm": 21.599,
+    "compromisos_mmm": 7.826,
+    "entidad": "CORPORACIÓN NACIONAL PARA LA RECONSTRUCCIÓN DE LA CUENCA DEL RÍO PÁEZ Y ZONAS ALEDAÑAS NASA KI WE",
+    "obligaciones_mmm": 1.739,
+    "pct_c_av": 36.2,
+    "pct_o_av": 8.1,
+    "sector": "INTERIOR",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 13,
+    "compromisos_mmm": 4.079,
+    "entidad": "CORPORACIÓN NACIONAL PARA LA RECONSTRUCCIÓN DE LA CUENCA DEL RÍO PÁEZ Y ZONAS ALEDAÑAS NASA KI WE",
+    "obligaciones_mmm": 1.732,
+    "pct_c_av": 31.4,
+    "pct_o_av": 13.3,
+    "sector": "INTERIOR",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 10.754,
+    "compromisos_mmm": 2.558,
+    "entidad": "CORPORACIÓN NACIONAL PARA LA RECONSTRUCCIÓN DE LA CUENCA DEL RÍO PÁEZ Y ZONAS ALEDAÑAS NASA KI WE",
+    "obligaciones_mmm": 0.754,
+    "pct_c_av": 23.8,
+    "pct_o_av": 7,
+    "sector": "INTERIOR",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 10.056,
+    "compromisos_mmm": 1.042,
+    "entidad": "CORPORACIÓN NACIONAL PARA LA RECONSTRUCCIÓN DE LA CUENCA DEL RÍO PÁEZ Y ZONAS ALEDAÑAS NASA KI WE",
+    "obligaciones_mmm": 0.098,
+    "pct_c_av": 10.4,
+    "pct_o_av": 1,
+    "sector": "INTERIOR",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 17,
+    "compromisos_mmm": 3.285,
+    "entidad": "CORPORACIÓN NACIONAL PARA LA RECONSTRUCCIÓN DE LA CUENCA DEL RÍO PÁEZ Y ZONAS ALEDAÑAS NASA KI WE",
+    "obligaciones_mmm": 1.127,
+    "pct_c_av": 19.3,
+    "pct_o_av": 6.6,
+    "sector": "INTERIOR",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 4,
+    "compromisos_mmm": 0,
+    "entidad": "DIRECCIÓN DE LA AUTORIDAD NACIONAL DE CONSULTA PREVIA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "INTERIOR",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 3,
+    "compromisos_mmm": 0.25,
+    "entidad": "DIRECCIÓN DE LA AUTORIDAD NACIONAL DE CONSULTA PREVIA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 8.3,
+    "pct_o_av": 0,
+    "sector": "INTERIOR",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 2,
+    "compromisos_mmm": 0.285,
+    "entidad": "DIRECCIÓN DE LA AUTORIDAD NACIONAL DE CONSULTA PREVIA",
+    "obligaciones_mmm": 0.041,
+    "pct_c_av": 14.3,
+    "pct_o_av": 2.1,
+    "sector": "INTERIOR",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 74.36,
+    "compromisos_mmm": 45.299,
+    "entidad": "DIRECCIÓN NACIONAL DE BOMBEROS",
+    "obligaciones_mmm": 5.754,
+    "pct_c_av": 60.9,
+    "pct_o_av": 7.7,
+    "sector": "INTERIOR",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 85.46,
+    "compromisos_mmm": 23.013,
+    "entidad": "DIRECCIÓN NACIONAL DE BOMBEROS",
+    "obligaciones_mmm": 0.543,
+    "pct_c_av": 26.9,
+    "pct_o_av": 0.6,
+    "sector": "INTERIOR",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 62.05,
+    "compromisos_mmm": 2.89,
+    "entidad": "DIRECCIÓN NACIONAL DE BOMBEROS",
+    "obligaciones_mmm": 0.014,
+    "pct_c_av": 4.7,
+    "pct_o_av": 0,
+    "sector": "INTERIOR",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 71.906,
+    "compromisos_mmm": 4.207,
+    "entidad": "DIRECCIÓN NACIONAL DE BOMBEROS",
+    "obligaciones_mmm": 0.182,
+    "pct_c_av": 5.9,
+    "pct_o_av": 0.3,
+    "sector": "INTERIOR",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 85.606,
+    "compromisos_mmm": 7.197,
+    "entidad": "DIRECCIÓN NACIONAL DE BOMBEROS",
+    "obligaciones_mmm": 0.841,
+    "pct_c_av": 8.4,
+    "pct_o_av": 1,
+    "sector": "INTERIOR",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 0.927,
+    "compromisos_mmm": 0.099,
+    "entidad": "DIRECCIÓN NACIONAL DEL DERECHO DE AUTOR",
+    "obligaciones_mmm": 0.014,
+    "pct_c_av": 10.6,
+    "pct_o_av": 1.6,
+    "sector": "INTERIOR",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 0.927,
+    "compromisos_mmm": 0.012,
+    "entidad": "DIRECCIÓN NACIONAL DEL DERECHO DE AUTOR",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 1.3,
+    "pct_o_av": 0,
+    "sector": "INTERIOR",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 0.816,
+    "compromisos_mmm": 0.206,
+    "entidad": "DIRECCIÓN NACIONAL DEL DERECHO DE AUTOR",
+    "obligaciones_mmm": 0.052,
+    "pct_c_av": 25.2,
+    "pct_o_av": 6.4,
+    "sector": "INTERIOR",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 0.841,
+    "compromisos_mmm": 0.684,
+    "entidad": "DIRECCIÓN NACIONAL DEL DERECHO DE AUTOR",
+    "obligaciones_mmm": 0.262,
+    "pct_c_av": 81.3,
+    "pct_o_av": 31.1,
+    "sector": "INTERIOR",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 2.431,
+    "compromisos_mmm": 0.867,
+    "entidad": "DIRECCIÓN NACIONAL DEL DERECHO DE AUTOR",
+    "obligaciones_mmm": 0.183,
+    "pct_c_av": 35.7,
+    "pct_o_av": 7.5,
+    "sector": "INTERIOR",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 528.315,
+    "compromisos_mmm": 148.336,
+    "entidad": "MINISTERIO DEL INTERIOR - GESTIÓN GENERAL",
+    "obligaciones_mmm": 42.067,
+    "pct_c_av": 28.1,
+    "pct_o_av": 8,
+    "sector": "INTERIOR",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 254.48,
+    "compromisos_mmm": 80.712,
+    "entidad": "MINISTERIO DEL INTERIOR - GESTIÓN GENERAL",
+    "obligaciones_mmm": 4.501,
+    "pct_c_av": 31.7,
+    "pct_o_av": 1.8,
+    "sector": "INTERIOR",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 589.384,
+    "compromisos_mmm": 124.693,
+    "entidad": "MINISTERIO DEL INTERIOR - GESTIÓN GENERAL",
+    "obligaciones_mmm": 2.6,
+    "pct_c_av": 21.2,
+    "pct_o_av": 0.4,
+    "sector": "INTERIOR",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 394.623,
+    "compromisos_mmm": 44.05,
+    "entidad": "MINISTERIO DEL INTERIOR - GESTIÓN GENERAL",
+    "obligaciones_mmm": 2.778,
+    "pct_c_av": 11.2,
+    "pct_o_av": 0.7,
+    "sector": "INTERIOR",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 312.007,
+    "compromisos_mmm": 119.757,
+    "entidad": "MINISTERIO DEL INTERIOR - GESTIÓN GENERAL",
+    "obligaciones_mmm": 5.308,
+    "pct_c_av": 38.4,
+    "pct_o_av": 1.7,
+    "sector": "INTERIOR",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 9,
+    "compromisos_mmm": 4.553,
+    "entidad": "UNIDAD NACIONAL DE PROTECCIÓN - UNP",
+    "obligaciones_mmm": 0.711,
+    "pct_c_av": 50.6,
+    "pct_o_av": 7.9,
+    "sector": "INTERIOR",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 5,
+    "compromisos_mmm": 0,
+    "entidad": "UNIDAD NACIONAL DE PROTECCIÓN - UNP",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "INTERIOR",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 4.403,
+    "compromisos_mmm": 0,
+    "entidad": "UNIDAD NACIONAL DE PROTECCIÓN - UNP",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "INTERIOR",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 3,
+    "compromisos_mmm": 0,
+    "entidad": "UNIDAD NACIONAL DE PROTECCIÓN - UNP",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "INTERIOR",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 4,
+    "compromisos_mmm": 0.335,
+    "entidad": "UNIDAD NACIONAL DE PROTECCIÓN - UNP",
+    "obligaciones_mmm": 0.076,
+    "pct_c_av": 8.4,
+    "pct_o_av": 1.9,
+    "sector": "INTERIOR",
+    "vigencia": 2026
+  }
+]

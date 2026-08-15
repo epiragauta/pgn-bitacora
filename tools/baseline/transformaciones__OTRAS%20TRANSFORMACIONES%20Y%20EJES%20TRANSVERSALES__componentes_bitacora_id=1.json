@@ -1,0 +1,32 @@
+[
+  {
+    "componente": "OTROS COMPONENTES",
+    "peso_pct": 7,
+    "vigente_mmm": 798
+  },
+  {
+    "componente": "ADMINISTRACIÓN EFICIENTE DE LOS RECURSOS PÚBLICOS",
+    "peso_pct": 6,
+    "vigente_mmm": 678
+  },
+  {
+    "componente": "CONSTRUCCION DE TEJIDO SOCIAL DIVERSO CON GARANTIA DE DERECHOS",
+    "peso_pct": 5,
+    "vigente_mmm": 499
+  },
+  {
+    "componente": "UNIVERSALIZACIÓN DE LA ATENCIÓN INTEGRAL A LA PRIMERA INFANCIA",
+    "peso_pct": 57,
+    "vigente_mmm": 6.126
+  },
+  {
+    "componente": "FORTALECIMIENTO DE LAS FAMILIAS Y LAS COMUNIDADES",
+    "peso_pct": 15,
+    "vigente_mmm": 1.6
+  },
+  {
+    "componente": "ICBF COMO IMPULSOR DE PROYECTOS DE VIDA",
+    "peso_pct": 10,
+    "vigente_mmm": 1.024
+  }
+]

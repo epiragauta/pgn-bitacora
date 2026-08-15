@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 2882.47865,
+    "compromisos_mmm": 2199.085921,
+    "departamento": "Antioquia",
+    "obligaciones_mmm": 366.458005,
+    "pagos_mmm": 364.591851,
+    "pct_compromisos": 76.29,
+    "pct_obligaciones": 12.71,
+    "pct_participacion": 4.07,
+    "region": "ANDINA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 3900.223538,
+    "compromisos_mmm": 86.925443,
+    "departamento": "Antioquia",
+    "obligaciones_mmm": 81.048513,
+    "pagos_mmm": 89.060517,
+    "pct_compromisos": 2.23,
+    "pct_obligaciones": 2.08,
+    "pct_participacion": 7.2,
+    "region": "ANDINA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 5270.769964,
+    "compromisos_mmm": 3543.145235,
+    "departamento": "Antioquia",
+    "obligaciones_mmm": 957.499078,
+    "pagos_mmm": 942.092534,
+    "pct_compromisos": 67.22,
+    "pct_obligaciones": 18.17,
+    "pct_participacion": 5.79,
+    "region": "ANDINA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 5850.587406,
+    "compromisos_mmm": 2720.525876,
+    "departamento": "Antioquia",
+    "obligaciones_mmm": 712.060436,
+    "pagos_mmm": 708.497381,
+    "pct_compromisos": 46.5,
+    "pct_obligaciones": 12.17,
+    "pct_participacion": 8.02,
+    "region": "ANDINA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 6247.81139,
+    "compromisos_mmm": 3797.250697,
+    "departamento": "Antioquia",
+    "obligaciones_mmm": 1083.036723,
+    "pagos_mmm": 1080.898165,
+    "pct_compromisos": 60.78,
+    "pct_obligaciones": 17.33,
+    "pct_participacion": 7.33,
+    "region": "ANDINA",
+    "vigencia": 2026
+  }
+]

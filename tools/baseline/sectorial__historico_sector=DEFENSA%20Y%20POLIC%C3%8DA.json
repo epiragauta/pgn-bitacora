@@ -1,0 +1,972 @@
+[
+  {
+    "apr_vigente_mmm": 7.17,
+    "compromisos_mmm": 0,
+    "entidad": "AGENCIA LOGÍSTICA DE LAS FUERZAS MILITARES",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 7.66,
+    "compromisos_mmm": 5.844,
+    "entidad": "AGENCIA LOGÍSTICA DE LAS FUERZAS MILITARES",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 76.3,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 3.88,
+    "compromisos_mmm": 0,
+    "entidad": "AGENCIA LOGÍSTICA DE LAS FUERZAS MILITARES",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 6.5,
+    "compromisos_mmm": 0,
+    "entidad": "AGENCIA LOGÍSTICA DE LAS FUERZAS MILITARES",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 5.5,
+    "compromisos_mmm": 0,
+    "entidad": "AGENCIA LOGÍSTICA DE LAS FUERZAS MILITARES",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 10.03,
+    "compromisos_mmm": 4.495,
+    "entidad": "CAJA DE RETIRO DE LAS FUERZAS MILITARES",
+    "obligaciones_mmm": 0.215,
+    "pct_c_av": 44.8,
+    "pct_o_av": 2.1,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 18.099,
+    "compromisos_mmm": 2.605,
+    "entidad": "CAJA DE RETIRO DE LAS FUERZAS MILITARES",
+    "obligaciones_mmm": 0.275,
+    "pct_c_av": 14.4,
+    "pct_o_av": 1.5,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 18.188,
+    "compromisos_mmm": 12.923,
+    "entidad": "CAJA DE RETIRO DE LAS FUERZAS MILITARES",
+    "obligaciones_mmm": 0.537,
+    "pct_c_av": 71.1,
+    "pct_o_av": 3,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 16.48,
+    "compromisos_mmm": 15.445,
+    "entidad": "CAJA DE RETIRO DE LAS FUERZAS MILITARES",
+    "obligaciones_mmm": 2.405,
+    "pct_c_av": 93.7,
+    "pct_o_av": 14.6,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 13.838,
+    "compromisos_mmm": 4.762,
+    "entidad": "CAJA DE RETIRO DE LAS FUERZAS MILITARES",
+    "obligaciones_mmm": 0.165,
+    "pct_c_av": 34.4,
+    "pct_o_av": 1.2,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 8,
+    "compromisos_mmm": 2.619,
+    "entidad": "CAJA DE SUELDOS DE RETIRO DE LA POLICÍA NACIONAL",
+    "obligaciones_mmm": 0.689,
+    "pct_c_av": 32.7,
+    "pct_o_av": 8.6,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 10.488,
+    "compromisos_mmm": 0.593,
+    "entidad": "CAJA DE SUELDOS DE RETIRO DE LA POLICÍA NACIONAL",
+    "obligaciones_mmm": 0.414,
+    "pct_c_av": 5.7,
+    "pct_o_av": 3.9,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 10.54,
+    "compromisos_mmm": 1.091,
+    "entidad": "CAJA DE SUELDOS DE RETIRO DE LA POLICÍA NACIONAL",
+    "obligaciones_mmm": 0.097,
+    "pct_c_av": 10.4,
+    "pct_o_av": 0.9,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 9.548,
+    "compromisos_mmm": 0.993,
+    "entidad": "CAJA DE SUELDOS DE RETIRO DE LA POLICÍA NACIONAL",
+    "obligaciones_mmm": 0.144,
+    "pct_c_av": 10.4,
+    "pct_o_av": 1.5,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 9.907,
+    "compromisos_mmm": 2.795,
+    "entidad": "CAJA DE SUELDOS DE RETIRO DE LA POLICÍA NACIONAL",
+    "obligaciones_mmm": 0.732,
+    "pct_c_av": 28.2,
+    "pct_o_av": 7.4,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 10,
+    "compromisos_mmm": 0,
+    "entidad": "CLUB MILITAR DE OFICIALES",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 13.87,
+    "compromisos_mmm": 0,
+    "entidad": "CLUB MILITAR DE OFICIALES",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 4.578,
+    "compromisos_mmm": 0.025,
+    "entidad": "CLUB MILITAR DE OFICIALES",
+    "obligaciones_mmm": 0.008,
+    "pct_c_av": 0.6,
+    "pct_o_av": 0.2,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 13.965,
+    "compromisos_mmm": 0.03,
+    "entidad": "CLUB MILITAR DE OFICIALES",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0.2,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 10.6,
+    "compromisos_mmm": 0.959,
+    "entidad": "DEFENSA CIVIL COLOMBIANA, GUILLERMO LEÓN VALENCIA",
+    "obligaciones_mmm": 0.015,
+    "pct_c_av": 9.1,
+    "pct_o_av": 0.1,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 11.135,
+    "compromisos_mmm": 0.585,
+    "entidad": "DEFENSA CIVIL COLOMBIANA, GUILLERMO LEÓN VALENCIA",
+    "obligaciones_mmm": 0.037,
+    "pct_c_av": 5.3,
+    "pct_o_av": 0.3,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 8.62,
+    "compromisos_mmm": 1.743,
+    "entidad": "DEFENSA CIVIL COLOMBIANA, GUILLERMO LEÓN VALENCIA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 20.2,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 8,
+    "compromisos_mmm": 2.687,
+    "entidad": "DEFENSA CIVIL COLOMBIANA, GUILLERMO LEÓN VALENCIA",
+    "obligaciones_mmm": 1.8,
+    "pct_c_av": 33.6,
+    "pct_o_av": 22.5,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 8.001,
+    "compromisos_mmm": 0.373,
+    "entidad": "DEFENSA CIVIL COLOMBIANA, GUILLERMO LEÓN VALENCIA",
+    "obligaciones_mmm": 0.042,
+    "pct_c_av": 4.7,
+    "pct_o_av": 0.5,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 2.5,
+    "compromisos_mmm": 0,
+    "entidad": "FONPOLICÍA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 1.58,
+    "compromisos_mmm": 0,
+    "entidad": "FONPOLICÍA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 7,
+    "compromisos_mmm": 0.128,
+    "entidad": "FONPOLICÍA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 1.8,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 5.276,
+    "compromisos_mmm": 0,
+    "entidad": "FONPOLICÍA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 5.599,
+    "compromisos_mmm": 0,
+    "entidad": "FONPOLICÍA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 18.5,
+    "compromisos_mmm": 3.711,
+    "entidad": "HOSPITAL MILITAR",
+    "obligaciones_mmm": 0.209,
+    "pct_c_av": 20.1,
+    "pct_o_av": 1.1,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 15,
+    "compromisos_mmm": 7.54,
+    "entidad": "HOSPITAL MILITAR",
+    "obligaciones_mmm": 0.193,
+    "pct_c_av": 50.3,
+    "pct_o_av": 1.3,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 20,
+    "compromisos_mmm": 8.335,
+    "entidad": "HOSPITAL MILITAR",
+    "obligaciones_mmm": 0.972,
+    "pct_c_av": 41.7,
+    "pct_o_av": 4.9,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 46.4,
+    "compromisos_mmm": 6.214,
+    "entidad": "HOSPITAL MILITAR",
+    "obligaciones_mmm": 0.833,
+    "pct_c_av": 13.4,
+    "pct_o_av": 1.8,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 40,
+    "compromisos_mmm": 6.536,
+    "entidad": "HOSPITAL MILITAR",
+    "obligaciones_mmm": 0.216,
+    "pct_c_av": 16.3,
+    "pct_o_av": 0.5,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 16.777,
+    "compromisos_mmm": 4.129,
+    "entidad": "INSTITUTO CASAS FISCALES DEL EJÉRCITO",
+    "obligaciones_mmm": 0.216,
+    "pct_c_av": 24.6,
+    "pct_o_av": 1.3,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 19.265,
+    "compromisos_mmm": 0.863,
+    "entidad": "INSTITUTO CASAS FISCALES DEL EJÉRCITO",
+    "obligaciones_mmm": 0.06,
+    "pct_c_av": 4.5,
+    "pct_o_av": 0.3,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 38.56,
+    "compromisos_mmm": 12.114,
+    "entidad": "INSTITUTO CASAS FISCALES DEL EJÉRCITO",
+    "obligaciones_mmm": 0.146,
+    "pct_c_av": 31.4,
+    "pct_o_av": 0.4,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 38.2,
+    "compromisos_mmm": 11.487,
+    "entidad": "INSTITUTO CASAS FISCALES DEL EJÉRCITO",
+    "obligaciones_mmm": 0.128,
+    "pct_c_av": 30.1,
+    "pct_o_av": 0.3,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 39.858,
+    "compromisos_mmm": 15.441,
+    "entidad": "INSTITUTO CASAS FISCALES DEL EJÉRCITO",
+    "obligaciones_mmm": 0.351,
+    "pct_c_av": 38.7,
+    "pct_o_av": 0.9,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 224.36,
+    "compromisos_mmm": 162.559,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - ARMADA",
+    "obligaciones_mmm": 56.645,
+    "pct_c_av": 72.5,
+    "pct_o_av": 25.2,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 375.03,
+    "compromisos_mmm": 252.858,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - ARMADA",
+    "obligaciones_mmm": 174.465,
+    "pct_c_av": 67.4,
+    "pct_o_av": 46.5,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 662.314,
+    "compromisos_mmm": 313.475,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - ARMADA",
+    "obligaciones_mmm": 31.822,
+    "pct_c_av": 47.3,
+    "pct_o_av": 4.8,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 500.637,
+    "compromisos_mmm": 357.015,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - ARMADA",
+    "obligaciones_mmm": 212.594,
+    "pct_c_av": 71.3,
+    "pct_o_av": 42.5,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 818.805,
+    "compromisos_mmm": 476.461,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - ARMADA",
+    "obligaciones_mmm": 50.426,
+    "pct_c_av": 58.2,
+    "pct_o_av": 6.2,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 29.098,
+    "compromisos_mmm": 6.398,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - COMANDO GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 22,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 25,
+    "compromisos_mmm": 0,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - COMANDO GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 46.363,
+    "compromisos_mmm": 2.102,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - COMANDO GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 4.5,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 33.098,
+    "compromisos_mmm": 0,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - COMANDO GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 38.119,
+    "compromisos_mmm": 16.937,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - COMANDO GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 44.4,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 73.164,
+    "compromisos_mmm": 58.969,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - DIRECCIÓN GENERAL MARITIMA (DIMAR)",
+    "obligaciones_mmm": 0.628,
+    "pct_c_av": 80.6,
+    "pct_o_av": 0.9,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 39.576,
+    "compromisos_mmm": 9.011,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - DIRECCIÓN GENERAL MARITIMA (DIMAR)",
+    "obligaciones_mmm": 0.03,
+    "pct_c_av": 22.8,
+    "pct_o_av": 0.1,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 49.666,
+    "compromisos_mmm": 18.684,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - DIRECCIÓN GENERAL MARITIMA (DIMAR)",
+    "obligaciones_mmm": 6.838,
+    "pct_c_av": 37.6,
+    "pct_o_av": 13.8,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 69.458,
+    "compromisos_mmm": 8.181,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - DIRECCIÓN GENERAL MARITIMA (DIMAR)",
+    "obligaciones_mmm": 3.901,
+    "pct_c_av": 11.8,
+    "pct_o_av": 5.6,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 75,
+    "compromisos_mmm": 11.839,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - DIRECCIÓN GENERAL MARITIMA (DIMAR)",
+    "obligaciones_mmm": 1.257,
+    "pct_c_av": 15.8,
+    "pct_o_av": 1.7,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 276.562,
+    "compromisos_mmm": 88.808,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - EJÉRCITO",
+    "obligaciones_mmm": 6.03,
+    "pct_c_av": 32.1,
+    "pct_o_av": 2.2,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 376.192,
+    "compromisos_mmm": 125.786,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - EJÉRCITO",
+    "obligaciones_mmm": 98.422,
+    "pct_c_av": 33.4,
+    "pct_o_av": 26.2,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 760.385,
+    "compromisos_mmm": 184.146,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - EJÉRCITO",
+    "obligaciones_mmm": 85.787,
+    "pct_c_av": 24.2,
+    "pct_o_av": 11.3,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 385.001,
+    "compromisos_mmm": 183.334,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - EJÉRCITO",
+    "obligaciones_mmm": 83.598,
+    "pct_c_av": 47.6,
+    "pct_o_av": 21.7,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 780.37,
+    "compromisos_mmm": 157.512,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - EJÉRCITO",
+    "obligaciones_mmm": 0.542,
+    "pct_c_av": 20.2,
+    "pct_o_av": 0.1,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 378.523,
+    "compromisos_mmm": 157.935,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - FUERZA AÉREA",
+    "obligaciones_mmm": 19.046,
+    "pct_c_av": 41.7,
+    "pct_o_av": 5,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 358.858,
+    "compromisos_mmm": 229.349,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - FUERZA AÉREA",
+    "obligaciones_mmm": 151.31,
+    "pct_c_av": 63.9,
+    "pct_o_av": 42.2,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 792.502,
+    "compromisos_mmm": 422.384,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - FUERZA AÉREA",
+    "obligaciones_mmm": 331.138,
+    "pct_c_av": 53.3,
+    "pct_o_av": 41.8,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 554.627,
+    "compromisos_mmm": 394.371,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - FUERZA AÉREA",
+    "obligaciones_mmm": 15.696,
+    "pct_c_av": 71.1,
+    "pct_o_av": 2.8,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 849.353,
+    "compromisos_mmm": 535.609,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - FUERZA AÉREA",
+    "obligaciones_mmm": 95.257,
+    "pct_c_av": 63.1,
+    "pct_o_av": 11.2,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 422.814,
+    "compromisos_mmm": 321.004,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 5.09,
+    "pct_c_av": 75.9,
+    "pct_o_av": 1.2,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 338.2,
+    "compromisos_mmm": 310.671,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 50,
+    "pct_c_av": 91.9,
+    "pct_o_av": 14.8,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 297.922,
+    "compromisos_mmm": 264.018,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 12.991,
+    "pct_c_av": 88.6,
+    "pct_o_av": 4.4,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 537.493,
+    "compromisos_mmm": 0.454,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0.028,
+    "pct_c_av": 0.1,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 381.169,
+    "compromisos_mmm": 342.515,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0.765,
+    "pct_c_av": 89.9,
+    "pct_o_av": 0.2,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 25.168,
+    "compromisos_mmm": 1.941,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - SALUD",
+    "obligaciones_mmm": 0.78,
+    "pct_c_av": 7.7,
+    "pct_o_av": 3.1,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 23,
+    "compromisos_mmm": 1.51,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - SALUD",
+    "obligaciones_mmm": 0.989,
+    "pct_c_av": 6.6,
+    "pct_o_av": 4.3,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 61.982,
+    "compromisos_mmm": 1.31,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - SALUD",
+    "obligaciones_mmm": 0.427,
+    "pct_c_av": 2.1,
+    "pct_o_av": 0.7,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 28.648,
+    "compromisos_mmm": 4.336,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - SALUD",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 15.1,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 29.589,
+    "compromisos_mmm": 2.26,
+    "entidad": "MINISTERIO DE DEFENSA NACIONAL - SALUD",
+    "obligaciones_mmm": 0.251,
+    "pct_c_av": 7.6,
+    "pct_o_av": 0.8,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 12.5,
+    "compromisos_mmm": 1.858,
+    "entidad": "POLICÍA NACIONAL - EDUCACIÓN",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 14.9,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 25.643,
+    "compromisos_mmm": 0,
+    "entidad": "POLICÍA NACIONAL - EDUCACIÓN",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 24.359,
+    "compromisos_mmm": 0.113,
+    "entidad": "POLICÍA NACIONAL - EDUCACIÓN",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0.5,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 60,
+    "compromisos_mmm": 0.41,
+    "entidad": "POLICÍA NACIONAL - EDUCACIÓN",
+    "obligaciones_mmm": 0.192,
+    "pct_c_av": 0.7,
+    "pct_o_av": 0.3,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 449.485,
+    "compromisos_mmm": 298.263,
+    "entidad": "POLICÍA NACIONAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 213.191,
+    "pct_c_av": 66.4,
+    "pct_o_av": 47.4,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 207.5,
+    "compromisos_mmm": 30.228,
+    "entidad": "POLICÍA NACIONAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 14.6,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 327.504,
+    "compromisos_mmm": 91.069,
+    "entidad": "POLICÍA NACIONAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 27.8,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 195.52,
+    "compromisos_mmm": 56.907,
+    "entidad": "POLICÍA NACIONAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 29.1,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 453.259,
+    "compromisos_mmm": 48.531,
+    "entidad": "POLICÍA NACIONAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 3.007,
+    "pct_c_av": 10.7,
+    "pct_o_av": 0.7,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 34.453,
+    "compromisos_mmm": 14.453,
+    "entidad": "POLICÍA NACIONAL - SALUD",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 41.9,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 15,
+    "compromisos_mmm": 0.716,
+    "entidad": "POLICÍA NACIONAL - SALUD",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 4.8,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 41.901,
+    "compromisos_mmm": 0,
+    "entidad": "POLICÍA NACIONAL - SALUD",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 18.684,
+    "compromisos_mmm": 0,
+    "entidad": "POLICÍA NACIONAL - SALUD",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 42.481,
+    "compromisos_mmm": 1.128,
+    "entidad": "POLICÍA NACIONAL - SALUD",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 2.7,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 10.115,
+    "compromisos_mmm": 9.237,
+    "entidad": "SUPERINTENDENCIA DE VIGILANCIA Y SEGURIDAD PRIVADA",
+    "obligaciones_mmm": 2.052,
+    "pct_c_av": 91.3,
+    "pct_o_av": 20.3,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 5.48,
+    "compromisos_mmm": 1.11,
+    "entidad": "SUPERINTENDENCIA DE VIGILANCIA Y SEGURIDAD PRIVADA",
+    "obligaciones_mmm": 0.571,
+    "pct_c_av": 20.3,
+    "pct_o_av": 10.4,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 5.506,
+    "compromisos_mmm": 5.421,
+    "entidad": "SUPERINTENDENCIA DE VIGILANCIA Y SEGURIDAD PRIVADA",
+    "obligaciones_mmm": 1.359,
+    "pct_c_av": 98.5,
+    "pct_o_av": 24.7,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 4.575,
+    "compromisos_mmm": 0.169,
+    "entidad": "SUPERINTENDENCIA DE VIGILANCIA Y SEGURIDAD PRIVADA",
+    "obligaciones_mmm": 0.017,
+    "pct_c_av": 3.7,
+    "pct_o_av": 0.4,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 5.032,
+    "compromisos_mmm": 4.474,
+    "entidad": "SUPERINTENDENCIA DE VIGILANCIA Y SEGURIDAD PRIVADA",
+    "obligaciones_mmm": 0.127,
+    "pct_c_av": 88.9,
+    "pct_o_av": 2.5,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 5,
+    "compromisos_mmm": 0,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE LA JUSTICIA PENAL MILITAR Y POLICIAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 15,
+    "compromisos_mmm": 0.308,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE LA JUSTICIA PENAL MILITAR Y POLICIAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 2.1,
+    "pct_o_av": 0,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 6.227,
+    "compromisos_mmm": 0.289,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE LA JUSTICIA PENAL MILITAR Y POLICIAL",
+    "obligaciones_mmm": 0.017,
+    "pct_c_av": 4.6,
+    "pct_o_av": 0.3,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 5.997,
+    "compromisos_mmm": 0.412,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE LA JUSTICIA PENAL MILITAR Y POLICIAL",
+    "obligaciones_mmm": 0.143,
+    "pct_c_av": 6.9,
+    "pct_o_av": 2.4,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  }
+]

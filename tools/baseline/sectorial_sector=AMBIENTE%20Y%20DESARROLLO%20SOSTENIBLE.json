@@ -1,0 +1,52 @@
+[
+  {
+    "apr_vigente_mmm": 770.307,
+    "compromisos_mmm": 295.436,
+    "entidad": "MINISTERIO DE AMBIENTE Y DESARROLLO SOSTENIBLE - GESTIÓN GENERAL",
+    "obligaciones_mmm": 27.699,
+    "pct_c_av": 38.4,
+    "pct_o_av": 3.6,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 189.546,
+    "compromisos_mmm": 118.644,
+    "entidad": "FONDO NACIONAL AMBIENTAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 17.051,
+    "pct_c_av": 62.6,
+    "pct_o_av": 9,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 67.899,
+    "compromisos_mmm": 54.973,
+    "entidad": "PARQUES NACIONALES NATURALES DE COLOMBIA",
+    "obligaciones_mmm": 8.549,
+    "pct_c_av": 81,
+    "pct_o_av": 12.6,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 57.563,
+    "compromisos_mmm": 35.123,
+    "entidad": "INSTITUTO DE HIDROLOGÍA, METEOROLOGÍA Y ESTUDIOS AMBIENTALES - IDEAM",
+    "obligaciones_mmm": 4.094,
+    "pct_c_av": 61,
+    "pct_o_av": 7.1,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 28.979,
+    "compromisos_mmm": 25.704,
+    "entidad": "AUTORIDAD NACIONAL DE LICENCIAS AMBIENTALES ANLA",
+    "obligaciones_mmm": 3.56,
+    "pct_c_av": 88.7,
+    "pct_o_av": 12.3,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2026
+  }
+]

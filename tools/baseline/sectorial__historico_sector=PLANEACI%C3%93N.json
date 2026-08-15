@@ -1,0 +1,152 @@
+[
+  {
+    "apr_vigente_mmm": 1692.816,
+    "compromisos_mmm": 846.359,
+    "entidad": "DEPARTAMENTO DE PLANEACIÓN - GESTIÓN GENERAL",
+    "obligaciones_mmm": 12.244,
+    "pct_c_av": 50,
+    "pct_o_av": 0.7,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 1382.697,
+    "compromisos_mmm": 1143.841,
+    "entidad": "DEPARTAMENTO DE PLANEACIÓN - GESTIÓN GENERAL",
+    "obligaciones_mmm": 12.774,
+    "pct_c_av": 82.7,
+    "pct_o_av": 0.9,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 1044.103,
+    "compromisos_mmm": 689.903,
+    "entidad": "DEPARTAMENTO NACIONAL DE PLANEACION - GESTION GENERAL",
+    "obligaciones_mmm": 160.162,
+    "pct_c_av": 66.1,
+    "pct_o_av": 15.3,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 643.371,
+    "compromisos_mmm": 187.529,
+    "entidad": "DEPARTAMENTO NACIONAL DE PLANEACION - GESTION GENERAL",
+    "obligaciones_mmm": 8.354,
+    "pct_c_av": 29.1,
+    "pct_o_av": 1.3,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 925.504,
+    "compromisos_mmm": 378.505,
+    "entidad": "DEPARTAMENTO NACIONAL DE PLANEACION - GESTION GENERAL",
+    "obligaciones_mmm": 17.224,
+    "pct_c_av": 40.9,
+    "pct_o_av": 1.9,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 28.955,
+    "compromisos_mmm": 18.178,
+    "entidad": "SUPERINTENDENCIA DE SERVICIOS PÚBLICOS DOMICILIARIOS",
+    "obligaciones_mmm": 2.425,
+    "pct_c_av": 62.8,
+    "pct_o_av": 8.4,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 29.994,
+    "compromisos_mmm": 9.159,
+    "entidad": "SUPERINTENDENCIA DE SERVICIOS PÚBLICOS DOMICILIARIOS",
+    "obligaciones_mmm": 0.919,
+    "pct_c_av": 30.5,
+    "pct_o_av": 3.1,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 33.032,
+    "compromisos_mmm": 8.197,
+    "entidad": "SUPERINTENDENCIA DE SERVICIOS PÚBLICOS DOMICILIARIOS",
+    "obligaciones_mmm": 0.294,
+    "pct_c_av": 24.8,
+    "pct_o_av": 0.9,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 38.078,
+    "compromisos_mmm": 0.587,
+    "entidad": "SUPERINTENDENCIA DE SERVICIOS PÚBLICOS DOMICILIARIOS",
+    "obligaciones_mmm": 0.006,
+    "pct_c_av": 1.5,
+    "pct_o_av": 0,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 33.196,
+    "compromisos_mmm": 22.191,
+    "entidad": "SUPERINTENDENCIA DE SERVICIOS PÚBLICOS DOMICILIARIOS",
+    "obligaciones_mmm": 2.271,
+    "pct_c_av": 66.9,
+    "pct_o_av": 6.8,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 55.827,
+    "compromisos_mmm": 39.016,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL - AGENCIA NACIONAL DE CONTRATACIÓN PÚBLICA - COLOMBIA COMPRA EFICIENTE",
+    "obligaciones_mmm": 11.325,
+    "pct_c_av": 69.9,
+    "pct_o_av": 20.3,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 51.62,
+    "compromisos_mmm": 28.231,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL - AGENCIA NACIONAL DE CONTRATACIÓN PÚBLICA - COLOMBIA COMPRA EFICIENTE",
+    "obligaciones_mmm": 8.979,
+    "pct_c_av": 54.7,
+    "pct_o_av": 17.4,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 67.546,
+    "compromisos_mmm": 41.094,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL - AGENCIA NACIONAL DE CONTRATACIÓN PÚBLICA - COLOMBIA COMPRA EFICIENTE",
+    "obligaciones_mmm": 7.728,
+    "pct_c_av": 60.8,
+    "pct_o_av": 11.4,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 94.683,
+    "compromisos_mmm": 51.284,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL - AGENCIA NACIONAL DE CONTRATACIÓN PÚBLICA - COLOMBIA COMPRA EFICIENTE",
+    "obligaciones_mmm": 10.369,
+    "pct_c_av": 54.2,
+    "pct_o_av": 11,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 68.444,
+    "compromisos_mmm": 45.618,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL - AGENCIA NACIONAL DE CONTRATACIÓN PÚBLICA - COLOMBIA COMPRA EFICIENTE",
+    "obligaciones_mmm": 12.801,
+    "pct_c_av": 66.6,
+    "pct_o_av": 18.7,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2026
+  }
+]

@@ -1,0 +1,102 @@
+[
+  {
+    "apr_vigente_mmm": 89.954,
+    "compromisos_mmm": 89.943,
+    "entidad": "CÁMARA DE REPRESENTANTES",
+    "obligaciones_mmm": 18.443,
+    "pct_c_av": 100,
+    "pct_o_av": 20.5,
+    "sector": "CONGRESO DE LA REPÚBLICA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 118.641,
+    "compromisos_mmm": 47.443,
+    "entidad": "CÁMARA DE REPRESENTANTES",
+    "obligaciones_mmm": 11.786,
+    "pct_c_av": 40,
+    "pct_o_av": 9.9,
+    "sector": "CONGRESO DE LA REPÚBLICA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 163,
+    "compromisos_mmm": 79.911,
+    "entidad": "CÁMARA DE REPRESENTANTES",
+    "obligaciones_mmm": 5.92,
+    "pct_c_av": 49,
+    "pct_o_av": 3.6,
+    "sector": "CONGRESO DE LA REPÚBLICA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 139.564,
+    "compromisos_mmm": 45.862,
+    "entidad": "CÁMARA DE REPRESENTANTES",
+    "obligaciones_mmm": 13.282,
+    "pct_c_av": 32.9,
+    "pct_o_av": 9.5,
+    "sector": "CONGRESO DE LA REPÚBLICA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 139.564,
+    "compromisos_mmm": 119.564,
+    "entidad": "CÁMARA DE REPRESENTANTES",
+    "obligaciones_mmm": 34.979,
+    "pct_c_av": 85.7,
+    "pct_o_av": 25.1,
+    "sector": "CONGRESO DE LA REPÚBLICA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 119.08,
+    "compromisos_mmm": 54.843,
+    "entidad": "SENADO DE LA REPÚBLICA",
+    "obligaciones_mmm": 16.877,
+    "pct_c_av": 46.1,
+    "pct_o_av": 14.2,
+    "sector": "CONGRESO DE LA REPÚBLICA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 75.876,
+    "compromisos_mmm": 27.03,
+    "entidad": "SENADO DE LA REPÚBLICA",
+    "obligaciones_mmm": 0.673,
+    "pct_c_av": 35.6,
+    "pct_o_av": 0.9,
+    "sector": "CONGRESO DE LA REPÚBLICA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 100,
+    "compromisos_mmm": 27.43,
+    "entidad": "SENADO DE LA REPÚBLICA",
+    "obligaciones_mmm": 0.539,
+    "pct_c_av": 27.4,
+    "pct_o_av": 0.5,
+    "sector": "CONGRESO DE LA REPÚBLICA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 60.436,
+    "compromisos_mmm": 6.848,
+    "entidad": "SENADO DE LA REPÚBLICA",
+    "obligaciones_mmm": 0.17,
+    "pct_c_av": 11.3,
+    "pct_o_av": 0.3,
+    "sector": "CONGRESO DE LA REPÚBLICA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 60.436,
+    "compromisos_mmm": 56.379,
+    "entidad": "SENADO DE LA REPÚBLICA",
+    "obligaciones_mmm": 0.739,
+    "pct_c_av": 93.3,
+    "pct_o_av": 1.2,
+    "sector": "CONGRESO DE LA REPÚBLICA",
+    "vigencia": 2026
+  }
+]

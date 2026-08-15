@@ -1,0 +1,254 @@
+[
+  {
+    "apropiacion_mmm": 2562.896,
+    "compromisos_mmm": 1218.319,
+    "obligaciones_mmm": 177.595,
+    "pagos_mmm": 103.703,
+    "region": "PACÍFICO",
+    "sector": "Transporte",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 2235.728,
+    "compromisos_mmm": 624.006,
+    "obligaciones_mmm": 323.697,
+    "pagos_mmm": 323.562,
+    "region": "PACÍFICO",
+    "sector": "Inclusión Social y Reconciliación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 1516.906,
+    "compromisos_mmm": 608.549,
+    "obligaciones_mmm": 284.774,
+    "pagos_mmm": 284.703,
+    "region": "PACÍFICO",
+    "sector": "Minas y Energía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 1342.683,
+    "compromisos_mmm": 891.04,
+    "obligaciones_mmm": 288.255,
+    "pagos_mmm": 287.506,
+    "region": "PACÍFICO",
+    "sector": "Igualdad y Equidad",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 822.724,
+    "compromisos_mmm": 628.418,
+    "obligaciones_mmm": 100.524,
+    "pagos_mmm": 100.514,
+    "region": "PACÍFICO",
+    "sector": "Educación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 598.161,
+    "compromisos_mmm": 290.021,
+    "obligaciones_mmm": 66.678,
+    "pagos_mmm": 66.477,
+    "region": "PACÍFICO",
+    "sector": "Trabajo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 242.385,
+    "compromisos_mmm": 90.532,
+    "obligaciones_mmm": 17.7,
+    "pagos_mmm": 13.988,
+    "region": "PACÍFICO",
+    "sector": "Agricultura y Desarrollo Rural",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 190.625,
+    "compromisos_mmm": 172.223,
+    "obligaciones_mmm": 3.146,
+    "pagos_mmm": 3.146,
+    "region": "PACÍFICO",
+    "sector": "Salud y Protección Social",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 168.889,
+    "compromisos_mmm": 132.797,
+    "obligaciones_mmm": 24.469,
+    "pagos_mmm": 22.514,
+    "region": "PACÍFICO",
+    "sector": "Vivienda, Ciudad y Territorio",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 168.25,
+    "compromisos_mmm": 111.25,
+    "obligaciones_mmm": 0.265,
+    "pagos_mmm": 0.265,
+    "region": "PACÍFICO",
+    "sector": "Ciencia, Tecnología e Innovación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 84.525,
+    "compromisos_mmm": 7.049,
+    "obligaciones_mmm": 1.112,
+    "pagos_mmm": 1.112,
+    "region": "PACÍFICO",
+    "sector": "Interior",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 81.1,
+    "compromisos_mmm": 58.228,
+    "obligaciones_mmm": 0.049,
+    "pagos_mmm": 0.049,
+    "region": "PACÍFICO",
+    "sector": "Fiscalía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 63.386,
+    "compromisos_mmm": 27.601,
+    "obligaciones_mmm": 0.507,
+    "pagos_mmm": 0.507,
+    "region": "PACÍFICO",
+    "sector": "Presidencia de la República",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 59.014,
+    "compromisos_mmm": 53.562,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "PACÍFICO",
+    "sector": "Tecnologías de la Información y las Comunicaciones",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 51.945,
+    "compromisos_mmm": 3.927,
+    "obligaciones_mmm": 2.93,
+    "pagos_mmm": 2.924,
+    "region": "PACÍFICO",
+    "sector": "Justicia y del Derecho",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 47.638,
+    "compromisos_mmm": 30.608,
+    "obligaciones_mmm": 7.36,
+    "pagos_mmm": 7.36,
+    "region": "PACÍFICO",
+    "sector": "Deporte y Recreación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 38.688,
+    "compromisos_mmm": 33.581,
+    "obligaciones_mmm": 0.628,
+    "pagos_mmm": 0.628,
+    "region": "PACÍFICO",
+    "sector": "Registraduría",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 36.768,
+    "compromisos_mmm": 2.267,
+    "obligaciones_mmm": 0.306,
+    "pagos_mmm": 0.306,
+    "region": "PACÍFICO",
+    "sector": "Organismos de Control",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 35.85,
+    "compromisos_mmm": 7.684,
+    "obligaciones_mmm": 1.123,
+    "pagos_mmm": 1.123,
+    "region": "PACÍFICO",
+    "sector": "Hacienda",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 24.199,
+    "compromisos_mmm": 15.714,
+    "obligaciones_mmm": 0.112,
+    "pagos_mmm": 0.086,
+    "region": "PACÍFICO",
+    "sector": "Cultura",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 20.512,
+    "compromisos_mmm": 14.292,
+    "obligaciones_mmm": 3.213,
+    "pagos_mmm": 3.163,
+    "region": "PACÍFICO",
+    "sector": "Empleo Público",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 15.555,
+    "compromisos_mmm": 11.436,
+    "obligaciones_mmm": 1.55,
+    "pagos_mmm": 1.54,
+    "region": "PACÍFICO",
+    "sector": "Sistema Integral de Verdad, Justicia, Reparación y no Repetición",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 13.18,
+    "compromisos_mmm": 13.18,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "PACÍFICO",
+    "sector": "Planeación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 8.878,
+    "compromisos_mmm": 6.962,
+    "obligaciones_mmm": 1.172,
+    "pagos_mmm": 1.163,
+    "region": "PACÍFICO",
+    "sector": "Información Estadística",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 6.363,
+    "compromisos_mmm": 0.575,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "PACÍFICO",
+    "sector": "Defensa y Policía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 6.186,
+    "compromisos_mmm": 5.229,
+    "obligaciones_mmm": 2.286,
+    "pagos_mmm": 2.286,
+    "region": "PACÍFICO",
+    "sector": "Ambiente y Desarrollo Sostenible",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 1.755,
+    "compromisos_mmm": 1.338,
+    "obligaciones_mmm": 0.21,
+    "pagos_mmm": 0.185,
+    "region": "PACÍFICO",
+    "sector": "Comercio, Industria y Turismo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 0.857,
+    "compromisos_mmm": 0.342,
+    "obligaciones_mmm": 0.037,
+    "pagos_mmm": 0.037,
+    "region": "PACÍFICO",
+    "sector": "Relaciones Exteriores",
+    "vigencia": 2026
+  }
+]

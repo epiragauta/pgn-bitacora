@@ -1,0 +1,18 @@
+[
+  {
+    "apropiacion_mmm": 11333.846916,
+    "codigo_dane": null,
+    "compromisos_mmm": 5168.527974,
+    "departamento": "Nacional",
+    "nombre_dane": null,
+    "obligaciones_mmm": 1034.478931,
+    "pagos_mmm": 984.558651,
+    "pct_compromisos": 45.6,
+    "pct_obligaciones": 9.13,
+    "pct_pagos": 8.69,
+    "pct_participacion": 16.0,
+    "region": "NACIONAL",
+    "tipo": "nacional",
+    "vigencia": 2022
+  }
+]

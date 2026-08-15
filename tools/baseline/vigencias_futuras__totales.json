@@ -1,0 +1,100 @@
+[
+  {
+    "deflactor": 1.048,
+    "pct_pib": 1.3723,
+    "total_constante_mmm": 26895.319,
+    "total_corriente_mmm": 28186.294,
+    "vigencia_exec": 2027
+  },
+  {
+    "deflactor": 1.0794400000000002,
+    "pct_pib": 1.2368,
+    "total_constante_mmm": 25025.788,
+    "total_corriente_mmm": 27013.837,
+    "vigencia_exec": 2028
+  },
+  {
+    "deflactor": 1.1118232000000001,
+    "pct_pib": 1.0802,
+    "total_constante_mmm": 22514.907,
+    "total_corriente_mmm": 25032.596,
+    "vigencia_exec": 2029
+  },
+  {
+    "deflactor": 1.145177896,
+    "pct_pib": 1.0973,
+    "total_constante_mmm": 23546.761,
+    "total_corriente_mmm": 26965.23,
+    "vigencia_exec": 2030
+  },
+  {
+    "deflactor": 1.1795332328800001,
+    "pct_pib": 0.9208,
+    "total_constante_mmm": 20340.619,
+    "total_corriente_mmm": 23992.436,
+    "vigencia_exec": 2031
+  },
+  {
+    "deflactor": 1.2149192298664002,
+    "pct_pib": 0.7746,
+    "total_constante_mmm": 17582.357,
+    "total_corriente_mmm": 21361.144,
+    "vigencia_exec": 2032
+  },
+  {
+    "deflactor": 1.2513668067623922,
+    "pct_pib": 0.6297,
+    "total_constante_mmm": 14676.275,
+    "total_corriente_mmm": 18365.404,
+    "vigencia_exec": 2033
+  },
+  {
+    "deflactor": 1.288907810965264,
+    "pct_pib": 0.4929,
+    "total_constante_mmm": 11788.537,
+    "total_corriente_mmm": 15194.337,
+    "vigencia_exec": 2034
+  },
+  {
+    "deflactor": 1.327575045294222,
+    "pct_pib": 0.3626,
+    "total_constante_mmm": 8893.542,
+    "total_corriente_mmm": 11806.844,
+    "vigencia_exec": 2035
+  },
+  {
+    "deflactor": 1.3674022966530488,
+    "pct_pib": 0.2766,
+    "total_constante_mmm": 6959.419,
+    "total_corriente_mmm": 9516.326,
+    "vigencia_exec": 2036
+  },
+  {
+    "deflactor": 1.4084243655526403,
+    "pct_pib": 0.2097,
+    "total_constante_mmm": 5428.935,
+    "total_corriente_mmm": 7646.244,
+    "vigencia_exec": 2037
+  },
+  {
+    "deflactor": 1.4506770965192195,
+    "pct_pib": 0.1982,
+    "total_constante_mmm": 5280.028,
+    "total_corriente_mmm": 7659.615,
+    "vigencia_exec": 2038
+  },
+  {
+    "deflactor": 1.494197409414796,
+    "pct_pib": 0.1507,
+    "total_constante_mmm": 4133.622,
+    "total_corriente_mmm": 6176.447,
+    "vigencia_exec": 2039
+  },
+  {
+    "deflactor": 1.53902333169724,
+    "pct_pib": 0.0874,
+    "total_constante_mmm": 2465.771,
+    "total_corriente_mmm": 3794.879,
+    "vigencia_exec": 2040
+  }
+]

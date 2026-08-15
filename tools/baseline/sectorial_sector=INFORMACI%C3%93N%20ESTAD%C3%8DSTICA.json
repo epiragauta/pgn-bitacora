@@ -1,0 +1,32 @@
+[
+  {
+    "apr_vigente_mmm": 293.53,
+    "compromisos_mmm": 146.466,
+    "entidad": "INSTITUTO GEOGRÁFICO AGUSTÍN CODAZZI - IGAC",
+    "obligaciones_mmm": 20.932,
+    "pct_c_av": 49.9,
+    "pct_o_av": 7.1,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 196.745,
+    "compromisos_mmm": 112.741,
+    "entidad": "DEPARTAMENTO ADMINISTRATIVO NACIONAL DE ESTADÍSTICA (DANE) - GESTIÓN GENERAL",
+    "obligaciones_mmm": 27.621,
+    "pct_c_av": 57.3,
+    "pct_o_av": 14,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 32.128,
+    "compromisos_mmm": 19.033,
+    "entidad": "FONDO ROTATORIO DEL DANE",
+    "obligaciones_mmm": 6.673,
+    "pct_c_av": 59.2,
+    "pct_o_av": 20.8,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2026
+  }
+]

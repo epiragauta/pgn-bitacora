@@ -1,0 +1,52 @@
+[
+  {
+    "apr_vigente_mmm": 661.498,
+    "compromisos_mmm": 59.513,
+    "entidad": "PROCURADURÍA GENERAL DE LA NACIÓN - GESTIÓN GENERAL",
+    "obligaciones_mmm": 4.834,
+    "pct_c_av": 9,
+    "pct_o_av": 0.7,
+    "sector": "ORGANISMOS DE CONTROL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 130.691,
+    "compromisos_mmm": 54.982,
+    "entidad": "CONTRALORÍA GENERAL DE LA REPÚBLICA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 21.012,
+    "pct_c_av": 42.1,
+    "pct_o_av": 16.1,
+    "sector": "ORGANISMOS DE CONTROL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 85.61,
+    "compromisos_mmm": 57.481,
+    "entidad": "DEFENSORÍA DEL PUEBLO",
+    "obligaciones_mmm": 9.42,
+    "pct_c_av": 67.1,
+    "pct_o_av": 11,
+    "sector": "ORGANISMOS DE CONTROL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 11.188,
+    "compromisos_mmm": 7.169,
+    "entidad": "AUDITORÍA GENERAL DE LA REPÚBLICA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 1.286,
+    "pct_c_av": 64.1,
+    "pct_o_av": 11.5,
+    "sector": "ORGANISMOS DE CONTROL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 1.041,
+    "compromisos_mmm": 0,
+    "entidad": "FONDO DE BIENESTAR SOCIAL DE LA CONTRALORÍA GENERAL DE LA REPÚBLICA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "ORGANISMOS DE CONTROL",
+    "vigencia": 2026
+  }
+]

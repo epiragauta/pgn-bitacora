@@ -1,0 +1,26 @@
+[
+  {
+    "nivel": 3,
+    "nombre": "Servicio de la Deuda Pública Externa",
+    "padre": "Servicio de la Deuda",
+    "valor": 38406.045
+  },
+  {
+    "nivel": 4,
+    "nombre": "Principal - Deuda Externa",
+    "padre": "Servicio de la Deuda Pública Externa",
+    "valor": 17273.045
+  },
+  {
+    "nivel": 4,
+    "nombre": "Intereses - Deuda Externa",
+    "padre": "Servicio de la Deuda Pública Externa",
+    "valor": 19987.062
+  },
+  {
+    "nivel": 4,
+    "nombre": "Comisiones y Otros Gastos - Deuda Externa",
+    "padre": "Servicio de la Deuda Pública Externa",
+    "valor": 1145.938
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "apr_vigente_mmm": 92.994,
+    "compromisos_mmm": 20.565,
+    "entidad": "COMISIÓN NACIONAL DEL SERVICIO CIVIL",
+    "obligaciones_mmm": 2.553,
+    "pct_c_av": 22.1,
+    "pct_o_av": 2.7,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 100.637,
+    "compromisos_mmm": 40.909,
+    "entidad": "COMISIÓN NACIONAL DEL SERVICIO CIVIL",
+    "obligaciones_mmm": 2.364,
+    "pct_c_av": 40.7,
+    "pct_o_av": 2.3,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 104.27,
+    "compromisos_mmm": 32.102,
+    "entidad": "COMISIÓN NACIONAL DEL SERVICIO CIVIL",
+    "obligaciones_mmm": 2.605,
+    "pct_c_av": 30.8,
+    "pct_o_av": 2.5,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 109.93,
+    "compromisos_mmm": 38.844,
+    "entidad": "COMISIÓN NACIONAL DEL SERVICIO CIVIL",
+    "obligaciones_mmm": 2.903,
+    "pct_c_av": 35.3,
+    "pct_o_av": 2.6,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 116.436,
+    "compromisos_mmm": 26.561,
+    "entidad": "COMISIÓN NACIONAL DEL SERVICIO CIVIL",
+    "obligaciones_mmm": 4.602,
+    "pct_c_av": 22.8,
+    "pct_o_av": 4,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 18.803,
+    "compromisos_mmm": 14.13,
+    "entidad": "DEPARTAMENTO DE LA FUNCIÓN PÚBLICA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 1.712,
+    "pct_c_av": 75.2,
+    "pct_o_av": 9.1,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 19.803,
+    "compromisos_mmm": 4.164,
+    "entidad": "DEPARTAMENTO DE LA FUNCIÓN PÚBLICA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0.259,
+    "pct_c_av": 21,
+    "pct_o_av": 1.3,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 16.76,
+    "compromisos_mmm": 4.785,
+    "entidad": "DEPARTAMENTO DE LA FUNCIÓN PÚBLICA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 2.266,
+    "pct_c_av": 28.5,
+    "pct_o_av": 13.5,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 15,
+    "compromisos_mmm": 3.502,
+    "entidad": "DEPARTAMENTO DE LA FUNCIÓN PÚBLICA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 2.004,
+    "pct_c_av": 23.3,
+    "pct_o_av": 13.4,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 10.488,
+    "compromisos_mmm": 3.249,
+    "entidad": "DEPARTAMENTO DE LA FUNCIÓN PÚBLICA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 1.661,
+    "pct_c_av": 31,
+    "pct_o_av": 15.8,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 224.61,
+    "compromisos_mmm": 104.158,
+    "entidad": "ESCUELA SUPERIOR DE ADMINISTRACIÓN PÚBLICA (ESAP)",
+    "obligaciones_mmm": 14.319,
+    "pct_c_av": 46.4,
+    "pct_o_av": 6.4,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 240.541,
+    "compromisos_mmm": 73.287,
+    "entidad": "ESCUELA SUPERIOR DE ADMINISTRACIÓN PÚBLICA (ESAP)",
+    "obligaciones_mmm": 9.254,
+    "pct_c_av": 30.5,
+    "pct_o_av": 3.8,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 252.59,
+    "compromisos_mmm": 133.994,
+    "entidad": "ESCUELA SUPERIOR DE ADMINISTRACIÓN PÚBLICA (ESAP)",
+    "obligaciones_mmm": 24.672,
+    "pct_c_av": 53,
+    "pct_o_av": 9.8,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 272.536,
+    "compromisos_mmm": 135.199,
+    "entidad": "ESCUELA SUPERIOR DE ADMINISTRACIÓN PÚBLICA (ESAP)",
+    "obligaciones_mmm": 19.217,
+    "pct_c_av": 49.6,
+    "pct_o_av": 7.1,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 284.986,
+    "compromisos_mmm": 156.254,
+    "entidad": "ESCUELA SUPERIOR DE ADMINISTRACIÓN PÚBLICA (ESAP)",
+    "obligaciones_mmm": 25.666,
+    "pct_c_av": 54.8,
+    "pct_o_av": 9,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2026
+  }
+]

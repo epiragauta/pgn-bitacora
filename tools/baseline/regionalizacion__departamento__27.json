@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 1799.97469,
+    "compromisos_mmm": 678.357405,
+    "departamento": "Chocó",
+    "obligaciones_mmm": 295.322839,
+    "pagos_mmm": 293.362602,
+    "pct_compromisos": 37.69,
+    "pct_obligaciones": 16.41,
+    "pct_participacion": 2.54,
+    "region": "PACÍFICO",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 670.945653,
+    "compromisos_mmm": 17.479368,
+    "departamento": "Chocó",
+    "obligaciones_mmm": 16.184352,
+    "pagos_mmm": 15.460671,
+    "pct_compromisos": 2.61,
+    "pct_obligaciones": 2.41,
+    "pct_participacion": 1.24,
+    "region": "PACÍFICO",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 1104.082544,
+    "compromisos_mmm": 329.499908,
+    "departamento": "Chocó",
+    "obligaciones_mmm": 56.730816,
+    "pagos_mmm": 54.947074,
+    "pct_compromisos": 29.84,
+    "pct_obligaciones": 5.14,
+    "pct_participacion": 1.21,
+    "region": "PACÍFICO",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 1267.159306,
+    "compromisos_mmm": 158.364027,
+    "departamento": "Chocó",
+    "obligaciones_mmm": 37.348968,
+    "pagos_mmm": 37.109098,
+    "pct_compromisos": 12.5,
+    "pct_obligaciones": 2.95,
+    "pct_participacion": 1.74,
+    "region": "PACÍFICO",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 1499.369137,
+    "compromisos_mmm": 785.775255,
+    "departamento": "Chocó",
+    "obligaciones_mmm": 128.864039,
+    "pagos_mmm": 126.288513,
+    "pct_compromisos": 52.41,
+    "pct_obligaciones": 8.59,
+    "pct_participacion": 1.76,
+    "region": "PACÍFICO",
+    "vigencia": 2026
+  }
+]

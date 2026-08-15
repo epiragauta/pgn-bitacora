@@ -1,0 +1,1217 @@
+[
+  {
+    "apropiacion_mmm": 531.032,
+    "compromisos_mmm": 245.528,
+    "obligaciones_mmm": 114.149,
+    "pagos_mmm": 114.125,
+    "region": "AMAZONIA",
+    "sector": "Minas y Energía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 501.741,
+    "compromisos_mmm": 162.772,
+    "obligaciones_mmm": 16.433,
+    "pagos_mmm": 15.798,
+    "region": "AMAZONIA",
+    "sector": "Transporte",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 397.564,
+    "compromisos_mmm": 322.585,
+    "obligaciones_mmm": 42.418,
+    "pagos_mmm": 42.403,
+    "region": "AMAZONIA",
+    "sector": "Educación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 380.593,
+    "compromisos_mmm": 94.556,
+    "obligaciones_mmm": 49.011,
+    "pagos_mmm": 48.978,
+    "region": "AMAZONIA",
+    "sector": "Inclusión Social y Reconciliación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 230.204,
+    "compromisos_mmm": 19.068,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "AMAZONIA",
+    "sector": "Tecnologías de la Información y las Comunicaciones",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 214.725,
+    "compromisos_mmm": 161.893,
+    "obligaciones_mmm": 42.548,
+    "pagos_mmm": 42.548,
+    "region": "AMAZONIA",
+    "sector": "Igualdad y Equidad",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 177.268,
+    "compromisos_mmm": 67.581,
+    "obligaciones_mmm": 12.543,
+    "pagos_mmm": 9.445,
+    "region": "AMAZONIA",
+    "sector": "Agricultura y Desarrollo Rural",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 157.366,
+    "compromisos_mmm": 74.166,
+    "obligaciones_mmm": 14.379,
+    "pagos_mmm": 14.379,
+    "region": "AMAZONIA",
+    "sector": "Trabajo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 65.646,
+    "compromisos_mmm": 62.24,
+    "obligaciones_mmm": 0.588,
+    "pagos_mmm": 0.588,
+    "region": "AMAZONIA",
+    "sector": "Salud y Protección Social",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 61.105,
+    "compromisos_mmm": 7.343,
+    "obligaciones_mmm": 0.244,
+    "pagos_mmm": 0.244,
+    "region": "AMAZONIA",
+    "sector": "Presidencia de la República",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 37.628,
+    "compromisos_mmm": 3.757,
+    "obligaciones_mmm": 0.376,
+    "pagos_mmm": 0.374,
+    "region": "AMAZONIA",
+    "sector": "Vivienda, Ciudad y Territorio",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 8.953,
+    "compromisos_mmm": 8.953,
+    "obligaciones_mmm": 3.179,
+    "pagos_mmm": 3.179,
+    "region": "AMAZONIA",
+    "sector": "Ambiente y Desarrollo Sostenible",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 8.29,
+    "compromisos_mmm": 5.99,
+    "obligaciones_mmm": 0.869,
+    "pagos_mmm": 0.856,
+    "region": "AMAZONIA",
+    "sector": "Sistema Integral de Verdad, Justicia, Reparación y no Repetición",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 7.544,
+    "compromisos_mmm": 5.355,
+    "obligaciones_mmm": 0.224,
+    "pagos_mmm": 0.224,
+    "region": "AMAZONIA",
+    "sector": "Registraduría",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 7.524,
+    "compromisos_mmm": 3.278,
+    "obligaciones_mmm": 0.002,
+    "pagos_mmm": 0.002,
+    "region": "AMAZONIA",
+    "sector": "Interior",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 5.772,
+    "compromisos_mmm": 4.686,
+    "obligaciones_mmm": 2.711,
+    "pagos_mmm": 2.711,
+    "region": "AMAZONIA",
+    "sector": "Deporte y Recreación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 5.569,
+    "compromisos_mmm": 0.262,
+    "obligaciones_mmm": 0.146,
+    "pagos_mmm": 0.146,
+    "region": "AMAZONIA",
+    "sector": "Justicia y del Derecho",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 4.894,
+    "compromisos_mmm": 3.883,
+    "obligaciones_mmm": 0.537,
+    "pagos_mmm": 0.537,
+    "region": "AMAZONIA",
+    "sector": "Información Estadística",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 4.682,
+    "compromisos_mmm": 3.724,
+    "obligaciones_mmm": 0.08,
+    "pagos_mmm": 0.061,
+    "region": "AMAZONIA",
+    "sector": "Cultura",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 4.332,
+    "compromisos_mmm": 1.808,
+    "obligaciones_mmm": 0.255,
+    "pagos_mmm": 0.255,
+    "region": "AMAZONIA",
+    "sector": "Organismos de Control",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 3.436,
+    "compromisos_mmm": 0.0,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "AMAZONIA",
+    "sector": "Fiscalía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 3.0,
+    "compromisos_mmm": 0.0,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "AMAZONIA",
+    "sector": "Defensa y Policía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 1.818,
+    "compromisos_mmm": 1.225,
+    "obligaciones_mmm": 0.195,
+    "pagos_mmm": 0.166,
+    "region": "AMAZONIA",
+    "sector": "Comercio, Industria y Turismo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 0.428,
+    "compromisos_mmm": 0.135,
+    "obligaciones_mmm": 0.015,
+    "pagos_mmm": 0.015,
+    "region": "AMAZONIA",
+    "sector": "Relaciones Exteriores",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 0.118,
+    "compromisos_mmm": 0.039,
+    "obligaciones_mmm": 0.005,
+    "pagos_mmm": 0.005,
+    "region": "AMAZONIA",
+    "sector": "Hacienda",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 6408.013,
+    "compromisos_mmm": 4829.372,
+    "obligaciones_mmm": 704.474,
+    "pagos_mmm": 701.553,
+    "region": "ANDINA",
+    "sector": "Transporte",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 4503.17,
+    "compromisos_mmm": 1516.298,
+    "obligaciones_mmm": 488.183,
+    "pagos_mmm": 487.727,
+    "region": "ANDINA",
+    "sector": "Trabajo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 3998.577,
+    "compromisos_mmm": 1119.847,
+    "obligaciones_mmm": 746.062,
+    "pagos_mmm": 745.518,
+    "region": "ANDINA",
+    "sector": "Inclusión Social y Reconciliación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 3031.697,
+    "compromisos_mmm": 1213.99,
+    "obligaciones_mmm": 664.428,
+    "pagos_mmm": 662.98,
+    "region": "ANDINA",
+    "sector": "Minas y Energía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 2761.707,
+    "compromisos_mmm": 1934.279,
+    "obligaciones_mmm": 685.002,
+    "pagos_mmm": 684.725,
+    "region": "ANDINA",
+    "sector": "Igualdad y Equidad",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 2230.33,
+    "compromisos_mmm": 1741.487,
+    "obligaciones_mmm": 276.899,
+    "pagos_mmm": 276.845,
+    "region": "ANDINA",
+    "sector": "Educación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 778.482,
+    "compromisos_mmm": 25.165,
+    "obligaciones_mmm": 2.816,
+    "pagos_mmm": 2.816,
+    "region": "ANDINA",
+    "sector": "Hacienda",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 764.711,
+    "compromisos_mmm": 471.843,
+    "obligaciones_mmm": 8.338,
+    "pagos_mmm": 8.336,
+    "region": "ANDINA",
+    "sector": "Salud y Protección Social",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 546.008,
+    "compromisos_mmm": 193.176,
+    "obligaciones_mmm": 31.694,
+    "pagos_mmm": 27.878,
+    "region": "ANDINA",
+    "sector": "Agricultura y Desarrollo Rural",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 324.858,
+    "compromisos_mmm": 252.663,
+    "obligaciones_mmm": 10.024,
+    "pagos_mmm": 10.024,
+    "region": "ANDINA",
+    "sector": "Registraduría",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 288.06,
+    "compromisos_mmm": 161.354,
+    "obligaciones_mmm": 18.072,
+    "pagos_mmm": 18.05,
+    "region": "ANDINA",
+    "sector": "Justicia y del Derecho",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 244.918,
+    "compromisos_mmm": 221.283,
+    "obligaciones_mmm": 7.163,
+    "pagos_mmm": 6.591,
+    "region": "ANDINA",
+    "sector": "Tecnologías de la Información y las Comunicaciones",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 214.869,
+    "compromisos_mmm": 203.678,
+    "obligaciones_mmm": 0.058,
+    "pagos_mmm": 0.058,
+    "region": "ANDINA",
+    "sector": "Planeación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 180.42,
+    "compromisos_mmm": 116.275,
+    "obligaciones_mmm": 17.681,
+    "pagos_mmm": 16.599,
+    "region": "ANDINA",
+    "sector": "Empleo Público",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 154.327,
+    "compromisos_mmm": 81.605,
+    "obligaciones_mmm": 2.629,
+    "pagos_mmm": 2.629,
+    "region": "ANDINA",
+    "sector": "Ciencia, Tecnología e Innovación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 130.676,
+    "compromisos_mmm": 22.322,
+    "obligaciones_mmm": 3.007,
+    "pagos_mmm": 3.007,
+    "region": "ANDINA",
+    "sector": "Defensa y Policía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 128.895,
+    "compromisos_mmm": 16.856,
+    "obligaciones_mmm": 2.853,
+    "pagos_mmm": 2.848,
+    "region": "ANDINA",
+    "sector": "Organismos de Control",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 88.836,
+    "compromisos_mmm": 88.211,
+    "obligaciones_mmm": 47.677,
+    "pagos_mmm": 46.939,
+    "region": "ANDINA",
+    "sector": "Vivienda, Ciudad y Territorio",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 83.463,
+    "compromisos_mmm": 27.107,
+    "obligaciones_mmm": 0.079,
+    "pagos_mmm": 0.069,
+    "region": "ANDINA",
+    "sector": "Fiscalía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 82.878,
+    "compromisos_mmm": 46.107,
+    "obligaciones_mmm": 7.969,
+    "pagos_mmm": 7.938,
+    "region": "ANDINA",
+    "sector": "Sistema Integral de Verdad, Justicia, Reparación y no Repetición",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 49.546,
+    "compromisos_mmm": 34.017,
+    "obligaciones_mmm": 1.002,
+    "pagos_mmm": 0.921,
+    "region": "ANDINA",
+    "sector": "Interior",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 49.18,
+    "compromisos_mmm": 34.353,
+    "obligaciones_mmm": 15.987,
+    "pagos_mmm": 15.97,
+    "region": "ANDINA",
+    "sector": "Presidencia de la República",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 46.968,
+    "compromisos_mmm": 23.769,
+    "obligaciones_mmm": 2.602,
+    "pagos_mmm": 2.224,
+    "region": "ANDINA",
+    "sector": "Cultura",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 45.767,
+    "compromisos_mmm": 35.82,
+    "obligaciones_mmm": 14.068,
+    "pagos_mmm": 14.068,
+    "region": "ANDINA",
+    "sector": "Deporte y Recreación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 25.71,
+    "compromisos_mmm": 18.903,
+    "obligaciones_mmm": 2.428,
+    "pagos_mmm": 2.226,
+    "region": "ANDINA",
+    "sector": "Comercio, Industria y Turismo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 22.05,
+    "compromisos_mmm": 17.311,
+    "obligaciones_mmm": 2.939,
+    "pagos_mmm": 2.939,
+    "region": "ANDINA",
+    "sector": "Información Estadística",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 14.6,
+    "compromisos_mmm": 14.6,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "ANDINA",
+    "sector": "Rama Judicial",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 2.758,
+    "compromisos_mmm": 0.949,
+    "obligaciones_mmm": 0.104,
+    "pagos_mmm": 0.092,
+    "region": "ANDINA",
+    "sector": "Relaciones Exteriores",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 0.355,
+    "compromisos_mmm": 0.306,
+    "obligaciones_mmm": 0.136,
+    "pagos_mmm": 0.136,
+    "region": "ANDINA",
+    "sector": "Ambiente y Desarrollo Sostenible",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 3548.004,
+    "compromisos_mmm": 1197.672,
+    "obligaciones_mmm": 624.185,
+    "pagos_mmm": 371.147,
+    "region": "CARIBE - INSULAR",
+    "sector": "Minas y Energía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 2826.973,
+    "compromisos_mmm": 676.418,
+    "obligaciones_mmm": 497.414,
+    "pagos_mmm": 497.192,
+    "region": "CARIBE - INSULAR",
+    "sector": "Inclusión Social y Reconciliación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 2772.101,
+    "compromisos_mmm": 1877.463,
+    "obligaciones_mmm": 475.852,
+    "pagos_mmm": 475.852,
+    "region": "CARIBE - INSULAR",
+    "sector": "Igualdad y Equidad",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 2358.598,
+    "compromisos_mmm": 1557.144,
+    "obligaciones_mmm": 87.327,
+    "pagos_mmm": 87.116,
+    "region": "CARIBE - INSULAR",
+    "sector": "Transporte",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 1290.201,
+    "compromisos_mmm": 987.417,
+    "obligaciones_mmm": 149.719,
+    "pagos_mmm": 149.699,
+    "region": "CARIBE - INSULAR",
+    "sector": "Educación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 824.727,
+    "compromisos_mmm": 412.638,
+    "obligaciones_mmm": 82.094,
+    "pagos_mmm": 81.855,
+    "region": "CARIBE - INSULAR",
+    "sector": "Trabajo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 464.363,
+    "compromisos_mmm": 143.577,
+    "obligaciones_mmm": 20.485,
+    "pagos_mmm": 17.53,
+    "region": "CARIBE - INSULAR",
+    "sector": "Agricultura y Desarrollo Rural",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 416.106,
+    "compromisos_mmm": 329.156,
+    "obligaciones_mmm": 2.194,
+    "pagos_mmm": 2.194,
+    "region": "CARIBE - INSULAR",
+    "sector": "Hacienda",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 240.67,
+    "compromisos_mmm": 164.275,
+    "obligaciones_mmm": 3.206,
+    "pagos_mmm": 3.206,
+    "region": "CARIBE - INSULAR",
+    "sector": "Salud y Protección Social",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 235.633,
+    "compromisos_mmm": 189.331,
+    "obligaciones_mmm": 35.699,
+    "pagos_mmm": 32.984,
+    "region": "CARIBE - INSULAR",
+    "sector": "Vivienda, Ciudad y Territorio",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 117.458,
+    "compromisos_mmm": 11.692,
+    "obligaciones_mmm": 6.604,
+    "pagos_mmm": 6.594,
+    "region": "CARIBE - INSULAR",
+    "sector": "Justicia y del Derecho",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 110.381,
+    "compromisos_mmm": 106.516,
+    "obligaciones_mmm": 16.76,
+    "pagos_mmm": 16.76,
+    "region": "CARIBE - INSULAR",
+    "sector": "Deporte y Recreación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 102.332,
+    "compromisos_mmm": 101.814,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "CARIBE - INSULAR",
+    "sector": "Tecnologías de la Información y las Comunicaciones",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 55.387,
+    "compromisos_mmm": 47.637,
+    "obligaciones_mmm": 0.849,
+    "pagos_mmm": 0.849,
+    "region": "CARIBE - INSULAR",
+    "sector": "Registraduría",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 54.108,
+    "compromisos_mmm": 39.676,
+    "obligaciones_mmm": 0.001,
+    "pagos_mmm": 0.001,
+    "region": "CARIBE - INSULAR",
+    "sector": "Interior",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 44.276,
+    "compromisos_mmm": 3.436,
+    "obligaciones_mmm": 0.403,
+    "pagos_mmm": 0.403,
+    "region": "CARIBE - INSULAR",
+    "sector": "Organismos de Control",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 21.18,
+    "compromisos_mmm": 13.98,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "CARIBE - INSULAR",
+    "sector": "Planeación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 20.831,
+    "compromisos_mmm": 1.6,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "CARIBE - INSULAR",
+    "sector": "Defensa y Policía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 20.214,
+    "compromisos_mmm": 10.278,
+    "obligaciones_mmm": 1.207,
+    "pagos_mmm": 1.207,
+    "region": "CARIBE - INSULAR",
+    "sector": "Presidencia de la República",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 15.898,
+    "compromisos_mmm": 12.381,
+    "obligaciones_mmm": 2.18,
+    "pagos_mmm": 2.18,
+    "region": "CARIBE - INSULAR",
+    "sector": "Información Estadística",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 14.476,
+    "compromisos_mmm": 9.384,
+    "obligaciones_mmm": 1.273,
+    "pagos_mmm": 1.261,
+    "region": "CARIBE - INSULAR",
+    "sector": "Sistema Integral de Verdad, Justicia, Reparación y no Repetición",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 14.099,
+    "compromisos_mmm": 9.883,
+    "obligaciones_mmm": 2.653,
+    "pagos_mmm": 2.653,
+    "region": "CARIBE - INSULAR",
+    "sector": "Empleo Público",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 7.014,
+    "compromisos_mmm": 1.8,
+    "obligaciones_mmm": 0.02,
+    "pagos_mmm": 0.007,
+    "region": "CARIBE - INSULAR",
+    "sector": "Fiscalía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 5.294,
+    "compromisos_mmm": 4.31,
+    "obligaciones_mmm": 0.049,
+    "pagos_mmm": 0.046,
+    "region": "CARIBE - INSULAR",
+    "sector": "Cultura",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 3.199,
+    "compromisos_mmm": 2.366,
+    "obligaciones_mmm": 0.364,
+    "pagos_mmm": 0.325,
+    "region": "CARIBE - INSULAR",
+    "sector": "Comercio, Industria y Turismo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 2.959,
+    "compromisos_mmm": 0.892,
+    "obligaciones_mmm": 0.205,
+    "pagos_mmm": 0.205,
+    "region": "CARIBE - INSULAR",
+    "sector": "Relaciones Exteriores",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 2.359,
+    "compromisos_mmm": 2.359,
+    "obligaciones_mmm": 1.72,
+    "pagos_mmm": 1.72,
+    "region": "CARIBE - INSULAR",
+    "sector": "Ambiente y Desarrollo Sostenible",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 668.319,
+    "compromisos_mmm": 419.168,
+    "obligaciones_mmm": 50.568,
+    "pagos_mmm": 50.568,
+    "region": "ORINOQUÍA",
+    "sector": "Transporte",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 423.636,
+    "compromisos_mmm": 107.876,
+    "obligaciones_mmm": 72.74,
+    "pagos_mmm": 72.703,
+    "region": "ORINOQUÍA",
+    "sector": "Inclusión Social y Reconciliación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 403.195,
+    "compromisos_mmm": 194.96,
+    "obligaciones_mmm": 80.049,
+    "pagos_mmm": 80.037,
+    "region": "ORINOQUÍA",
+    "sector": "Minas y Energía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 280.601,
+    "compromisos_mmm": 201.577,
+    "obligaciones_mmm": 65.382,
+    "pagos_mmm": 65.382,
+    "region": "ORINOQUÍA",
+    "sector": "Igualdad y Equidad",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 273.857,
+    "compromisos_mmm": 217.757,
+    "obligaciones_mmm": 40.781,
+    "pagos_mmm": 38.621,
+    "region": "ORINOQUÍA",
+    "sector": "Educación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 183.146,
+    "compromisos_mmm": 77.568,
+    "obligaciones_mmm": 13.605,
+    "pagos_mmm": 13.592,
+    "region": "ORINOQUÍA",
+    "sector": "Trabajo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 155.726,
+    "compromisos_mmm": 54.622,
+    "obligaciones_mmm": 12.183,
+    "pagos_mmm": 10.47,
+    "region": "ORINOQUÍA",
+    "sector": "Agricultura y Desarrollo Rural",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 59.352,
+    "compromisos_mmm": 5.753,
+    "obligaciones_mmm": 0.144,
+    "pagos_mmm": 0.144,
+    "region": "ORINOQUÍA",
+    "sector": "Presidencia de la República",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 38.24,
+    "compromisos_mmm": 38.24,
+    "obligaciones_mmm": 2.416,
+    "pagos_mmm": 1.756,
+    "region": "ORINOQUÍA",
+    "sector": "Vivienda, Ciudad y Territorio",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 27.748,
+    "compromisos_mmm": 25.834,
+    "obligaciones_mmm": 0.664,
+    "pagos_mmm": 0.664,
+    "region": "ORINOQUÍA",
+    "sector": "Salud y Protección Social",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 13.671,
+    "compromisos_mmm": 13.436,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "ORINOQUÍA",
+    "sector": "Tecnologías de la Información y las Comunicaciones",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 12.78,
+    "compromisos_mmm": 2.706,
+    "obligaciones_mmm": 1.61,
+    "pagos_mmm": 1.61,
+    "region": "ORINOQUÍA",
+    "sector": "Organismos de Control",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 11.931,
+    "compromisos_mmm": 10.736,
+    "obligaciones_mmm": 1.856,
+    "pagos_mmm": 1.856,
+    "region": "ORINOQUÍA",
+    "sector": "Deporte y Recreación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 10.788,
+    "compromisos_mmm": 8.717,
+    "obligaciones_mmm": 0.203,
+    "pagos_mmm": 0.203,
+    "region": "ORINOQUÍA",
+    "sector": "Registraduría",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 10.552,
+    "compromisos_mmm": 0.525,
+    "obligaciones_mmm": 0.271,
+    "pagos_mmm": 0.271,
+    "region": "ORINOQUÍA",
+    "sector": "Justicia y del Derecho",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 8.519,
+    "compromisos_mmm": 7.288,
+    "obligaciones_mmm": 1.426,
+    "pagos_mmm": 1.406,
+    "region": "ORINOQUÍA",
+    "sector": "Información Estadística",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 8.346,
+    "compromisos_mmm": 5.265,
+    "obligaciones_mmm": 0.958,
+    "pagos_mmm": 0.941,
+    "region": "ORINOQUÍA",
+    "sector": "Sistema Integral de Verdad, Justicia, Reparación y no Repetición",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 6.165,
+    "compromisos_mmm": 3.292,
+    "obligaciones_mmm": 0.656,
+    "pagos_mmm": 0.594,
+    "region": "ORINOQUÍA",
+    "sector": "Empleo Público",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 5.9,
+    "compromisos_mmm": 3.196,
+    "obligaciones_mmm": 0.018,
+    "pagos_mmm": 0.018,
+    "region": "ORINOQUÍA",
+    "sector": "Fiscalía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 4.13,
+    "compromisos_mmm": 0.0,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "ORINOQUÍA",
+    "sector": "Defensa y Policía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 3.166,
+    "compromisos_mmm": 0.949,
+    "obligaciones_mmm": 0.009,
+    "pagos_mmm": 0.006,
+    "region": "ORINOQUÍA",
+    "sector": "Interior",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 1.955,
+    "compromisos_mmm": 1.746,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "ORINOQUÍA",
+    "sector": "Cultura",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 1.307,
+    "compromisos_mmm": 0.911,
+    "obligaciones_mmm": 0.143,
+    "pagos_mmm": 0.124,
+    "region": "ORINOQUÍA",
+    "sector": "Comercio, Industria y Turismo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 0.784,
+    "compromisos_mmm": 0.207,
+    "obligaciones_mmm": 0.022,
+    "pagos_mmm": 0.016,
+    "region": "ORINOQUÍA",
+    "sector": "Relaciones Exteriores",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 0.447,
+    "compromisos_mmm": 0.447,
+    "obligaciones_mmm": 0.164,
+    "pagos_mmm": 0.164,
+    "region": "ORINOQUÍA",
+    "sector": "Ambiente y Desarrollo Sostenible",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 0.233,
+    "compromisos_mmm": 0.122,
+    "obligaciones_mmm": 0.024,
+    "pagos_mmm": 0.024,
+    "region": "ORINOQUÍA",
+    "sector": "Hacienda",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 2562.896,
+    "compromisos_mmm": 1218.319,
+    "obligaciones_mmm": 177.595,
+    "pagos_mmm": 103.703,
+    "region": "PACÍFICO",
+    "sector": "Transporte",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 2235.728,
+    "compromisos_mmm": 624.006,
+    "obligaciones_mmm": 323.697,
+    "pagos_mmm": 323.562,
+    "region": "PACÍFICO",
+    "sector": "Inclusión Social y Reconciliación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 1516.906,
+    "compromisos_mmm": 608.549,
+    "obligaciones_mmm": 284.774,
+    "pagos_mmm": 284.703,
+    "region": "PACÍFICO",
+    "sector": "Minas y Energía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 1342.683,
+    "compromisos_mmm": 891.04,
+    "obligaciones_mmm": 288.255,
+    "pagos_mmm": 287.506,
+    "region": "PACÍFICO",
+    "sector": "Igualdad y Equidad",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 822.724,
+    "compromisos_mmm": 628.418,
+    "obligaciones_mmm": 100.524,
+    "pagos_mmm": 100.514,
+    "region": "PACÍFICO",
+    "sector": "Educación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 598.161,
+    "compromisos_mmm": 290.021,
+    "obligaciones_mmm": 66.678,
+    "pagos_mmm": 66.477,
+    "region": "PACÍFICO",
+    "sector": "Trabajo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 242.385,
+    "compromisos_mmm": 90.532,
+    "obligaciones_mmm": 17.7,
+    "pagos_mmm": 13.988,
+    "region": "PACÍFICO",
+    "sector": "Agricultura y Desarrollo Rural",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 190.625,
+    "compromisos_mmm": 172.223,
+    "obligaciones_mmm": 3.146,
+    "pagos_mmm": 3.146,
+    "region": "PACÍFICO",
+    "sector": "Salud y Protección Social",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 168.889,
+    "compromisos_mmm": 132.797,
+    "obligaciones_mmm": 24.469,
+    "pagos_mmm": 22.514,
+    "region": "PACÍFICO",
+    "sector": "Vivienda, Ciudad y Territorio",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 168.25,
+    "compromisos_mmm": 111.25,
+    "obligaciones_mmm": 0.265,
+    "pagos_mmm": 0.265,
+    "region": "PACÍFICO",
+    "sector": "Ciencia, Tecnología e Innovación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 84.525,
+    "compromisos_mmm": 7.049,
+    "obligaciones_mmm": 1.112,
+    "pagos_mmm": 1.112,
+    "region": "PACÍFICO",
+    "sector": "Interior",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 81.1,
+    "compromisos_mmm": 58.228,
+    "obligaciones_mmm": 0.049,
+    "pagos_mmm": 0.049,
+    "region": "PACÍFICO",
+    "sector": "Fiscalía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 63.386,
+    "compromisos_mmm": 27.601,
+    "obligaciones_mmm": 0.507,
+    "pagos_mmm": 0.507,
+    "region": "PACÍFICO",
+    "sector": "Presidencia de la República",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 59.014,
+    "compromisos_mmm": 53.562,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "PACÍFICO",
+    "sector": "Tecnologías de la Información y las Comunicaciones",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 51.945,
+    "compromisos_mmm": 3.927,
+    "obligaciones_mmm": 2.93,
+    "pagos_mmm": 2.924,
+    "region": "PACÍFICO",
+    "sector": "Justicia y del Derecho",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 47.638,
+    "compromisos_mmm": 30.608,
+    "obligaciones_mmm": 7.36,
+    "pagos_mmm": 7.36,
+    "region": "PACÍFICO",
+    "sector": "Deporte y Recreación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 38.688,
+    "compromisos_mmm": 33.581,
+    "obligaciones_mmm": 0.628,
+    "pagos_mmm": 0.628,
+    "region": "PACÍFICO",
+    "sector": "Registraduría",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 36.768,
+    "compromisos_mmm": 2.267,
+    "obligaciones_mmm": 0.306,
+    "pagos_mmm": 0.306,
+    "region": "PACÍFICO",
+    "sector": "Organismos de Control",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 35.85,
+    "compromisos_mmm": 7.684,
+    "obligaciones_mmm": 1.123,
+    "pagos_mmm": 1.123,
+    "region": "PACÍFICO",
+    "sector": "Hacienda",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 24.199,
+    "compromisos_mmm": 15.714,
+    "obligaciones_mmm": 0.112,
+    "pagos_mmm": 0.086,
+    "region": "PACÍFICO",
+    "sector": "Cultura",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 20.512,
+    "compromisos_mmm": 14.292,
+    "obligaciones_mmm": 3.213,
+    "pagos_mmm": 3.163,
+    "region": "PACÍFICO",
+    "sector": "Empleo Público",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 15.555,
+    "compromisos_mmm": 11.436,
+    "obligaciones_mmm": 1.55,
+    "pagos_mmm": 1.54,
+    "region": "PACÍFICO",
+    "sector": "Sistema Integral de Verdad, Justicia, Reparación y no Repetición",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 13.18,
+    "compromisos_mmm": 13.18,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "PACÍFICO",
+    "sector": "Planeación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 8.878,
+    "compromisos_mmm": 6.962,
+    "obligaciones_mmm": 1.172,
+    "pagos_mmm": 1.163,
+    "region": "PACÍFICO",
+    "sector": "Información Estadística",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 6.363,
+    "compromisos_mmm": 0.575,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "PACÍFICO",
+    "sector": "Defensa y Policía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 6.186,
+    "compromisos_mmm": 5.229,
+    "obligaciones_mmm": 2.286,
+    "pagos_mmm": 2.286,
+    "region": "PACÍFICO",
+    "sector": "Ambiente y Desarrollo Sostenible",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 1.755,
+    "compromisos_mmm": 1.338,
+    "obligaciones_mmm": 0.21,
+    "pagos_mmm": 0.185,
+    "region": "PACÍFICO",
+    "sector": "Comercio, Industria y Turismo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 0.857,
+    "compromisos_mmm": 0.342,
+    "obligaciones_mmm": 0.037,
+    "pagos_mmm": 0.037,
+    "region": "PACÍFICO",
+    "sector": "Relaciones Exteriores",
+    "vigencia": 2026
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "apr_vigente_mmm": 121.315,
+    "compromisos_mmm": 18.929,
+    "entidad": "PRESIDENCIA DE LA REPÚBLICA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 2.368,
+    "pct_c_av": 15.6,
+    "pct_o_av": 2,
+    "sector": "PRESIDENCIA DE LA REPÚBLICA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 68.309,
+    "compromisos_mmm": 53.122,
+    "entidad": "AGENCIA DE RENOVACIÓN DEL TERRITORIO ART - GESTIÓN GENERAL",
+    "obligaciones_mmm": 1.149,
+    "pct_c_av": 77.8,
+    "pct_o_av": 1.7,
+    "sector": "PRESIDENCIA DE LA REPÚBLICA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 58.25,
+    "compromisos_mmm": 7.853,
+    "entidad": "AGENCIA PRESIDENCIAL DE COOPERACIÓN INTERNACIONAL DE COLOMBIA, APC - COLOMBIA",
+    "obligaciones_mmm": 0.845,
+    "pct_c_av": 13.5,
+    "pct_o_av": 1.5,
+    "sector": "PRESIDENCIA DE LA REPÚBLICA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 50,
+    "compromisos_mmm": 0,
+    "entidad": "DIRECCIÓN DE SUSTITUCIÓN DE CULTIVOS DE USO ILÍCITO",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "PRESIDENCIA DE LA REPÚBLICA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 15,
+    "compromisos_mmm": 15,
+    "entidad": "AGENCIA NACIONAL INMOBILIARIA VIRGILIO BARCO VARGAS",
+    "obligaciones_mmm": 15,
+    "pct_c_av": 100,
+    "pct_o_av": 100,
+    "sector": "PRESIDENCIA DE LA REPÚBLICA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 10,
+    "compromisos_mmm": 3.821,
+    "entidad": "UNIDAD NACIONAL PARA LA GESTIÓN DEL RIESGO DE DESASTRES",
+    "obligaciones_mmm": 0.558,
+    "pct_c_av": 38.2,
+    "pct_o_av": 5.6,
+    "sector": "PRESIDENCIA DE LA REPÚBLICA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 2,
+    "compromisos_mmm": 0,
+    "entidad": "AGENCIA PARA LA REINCORPORACIÓN Y LA NORMALIZACIÓN - ARN",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "PRESIDENCIA DE LA REPÚBLICA",
+    "vigencia": 2026
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "apr_vigente_mmm": 925.504,
+    "compromisos_mmm": 378.505,
+    "entidad": "DEPARTAMENTO NACIONAL DE PLANEACION - GESTION GENERAL",
+    "obligaciones_mmm": 17.224,
+    "pct_c_av": 40.9,
+    "pct_o_av": 1.9,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 68.444,
+    "compromisos_mmm": 45.618,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL - AGENCIA NACIONAL DE CONTRATACIÓN PÚBLICA - COLOMBIA COMPRA EFICIENTE",
+    "obligaciones_mmm": 12.801,
+    "pct_c_av": 66.6,
+    "pct_o_av": 18.7,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 33.196,
+    "compromisos_mmm": 22.191,
+    "entidad": "SUPERINTENDENCIA DE SERVICIOS PÚBLICOS DOMICILIARIOS",
+    "obligaciones_mmm": 2.271,
+    "pct_c_av": 66.9,
+    "pct_o_av": 6.8,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2026
+  }
+]

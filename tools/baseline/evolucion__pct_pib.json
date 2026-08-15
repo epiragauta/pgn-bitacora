@@ -1,0 +1,77 @@
+[
+  {
+    "anio": 2022,
+    "concepto": "Funcionamiento como % del PIB",
+    "valor_pct_pib": 14.3
+  },
+  {
+    "anio": 2022,
+    "concepto": "Servicio de la Deuda como % del PIB",
+    "valor_pct_pib": 4.9
+  },
+  {
+    "anio": 2022,
+    "concepto": "Inversión como % del PIB",
+    "valor_pct_pib": 4.7
+  },
+  {
+    "anio": 2023,
+    "concepto": "Funcionamiento como % del PIB",
+    "valor_pct_pib": 16.0
+  },
+  {
+    "anio": 2023,
+    "concepto": "Servicio de la Deuda como % del PIB",
+    "valor_pct_pib": 4.9
+  },
+  {
+    "anio": 2023,
+    "concepto": "Inversión como % del PIB",
+    "valor_pct_pib": 4.7
+  },
+  {
+    "anio": 2024,
+    "concepto": "Funcionamiento como % del PIB",
+    "valor_pct_pib": 18.0
+  },
+  {
+    "anio": 2024,
+    "concepto": "Servicio de la Deuda como % del PIB",
+    "valor_pct_pib": 5.5
+  },
+  {
+    "anio": 2024,
+    "concepto": "Inversión como % del PIB",
+    "valor_pct_pib": 5.8
+  },
+  {
+    "anio": 2025,
+    "concepto": "Funcionamiento como % del PIB",
+    "valor_pct_pib": 17.8
+  },
+  {
+    "anio": 2025,
+    "concepto": "Servicio de la Deuda como % del PIB",
+    "valor_pct_pib": 6.1
+  },
+  {
+    "anio": 2025,
+    "concepto": "Inversión como % del PIB",
+    "valor_pct_pib": 4.5
+  },
+  {
+    "anio": 2026,
+    "concepto": "Funcionamiento como % del PIB",
+    "valor_pct_pib": 17.7
+  },
+  {
+    "anio": 2026,
+    "concepto": "Servicio de la Deuda como % del PIB",
+    "valor_pct_pib": 5.0
+  },
+  {
+    "anio": 2026,
+    "concepto": "Inversión como % del PIB",
+    "valor_pct_pib": 4.4
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 890.619244,
+    "compromisos_mmm": 323.650521,
+    "departamento": "Nariño",
+    "obligaciones_mmm": 80.043179,
+    "pagos_mmm": 78.741735,
+    "pct_compromisos": 36.34,
+    "pct_obligaciones": 8.99,
+    "pct_participacion": 1.26,
+    "region": "PACÍFICO",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 1482.977358,
+    "compromisos_mmm": 53.873496,
+    "departamento": "Nariño",
+    "obligaciones_mmm": 33.509854,
+    "pagos_mmm": 32.505005,
+    "pct_compromisos": 3.63,
+    "pct_obligaciones": 2.26,
+    "pct_participacion": 2.74,
+    "region": "PACÍFICO",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 2375.577568,
+    "compromisos_mmm": 831.291007,
+    "departamento": "Nariño",
+    "obligaciones_mmm": 247.259479,
+    "pagos_mmm": 238.764395,
+    "pct_compromisos": 34.99,
+    "pct_obligaciones": 10.41,
+    "pct_participacion": 2.61,
+    "region": "PACÍFICO",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 2227.965157,
+    "compromisos_mmm": 744.088531,
+    "departamento": "Nariño",
+    "obligaciones_mmm": 167.634811,
+    "pagos_mmm": 166.806935,
+    "pct_compromisos": 33.4,
+    "pct_obligaciones": 7.52,
+    "pct_participacion": 3.05,
+    "region": "PACÍFICO",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 2742.845233,
+    "compromisos_mmm": 1396.096693,
+    "departamento": "Nariño",
+    "obligaciones_mmm": 383.848814,
+    "pagos_mmm": 381.947785,
+    "pct_compromisos": 50.9,
+    "pct_obligaciones": 13.99,
+    "pct_participacion": 3.22,
+    "region": "PACÍFICO",
+    "vigencia": 2026
+  }
+]

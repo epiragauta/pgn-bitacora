@@ -1,0 +1,52 @@
+[
+  {
+    "apr_vigente_mmm": 417.155,
+    "compromisos_mmm": 170.12,
+    "entidad": "UNIDAD DE SERVICIOS PENITENCIARIOS Y CARCELARIOS - USPEC",
+    "obligaciones_mmm": 27.492,
+    "pct_c_av": 40.8,
+    "pct_o_av": 6.6,
+    "sector": "JUSTICIA Y DEL DERECHO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 194.474,
+    "compromisos_mmm": 61.829,
+    "entidad": "SUPERINTENDENCIA DE NOTARIADO Y REGISTRO",
+    "obligaciones_mmm": 8.024,
+    "pct_c_av": 31.8,
+    "pct_o_av": 4.1,
+    "sector": "JUSTICIA Y DEL DERECHO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 64.975,
+    "compromisos_mmm": 25.475,
+    "entidad": "MINISTERIO DE JUSTICIA Y DEL DERECHO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 3.117,
+    "pct_c_av": 39.2,
+    "pct_o_av": 4.8,
+    "sector": "JUSTICIA Y DEL DERECHO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 22.266,
+    "compromisos_mmm": 2.013,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL AGENCIA NACIONAL DE DEFENSA JURÍDICA DEL ESTADO",
+    "obligaciones_mmm": 0.267,
+    "pct_c_av": 9,
+    "pct_o_av": 1.2,
+    "sector": "JUSTICIA Y DEL DERECHO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 6.433,
+    "compromisos_mmm": 2.033,
+    "entidad": "INSTITUTO NACIONAL PENITENCIARIO Y CARCELARIO - INPEC",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 31.6,
+    "pct_o_av": 0,
+    "sector": "JUSTICIA Y DEL DERECHO",
+    "vigencia": 2026
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "desembolsado_usd": 242013624.06,
+    "fuente": "BM",
+    "monto_usd": 578600000.0,
+    "n_creditos": 4
+  },
+  {
+    "desembolsado_usd": 258590257.85,
+    "fuente": "BID",
+    "monto_usd": 546977372.87,
+    "n_creditos": 10
+  },
+  {
+    "desembolsado_usd": 33423539.0,
+    "fuente": "CAF",
+    "monto_usd": 191300000.0,
+    "n_creditos": 3
+  }
+]

@@ -1,0 +1,263 @@
+[
+  {
+    "apropiacion_mmm": 6408.013,
+    "compromisos_mmm": 4829.372,
+    "obligaciones_mmm": 704.474,
+    "pagos_mmm": 701.553,
+    "region": "ANDINA",
+    "sector": "Transporte",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 4503.17,
+    "compromisos_mmm": 1516.298,
+    "obligaciones_mmm": 488.183,
+    "pagos_mmm": 487.727,
+    "region": "ANDINA",
+    "sector": "Trabajo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 3998.577,
+    "compromisos_mmm": 1119.847,
+    "obligaciones_mmm": 746.062,
+    "pagos_mmm": 745.518,
+    "region": "ANDINA",
+    "sector": "Inclusión Social y Reconciliación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 3031.697,
+    "compromisos_mmm": 1213.99,
+    "obligaciones_mmm": 664.428,
+    "pagos_mmm": 662.98,
+    "region": "ANDINA",
+    "sector": "Minas y Energía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 2761.707,
+    "compromisos_mmm": 1934.279,
+    "obligaciones_mmm": 685.002,
+    "pagos_mmm": 684.725,
+    "region": "ANDINA",
+    "sector": "Igualdad y Equidad",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 2230.33,
+    "compromisos_mmm": 1741.487,
+    "obligaciones_mmm": 276.899,
+    "pagos_mmm": 276.845,
+    "region": "ANDINA",
+    "sector": "Educación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 778.482,
+    "compromisos_mmm": 25.165,
+    "obligaciones_mmm": 2.816,
+    "pagos_mmm": 2.816,
+    "region": "ANDINA",
+    "sector": "Hacienda",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 764.711,
+    "compromisos_mmm": 471.843,
+    "obligaciones_mmm": 8.338,
+    "pagos_mmm": 8.336,
+    "region": "ANDINA",
+    "sector": "Salud y Protección Social",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 546.008,
+    "compromisos_mmm": 193.176,
+    "obligaciones_mmm": 31.694,
+    "pagos_mmm": 27.878,
+    "region": "ANDINA",
+    "sector": "Agricultura y Desarrollo Rural",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 324.858,
+    "compromisos_mmm": 252.663,
+    "obligaciones_mmm": 10.024,
+    "pagos_mmm": 10.024,
+    "region": "ANDINA",
+    "sector": "Registraduría",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 288.06,
+    "compromisos_mmm": 161.354,
+    "obligaciones_mmm": 18.072,
+    "pagos_mmm": 18.05,
+    "region": "ANDINA",
+    "sector": "Justicia y del Derecho",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 244.918,
+    "compromisos_mmm": 221.283,
+    "obligaciones_mmm": 7.163,
+    "pagos_mmm": 6.591,
+    "region": "ANDINA",
+    "sector": "Tecnologías de la Información y las Comunicaciones",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 214.869,
+    "compromisos_mmm": 203.678,
+    "obligaciones_mmm": 0.058,
+    "pagos_mmm": 0.058,
+    "region": "ANDINA",
+    "sector": "Planeación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 180.42,
+    "compromisos_mmm": 116.275,
+    "obligaciones_mmm": 17.681,
+    "pagos_mmm": 16.599,
+    "region": "ANDINA",
+    "sector": "Empleo Público",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 154.327,
+    "compromisos_mmm": 81.605,
+    "obligaciones_mmm": 2.629,
+    "pagos_mmm": 2.629,
+    "region": "ANDINA",
+    "sector": "Ciencia, Tecnología e Innovación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 130.676,
+    "compromisos_mmm": 22.322,
+    "obligaciones_mmm": 3.007,
+    "pagos_mmm": 3.007,
+    "region": "ANDINA",
+    "sector": "Defensa y Policía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 128.895,
+    "compromisos_mmm": 16.856,
+    "obligaciones_mmm": 2.853,
+    "pagos_mmm": 2.848,
+    "region": "ANDINA",
+    "sector": "Organismos de Control",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 88.836,
+    "compromisos_mmm": 88.211,
+    "obligaciones_mmm": 47.677,
+    "pagos_mmm": 46.939,
+    "region": "ANDINA",
+    "sector": "Vivienda, Ciudad y Territorio",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 83.463,
+    "compromisos_mmm": 27.107,
+    "obligaciones_mmm": 0.079,
+    "pagos_mmm": 0.069,
+    "region": "ANDINA",
+    "sector": "Fiscalía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 82.878,
+    "compromisos_mmm": 46.107,
+    "obligaciones_mmm": 7.969,
+    "pagos_mmm": 7.938,
+    "region": "ANDINA",
+    "sector": "Sistema Integral de Verdad, Justicia, Reparación y no Repetición",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 49.546,
+    "compromisos_mmm": 34.017,
+    "obligaciones_mmm": 1.002,
+    "pagos_mmm": 0.921,
+    "region": "ANDINA",
+    "sector": "Interior",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 49.18,
+    "compromisos_mmm": 34.353,
+    "obligaciones_mmm": 15.987,
+    "pagos_mmm": 15.97,
+    "region": "ANDINA",
+    "sector": "Presidencia de la República",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 46.968,
+    "compromisos_mmm": 23.769,
+    "obligaciones_mmm": 2.602,
+    "pagos_mmm": 2.224,
+    "region": "ANDINA",
+    "sector": "Cultura",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 45.767,
+    "compromisos_mmm": 35.82,
+    "obligaciones_mmm": 14.068,
+    "pagos_mmm": 14.068,
+    "region": "ANDINA",
+    "sector": "Deporte y Recreación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 25.71,
+    "compromisos_mmm": 18.903,
+    "obligaciones_mmm": 2.428,
+    "pagos_mmm": 2.226,
+    "region": "ANDINA",
+    "sector": "Comercio, Industria y Turismo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 22.05,
+    "compromisos_mmm": 17.311,
+    "obligaciones_mmm": 2.939,
+    "pagos_mmm": 2.939,
+    "region": "ANDINA",
+    "sector": "Información Estadística",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 14.6,
+    "compromisos_mmm": 14.6,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "ANDINA",
+    "sector": "Rama Judicial",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 2.758,
+    "compromisos_mmm": 0.949,
+    "obligaciones_mmm": 0.104,
+    "pagos_mmm": 0.092,
+    "region": "ANDINA",
+    "sector": "Relaciones Exteriores",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 0.355,
+    "compromisos_mmm": 0.306,
+    "obligaciones_mmm": 0.136,
+    "pagos_mmm": 0.136,
+    "region": "ANDINA",
+    "sector": "Ambiente y Desarrollo Sostenible",
+    "vigencia": 2026
+  }
+]

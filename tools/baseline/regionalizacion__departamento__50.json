@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 1254.492679,
+    "compromisos_mmm": 752.287822,
+    "departamento": "Meta",
+    "obligaciones_mmm": 80.313232,
+    "pagos_mmm": 74.207349,
+    "pct_compromisos": 59.97,
+    "pct_obligaciones": 6.4,
+    "pct_participacion": 1.77,
+    "region": "ORINOQUÍA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 583.445953,
+    "compromisos_mmm": 18.671683,
+    "departamento": "Meta",
+    "obligaciones_mmm": 11.247351,
+    "pagos_mmm": 11.123095,
+    "pct_compromisos": 3.2,
+    "pct_obligaciones": 1.93,
+    "pct_participacion": 1.08,
+    "region": "ORINOQUÍA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 1065.595216,
+    "compromisos_mmm": 320.148296,
+    "departamento": "Meta",
+    "obligaciones_mmm": 88.213904,
+    "pagos_mmm": 85.307248,
+    "pct_compromisos": 30.04,
+    "pct_obligaciones": 8.28,
+    "pct_participacion": 1.17,
+    "region": "ORINOQUÍA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 843.371531,
+    "compromisos_mmm": 214.049454,
+    "departamento": "Meta",
+    "obligaciones_mmm": 39.546962,
+    "pagos_mmm": 39.522266,
+    "pct_compromisos": 25.38,
+    "pct_obligaciones": 4.69,
+    "pct_participacion": 1.16,
+    "region": "ORINOQUÍA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 1126.513528,
+    "compromisos_mmm": 583.010766,
+    "departamento": "Meta",
+    "obligaciones_mmm": 156.609243,
+    "pagos_mmm": 153.581565,
+    "pct_compromisos": 51.75,
+    "pct_obligaciones": 13.9,
+    "pct_participacion": 1.32,
+    "region": "ORINOQUÍA",
+    "vigencia": 2026
+  }
+]

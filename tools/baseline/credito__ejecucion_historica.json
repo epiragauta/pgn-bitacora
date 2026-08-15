@@ -1,0 +1,42 @@
+[
+  {
+    "anio": 2023,
+    "comprometido_mmm": 238.02,
+    "ejecutado_mmm": 13.542,
+    "pagado_mmm": 13.46,
+    "pct_comprometido": 26.48,
+    "pct_ejecutado": 1.51,
+    "pct_pagado": 1.5,
+    "vigente_mmm": 898.881
+  },
+  {
+    "anio": 2024,
+    "comprometido_mmm": 151.34,
+    "ejecutado_mmm": 6.927,
+    "pagado_mmm": 6.398,
+    "pct_comprometido": 14.38,
+    "pct_ejecutado": 0.66,
+    "pct_pagado": 0.61,
+    "vigente_mmm": 1052.072
+  },
+  {
+    "anio": 2025,
+    "comprometido_mmm": 152.281,
+    "ejecutado_mmm": 7.966,
+    "pagado_mmm": 7.432,
+    "pct_comprometido": 15.66,
+    "pct_ejecutado": 0.82,
+    "pct_pagado": 0.76,
+    "vigente_mmm": 972.643
+  },
+  {
+    "anio": 2026,
+    "comprometido_mmm": 248.072,
+    "ejecutado_mmm": 17.001,
+    "pagado_mmm": 16.894,
+    "pct_comprometido": 27.59,
+    "pct_ejecutado": 1.89,
+    "pct_pagado": 1.88,
+    "vigente_mmm": 899.267
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "apropiacion_mmm": 0.0,
+    "codigo_dane": null,
+    "compromisos_mmm": 0.0,
+    "departamento": "Por Regionalizar",
+    "nombre_dane": null,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "pct_compromisos": null,
+    "pct_obligaciones": null,
+    "pct_pagos": null,
+    "pct_participacion": 0.0,
+    "region": "POR_REGIONALIZAR",
+    "tipo": "por_regionalizar",
+    "vigencia": 2023
+  }
+]

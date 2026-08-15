@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 929.820866,
+    "compromisos_mmm": 569.045886,
+    "departamento": "Valle del Cauca",
+    "obligaciones_mmm": 112.467577,
+    "pagos_mmm": 111.464791,
+    "pct_compromisos": 61.2,
+    "pct_obligaciones": 12.1,
+    "pct_participacion": 1.31,
+    "region": "PACÍFICO",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 2087.901133,
+    "compromisos_mmm": 75.96463,
+    "departamento": "Valle del Cauca",
+    "obligaciones_mmm": 63.58946,
+    "pagos_mmm": 63.693694,
+    "pct_compromisos": 3.64,
+    "pct_obligaciones": 3.05,
+    "pct_participacion": 3.85,
+    "region": "PACÍFICO",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 2932.017347,
+    "compromisos_mmm": 1254.31669,
+    "departamento": "Valle del Cauca",
+    "obligaciones_mmm": 293.874575,
+    "pagos_mmm": 282.131827,
+    "pct_compromisos": 42.78,
+    "pct_obligaciones": 10.02,
+    "pct_participacion": 3.22,
+    "region": "PACÍFICO",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 3112.430657,
+    "compromisos_mmm": 461.582067,
+    "departamento": "Valle del Cauca",
+    "obligaciones_mmm": 96.861524,
+    "pagos_mmm": 96.434942,
+    "pct_compromisos": 14.83,
+    "pct_obligaciones": 3.11,
+    "pct_participacion": 4.27,
+    "region": "PACÍFICO",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 3785.024895,
+    "compromisos_mmm": 1567.200003,
+    "departamento": "Valle del Cauca",
+    "obligaciones_mmm": 463.197501,
+    "pagos_mmm": 458.561462,
+    "pct_compromisos": 41.41,
+    "pct_obligaciones": 12.24,
+    "pct_participacion": 4.44,
+    "region": "PACÍFICO",
+    "vigencia": 2026
+  }
+]

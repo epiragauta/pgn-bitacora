@@ -1,0 +1,32 @@
+[
+  {
+    "componente": "OTROS COMPONENTES",
+    "peso_pct": 40,
+    "vigente_mmm": 12.908
+  },
+  {
+    "componente": "OPORTUNIDADES DE EDUCACIÓN, FORMACIÓN, Y DE INSERCIÓN Y RECONVERSIÓN LABORAL",
+    "peso_pct": 15,
+    "vigente_mmm": 4.978
+  },
+  {
+    "componente": "EDUCACIÓN SUPERIOR COMO UN DERECHO",
+    "peso_pct": 15,
+    "vigente_mmm": 4.968
+  },
+  {
+    "componente": "SISTEMA DE TRANSFERENCIAS Y PROGRAMA RENTA CIUDADANA",
+    "peso_pct": 14,
+    "vigente_mmm": 4.526
+  },
+  {
+    "componente": "FINANCIACIÓN SOSTENIBLE DE LOS SISTEMAS DE TRANSPORTE PÚBLICO",
+    "peso_pct": 8,
+    "vigente_mmm": 2.663
+  },
+  {
+    "componente": "PROGRAMA DE ALIMENTACIÓN ESCOLAR (PAE)",
+    "peso_pct": 7,
+    "vigente_mmm": 2.106
+  }
+]

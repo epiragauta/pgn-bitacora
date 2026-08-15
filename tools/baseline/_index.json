@@ -1,0 +1,1934 @@
+[
+  {
+    "url": "/api/bitacoras",
+    "status": 200,
+    "archivo": "bitacoras.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/bitacoras/2025-I",
+    "status": 200,
+    "archivo": "bitacoras__2025-I.json",
+    "elementos": 9
+  },
+  {
+    "url": "/api/bitacoras/2026-I",
+    "status": 200,
+    "archivo": "bitacoras__2026-I.json",
+    "elementos": 9
+  },
+  {
+    "url": "/api/transformaciones",
+    "status": 200,
+    "archivo": "transformaciones.json",
+    "elementos": 8
+  },
+  {
+    "url": "/api/transformaciones?bitacora_id=1",
+    "status": 200,
+    "archivo": "transformaciones_bitacora_id=1.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/transformaciones?bitacora_id=2",
+    "status": 200,
+    "archivo": "transformaciones_bitacora_id=2.json",
+    "elementos": 8
+  },
+  {
+    "url": "/api/transformaciones/CONVERGENCIA%20REGIONAL/componentes?bitacora_id=1",
+    "status": 200,
+    "archivo": "transformaciones__CONVERGENCIA%20REGIONAL__componentes_bitacora_id=1.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/transformaciones/DERECHO%20HUMANO%20A%20LA%20ALIMENTACI%C3%93N/componentes?bitacora_id=1",
+    "status": 200,
+    "archivo": "transformaciones__DERECHO%20HUMANO%20A%20LA%20ALIMENTACI%C3%93N__componentes_bitacora_id=1.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/transformaciones/ORDENAMIENTO%20DEL%20TERRITORIO%20ALREDEDOR%20DEL%20AGUA%20Y%20JUSTICIA%20AMBIENTAL/componentes?bitacora_id=1",
+    "status": 200,
+    "archivo": "transformaciones__ORDENAMIENTO%20DEL%20TERRITORIO%20ALREDEDOR%20DEL%20AGUA%20Y%20JUSTICIA%20AMBIENTAL__componentes_bitacora_id=1.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/transformaciones/OTRAS%20TRANSFORMACIONES%20Y%20EJES%20TRANSVERSALES/componentes?bitacora_id=1",
+    "status": 200,
+    "archivo": "transformaciones__OTRAS%20TRANSFORMACIONES%20Y%20EJES%20TRANSVERSALES__componentes_bitacora_id=1.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/transformaciones/SEGURIDAD%20HUMANA%20Y%20JUSTICIA%20SOCIAL/componentes?bitacora_id=1",
+    "status": 200,
+    "archivo": "transformaciones__SEGURIDAD%20HUMANA%20Y%20JUSTICIA%20SOCIAL__componentes_bitacora_id=1.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/transformaciones/TRANSFORMACI%C3%93N%20PRODUCTIVA%2C%20INTERNACIONALIZACI%C3%93N%20Y%20ACCI%C3%93N%20CLIM%C3%81TICA/componentes?bitacora_id=1",
+    "status": 200,
+    "archivo": "transformaciones__TRANSFORMACI%C3%93N%20PRODUCTIVA%2C%20INTERNACIONALIZACI%C3%93N%20Y%20ACCI%C3%93N%20CLIM%C3%81TICA__componentes_bitacora_id=1.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/transformaciones/1.%20ORDENAMIENTO%20DEL%20TERRITORIO%20ALREDEDOR%20DEL%20AGUA%20Y%20JUSTICIA%20AMBIENTAL/componentes?bitacora_id=2",
+    "status": 200,
+    "archivo": "transformaciones__1.%20ORDENAMIENTO%20DEL%20TERRITORIO%20ALREDEDOR%20DEL%20AGUA%20Y%20JUSTICIA%20AMBIENTAL__componentes_bitacora_id=2.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/transformaciones/2.%20SEGURIDAD%20HUMANA%20Y%20JUSTICIA%20SOCIAL/componentes?bitacora_id=2",
+    "status": 200,
+    "archivo": "transformaciones__2.%20SEGURIDAD%20HUMANA%20Y%20JUSTICIA%20SOCIAL__componentes_bitacora_id=2.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/transformaciones/3.%20DERECHO%20HUMANO%20A%20LA%20ALIMENTACI%C3%93N/componentes?bitacora_id=2",
+    "status": 200,
+    "archivo": "transformaciones__3.%20DERECHO%20HUMANO%20A%20LA%20ALIMENTACI%C3%93N__componentes_bitacora_id=2.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/transformaciones/4.%20TRANSFORMACI%C3%93N%20PRODUCTIVA%2C%20INTERNACIONALIZACI%C3%93N%20Y%20ACCI%C3%93N%20CLIM%C3%81TICA/componentes?bitacora_id=2",
+    "status": 200,
+    "archivo": "transformaciones__4.%20TRANSFORMACI%C3%93N%20PRODUCTIVA%2C%20INTERNACIONALIZACI%C3%93N%20Y%20ACCI%C3%93N%20CLIM%C3%81TICA__componentes_bitacora_id=2.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/transformaciones/5.%20CONVERGENCIA%20REGIONAL/componentes?bitacora_id=2",
+    "status": 200,
+    "archivo": "transformaciones__5.%20CONVERGENCIA%20REGIONAL__componentes_bitacora_id=2.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/transformaciones/6.%20PAZ%20TOTAL%20E%20INTEGRAL/componentes?bitacora_id=2",
+    "status": 200,
+    "archivo": "transformaciones__6.%20PAZ%20TOTAL%20E%20INTEGRAL__componentes_bitacora_id=2.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/transformaciones/7.%20ACTORES%20DIFERENCIALES%20PARA%20EL%20CAMBIO/componentes?bitacora_id=2",
+    "status": 200,
+    "archivo": "transformaciones__7.%20ACTORES%20DIFERENCIALES%20PARA%20EL%20CAMBIO__componentes_bitacora_id=2.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/transformaciones/8.%20ESTABILIDAD%20MACROECON%C3%93MICA/componentes?bitacora_id=2",
+    "status": 200,
+    "archivo": "transformaciones__8.%20ESTABILIDAD%20MACROECON%C3%93MICA__componentes_bitacora_id=2.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion",
+    "status": 200,
+    "archivo": "evolucion.json",
+    "elementos": 15
+  },
+  {
+    "url": "/api/evolucion?rubro=Funcionamiento",
+    "status": 200,
+    "archivo": "evolucion_rubro=Funcionamiento.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/evolucion?rubro=Inversi%C3%B3n",
+    "status": 200,
+    "archivo": "evolucion_rubro=Inversi%C3%B3n.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/evolucion?rubro=Servicio%20Deuda",
+    "status": 200,
+    "archivo": "evolucion_rubro=Servicio%20Deuda.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2022&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2022&fase=Vigente.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2022&fase=Comprometido",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2022&fase=Comprometido.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2022&fase=Obligado",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2022&fase=Obligado.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2022&fase=Pagado",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2022&fase=Pagado.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2023&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2023&fase=Vigente.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2023&fase=Comprometido",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2023&fase=Comprometido.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2023&fase=Obligado",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2023&fase=Obligado.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2023&fase=Pagado",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2023&fase=Pagado.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2024&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2024&fase=Vigente.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2024&fase=Comprometido",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2024&fase=Comprometido.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2024&fase=Obligado",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2024&fase=Obligado.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2024&fase=Pagado",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2024&fase=Pagado.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2025&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2025&fase=Vigente.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2025&fase=Comprometido",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2025&fase=Comprometido.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2025&fase=Obligado",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2025&fase=Obligado.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2025&fase=Pagado",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2025&fase=Pagado.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2026&fase=Vigente.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2026&fase=Comprometido",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2026&fase=Comprometido.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2026&fase=Obligado",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2026&fase=Obligado.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/composicion?anio=2026&fase=Pagado",
+    "status": 200,
+    "archivo": "evolucion__composicion_anio=2026&fase=Pagado.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/evolucion/tasa_ejecucion",
+    "status": 200,
+    "archivo": "evolucion__tasa_ejecucion.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/evolucion/pct_pib",
+    "status": 200,
+    "archivo": "evolucion__pct_pib.json",
+    "elementos": 15
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Total%20PGN&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Total%20PGN&anio=2026&fase=Vigente.json",
+    "elementos": 28
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=PGN%20como%20%25%20del%20PIB&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=PGN%20como%20%25%20del%20PIB&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Funcionamiento&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Funcionamiento&anio=2026&fase=Vigente.json",
+    "elementos": 13
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Funcionamiento%20como%20%25%20del%20PIB&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Funcionamiento%20como%20%25%20del%20PIB&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Gastos%20de%20Personal&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Gastos%20de%20Personal&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Adquisici%C3%B3n%20de%20Bienes%20y%20Servicios&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Adquisici%C3%B3n%20de%20Bienes%20y%20Servicios&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Transferencias&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Transferencias&anio=2026&fase=Vigente.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=SGP&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=SGP&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Pensiones&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Pensiones&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=IES%20P%C3%BAblica%20sin%20Pensiones&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=IES%20P%C3%BAblica%20sin%20Pensiones&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Resto&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Resto&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Gastos%20de%20Comercializaci%C3%B3n%20y%20Producci%C3%B3n&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Gastos%20de%20Comercializaci%C3%B3n%20y%20Producci%C3%B3n&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Adquisici%C3%B3n%20de%20Activos%20Financieros&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Adquisici%C3%B3n%20de%20Activos%20Financieros&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Disminuci%C3%B3n%20de%20Pasivos&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Disminuci%C3%B3n%20de%20Pasivos&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Gastos%20por%20Tributos%2C%20Multas%2C%20Sanciones%20e%20Intereses%20de%20Mora&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Gastos%20por%20Tributos%2C%20Multas%2C%20Sanciones%20e%20Intereses%20de%20Mora&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Servicio%20de%20la%20Deuda&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Servicio%20de%20la%20Deuda&anio=2026&fase=Vigente.json",
+    "elementos": 11
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Servicio%20de%20la%20Deuda%20como%20%25%20del%20PIB&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Servicio%20de%20la%20Deuda%20como%20%25%20del%20PIB&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Servicio%20de%20la%20Deuda%20P%C3%BAblica%20Externa&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Servicio%20de%20la%20Deuda%20P%C3%BAblica%20Externa&anio=2026&fase=Vigente.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Principal%20-%20Deuda%20Externa&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Principal%20-%20Deuda%20Externa&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Intereses%20-%20Deuda%20Externa&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Intereses%20-%20Deuda%20Externa&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Comisiones%20y%20Otros%20Gastos%20-%20Deuda%20Externa&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Comisiones%20y%20Otros%20Gastos%20-%20Deuda%20Externa&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Servicio%20de%20la%20Deuda%20P%C3%BAblica%20Interna&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Servicio%20de%20la%20Deuda%20P%C3%BAblica%20Interna&anio=2026&fase=Vigente.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Principal%20-%20Deuda%20Interna&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Principal%20-%20Deuda%20Interna&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Intereses%20-%20Deuda%20Interna&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Intereses%20-%20Deuda%20Interna&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Comisiones%20y%20Otros%20Gastos%20-%20Deuda%20Interna&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Comisiones%20y%20Otros%20Gastos%20-%20Deuda%20Interna&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Fondo%20de%20Contingencias&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Fondo%20de%20Contingencias&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Inversi%C3%B3n&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Inversi%C3%B3n&anio=2026&fase=Vigente.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/evolucion/drilldown?concepto=Inversi%C3%B3n%20como%20%25%20del%20PIB&anio=2026&fase=Vigente",
+    "status": 200,
+    "archivo": "evolucion__drilldown_concepto=Inversi%C3%B3n%20como%20%25%20del%20PIB&anio=2026&fase=Vigente.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/evolucion/tabla_completa",
+    "status": 200,
+    "archivo": "evolucion__tabla_completa.json",
+    "elementos": 28
+  },
+  {
+    "url": "/api/evolucion/inversion_historica",
+    "status": 200,
+    "archivo": "evolucion__inversion_historica.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2022",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2022.json",
+    "elementos": 35
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2022&region=AMAZONIA",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2022&region=AMAZONIA.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2022&region=ANDINA",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2022&region=ANDINA.json",
+    "elementos": 11
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2022&region=CARIBE%20-%20INSULAR",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2022&region=CARIBE%20-%20INSULAR.json",
+    "elementos": 8
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2022&region=NACIONAL",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2022&region=NACIONAL.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2022&region=ORINOQU%C3%8DA",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2022&region=ORINOQU%C3%8DA.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2022&region=PAC%C3%8DFICO",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2022&region=PAC%C3%8DFICO.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2022&region=POR_REGIONALIZAR",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2022&region=POR_REGIONALIZAR.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/regionalizacion/mapa?vigencia=2022",
+    "status": 200,
+    "archivo": "regionalizacion__mapa_vigencia=2022.json",
+    "elementos": 33
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2023",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2023.json",
+    "elementos": 35
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2023&region=AMAZONIA",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2023&region=AMAZONIA.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2023&region=ANDINA",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2023&region=ANDINA.json",
+    "elementos": 11
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2023&region=CARIBE%20-%20INSULAR",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2023&region=CARIBE%20-%20INSULAR.json",
+    "elementos": 8
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2023&region=NACIONAL",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2023&region=NACIONAL.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2023&region=ORINOQU%C3%8DA",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2023&region=ORINOQU%C3%8DA.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2023&region=PAC%C3%8DFICO",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2023&region=PAC%C3%8DFICO.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2023&region=POR_REGIONALIZAR",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2023&region=POR_REGIONALIZAR.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/regionalizacion/mapa?vigencia=2023",
+    "status": 200,
+    "archivo": "regionalizacion__mapa_vigencia=2023.json",
+    "elementos": 33
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2024",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2024.json",
+    "elementos": 35
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2024&region=AMAZONIA",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2024&region=AMAZONIA.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2024&region=ANDINA",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2024&region=ANDINA.json",
+    "elementos": 11
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2024&region=CARIBE%20-%20INSULAR",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2024&region=CARIBE%20-%20INSULAR.json",
+    "elementos": 8
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2024&region=NACIONAL",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2024&region=NACIONAL.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2024&region=ORINOQU%C3%8DA",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2024&region=ORINOQU%C3%8DA.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2024&region=PAC%C3%8DFICO",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2024&region=PAC%C3%8DFICO.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2024&region=POR_REGIONALIZAR",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2024&region=POR_REGIONALIZAR.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/regionalizacion/mapa?vigencia=2024",
+    "status": 200,
+    "archivo": "regionalizacion__mapa_vigencia=2024.json",
+    "elementos": 33
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2025",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2025.json",
+    "elementos": 35
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2025&region=AMAZONIA",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2025&region=AMAZONIA.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2025&region=ANDINA",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2025&region=ANDINA.json",
+    "elementos": 11
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2025&region=CARIBE%20-%20INSULAR",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2025&region=CARIBE%20-%20INSULAR.json",
+    "elementos": 8
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2025&region=NACIONAL",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2025&region=NACIONAL.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2025&region=ORINOQU%C3%8DA",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2025&region=ORINOQU%C3%8DA.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2025&region=PAC%C3%8DFICO",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2025&region=PAC%C3%8DFICO.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2025&region=POR_REGIONALIZAR",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2025&region=POR_REGIONALIZAR.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/regionalizacion/mapa?vigencia=2025",
+    "status": 200,
+    "archivo": "regionalizacion__mapa_vigencia=2025.json",
+    "elementos": 33
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2026",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2026.json",
+    "elementos": 35
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2026&region=AMAZONIA",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2026&region=AMAZONIA.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2026&region=ANDINA",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2026&region=ANDINA.json",
+    "elementos": 11
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2026&region=CARIBE%20-%20INSULAR",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2026&region=CARIBE%20-%20INSULAR.json",
+    "elementos": 8
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2026&region=NACIONAL",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2026&region=NACIONAL.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2026&region=ORINOQU%C3%8DA",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2026&region=ORINOQU%C3%8DA.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2026&region=PAC%C3%8DFICO",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2026&region=PAC%C3%8DFICO.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/regionalizacion?vigencia=2026&region=POR_REGIONALIZAR",
+    "status": 200,
+    "archivo": "regionalizacion_vigencia=2026&region=POR_REGIONALIZAR.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/regionalizacion/mapa?vigencia=2026",
+    "status": 200,
+    "archivo": "regionalizacion__mapa_vigencia=2026.json",
+    "elementos": 33
+  },
+  {
+    "url": "/api/regionalizacion/historico",
+    "status": 200,
+    "archivo": "regionalizacion__historico.json",
+    "elementos": 35
+  },
+  {
+    "url": "/api/regionalizacion/sectores?vigencia=2026",
+    "status": 200,
+    "archivo": "regionalizacion__sectores_vigencia=2026.json",
+    "elementos": 135
+  },
+  {
+    "url": "/api/regionalizacion/sectores?vigencia=2026&region=AMAZONIA",
+    "status": 200,
+    "archivo": "regionalizacion__sectores_vigencia=2026&region=AMAZONIA.json",
+    "elementos": 25
+  },
+  {
+    "url": "/api/regionalizacion/sectores?vigencia=2026&region=ANDINA",
+    "status": 200,
+    "archivo": "regionalizacion__sectores_vigencia=2026&region=ANDINA.json",
+    "elementos": 29
+  },
+  {
+    "url": "/api/regionalizacion/sectores?vigencia=2026&region=CARIBE%20-%20INSULAR",
+    "status": 200,
+    "archivo": "regionalizacion__sectores_vigencia=2026&region=CARIBE%20-%20INSULAR.json",
+    "elementos": 27
+  },
+  {
+    "url": "/api/regionalizacion/sectores?vigencia=2026&region=ORINOQU%C3%8DA",
+    "status": 200,
+    "archivo": "regionalizacion__sectores_vigencia=2026&region=ORINOQU%C3%8DA.json",
+    "elementos": 26
+  },
+  {
+    "url": "/api/regionalizacion/sectores?vigencia=2026&region=PAC%C3%8DFICO",
+    "status": 200,
+    "archivo": "regionalizacion__sectores_vigencia=2026&region=PAC%C3%8DFICO.json",
+    "elementos": 28
+  },
+  {
+    "url": "/api/regionalizacion/departamento/05",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__05.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/08",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__08.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/11",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__11.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/13",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__13.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/15",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__15.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/17",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__17.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/18",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__18.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/19",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__19.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/20",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__20.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/23",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__23.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/25",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__25.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/27",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__27.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/41",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__41.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/44",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__44.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/47",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__47.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/50",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__50.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/52",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__52.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/54",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__54.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/63",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__63.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/66",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__66.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/68",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__68.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/70",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__70.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/73",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__73.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/76",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__76.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/81",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__81.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/85",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__85.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/86",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__86.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/88",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__88.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/91",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__91.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/94",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__94.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/95",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__95.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/97",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__97.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/regionalizacion/departamento/99",
+    "status": 200,
+    "archivo": "regionalizacion__departamento__99.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/ejecucion",
+    "status": 200,
+    "archivo": "ejecucion.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/ejecucion?bitacora_id=1",
+    "status": 200,
+    "archivo": "ejecucion_bitacora_id=1.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/ejecucion?bitacora_id=2",
+    "status": 200,
+    "archivo": "ejecucion_bitacora_id=2.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/ejecucion/sectores/apropiacion",
+    "status": 200,
+    "archivo": "ejecucion__sectores__apropiacion.json",
+    "elementos": 31
+  },
+  {
+    "url": "/api/ejecucion/sectores/compromisos_pct",
+    "status": 200,
+    "archivo": "ejecucion__sectores__compromisos_pct.json",
+    "elementos": 31
+  },
+  {
+    "url": "/api/ejecucion/sectores/obligaciones_pct",
+    "status": 200,
+    "archivo": "ejecucion__sectores__obligaciones_pct.json",
+    "elementos": 31
+  },
+  {
+    "url": "/api/ejecucion/sectores/pagos_pct",
+    "status": 200,
+    "archivo": "ejecucion__sectores__pagos_pct.json",
+    "elementos": 31
+  },
+  {
+    "url": "/api/ejecucion/sectores/matriz",
+    "status": 200,
+    "archivo": "ejecucion__sectores__matriz.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/vigencias_futuras",
+    "status": 200,
+    "archivo": "vigencias_futuras.json",
+    "elementos": 193
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=AGRICULTURA%20Y%20DESARROLLO%20RURAL",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=AGRICULTURA%20Y%20DESARROLLO%20RURAL.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=AMBIENTE%20Y%20DESARROLLO%20SOSTENIBLE",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=AMBIENTE%20Y%20DESARROLLO%20SOSTENIBLE.json",
+    "elementos": 11
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=CIENCIA%2C%20TECNOLOG%C3%8DA%20E%20INNOVACI%C3%93N",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=CIENCIA%2C%20TECNOLOG%C3%8DA%20E%20INNOVACI%C3%93N.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=COMERCIO%2C%20INDUSTRIA%20Y%20TURISMO",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=COMERCIO%2C%20INDUSTRIA%20Y%20TURISMO.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=CONGRESO",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=CONGRESO.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=CULTURA",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=CULTURA.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=DEFENSA%20Y%20POLIC%C3%8DA",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=DEFENSA%20Y%20POLIC%C3%8DA.json",
+    "elementos": 10
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=DEPORTE%20Y%20RECREACI%C3%93N",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=DEPORTE%20Y%20RECREACI%C3%93N.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=EDUCACI%C3%93N",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=EDUCACI%C3%93N.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=EMPLEO%20P%C3%9ABLICO",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=EMPLEO%20P%C3%9ABLICO.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=FISCAL%C3%8DA",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=FISCAL%C3%8DA.json",
+    "elementos": 21
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=HACIENDA",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=HACIENDA.json",
+    "elementos": 30
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=IGUALDAD%20Y%20EQUIDAD",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=IGUALDAD%20Y%20EQUIDAD.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=INCLUSI%C3%93N%20SOCIAL%20Y%20RECONCILIACI%C3%93N",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=INCLUSI%C3%93N%20SOCIAL%20Y%20RECONCILIACI%C3%93N.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=INFORMACI%C3%93N%20ESTAD%C3%8DSTICA",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=INFORMACI%C3%93N%20ESTAD%C3%8DSTICA.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=INTERIOR",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=INTERIOR.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=JUSTICIA%20Y%20DEL%20DERECHO",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=JUSTICIA%20Y%20DEL%20DERECHO.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=MINAS%20Y%20ENERG%C3%8DA",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=MINAS%20Y%20ENERG%C3%8DA.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=ORGANISMOS%20DE%20CONTROL",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=ORGANISMOS%20DE%20CONTROL.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=PLANEACI%C3%93N",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=PLANEACI%C3%93N.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=PRESIDENCIA%20DE%20LA%20REP%C3%9ABLICA",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=PRESIDENCIA%20DE%20LA%20REP%C3%9ABLICA.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=RAMA%20JUDICIAL",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=RAMA%20JUDICIAL.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=RELACIONES%20EXTERIORES",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=RELACIONES%20EXTERIORES.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=SALUD%20Y%20PROTECCI%C3%93N%20SOCIAL",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=SALUD%20Y%20PROTECCI%C3%93N%20SOCIAL.json",
+    "elementos": 11
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=SISTEMA%20INTEGRAL%20DE%20VERDAD%2C%20JUSTICIA%2C%20REPARACI%C3%93N%20Y%20NO%20REPETICI%C3%93N",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=SISTEMA%20INTEGRAL%20DE%20VERDAD%2C%20JUSTICIA%2C%20REPARACI%C3%93N%20Y%20NO%20REPETICI%C3%93N.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=TECNOLOG%C3%8DAS%20DE%20LA%20INFORMACI%C3%93N%20Y%20LAS%20COMUNICACIONES",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=TECNOLOG%C3%8DAS%20DE%20LA%20INFORMACI%C3%93N%20Y%20LAS%20COMUNICACIONES.json",
+    "elementos": 11
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=TRABAJO",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=TRABAJO.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=TRANSPORTE",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=TRANSPORTE.json",
+    "elementos": 27
+  },
+  {
+    "url": "/api/vigencias_futuras?sector=VIVIENDA%2C%20CIUDAD%20Y%20TERRITORIO",
+    "status": 200,
+    "archivo": "vigencias_futuras_sector=VIVIENDA%2C%20CIUDAD%20Y%20TERRITORIO.json",
+    "elementos": 11
+  },
+  {
+    "url": "/api/vigencias_futuras/totales",
+    "status": 200,
+    "archivo": "vigencias_futuras__totales.json",
+    "elementos": 14
+  },
+  {
+    "url": "/api/vigencias_futuras/chart",
+    "status": 200,
+    "archivo": "vigencias_futuras__chart.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/sectorial",
+    "status": 200,
+    "archivo": "sectorial.json",
+    "elementos": 179
+  },
+  {
+    "url": "/api/sectorial/historico",
+    "status": 200,
+    "archivo": "sectorial__historico.json",
+    "elementos": 829
+  },
+  {
+    "url": "/api/sectorial/mensual",
+    "status": 200,
+    "archivo": "sectorial__mensual.json",
+    "elementos": 372
+  },
+  {
+    "url": "/api/sectorial?sector=AGRICULTURA%20Y%20DESARROLLO%20RURAL",
+    "status": 200,
+    "archivo": "sectorial_sector=AGRICULTURA%20Y%20DESARROLLO%20RURAL.json",
+    "elementos": 7
+  },
+  {
+    "url": "/api/sectorial/historico?sector=AGRICULTURA%20Y%20DESARROLLO%20RURAL",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=AGRICULTURA%20Y%20DESARROLLO%20RURAL.json",
+    "elementos": 35
+  },
+  {
+    "url": "/api/sectorial?sector=AMBIENTE%20Y%20DESARROLLO%20SOSTENIBLE",
+    "status": 200,
+    "archivo": "sectorial_sector=AMBIENTE%20Y%20DESARROLLO%20SOSTENIBLE.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/sectorial/historico?sector=AMBIENTE%20Y%20DESARROLLO%20SOSTENIBLE",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=AMBIENTE%20Y%20DESARROLLO%20SOSTENIBLE.json",
+    "elementos": 45
+  },
+  {
+    "url": "/api/sectorial?sector=CIENCIA%2C%20TECNOLOG%C3%8DA%20E%20INNOVACI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial_sector=CIENCIA%2C%20TECNOLOG%C3%8DA%20E%20INNOVACI%C3%93N.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/sectorial/historico?sector=CIENCIA%2C%20TECNOLOG%C3%8DA%20E%20INNOVACI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=CIENCIA%2C%20TECNOLOG%C3%8DA%20E%20INNOVACI%C3%93N.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/sectorial?sector=COMERCIO%2C%20INDUSTRIA%20Y%20TURISMO",
+    "status": 200,
+    "archivo": "sectorial_sector=COMERCIO%2C%20INDUSTRIA%20Y%20TURISMO.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/sectorial/historico?sector=COMERCIO%2C%20INDUSTRIA%20Y%20TURISMO",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=COMERCIO%2C%20INDUSTRIA%20Y%20TURISMO.json",
+    "elementos": 30
+  },
+  {
+    "url": "/api/sectorial?sector=CONGRESO%20DE%20LA%20REP%C3%9ABLICA",
+    "status": 200,
+    "archivo": "sectorial_sector=CONGRESO%20DE%20LA%20REP%C3%9ABLICA.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/sectorial/historico?sector=CONGRESO%20DE%20LA%20REP%C3%9ABLICA",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=CONGRESO%20DE%20LA%20REP%C3%9ABLICA.json",
+    "elementos": 10
+  },
+  {
+    "url": "/api/sectorial?sector=CULTURA",
+    "status": 200,
+    "archivo": "sectorial_sector=CULTURA.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/sectorial/historico?sector=CULTURA",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=CULTURA.json",
+    "elementos": 20
+  },
+  {
+    "url": "/api/sectorial?sector=DEFENSA%20Y%20POLIC%C3%8DA",
+    "status": 200,
+    "archivo": "sectorial_sector=DEFENSA%20Y%20POLIC%C3%8DA.json",
+    "elementos": 20
+  },
+  {
+    "url": "/api/sectorial/historico?sector=DEFENSA%20Y%20POLIC%C3%8DA",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=DEFENSA%20Y%20POLIC%C3%8DA.json",
+    "elementos": 97
+  },
+  {
+    "url": "/api/sectorial?sector=DEPORTE%20Y%20RECREACI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial_sector=DEPORTE%20Y%20RECREACI%C3%93N.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/sectorial/historico?sector=DEPORTE%20Y%20RECREACI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=DEPORTE%20Y%20RECREACI%C3%93N.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/sectorial?sector=EDUCACI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial_sector=EDUCACI%C3%93N.json",
+    "elementos": 40
+  },
+  {
+    "url": "/api/sectorial/historico?sector=EDUCACI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=EDUCACI%C3%93N.json",
+    "elementos": 117
+  },
+  {
+    "url": "/api/sectorial?sector=EMPLEO%20P%C3%9ABLICO",
+    "status": 200,
+    "archivo": "sectorial_sector=EMPLEO%20P%C3%9ABLICO.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/sectorial/historico?sector=EMPLEO%20P%C3%9ABLICO",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=EMPLEO%20P%C3%9ABLICO.json",
+    "elementos": 15
+  },
+  {
+    "url": "/api/sectorial?sector=FISCAL%C3%8DA",
+    "status": 200,
+    "archivo": "sectorial_sector=FISCAL%C3%8DA.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/sectorial/historico?sector=FISCAL%C3%8DA",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=FISCAL%C3%8DA.json",
+    "elementos": 15
+  },
+  {
+    "url": "/api/sectorial?sector=HACIENDA",
+    "status": 200,
+    "archivo": "sectorial_sector=HACIENDA.json",
+    "elementos": 9
+  },
+  {
+    "url": "/api/sectorial/historico?sector=HACIENDA",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=HACIENDA.json",
+    "elementos": 45
+  },
+  {
+    "url": "/api/sectorial?sector=IGUALDAD%20Y%20EQUIDAD",
+    "status": 200,
+    "archivo": "sectorial_sector=IGUALDAD%20Y%20EQUIDAD.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/sectorial/historico?sector=IGUALDAD%20Y%20EQUIDAD",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=IGUALDAD%20Y%20EQUIDAD.json",
+    "elementos": 11
+  },
+  {
+    "url": "/api/sectorial?sector=INCLUSI%C3%93N%20SOCIAL%20Y%20RECONCILIACI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial_sector=INCLUSI%C3%93N%20SOCIAL%20Y%20RECONCILIACI%C3%93N.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/sectorial/historico?sector=INCLUSI%C3%93N%20SOCIAL%20Y%20RECONCILIACI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=INCLUSI%C3%93N%20SOCIAL%20Y%20RECONCILIACI%C3%93N.json",
+    "elementos": 17
+  },
+  {
+    "url": "/api/sectorial?sector=INFORMACI%C3%93N%20ESTAD%C3%8DSTICA",
+    "status": 200,
+    "archivo": "sectorial_sector=INFORMACI%C3%93N%20ESTAD%C3%8DSTICA.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/sectorial/historico?sector=INFORMACI%C3%93N%20ESTAD%C3%8DSTICA",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=INFORMACI%C3%93N%20ESTAD%C3%8DSTICA.json",
+    "elementos": 15
+  },
+  {
+    "url": "/api/sectorial?sector=INTELIGENCIA",
+    "status": 200,
+    "archivo": "sectorial_sector=INTELIGENCIA.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/sectorial/historico?sector=INTELIGENCIA",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=INTELIGENCIA.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/sectorial?sector=INTERIOR",
+    "status": 200,
+    "archivo": "sectorial_sector=INTERIOR.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/sectorial/historico?sector=INTERIOR",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=INTERIOR.json",
+    "elementos": 28
+  },
+  {
+    "url": "/api/sectorial?sector=JUSTICIA%20Y%20DEL%20DERECHO",
+    "status": 200,
+    "archivo": "sectorial_sector=JUSTICIA%20Y%20DEL%20DERECHO.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/sectorial/historico?sector=JUSTICIA%20Y%20DEL%20DERECHO",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=JUSTICIA%20Y%20DEL%20DERECHO.json",
+    "elementos": 25
+  },
+  {
+    "url": "/api/sectorial?sector=MINAS%20Y%20ENERG%C3%8DA",
+    "status": 200,
+    "archivo": "sectorial_sector=MINAS%20Y%20ENERG%C3%8DA.json",
+    "elementos": 7
+  },
+  {
+    "url": "/api/sectorial/historico?sector=MINAS%20Y%20ENERG%C3%8DA",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=MINAS%20Y%20ENERG%C3%8DA.json",
+    "elementos": 35
+  },
+  {
+    "url": "/api/sectorial?sector=ORGANISMOS%20DE%20CONTROL",
+    "status": 200,
+    "archivo": "sectorial_sector=ORGANISMOS%20DE%20CONTROL.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/sectorial/historico?sector=ORGANISMOS%20DE%20CONTROL",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=ORGANISMOS%20DE%20CONTROL.json",
+    "elementos": 26
+  },
+  {
+    "url": "/api/sectorial?sector=PLANEACI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial_sector=PLANEACI%C3%93N.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/sectorial/historico?sector=PLANEACI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=PLANEACI%C3%93N.json",
+    "elementos": 15
+  },
+  {
+    "url": "/api/sectorial?sector=PRESIDENCIA%20DE%20LA%20REP%C3%9ABLICA",
+    "status": 200,
+    "archivo": "sectorial_sector=PRESIDENCIA%20DE%20LA%20REP%C3%9ABLICA.json",
+    "elementos": 7
+  },
+  {
+    "url": "/api/sectorial/historico?sector=PRESIDENCIA%20DE%20LA%20REP%C3%9ABLICA",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=PRESIDENCIA%20DE%20LA%20REP%C3%9ABLICA.json",
+    "elementos": 33
+  },
+  {
+    "url": "/api/sectorial?sector=RAMA%20JUDICIAL",
+    "status": 200,
+    "archivo": "sectorial_sector=RAMA%20JUDICIAL.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/sectorial/historico?sector=RAMA%20JUDICIAL",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=RAMA%20JUDICIAL.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/sectorial?sector=REGISTRADUR%C3%8DA",
+    "status": 200,
+    "archivo": "sectorial_sector=REGISTRADUR%C3%8DA.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/sectorial/historico?sector=REGISTRADUR%C3%8DA",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=REGISTRADUR%C3%8DA.json",
+    "elementos": 15
+  },
+  {
+    "url": "/api/sectorial?sector=RELACIONES%20EXTERIORES",
+    "status": 200,
+    "archivo": "sectorial_sector=RELACIONES%20EXTERIORES.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/sectorial/historico?sector=RELACIONES%20EXTERIORES",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=RELACIONES%20EXTERIORES.json",
+    "elementos": 10
+  },
+  {
+    "url": "/api/sectorial?sector=SALUD%20Y%20PROTECCI%C3%93N%20SOCIAL",
+    "status": 200,
+    "archivo": "sectorial_sector=SALUD%20Y%20PROTECCI%C3%93N%20SOCIAL.json",
+    "elementos": 7
+  },
+  {
+    "url": "/api/sectorial/historico?sector=SALUD%20Y%20PROTECCI%C3%93N%20SOCIAL",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=SALUD%20Y%20PROTECCI%C3%93N%20SOCIAL.json",
+    "elementos": 39
+  },
+  {
+    "url": "/api/sectorial?sector=SISTEMA%20INTEGRAL%20DE%20VERDAD%2C%20JUSTICIA%2C%20REPARACI%C3%93N%20Y%20NO%20REPETICI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial_sector=SISTEMA%20INTEGRAL%20DE%20VERDAD%2C%20JUSTICIA%2C%20REPARACI%C3%93N%20Y%20NO%20REPETICI%C3%93N.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/sectorial/historico?sector=SISTEMA%20INTEGRAL%20DE%20VERDAD%2C%20JUSTICIA%2C%20REPARACI%C3%93N%20Y%20NO%20REPETICI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=SISTEMA%20INTEGRAL%20DE%20VERDAD%2C%20JUSTICIA%2C%20REPARACI%C3%93N%20Y%20NO%20REPETICI%C3%93N.json",
+    "elementos": 11
+  },
+  {
+    "url": "/api/sectorial?sector=TECNOLOG%C3%8DAS%20DE%20LA%20INFORMACI%C3%93N%20Y%20LAS%20COMUNICACIONES",
+    "status": 200,
+    "archivo": "sectorial_sector=TECNOLOG%C3%8DAS%20DE%20LA%20INFORMACI%C3%93N%20Y%20LAS%20COMUNICACIONES.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/sectorial/historico?sector=TECNOLOG%C3%8DAS%20DE%20LA%20INFORMACI%C3%93N%20Y%20LAS%20COMUNICACIONES",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=TECNOLOG%C3%8DAS%20DE%20LA%20INFORMACI%C3%93N%20Y%20LAS%20COMUNICACIONES.json",
+    "elementos": 25
+  },
+  {
+    "url": "/api/sectorial?sector=TRABAJO",
+    "status": 200,
+    "archivo": "sectorial_sector=TRABAJO.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/sectorial/historico?sector=TRABAJO",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=TRABAJO.json",
+    "elementos": 25
+  },
+  {
+    "url": "/api/sectorial?sector=TRANSPORTE",
+    "status": 200,
+    "archivo": "sectorial_sector=TRANSPORTE.json",
+    "elementos": 7
+  },
+  {
+    "url": "/api/sectorial/historico?sector=TRANSPORTE",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=TRANSPORTE.json",
+    "elementos": 35
+  },
+  {
+    "url": "/api/sectorial?sector=VIVIENDA%2C%20CIUDAD%20Y%20TERRITORIO",
+    "status": 200,
+    "archivo": "sectorial_sector=VIVIENDA%2C%20CIUDAD%20Y%20TERRITORIO.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/sectorial/historico?sector=VIVIENDA%2C%20CIUDAD%20Y%20TERRITORIO",
+    "status": 200,
+    "archivo": "sectorial__historico_sector=VIVIENDA%2C%20CIUDAD%20Y%20TERRITORIO.json",
+    "elementos": 15
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=AGRICULTURA%20Y%20DESARROLLO%20RURAL",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=AGRICULTURA%20Y%20DESARROLLO%20RURAL.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=AMBIENTE%20Y%20DESARROLLO%20SOSTENIBLE",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=AMBIENTE%20Y%20DESARROLLO%20SOSTENIBLE.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=CIENCIA%2C%20TECNOLOG%C3%8DA%20E%20INNOVACI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=CIENCIA%2C%20TECNOLOG%C3%8DA%20E%20INNOVACI%C3%93N.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=COMERCIO%2C%20INDUSTRIA%20Y%20TURISMO",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=COMERCIO%2C%20INDUSTRIA%20Y%20TURISMO.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=CONGRESO%20DE%20LA%20REP%C3%9ABLICA",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=CONGRESO%20DE%20LA%20REP%C3%9ABLICA.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=CULTURA",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=CULTURA.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=DEFENSA%20Y%20POLIC%C3%8DA",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=DEFENSA%20Y%20POLIC%C3%8DA.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=DEPORTE%20Y%20RECREACI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=DEPORTE%20Y%20RECREACI%C3%93N.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=EDUCACI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=EDUCACI%C3%93N.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=EMPLEO%20P%C3%9ABLICO",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=EMPLEO%20P%C3%9ABLICO.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=FISCAL%C3%8DA",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=FISCAL%C3%8DA.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=HACIENDA",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=HACIENDA.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=IGUALDAD%20Y%20EQUIDAD",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=IGUALDAD%20Y%20EQUIDAD.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=INCLUSI%C3%93N%20SOCIAL%20Y%20RECONCILIACI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=INCLUSI%C3%93N%20SOCIAL%20Y%20RECONCILIACI%C3%93N.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=INFORMACI%C3%93N%20ESTAD%C3%8DSTICA",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=INFORMACI%C3%93N%20ESTAD%C3%8DSTICA.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=INTELIGENCIA",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=INTELIGENCIA.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=INTERIOR",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=INTERIOR.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=JUSTICIA%20Y%20DEL%20DERECHO",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=JUSTICIA%20Y%20DEL%20DERECHO.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=MINAS%20Y%20ENERG%C3%8DA",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=MINAS%20Y%20ENERG%C3%8DA.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=ORGANISMOS%20DE%20CONTROL",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=ORGANISMOS%20DE%20CONTROL.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=PLANEACI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=PLANEACI%C3%93N.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=PRESIDENCIA%20DE%20LA%20REP%C3%9ABLICA",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=PRESIDENCIA%20DE%20LA%20REP%C3%9ABLICA.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=RAMA%20JUDICIAL",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=RAMA%20JUDICIAL.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=REGISTRADUR%C3%8DA",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=REGISTRADUR%C3%8DA.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=RELACIONES%20EXTERIORES",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=RELACIONES%20EXTERIORES.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=SALUD%20Y%20PROTECCI%C3%93N%20SOCIAL",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=SALUD%20Y%20PROTECCI%C3%93N%20SOCIAL.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=SISTEMA%20INTEGRAL%20DE%20VERDAD%2C%20JUSTICIA%2C%20REPARACI%C3%93N%20Y%20NO%20REPETICI%C3%93N",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=SISTEMA%20INTEGRAL%20DE%20VERDAD%2C%20JUSTICIA%2C%20REPARACI%C3%93N%20Y%20NO%20REPETICI%C3%93N.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=TECNOLOG%C3%8DAS%20DE%20LA%20INFORMACI%C3%93N%20Y%20LAS%20COMUNICACIONES",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=TECNOLOG%C3%8DAS%20DE%20LA%20INFORMACI%C3%93N%20Y%20LAS%20COMUNICACIONES.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=TRABAJO",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=TRABAJO.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=TRANSPORTE",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=TRANSPORTE.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/sectorial/mensual?sector=VIVIENDA%2C%20CIUDAD%20Y%20TERRITORIO",
+    "status": 200,
+    "archivo": "sectorial__mensual_sector=VIVIENDA%2C%20CIUDAD%20Y%20TERRITORIO.json",
+    "elementos": 12
+  },
+  {
+    "url": "/api/credito",
+    "status": 200,
+    "archivo": "credito.json",
+    "elementos": 17
+  },
+  {
+    "url": "/api/credito?fuente=BID",
+    "status": 200,
+    "archivo": "credito_fuente=BID.json",
+    "elementos": 10
+  },
+  {
+    "url": "/api/credito?fuente=BM",
+    "status": 200,
+    "archivo": "credito_fuente=BM.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/credito?fuente=CAF",
+    "status": 200,
+    "archivo": "credito_fuente=CAF.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/credito?sector=APSB",
+    "status": 200,
+    "archivo": "credito_sector=APSB.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/credito?sector=Agricultura",
+    "status": 200,
+    "archivo": "credito_sector=Agricultura.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/credito?sector=Catastro",
+    "status": 200,
+    "archivo": "credito_sector=Catastro.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/credito?sector=Educaci%C3%B3n",
+    "status": 200,
+    "archivo": "credito_sector=Educaci%C3%B3n.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/credito?sector=Energ%C3%ADa",
+    "status": 200,
+    "archivo": "credito_sector=Energ%C3%ADa.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/credito?sector=Justicia",
+    "status": 200,
+    "archivo": "credito_sector=Justicia.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/credito?sector=Organos%20de%20Control",
+    "status": 200,
+    "archivo": "credito_sector=Organos%20de%20Control.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/credito?sector=Planeaci%C3%B3n",
+    "status": 200,
+    "archivo": "credito_sector=Planeaci%C3%B3n.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/credito?sector=Salud",
+    "status": 200,
+    "archivo": "credito_sector=Salud.json",
+    "elementos": 2
+  },
+  {
+    "url": "/api/credito?sector=Territorial",
+    "status": 200,
+    "archivo": "credito_sector=Territorial.json",
+    "elementos": 1
+  },
+  {
+    "url": "/api/credito/fuentes",
+    "status": 200,
+    "archivo": "credito__fuentes.json",
+    "elementos": 3
+  },
+  {
+    "url": "/api/credito/sectores",
+    "status": 200,
+    "archivo": "credito__sectores.json",
+    "elementos": 10
+  },
+  {
+    "url": "/api/credito/resumen",
+    "status": 200,
+    "archivo": "credito__resumen.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/credito/ejecucion_entidad",
+    "status": 200,
+    "archivo": "credito__ejecucion_entidad.json",
+    "elementos": 18
+  },
+  {
+    "url": "/api/credito/ejecucion_historica",
+    "status": 200,
+    "archivo": "credito__ejecucion_historica.json",
+    "elementos": 4
+  },
+  {
+    "url": "/api/sgp/historico",
+    "status": 200,
+    "archivo": "sgp__historico.json",
+    "elementos": 5
+  },
+  {
+    "url": "/api/sgp/historico_componentes",
+    "status": 200,
+    "archivo": "sgp__historico_componentes.json",
+    "elementos": 95
+  },
+  {
+    "url": "/api/sgp/resumen",
+    "status": 200,
+    "archivo": "sgp__resumen.json",
+    "elementos": 6
+  },
+  {
+    "url": "/api/resumen",
+    "status": 200,
+    "archivo": "resumen.json",
+    "elementos": 17
+  },
+  {
+    "url": "/api/resumen?bitacora_id=1",
+    "status": 200,
+    "archivo": "resumen_bitacora_id=1.json",
+    "elementos": 17
+  },
+  {
+    "url": "/api/resumen?bitacora_id=2",
+    "status": 200,
+    "archivo": "resumen_bitacora_id=2.json",
+    "elementos": 17
+  }
+]

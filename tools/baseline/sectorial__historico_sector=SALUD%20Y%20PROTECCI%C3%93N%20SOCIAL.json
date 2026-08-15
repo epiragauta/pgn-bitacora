@@ -1,0 +1,392 @@
+[
+  {
+    "apr_vigente_mmm": 0.267,
+    "compromisos_mmm": 0,
+    "entidad": "FONDO DE PREVISIÓN SOCIAL DEL CONGRESO - PENSIONES",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 0.3,
+    "compromisos_mmm": 0,
+    "entidad": "FONDO DE PREVISIÓN SOCIAL DEL CONGRESO - PENSIONES",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 0.307,
+    "compromisos_mmm": 0,
+    "entidad": "FONDO DE PREVISIÓN SOCIAL DEL CONGRESO - PENSIONES",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 0.5,
+    "compromisos_mmm": 0,
+    "entidad": "FONDO DE PREVISIÓN SOCIAL DEL CONGRESO - PENSIONES",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 1.226,
+    "compromisos_mmm": 0.552,
+    "entidad": "FONDO PASIVO SOCIAL DE FERROCARRILES NACIONALES DE COLOMBIA - PENSIONES",
+    "obligaciones_mmm": 0.038,
+    "pct_c_av": 45,
+    "pct_o_av": 3.1,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 1.1,
+    "compromisos_mmm": 0.507,
+    "entidad": "FONDO PASIVO SOCIAL DE FERROCARRILES NACIONALES DE COLOMBIA - PENSIONES",
+    "obligaciones_mmm": 0.037,
+    "pct_c_av": 46.1,
+    "pct_o_av": 3.4,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 1.18,
+    "compromisos_mmm": 0.068,
+    "entidad": "FONDO PASIVO SOCIAL DE FERROCARRILES NACIONALES DE COLOMBIA - PENSIONES",
+    "obligaciones_mmm": 0.012,
+    "pct_c_av": 5.8,
+    "pct_o_av": 1,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 0.8,
+    "compromisos_mmm": 0.155,
+    "entidad": "FONDO PASIVO SOCIAL DE FERROCARRILES NACIONALES DE COLOMBIA - PENSIONES",
+    "obligaciones_mmm": 0.028,
+    "pct_c_av": 19.4,
+    "pct_o_av": 3.5,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 1,
+    "compromisos_mmm": 0.432,
+    "entidad": "FONDO PASIVO SOCIAL DE FERROCARRILES NACIONALES DE COLOMBIA - PENSIONES",
+    "obligaciones_mmm": 0.034,
+    "pct_c_av": 43.2,
+    "pct_o_av": 3.4,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 1.5,
+    "compromisos_mmm": 0.633,
+    "entidad": "FONDO PASIVO SOCIAL DE FERROCARRILES NACIONALES DE COLOMBIA - SALUD",
+    "obligaciones_mmm": 0.133,
+    "pct_c_av": 42.2,
+    "pct_o_av": 8.9,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 1.4,
+    "compromisos_mmm": 0.265,
+    "entidad": "FONDO PASIVO SOCIAL DE FERROCARRILES NACIONALES DE COLOMBIA - SALUD",
+    "obligaciones_mmm": 0.059,
+    "pct_c_av": 19,
+    "pct_o_av": 4.2,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 1.5,
+    "compromisos_mmm": 0.105,
+    "entidad": "FONDO PASIVO SOCIAL DE FERROCARRILES NACIONALES DE COLOMBIA - SALUD",
+    "obligaciones_mmm": 0.018,
+    "pct_c_av": 7,
+    "pct_o_av": 1.2,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 1.1,
+    "compromisos_mmm": 0.287,
+    "entidad": "FONDO PASIVO SOCIAL DE FERROCARRILES NACIONALES DE COLOMBIA - SALUD",
+    "obligaciones_mmm": 0.027,
+    "pct_c_av": 26.1,
+    "pct_o_av": 2.5,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 1,
+    "compromisos_mmm": 0.485,
+    "entidad": "FONDO PASIVO SOCIAL DE FERROCARRILES NACIONALES DE COLOMBIA - SALUD",
+    "obligaciones_mmm": 0.055,
+    "pct_c_av": 48.5,
+    "pct_o_av": 5.5,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 62.516,
+    "compromisos_mmm": 18.168,
+    "entidad": "INSTITUTO NACIONAL DE SALUD (INS)",
+    "obligaciones_mmm": 3.848,
+    "pct_c_av": 29.1,
+    "pct_o_av": 6.2,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 60.543,
+    "compromisos_mmm": 14.642,
+    "entidad": "INSTITUTO NACIONAL DE SALUD (INS)",
+    "obligaciones_mmm": 3.192,
+    "pct_c_av": 24.2,
+    "pct_o_av": 5.3,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 65.126,
+    "compromisos_mmm": 21.893,
+    "entidad": "INSTITUTO NACIONAL DE SALUD (INS)",
+    "obligaciones_mmm": 4.841,
+    "pct_c_av": 33.6,
+    "pct_o_av": 7.4,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 62.681,
+    "compromisos_mmm": 20.059,
+    "entidad": "INSTITUTO NACIONAL DE SALUD (INS)",
+    "obligaciones_mmm": 3.968,
+    "pct_c_av": 32,
+    "pct_o_av": 6.3,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 57.764,
+    "compromisos_mmm": 25.683,
+    "entidad": "INSTITUTO NACIONAL DE SALUD (INS)",
+    "obligaciones_mmm": 5.701,
+    "pct_c_av": 44.5,
+    "pct_o_av": 9.9,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 89,
+    "compromisos_mmm": 37.534,
+    "entidad": "INSTITUTO NACIONAL DE VIGILANCIA DE MEDICAMENTOS Y ALIMENTOS - INVIMA",
+    "obligaciones_mmm": 8.54,
+    "pct_c_av": 42.2,
+    "pct_o_av": 9.6,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 100,
+    "compromisos_mmm": 23.175,
+    "entidad": "INSTITUTO NACIONAL DE VIGILANCIA DE MEDICAMENTOS Y ALIMENTOS - INVIMA",
+    "obligaciones_mmm": 7.142,
+    "pct_c_av": 23.2,
+    "pct_o_av": 7.1,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 94.136,
+    "compromisos_mmm": 48.885,
+    "entidad": "INSTITUTO NACIONAL DE VIGILANCIA DE MEDICAMENTOS Y ALIMENTOS - INVIMA",
+    "obligaciones_mmm": 8.964,
+    "pct_c_av": 51.9,
+    "pct_o_av": 9.5,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 60.521,
+    "compromisos_mmm": 27.577,
+    "entidad": "INSTITUTO NACIONAL DE VIGILANCIA DE MEDICAMENTOS Y ALIMENTOS - INVIMA",
+    "obligaciones_mmm": 3.732,
+    "pct_c_av": 45.6,
+    "pct_o_av": 6.2,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 83.5,
+    "compromisos_mmm": 36.832,
+    "entidad": "INSTITUTO NACIONAL DE VIGILANCIA DE MEDICAMENTOS Y ALIMENTOS - INVIMA",
+    "obligaciones_mmm": 6.405,
+    "pct_c_av": 44.1,
+    "pct_o_av": 7.7,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 11.251,
+    "compromisos_mmm": 8.87,
+    "entidad": "MINISTERIO  DE SALUD Y PROTECCIÓN SOCIAL - UNIDAD ADMINISTRATIVA ESPECIAL FONDO NACIONAL DE ESTUPEFACIENTES",
+    "obligaciones_mmm": 0.466,
+    "pct_c_av": 78.8,
+    "pct_o_av": 4.1,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 4.751,
+    "compromisos_mmm": 3.34,
+    "entidad": "MINISTERIO  DE SALUD Y PROTECCIÓN SOCIAL - UNIDAD ADMINISTRATIVA ESPECIAL FONDO NACIONAL DE ESTUPEFACIENTES",
+    "obligaciones_mmm": 0.423,
+    "pct_c_av": 70.3,
+    "pct_o_av": 8.9,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 1.057,
+    "compromisos_mmm": 0.323,
+    "entidad": "MINISTERIO  DE SALUD Y PROTECCIÓN SOCIAL - UNIDAD ADMINISTRATIVA ESPECIAL FONDO NACIONAL DE ESTUPEFACIENTES",
+    "obligaciones_mmm": 0.001,
+    "pct_c_av": 30.6,
+    "pct_o_av": 0.1,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 1.057,
+    "compromisos_mmm": 0.624,
+    "entidad": "MINISTERIO  DE SALUD Y PROTECCIÓN SOCIAL - UNIDAD ADMINISTRATIVA ESPECIAL FONDO NACIONAL DE ESTUPEFACIENTES",
+    "obligaciones_mmm": 0.171,
+    "pct_c_av": 59,
+    "pct_o_av": 16.2,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 1,
+    "compromisos_mmm": 0.923,
+    "entidad": "MINISTERIO  DE SALUD Y PROTECCIÓN SOCIAL - UNIDAD ADMINISTRATIVA ESPECIAL FONDO NACIONAL DE ESTUPEFACIENTES",
+    "obligaciones_mmm": 0.132,
+    "pct_c_av": 92.3,
+    "pct_o_av": 13.2,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 954.153,
+    "compromisos_mmm": 739.591,
+    "entidad": "MINISTERIO DE SALUD Y PROTECCIÓN SOCIAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 251.263,
+    "pct_c_av": 77.5,
+    "pct_o_av": 26.3,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 2101.301,
+    "compromisos_mmm": 773.772,
+    "entidad": "MINISTERIO DE SALUD Y PROTECCIÓN SOCIAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 296.403,
+    "pct_c_av": 36.8,
+    "pct_o_av": 14.1,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 1871.459,
+    "compromisos_mmm": 754.805,
+    "entidad": "MINISTERIO DE SALUD Y PROTECCIÓN SOCIAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 275.713,
+    "pct_c_av": 40.3,
+    "pct_o_av": 14.7,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 1929.826,
+    "compromisos_mmm": 158.254,
+    "entidad": "MINISTERIO DE SALUD Y PROTECCIÓN SOCIAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 30.423,
+    "pct_c_av": 8.2,
+    "pct_o_av": 1.6,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 2186.282,
+    "compromisos_mmm": 1484.907,
+    "entidad": "MINISTERIO DE SALUD Y PROTECCIÓN SOCIAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 50.707,
+    "pct_c_av": 67.9,
+    "pct_o_av": 2.3,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 63,
+    "compromisos_mmm": 31.165,
+    "entidad": "SUPERINTENDENCIA NACIONAL DE SALUD",
+    "obligaciones_mmm": 7.285,
+    "pct_c_av": 49.5,
+    "pct_o_av": 11.6,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 76.209,
+    "compromisos_mmm": 34.438,
+    "entidad": "SUPERINTENDENCIA NACIONAL DE SALUD",
+    "obligaciones_mmm": 4.636,
+    "pct_c_av": 45.2,
+    "pct_o_av": 6.1,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 79.713,
+    "compromisos_mmm": 19.056,
+    "entidad": "SUPERINTENDENCIA NACIONAL DE SALUD",
+    "obligaciones_mmm": 4.987,
+    "pct_c_av": 23.9,
+    "pct_o_av": 6.3,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 87.199,
+    "compromisos_mmm": 29.172,
+    "entidad": "SUPERINTENDENCIA NACIONAL DE SALUD",
+    "obligaciones_mmm": 6.435,
+    "pct_c_av": 33.5,
+    "pct_o_av": 7.4,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 292.248,
+    "compromisos_mmm": 87.06,
+    "entidad": "SUPERINTENDENCIA NACIONAL DE SALUD",
+    "obligaciones_mmm": 12.508,
+    "pct_c_av": 29.8,
+    "pct_o_av": 4.3,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2026
+  }
+]

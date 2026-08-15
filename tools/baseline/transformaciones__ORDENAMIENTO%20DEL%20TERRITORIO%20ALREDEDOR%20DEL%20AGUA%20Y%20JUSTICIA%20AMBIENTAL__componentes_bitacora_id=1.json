@@ -1,0 +1,32 @@
+[
+  {
+    "componente": "ACTUALIZACIÓN CATASTRAL MULTIPROPÓSITO",
+    "peso_pct": 18,
+    "vigente_mmm": 641
+  },
+  {
+    "componente": "OTROS COMPONENTES",
+    "peso_pct": 17,
+    "vigente_mmm": 583
+  },
+  {
+    "componente": "COORDINACIÓN INSTITUCIONAL PARA OPTIMIZAR LA FORMALIZACIÓN",
+    "peso_pct": 5,
+    "vigente_mmm": 166
+  },
+  {
+    "componente": "DEMOCRATIZACIÓN DEL CONOCIMIENTO, LA INFORMACIÓN AMBIENTAL Y DE RIESGO DE DESASTRES",
+    "peso_pct": 4,
+    "vigente_mmm": 154
+  },
+  {
+    "componente": "SISTEMA DE ADMINISTRACIÓN DEL TERRITORIO (SAT)",
+    "peso_pct": 4,
+    "vigente_mmm": 149
+  },
+  {
+    "componente": "ACCESO Y FORMALIZACIÓN DE LA PROPIEDAD",
+    "peso_pct": 52,
+    "vigente_mmm": 1.835
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "apropiacion_mmm": 25373.173774,
+    "codigo_dane": null,
+    "compromisos_mmm": 10582.67472,
+    "departamento": "Nacional",
+    "nombre_dane": null,
+    "obligaciones_mmm": 1761.435374,
+    "pagos_mmm": 1699.380983,
+    "pct_compromisos": 41.71,
+    "pct_obligaciones": 6.94,
+    "pct_pagos": 6.7,
+    "pct_participacion": 29.77,
+    "region": "NACIONAL",
+    "tipo": "nacional",
+    "vigencia": 2026
+  }
+]

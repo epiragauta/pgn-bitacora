@@ -1,0 +1,227 @@
+[
+  {
+    "apropiacion_mmm": 531.032,
+    "compromisos_mmm": 245.528,
+    "obligaciones_mmm": 114.149,
+    "pagos_mmm": 114.125,
+    "region": "AMAZONIA",
+    "sector": "Minas y Energía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 501.741,
+    "compromisos_mmm": 162.772,
+    "obligaciones_mmm": 16.433,
+    "pagos_mmm": 15.798,
+    "region": "AMAZONIA",
+    "sector": "Transporte",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 397.564,
+    "compromisos_mmm": 322.585,
+    "obligaciones_mmm": 42.418,
+    "pagos_mmm": 42.403,
+    "region": "AMAZONIA",
+    "sector": "Educación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 380.593,
+    "compromisos_mmm": 94.556,
+    "obligaciones_mmm": 49.011,
+    "pagos_mmm": 48.978,
+    "region": "AMAZONIA",
+    "sector": "Inclusión Social y Reconciliación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 230.204,
+    "compromisos_mmm": 19.068,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "AMAZONIA",
+    "sector": "Tecnologías de la Información y las Comunicaciones",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 214.725,
+    "compromisos_mmm": 161.893,
+    "obligaciones_mmm": 42.548,
+    "pagos_mmm": 42.548,
+    "region": "AMAZONIA",
+    "sector": "Igualdad y Equidad",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 177.268,
+    "compromisos_mmm": 67.581,
+    "obligaciones_mmm": 12.543,
+    "pagos_mmm": 9.445,
+    "region": "AMAZONIA",
+    "sector": "Agricultura y Desarrollo Rural",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 157.366,
+    "compromisos_mmm": 74.166,
+    "obligaciones_mmm": 14.379,
+    "pagos_mmm": 14.379,
+    "region": "AMAZONIA",
+    "sector": "Trabajo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 65.646,
+    "compromisos_mmm": 62.24,
+    "obligaciones_mmm": 0.588,
+    "pagos_mmm": 0.588,
+    "region": "AMAZONIA",
+    "sector": "Salud y Protección Social",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 61.105,
+    "compromisos_mmm": 7.343,
+    "obligaciones_mmm": 0.244,
+    "pagos_mmm": 0.244,
+    "region": "AMAZONIA",
+    "sector": "Presidencia de la República",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 37.628,
+    "compromisos_mmm": 3.757,
+    "obligaciones_mmm": 0.376,
+    "pagos_mmm": 0.374,
+    "region": "AMAZONIA",
+    "sector": "Vivienda, Ciudad y Territorio",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 8.953,
+    "compromisos_mmm": 8.953,
+    "obligaciones_mmm": 3.179,
+    "pagos_mmm": 3.179,
+    "region": "AMAZONIA",
+    "sector": "Ambiente y Desarrollo Sostenible",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 8.29,
+    "compromisos_mmm": 5.99,
+    "obligaciones_mmm": 0.869,
+    "pagos_mmm": 0.856,
+    "region": "AMAZONIA",
+    "sector": "Sistema Integral de Verdad, Justicia, Reparación y no Repetición",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 7.544,
+    "compromisos_mmm": 5.355,
+    "obligaciones_mmm": 0.224,
+    "pagos_mmm": 0.224,
+    "region": "AMAZONIA",
+    "sector": "Registraduría",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 7.524,
+    "compromisos_mmm": 3.278,
+    "obligaciones_mmm": 0.002,
+    "pagos_mmm": 0.002,
+    "region": "AMAZONIA",
+    "sector": "Interior",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 5.772,
+    "compromisos_mmm": 4.686,
+    "obligaciones_mmm": 2.711,
+    "pagos_mmm": 2.711,
+    "region": "AMAZONIA",
+    "sector": "Deporte y Recreación",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 5.569,
+    "compromisos_mmm": 0.262,
+    "obligaciones_mmm": 0.146,
+    "pagos_mmm": 0.146,
+    "region": "AMAZONIA",
+    "sector": "Justicia y del Derecho",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 4.894,
+    "compromisos_mmm": 3.883,
+    "obligaciones_mmm": 0.537,
+    "pagos_mmm": 0.537,
+    "region": "AMAZONIA",
+    "sector": "Información Estadística",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 4.682,
+    "compromisos_mmm": 3.724,
+    "obligaciones_mmm": 0.08,
+    "pagos_mmm": 0.061,
+    "region": "AMAZONIA",
+    "sector": "Cultura",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 4.332,
+    "compromisos_mmm": 1.808,
+    "obligaciones_mmm": 0.255,
+    "pagos_mmm": 0.255,
+    "region": "AMAZONIA",
+    "sector": "Organismos de Control",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 3.436,
+    "compromisos_mmm": 0.0,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "AMAZONIA",
+    "sector": "Fiscalía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 3.0,
+    "compromisos_mmm": 0.0,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "region": "AMAZONIA",
+    "sector": "Defensa y Policía",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 1.818,
+    "compromisos_mmm": 1.225,
+    "obligaciones_mmm": 0.195,
+    "pagos_mmm": 0.166,
+    "region": "AMAZONIA",
+    "sector": "Comercio, Industria y Turismo",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 0.428,
+    "compromisos_mmm": 0.135,
+    "obligaciones_mmm": 0.015,
+    "pagos_mmm": 0.015,
+    "region": "AMAZONIA",
+    "sector": "Relaciones Exteriores",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 0.118,
+    "compromisos_mmm": 0.039,
+    "obligaciones_mmm": 0.005,
+    "pagos_mmm": 0.005,
+    "region": "AMAZONIA",
+    "sector": "Hacienda",
+    "vigencia": 2026
+  }
+]

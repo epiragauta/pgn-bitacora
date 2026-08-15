@@ -1,0 +1,92 @@
+[
+  {
+    "apr_vigente_mmm": 4168.913,
+    "compromisos_mmm": 3308.456,
+    "entidad": "MINISTERIO DE HACIENDA Y CRÉDITO PÚBLICO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 543.105,
+    "pct_c_av": 79.4,
+    "pct_o_av": 13,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 505.288,
+    "compromisos_mmm": 404.814,
+    "entidad": "FONDO ADAPTACIÓN",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 80.1,
+    "pct_o_av": 0,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 72.802,
+    "compromisos_mmm": 34.417,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DIRECCIÓN DE IMPUESTOS Y ADUANAS NACIONALES",
+    "obligaciones_mmm": 5.474,
+    "pct_c_av": 47.3,
+    "pct_o_av": 7.5,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 60.609,
+    "compromisos_mmm": 17.31,
+    "entidad": "SUPERINTENDENCIA FINANCIERA DE COLOMBIA",
+    "obligaciones_mmm": 5.818,
+    "pct_c_av": 28.6,
+    "pct_o_av": 9.6,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 20,
+    "compromisos_mmm": 10.352,
+    "entidad": "SUPERINTENDENCIA DE LA ECONOMÍA SOLIDARIA",
+    "obligaciones_mmm": 2.169,
+    "pct_c_av": 51.8,
+    "pct_o_av": 10.8,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 4.784,
+    "compromisos_mmm": 1.855,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE GESTIÓN  PENSIONAL Y CONTRIBUCIONES PARAFISCALES DE LA PROTECCIÓN SOCIAL (UGPPP) - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0.336,
+    "pct_c_av": 38.8,
+    "pct_o_av": 7,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 4.335,
+    "compromisos_mmm": 3.767,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL CONTADURÍA GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 0.63,
+    "pct_c_av": 86.9,
+    "pct_o_av": 14.5,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 2.496,
+    "compromisos_mmm": 1.612,
+    "entidad": "UNIDAD DE INFORMACIÓN Y ANÁLISIS FINANCIERO",
+    "obligaciones_mmm": 0.108,
+    "pct_c_av": 64.6,
+    "pct_o_av": 4.3,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 0.663,
+    "compromisos_mmm": 0.295,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL AGENCIA DEL INSPECTOR GENERAL DE TRIBUTOS, RENTAS Y CONTRIBUCIONES PARAFISCALES (ITRC)",
+    "obligaciones_mmm": 0.027,
+    "pct_c_av": 44.4,
+    "pct_o_av": 4.1,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  }
+]

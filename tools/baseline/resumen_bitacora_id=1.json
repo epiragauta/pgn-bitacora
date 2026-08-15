@@ -1,0 +1,19 @@
+{
+  "bitacora_id": 1,
+  "corte_fecha": "2025-03-31",
+  "fuente": "SIIF Nación / DPIP - DNP",
+  "inv_pct_gasto_total": 16,
+  "inv_pct_pib": 4.6,
+  "inversion_compromisos_mmm": 36362.831,
+  "inversion_obligaciones_mmm": 6628.013,
+  "inversion_pagos_mmm": 6532.166,
+  "inversion_vigente_mmm": 83961.138,
+  "numero_bitacora": "2",
+  "pct_compromisos": 43.3,
+  "pct_obligaciones": 7.9,
+  "pct_pagos": 7.8,
+  "periodo": "2025-I",
+  "total_transformaciones_mmm": 83.961,
+  "vigencia": 2025,
+  "vigencias_futuras_total_mmm": null
+}

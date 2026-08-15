@@ -1,0 +1,52 @@
+[
+  {
+    "apr_vigente_mmm": 302.901,
+    "compromisos_mmm": 212.78,
+    "entidad": "MINISTERIO DE CIENCIA, TECNOLOGÍA E INNOVACIÓN - GESTIÓN GENERAL",
+    "obligaciones_mmm": 26.678,
+    "pct_c_av": 70.2,
+    "pct_o_av": 8.8,
+    "sector": "CIENCIA, TECNOLOGÍA E INNOVACIÓN",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 372.611,
+    "compromisos_mmm": 277.268,
+    "entidad": "MINISTERIO DE CIENCIA, TECNOLOGÍA E INNOVACIÓN - GESTIÓN GENERAL",
+    "obligaciones_mmm": 1.598,
+    "pct_c_av": 74.4,
+    "pct_o_av": 0.4,
+    "sector": "CIENCIA, TECNOLOGÍA E INNOVACIÓN",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 367.474,
+    "compromisos_mmm": 256.561,
+    "entidad": "MINISTERIO DE CIENCIA, TECNOLOGÍA E INNOVACIÓN - GESTIÓN GENERAL",
+    "obligaciones_mmm": 44.511,
+    "pct_c_av": 69.8,
+    "pct_o_av": 12.1,
+    "sector": "CIENCIA, TECNOLOGÍA E INNOVACIÓN",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 266.988,
+    "compromisos_mmm": 146.609,
+    "entidad": "MINISTERIO DE CIENCIA, TECNOLOGÍA E INNOVACIÓN - GESTIÓN GENERAL",
+    "obligaciones_mmm": 19.244,
+    "pct_c_av": 54.9,
+    "pct_o_av": 7.2,
+    "sector": "CIENCIA, TECNOLOGÍA E INNOVACIÓN",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 348.567,
+    "compromisos_mmm": 214.738,
+    "entidad": "MINISTERIO DE CIENCIA, TECNOLOGÍA E INNOVACIÓN - GESTIÓN GENERAL",
+    "obligaciones_mmm": 10.945,
+    "pct_c_av": 61.6,
+    "pct_o_av": 3.1,
+    "sector": "CIENCIA, TECNOLOGÍA E INNOVACIÓN",
+    "vigencia": 2026
+  }
+]

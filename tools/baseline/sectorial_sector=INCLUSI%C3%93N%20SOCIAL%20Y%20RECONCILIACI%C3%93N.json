@@ -1,0 +1,32 @@
+[
+  {
+    "apr_vigente_mmm": 8038.304,
+    "compromisos_mmm": 1980.584,
+    "entidad": "DEPARTAMENTO ADMINISTRATIVO PARA LA PROSPERIDAD SOCIAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 1607.604,
+    "pct_c_av": 24.6,
+    "pct_o_av": 20,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 2715.655,
+    "compromisos_mmm": 783.507,
+    "entidad": "UNIDAD DE ATENCIÓN Y REPARACIÓN INTEGRAL A LAS VÍCTIMAS",
+    "obligaciones_mmm": 74.577,
+    "pct_c_av": 28.9,
+    "pct_o_av": 2.7,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 65.654,
+    "compromisos_mmm": 59.184,
+    "entidad": "CENTRO DE MEMORIA HISTÓRICA",
+    "obligaciones_mmm": 24.773,
+    "pct_c_av": 90.1,
+    "pct_o_av": 37.7,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2026
+  }
+]

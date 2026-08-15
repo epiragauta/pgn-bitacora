@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 1030.236038,
+    "compromisos_mmm": 358.461136,
+    "departamento": "Archipiélago de San Andrés, Providencia y Santa Catalina",
+    "obligaciones_mmm": 192.18564,
+    "pagos_mmm": 191.199936,
+    "pct_compromisos": 34.79,
+    "pct_obligaciones": 18.65,
+    "pct_participacion": 1.45,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 69.824509,
+    "compromisos_mmm": 5.119882,
+    "departamento": "Archipiélago de San Andrés, Providencia y Santa Catalina",
+    "obligaciones_mmm": 2.403699,
+    "pagos_mmm": 2.487972,
+    "pct_compromisos": 7.33,
+    "pct_obligaciones": 3.44,
+    "pct_participacion": 0.13,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 379.45939,
+    "compromisos_mmm": 56.649167,
+    "departamento": "Archipiélago de San Andrés, Providencia y Santa Catalina",
+    "obligaciones_mmm": 11.777038,
+    "pagos_mmm": 11.215795,
+    "pct_compromisos": 14.93,
+    "pct_obligaciones": 3.1,
+    "pct_participacion": 0.42,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 356.632079,
+    "compromisos_mmm": 48.872776,
+    "departamento": "Archipiélago de San Andrés, Providencia y Santa Catalina",
+    "obligaciones_mmm": 3.389316,
+    "pagos_mmm": 3.380547,
+    "pct_compromisos": 13.7,
+    "pct_obligaciones": 0.95,
+    "pct_participacion": 0.49,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 402.299849,
+    "compromisos_mmm": 97.976117,
+    "departamento": "Archipiélago de San Andrés, Providencia y Santa Catalina",
+    "obligaciones_mmm": 19.824334,
+    "pagos_mmm": 19.810294,
+    "pct_compromisos": 24.35,
+    "pct_obligaciones": 4.93,
+    "pct_participacion": 0.47,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2026
+  }
+]

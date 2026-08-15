@@ -1,0 +1,32 @@
+[
+  {
+    "apr_vigente_mmm": 215.312,
+    "compromisos_mmm": 214.763,
+    "entidad": "REGISTRADURÍA NACIONAL DEL ESTADO CIVIL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 2,
+    "pct_c_av": 99.7,
+    "pct_o_av": 0.9,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 173.251,
+    "compromisos_mmm": 81.629,
+    "entidad": "FONDO ROTATORIO DE LA REGISTRADURÍA",
+    "obligaciones_mmm": 9.927,
+    "pct_c_av": 47.1,
+    "pct_o_av": 5.7,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 8,
+    "compromisos_mmm": 0,
+    "entidad": "CONSEJO NACIONAL ELECTORAL- CNE",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2026
+  }
+]

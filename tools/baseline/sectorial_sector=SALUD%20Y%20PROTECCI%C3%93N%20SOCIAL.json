@@ -1,0 +1,72 @@
+[
+  {
+    "apr_vigente_mmm": 2186.282,
+    "compromisos_mmm": 1484.907,
+    "entidad": "MINISTERIO DE SALUD Y PROTECCIÓN SOCIAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 50.707,
+    "pct_c_av": 67.9,
+    "pct_o_av": 2.3,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 292.248,
+    "compromisos_mmm": 87.06,
+    "entidad": "SUPERINTENDENCIA NACIONAL DE SALUD",
+    "obligaciones_mmm": 12.508,
+    "pct_c_av": 29.8,
+    "pct_o_av": 4.3,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 83.5,
+    "compromisos_mmm": 36.832,
+    "entidad": "INSTITUTO NACIONAL DE VIGILANCIA DE MEDICAMENTOS Y ALIMENTOS - INVIMA",
+    "obligaciones_mmm": 6.405,
+    "pct_c_av": 44.1,
+    "pct_o_av": 7.7,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 57.764,
+    "compromisos_mmm": 25.683,
+    "entidad": "INSTITUTO NACIONAL DE SALUD (INS)",
+    "obligaciones_mmm": 5.701,
+    "pct_c_av": 44.5,
+    "pct_o_av": 9.9,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 1,
+    "compromisos_mmm": 0.432,
+    "entidad": "FONDO PASIVO SOCIAL DE FERROCARRILES NACIONALES DE COLOMBIA - PENSIONES",
+    "obligaciones_mmm": 0.034,
+    "pct_c_av": 43.2,
+    "pct_o_av": 3.4,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 1,
+    "compromisos_mmm": 0.485,
+    "entidad": "FONDO PASIVO SOCIAL DE FERROCARRILES NACIONALES DE COLOMBIA - SALUD",
+    "obligaciones_mmm": 0.055,
+    "pct_c_av": 48.5,
+    "pct_o_av": 5.5,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 1,
+    "compromisos_mmm": 0.923,
+    "entidad": "MINISTERIO  DE SALUD Y PROTECCIÓN SOCIAL - UNIDAD ADMINISTRATIVA ESPECIAL FONDO NACIONAL DE ESTUPEFACIENTES",
+    "obligaciones_mmm": 0.132,
+    "pct_c_av": 92.3,
+    "pct_o_av": 13.2,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2026
+  }
+]

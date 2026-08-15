@@ -1,0 +1,762 @@
+[
+  {
+    "componente": "Educación",
+    "es_total": 1,
+    "orden": 1,
+    "participacion": "Educación",
+    "valor_mmm": 27883.626,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Educación",
+    "es_total": 1,
+    "orden": 1,
+    "participacion": "Educación",
+    "valor_mmm": 30740.559,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Educación",
+    "es_total": 1,
+    "orden": 1,
+    "participacion": "Educación",
+    "valor_mmm": 39685.899,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Educación",
+    "es_total": 1,
+    "orden": 1,
+    "participacion": "Educación",
+    "valor_mmm": 46158.59,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Educación",
+    "es_total": 1,
+    "orden": 1,
+    "participacion": "Educación",
+    "valor_mmm": 47209.299,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Prestación Servicios",
+    "es_total": 0,
+    "orden": 2,
+    "participacion": "Educación",
+    "valor_mmm": 26756.88,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Prestación Servicios",
+    "es_total": 0,
+    "orden": 2,
+    "participacion": "Educación",
+    "valor_mmm": 29615.986,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Prestación Servicios",
+    "es_total": 0,
+    "orden": 2,
+    "participacion": "Educación",
+    "valor_mmm": 38297.407,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Prestación Servicios",
+    "es_total": 0,
+    "orden": 2,
+    "participacion": "Educación",
+    "valor_mmm": 44199.52,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Prestación Servicios",
+    "es_total": 0,
+    "orden": 2,
+    "participacion": "Educación",
+    "valor_mmm": 45614.421,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Calidad (Gratuidad)",
+    "es_total": 0,
+    "orden": 3,
+    "participacion": "Educación",
+    "valor_mmm": 535.146,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Calidad (Gratuidad)",
+    "es_total": 0,
+    "orden": 3,
+    "participacion": "Educación",
+    "valor_mmm": 532.972,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Calidad (Gratuidad)",
+    "es_total": 0,
+    "orden": 3,
+    "participacion": "Educación",
+    "valor_mmm": 725.347,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Calidad (Gratuidad)",
+    "es_total": 0,
+    "orden": 3,
+    "participacion": "Educación",
+    "valor_mmm": 1188.501,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Calidad (Gratuidad)",
+    "es_total": 0,
+    "orden": 3,
+    "participacion": "Educación",
+    "valor_mmm": 770.216,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Calidad (Matrícula)",
+    "es_total": 0,
+    "orden": 4,
+    "participacion": "Educación",
+    "valor_mmm": 591.6,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Calidad (Matrícula)",
+    "es_total": 0,
+    "orden": 4,
+    "participacion": "Educación",
+    "valor_mmm": 591.6,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Calidad (Matrícula)",
+    "es_total": 0,
+    "orden": 4,
+    "participacion": "Educación",
+    "valor_mmm": 663.145,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Calidad (Matrícula)",
+    "es_total": 0,
+    "orden": 4,
+    "participacion": "Educación",
+    "valor_mmm": 770.569,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Calidad (Matrícula)",
+    "es_total": 0,
+    "orden": 4,
+    "participacion": "Educación",
+    "valor_mmm": 824.663,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Salud",
+    "es_total": 1,
+    "orden": 5,
+    "participacion": "Salud",
+    "valor_mmm": 11631.923,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Salud",
+    "es_total": 1,
+    "orden": 5,
+    "participacion": "Salud",
+    "valor_mmm": 12821.6,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Salud",
+    "es_total": 1,
+    "orden": 5,
+    "participacion": "Salud",
+    "valor_mmm": 16394.2,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Salud",
+    "es_total": 1,
+    "orden": 5,
+    "participacion": "Salud",
+    "valor_mmm": 19060.915,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Salud",
+    "es_total": 1,
+    "orden": 5,
+    "participacion": "Salud",
+    "valor_mmm": 20622.282,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Régimen Subsidiado",
+    "es_total": 0,
+    "orden": 6,
+    "participacion": "Salud",
+    "valor_mmm": 10119.773,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Régimen Subsidiado",
+    "es_total": 0,
+    "orden": 6,
+    "participacion": "Salud",
+    "valor_mmm": 11148.292,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Régimen Subsidiado",
+    "es_total": 0,
+    "orden": 6,
+    "participacion": "Salud",
+    "valor_mmm": 14256.454,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Régimen Subsidiado",
+    "es_total": 0,
+    "orden": 6,
+    "participacion": "Salud",
+    "valor_mmm": 16576.496,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Régimen Subsidiado",
+    "es_total": 0,
+    "orden": 6,
+    "participacion": "Salud",
+    "valor_mmm": 17934.885,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Salud Pública",
+    "es_total": 0,
+    "orden": 7,
+    "participacion": "Salud",
+    "valor_mmm": 1163.192,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Salud Pública",
+    "es_total": 0,
+    "orden": 7,
+    "participacion": "Salud",
+    "valor_mmm": 1287.16,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Salud Pública",
+    "es_total": 0,
+    "orden": 7,
+    "participacion": "Salud",
+    "valor_mmm": 1644.42,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Salud Pública",
+    "es_total": 0,
+    "orden": 7,
+    "participacion": "Salud",
+    "valor_mmm": 1911.091,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Salud Pública",
+    "es_total": 0,
+    "orden": 7,
+    "participacion": "Salud",
+    "valor_mmm": 2067.228,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Subsidio a la Oferta",
+    "es_total": 0,
+    "orden": 8,
+    "participacion": "Salud",
+    "valor_mmm": 348.958,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Subsidio a la Oferta",
+    "es_total": 0,
+    "orden": 8,
+    "participacion": "Salud",
+    "valor_mmm": 386.148,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Subsidio a la Oferta",
+    "es_total": 0,
+    "orden": 8,
+    "participacion": "Salud",
+    "valor_mmm": 493.326,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Subsidio a la Oferta",
+    "es_total": 0,
+    "orden": 8,
+    "participacion": "Salud",
+    "valor_mmm": 573.327,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Subsidio a la Oferta",
+    "es_total": 0,
+    "orden": 8,
+    "participacion": "Salud",
+    "valor_mmm": 620.168,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Agua Potable",
+    "es_total": 1,
+    "orden": 9,
+    "participacion": "Agua Potable",
+    "valor_mmm": 2563.771,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Agua Potable",
+    "es_total": 1,
+    "orden": 9,
+    "participacion": "Agua Potable",
+    "valor_mmm": 2837.006,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Agua Potable",
+    "es_total": 1,
+    "orden": 9,
+    "participacion": "Agua Potable",
+    "valor_mmm": 3624.436,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Agua Potable",
+    "es_total": 1,
+    "orden": 9,
+    "participacion": "Agua Potable",
+    "valor_mmm": 4212.202,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Agua Potable",
+    "es_total": 1,
+    "orden": 9,
+    "participacion": "Agua Potable",
+    "valor_mmm": 4556.34,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Propósito General",
+    "es_total": 1,
+    "orden": 10,
+    "participacion": "Propósito General",
+    "valor_mmm": 5507.36,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Propósito General",
+    "es_total": 1,
+    "orden": 10,
+    "participacion": "Propósito General",
+    "valor_mmm": 6094.309,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Propósito General",
+    "es_total": 1,
+    "orden": 10,
+    "participacion": "Propósito General",
+    "valor_mmm": 7785.825,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Propósito General",
+    "es_total": 1,
+    "orden": 10,
+    "participacion": "Propósito General",
+    "valor_mmm": 9048.433,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Propósito General",
+    "es_total": 1,
+    "orden": 10,
+    "participacion": "Propósito General",
+    "valor_mmm": 9787.692,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Libre Inversión",
+    "es_total": 0,
+    "orden": 11,
+    "participacion": "Propósito General",
+    "valor_mmm": 3058.709,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Libre Inversión",
+    "es_total": 0,
+    "orden": 11,
+    "participacion": "Propósito General",
+    "valor_mmm": 3416.174,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Libre Inversión",
+    "es_total": 0,
+    "orden": 11,
+    "participacion": "Propósito General",
+    "valor_mmm": 4372.652,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Libre Inversión",
+    "es_total": 0,
+    "orden": 11,
+    "participacion": "Propósito General",
+    "valor_mmm": 5099.942,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Libre Inversión",
+    "es_total": 0,
+    "orden": 11,
+    "participacion": "Propósito General",
+    "valor_mmm": 5628.263,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Deporte",
+    "es_total": 0,
+    "orden": 12,
+    "participacion": "Propósito General",
+    "valor_mmm": 220.267,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Deporte",
+    "es_total": 0,
+    "orden": 12,
+    "participacion": "Propósito General",
+    "valor_mmm": 245.99,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Deporte",
+    "es_total": 0,
+    "orden": 12,
+    "participacion": "Propósito General",
+    "valor_mmm": 314.7,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Deporte",
+    "es_total": 0,
+    "orden": 12,
+    "participacion": "Propósito General",
+    "valor_mmm": 364.454,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Deporte",
+    "es_total": 0,
+    "orden": 12,
+    "participacion": "Propósito General",
+    "valor_mmm": 394.542,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Cultura",
+    "es_total": 0,
+    "orden": 13,
+    "participacion": "Propósito General",
+    "valor_mmm": 165.2,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Cultura",
+    "es_total": 0,
+    "orden": 13,
+    "participacion": "Propósito General",
+    "valor_mmm": 184.493,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Cultura",
+    "es_total": 0,
+    "orden": 13,
+    "participacion": "Propósito General",
+    "valor_mmm": 236.025,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Cultura",
+    "es_total": 0,
+    "orden": 13,
+    "participacion": "Propósito General",
+    "valor_mmm": 273.34,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Cultura",
+    "es_total": 0,
+    "orden": 13,
+    "participacion": "Propósito General",
+    "valor_mmm": 295.907,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Libre Destinación",
+    "es_total": 0,
+    "orden": 14,
+    "participacion": "Propósito General",
+    "valor_mmm": 1817.777,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Libre Destinación",
+    "es_total": 0,
+    "orden": 14,
+    "participacion": "Propósito General",
+    "valor_mmm": 1983.4,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Libre Destinación",
+    "es_total": 0,
+    "orden": 14,
+    "participacion": "Propósito General",
+    "valor_mmm": 2528.491,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Libre Destinación",
+    "es_total": 0,
+    "orden": 14,
+    "participacion": "Propósito General",
+    "valor_mmm": 2954.527,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Libre Destinación",
+    "es_total": 0,
+    "orden": 14,
+    "participacion": "Propósito General",
+    "valor_mmm": 3192.007,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Fonpet",
+    "es_total": 0,
+    "orden": 15,
+    "participacion": "Propósito General",
+    "valor_mmm": 245.407,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Fonpet",
+    "es_total": 0,
+    "orden": 15,
+    "participacion": "Propósito General",
+    "valor_mmm": 264.252,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Fonpet",
+    "es_total": 0,
+    "orden": 15,
+    "participacion": "Propósito General",
+    "valor_mmm": 333.958,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Fonpet",
+    "es_total": 0,
+    "orden": 15,
+    "participacion": "Propósito General",
+    "valor_mmm": 356.169,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Fonpet",
+    "es_total": 0,
+    "orden": 15,
+    "participacion": "Propósito General",
+    "valor_mmm": 276.973,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Alimentación Escolar",
+    "es_total": 1,
+    "orden": 16,
+    "participacion": "Alimentación Escolar",
+    "valor_mmm": 247.277,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Alimentación Escolar",
+    "es_total": 1,
+    "orden": 16,
+    "participacion": "Alimentación Escolar",
+    "valor_mmm": 273.631,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Alimentación Escolar",
+    "es_total": 1,
+    "orden": 16,
+    "participacion": "Alimentación Escolar",
+    "valor_mmm": 349.579,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Alimentación Escolar",
+    "es_total": 1,
+    "orden": 16,
+    "participacion": "Alimentación Escolar",
+    "valor_mmm": 406.269,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Alimentación Escolar",
+    "es_total": 1,
+    "orden": 16,
+    "participacion": "Alimentación Escolar",
+    "valor_mmm": 439.462,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Ribereños",
+    "es_total": 1,
+    "orden": 17,
+    "participacion": "Ribereños",
+    "valor_mmm": 39.564,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Ribereños",
+    "es_total": 1,
+    "orden": 17,
+    "participacion": "Ribereños",
+    "valor_mmm": 43.781,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Ribereños",
+    "es_total": 1,
+    "orden": 17,
+    "participacion": "Ribereños",
+    "valor_mmm": 55.933,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Ribereños",
+    "es_total": 1,
+    "orden": 17,
+    "participacion": "Ribereños",
+    "valor_mmm": 65.003,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Ribereños",
+    "es_total": 1,
+    "orden": 17,
+    "participacion": "Ribereños",
+    "valor_mmm": 70.314,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Resguardos Indígenas",
+    "es_total": 1,
+    "orden": 18,
+    "participacion": "Resguardos Indígenas",
+    "valor_mmm": 257.168,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Resguardos Indígenas",
+    "es_total": 1,
+    "orden": 18,
+    "participacion": "Resguardos Indígenas",
+    "valor_mmm": 284.576,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Resguardos Indígenas",
+    "es_total": 1,
+    "orden": 18,
+    "participacion": "Resguardos Indígenas",
+    "valor_mmm": 363.562,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Resguardos Indígenas",
+    "es_total": 1,
+    "orden": 18,
+    "participacion": "Resguardos Indígenas",
+    "valor_mmm": 422.52,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Resguardos Indígenas",
+    "es_total": 1,
+    "orden": 18,
+    "participacion": "Resguardos Indígenas",
+    "valor_mmm": 457.04,
+    "vigencia": 2026
+  },
+  {
+    "componente": "Fonpet Asignaciones Especiales",
+    "es_total": 1,
+    "orden": 19,
+    "participacion": "Fonpet Asignaciones Especiales",
+    "valor_mmm": 1434.208,
+    "vigencia": 2022
+  },
+  {
+    "componente": "Fonpet Asignaciones Especiales",
+    "es_total": 1,
+    "orden": 19,
+    "participacion": "Fonpet Asignaciones Especiales",
+    "valor_mmm": 1840.947,
+    "vigencia": 2023
+  },
+  {
+    "componente": "Fonpet Asignaciones Especiales",
+    "es_total": 1,
+    "orden": 19,
+    "participacion": "Fonpet Asignaciones Especiales",
+    "valor_mmm": 2281.446,
+    "vigencia": 2024
+  },
+  {
+    "componente": "Fonpet Asignaciones Especiales",
+    "es_total": 1,
+    "orden": 19,
+    "participacion": "Fonpet Asignaciones Especiales",
+    "valor_mmm": 2610.25,
+    "vigencia": 2025
+  },
+  {
+    "componente": "Fonpet Asignaciones Especiales",
+    "es_total": 1,
+    "orden": 19,
+    "participacion": "Fonpet Asignaciones Especiales",
+    "valor_mmm": 72.359,
+    "vigencia": 2026
+  }
+]

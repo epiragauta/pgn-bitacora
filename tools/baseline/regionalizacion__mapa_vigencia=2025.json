@@ -1,0 +1,299 @@
+[
+  {
+    "apropiacion_mmm": 255.827109,
+    "codigo_dane": "91",
+    "compromisos_mmm": 55.768787,
+    "departamento": "Amazonas",
+    "pct_compromisos": 21.8,
+    "pct_participacion": 0.35,
+    "region": "AMAZONIA"
+  },
+  {
+    "apropiacion_mmm": 612.969669,
+    "codigo_dane": "18",
+    "compromisos_mmm": 101.677452,
+    "departamento": "Caquetá",
+    "pct_compromisos": 16.59,
+    "pct_participacion": 0.84,
+    "region": "AMAZONIA"
+  },
+  {
+    "apropiacion_mmm": 207.716049,
+    "codigo_dane": "94",
+    "compromisos_mmm": 29.623867,
+    "departamento": "Guainía",
+    "pct_compromisos": 14.26,
+    "pct_participacion": 0.28,
+    "region": "AMAZONIA"
+  },
+  {
+    "apropiacion_mmm": 175.385885,
+    "codigo_dane": "95",
+    "compromisos_mmm": 40.990954,
+    "departamento": "Guaviare",
+    "pct_compromisos": 23.37,
+    "pct_participacion": 0.24,
+    "region": "AMAZONIA"
+  },
+  {
+    "apropiacion_mmm": 741.979993,
+    "codigo_dane": "86",
+    "compromisos_mmm": 149.701399,
+    "departamento": "Putumayo",
+    "pct_compromisos": 20.18,
+    "pct_participacion": 1.02,
+    "region": "AMAZONIA"
+  },
+  {
+    "apropiacion_mmm": 130.277639,
+    "codigo_dane": "97",
+    "compromisos_mmm": 33.085089,
+    "departamento": "Vaupés",
+    "pct_compromisos": 25.4,
+    "pct_participacion": 0.18,
+    "region": "AMAZONIA"
+  },
+  {
+    "apropiacion_mmm": 5850.587406,
+    "codigo_dane": "05",
+    "compromisos_mmm": 2720.525876,
+    "departamento": "Antioquia",
+    "pct_compromisos": 46.5,
+    "pct_participacion": 8.02,
+    "region": "ANDINA"
+  },
+  {
+    "apropiacion_mmm": 5906.099887,
+    "codigo_dane": "11",
+    "compromisos_mmm": 1515.429046,
+    "departamento": "Bogotá, D.C.",
+    "pct_compromisos": 25.66,
+    "pct_participacion": 8.1,
+    "region": "ANDINA"
+  },
+  {
+    "apropiacion_mmm": 1170.401422,
+    "codigo_dane": "15",
+    "compromisos_mmm": 275.969693,
+    "departamento": "Boyacá",
+    "pct_compromisos": 23.58,
+    "pct_participacion": 1.6,
+    "region": "ANDINA"
+  },
+  {
+    "apropiacion_mmm": 865.289051,
+    "codigo_dane": "17",
+    "compromisos_mmm": 317.172923,
+    "departamento": "Caldas",
+    "pct_compromisos": 36.66,
+    "pct_participacion": 1.19,
+    "region": "ANDINA"
+  },
+  {
+    "apropiacion_mmm": 1916.068074,
+    "codigo_dane": "25",
+    "compromisos_mmm": 676.206146,
+    "departamento": "Cundinamarca",
+    "pct_compromisos": 35.29,
+    "pct_participacion": 2.63,
+    "region": "ANDINA"
+  },
+  {
+    "apropiacion_mmm": 1172.394756,
+    "codigo_dane": "41",
+    "compromisos_mmm": 351.760958,
+    "departamento": "Huila",
+    "pct_compromisos": 30.0,
+    "pct_participacion": 1.61,
+    "region": "ANDINA"
+  },
+  {
+    "apropiacion_mmm": 1887.266074,
+    "codigo_dane": "54",
+    "compromisos_mmm": 586.557808,
+    "departamento": "Norte de Santander",
+    "pct_compromisos": 31.08,
+    "pct_participacion": 2.59,
+    "region": "ANDINA"
+  },
+  {
+    "apropiacion_mmm": 392.852081,
+    "codigo_dane": "63",
+    "compromisos_mmm": 105.581062,
+    "departamento": "Quindio",
+    "pct_compromisos": 26.88,
+    "pct_participacion": 0.54,
+    "region": "ANDINA"
+  },
+  {
+    "apropiacion_mmm": 608.334855,
+    "codigo_dane": "66",
+    "compromisos_mmm": 213.512067,
+    "departamento": "Risaralda",
+    "pct_compromisos": 35.1,
+    "pct_participacion": 0.83,
+    "region": "ANDINA"
+  },
+  {
+    "apropiacion_mmm": 1973.363003,
+    "codigo_dane": "68",
+    "compromisos_mmm": 929.552032,
+    "departamento": "Santander",
+    "pct_compromisos": 47.1,
+    "pct_participacion": 2.71,
+    "region": "ANDINA"
+  },
+  {
+    "apropiacion_mmm": 1162.262585,
+    "codigo_dane": "73",
+    "compromisos_mmm": 236.534097,
+    "departamento": "Tolima",
+    "pct_compromisos": 20.35,
+    "pct_participacion": 1.59,
+    "region": "ANDINA"
+  },
+  {
+    "apropiacion_mmm": 356.632079,
+    "codigo_dane": "88",
+    "compromisos_mmm": 48.872776,
+    "departamento": "Archipiélago de San Andrés, Providencia y Santa Catalina",
+    "pct_compromisos": 13.7,
+    "pct_participacion": 0.49,
+    "region": "CARIBE - INSULAR"
+  },
+  {
+    "apropiacion_mmm": 1755.504975,
+    "codigo_dane": "08",
+    "compromisos_mmm": 352.176064,
+    "departamento": "Atlántico",
+    "pct_compromisos": 20.06,
+    "pct_participacion": 2.41,
+    "region": "CARIBE - INSULAR"
+  },
+  {
+    "apropiacion_mmm": 2179.042896,
+    "codigo_dane": "13",
+    "compromisos_mmm": 682.264983,
+    "departamento": "Bolívar",
+    "pct_compromisos": 31.31,
+    "pct_participacion": 2.99,
+    "region": "CARIBE - INSULAR"
+  },
+  {
+    "apropiacion_mmm": 1351.380197,
+    "codigo_dane": "20",
+    "compromisos_mmm": 332.547048,
+    "departamento": "Cesar",
+    "pct_compromisos": 24.61,
+    "pct_participacion": 1.85,
+    "region": "CARIBE - INSULAR"
+  },
+  {
+    "apropiacion_mmm": 1400.778256,
+    "codigo_dane": "23",
+    "compromisos_mmm": 229.702386,
+    "departamento": "Córdoba",
+    "pct_compromisos": 16.4,
+    "pct_participacion": 1.92,
+    "region": "CARIBE - INSULAR"
+  },
+  {
+    "apropiacion_mmm": 1848.60405,
+    "codigo_dane": "44",
+    "compromisos_mmm": 178.638387,
+    "departamento": "La Guajira",
+    "pct_compromisos": 9.66,
+    "pct_participacion": 2.53,
+    "region": "CARIBE - INSULAR"
+  },
+  {
+    "apropiacion_mmm": 1419.850437,
+    "codigo_dane": "47",
+    "compromisos_mmm": 279.646808,
+    "departamento": "Magdalena",
+    "pct_compromisos": 19.7,
+    "pct_participacion": 1.95,
+    "region": "CARIBE - INSULAR"
+  },
+  {
+    "apropiacion_mmm": 1198.110381,
+    "codigo_dane": "70",
+    "compromisos_mmm": 436.898854,
+    "departamento": "Sucre",
+    "pct_compromisos": 36.47,
+    "pct_participacion": 1.64,
+    "region": "CARIBE - INSULAR"
+  },
+  {
+    "apropiacion_mmm": 376.177532,
+    "codigo_dane": "81",
+    "compromisos_mmm": 53.070864,
+    "departamento": "Arauca",
+    "pct_compromisos": 14.11,
+    "pct_participacion": 0.52,
+    "region": "ORINOQUÍA"
+  },
+  {
+    "apropiacion_mmm": 620.242003,
+    "codigo_dane": "85",
+    "compromisos_mmm": 247.133106,
+    "departamento": "Casanare",
+    "pct_compromisos": 39.84,
+    "pct_participacion": 0.85,
+    "region": "ORINOQUÍA"
+  },
+  {
+    "apropiacion_mmm": 843.371531,
+    "codigo_dane": "50",
+    "compromisos_mmm": 214.049454,
+    "departamento": "Meta",
+    "pct_compromisos": 25.38,
+    "pct_participacion": 1.16,
+    "region": "ORINOQUÍA"
+  },
+  {
+    "apropiacion_mmm": 293.496431,
+    "codigo_dane": "99",
+    "compromisos_mmm": 92.574216,
+    "departamento": "Vichada",
+    "pct_compromisos": 31.54,
+    "pct_participacion": 0.4,
+    "region": "ORINOQUÍA"
+  },
+  {
+    "apropiacion_mmm": 2045.318071,
+    "codigo_dane": "19",
+    "compromisos_mmm": 587.798855,
+    "departamento": "Cauca",
+    "pct_compromisos": 28.74,
+    "pct_participacion": 2.8,
+    "region": "PACÍFICO"
+  },
+  {
+    "apropiacion_mmm": 1267.159306,
+    "codigo_dane": "27",
+    "compromisos_mmm": 158.364027,
+    "departamento": "Chocó",
+    "pct_compromisos": 12.5,
+    "pct_participacion": 1.74,
+    "region": "PACÍFICO"
+  },
+  {
+    "apropiacion_mmm": 2227.965157,
+    "codigo_dane": "52",
+    "compromisos_mmm": 744.088531,
+    "departamento": "Nariño",
+    "pct_compromisos": 33.4,
+    "pct_participacion": 3.05,
+    "region": "PACÍFICO"
+  },
+  {
+    "apropiacion_mmm": 3112.430657,
+    "codigo_dane": "76",
+    "compromisos_mmm": 461.582067,
+    "departamento": "Valle del Cauca",
+    "pct_compromisos": 14.83,
+    "pct_participacion": 4.27,
+    "region": "PACÍFICO"
+  }
+]

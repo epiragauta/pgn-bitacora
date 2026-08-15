@@ -1,0 +1,24 @@
+[
+  {
+    "corte_fecha": "2026-03-31",
+    "elaborado_por": "DPIP - DNP",
+    "fecha_carga": "2026-06-20 19:26:16",
+    "fuente_principal": "SIIF Nación / DPIP",
+    "id": 2,
+    "notas": "PND 2022-2026 Colombia potencia mundial de la vida. Corte 31 de marzo de 2026.",
+    "numero_bitacora": "3",
+    "periodo": "2026-I",
+    "vigencia": 2026
+  },
+  {
+    "corte_fecha": "2025-03-31",
+    "elaborado_por": "Dirección de Programación de Inversiones Públicas - DNP",
+    "fecha_carga": "2026-04-12 23:59:03",
+    "fuente_principal": "SIIF Nación / DPIP",
+    "id": 1,
+    "notas": "PND 2022-2026 'Colombia potencia mundial de la vida'",
+    "numero_bitacora": "2",
+    "periodo": "2025-I",
+    "vigencia": 2025
+  }
+]

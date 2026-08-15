@@ -1,0 +1,112 @@
+[
+  {
+    "apr_vigente_mmm": 28.893,
+    "compromisos_mmm": 23.51,
+    "entidad": "COMISIÓN PARA EL ESCLARECIMIENTO DE LA VERDAD, LA CONVIVENCIA Y LA NO REPETICIÓN",
+    "obligaciones_mmm": 3.14,
+    "pct_c_av": 81.4,
+    "pct_o_av": 10.9,
+    "sector": "SISTEMA INTEGRAL DE VERDAD, JUSTICIA, REPARACIÓN Y NO REPETICIÓN",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 156.075,
+    "compromisos_mmm": 94.923,
+    "entidad": "JURISDICCIÓN ESPECIAL PARA LA PAZ - GESTIÓN GENERAL",
+    "obligaciones_mmm": 18.342,
+    "pct_c_av": 60.8,
+    "pct_o_av": 11.8,
+    "sector": "SISTEMA INTEGRAL DE VERDAD, JUSTICIA, REPARACIÓN Y NO REPETICIÓN",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 177.667,
+    "compromisos_mmm": 92.65,
+    "entidad": "JURISDICCIÓN ESPECIAL PARA LA PAZ - GESTIÓN GENERAL",
+    "obligaciones_mmm": 14.852,
+    "pct_c_av": 52.1,
+    "pct_o_av": 8.4,
+    "sector": "SISTEMA INTEGRAL DE VERDAD, JUSTICIA, REPARACIÓN Y NO REPETICIÓN",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 189.4,
+    "compromisos_mmm": 72.358,
+    "entidad": "JURISDICCIÓN ESPECIAL PARA LA PAZ - GESTIÓN GENERAL",
+    "obligaciones_mmm": 10.734,
+    "pct_c_av": 38.2,
+    "pct_o_av": 5.7,
+    "sector": "SISTEMA INTEGRAL DE VERDAD, JUSTICIA, REPARACIÓN Y NO REPETICIÓN",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 189.521,
+    "compromisos_mmm": 126.798,
+    "entidad": "JURISDICCIÓN ESPECIAL PARA LA PAZ - GESTIÓN GENERAL",
+    "obligaciones_mmm": 19.666,
+    "pct_c_av": 66.9,
+    "pct_o_av": 10.4,
+    "sector": "SISTEMA INTEGRAL DE VERDAD, JUSTICIA, REPARACIÓN Y NO REPETICIÓN",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 189.521,
+    "compromisos_mmm": 135.36,
+    "entidad": "JURISDICCIÓN ESPECIAL PARA LA PAZ - GESTIÓN GENERAL",
+    "obligaciones_mmm": 28.684,
+    "pct_c_av": 71.4,
+    "pct_o_av": 15.1,
+    "sector": "SISTEMA INTEGRAL DE VERDAD, JUSTICIA, REPARACIÓN Y NO REPETICIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 59.296,
+    "compromisos_mmm": 37.516,
+    "entidad": "UNIDAD DE BÚSQUEDA DE PERSONAS DADAS POR DESAPARECIDAS EN EL CONTEXTO Y EN RAZÓN DEL CONFLICTO ARMADO (UBPD)",
+    "obligaciones_mmm": 6.439,
+    "pct_c_av": 63.3,
+    "pct_o_av": 10.9,
+    "sector": "SISTEMA INTEGRAL DE VERDAD, JUSTICIA, REPARACIÓN Y NO REPETICIÓN",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 71.397,
+    "compromisos_mmm": 28.025,
+    "entidad": "UNIDAD DE BÚSQUEDA DE PERSONAS DADAS POR DESAPARECIDAS EN EL CONTEXTO Y EN RAZÓN DEL CONFLICTO ARMADO (UBPD)",
+    "obligaciones_mmm": 5.09,
+    "pct_c_av": 39.3,
+    "pct_o_av": 7.1,
+    "sector": "SISTEMA INTEGRAL DE VERDAD, JUSTICIA, REPARACIÓN Y NO REPETICIÓN",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 76.394,
+    "compromisos_mmm": 49.231,
+    "entidad": "UNIDAD DE BÚSQUEDA DE PERSONAS DADAS POR DESAPARECIDAS EN EL CONTEXTO Y EN RAZÓN DEL CONFLICTO ARMADO (UBPD)",
+    "obligaciones_mmm": 4.706,
+    "pct_c_av": 64.4,
+    "pct_o_av": 6.2,
+    "sector": "SISTEMA INTEGRAL DE VERDAD, JUSTICIA, REPARACIÓN Y NO REPETICIÓN",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 76.273,
+    "compromisos_mmm": 51.276,
+    "entidad": "UNIDAD DE BÚSQUEDA DE PERSONAS DADAS POR DESAPARECIDAS EN EL CONTEXTO Y EN RAZÓN DEL CONFLICTO ARMADO (UBPD)",
+    "obligaciones_mmm": 8.284,
+    "pct_c_av": 67.2,
+    "pct_o_av": 10.9,
+    "sector": "SISTEMA INTEGRAL DE VERDAD, JUSTICIA, REPARACIÓN Y NO REPETICIÓN",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 76.273,
+    "compromisos_mmm": 42.645,
+    "entidad": "UNIDAD DE BÚSQUEDA DE PERSONAS DADAS POR DESAPARECIDAS EN EL CONTEXTO Y EN RAZÓN DEL CONFLICTO ARMADO (UBPD)",
+    "obligaciones_mmm": 8.255,
+    "pct_c_av": 55.9,
+    "pct_o_av": 10.8,
+    "sector": "SISTEMA INTEGRAL DE VERDAD, JUSTICIA, REPARACIÓN Y NO REPETICIÓN",
+    "vigencia": 2026
+  }
+]

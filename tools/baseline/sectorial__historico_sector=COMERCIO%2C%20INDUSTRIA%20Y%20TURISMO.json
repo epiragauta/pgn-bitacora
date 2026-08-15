@@ -1,0 +1,302 @@
+[
+  {
+    "apr_vigente_mmm": 18.219,
+    "compromisos_mmm": 6.112,
+    "entidad": "INSTITUTO NACIONAL DE METROLOGÍA - INM",
+    "obligaciones_mmm": 0.913,
+    "pct_c_av": 33.5,
+    "pct_o_av": 5,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 19.551,
+    "compromisos_mmm": 3.249,
+    "entidad": "INSTITUTO NACIONAL DE METROLOGÍA - INM",
+    "obligaciones_mmm": 0.221,
+    "pct_c_av": 16.6,
+    "pct_o_av": 1.1,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 18.887,
+    "compromisos_mmm": 6.587,
+    "entidad": "INSTITUTO NACIONAL DE METROLOGÍA - INM",
+    "obligaciones_mmm": 0.35,
+    "pct_c_av": 34.9,
+    "pct_o_av": 1.9,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 15.716,
+    "compromisos_mmm": 4.97,
+    "entidad": "INSTITUTO NACIONAL DE METROLOGÍA - INM",
+    "obligaciones_mmm": 0.257,
+    "pct_c_av": 31.6,
+    "pct_o_av": 1.6,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 15.263,
+    "compromisos_mmm": 8.517,
+    "entidad": "INSTITUTO NACIONAL DE METROLOGÍA - INM",
+    "obligaciones_mmm": 0.95,
+    "pct_c_av": 55.8,
+    "pct_o_av": 6.2,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 9.779,
+    "compromisos_mmm": 3.9,
+    "entidad": "MINCOMERCIO INDUSTRIA TURISMO - DIRECCIÓN GENERAL DE COMERCIO EXTERIOR",
+    "obligaciones_mmm": 0.451,
+    "pct_c_av": 39.9,
+    "pct_o_av": 4.6,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 13.355,
+    "compromisos_mmm": 6.466,
+    "entidad": "MINCOMERCIO INDUSTRIA TURISMO - DIRECCIÓN GENERAL DE COMERCIO EXTERIOR",
+    "obligaciones_mmm": 0.362,
+    "pct_c_av": 48.4,
+    "pct_o_av": 2.7,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 9.756,
+    "compromisos_mmm": 8.34,
+    "entidad": "MINCOMERCIO INDUSTRIA TURISMO - DIRECCIÓN GENERAL DE COMERCIO EXTERIOR",
+    "obligaciones_mmm": 1.468,
+    "pct_c_av": 85.5,
+    "pct_o_av": 15.1,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 8.873,
+    "compromisos_mmm": 7.807,
+    "entidad": "MINCOMERCIO INDUSTRIA TURISMO - DIRECCIÓN GENERAL DE COMERCIO EXTERIOR",
+    "obligaciones_mmm": 1.236,
+    "pct_c_av": 88,
+    "pct_o_av": 13.9,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 14.307,
+    "compromisos_mmm": 7.658,
+    "entidad": "MINCOMERCIO INDUSTRIA TURISMO - DIRECCIÓN GENERAL DE COMERCIO EXTERIOR",
+    "obligaciones_mmm": 1.884,
+    "pct_c_av": 53.5,
+    "pct_o_av": 13.2,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 250.773,
+    "compromisos_mmm": 207.732,
+    "entidad": "MINCOMERCIO INDUSTRIA TURISMO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 12.139,
+    "pct_c_av": 82.8,
+    "pct_o_av": 4.8,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 296.975,
+    "compromisos_mmm": 11.762,
+    "entidad": "MINCOMERCIO INDUSTRIA TURISMO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 1.445,
+    "pct_c_av": 4,
+    "pct_o_av": 0.5,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 204.391,
+    "compromisos_mmm": 44.227,
+    "entidad": "MINCOMERCIO INDUSTRIA TURISMO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 1.652,
+    "pct_c_av": 21.6,
+    "pct_o_av": 0.8,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 189.479,
+    "compromisos_mmm": 13.128,
+    "entidad": "MINCOMERCIO INDUSTRIA TURISMO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 1.421,
+    "pct_c_av": 6.9,
+    "pct_o_av": 0.7,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 181.479,
+    "compromisos_mmm": 159.715,
+    "entidad": "MINCOMERCIO INDUSTRIA TURISMO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 41.819,
+    "pct_c_av": 88,
+    "pct_o_av": 23,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 143.447,
+    "compromisos_mmm": 107.129,
+    "entidad": "SUPERINTENDENCIA DE INDUSTRIA Y COMERCIO",
+    "obligaciones_mmm": 18.648,
+    "pct_c_av": 74.7,
+    "pct_o_av": 13,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 146.704,
+    "compromisos_mmm": 72.429,
+    "entidad": "SUPERINTENDENCIA DE INDUSTRIA Y COMERCIO",
+    "obligaciones_mmm": 12.201,
+    "pct_c_av": 49.4,
+    "pct_o_av": 8.3,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 110.124,
+    "compromisos_mmm": 32.991,
+    "entidad": "SUPERINTENDENCIA DE INDUSTRIA Y COMERCIO",
+    "obligaciones_mmm": 7.398,
+    "pct_c_av": 30,
+    "pct_o_av": 6.7,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 145.088,
+    "compromisos_mmm": 97.266,
+    "entidad": "SUPERINTENDENCIA DE INDUSTRIA Y COMERCIO",
+    "obligaciones_mmm": 11.083,
+    "pct_c_av": 67,
+    "pct_o_av": 7.6,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 75.791,
+    "compromisos_mmm": 64.002,
+    "entidad": "SUPERINTENDENCIA DE INDUSTRIA Y COMERCIO",
+    "obligaciones_mmm": 7.731,
+    "pct_c_av": 84.4,
+    "pct_o_av": 10.2,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 29.035,
+    "compromisos_mmm": 9.613,
+    "entidad": "SUPERINTENDENCIA DE SOCIEDADES",
+    "obligaciones_mmm": 2.977,
+    "pct_c_av": 33.1,
+    "pct_o_av": 10.3,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 29.878,
+    "compromisos_mmm": 4.656,
+    "entidad": "SUPERINTENDENCIA DE SOCIEDADES",
+    "obligaciones_mmm": 0.99,
+    "pct_c_av": 15.6,
+    "pct_o_av": 3.3,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 32.309,
+    "compromisos_mmm": 8.859,
+    "entidad": "SUPERINTENDENCIA DE SOCIEDADES",
+    "obligaciones_mmm": 0.522,
+    "pct_c_av": 27.4,
+    "pct_o_av": 1.6,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 30.696,
+    "compromisos_mmm": 11.494,
+    "entidad": "SUPERINTENDENCIA DE SOCIEDADES",
+    "obligaciones_mmm": 1.215,
+    "pct_c_av": 37.4,
+    "pct_o_av": 4,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 32.374,
+    "compromisos_mmm": 16.691,
+    "entidad": "SUPERINTENDENCIA DE SOCIEDADES",
+    "obligaciones_mmm": 1.68,
+    "pct_c_av": 51.6,
+    "pct_o_av": 5.2,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 9.004,
+    "compromisos_mmm": 2.907,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL JUNTA CENTRAL CONTADORES",
+    "obligaciones_mmm": 0.462,
+    "pct_c_av": 32.3,
+    "pct_o_av": 5.1,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 5.901,
+    "compromisos_mmm": 2.3,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL JUNTA CENTRAL CONTADORES",
+    "obligaciones_mmm": 0.406,
+    "pct_c_av": 39,
+    "pct_o_av": 6.9,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 10.749,
+    "compromisos_mmm": 3.236,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL JUNTA CENTRAL CONTADORES",
+    "obligaciones_mmm": 0.44,
+    "pct_c_av": 30.1,
+    "pct_o_av": 4.1,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 14.001,
+    "compromisos_mmm": 4.127,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL JUNTA CENTRAL CONTADORES",
+    "obligaciones_mmm": 0.479,
+    "pct_c_av": 29.5,
+    "pct_o_av": 3.4,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 14.455,
+    "compromisos_mmm": 5.332,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL JUNTA CENTRAL CONTADORES",
+    "obligaciones_mmm": 1.006,
+    "pct_c_av": 36.9,
+    "pct_o_av": 7,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2026
+  }
+]

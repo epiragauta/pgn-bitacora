@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 596.89464,
+    "compromisos_mmm": 254.064661,
+    "departamento": "Arauca",
+    "obligaciones_mmm": 75.711224,
+    "pagos_mmm": 74.489228,
+    "pct_compromisos": 42.56,
+    "pct_obligaciones": 12.68,
+    "pct_participacion": 0.84,
+    "region": "ORINOQUÍA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 229.720576,
+    "compromisos_mmm": 8.100527,
+    "departamento": "Arauca",
+    "obligaciones_mmm": 4.706205,
+    "pagos_mmm": 4.662733,
+    "pct_compromisos": 3.53,
+    "pct_obligaciones": 2.05,
+    "pct_participacion": 0.42,
+    "region": "ORINOQUÍA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 432.828923,
+    "compromisos_mmm": 147.606836,
+    "departamento": "Arauca",
+    "obligaciones_mmm": 49.377643,
+    "pagos_mmm": 47.751373,
+    "pct_compromisos": 34.1,
+    "pct_obligaciones": 11.41,
+    "pct_participacion": 0.48,
+    "region": "ORINOQUÍA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 376.177532,
+    "compromisos_mmm": 53.070864,
+    "departamento": "Arauca",
+    "obligaciones_mmm": 10.119159,
+    "pagos_mmm": 10.164748,
+    "pct_compromisos": 14.11,
+    "pct_obligaciones": 2.69,
+    "pct_participacion": 0.52,
+    "region": "ORINOQUÍA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 468.457561,
+    "compromisos_mmm": 241.098938,
+    "departamento": "Arauca",
+    "obligaciones_mmm": 71.620033,
+    "pagos_mmm": 70.808836,
+    "pct_compromisos": 51.47,
+    "pct_obligaciones": 15.29,
+    "pct_participacion": 0.55,
+    "region": "ORINOQUÍA",
+    "vigencia": 2026
+  }
+]

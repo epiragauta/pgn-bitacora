@@ -1,0 +1,152 @@
+[
+  {
+    "apr_vigente_mmm": 139.678,
+    "compromisos_mmm": 78.615,
+    "entidad": "DEPARTAMENTO ADMINISTRATIVO NACIONAL DE ESTADÍSTICA (DANE) - GESTIÓN GENERAL",
+    "obligaciones_mmm": 19.401,
+    "pct_c_av": 56.3,
+    "pct_o_av": 13.9,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 150.547,
+    "compromisos_mmm": 87.045,
+    "entidad": "DEPARTAMENTO ADMINISTRATIVO NACIONAL DE ESTADÍSTICA (DANE) - GESTIÓN GENERAL",
+    "obligaciones_mmm": 17.369,
+    "pct_c_av": 57.8,
+    "pct_o_av": 11.5,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 489.409,
+    "compromisos_mmm": 128.981,
+    "entidad": "DEPARTAMENTO ADMINISTRATIVO NACIONAL DE ESTADÍSTICA (DANE) - GESTIÓN GENERAL",
+    "obligaciones_mmm": 18.455,
+    "pct_c_av": 26.4,
+    "pct_o_av": 3.8,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 194.598,
+    "compromisos_mmm": 137.178,
+    "entidad": "DEPARTAMENTO ADMINISTRATIVO NACIONAL DE ESTADÍSTICA (DANE) - GESTIÓN GENERAL",
+    "obligaciones_mmm": 23.696,
+    "pct_c_av": 70.5,
+    "pct_o_av": 12.2,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 196.745,
+    "compromisos_mmm": 112.741,
+    "entidad": "DEPARTAMENTO ADMINISTRATIVO NACIONAL DE ESTADÍSTICA (DANE) - GESTIÓN GENERAL",
+    "obligaciones_mmm": 27.621,
+    "pct_c_av": 57.3,
+    "pct_o_av": 14,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 30,
+    "compromisos_mmm": 5.8,
+    "entidad": "FONDO ROTATORIO DEL DANE",
+    "obligaciones_mmm": 1.813,
+    "pct_c_av": 19.3,
+    "pct_o_av": 6,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 24.141,
+    "compromisos_mmm": 2.058,
+    "entidad": "FONDO ROTATORIO DEL DANE",
+    "obligaciones_mmm": 0.302,
+    "pct_c_av": 8.5,
+    "pct_o_av": 1.3,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 25,
+    "compromisos_mmm": 11.862,
+    "entidad": "FONDO ROTATORIO DEL DANE",
+    "obligaciones_mmm": 1,
+    "pct_c_av": 47.4,
+    "pct_o_av": 4,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 103.542,
+    "compromisos_mmm": 5.587,
+    "entidad": "FONDO ROTATORIO DEL DANE",
+    "obligaciones_mmm": 1.266,
+    "pct_c_av": 5.4,
+    "pct_o_av": 1.2,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 32.128,
+    "compromisos_mmm": 19.033,
+    "entidad": "FONDO ROTATORIO DEL DANE",
+    "obligaciones_mmm": 6.673,
+    "pct_c_av": 59.2,
+    "pct_o_av": 20.8,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 314.151,
+    "compromisos_mmm": 82.531,
+    "entidad": "INSTITUTO GEOGRÁFICO AGUSTÍN CODAZZI - IGAC",
+    "obligaciones_mmm": 9.345,
+    "pct_c_av": 26.3,
+    "pct_o_av": 3,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 226.844,
+    "compromisos_mmm": 46.503,
+    "entidad": "INSTITUTO GEOGRÁFICO AGUSTÍN CODAZZI - IGAC",
+    "obligaciones_mmm": 5.012,
+    "pct_c_av": 20.5,
+    "pct_o_av": 2.2,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 867.823,
+    "compromisos_mmm": 206.333,
+    "entidad": "INSTITUTO GEOGRÁFICO AGUSTÍN CODAZZI - IGAC",
+    "obligaciones_mmm": 10.727,
+    "pct_c_av": 23.8,
+    "pct_o_av": 1.2,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 600.485,
+    "compromisos_mmm": 167.565,
+    "entidad": "INSTITUTO GEOGRÁFICO AGUSTÍN CODAZZI - IGAC",
+    "obligaciones_mmm": 6.378,
+    "pct_c_av": 27.9,
+    "pct_o_av": 1.1,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 293.53,
+    "compromisos_mmm": 146.466,
+    "entidad": "INSTITUTO GEOGRÁFICO AGUSTÍN CODAZZI - IGAC",
+    "obligaciones_mmm": 20.932,
+    "pct_c_av": 49.9,
+    "pct_o_av": 7.1,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2026
+  }
+]

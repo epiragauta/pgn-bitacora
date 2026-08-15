@@ -1,0 +1,352 @@
+[
+  {
+    "apropiacion_mmm": 7237.924,
+    "compromisos_mmm": 3294.698,
+    "obligaciones_mmm": 1130.235,
+    "pagos_mmm": 1110.18,
+    "pct_compromisos": 45.52,
+    "region": "AMAZONIA",
+    "tipo": "departamento",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 25791.121,
+    "compromisos_mmm": 11934.735,
+    "obligaciones_mmm": 3991.992,
+    "pagos_mmm": 3891.171,
+    "pct_compromisos": 46.27,
+    "region": "ANDINA",
+    "tipo": "departamento",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 12044.675,
+    "compromisos_mmm": 5440.226,
+    "obligaciones_mmm": 1927.879,
+    "pagos_mmm": 1897.338,
+    "pct_compromisos": 45.17,
+    "region": "CARIBE - INSULAR",
+    "tipo": "departamento",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 11333.847,
+    "compromisos_mmm": 5168.528,
+    "obligaciones_mmm": 1034.479,
+    "pagos_mmm": 984.559,
+    "pct_compromisos": 45.6,
+    "region": "NACIONAL",
+    "tipo": "nacional",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 5981.394,
+    "compromisos_mmm": 4128.69,
+    "obligaciones_mmm": 658.21,
+    "pagos_mmm": 646.686,
+    "pct_compromisos": 69.03,
+    "region": "ORINOQUÍA",
+    "tipo": "departamento",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 4955.067,
+    "compromisos_mmm": 2340.671,
+    "obligaciones_mmm": 644.206,
+    "pagos_mmm": 637.592,
+    "pct_compromisos": 47.24,
+    "region": "PACÍFICO",
+    "tipo": "departamento",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 3497.828,
+    "compromisos_mmm": 1609.101,
+    "obligaciones_mmm": 327.783,
+    "pagos_mmm": 93.945,
+    "pct_compromisos": 46.0,
+    "region": "POR_REGIONALIZAR",
+    "tipo": "por_regionalizar",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 1207.761,
+    "compromisos_mmm": 38.087,
+    "obligaciones_mmm": 25.247,
+    "pagos_mmm": 23.836,
+    "pct_compromisos": 3.15,
+    "region": "AMAZONIA",
+    "tipo": "departamento",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 16288.063,
+    "compromisos_mmm": 476.713,
+    "obligaciones_mmm": 389.342,
+    "pagos_mmm": 418.97,
+    "pct_compromisos": 2.93,
+    "region": "ANDINA",
+    "tipo": "departamento",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 7784.25,
+    "compromisos_mmm": 190.045,
+    "obligaciones_mmm": 139.689,
+    "pagos_mmm": 163.886,
+    "pct_compromisos": 2.44,
+    "region": "CARIBE - INSULAR",
+    "tipo": "departamento",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 21620.362,
+    "compromisos_mmm": 1831.245,
+    "obligaciones_mmm": 1622.068,
+    "pagos_mmm": 1979.454,
+    "pct_compromisos": 8.47,
+    "region": "NACIONAL",
+    "tipo": "nacional",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 1427.025,
+    "compromisos_mmm": 82.124,
+    "obligaciones_mmm": 32.456,
+    "pagos_mmm": 22.557,
+    "pct_compromisos": 5.75,
+    "region": "ORINOQUÍA",
+    "tipo": "departamento",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 5834.983,
+    "compromisos_mmm": 189.394,
+    "obligaciones_mmm": 142.457,
+    "pagos_mmm": 140.001,
+    "pct_compromisos": 3.25,
+    "region": "PACÍFICO",
+    "tipo": "departamento",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 0.0,
+    "compromisos_mmm": 0.0,
+    "obligaciones_mmm": 0.0,
+    "pagos_mmm": 0.0,
+    "pct_compromisos": null,
+    "region": "POR_REGIONALIZAR",
+    "tipo": "por_regionalizar",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 2395.948,
+    "compromisos_mmm": 609.51,
+    "obligaciones_mmm": 155.075,
+    "pagos_mmm": 150.773,
+    "pct_compromisos": 25.44,
+    "region": "AMAZONIA",
+    "tipo": "departamento",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 23115.432,
+    "compromisos_mmm": 11777.691,
+    "obligaciones_mmm": 3472.153,
+    "pagos_mmm": 3348.848,
+    "pct_compromisos": 50.95,
+    "region": "ANDINA",
+    "tipo": "departamento",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 11471.661,
+    "compromisos_mmm": 4377.309,
+    "obligaciones_mmm": 1152.045,
+    "pagos_mmm": 1022.732,
+    "pct_compromisos": 38.16,
+    "region": "CARIBE - INSULAR",
+    "tipo": "departamento",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 39078.986,
+    "compromisos_mmm": 13328.684,
+    "obligaciones_mmm": 2165.066,
+    "pagos_mmm": 2112.749,
+    "pct_compromisos": 34.11,
+    "region": "NACIONAL",
+    "tipo": "nacional",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 2399.868,
+    "compromisos_mmm": 885.797,
+    "obligaciones_mmm": 231.697,
+    "pagos_mmm": 224.145,
+    "pct_compromisos": 36.91,
+    "region": "ORINOQUÍA",
+    "tipo": "departamento",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 8784.351,
+    "compromisos_mmm": 3169.909,
+    "obligaciones_mmm": 822.174,
+    "pagos_mmm": 793.285,
+    "pct_compromisos": 36.09,
+    "region": "PACÍFICO",
+    "tipo": "departamento",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 3731.277,
+    "compromisos_mmm": 48.943,
+    "obligaciones_mmm": 0.323,
+    "pagos_mmm": 0.323,
+    "pct_compromisos": 1.31,
+    "region": "POR_REGIONALIZAR",
+    "tipo": "por_regionalizar",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 2124.156,
+    "compromisos_mmm": 410.848,
+    "obligaciones_mmm": 49.078,
+    "pagos_mmm": 49.048,
+    "pct_compromisos": 19.34,
+    "region": "AMAZONIA",
+    "tipo": "departamento",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 22904.919,
+    "compromisos_mmm": 7928.802,
+    "obligaciones_mmm": 1872.802,
+    "pagos_mmm": 1862.732,
+    "pct_compromisos": 34.62,
+    "region": "ANDINA",
+    "tipo": "departamento",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 11509.903,
+    "compromisos_mmm": 2540.747,
+    "obligaciones_mmm": 370.302,
+    "pagos_mmm": 361.051,
+    "pct_compromisos": 22.07,
+    "region": "CARIBE - INSULAR",
+    "tipo": "departamento",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 24876.466,
+    "compromisos_mmm": 8322.583,
+    "obligaciones_mmm": 1139.644,
+    "pagos_mmm": 1099.819,
+    "pct_compromisos": 33.46,
+    "region": "NACIONAL",
+    "tipo": "nacional",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 2133.287,
+    "compromisos_mmm": 606.828,
+    "obligaciones_mmm": 113.196,
+    "pagos_mmm": 113.199,
+    "pct_compromisos": 28.45,
+    "region": "ORINOQUÍA",
+    "tipo": "departamento",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 8652.873,
+    "compromisos_mmm": 1951.833,
+    "obligaciones_mmm": 348.764,
+    "pagos_mmm": 346.719,
+    "pct_compromisos": 22.56,
+    "region": "PACÍFICO",
+    "tipo": "departamento",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 747.247,
+    "compromisos_mmm": 84.439,
+    "obligaciones_mmm": 25.543,
+    "pagos_mmm": 21.69,
+    "pct_compromisos": 11.3,
+    "region": "POR_REGIONALIZAR",
+    "tipo": "por_regionalizar",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 2821.23,
+    "compromisos_mmm": 1260.827,
+    "obligaciones_mmm": 300.906,
+    "pagos_mmm": 297.037,
+    "pct_compromisos": 44.69,
+    "region": "AMAZONIA",
+    "tipo": "departamento",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 27201.829,
+    "compromisos_mmm": 14462.947,
+    "obligaciones_mmm": 3764.375,
+    "pagos_mmm": 3751.706,
+    "pct_compromisos": 53.17,
+    "region": "ANDINA",
+    "tipo": "departamento",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 15588.841,
+    "compromisos_mmm": 7915.095,
+    "obligaciones_mmm": 2012.464,
+    "pagos_mmm": 1752.984,
+    "pct_compromisos": 50.77,
+    "region": "CARIBE - INSULAR",
+    "tipo": "departamento",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 25373.174,
+    "compromisos_mmm": 10582.675,
+    "obligaciones_mmm": 1761.435,
+    "pagos_mmm": 1699.381,
+    "pct_compromisos": 41.71,
+    "region": "NACIONAL",
+    "tipo": "nacional",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 2614.494,
+    "compromisos_mmm": 1402.9,
+    "obligaciones_mmm": 345.893,
+    "pagos_mmm": 341.171,
+    "pct_compromisos": 53.66,
+    "region": "ORINOQUÍA",
+    "tipo": "departamento",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 10445.649,
+    "compromisos_mmm": 5060.73,
+    "obligaciones_mmm": 1309.697,
+    "pagos_mmm": 1228.847,
+    "pct_compromisos": 48.45,
+    "region": "PACÍFICO",
+    "tipo": "departamento",
+    "vigencia": 2026
+  },
+  {
+    "apropiacion_mmm": 1190.454,
+    "compromisos_mmm": 69.128,
+    "obligaciones_mmm": 2.808,
+    "pagos_mmm": 2.744,
+    "pct_compromisos": 5.81,
+    "region": "POR_REGIONALIZAR",
+    "tipo": "por_regionalizar",
+    "vigencia": 2026
+  }
+]

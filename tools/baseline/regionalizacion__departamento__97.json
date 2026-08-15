@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 180.092219,
+    "compromisos_mmm": 106.209406,
+    "departamento": "Vaupés",
+    "obligaciones_mmm": 15.57962,
+    "pagos_mmm": 15.208266,
+    "pct_compromisos": 58.98,
+    "pct_obligaciones": 8.65,
+    "pct_participacion": 0.25,
+    "region": "AMAZONIA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 66.897487,
+    "compromisos_mmm": 4.749299,
+    "departamento": "Vaupés",
+    "obligaciones_mmm": 1.0167,
+    "pagos_mmm": 0.925095,
+    "pct_compromisos": 7.1,
+    "pct_obligaciones": 1.52,
+    "pct_participacion": 0.12,
+    "region": "AMAZONIA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 153.422433,
+    "compromisos_mmm": 58.747759,
+    "departamento": "Vaupés",
+    "obligaciones_mmm": 27.999665,
+    "pagos_mmm": 27.924212,
+    "pct_compromisos": 38.29,
+    "pct_obligaciones": 18.25,
+    "pct_participacion": 0.17,
+    "region": "AMAZONIA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 130.277639,
+    "compromisos_mmm": 33.085089,
+    "departamento": "Vaupés",
+    "obligaciones_mmm": 1.686308,
+    "pagos_mmm": 1.685823,
+    "pct_compromisos": 25.4,
+    "pct_obligaciones": 1.29,
+    "pct_participacion": 0.18,
+    "region": "AMAZONIA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 195.44641,
+    "compromisos_mmm": 83.190414,
+    "departamento": "Vaupés",
+    "obligaciones_mmm": 21.036462,
+    "pagos_mmm": 20.903077,
+    "pct_compromisos": 42.56,
+    "pct_obligaciones": 10.76,
+    "pct_participacion": 0.23,
+    "region": "AMAZONIA",
+    "vigencia": 2026
+  }
+]

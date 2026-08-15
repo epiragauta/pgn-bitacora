@@ -1,0 +1,32 @@
+[
+  {
+    "apr_vigente_mmm": 254.108,
+    "compromisos_mmm": 126.808,
+    "entidad": "FISCALÍA GENERAL DE LA NACIÓN - GESTIÓN GENERAL",
+    "obligaciones_mmm": 7.558,
+    "pct_c_av": 49.9,
+    "pct_o_av": 3,
+    "sector": "FISCALÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 136.871,
+    "compromisos_mmm": 41.084,
+    "entidad": "INSTITUTO NACIONAL DE MEDICINA LEGAL Y CIENCIAS FORENSES",
+    "obligaciones_mmm": 0.206,
+    "pct_c_av": 30,
+    "pct_o_av": 0.2,
+    "sector": "FISCALÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 16.072,
+    "compromisos_mmm": 1.608,
+    "entidad": "FONDO ESPECIAL PARA LA ADMINISTRACIÓN DE BIENES DE LA FISCALÍA GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 10,
+    "pct_o_av": 0,
+    "sector": "FISCALÍA",
+    "vigencia": 2026
+  }
+]

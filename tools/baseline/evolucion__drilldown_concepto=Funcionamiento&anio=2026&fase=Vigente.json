@@ -1,0 +1,80 @@
+[
+  {
+    "nivel": 2,
+    "nombre": "Funcionamiento",
+    "padre": "Total PGN",
+    "valor": 358166.148
+  },
+  {
+    "nivel": 2,
+    "nombre": "Funcionamiento como % del PIB",
+    "padre": "Funcionamiento",
+    "valor": 0.177
+  },
+  {
+    "nivel": 3,
+    "nombre": "Gastos de Personal",
+    "padre": "Funcionamiento",
+    "valor": 66677.814
+  },
+  {
+    "nivel": 3,
+    "nombre": "Adquisición de Bienes y Servicios",
+    "padre": "Funcionamiento",
+    "valor": 18373.507
+  },
+  {
+    "nivel": 3,
+    "nombre": "Transferencias",
+    "padre": "Funcionamiento",
+    "valor": 268547.085
+  },
+  {
+    "nivel": 4,
+    "nombre": "SGP",
+    "padre": "Transferencias",
+    "valor": 88352.506
+  },
+  {
+    "nivel": 4,
+    "nombre": "Pensiones",
+    "padre": "Transferencias",
+    "valor": 83126.345
+  },
+  {
+    "nivel": 4,
+    "nombre": "IES Pública sin Pensiones",
+    "padre": "Transferencias",
+    "valor": 11949.382
+  },
+  {
+    "nivel": 4,
+    "nombre": "Resto",
+    "padre": "Transferencias",
+    "valor": 85118.852
+  },
+  {
+    "nivel": 3,
+    "nombre": "Gastos de Comercialización y Producción",
+    "padre": "Funcionamiento",
+    "valor": 2106.118
+  },
+  {
+    "nivel": 3,
+    "nombre": "Adquisición de Activos Financieros",
+    "padre": "Funcionamiento",
+    "valor": 759.543
+  },
+  {
+    "nivel": 3,
+    "nombre": "Disminución de Pasivos",
+    "padre": "Funcionamiento",
+    "valor": 372.372
+  },
+  {
+    "nivel": 3,
+    "nombre": "Gastos por Tributos, Multas, Sanciones e Intereses de Mora",
+    "padre": "Funcionamiento",
+    "valor": 1329.709
+  }
+]

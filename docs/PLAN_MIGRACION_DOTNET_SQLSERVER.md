@@ -28,7 +28,7 @@
 | Componente | Estado |
 |---|---|
 | `api/main.py` | 949 líneas, FastAPI, **30 endpoints** en 8 secciones + metadatos + resumen |
-| `db/pgn.db` | SQLite, 1,2 MB, **26 tablas + 1 vista**, ~5.400 filas |
+| `db/pgn.db` | SQLite, 1,2 MB, **27 tablas + 1 vista**, ~5.400 filas |
 | `etl/*.py` | 11 scripts (openpyxl → SQLite), ~2.500 líneas |
 | `frontend/index.html` | 3.869 líneas, standalone, consume `/api` con fallback embebido |
 | Despliegue | Docker (python:3.11-slim), `fly.toml`, `render.yaml` |
@@ -46,7 +46,7 @@
   | `sqlite_sequence` | 24 | interna de SQLite; equivale a `IDENTITY` |
 
   El respaldo de `db/pgn.db` que se conserva en la Fase 7 mantiene la trazabilidad de estos datos.
-  Efecto: se migran **21 tablas + 1 vista** (de 26 tablas). Ninguna de las descartadas es referenciada por los 30 endpoints — verificado sobre `api/main.py`.
+  Efecto: se migran **23 tablas + 1 vista** (de 27). Ninguna de las descartadas es referenciada por los 30 endpoints — verificado sobre `api/main.py`.
 
 ---
 
@@ -181,7 +181,7 @@ tools/
 
 ## 5. Fases de ejecución
 
-### Fase 0 — Preparación y línea base *(0,5 día)*
+### Fase 0 — Preparación y línea base — ✅ **COMPLETADA** (2026-08-15)
 1. ~~Verificar conectividad al contenedor `umbraco-sqlserver`~~ → **hecho (2026-08-15)**: SQL Server 2022 CU22 (16.0.4225.2) Developer Edition sobre Ubuntu 22.04; collation de servidor `SQL_Latin1_General_CP1_CI_AS`; única base existente `sbn-ecp` (Umbraco).
 2. Crear BD y login dedicado (la collation de base anula la del servidor, sin efecto sobre Umbraco):
    ```sql
@@ -189,24 +189,53 @@ tools/
    CREATE LOGIN dnp_dpip_app WITH PASSWORD = '<la define el usuario>';
    -- en dnp_dpip: db_datareader + db_datawriter + db_ddladmin (el ETL crea/modifica objetos)
    ```
-3. **Capturar la línea base**: levantar la API Python y volcar la respuesta de los 30 endpoints (con todas sus combinaciones de parámetros) a `tools/baseline/*.json`.
-4. Extraer el esquema real: `sqlite3 db/pgn.db .schema` como insumo del DDL.
+3. **Línea base capturada**: `tools/endpoints.py` enumera **322 rutas** derivadas de los datos reales (cada vigencia, región, sector, transformador, concepto y código DANE presentes en la BD) y `tools/capture_baseline.py` congela su respuesta en `tools/baseline/` (2,3 MB). Resultado: **322/322 con HTTP 200, ninguna respuesta vacía.**
+4. Esquema real extraído de `db/pgn.db` (no de `schema.sql`, desactualizado — §2.1).
 
-**Salida:** BD vacía creada, credenciales en el entorno, 30+ JSON de referencia.
+**Resultados verificados:**
 
-### Fase 1 — Esquema SQL Server *(1 día)*
-- Escribir `db/mssql/001_schema.sql` con las **21 tablas vivas** (§2.1), aplicando §3.3, §3.4 y §3.6.
+| Elemento | Estado |
+|---|---|
+| BD `dnp_dpip` | creada, `COLLATE Modern_Spanish_CS_AS` |
+| Login `dnp_dpip_app` | creado, probado de extremo a extremo (lectura OK, sin acceso a `sbn-ecp`) |
+| Roles | `db_datareader`, `db_datawriter`, `db_ddladmin` sobre `dnp_dpip` |
+| Línea base | 322 rutas, 322 en HTTP 200, 0 vacías |
+| Entorno Python | `.venv-baseline/` (ignorado por git) con `fastapi 0.115.12` |
+
+> **Cobertura:** la primera pasada arrojó 6 respuestas vacías en `/api/transformaciones/{t}/componentes`. Causa: cada bitácora usa distinta convención de nombres (`CONVERGENCIA REGIONAL` en la 1, `5. CONVERGENCIA REGIONAL` en la 2) y el endpoint resuelve contra la bitácora más reciente. Se corrigió emparejando cada transformador con su `bitacora_id`; sin eso, esas 6 rutas no habrían verificado nada en la Fase 4.
+
+### Fase 1 — Esquema SQL Server — ✅ **COMPLETADA** (2026-08-15)
+- Escribir `db/mssql/001_schema.sql` con las **23 tablas vivas** (§2.1), aplicando §3.3, §3.4 y §3.6.
 - FKs explícitas a `metadatos_bitacora(id)`, `pgn_concepto(id)`, `dane_departamentos(codigo)`.
 - Índices equivalentes (normalizando `idx_vigencias_futuras_año` → `_anio`).
 - `002_views.sql` con `pgn_vista_crosstab` corregida (§3.1 ítems 5 y 6).
 
-**Criterio de aceptación:** los tres scripts corren sin error sobre la BD vacía y son idempotentes.
+**Criterio de aceptación — cumplido.** Los tres scripts corrieron sin error y se re-ejecutaron completos una segunda vez sin fallos ni duplicados (idempotencia verificada).
+
+**Objetos creados en `dnp_dpip`:**
+
+| Objeto | Cantidad |
+|---|---|
+| Tablas | 23 |
+| Vistas | 1 (`pgn_vista_crosstab`) |
+| Claves foráneas | 22 |
+| Restricciones `UNIQUE` | 16 |
+| Restricciones `CHECK` | 5 |
+| Índices propios | 12 |
+| Filas sembradas | 33 (`dane_departamentos`) |
+
+**Comprobaciones adicionales:**
+- Collation efectiva a nivel de columna: `Modern_Spanish_CS_AS`.
+- Sensibilidad a tildes activa: `WHERE region = N'PACIFICO'` devuelve **0 filas** frente a las 3 de `N'PACÍFICO'` — es el comportamiento que replica a SQLite y evita la fusión silenciosa de regiones descrita en §3.4.
+- La vista compila y responde (0 filas, con las tablas aún vacías).
+
+> **Hallazgo:** `pgn_concepto.padre_id` se autorreferencia con `ON DELETE SET NULL` en SQLite. SQL Server prohíbe acciones en cascada sobre una FK que apunta a su propia tabla (error 1785), así que se degradó a `NO ACTION`, documentado en el propio DDL. No afecta a la aplicación: no hay borrados de conceptos en el flujo actual.
 
 ### Fase 2 — Migración de datos *(0,5 día)*
 - `etl/migrate_sqlite_to_mssql.py`: recorre tabla por tabla en orden de dependencia FK, con `SET IDENTITY_INSERT ON` para **preservar los `id` originales** (crítico: `pgn_ejecucion.concepto_id` y todos los `bitacora_id` son referencias por id).
 - Validación automática: conteo de filas por tabla + suma de cada columna numérica, SQLite vs SQL Server.
 
-**Criterio de aceptación:** los 21 conteos de tabla iguales y todas las sumas coincidiendo dentro de 1e-6.
+**Criterio de aceptación:** los 22 conteos de tabla iguales y todas las sumas coincidiendo dentro de 1e-6 (23 tablas menos `dane_departamentos`, que la siembra `003_seed_dane.sql`).
 
 ### Fase 3 — Backend .NET *(3–4 días)*
 - Scaffold del proyecto, DI, CORS, static files, Swagger, `/health`.
@@ -258,10 +287,12 @@ tools/
 
 **Criterio de aceptación:** `docker compose up -d` levanta la API, Caddy la publica por HTTPS con certificado automático, y el dashboard carga contra la BD SQL Server.
 
-#### 6.1 Nota de seguridad y licenciamiento
+#### 6.1 Notas
 
+- **Entorno:** este servidor es de **desarrollo y pruebas**, no de producción. La instancia es Developer Edition, que es justamente la edición gratuita que Microsoft licencia para ese uso, con el conjunto completo de funciones de Enterprise. No hay nada que ajustar en licenciamiento.
+- **Destino de producción:** pendiente de definir cuando el proyecto salga de dev/test (§7, pregunta 9).
 - **Autenticación:** por decisión explícita, la API queda pública y de solo lectura, igual que hoy. Para facilitar el aseguramiento posterior, los endpoints se agrupan con `MapGroup("/api")`, de forma que añadir `.RequireAuthorization()` más adelante sea un cambio de una línea. Se mantiene CORS restringido a `GET`.
-- **Licenciamiento:** la instancia es **Developer Edition**, que Microsoft no licencia para uso productivo. Ya alberga la base de Umbraco, así que la situación es preexistente y excede el alcance de esta migración, pero conviene escalarlo a quien administre el servidor. Alternativa gratuita para producción: `MSSQL_PID=Express` (límite de 10 GB por base — sobra para 1,2 MB), aunque el cambio afectaría también a Umbraco.
+- **Contraseña del login:** `dnp_dpip_app` se creó con `CHECK_POLICY = OFF` para admitir exactamente la contraseña definida por el usuario, que no cumple la política de complejidad de SQL Server (exige 3 de 4 categorías: mayúsculas, minúsculas, dígitos, símbolos). Es aceptable en dev/test; al pasar a producción conviene una contraseña conforme y `CHECK_POLICY = ON`.
 
 ### Fase 7 — Retiro de FastAPI *(0,5 día)*
 - Eliminar `api/`, `requirements.txt` (queda el de ETL), `db/pgn.db` del flujo activo (conservar un respaldo etiquetado).
@@ -294,8 +325,10 @@ Resueltas el 2026-08-15:
 5. ~~**Autorización para `sqlcmd`**~~ → concedida; instancia verificada (Fase 0, paso 1).
 6. ~~**Prefijo de nomenclatura**~~ → `dnp_dpip` para base de datos y login (§1).
 
+4. ~~**Contraseña del login `dnp_dpip_app`**~~ → definida por el usuario y aplicada (§6.1). No se almacena en el repositorio; se inyecta por variable de entorno.
+
 Pendientes:
 
-4. **Contraseña del login `dnp_dpip_app`**: la define el usuario. No se almacena en el repositorio; se inyecta por variable de entorno.
 7. **Subdominio público** de la aplicación (ej. `bitacora.skaphe.com`), a confirmar con quien administre el DNS.
 8. **Archivos fuente `BASES_BITACORA/`**: no están en el repositorio y hacen falta para probar el ETL de extremo a extremo (Fase 5).
+9. **Destino de producción**: este servidor es de desarrollo y pruebas. Falta definir dónde se despliega la versión productiva y qué instancia de SQL Server usará.

@@ -1,0 +1,157 @@
+[
+  {
+    "pct_compromisos": 88,
+    "sector": "CONGRESO DE LA REPÚBLICA",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 80.8,
+    "sector": "DEPORTE Y RECREACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 78.5,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 78.2,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 74.7,
+    "sector": "REGISTRADURÍA",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 74.4,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 69.7,
+    "sector": "TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 67,
+    "sector": "SISTEMA INTEGRAL DE VERDAD, JUSTICIA, REPARACIÓN Y NO REPETICIÓN",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 63.5,
+    "sector": "IGUALDAD Y EQUIDAD",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 62.5,
+    "sector": "TRANSPORTE",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 62.4,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 62.4,
+    "sector": "SALUD Y PROTECCIÓN SOCIAL",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 61.6,
+    "sector": "CIENCIA, TECNOLOGÍA E INNOVACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 53.3,
+    "sector": "INFORMACIÓN ESTADÍSTICA",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 50.3,
+    "sector": "CULTURA",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 47.6,
+    "sector": "AMBIENTE Y DESARROLLO SOSTENIBLE",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 45.2,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 44.3,
+    "sector": "DEFENSA Y POLICÍA",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 43.5,
+    "sector": "PLANEACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 41.6,
+    "sector": "FISCALÍA",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 41.1,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 37.3,
+    "sector": "TRABAJO",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 37.1,
+    "sector": "JUSTICIA Y DEL DERECHO",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 37,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 32,
+    "sector": "INTELIGENCIA",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 31.1,
+    "sector": "INTERIOR",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 30.4,
+    "sector": "PRESIDENCIA DE LA REPÚBLICA",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 29.1,
+    "sector": "RELACIONES EXTERIORES",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 26.1,
+    "sector": "INCLUSIÓN SOCIAL Y RECONCILIACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 20.1,
+    "sector": "ORGANISMOS DE CONTROL",
+    "vigencia": 2026
+  },
+  {
+    "pct_compromisos": 16.2,
+    "sector": "RAMA JUDICIAL",
+    "vigencia": 2026
+  }
+]

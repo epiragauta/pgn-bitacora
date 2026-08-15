@@ -1,0 +1,18 @@
+[
+  {
+    "apropiacion_mmm": 21620.361984,
+    "codigo_dane": null,
+    "compromisos_mmm": 1831.244568,
+    "departamento": "Nacional",
+    "nombre_dane": null,
+    "obligaciones_mmm": 1622.067672,
+    "pagos_mmm": 1979.45406,
+    "pct_compromisos": 8.47,
+    "pct_obligaciones": 7.5,
+    "pct_pagos": 9.16,
+    "pct_participacion": 39.92,
+    "region": "NACIONAL",
+    "tipo": "nacional",
+    "vigencia": 2023
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 187.41463,
+    "compromisos_mmm": 100.171421,
+    "departamento": "Guainía",
+    "obligaciones_mmm": 22.385181,
+    "pagos_mmm": 21.927194,
+    "pct_compromisos": 53.45,
+    "pct_obligaciones": 11.94,
+    "pct_participacion": 0.26,
+    "region": "AMAZONIA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 77.302488,
+    "compromisos_mmm": 1.434067,
+    "departamento": "Guainía",
+    "obligaciones_mmm": 2.733406,
+    "pagos_mmm": 2.62048,
+    "pct_compromisos": 1.86,
+    "pct_obligaciones": 3.54,
+    "pct_participacion": 0.14,
+    "region": "AMAZONIA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 158.96448,
+    "compromisos_mmm": 78.141275,
+    "departamento": "Guainía",
+    "obligaciones_mmm": 13.08101,
+    "pagos_mmm": 12.88367,
+    "pct_compromisos": 49.16,
+    "pct_obligaciones": 8.23,
+    "pct_participacion": 0.17,
+    "region": "AMAZONIA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 207.716049,
+    "compromisos_mmm": 29.623867,
+    "departamento": "Guainía",
+    "obligaciones_mmm": 2.276374,
+    "pagos_mmm": 2.275458,
+    "pct_compromisos": 14.26,
+    "pct_obligaciones": 1.1,
+    "pct_participacion": 0.28,
+    "region": "AMAZONIA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 180.772653,
+    "compromisos_mmm": 97.575059,
+    "departamento": "Guainía",
+    "obligaciones_mmm": 26.228559,
+    "pagos_mmm": 26.104897,
+    "pct_compromisos": 53.98,
+    "pct_obligaciones": 14.51,
+    "pct_participacion": 0.21,
+    "region": "AMAZONIA",
+    "vigencia": 2026
+  }
+]

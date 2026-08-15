@@ -1,0 +1,352 @@
+[
+  {
+    "apr_vigente_mmm": 311.104,
+    "compromisos_mmm": 155.225,
+    "entidad": "AGENCIA NACIONAL DE HIDROCARBUROS - ANH",
+    "obligaciones_mmm": 66.676,
+    "pct_c_av": 49.9,
+    "pct_o_av": 21.4,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 374.874,
+    "compromisos_mmm": 41.807,
+    "entidad": "AGENCIA NACIONAL DE HIDROCARBUROS - ANH",
+    "obligaciones_mmm": 0.076,
+    "pct_c_av": 11.2,
+    "pct_o_av": 0,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 382.525,
+    "compromisos_mmm": 0.931,
+    "entidad": "AGENCIA NACIONAL DE HIDROCARBUROS - ANH",
+    "obligaciones_mmm": 0.043,
+    "pct_c_av": 0.2,
+    "pct_o_av": 0,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 385.89,
+    "compromisos_mmm": 8.578,
+    "entidad": "AGENCIA NACIONAL DE HIDROCARBUROS - ANH",
+    "obligaciones_mmm": 1.391,
+    "pct_c_av": 2.2,
+    "pct_o_av": 0.4,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 423.761,
+    "compromisos_mmm": 21.583,
+    "entidad": "AGENCIA NACIONAL DE HIDROCARBUROS - ANH",
+    "obligaciones_mmm": 0.836,
+    "pct_c_av": 5.1,
+    "pct_o_av": 0.2,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 19.5,
+    "compromisos_mmm": 13.745,
+    "entidad": "AGENCIA NACIONAL DE MINERÍA - ANM",
+    "obligaciones_mmm": 3.403,
+    "pct_c_av": 70.5,
+    "pct_o_av": 17.5,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 45.788,
+    "compromisos_mmm": 9.277,
+    "entidad": "AGENCIA NACIONAL DE MINERÍA - ANM",
+    "obligaciones_mmm": 2.6,
+    "pct_c_av": 20.3,
+    "pct_o_av": 5.7,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 156.95,
+    "compromisos_mmm": 34.797,
+    "entidad": "AGENCIA NACIONAL DE MINERÍA - ANM",
+    "obligaciones_mmm": 4.815,
+    "pct_c_av": 22.2,
+    "pct_o_av": 3.1,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 116.615,
+    "compromisos_mmm": 48.371,
+    "entidad": "AGENCIA NACIONAL DE MINERÍA - ANM",
+    "obligaciones_mmm": 4.777,
+    "pct_c_av": 41.5,
+    "pct_o_av": 4.1,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 90.423,
+    "compromisos_mmm": 49.29,
+    "entidad": "AGENCIA NACIONAL DE MINERÍA - ANM",
+    "obligaciones_mmm": 8.47,
+    "pct_c_av": 54.5,
+    "pct_o_av": 9.4,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 235.665,
+    "compromisos_mmm": 222.149,
+    "entidad": "INSTITUTO DE PLANIFICACIÓN Y PROMOCIÓN DE SOLUCIONES  ENERGÉTICAS PARA LAS ZONAS NO INTERCONECTADAS - IPSE",
+    "obligaciones_mmm": 0.924,
+    "pct_c_av": 94.3,
+    "pct_o_av": 0.4,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 100,
+    "compromisos_mmm": 5.402,
+    "entidad": "INSTITUTO DE PLANIFICACIÓN Y PROMOCIÓN DE SOLUCIONES  ENERGÉTICAS PARA LAS ZONAS NO INTERCONECTADAS - IPSE",
+    "obligaciones_mmm": 0.997,
+    "pct_c_av": 5.4,
+    "pct_o_av": 1,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 256.636,
+    "compromisos_mmm": 9.691,
+    "entidad": "INSTITUTO DE PLANIFICACIÓN Y PROMOCIÓN DE SOLUCIONES  ENERGÉTICAS PARA LAS ZONAS NO INTERCONECTADAS - IPSE",
+    "obligaciones_mmm": 1.288,
+    "pct_c_av": 3.8,
+    "pct_o_av": 0.5,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 137.763,
+    "compromisos_mmm": 8.905,
+    "entidad": "INSTITUTO DE PLANIFICACIÓN Y PROMOCIÓN DE SOLUCIONES  ENERGÉTICAS PARA LAS ZONAS NO INTERCONECTADAS - IPSE",
+    "obligaciones_mmm": 0.866,
+    "pct_c_av": 6.5,
+    "pct_o_av": 0.6,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 50,
+    "compromisos_mmm": 45.453,
+    "entidad": "INSTITUTO DE PLANIFICACIÓN Y PROMOCIÓN DE SOLUCIONES  ENERGÉTICAS PARA LAS ZONAS NO INTERCONECTADAS - IPSE",
+    "obligaciones_mmm": 1.034,
+    "pct_c_av": 90.9,
+    "pct_o_av": 2.1,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 14.771,
+    "compromisos_mmm": 5.296,
+    "entidad": "MINISTERIO DE MINAS Y ENERGIA - COMISION DE REGULACION DE ENERGIA Y GAS - CREG -",
+    "obligaciones_mmm": 0.285,
+    "pct_c_av": 35.9,
+    "pct_o_av": 1.9,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 15.953,
+    "compromisos_mmm": 7.567,
+    "entidad": "MINISTERIO DE MINAS Y ENERGIA - COMISION DE REGULACION DE ENERGIA Y GAS - CREG -",
+    "obligaciones_mmm": 0.605,
+    "pct_c_av": 47.4,
+    "pct_o_av": 3.8,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 24.053,
+    "compromisos_mmm": 11.731,
+    "entidad": "MINISTERIO DE MINAS Y ENERGIA - COMISION DE REGULACION DE ENERGIA Y GAS - CREG -",
+    "obligaciones_mmm": 1.484,
+    "pct_c_av": 48.8,
+    "pct_o_av": 6.2,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 11.523,
+    "compromisos_mmm": 3.213,
+    "entidad": "MINISTERIO DE MINAS Y ENERGÍA - COMISIÓN DE REGULACIÓN DE ENERGÍA Y GAS (CREG)",
+    "obligaciones_mmm": 0.508,
+    "pct_c_av": 27.9,
+    "pct_o_av": 4.4,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 11.2,
+    "compromisos_mmm": 5.033,
+    "entidad": "MINISTERIO DE MINAS Y ENERGÍA - COMISIÓN DE REGULACIÓN DE ENERGÍA Y GAS (CREG)",
+    "obligaciones_mmm": 0.429,
+    "pct_c_av": 44.9,
+    "pct_o_av": 3.8,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 4008.535,
+    "compromisos_mmm": 1196.248,
+    "entidad": "MINISTERIO DE MINAS Y ENERGÍA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 808.794,
+    "pct_c_av": 29.8,
+    "pct_o_av": 20.2,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 5075.124,
+    "compromisos_mmm": 1445.999,
+    "entidad": "MINISTERIO DE MINAS Y ENERGÍA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 1394.985,
+    "pct_c_av": 28.5,
+    "pct_o_av": 27.5,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 7153.967,
+    "compromisos_mmm": 2124.035,
+    "entidad": "MINISTERIO DE MINAS Y ENERGÍA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 1943.809,
+    "pct_c_av": 29.7,
+    "pct_o_av": 27.2,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 6635.212,
+    "compromisos_mmm": 1029.912,
+    "entidad": "MINISTERIO DE MINAS Y ENERGÍA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 13.396,
+    "pct_c_av": 15.5,
+    "pct_o_av": 0.2,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 9430.689,
+    "compromisos_mmm": 3563.798,
+    "entidad": "MINISTERIO DE MINAS Y ENERGÍA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 1784.912,
+    "pct_c_av": 37.8,
+    "pct_o_av": 18.9,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 175.224,
+    "compromisos_mmm": 70.944,
+    "entidad": "SERVICIO GEOLÓGICO COLOMBIANO",
+    "obligaciones_mmm": 12.395,
+    "pct_c_av": 40.5,
+    "pct_o_av": 7.1,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 210.638,
+    "compromisos_mmm": 8.036,
+    "entidad": "SERVICIO GEOLÓGICO COLOMBIANO",
+    "obligaciones_mmm": 1.559,
+    "pct_c_av": 3.8,
+    "pct_o_av": 0.7,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 61.421,
+    "compromisos_mmm": 13.634,
+    "entidad": "SERVICIO GEOLÓGICO COLOMBIANO",
+    "obligaciones_mmm": 0.418,
+    "pct_c_av": 22.2,
+    "pct_o_av": 0.7,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 100,
+    "compromisos_mmm": 21.44,
+    "entidad": "SERVICIO GEOLÓGICO COLOMBIANO",
+    "obligaciones_mmm": 0.977,
+    "pct_c_av": 21.4,
+    "pct_o_av": 1,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 80,
+    "compromisos_mmm": 32.788,
+    "entidad": "SERVICIO GEOLÓGICO COLOMBIANO",
+    "obligaciones_mmm": 6.002,
+    "pct_c_av": 41,
+    "pct_o_av": 7.5,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 25.604,
+    "compromisos_mmm": 10.673,
+    "entidad": "UNIDAD DE PLANEACIÓN MINERO ENERGÉTICA - UPME",
+    "obligaciones_mmm": 1.539,
+    "pct_c_av": 41.7,
+    "pct_o_av": 6,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 26.962,
+    "compromisos_mmm": 2.569,
+    "entidad": "UNIDAD DE PLANEACIÓN MINERO ENERGÉTICA - UPME",
+    "obligaciones_mmm": 0.396,
+    "pct_c_av": 9.5,
+    "pct_o_av": 1.5,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 27.168,
+    "compromisos_mmm": 8.564,
+    "entidad": "UNIDAD DE PLANEACIÓN MINERO ENERGÉTICA - UPME",
+    "obligaciones_mmm": 0.915,
+    "pct_c_av": 31.5,
+    "pct_o_av": 3.4,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 28.046,
+    "compromisos_mmm": 14.572,
+    "entidad": "UNIDAD DE PLANEACIÓN MINERO ENERGÉTICA - UPME",
+    "obligaciones_mmm": 1.427,
+    "pct_c_av": 52,
+    "pct_o_av": 5.1,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 42.894,
+    "compromisos_mmm": 28.227,
+    "entidad": "UNIDAD DE PLANEACIÓN MINERO ENERGÉTICA - UPME",
+    "obligaciones_mmm": 2.716,
+    "pct_c_av": 65.8,
+    "pct_o_av": 6.3,
+    "sector": "MINAS Y ENERGÍA",
+    "vigencia": 2026
+  }
+]

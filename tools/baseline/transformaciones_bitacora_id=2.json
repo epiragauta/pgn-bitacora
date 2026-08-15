@@ -1,0 +1,90 @@
+[
+  {
+    "compromisos_mmm": 16572.041,
+    "inversion_mmm": 35503.304,
+    "obligaciones_mmm": 4083.985,
+    "pagos_mmm": 4058.551,
+    "pct_c_av": 46.7,
+    "pct_o_av": 11.5,
+    "pct_p_av": 11.4,
+    "peso_pct": 40.16,
+    "transformador": "2. SEGURIDAD HUMANA Y JUSTICIA SOCIAL"
+  },
+  {
+    "compromisos_mmm": 15113.276,
+    "inversion_mmm": 25915.254,
+    "obligaciones_mmm": 1846.252,
+    "pagos_mmm": 1741.363,
+    "pct_c_av": 58.3,
+    "pct_o_av": 7.1,
+    "pct_p_av": 6.7,
+    "peso_pct": 29.32,
+    "transformador": "5. CONVERGENCIA REGIONAL"
+  },
+  {
+    "compromisos_mmm": 4931.831,
+    "inversion_mmm": 12448.769,
+    "obligaciones_mmm": 1939.085,
+    "pagos_mmm": 1671.524,
+    "pct_c_av": 39.6,
+    "pct_o_av": 15.6,
+    "pct_p_av": 13.4,
+    "peso_pct": 14.08,
+    "transformador": "4. TRANSFORMACIÓN PRODUCTIVA, INTERNACIONALIZACIÓN Y ACCIÓN CLIMÁTICA"
+  },
+  {
+    "compromisos_mmm": 5465.586,
+    "inversion_mmm": 8929.251,
+    "obligaciones_mmm": 1734.663,
+    "pagos_mmm": 1733.578,
+    "pct_c_av": 61.2,
+    "pct_o_av": 19.4,
+    "pct_p_av": 19.4,
+    "peso_pct": 10.1,
+    "transformador": "7. ACTORES DIFERENCIALES PARA EL CAMBIO"
+  },
+  {
+    "compromisos_mmm": 1165.309,
+    "inversion_mmm": 2638.933,
+    "obligaciones_mmm": 196.117,
+    "pagos_mmm": 181.584,
+    "pct_c_av": 44.2,
+    "pct_o_av": 7.4,
+    "pct_p_av": 6.9,
+    "peso_pct": 2.99,
+    "transformador": "1. ORDENAMIENTO DEL TERRITORIO ALREDEDOR DEL AGUA Y JUSTICIA AMBIENTAL"
+  },
+  {
+    "compromisos_mmm": 1010.666,
+    "inversion_mmm": 1803.058,
+    "obligaciones_mmm": 95.238,
+    "pagos_mmm": 80.44,
+    "pct_c_av": 56.1,
+    "pct_o_av": 5.3,
+    "pct_p_av": 4.5,
+    "peso_pct": 2.04,
+    "transformador": "3. DERECHO HUMANO A LA ALIMENTACIÓN"
+  },
+  {
+    "compromisos_mmm": 714.822,
+    "inversion_mmm": 1040.136,
+    "obligaciones_mmm": 65.464,
+    "pagos_mmm": 64.935,
+    "pct_c_av": 68.7,
+    "pct_o_av": 6.3,
+    "pct_p_av": 6.2,
+    "peso_pct": 1.18,
+    "transformador": "8. ESTABILIDAD MACROECONÓMICA"
+  },
+  {
+    "compromisos_mmm": 12.876,
+    "inversion_mmm": 122.526,
+    "obligaciones_mmm": 1.301,
+    "pagos_mmm": 1.282,
+    "pct_c_av": 10.5,
+    "pct_o_av": 1.1,
+    "pct_p_av": 1,
+    "peso_pct": 0.14,
+    "transformador": "6. PAZ TOTAL E INTEGRAL"
+  }
+]

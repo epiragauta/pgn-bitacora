@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 1523.389683,
+    "compromisos_mmm": 711.196899,
+    "departamento": "Bolívar",
+    "obligaciones_mmm": 264.321188,
+    "pagos_mmm": 260.867951,
+    "pct_compromisos": 46.69,
+    "pct_obligaciones": 17.35,
+    "pct_participacion": 2.15,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 1456.451386,
+    "compromisos_mmm": 34.447884,
+    "departamento": "Bolívar",
+    "obligaciones_mmm": 26.912136,
+    "pagos_mmm": 26.611847,
+    "pct_compromisos": 2.37,
+    "pct_obligaciones": 1.85,
+    "pct_participacion": 2.69,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 2137.459672,
+    "compromisos_mmm": 880.915054,
+    "departamento": "Bolívar",
+    "obligaciones_mmm": 232.463651,
+    "pagos_mmm": 200.664559,
+    "pct_compromisos": 41.21,
+    "pct_obligaciones": 10.88,
+    "pct_participacion": 2.35,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 2179.042896,
+    "compromisos_mmm": 682.264983,
+    "departamento": "Bolívar",
+    "obligaciones_mmm": 98.710054,
+    "pagos_mmm": 89.882572,
+    "pct_compromisos": 31.31,
+    "pct_obligaciones": 4.53,
+    "pct_participacion": 2.99,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 3016.375166,
+    "compromisos_mmm": 1712.197488,
+    "departamento": "Bolívar",
+    "obligaciones_mmm": 358.301259,
+    "pagos_mmm": 357.676004,
+    "pct_compromisos": 56.76,
+    "pct_obligaciones": 11.88,
+    "pct_participacion": 3.54,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2026
+  }
+]

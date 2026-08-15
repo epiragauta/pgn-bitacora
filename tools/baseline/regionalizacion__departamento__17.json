@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 1750.250018,
+    "compromisos_mmm": 818.42442,
+    "departamento": "Caldas",
+    "obligaciones_mmm": 266.492955,
+    "pagos_mmm": 262.190765,
+    "pct_compromisos": 46.76,
+    "pct_obligaciones": 15.23,
+    "pct_participacion": 2.47,
+    "region": "ANDINA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 807.501589,
+    "compromisos_mmm": 22.29994,
+    "departamento": "Caldas",
+    "obligaciones_mmm": 21.943309,
+    "pagos_mmm": 23.125075,
+    "pct_compromisos": 2.76,
+    "pct_obligaciones": 2.72,
+    "pct_participacion": 1.49,
+    "region": "ANDINA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 816.655701,
+    "compromisos_mmm": 396.068198,
+    "departamento": "Caldas",
+    "obligaciones_mmm": 133.04857,
+    "pagos_mmm": 129.259709,
+    "pct_compromisos": 48.5,
+    "pct_obligaciones": 16.29,
+    "pct_participacion": 0.9,
+    "region": "ANDINA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 865.289051,
+    "compromisos_mmm": 317.172923,
+    "departamento": "Caldas",
+    "obligaciones_mmm": 110.347773,
+    "pagos_mmm": 110.331909,
+    "pct_compromisos": 36.66,
+    "pct_obligaciones": 12.75,
+    "pct_participacion": 1.19,
+    "region": "ANDINA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 1090.6626,
+    "compromisos_mmm": 657.678981,
+    "departamento": "Caldas",
+    "obligaciones_mmm": 215.506618,
+    "pagos_mmm": 215.044976,
+    "pct_compromisos": 60.3,
+    "pct_obligaciones": 19.76,
+    "pct_participacion": 1.28,
+    "region": "ANDINA",
+    "vigencia": 2026
+  }
+]

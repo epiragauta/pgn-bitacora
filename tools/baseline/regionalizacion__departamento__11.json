@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 2735.951671,
+    "compromisos_mmm": 1099.067959,
+    "departamento": "Bogotá, D.C.",
+    "obligaciones_mmm": 417.543637,
+    "pagos_mmm": 399.677009,
+    "pct_compromisos": 40.17,
+    "pct_obligaciones": 15.26,
+    "pct_participacion": 3.86,
+    "region": "ANDINA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 4125.882806,
+    "compromisos_mmm": 148.8928,
+    "departamento": "Bogotá, D.C.",
+    "obligaciones_mmm": 88.761307,
+    "pagos_mmm": 78.305903,
+    "pct_compromisos": 3.61,
+    "pct_obligaciones": 2.15,
+    "pct_participacion": 7.62,
+    "region": "ANDINA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 5922.464715,
+    "compromisos_mmm": 2848.329496,
+    "departamento": "Bogotá, D.C.",
+    "obligaciones_mmm": 1150.988315,
+    "pagos_mmm": 1143.067097,
+    "pct_compromisos": 48.09,
+    "pct_obligaciones": 19.43,
+    "pct_participacion": 6.51,
+    "region": "ANDINA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 5906.099887,
+    "compromisos_mmm": 1515.429046,
+    "departamento": "Bogotá, D.C.",
+    "obligaciones_mmm": 484.913274,
+    "pagos_mmm": 479.668148,
+    "pct_compromisos": 25.66,
+    "pct_obligaciones": 8.21,
+    "pct_participacion": 8.1,
+    "region": "ANDINA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 5974.365537,
+    "compromisos_mmm": 2266.571748,
+    "departamento": "Bogotá, D.C.",
+    "obligaciones_mmm": 679.877747,
+    "pagos_mmm": 673.939935,
+    "pct_compromisos": 37.94,
+    "pct_obligaciones": 11.38,
+    "pct_participacion": 7.01,
+    "region": "ANDINA",
+    "vigencia": 2026
+  }
+]

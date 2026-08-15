@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 579.763706,
+    "compromisos_mmm": 254.443708,
+    "departamento": "Amazonas",
+    "obligaciones_mmm": 86.005232,
+    "pagos_mmm": 83.374689,
+    "pct_compromisos": 43.89,
+    "pct_obligaciones": 14.83,
+    "pct_participacion": 0.82,
+    "region": "AMAZONIA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 120.014809,
+    "compromisos_mmm": 6.450381,
+    "departamento": "Amazonas",
+    "obligaciones_mmm": 4.471473,
+    "pagos_mmm": 3.817404,
+    "pct_compromisos": 5.37,
+    "pct_obligaciones": 3.73,
+    "pct_participacion": 0.22,
+    "region": "AMAZONIA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 243.898878,
+    "compromisos_mmm": 63.463376,
+    "departamento": "Amazonas",
+    "obligaciones_mmm": 6.396659,
+    "pagos_mmm": 6.676884,
+    "pct_compromisos": 26.02,
+    "pct_obligaciones": 2.62,
+    "pct_participacion": 0.27,
+    "region": "AMAZONIA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 255.827109,
+    "compromisos_mmm": 55.768787,
+    "departamento": "Amazonas",
+    "obligaciones_mmm": 11.919738,
+    "pagos_mmm": 11.917895,
+    "pct_compromisos": 21.8,
+    "pct_obligaciones": 4.66,
+    "pct_participacion": 0.35,
+    "region": "AMAZONIA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 402.14323,
+    "compromisos_mmm": 180.723274,
+    "departamento": "Amazonas",
+    "obligaciones_mmm": 41.394128,
+    "pagos_mmm": 40.90568,
+    "pct_compromisos": 44.94,
+    "pct_obligaciones": 10.29,
+    "pct_participacion": 0.47,
+    "region": "AMAZONIA",
+    "vigencia": 2026
+  }
+]

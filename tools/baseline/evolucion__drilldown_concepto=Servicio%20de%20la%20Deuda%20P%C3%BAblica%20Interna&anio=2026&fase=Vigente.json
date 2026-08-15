@@ -1,0 +1,26 @@
+[
+  {
+    "nivel": 3,
+    "nombre": "Servicio de la Deuda Pública Interna",
+    "padre": "Servicio de la Deuda",
+    "valor": 62043.663
+  },
+  {
+    "nivel": 4,
+    "nombre": "Principal - Deuda Interna",
+    "padre": "Servicio de la Deuda Pública Interna",
+    "valor": 10342.874
+  },
+  {
+    "nivel": 4,
+    "nombre": "Intereses - Deuda Interna",
+    "padre": "Servicio de la Deuda Pública Interna",
+    "valor": 48777.532
+  },
+  {
+    "nivel": 4,
+    "nombre": "Comisiones y Otros Gastos - Deuda Interna",
+    "padre": "Servicio de la Deuda Pública Interna",
+    "valor": 257.929
+  }
+]

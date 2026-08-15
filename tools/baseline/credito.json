@@ -1,0 +1,155 @@
+[
+  {
+    "contrato": "9641",
+    "desembolsado_usd": 83333333,
+    "fuente": "BM",
+    "monto_usd": 300000000,
+    "nombre": "Programa para Mejorar el Acceso de la Población Vulnerable a Servicios de Salud y Aumentar la Resiliencia del Sistema de Salud",
+    "nombre_corto": "PforR Salud 2 - BM",
+    "sector": "Salud"
+  },
+  {
+    "contrato": "5853",
+    "desembolsado_usd": 73000000,
+    "fuente": "BID",
+    "monto_usd": 150000000,
+    "nombre": "Programa para Mejorar el Acceso de la Población Vulnerable a Servicios de Salud y Aumentar la Resiliencia del Sistema de Salud",
+    "nombre_corto": "PBR Salud 2 - BID",
+    "sector": "Salud"
+  },
+  {
+    "contrato": "9246",
+    "desembolsado_usd": 33468197.6,
+    "fuente": "BM",
+    "monto_usd": 100000000,
+    "nombre": "Programa de Vivienda Resiliente e Incluyente en Colombia",
+    "nombre_corto": "Vivienda Resiliente",
+    "sector": "Territorial"
+  },
+  {
+    "contrato": "8937",
+    "desembolsado_usd": 60912093.46,
+    "fuente": "BM",
+    "monto_usd": 100000000,
+    "nombre": "Programa para la adopción e implementación de un Catastro Multipropósito Rural – Urbano",
+    "nombre_corto": "Catastro Multipropósito - BM",
+    "sector": "Catastro"
+  },
+  {
+    "contrato": "5283",
+    "desembolsado_usd": 40865768.85,
+    "fuente": "BID",
+    "monto_usd": 90977372.87,
+    "nombre": "Programa de transformación Digital de la Justicia en Colombia (CCLIP)",
+    "nombre_corto": "Digitalización Justicia",
+    "sector": "Justicia"
+  },
+  {
+    "contrato": "5850",
+    "desembolsado_usd": 11736681.84,
+    "fuente": "BID",
+    "monto_usd": 81500000,
+    "nombre": "Programa para mejorar el acceso y la graduación en educación superior en Colombia",
+    "nombre_corto": "Educación superior",
+    "sector": "Educación"
+  },
+  {
+    "contrato": "12391",
+    "desembolsado_usd": 31987063,
+    "fuente": "CAF",
+    "monto_usd": 80000000,
+    "nombre": "Programa de Transformación de Ambientes y Espacios Educativos",
+    "nombre_corto": "Infraestrucrura Educativa",
+    "sector": "Educación"
+  },
+  {
+    "contrato": "9360",
+    "desembolsado_usd": 64300000,
+    "fuente": "BM",
+    "monto_usd": 78600000,
+    "nombre": "Programa para mejora la Equidad, las Competencias Socioemocionales y los Aprendizajes - \"PROMISE\"",
+    "nombre_corto": "PforR Educaciòn - PROMISE",
+    "sector": "Educación"
+  },
+  {
+    "contrato": "11052",
+    "desembolsado_usd": 1436476,
+    "fuente": "CAF",
+    "monto_usd": 76000000,
+    "nombre": "Programa de Agua Potable y Saneamiento para la zona urbana y rural del distrito de Buenaventura Fase I - Colombia",
+    "nombre_corto": "Alcantarillado de Buenaventura",
+    "sector": "APSB"
+  },
+  {
+    "contrato": "5193",
+    "desembolsado_usd": 40152750,
+    "fuente": "BID",
+    "monto_usd": 50000000,
+    "nombre": "Agua Potable y Alcantarillado para la Guajira",
+    "nombre_corto": "Acueducto y alcantarillado Guajira",
+    "sector": "APSB"
+  },
+  {
+    "contrato": "4856",
+    "desembolsado_usd": 16999878.78,
+    "fuente": "BID",
+    "monto_usd": 50000000,
+    "nombre": "Programa para la adopción e implementación de un catastro multipropósito rural-urbano",
+    "nombre_corto": "Catastro Multipropósito - BID",
+    "sector": "Catastro"
+  },
+  {
+    "contrato": "12302",
+    "desembolsado_usd": 0,
+    "fuente": "CAF",
+    "monto_usd": 35300000,
+    "nombre": "\"Programa de iniciativas climáticamente inteligentes para la adaptación al cambio climático y la sostenibilidad en sistemas productivos agropecuarios\"",
+    "nombre_corto": "Adaptación del Sector Agropecuario a la Variabilidad y Cambio Climático en Colombia",
+    "sector": "Agricultura"
+  },
+  {
+    "contrato": "5738",
+    "desembolsado_usd": 10540143,
+    "fuente": "BID",
+    "monto_usd": 34500000,
+    "nombre": "Programa de Eficiencia Energética Caribe Energía Sostenible – PEECES",
+    "nombre_corto": "PEECES",
+    "sector": "Energía"
+  },
+  {
+    "contrato": "5385",
+    "desembolsado_usd": 22269605.38,
+    "fuente": "BID",
+    "monto_usd": 30000000,
+    "nombre": "Digitalización de la Contraloría General de la República",
+    "nombre_corto": "Digitalización CGR",
+    "sector": "Organos de Control"
+  },
+  {
+    "contrato": "4446",
+    "desembolsado_usd": 22719545,
+    "fuente": "BID",
+    "monto_usd": 30000000,
+    "nombre": "Programa de Saneamiento para la Ciudad de Mocoa, en el Marco del Plan para la Reconstrucción del Municipio de Mocoa",
+    "nombre_corto": "Alcantarillado Mocoa",
+    "sector": "APSB"
+  },
+  {
+    "contrato": "5286",
+    "desembolsado_usd": 7792000,
+    "fuente": "BID",
+    "monto_usd": 15000000,
+    "nombre": "Programa para la Consolidación de Esquemas de Participación Privada en Infraestructura",
+    "nombre_corto": "PAPP CEPP Fase II",
+    "sector": "Planeación"
+  },
+  {
+    "contrato": "5229",
+    "desembolsado_usd": 12513885,
+    "fuente": "BID",
+    "monto_usd": 15000000,
+    "nombre": "Programa de Apoyo a la Implementación a la Política Nacional Logística Fase 2",
+    "nombre_corto": "Política Nal Logítica 2",
+    "sector": "Planeación"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "anio": 2022,
+    "pagado": 59528.264,
+    "tasa_ejecucion_pct": 16.9,
+    "vigente": 352280.601
+  },
+  {
+    "anio": 2023,
+    "pagado": 79630.781,
+    "tasa_ejecucion_pct": 19.63,
+    "vigente": 405654.65
+  },
+  {
+    "anio": 2024,
+    "pagado": 79036.285,
+    "tasa_ejecucion_pct": 15.72,
+    "vigente": 502624.433
+  },
+  {
+    "anio": 2025,
+    "pagado": 80791.393,
+    "tasa_ejecucion_pct": 15.37,
+    "vigente": 525803.132
+  },
+  {
+    "anio": 2026,
+    "pagado": 105156.814,
+    "tasa_ejecucion_pct": 19.22,
+    "vigente": 547017.088
+  }
+]

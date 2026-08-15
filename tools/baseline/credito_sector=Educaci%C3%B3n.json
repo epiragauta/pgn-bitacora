@@ -1,0 +1,29 @@
+[
+  {
+    "contrato": "5850",
+    "desembolsado_usd": 11736681.84,
+    "fuente": "BID",
+    "monto_usd": 81500000,
+    "nombre": "Programa para mejorar el acceso y la graduación en educación superior en Colombia",
+    "nombre_corto": "Educación superior",
+    "sector": "Educación"
+  },
+  {
+    "contrato": "12391",
+    "desembolsado_usd": 31987063,
+    "fuente": "CAF",
+    "monto_usd": 80000000,
+    "nombre": "Programa de Transformación de Ambientes y Espacios Educativos",
+    "nombre_corto": "Infraestrucrura Educativa",
+    "sector": "Educación"
+  },
+  {
+    "contrato": "9360",
+    "desembolsado_usd": 64300000,
+    "fuente": "BM",
+    "monto_usd": 78600000,
+    "nombre": "Programa para mejora la Equidad, las Competencias Socioemocionales y los Aprendizajes - \"PROMISE\"",
+    "nombre_corto": "PforR Educaciòn - PROMISE",
+    "sector": "Educación"
+  }
+]

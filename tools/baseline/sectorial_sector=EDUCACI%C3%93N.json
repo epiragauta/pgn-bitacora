@@ -1,0 +1,402 @@
+[
+  {
+    "apr_vigente_mmm": 3543.208,
+    "compromisos_mmm": 1676.512,
+    "entidad": "MINISTERIO EDUCACIÓN NACIONAL - GESTIÓN GENERAL",
+    "obligaciones_mmm": 54.838,
+    "pct_c_av": 47.3,
+    "pct_o_av": 1.5,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 2999.537,
+    "compromisos_mmm": 2426.343,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE ALIMENTACIÓN ESCOLAR",
+    "obligaciones_mmm": 566.793,
+    "pct_c_av": 80.9,
+    "pct_o_av": 18.9,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 84.745,
+    "compromisos_mmm": 84.745,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD NACIONAL DE COLOMBIA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 100,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 28.037,
+    "compromisos_mmm": 6.184,
+    "entidad": "ESCUELA TECNOLÓGICA INSTITUTO TÉCNICO CENTRAL",
+    "obligaciones_mmm": 1.965,
+    "pct_c_av": 22.1,
+    "pct_o_av": 7,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 24.689,
+    "compromisos_mmm": 1.312,
+    "entidad": "INSTITUTO TOLIMENSE DE FORMACIÓN TÉCNICA PROFESIONAL",
+    "obligaciones_mmm": 0.372,
+    "pct_c_av": 5.3,
+    "pct_o_av": 1.5,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 12.152,
+    "compromisos_mmm": 4.274,
+    "entidad": "INSTITUTO TÉCNICO NACIONAL DE COMERCIO SIMÓN RODRÍGUEZ DE CALI",
+    "obligaciones_mmm": 1.913,
+    "pct_c_av": 35.2,
+    "pct_o_av": 15.7,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 10.296,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DE ANTIOQUIA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 9.522,
+    "compromisos_mmm": 2.637,
+    "entidad": "INSTITUTO NACIONAL DE FORMACIÓN TÉCNICA PROFESIONAL DE SAN JUAN DEL CESAR",
+    "obligaciones_mmm": 0.554,
+    "pct_c_av": 27.7,
+    "pct_o_av": 5.8,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 8.749,
+    "compromisos_mmm": 8.749,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DEL VALLE",
+    "obligaciones_mmm": 8.749,
+    "pct_c_av": 100,
+    "pct_o_av": 100,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 7.74,
+    "compromisos_mmm": 7.74,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD PEDAGOGICA Y TECNOLOGICA DE COLOMBIA",
+    "obligaciones_mmm": 7.74,
+    "pct_c_av": 100,
+    "pct_o_av": 100,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 7.498,
+    "compromisos_mmm": 4.385,
+    "entidad": "INSTITUTO NACIONAL DE FORMACIÓN TÉCNICA PROFESIONAL DE SAN ANDRÉS Y PROVIDENCIA",
+    "obligaciones_mmm": 0.919,
+    "pct_c_av": 58.5,
+    "pct_o_av": 12.3,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 6.067,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DE CALDAS",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 5.603,
+    "compromisos_mmm": 5.603,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DEL CAUCA",
+    "obligaciones_mmm": 2.802,
+    "pct_c_av": 100,
+    "pct_o_av": 50,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 5.432,
+    "compromisos_mmm": 5.432,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD INDUSTRIAL DE SANTANDER",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 100,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 4.962,
+    "compromisos_mmm": 4.962,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD TECNOLOGICA DE PEREIRA",
+    "obligaciones_mmm": 4.962,
+    "pct_c_av": 100,
+    "pct_o_av": 100,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 4.655,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DEL ATLÁNTICO",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 4.553,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD SURCOLOMBIANA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 3.899,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DE CARTAGENA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 3.797,
+    "compromisos_mmm": 3.797,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD PEDAGOGICA NACIONAL",
+    "obligaciones_mmm": 3.797,
+    "pct_c_av": 100,
+    "pct_o_av": 100,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 3.657,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD NACIONAL ABIERTA Y A DISTANCIA UNAD",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 3.382,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DEL MAGDALENA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 3.096,
+    "compromisos_mmm": 3.096,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DE NARIÑO",
+    "obligaciones_mmm": 3.096,
+    "pct_c_av": 100,
+    "pct_o_av": 100,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 2.942,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DE PAMPLONA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 2.921,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DEL TOLIMA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 2.92,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DEL QUINDÍO",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 2.885,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DE CORDOBA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 2.46,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD FRANCISCO DE PAULA SANTANDER",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 2.22,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD MILITAR NUEVA GRANADA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 2.15,
+    "compromisos_mmm": 2.15,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DE LOS LLANOS",
+    "obligaciones_mmm": 2.15,
+    "pct_c_av": 100,
+    "pct_o_av": 100,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 2.111,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DISTRITAL FRANCISCO JOSE DE CALDAS",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 1.908,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DE SUCRE",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 1.724,
+    "compromisos_mmm": 1.724,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD COLEGIO MAYOR DE CUNDINAMARCA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 100,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 1.724,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD FRANCISCO DE PAULA SANTANDER SECCIONAL OCAÑA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 1.666,
+    "compromisos_mmm": 1.666,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DE CUNDINAMARCA",
+    "obligaciones_mmm": 1.666,
+    "pct_c_av": 100,
+    "pct_o_av": 100,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 1.664,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DE LA AMAZONIA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 1.527,
+    "compromisos_mmm": 1.527,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD POPULAR DEL CESAR",
+    "obligaciones_mmm": 1.527,
+    "pct_c_av": 100,
+    "pct_o_av": 100,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 1.358,
+    "compromisos_mmm": 1.358,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD INTERNACIONAL DEL TRÓPICO AMERICANO",
+    "obligaciones_mmm": 1.358,
+    "pct_c_av": 100,
+    "pct_o_av": 100,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 1.312,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD TECNOLOGICA DEL CHOCO DIEGO LUIS CORDOBA",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 0.788,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD AUTÓNOMA INDÍGENA INTERCULTURAL UAIIN CRIC",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 0.742,
+    "compromisos_mmm": 0,
+    "entidad": "UNIVERSIDADES PÚBLICAS - UNIVERSIDAD DEL PACIFICO",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "EDUCACIÓN",
+    "vigencia": 2026
+  }
+]

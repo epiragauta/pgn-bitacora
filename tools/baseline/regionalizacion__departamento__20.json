@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 2220.708391,
+    "compromisos_mmm": 1071.92166,
+    "departamento": "Cesar",
+    "obligaciones_mmm": 348.460752,
+    "pagos_mmm": 346.676381,
+    "pct_compromisos": 48.27,
+    "pct_obligaciones": 15.69,
+    "pct_participacion": 3.13,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 1226.577348,
+    "compromisos_mmm": 20.37705,
+    "departamento": "Cesar",
+    "obligaciones_mmm": 15.910603,
+    "pagos_mmm": 28.119774,
+    "pct_compromisos": 1.66,
+    "pct_obligaciones": 1.3,
+    "pct_participacion": 2.26,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 1559.244191,
+    "compromisos_mmm": 735.090354,
+    "departamento": "Cesar",
+    "obligaciones_mmm": 159.607252,
+    "pagos_mmm": 130.385114,
+    "pct_compromisos": 47.14,
+    "pct_obligaciones": 10.24,
+    "pct_participacion": 1.71,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 1351.380197,
+    "compromisos_mmm": 332.547048,
+    "departamento": "Cesar",
+    "obligaciones_mmm": 41.682277,
+    "pagos_mmm": 41.658421,
+    "pct_compromisos": 24.61,
+    "pct_obligaciones": 3.08,
+    "pct_participacion": 1.85,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 1806.450011,
+    "compromisos_mmm": 852.444923,
+    "departamento": "Cesar",
+    "obligaciones_mmm": 207.258204,
+    "pagos_mmm": 206.040051,
+    "pct_compromisos": 47.19,
+    "pct_obligaciones": 11.47,
+    "pct_participacion": 2.12,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2026
+  }
+]

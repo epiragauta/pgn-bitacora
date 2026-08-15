@@ -1,0 +1,72 @@
+[
+  {
+    "desembolsado_usd": 156333333.0,
+    "monto_usd": 450000000.0,
+    "n_creditos": 2,
+    "pct_desembolsado": 34.74,
+    "sector": "Salud"
+  },
+  {
+    "desembolsado_usd": 108023744.84,
+    "monto_usd": 240100000.0,
+    "n_creditos": 3,
+    "pct_desembolsado": 44.99,
+    "sector": "Educación"
+  },
+  {
+    "desembolsado_usd": 64308771.0,
+    "monto_usd": 156000000.0,
+    "n_creditos": 3,
+    "pct_desembolsado": 41.22,
+    "sector": "APSB"
+  },
+  {
+    "desembolsado_usd": 77911972.24,
+    "monto_usd": 150000000.0,
+    "n_creditos": 2,
+    "pct_desembolsado": 51.94,
+    "sector": "Catastro"
+  },
+  {
+    "desembolsado_usd": 33468197.6,
+    "monto_usd": 100000000.0,
+    "n_creditos": 1,
+    "pct_desembolsado": 33.47,
+    "sector": "Territorial"
+  },
+  {
+    "desembolsado_usd": 40865768.85,
+    "monto_usd": 90977372.87,
+    "n_creditos": 1,
+    "pct_desembolsado": 44.92,
+    "sector": "Justicia"
+  },
+  {
+    "desembolsado_usd": 0.0,
+    "monto_usd": 35300000.0,
+    "n_creditos": 1,
+    "pct_desembolsado": 0.0,
+    "sector": "Agricultura"
+  },
+  {
+    "desembolsado_usd": 10540143.0,
+    "monto_usd": 34500000.0,
+    "n_creditos": 1,
+    "pct_desembolsado": 30.55,
+    "sector": "Energía"
+  },
+  {
+    "desembolsado_usd": 20305885.0,
+    "monto_usd": 30000000.0,
+    "n_creditos": 2,
+    "pct_desembolsado": 67.69,
+    "sector": "Planeación"
+  },
+  {
+    "desembolsado_usd": 22269605.38,
+    "monto_usd": 30000000.0,
+    "n_creditos": 1,
+    "pct_desembolsado": 74.23,
+    "sector": "Organos de Control"
+  }
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "rubro": "Funcionamiento",
+    "vigencia": 2022,
+    "vigente_mmm": 210990.473
+  },
+  {
+    "rubro": "Servicio Deuda",
+    "vigencia": 2022,
+    "vigente_mmm": 71664.58
+  },
+  {
+    "rubro": "Inversión",
+    "vigencia": 2022,
+    "vigente_mmm": 69625.548
+  },
+  {
+    "rubro": "Funcionamiento",
+    "vigencia": 2023,
+    "vigente_mmm": 253434.419
+  },
+  {
+    "rubro": "Servicio Deuda",
+    "vigencia": 2023,
+    "vigente_mmm": 77997.999
+  },
+  {
+    "rubro": "Inversión",
+    "vigencia": 2023,
+    "vigente_mmm": 74222.233
+  },
+  {
+    "rubro": "Funcionamiento",
+    "vigencia": 2024,
+    "vigente_mmm": 308251.277
+  },
+  {
+    "rubro": "Servicio Deuda",
+    "vigencia": 2024,
+    "vigente_mmm": 94521.847
+  },
+  {
+    "rubro": "Inversión",
+    "vigencia": 2024,
+    "vigente_mmm": 99851.309
+  },
+  {
+    "rubro": "Funcionamiento",
+    "vigencia": 2025,
+    "vigente_mmm": 329236.808
+  },
+  {
+    "rubro": "Servicio Deuda",
+    "vigencia": 2025,
+    "vigente_mmm": 112605.186
+  },
+  {
+    "rubro": "Inversión",
+    "vigencia": 2025,
+    "vigente_mmm": 83961.138
+  },
+  {
+    "rubro": "Funcionamiento",
+    "vigencia": 2026,
+    "vigente_mmm": 358166.148
+  },
+  {
+    "rubro": "Servicio Deuda",
+    "vigencia": 2026,
+    "vigente_mmm": 100449.708
+  },
+  {
+    "rubro": "Inversión",
+    "vigencia": 2026,
+    "vigente_mmm": 88401.231
+  }
+]

@@ -1,0 +1,202 @@
+[
+  {
+    "apr_vigente_mmm": 20.178,
+    "compromisos_mmm": 7.768,
+    "entidad": "ARCHIVO GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 1.053,
+    "pct_c_av": 38.5,
+    "pct_o_av": 5.2,
+    "sector": "CULTURA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 11.314,
+    "compromisos_mmm": 3.099,
+    "entidad": "ARCHIVO GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 0.376,
+    "pct_c_av": 27.4,
+    "pct_o_av": 3.3,
+    "sector": "CULTURA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 30.517,
+    "compromisos_mmm": 2.974,
+    "entidad": "ARCHIVO GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 0.329,
+    "pct_c_av": 9.7,
+    "pct_o_av": 1.1,
+    "sector": "CULTURA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 34.525,
+    "compromisos_mmm": 6.256,
+    "entidad": "ARCHIVO GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 0.491,
+    "pct_c_av": 18.1,
+    "pct_o_av": 1.4,
+    "sector": "CULTURA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 31.04,
+    "compromisos_mmm": 17.025,
+    "entidad": "ARCHIVO GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 1.977,
+    "pct_c_av": 54.8,
+    "pct_o_av": 6.4,
+    "sector": "CULTURA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 5.252,
+    "compromisos_mmm": 4.626,
+    "entidad": "INSTITUTO CARO Y CUERVO",
+    "obligaciones_mmm": 0.555,
+    "pct_c_av": 88.1,
+    "pct_o_av": 10.6,
+    "sector": "CULTURA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 5.652,
+    "compromisos_mmm": 3.257,
+    "entidad": "INSTITUTO CARO Y CUERVO",
+    "obligaciones_mmm": 0.405,
+    "pct_c_av": 57.6,
+    "pct_o_av": 7.2,
+    "sector": "CULTURA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 13.96,
+    "compromisos_mmm": 6.411,
+    "entidad": "INSTITUTO CARO Y CUERVO",
+    "obligaciones_mmm": 0.523,
+    "pct_c_av": 45.9,
+    "pct_o_av": 3.7,
+    "sector": "CULTURA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 14.454,
+    "compromisos_mmm": 7.218,
+    "entidad": "INSTITUTO CARO Y CUERVO",
+    "obligaciones_mmm": 0.48,
+    "pct_c_av": 49.9,
+    "pct_o_av": 3.3,
+    "sector": "CULTURA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 13.463,
+    "compromisos_mmm": 10.291,
+    "entidad": "INSTITUTO CARO Y CUERVO",
+    "obligaciones_mmm": 1.261,
+    "pct_c_av": 76.4,
+    "pct_o_av": 9.4,
+    "sector": "CULTURA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 8.619,
+    "compromisos_mmm": 6.669,
+    "entidad": "INSTITUTO COLOMBIANO DE ANTROPOLOGÍA E HISTORIA",
+    "obligaciones_mmm": 1.583,
+    "pct_c_av": 77.4,
+    "pct_o_av": 18.4,
+    "sector": "CULTURA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 24.087,
+    "compromisos_mmm": 4.778,
+    "entidad": "INSTITUTO COLOMBIANO DE ANTROPOLOGÍA E HISTORIA",
+    "obligaciones_mmm": 1.13,
+    "pct_c_av": 19.8,
+    "pct_o_av": 4.7,
+    "sector": "CULTURA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 35.247,
+    "compromisos_mmm": 13.182,
+    "entidad": "INSTITUTO COLOMBIANO DE ANTROPOLOGÍA E HISTORIA",
+    "obligaciones_mmm": 1.729,
+    "pct_c_av": 37.4,
+    "pct_o_av": 4.9,
+    "sector": "CULTURA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 33.682,
+    "compromisos_mmm": 16.899,
+    "entidad": "INSTITUTO COLOMBIANO DE ANTROPOLOGÍA E HISTORIA",
+    "obligaciones_mmm": 1.996,
+    "pct_c_av": 50.2,
+    "pct_o_av": 5.9,
+    "sector": "CULTURA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 21.84,
+    "compromisos_mmm": 11.034,
+    "entidad": "INSTITUTO COLOMBIANO DE ANTROPOLOGÍA E HISTORIA",
+    "obligaciones_mmm": 2.27,
+    "pct_c_av": 50.5,
+    "pct_o_av": 10.4,
+    "sector": "CULTURA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 333.719,
+    "compromisos_mmm": 157.328,
+    "entidad": "MINISTERIO DE CULTURA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 31.02,
+    "pct_c_av": 47.1,
+    "pct_o_av": 9.3,
+    "sector": "CULTURA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 393.592,
+    "compromisos_mmm": 42.935,
+    "entidad": "MINISTERIO DE CULTURA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 19.183,
+    "pct_c_av": 10.9,
+    "pct_o_av": 4.9,
+    "sector": "CULTURA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 949.198,
+    "compromisos_mmm": 209.661,
+    "entidad": "MINISTERIO DE LAS CULTURAS, LAS ARTES Y LOS SABERES - GESTION GENERAL",
+    "obligaciones_mmm": 68.985,
+    "pct_c_av": 22.1,
+    "pct_o_av": 7.3,
+    "sector": "CULTURA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 651.355,
+    "compromisos_mmm": 200.357,
+    "entidad": "MINISTERIO DE LAS CULTURAS, LAS ARTES Y LOS SABERES - GESTION GENERAL",
+    "obligaciones_mmm": 31.32,
+    "pct_c_av": 30.8,
+    "pct_o_av": 4.8,
+    "sector": "CULTURA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 673,
+    "compromisos_mmm": 333.279,
+    "entidad": "MINISTERIO DE LAS CULTURAS, LAS ARTES Y LOS SABERES - GESTION GENERAL",
+    "obligaciones_mmm": 32.302,
+    "pct_c_av": 49.5,
+    "pct_o_av": 4.8,
+    "sector": "CULTURA",
+    "vigencia": 2026
+  }
+]

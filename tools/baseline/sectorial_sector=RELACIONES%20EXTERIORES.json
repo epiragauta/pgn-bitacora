@@ -1,0 +1,22 @@
+[
+  {
+    "apr_vigente_mmm": 132.459,
+    "compromisos_mmm": 29.492,
+    "entidad": "FONDO ROTATORIO DEL MINISTERIO DE RELACIONES EXTERIORES",
+    "obligaciones_mmm": 12.032,
+    "pct_c_av": 22.3,
+    "pct_o_av": 9.1,
+    "sector": "RELACIONES EXTERIORES",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 68.634,
+    "compromisos_mmm": 28.955,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL MIGRACIÓN COLOMBIA",
+    "obligaciones_mmm": 3.888,
+    "pct_c_av": 42.2,
+    "pct_o_av": 5.7,
+    "sector": "RELACIONES EXTERIORES",
+    "vigencia": 2026
+  }
+]

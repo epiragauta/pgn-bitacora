@@ -1,0 +1,62 @@
+[
+  {
+    "agua_potable_mmm": 2563.771,
+    "alimentacion_escolar_mmm": 247.277,
+    "educacion_mmm": 27883.626,
+    "fonpet_ae_mmm": 1434.208,
+    "proposito_general_mmm": 5507.36,
+    "resguardos_indigenas_mmm": 257.168,
+    "riberenos_mmm": 39.564,
+    "salud_mmm": 11631.923,
+    "total_mmm": 49564.897,
+    "vigencia": 2022
+  },
+  {
+    "agua_potable_mmm": 2837.006,
+    "alimentacion_escolar_mmm": 273.631,
+    "educacion_mmm": 30740.559,
+    "fonpet_ae_mmm": 1840.947,
+    "proposito_general_mmm": 6094.309,
+    "resguardos_indigenas_mmm": 284.576,
+    "riberenos_mmm": 43.781,
+    "salud_mmm": 12821.6,
+    "total_mmm": 54936.408,
+    "vigencia": 2023
+  },
+  {
+    "agua_potable_mmm": 3624.436,
+    "alimentacion_escolar_mmm": 349.579,
+    "educacion_mmm": 39685.899,
+    "fonpet_ae_mmm": 2281.446,
+    "proposito_general_mmm": 7785.825,
+    "resguardos_indigenas_mmm": 363.562,
+    "riberenos_mmm": 55.933,
+    "salud_mmm": 16394.2,
+    "total_mmm": 70540.88,
+    "vigencia": 2024
+  },
+  {
+    "agua_potable_mmm": 4212.202,
+    "alimentacion_escolar_mmm": 406.269,
+    "educacion_mmm": 46158.59,
+    "fonpet_ae_mmm": 2610.25,
+    "proposito_general_mmm": 9048.433,
+    "resguardos_indigenas_mmm": 422.52,
+    "riberenos_mmm": 65.003,
+    "salud_mmm": 19060.915,
+    "total_mmm": 81984.183,
+    "vigencia": 2025
+  },
+  {
+    "agua_potable_mmm": 4556.34,
+    "alimentacion_escolar_mmm": 439.462,
+    "educacion_mmm": 47209.299,
+    "fonpet_ae_mmm": 72.359,
+    "proposito_general_mmm": 9787.692,
+    "resguardos_indigenas_mmm": 457.04,
+    "riberenos_mmm": 70.314,
+    "salud_mmm": 20622.282,
+    "total_mmm": 83214.788,
+    "vigencia": 2026
+  }
+]

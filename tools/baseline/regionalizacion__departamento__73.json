@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 4553.23963,
+    "compromisos_mmm": 1936.210328,
+    "departamento": "Tolima",
+    "obligaciones_mmm": 874.265384,
+    "pagos_mmm": 865.353906,
+    "pct_compromisos": 42.52,
+    "pct_obligaciones": 19.2,
+    "pct_participacion": 6.43,
+    "region": "ANDINA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 789.774643,
+    "compromisos_mmm": 32.792025,
+    "departamento": "Tolima",
+    "obligaciones_mmm": 35.967323,
+    "pagos_mmm": 34.886868,
+    "pct_compromisos": 4.15,
+    "pct_obligaciones": 4.55,
+    "pct_participacion": 1.46,
+    "region": "ANDINA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 1168.783471,
+    "compromisos_mmm": 443.987989,
+    "departamento": "Tolima",
+    "obligaciones_mmm": 123.449509,
+    "pagos_mmm": 116.306413,
+    "pct_compromisos": 37.99,
+    "pct_obligaciones": 10.56,
+    "pct_participacion": 1.28,
+    "region": "ANDINA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 1162.262585,
+    "compromisos_mmm": 236.534097,
+    "departamento": "Tolima",
+    "obligaciones_mmm": 49.828613,
+    "pagos_mmm": 49.787916,
+    "pct_compromisos": 20.35,
+    "pct_obligaciones": 4.29,
+    "pct_participacion": 1.59,
+    "region": "ANDINA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 1468.265363,
+    "compromisos_mmm": 720.09368,
+    "departamento": "Tolima",
+    "obligaciones_mmm": 241.506238,
+    "pagos_mmm": 240.657319,
+    "pct_compromisos": 49.04,
+    "pct_obligaciones": 16.45,
+    "pct_participacion": 1.72,
+    "region": "ANDINA",
+    "vigencia": 2026
+  }
+]

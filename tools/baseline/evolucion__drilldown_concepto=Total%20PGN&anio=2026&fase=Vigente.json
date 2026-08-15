@@ -1,0 +1,170 @@
+[
+  {
+    "nivel": 1,
+    "nombre": "Total PGN",
+    "padre": "",
+    "valor": 547017.088
+  },
+  {
+    "nivel": 1,
+    "nombre": "PGN como % del PIB",
+    "padre": "Total PGN",
+    "valor": 0.271
+  },
+  {
+    "nivel": 2,
+    "nombre": "Funcionamiento",
+    "padre": "Total PGN",
+    "valor": 358166.148
+  },
+  {
+    "nivel": 2,
+    "nombre": "Funcionamiento como % del PIB",
+    "padre": "Funcionamiento",
+    "valor": 0.177
+  },
+  {
+    "nivel": 3,
+    "nombre": "Gastos de Personal",
+    "padre": "Funcionamiento",
+    "valor": 66677.814
+  },
+  {
+    "nivel": 3,
+    "nombre": "Adquisición de Bienes y Servicios",
+    "padre": "Funcionamiento",
+    "valor": 18373.507
+  },
+  {
+    "nivel": 3,
+    "nombre": "Transferencias",
+    "padre": "Funcionamiento",
+    "valor": 268547.085
+  },
+  {
+    "nivel": 4,
+    "nombre": "SGP",
+    "padre": "Transferencias",
+    "valor": 88352.506
+  },
+  {
+    "nivel": 4,
+    "nombre": "Pensiones",
+    "padre": "Transferencias",
+    "valor": 83126.345
+  },
+  {
+    "nivel": 4,
+    "nombre": "IES Pública sin Pensiones",
+    "padre": "Transferencias",
+    "valor": 11949.382
+  },
+  {
+    "nivel": 4,
+    "nombre": "Resto",
+    "padre": "Transferencias",
+    "valor": 85118.852
+  },
+  {
+    "nivel": 3,
+    "nombre": "Gastos de Comercialización y Producción",
+    "padre": "Funcionamiento",
+    "valor": 2106.118
+  },
+  {
+    "nivel": 3,
+    "nombre": "Adquisición de Activos Financieros",
+    "padre": "Funcionamiento",
+    "valor": 759.543
+  },
+  {
+    "nivel": 3,
+    "nombre": "Disminución de Pasivos",
+    "padre": "Funcionamiento",
+    "valor": 372.372
+  },
+  {
+    "nivel": 3,
+    "nombre": "Gastos por Tributos, Multas, Sanciones e Intereses de Mora",
+    "padre": "Funcionamiento",
+    "valor": 1329.709
+  },
+  {
+    "nivel": 2,
+    "nombre": "Servicio de la Deuda",
+    "padre": "Total PGN",
+    "valor": 100449.708
+  },
+  {
+    "nivel": 2,
+    "nombre": "Servicio de la Deuda como % del PIB",
+    "padre": "Servicio de la Deuda",
+    "valor": 0.05
+  },
+  {
+    "nivel": 3,
+    "nombre": "Servicio de la Deuda Pública Externa",
+    "padre": "Servicio de la Deuda",
+    "valor": 38406.045
+  },
+  {
+    "nivel": 4,
+    "nombre": "Principal - Deuda Externa",
+    "padre": "Servicio de la Deuda Pública Externa",
+    "valor": 17273.045
+  },
+  {
+    "nivel": 4,
+    "nombre": "Intereses - Deuda Externa",
+    "padre": "Servicio de la Deuda Pública Externa",
+    "valor": 19987.062
+  },
+  {
+    "nivel": 4,
+    "nombre": "Comisiones y Otros Gastos - Deuda Externa",
+    "padre": "Servicio de la Deuda Pública Externa",
+    "valor": 1145.938
+  },
+  {
+    "nivel": 3,
+    "nombre": "Servicio de la Deuda Pública Interna",
+    "padre": "Servicio de la Deuda",
+    "valor": 62043.663
+  },
+  {
+    "nivel": 4,
+    "nombre": "Principal - Deuda Interna",
+    "padre": "Servicio de la Deuda Pública Interna",
+    "valor": 10342.874
+  },
+  {
+    "nivel": 4,
+    "nombre": "Intereses - Deuda Interna",
+    "padre": "Servicio de la Deuda Pública Interna",
+    "valor": 48777.532
+  },
+  {
+    "nivel": 4,
+    "nombre": "Comisiones y Otros Gastos - Deuda Interna",
+    "padre": "Servicio de la Deuda Pública Interna",
+    "valor": 257.929
+  },
+  {
+    "nivel": 3,
+    "nombre": "Fondo de Contingencias",
+    "padre": "Servicio de la Deuda",
+    "valor": 2665.328
+  },
+  {
+    "nivel": 2,
+    "nombre": "Inversión",
+    "padre": "Total PGN",
+    "valor": 88401.231
+  },
+  {
+    "nivel": 2,
+    "nombre": "Inversión como % del PIB",
+    "padre": "Inversión",
+    "valor": 0.044
+  }
+]

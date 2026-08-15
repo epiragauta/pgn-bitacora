@@ -1,0 +1,22 @@
+[
+  {
+    "apr_vigente_mmm": 139.564,
+    "compromisos_mmm": 119.564,
+    "entidad": "CÁMARA DE REPRESENTANTES",
+    "obligaciones_mmm": 34.979,
+    "pct_c_av": 85.7,
+    "pct_o_av": 25.1,
+    "sector": "CONGRESO DE LA REPÚBLICA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 60.436,
+    "compromisos_mmm": 56.379,
+    "entidad": "SENADO DE LA REPÚBLICA",
+    "obligaciones_mmm": 0.739,
+    "pct_c_av": 93.3,
+    "pct_o_av": 1.2,
+    "sector": "CONGRESO DE LA REPÚBLICA",
+    "vigencia": 2026
+  }
+]

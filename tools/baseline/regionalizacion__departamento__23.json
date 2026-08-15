@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 1520.58307,
+    "compromisos_mmm": 698.457245,
+    "departamento": "Córdoba",
+    "obligaciones_mmm": 197.627959,
+    "pagos_mmm": 196.591356,
+    "pct_compromisos": 45.93,
+    "pct_obligaciones": 13.0,
+    "pct_participacion": 2.15,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 1077.022027,
+    "compromisos_mmm": 26.572931,
+    "departamento": "Córdoba",
+    "obligaciones_mmm": 23.778052,
+    "pagos_mmm": 23.635696,
+    "pct_compromisos": 2.47,
+    "pct_obligaciones": 2.21,
+    "pct_participacion": 1.99,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 1585.286284,
+    "compromisos_mmm": 495.834494,
+    "departamento": "Córdoba",
+    "obligaciones_mmm": 160.465438,
+    "pagos_mmm": 149.231314,
+    "pct_compromisos": 31.28,
+    "pct_obligaciones": 10.12,
+    "pct_participacion": 1.74,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 1400.778256,
+    "compromisos_mmm": 229.702386,
+    "departamento": "Córdoba",
+    "obligaciones_mmm": 40.088392,
+    "pagos_mmm": 39.942237,
+    "pct_compromisos": 16.4,
+    "pct_obligaciones": 2.86,
+    "pct_participacion": 1.92,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 1908.177734,
+    "compromisos_mmm": 824.467351,
+    "departamento": "Córdoba",
+    "obligaciones_mmm": 293.072629,
+    "pagos_mmm": 292.464593,
+    "pct_compromisos": 43.21,
+    "pct_obligaciones": 15.36,
+    "pct_participacion": 2.24,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2026
+  }
+]

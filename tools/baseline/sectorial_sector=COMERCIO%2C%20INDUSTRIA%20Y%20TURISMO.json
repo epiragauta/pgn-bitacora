@@ -1,0 +1,62 @@
+[
+  {
+    "apr_vigente_mmm": 181.479,
+    "compromisos_mmm": 159.715,
+    "entidad": "MINCOMERCIO INDUSTRIA TURISMO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 41.819,
+    "pct_c_av": 88,
+    "pct_o_av": 23,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 75.791,
+    "compromisos_mmm": 64.002,
+    "entidad": "SUPERINTENDENCIA DE INDUSTRIA Y COMERCIO",
+    "obligaciones_mmm": 7.731,
+    "pct_c_av": 84.4,
+    "pct_o_av": 10.2,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 32.374,
+    "compromisos_mmm": 16.691,
+    "entidad": "SUPERINTENDENCIA DE SOCIEDADES",
+    "obligaciones_mmm": 1.68,
+    "pct_c_av": 51.6,
+    "pct_o_av": 5.2,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 15.263,
+    "compromisos_mmm": 8.517,
+    "entidad": "INSTITUTO NACIONAL DE METROLOGÍA - INM",
+    "obligaciones_mmm": 0.95,
+    "pct_c_av": 55.8,
+    "pct_o_av": 6.2,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 14.455,
+    "compromisos_mmm": 5.332,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL JUNTA CENTRAL CONTADORES",
+    "obligaciones_mmm": 1.006,
+    "pct_c_av": 36.9,
+    "pct_o_av": 7,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 14.307,
+    "compromisos_mmm": 7.658,
+    "entidad": "MINCOMERCIO INDUSTRIA TURISMO - DIRECCIÓN GENERAL DE COMERCIO EXTERIOR",
+    "obligaciones_mmm": 1.884,
+    "pct_c_av": 53.5,
+    "pct_o_av": 13.2,
+    "sector": "COMERCIO, INDUSTRIA Y TURISMO",
+    "vigencia": 2026
+  }
+]

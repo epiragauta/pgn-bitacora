@@ -1,0 +1,452 @@
+[
+  {
+    "apr_vigente_mmm": 606.088,
+    "compromisos_mmm": 3.39,
+    "entidad": "FONDO ADAPTACIÓN",
+    "obligaciones_mmm": 0.1,
+    "pct_c_av": 0.6,
+    "pct_o_av": 0,
+    "sector": "HACIENDA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 113.194,
+    "compromisos_mmm": 0,
+    "entidad": "FONDO ADAPTACIÓN",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 0,
+    "pct_o_av": 0,
+    "sector": "HACIENDA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 148.648,
+    "compromisos_mmm": 148.648,
+    "entidad": "FONDO ADAPTACIÓN",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 100,
+    "pct_o_av": 0,
+    "sector": "HACIENDA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 623.766,
+    "compromisos_mmm": 590.016,
+    "entidad": "FONDO ADAPTACIÓN",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 94.6,
+    "pct_o_av": 0,
+    "sector": "HACIENDA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 505.288,
+    "compromisos_mmm": 404.814,
+    "entidad": "FONDO ADAPTACIÓN",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 80.1,
+    "pct_o_av": 0,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 3168.71,
+    "compromisos_mmm": 1342.025,
+    "entidad": "MINISTERIO DE HACIENDA Y CRÉDITO PÚBLICO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 49.185,
+    "pct_c_av": 42.4,
+    "pct_o_av": 1.6,
+    "sector": "HACIENDA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 9394.995,
+    "compromisos_mmm": 1433.755,
+    "entidad": "MINISTERIO DE HACIENDA Y CRÉDITO PÚBLICO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 67.24,
+    "pct_c_av": 15.3,
+    "pct_o_av": 0.7,
+    "sector": "HACIENDA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 5187.208,
+    "compromisos_mmm": 2467.524,
+    "entidad": "MINISTERIO DE HACIENDA Y CRÉDITO PÚBLICO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 137.493,
+    "pct_c_av": 47.6,
+    "pct_o_av": 2.7,
+    "sector": "HACIENDA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 3610.66,
+    "compromisos_mmm": 927.524,
+    "entidad": "MINISTERIO DE HACIENDA Y CRÉDITO PÚBLICO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 144.115,
+    "pct_c_av": 25.7,
+    "pct_o_av": 4,
+    "sector": "HACIENDA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 4168.913,
+    "compromisos_mmm": 3308.456,
+    "entidad": "MINISTERIO DE HACIENDA Y CRÉDITO PÚBLICO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 543.105,
+    "pct_c_av": 79.4,
+    "pct_o_av": 13,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 50.289,
+    "compromisos_mmm": 12.148,
+    "entidad": "SUPERINTENDENCIA DE LA ECONOMÍA SOLIDARIA",
+    "obligaciones_mmm": 1.789,
+    "pct_c_av": 24.2,
+    "pct_o_av": 3.6,
+    "sector": "HACIENDA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 44.68,
+    "compromisos_mmm": 22.39,
+    "entidad": "SUPERINTENDENCIA DE LA ECONOMÍA SOLIDARIA",
+    "obligaciones_mmm": 17.507,
+    "pct_c_av": 50.1,
+    "pct_o_av": 39.2,
+    "sector": "HACIENDA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 24.92,
+    "compromisos_mmm": 14.939,
+    "entidad": "SUPERINTENDENCIA DE LA ECONOMÍA SOLIDARIA",
+    "obligaciones_mmm": 1.846,
+    "pct_c_av": 59.9,
+    "pct_o_av": 7.4,
+    "sector": "HACIENDA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 10,
+    "compromisos_mmm": 5.538,
+    "entidad": "SUPERINTENDENCIA DE LA ECONOMÍA SOLIDARIA",
+    "obligaciones_mmm": 0.769,
+    "pct_c_av": 55.4,
+    "pct_o_av": 7.7,
+    "sector": "HACIENDA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 20,
+    "compromisos_mmm": 10.352,
+    "entidad": "SUPERINTENDENCIA DE LA ECONOMÍA SOLIDARIA",
+    "obligaciones_mmm": 2.169,
+    "pct_c_av": 51.8,
+    "pct_o_av": 10.8,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 31.118,
+    "compromisos_mmm": 12.252,
+    "entidad": "SUPERINTENDENCIA FINANCIERA DE COLOMBIA",
+    "obligaciones_mmm": 2.22,
+    "pct_c_av": 39.4,
+    "pct_o_av": 7.1,
+    "sector": "HACIENDA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 36.127,
+    "compromisos_mmm": 15.647,
+    "entidad": "SUPERINTENDENCIA FINANCIERA DE COLOMBIA",
+    "obligaciones_mmm": 0.786,
+    "pct_c_av": 43.3,
+    "pct_o_av": 2.2,
+    "sector": "HACIENDA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 49.781,
+    "compromisos_mmm": 19.863,
+    "entidad": "SUPERINTENDENCIA FINANCIERA DE COLOMBIA",
+    "obligaciones_mmm": 1.406,
+    "pct_c_av": 39.9,
+    "pct_o_av": 2.8,
+    "sector": "HACIENDA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 61.066,
+    "compromisos_mmm": 20.69,
+    "entidad": "SUPERINTENDENCIA FINANCIERA DE COLOMBIA",
+    "obligaciones_mmm": 1.846,
+    "pct_c_av": 33.9,
+    "pct_o_av": 3,
+    "sector": "HACIENDA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 60.609,
+    "compromisos_mmm": 17.31,
+    "entidad": "SUPERINTENDENCIA FINANCIERA DE COLOMBIA",
+    "obligaciones_mmm": 5.818,
+    "pct_c_av": 28.6,
+    "pct_o_av": 9.6,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 1.681,
+    "compromisos_mmm": 0.491,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL AGENCIA DEL INSPECTOR GENERAL DE TRIBUTOS, RENTAS Y CONTRIBUCIONES PARAFISCALES (ITRC)",
+    "obligaciones_mmm": 0.067,
+    "pct_c_av": 29.2,
+    "pct_o_av": 4,
+    "sector": "HACIENDA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 1.738,
+    "compromisos_mmm": 0.072,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL AGENCIA DEL INSPECTOR GENERAL DE TRIBUTOS, RENTAS Y CONTRIBUCIONES PARAFISCALES (ITRC)",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 4.1,
+    "pct_o_av": 0,
+    "sector": "HACIENDA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 1.609,
+    "compromisos_mmm": 0.17,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL AGENCIA DEL INSPECTOR GENERAL DE TRIBUTOS, RENTAS Y CONTRIBUCIONES PARAFISCALES (ITRC)",
+    "obligaciones_mmm": 0.02,
+    "pct_c_av": 10.5,
+    "pct_o_av": 1.2,
+    "sector": "HACIENDA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 1.336,
+    "compromisos_mmm": 0.084,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL AGENCIA DEL INSPECTOR GENERAL DE TRIBUTOS, RENTAS Y CONTRIBUCIONES PARAFISCALES (ITRC)",
+    "obligaciones_mmm": 0.005,
+    "pct_c_av": 6.3,
+    "pct_o_av": 0.4,
+    "sector": "HACIENDA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 0.663,
+    "compromisos_mmm": 0.295,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL AGENCIA DEL INSPECTOR GENERAL DE TRIBUTOS, RENTAS Y CONTRIBUCIONES PARAFISCALES (ITRC)",
+    "obligaciones_mmm": 0.027,
+    "pct_c_av": 44.4,
+    "pct_o_av": 4.1,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 10.2,
+    "compromisos_mmm": 6.189,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL CONTADURÍA GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 1.144,
+    "pct_c_av": 60.7,
+    "pct_o_av": 11.2,
+    "sector": "HACIENDA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 10.062,
+    "compromisos_mmm": 2.416,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL CONTADURÍA GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 0.443,
+    "pct_c_av": 24,
+    "pct_o_av": 4.4,
+    "sector": "HACIENDA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 8.882,
+    "compromisos_mmm": 5.606,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL CONTADURÍA GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 0.728,
+    "pct_c_av": 63.1,
+    "pct_o_av": 8.2,
+    "sector": "HACIENDA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 8.7,
+    "compromisos_mmm": 4.705,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL CONTADURÍA GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 0.324,
+    "pct_c_av": 54.1,
+    "pct_o_av": 3.7,
+    "sector": "HACIENDA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 4.335,
+    "compromisos_mmm": 3.767,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL CONTADURÍA GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 0.63,
+    "pct_c_av": 86.9,
+    "pct_o_av": 14.5,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 7.889,
+    "compromisos_mmm": 5.397,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE GESTIÓN  PENSIONAL Y CONTRIBUCIONES PARAFISCALES DE LA PROTECCIÓN SOCIAL (UGPPP) - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0.705,
+    "pct_c_av": 68.4,
+    "pct_o_av": 8.9,
+    "sector": "HACIENDA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 8,
+    "compromisos_mmm": 4.76,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE GESTIÓN  PENSIONAL Y CONTRIBUCIONES PARAFISCALES DE LA PROTECCIÓN SOCIAL (UGPPP) - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0.297,
+    "pct_c_av": 59.5,
+    "pct_o_av": 3.7,
+    "sector": "HACIENDA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 7.195,
+    "compromisos_mmm": 0.87,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE GESTIÓN  PENSIONAL Y CONTRIBUCIONES PARAFISCALES DE LA PROTECCIÓN SOCIAL (UGPPP) - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0,
+    "pct_c_av": 12.1,
+    "pct_o_av": 0,
+    "sector": "HACIENDA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 7,
+    "compromisos_mmm": 6.645,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE GESTIÓN  PENSIONAL Y CONTRIBUCIONES PARAFISCALES DE LA PROTECCIÓN SOCIAL (UGPPP) - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0.042,
+    "pct_c_av": 94.9,
+    "pct_o_av": 0.6,
+    "sector": "HACIENDA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 4.784,
+    "compromisos_mmm": 1.855,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE GESTIÓN  PENSIONAL Y CONTRIBUCIONES PARAFISCALES DE LA PROTECCIÓN SOCIAL (UGPPP) - GESTIÓN GENERAL",
+    "obligaciones_mmm": 0.336,
+    "pct_c_av": 38.8,
+    "pct_o_av": 7,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 89.911,
+    "compromisos_mmm": 35.164,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DIRECCIÓN DE IMPUESTOS Y ADUANAS NACIONALES",
+    "obligaciones_mmm": 10.788,
+    "pct_c_av": 39.1,
+    "pct_o_av": 12,
+    "sector": "HACIENDA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 112.2,
+    "compromisos_mmm": 74.526,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DIRECCIÓN DE IMPUESTOS Y ADUANAS NACIONALES",
+    "obligaciones_mmm": 3.117,
+    "pct_c_av": 66.4,
+    "pct_o_av": 2.8,
+    "sector": "HACIENDA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 111.48,
+    "compromisos_mmm": 80.577,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DIRECCIÓN DE IMPUESTOS Y ADUANAS NACIONALES",
+    "obligaciones_mmm": 6.445,
+    "pct_c_av": 72.3,
+    "pct_o_av": 5.8,
+    "sector": "HACIENDA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 78.629,
+    "compromisos_mmm": 63.984,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DIRECCIÓN DE IMPUESTOS Y ADUANAS NACIONALES",
+    "obligaciones_mmm": 4.928,
+    "pct_c_av": 81.4,
+    "pct_o_av": 6.3,
+    "sector": "HACIENDA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 72.802,
+    "compromisos_mmm": 34.417,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DIRECCIÓN DE IMPUESTOS Y ADUANAS NACIONALES",
+    "obligaciones_mmm": 5.474,
+    "pct_c_av": 47.3,
+    "pct_o_av": 7.5,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 5,
+    "compromisos_mmm": 2.211,
+    "entidad": "UNIDAD DE INFORMACIÓN Y ANÁLISIS FINANCIERO",
+    "obligaciones_mmm": 0.461,
+    "pct_c_av": 44.2,
+    "pct_o_av": 9.2,
+    "sector": "HACIENDA",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 5.068,
+    "compromisos_mmm": 0.446,
+    "entidad": "UNIDAD DE INFORMACIÓN Y ANÁLISIS FINANCIERO",
+    "obligaciones_mmm": 0.073,
+    "pct_c_av": 8.8,
+    "pct_o_av": 1.4,
+    "sector": "HACIENDA",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 4.403,
+    "compromisos_mmm": 2.229,
+    "entidad": "UNIDAD DE INFORMACIÓN Y ANÁLISIS FINANCIERO",
+    "obligaciones_mmm": 0.116,
+    "pct_c_av": 50.6,
+    "pct_o_av": 2.6,
+    "sector": "HACIENDA",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 5.027,
+    "compromisos_mmm": 3.386,
+    "entidad": "UNIDAD DE INFORMACIÓN Y ANÁLISIS FINANCIERO",
+    "obligaciones_mmm": 0.1,
+    "pct_c_av": 67.4,
+    "pct_o_av": 2,
+    "sector": "HACIENDA",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 2.496,
+    "compromisos_mmm": 1.612,
+    "entidad": "UNIDAD DE INFORMACIÓN Y ANÁLISIS FINANCIERO",
+    "obligaciones_mmm": 0.108,
+    "pct_c_av": 64.6,
+    "pct_o_av": 4.3,
+    "sector": "HACIENDA",
+    "vigencia": 2026
+  }
+]

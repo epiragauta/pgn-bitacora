@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 940.501806,
+    "compromisos_mmm": 387.248864,
+    "departamento": "Caquetá",
+    "obligaciones_mmm": 194.502982,
+    "pagos_mmm": 192.511718,
+    "pct_compromisos": 41.17,
+    "pct_obligaciones": 20.68,
+    "pct_participacion": 1.33,
+    "region": "AMAZONIA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 360.148021,
+    "compromisos_mmm": 10.783247,
+    "departamento": "Caquetá",
+    "obligaciones_mmm": 6.853686,
+    "pagos_mmm": 6.47503,
+    "pct_compromisos": 2.99,
+    "pct_obligaciones": 1.9,
+    "pct_participacion": 0.66,
+    "region": "AMAZONIA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 699.269349,
+    "compromisos_mmm": 149.529154,
+    "departamento": "Caquetá",
+    "obligaciones_mmm": 41.140157,
+    "pagos_mmm": 39.078365,
+    "pct_compromisos": 21.38,
+    "pct_obligaciones": 5.88,
+    "pct_participacion": 0.77,
+    "region": "AMAZONIA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 612.969669,
+    "compromisos_mmm": 101.677452,
+    "departamento": "Caquetá",
+    "obligaciones_mmm": 17.012554,
+    "pagos_mmm": 17.001093,
+    "pct_compromisos": 16.59,
+    "pct_obligaciones": 2.78,
+    "pct_participacion": 0.84,
+    "region": "AMAZONIA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 689.360247,
+    "compromisos_mmm": 378.153041,
+    "departamento": "Caquetá",
+    "obligaciones_mmm": 97.276571,
+    "pagos_mmm": 96.474332,
+    "pct_compromisos": 54.86,
+    "pct_obligaciones": 14.11,
+    "pct_participacion": 0.81,
+    "region": "AMAZONIA",
+    "vigencia": 2026
+  }
+]

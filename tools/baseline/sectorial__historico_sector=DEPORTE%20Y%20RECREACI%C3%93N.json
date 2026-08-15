@@ -1,0 +1,52 @@
+[
+  {
+    "apr_vigente_mmm": 830.299,
+    "compromisos_mmm": 625.302,
+    "entidad": "MINISTERIO DEL DEPORTE - GESTIÓN GENERAL",
+    "obligaciones_mmm": 206.432,
+    "pct_c_av": 75.3,
+    "pct_o_av": 24.9,
+    "sector": "DEPORTE Y RECREACIÓN",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 891.709,
+    "compromisos_mmm": 116.404,
+    "entidad": "MINISTERIO DEL DEPORTE - GESTIÓN GENERAL",
+    "obligaciones_mmm": 9.847,
+    "pct_c_av": 13.1,
+    "pct_o_av": 1.1,
+    "sector": "DEPORTE Y RECREACIÓN",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 1300.992,
+    "compromisos_mmm": 106.58,
+    "entidad": "MINISTERIO DEL DEPORTE - GESTIÓN GENERAL",
+    "obligaciones_mmm": 26.246,
+    "pct_c_av": 8.2,
+    "pct_o_av": 2,
+    "sector": "DEPORTE Y RECREACIÓN",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 400,
+    "compromisos_mmm": 28.649,
+    "entidad": "MINISTERIO DEL DEPORTE - GESTIÓN GENERAL",
+    "obligaciones_mmm": 4.824,
+    "pct_c_av": 7.2,
+    "pct_o_av": 1.2,
+    "sector": "DEPORTE Y RECREACIÓN",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 441.892,
+    "compromisos_mmm": 357.013,
+    "entidad": "MINISTERIO DEL DEPORTE - GESTIÓN GENERAL",
+    "obligaciones_mmm": 90.431,
+    "pct_c_av": 80.8,
+    "pct_o_av": 20.5,
+    "sector": "DEPORTE Y RECREACIÓN",
+    "vigencia": 2026
+  }
+]

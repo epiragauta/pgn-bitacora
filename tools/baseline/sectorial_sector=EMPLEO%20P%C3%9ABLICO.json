@@ -1,0 +1,32 @@
+[
+  {
+    "apr_vigente_mmm": 284.986,
+    "compromisos_mmm": 156.254,
+    "entidad": "ESCUELA SUPERIOR DE ADMINISTRACIÓN PÚBLICA (ESAP)",
+    "obligaciones_mmm": 25.666,
+    "pct_c_av": 54.8,
+    "pct_o_av": 9,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 116.436,
+    "compromisos_mmm": 26.561,
+    "entidad": "COMISIÓN NACIONAL DEL SERVICIO CIVIL",
+    "obligaciones_mmm": 4.602,
+    "pct_c_av": 22.8,
+    "pct_o_av": 4,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 10.488,
+    "compromisos_mmm": 3.249,
+    "entidad": "DEPARTAMENTO DE LA FUNCIÓN PÚBLICA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 1.661,
+    "pct_c_av": 31,
+    "pct_o_av": 15.8,
+    "sector": "EMPLEO PÚBLICO",
+    "vigencia": 2026
+  }
+]

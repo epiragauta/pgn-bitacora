@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 1368.260311,
+    "compromisos_mmm": 585.249654,
+    "departamento": "La Guajira",
+    "obligaciones_mmm": 288.898972,
+    "pagos_mmm": 273.905878,
+    "pct_compromisos": 42.77,
+    "pct_obligaciones": 21.11,
+    "pct_participacion": 1.93,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 723.061341,
+    "compromisos_mmm": 16.744236,
+    "departamento": "La Guajira",
+    "obligaciones_mmm": 8.527354,
+    "pagos_mmm": 8.417413,
+    "pct_compromisos": 2.32,
+    "pct_obligaciones": 1.18,
+    "pct_participacion": 1.33,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 1347.119981,
+    "compromisos_mmm": 428.6549,
+    "departamento": "La Guajira",
+    "obligaciones_mmm": 65.061568,
+    "pagos_mmm": 44.732403,
+    "pct_compromisos": 31.82,
+    "pct_obligaciones": 4.83,
+    "pct_participacion": 1.48,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 1848.60405,
+    "compromisos_mmm": 178.638387,
+    "departamento": "La Guajira",
+    "obligaciones_mmm": 23.916803,
+    "pagos_mmm": 23.8686,
+    "pct_compromisos": 9.66,
+    "pct_obligaciones": 1.29,
+    "pct_participacion": 2.53,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 2121.667502,
+    "compromisos_mmm": 1321.334954,
+    "departamento": "La Guajira",
+    "obligaciones_mmm": 152.053368,
+    "pagos_mmm": 151.172134,
+    "pct_compromisos": 62.28,
+    "pct_obligaciones": 7.17,
+    "pct_participacion": 2.49,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2026
+  }
+]

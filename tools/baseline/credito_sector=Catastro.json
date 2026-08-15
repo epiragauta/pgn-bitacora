@@ -1,0 +1,20 @@
+[
+  {
+    "contrato": "8937",
+    "desembolsado_usd": 60912093.46,
+    "fuente": "BM",
+    "monto_usd": 100000000,
+    "nombre": "Programa para la adopción e implementación de un Catastro Multipropósito Rural – Urbano",
+    "nombre_corto": "Catastro Multipropósito - BM",
+    "sector": "Catastro"
+  },
+  {
+    "contrato": "4856",
+    "desembolsado_usd": 16999878.78,
+    "fuente": "BID",
+    "monto_usd": 50000000,
+    "nombre": "Programa para la adopción e implementación de un catastro multipropósito rural-urbano",
+    "nombre_corto": "Catastro Multipropósito - BID",
+    "sector": "Catastro"
+  }
+]

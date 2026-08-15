@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 908.831766,
+    "compromisos_mmm": 359.771188,
+    "departamento": "Guaviare",
+    "obligaciones_mmm": 160.249625,
+    "pagos_mmm": 159.151261,
+    "pct_compromisos": 39.59,
+    "pct_obligaciones": 17.63,
+    "pct_participacion": 1.28,
+    "region": "AMAZONIA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 202.704948,
+    "compromisos_mmm": 2.788543,
+    "departamento": "Guaviare",
+    "obligaciones_mmm": 2.923928,
+    "pagos_mmm": 2.848781,
+    "pct_compromisos": 1.38,
+    "pct_obligaciones": 1.44,
+    "pct_participacion": 0.37,
+    "region": "AMAZONIA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 306.460485,
+    "compromisos_mmm": 56.936195,
+    "departamento": "Guaviare",
+    "obligaciones_mmm": 8.910383,
+    "pagos_mmm": 8.594116,
+    "pct_compromisos": 18.58,
+    "pct_obligaciones": 2.91,
+    "pct_participacion": 0.34,
+    "region": "AMAZONIA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 175.385885,
+    "compromisos_mmm": 40.990954,
+    "departamento": "Guaviare",
+    "obligaciones_mmm": 4.526131,
+    "pagos_mmm": 4.523965,
+    "pct_compromisos": 23.37,
+    "pct_obligaciones": 2.58,
+    "pct_participacion": 0.24,
+    "region": "AMAZONIA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 314.468442,
+    "compromisos_mmm": 147.389962,
+    "departamento": "Guaviare",
+    "obligaciones_mmm": 25.507782,
+    "pagos_mmm": 25.162482,
+    "pct_compromisos": 46.87,
+    "pct_obligaciones": 8.11,
+    "pct_participacion": 0.37,
+    "region": "AMAZONIA",
+    "vigencia": 2026
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "apr_vigente_mmm": 1187.088,
+    "compromisos_mmm": 384.198,
+    "entidad": "AGENCIA NACIONAL DE TIERRAS - ANT",
+    "obligaciones_mmm": 59.533,
+    "pct_c_av": 32.4,
+    "pct_o_av": 5,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 770.27,
+    "compromisos_mmm": 259.334,
+    "entidad": "MINAGRICULTURA - GESTIÓN GENERAL",
+    "obligaciones_mmm": 21.728,
+    "pct_c_av": 33.7,
+    "pct_o_av": 2.8,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 495.277,
+    "compromisos_mmm": 190.586,
+    "entidad": "AGENCIA DE DESARROLLO RURAL - ADR",
+    "obligaciones_mmm": 20.44,
+    "pct_c_av": 38.5,
+    "pct_o_av": 4.1,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 390.926,
+    "compromisos_mmm": 249.117,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL DE GESTIÓN DE RESTITUCIÓN DE TIERRAS DESPOJADAS",
+    "obligaciones_mmm": 55.209,
+    "pct_c_av": 63.7,
+    "pct_o_av": 14.1,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 250,
+    "compromisos_mmm": 166.017,
+    "entidad": "INSTITUTO COLOMBIANO AGROPECUARIO (ICA)",
+    "obligaciones_mmm": 33.147,
+    "pct_c_av": 66.4,
+    "pct_o_av": 13.3,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 70,
+    "compromisos_mmm": 29.501,
+    "entidad": "AUTORIDAD NACIONAL DE ACUICULTURA Y PESCA - AUNAP",
+    "obligaciones_mmm": 7.017,
+    "pct_c_av": 42.1,
+    "pct_o_av": 10,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 50,
+    "compromisos_mmm": 43.55,
+    "entidad": "UNIDAD DE PLANIFICACIÓN DE TIERRAS RURALES, ADECUACIÓN DE TIERRAS Y USOS AGROPECUARIOS (UPRA)",
+    "obligaciones_mmm": 5.102,
+    "pct_c_av": 87.1,
+    "pct_o_av": 10.2,
+    "sector": "AGRICULTURA Y DESARROLLO RURAL",
+    "vigencia": 2026
+  }
+]

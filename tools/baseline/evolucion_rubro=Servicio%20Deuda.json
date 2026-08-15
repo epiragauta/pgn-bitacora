@@ -1,0 +1,27 @@
+[
+  {
+    "rubro": "Servicio Deuda",
+    "vigencia": 2022,
+    "vigente_mmm": 71664.58
+  },
+  {
+    "rubro": "Servicio Deuda",
+    "vigencia": 2023,
+    "vigente_mmm": 77997.999
+  },
+  {
+    "rubro": "Servicio Deuda",
+    "vigencia": 2024,
+    "vigente_mmm": 94521.847
+  },
+  {
+    "rubro": "Servicio Deuda",
+    "vigencia": 2025,
+    "vigente_mmm": 112605.186
+  },
+  {
+    "rubro": "Servicio Deuda",
+    "vigencia": 2026,
+    "vigente_mmm": 100449.708
+  }
+]

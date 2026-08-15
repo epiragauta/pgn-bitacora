@@ -1,0 +1,52 @@
+[
+  {
+    "apr_vigente_mmm": 1485.147,
+    "compromisos_mmm": 1081.376,
+    "entidad": "FONDO ÚNICO DE TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES",
+    "obligaciones_mmm": 272.13,
+    "pct_c_av": 72.8,
+    "pct_o_av": 18.3,
+    "sector": "TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 144.253,
+    "compromisos_mmm": 66.649,
+    "entidad": "CORPORACIÓN AGENCIA NACIONAL DE GOBIERNO DIGITAL - AND",
+    "obligaciones_mmm": 10.955,
+    "pct_c_av": 46.2,
+    "pct_o_av": 7.6,
+    "sector": "TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 38.12,
+    "compromisos_mmm": 17.931,
+    "entidad": "COMPUTADORES PARA EDUCAR (CPE)",
+    "obligaciones_mmm": 0.464,
+    "pct_c_av": 47,
+    "pct_o_av": 1.2,
+    "sector": "TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 20.459,
+    "compromisos_mmm": 13.827,
+    "entidad": "AGENCIA NACIONAL DEL ESPECTRO - ANE",
+    "obligaciones_mmm": 1.704,
+    "pct_c_av": 67.6,
+    "pct_o_av": 8.3,
+    "sector": "TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 19.872,
+    "compromisos_mmm": 11.363,
+    "entidad": "UNIDAD ADMINISTRATIVA ESPECIAL COMISIÓN DE REGULACIÓN DE COMUNICACIONES",
+    "obligaciones_mmm": 1.978,
+    "pct_c_av": 57.2,
+    "pct_o_av": 10,
+    "sector": "TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES",
+    "vigencia": 2026
+  }
+]

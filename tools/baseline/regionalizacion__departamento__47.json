@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 623.926801,
+    "compromisos_mmm": 312.208743,
+    "departamento": "Magdalena",
+    "obligaciones_mmm": 27.151456,
+    "pagos_mmm": 26.295734,
+    "pct_compromisos": 50.04,
+    "pct_obligaciones": 4.35,
+    "pct_participacion": 0.88,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 1150.418938,
+    "compromisos_mmm": 24.091719,
+    "departamento": "Magdalena",
+    "obligaciones_mmm": 20.893876,
+    "pagos_mmm": 20.738934,
+    "pct_compromisos": 2.09,
+    "pct_obligaciones": 1.82,
+    "pct_participacion": 2.12,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 1517.487939,
+    "compromisos_mmm": 575.841527,
+    "departamento": "Magdalena",
+    "obligaciones_mmm": 150.438016,
+    "pagos_mmm": 137.988315,
+    "pct_compromisos": 37.95,
+    "pct_obligaciones": 9.91,
+    "pct_participacion": 1.67,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 1419.850437,
+    "compromisos_mmm": 279.646808,
+    "departamento": "Magdalena",
+    "obligaciones_mmm": 39.549907,
+    "pagos_mmm": 39.502333,
+    "pct_compromisos": 19.7,
+    "pct_obligaciones": 2.79,
+    "pct_participacion": 1.95,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 2004.990646,
+    "compromisos_mmm": 933.37833,
+    "departamento": "Magdalena",
+    "obligaciones_mmm": 236.746618,
+    "pagos_mmm": 235.148414,
+    "pct_compromisos": 46.55,
+    "pct_obligaciones": 11.81,
+    "pct_participacion": 2.35,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2026
+  }
+]

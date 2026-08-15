@@ -1,0 +1,62 @@
+[
+  {
+    "apr_vigente_mmm": 312.007,
+    "compromisos_mmm": 119.757,
+    "entidad": "MINISTERIO DEL INTERIOR - GESTIÓN GENERAL",
+    "obligaciones_mmm": 5.308,
+    "pct_c_av": 38.4,
+    "pct_o_av": 1.7,
+    "sector": "INTERIOR",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 85.606,
+    "compromisos_mmm": 7.197,
+    "entidad": "DIRECCIÓN NACIONAL DE BOMBEROS",
+    "obligaciones_mmm": 0.841,
+    "pct_c_av": 8.4,
+    "pct_o_av": 1,
+    "sector": "INTERIOR",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 17,
+    "compromisos_mmm": 3.285,
+    "entidad": "CORPORACIÓN NACIONAL PARA LA RECONSTRUCCIÓN DE LA CUENCA DEL RÍO PÁEZ Y ZONAS ALEDAÑAS NASA KI WE",
+    "obligaciones_mmm": 1.127,
+    "pct_c_av": 19.3,
+    "pct_o_av": 6.6,
+    "sector": "INTERIOR",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 4,
+    "compromisos_mmm": 0.335,
+    "entidad": "UNIDAD NACIONAL DE PROTECCIÓN - UNP",
+    "obligaciones_mmm": 0.076,
+    "pct_c_av": 8.4,
+    "pct_o_av": 1.9,
+    "sector": "INTERIOR",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 2.431,
+    "compromisos_mmm": 0.867,
+    "entidad": "DIRECCIÓN NACIONAL DEL DERECHO DE AUTOR",
+    "obligaciones_mmm": 0.183,
+    "pct_c_av": 35.7,
+    "pct_o_av": 7.5,
+    "sector": "INTERIOR",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 2,
+    "compromisos_mmm": 0.285,
+    "entidad": "DIRECCIÓN DE LA AUTORIDAD NACIONAL DE CONSULTA PREVIA",
+    "obligaciones_mmm": 0.041,
+    "pct_c_av": 14.3,
+    "pct_o_av": 2.1,
+    "sector": "INTERIOR",
+    "vigencia": 2026
+  }
+]

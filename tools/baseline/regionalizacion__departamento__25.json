@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 2025.617102,
+    "compromisos_mmm": 1098.193539,
+    "departamento": "Cundinamarca",
+    "obligaciones_mmm": 254.006396,
+    "pagos_mmm": 236.419027,
+    "pct_compromisos": 54.22,
+    "pct_obligaciones": 12.54,
+    "pct_participacion": 2.86,
+    "region": "ANDINA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 1666.723206,
+    "compromisos_mmm": 37.541731,
+    "departamento": "Cundinamarca",
+    "obligaciones_mmm": 28.505716,
+    "pagos_mmm": 40.508618,
+    "pct_compromisos": 2.25,
+    "pct_obligaciones": 1.71,
+    "pct_participacion": 3.08,
+    "region": "ANDINA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 2431.147926,
+    "compromisos_mmm": 1334.820934,
+    "departamento": "Cundinamarca",
+    "obligaciones_mmm": 303.66751,
+    "pagos_mmm": 259.052368,
+    "pct_compromisos": 54.9,
+    "pct_obligaciones": 12.49,
+    "pct_participacion": 2.67,
+    "region": "ANDINA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 1916.068074,
+    "compromisos_mmm": 676.206146,
+    "departamento": "Cundinamarca",
+    "obligaciones_mmm": 110.889648,
+    "pagos_mmm": 110.862742,
+    "pct_compromisos": 35.29,
+    "pct_obligaciones": 5.79,
+    "pct_participacion": 2.63,
+    "region": "ANDINA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 2516.503462,
+    "compromisos_mmm": 1327.630297,
+    "departamento": "Cundinamarca",
+    "obligaciones_mmm": 274.145278,
+    "pagos_mmm": 273.930892,
+    "pct_compromisos": 52.76,
+    "pct_obligaciones": 10.89,
+    "pct_participacion": 2.95,
+    "region": "ANDINA",
+    "vigencia": 2026
+  }
+]

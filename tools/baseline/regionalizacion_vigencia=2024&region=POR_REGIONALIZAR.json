@@ -1,0 +1,18 @@
+[
+  {
+    "apropiacion_mmm": 3731.277128,
+    "codigo_dane": null,
+    "compromisos_mmm": 48.942786,
+    "departamento": "Por Regionalizar",
+    "nombre_dane": null,
+    "obligaciones_mmm": 0.322606,
+    "pagos_mmm": 0.322606,
+    "pct_compromisos": 1.31,
+    "pct_obligaciones": 0.01,
+    "pct_pagos": 0.01,
+    "pct_participacion": 4.1,
+    "region": "POR_REGIONALIZAR",
+    "tipo": "por_regionalizar",
+    "vigencia": 2024
+  }
+]

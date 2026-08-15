@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 1508.396637,
+    "compromisos_mmm": 790.964618,
+    "departamento": "Sucre",
+    "obligaciones_mmm": 215.188093,
+    "pagos_mmm": 212.608066,
+    "pct_compromisos": 52.44,
+    "pct_obligaciones": 14.27,
+    "pct_participacion": 2.13,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 746.886631,
+    "compromisos_mmm": 29.906988,
+    "departamento": "Sucre",
+    "obligaciones_mmm": 12.260879,
+    "pagos_mmm": 12.268159,
+    "pct_compromisos": 4.0,
+    "pct_obligaciones": 1.64,
+    "pct_participacion": 1.38,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 1125.553201,
+    "compromisos_mmm": 456.840705,
+    "departamento": "Sucre",
+    "obligaciones_mmm": 100.078518,
+    "pagos_mmm": 83.09344,
+    "pct_compromisos": 40.59,
+    "pct_obligaciones": 8.89,
+    "pct_participacion": 1.24,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 1198.110381,
+    "compromisos_mmm": 436.898854,
+    "departamento": "Sucre",
+    "obligaciones_mmm": 31.038505,
+    "pagos_mmm": 30.971312,
+    "pct_compromisos": 36.47,
+    "pct_obligaciones": 2.59,
+    "pct_participacion": 1.64,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 1614.720246,
+    "compromisos_mmm": 698.679152,
+    "departamento": "Sucre",
+    "obligaciones_mmm": 152.888967,
+    "pagos_mmm": 152.027785,
+    "pct_compromisos": 43.27,
+    "pct_obligaciones": 9.47,
+    "pct_participacion": 1.89,
+    "region": "CARIBE - INSULAR",
+    "vigencia": 2026
+  }
+]

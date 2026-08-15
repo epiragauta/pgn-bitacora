@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 1465.511562,
+    "compromisos_mmm": 1154.251833,
+    "departamento": "Casanare",
+    "obligaciones_mmm": 29.629142,
+    "pagos_mmm": 27.995277,
+    "pct_compromisos": 78.76,
+    "pct_obligaciones": 2.02,
+    "pct_participacion": 2.07,
+    "region": "ORINOQUÍA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 409.099242,
+    "compromisos_mmm": 18.006488,
+    "departamento": "Casanare",
+    "obligaciones_mmm": 15.2125,
+    "pagos_mmm": 5.545442,
+    "pct_compromisos": 4.4,
+    "pct_obligaciones": 3.72,
+    "pct_participacion": 0.76,
+    "region": "ORINOQUÍA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 579.238926,
+    "compromisos_mmm": 302.819462,
+    "departamento": "Casanare",
+    "obligaciones_mmm": 88.083599,
+    "pagos_mmm": 85.255127,
+    "pct_compromisos": 52.28,
+    "pct_obligaciones": 15.21,
+    "pct_participacion": 0.64,
+    "region": "ORINOQUÍA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 620.242003,
+    "compromisos_mmm": 247.133106,
+    "departamento": "Casanare",
+    "obligaciones_mmm": 56.530716,
+    "pagos_mmm": 56.520664,
+    "pct_compromisos": 39.84,
+    "pct_obligaciones": 9.11,
+    "pct_participacion": 0.85,
+    "region": "ORINOQUÍA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 740.817187,
+    "compromisos_mmm": 466.352576,
+    "departamento": "Casanare",
+    "obligaciones_mmm": 103.658457,
+    "pagos_mmm": 103.170989,
+    "pct_compromisos": 62.95,
+    "pct_obligaciones": 13.99,
+    "pct_participacion": 0.87,
+    "region": "ORINOQUÍA",
+    "vigencia": 2026
+  }
+]

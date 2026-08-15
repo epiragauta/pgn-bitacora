@@ -1,0 +1,152 @@
+[
+  {
+    "apr_vigente_mmm": 10.785,
+    "compromisos_mmm": 7.903,
+    "entidad": "COMISIÓN DE REGULACIÓN DE AGUA POTABLE Y SANEAMIENTO BÁSICO (CRA)",
+    "obligaciones_mmm": 1.411,
+    "pct_c_av": 73.3,
+    "pct_o_av": 13.1,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 12.305,
+    "compromisos_mmm": 3.438,
+    "entidad": "COMISIÓN DE REGULACIÓN DE AGUA POTABLE Y SANEAMIENTO BÁSICO (CRA)",
+    "obligaciones_mmm": 1.252,
+    "pct_c_av": 27.9,
+    "pct_o_av": 10.2,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 13.039,
+    "compromisos_mmm": 6.293,
+    "entidad": "COMISIÓN DE REGULACIÓN DE AGUA POTABLE Y SANEAMIENTO BÁSICO (CRA)",
+    "obligaciones_mmm": 1.203,
+    "pct_c_av": 48.3,
+    "pct_o_av": 9.2,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 13.952,
+    "compromisos_mmm": 7.803,
+    "entidad": "COMISIÓN DE REGULACIÓN DE AGUA POTABLE Y SANEAMIENTO BÁSICO (CRA)",
+    "obligaciones_mmm": 1.133,
+    "pct_c_av": 55.9,
+    "pct_o_av": 8.1,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 16.249,
+    "compromisos_mmm": 12.096,
+    "entidad": "COMISIÓN DE REGULACIÓN DE AGUA POTABLE Y SANEAMIENTO BÁSICO (CRA)",
+    "obligaciones_mmm": 1.709,
+    "pct_c_av": 74.4,
+    "pct_o_av": 10.5,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 1970.753,
+    "compromisos_mmm": 1860.442,
+    "entidad": "FONDO NACIONAL DE VIVIENDA - FONVIVIENDA",
+    "obligaciones_mmm": 300.802,
+    "pct_c_av": 94.4,
+    "pct_o_av": 15.3,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 2328.282,
+    "compromisos_mmm": 1865.383,
+    "entidad": "FONDO NACIONAL DE VIVIENDA - FONVIVIENDA",
+    "obligaciones_mmm": 135.114,
+    "pct_c_av": 80.1,
+    "pct_o_av": 5.8,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 4358.878,
+    "compromisos_mmm": 3595.044,
+    "entidad": "FONDO NACIONAL DE VIVIENDA - FONVIVIENDA",
+    "obligaciones_mmm": 105.304,
+    "pct_c_av": 82.5,
+    "pct_o_av": 2.4,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 2701.293,
+    "compromisos_mmm": 2473.918,
+    "entidad": "FONDO NACIONAL DE VIVIENDA - FONVIVIENDA",
+    "obligaciones_mmm": 110.868,
+    "pct_c_av": 91.6,
+    "pct_o_av": 4.1,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 1741.543,
+    "compromisos_mmm": 1453.401,
+    "entidad": "FONDO NACIONAL DE VIVIENDA - FONVIVIENDA",
+    "obligaciones_mmm": 96.539,
+    "pct_c_av": 83.5,
+    "pct_o_av": 5.5,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 773.675,
+    "compromisos_mmm": 653.418,
+    "entidad": "MINISTERIO DE VIVIENDA, CIUDAD Y TERRITORIO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 11.399,
+    "pct_c_av": 84.5,
+    "pct_o_av": 1.5,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2022
+  },
+  {
+    "apr_vigente_mmm": 1147.829,
+    "compromisos_mmm": 179.97,
+    "entidad": "MINISTERIO DE VIVIENDA, CIUDAD Y TERRITORIO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 8.215,
+    "pct_c_av": 15.7,
+    "pct_o_av": 0.7,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2023
+  },
+  {
+    "apr_vigente_mmm": 1616.886,
+    "compromisos_mmm": 615.987,
+    "entidad": "MINISTERIO DE VIVIENDA, CIUDAD Y TERRITORIO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 11.339,
+    "pct_c_av": 38.1,
+    "pct_o_av": 0.7,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2024
+  },
+  {
+    "apr_vigente_mmm": 1661.434,
+    "compromisos_mmm": 511.453,
+    "entidad": "MINISTERIO DE VIVIENDA, CIUDAD Y TERRITORIO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 82.339,
+    "pct_c_av": 30.8,
+    "pct_o_av": 5,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2025
+  },
+  {
+    "apr_vigente_mmm": 820.459,
+    "compromisos_mmm": 452.739,
+    "entidad": "MINISTERIO DE VIVIENDA, CIUDAD Y TERRITORIO - GESTIÓN GENERAL",
+    "obligaciones_mmm": 29.244,
+    "pct_c_av": 55.2,
+    "pct_o_av": 3.6,
+    "sector": "VIVIENDA, CIUDAD Y TERRITORIO",
+    "vigencia": 2026
+  }
+]

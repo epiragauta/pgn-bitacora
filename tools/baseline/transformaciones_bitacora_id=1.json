@@ -1,0 +1,68 @@
+[
+  {
+    "compromisos_mmm": 10.096,
+    "inversion_mmm": 32.149,
+    "obligaciones_mmm": 3.047,
+    "pagos_mmm": 3,
+    "pct_c_av": 31,
+    "pct_o_av": 9,
+    "pct_p_av": 9,
+    "peso_pct": 38.29,
+    "transformador": "SEGURIDAD HUMANA Y JUSTICIA SOCIAL"
+  },
+  {
+    "compromisos_mmm": 14.336,
+    "inversion_mmm": 25.544,
+    "obligaciones_mmm": 1.912,
+    "pagos_mmm": 1.884,
+    "pct_c_av": 56,
+    "pct_o_av": 7,
+    "pct_p_av": 7,
+    "peso_pct": 30.42,
+    "transformador": "CONVERGENCIA REGIONAL"
+  },
+  {
+    "compromisos_mmm": 7.948,
+    "inversion_mmm": 10.725,
+    "obligaciones_mmm": 1.44,
+    "pagos_mmm": 1.438,
+    "pct_c_av": 74,
+    "pct_o_av": 13,
+    "pct_p_av": 13,
+    "peso_pct": 12.77,
+    "transformador": "OTRAS TRANSFORMACIONES Y EJES TRANSVERSALES"
+  },
+  {
+    "compromisos_mmm": 2.277,
+    "inversion_mmm": 9.552,
+    "obligaciones_mmm": 57,
+    "pagos_mmm": 55,
+    "pct_c_av": 24,
+    "pct_o_av": 1,
+    "pct_p_av": 1,
+    "peso_pct": 11.38,
+    "transformador": "TRANSFORMACIÓN PRODUCTIVA, INTERNACIONALIZACIÓN Y ACCIÓN CLIMÁTICA"
+  },
+  {
+    "compromisos_mmm": 1.037,
+    "inversion_mmm": 3.529,
+    "obligaciones_mmm": 133,
+    "pagos_mmm": 127,
+    "pct_c_av": 29,
+    "pct_o_av": 4,
+    "pct_p_av": 4,
+    "peso_pct": 4.2,
+    "transformador": "ORDENAMIENTO DEL TERRITORIO ALREDEDOR DEL AGUA Y JUSTICIA AMBIENTAL"
+  },
+  {
+    "compromisos_mmm": 668,
+    "inversion_mmm": 2.462,
+    "obligaciones_mmm": 39,
+    "pagos_mmm": 28,
+    "pct_c_av": 27,
+    "pct_o_av": 2,
+    "pct_p_av": 1,
+    "peso_pct": 2.93,
+    "transformador": "DERECHO HUMANO A LA ALIMENTACIÓN"
+  }
+]

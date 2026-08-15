@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 2037.644416,
+    "compromisos_mmm": 844.828574,
+    "departamento": "Norte de Santander",
+    "obligaciones_mmm": 304.998919,
+    "pagos_mmm": 286.49974,
+    "pct_compromisos": 41.46,
+    "pct_obligaciones": 14.97,
+    "pct_participacion": 2.88,
+    "region": "ANDINA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 1099.95787,
+    "compromisos_mmm": 25.500814,
+    "departamento": "Norte de Santander",
+    "obligaciones_mmm": 20.177327,
+    "pagos_mmm": 21.080813,
+    "pct_compromisos": 2.32,
+    "pct_obligaciones": 1.83,
+    "pct_participacion": 2.03,
+    "region": "ANDINA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 1888.380829,
+    "compromisos_mmm": 758.457988,
+    "departamento": "Norte de Santander",
+    "obligaciones_mmm": 189.406925,
+    "pagos_mmm": 183.062607,
+    "pct_compromisos": 40.16,
+    "pct_obligaciones": 10.03,
+    "pct_participacion": 2.08,
+    "region": "ANDINA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 1887.266074,
+    "compromisos_mmm": 586.557808,
+    "departamento": "Norte de Santander",
+    "obligaciones_mmm": 156.822017,
+    "pagos_mmm": 156.234055,
+    "pct_compromisos": 31.08,
+    "pct_obligaciones": 8.31,
+    "pct_participacion": 2.59,
+    "region": "ANDINA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 2545.966625,
+    "compromisos_mmm": 1397.696027,
+    "departamento": "Norte de Santander",
+    "obligaciones_mmm": 306.925311,
+    "pagos_mmm": 306.079676,
+    "pct_compromisos": 54.9,
+    "pct_obligaciones": 12.06,
+    "pct_participacion": 2.99,
+    "region": "ANDINA",
+    "vigencia": 2026
+  }
+]

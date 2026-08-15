@@ -1,0 +1,62 @@
+[
+  {
+    "apropiacion_mmm": 3209.486979,
+    "compromisos_mmm": 1171.112075,
+    "departamento": "Risaralda",
+    "obligaciones_mmm": 533.13233,
+    "pagos_mmm": 527.15624,
+    "pct_compromisos": 36.49,
+    "pct_obligaciones": 16.61,
+    "pct_participacion": 4.53,
+    "region": "ANDINA",
+    "vigencia": 2022
+  },
+  {
+    "apropiacion_mmm": 659.401888,
+    "compromisos_mmm": 12.784702,
+    "departamento": "Risaralda",
+    "obligaciones_mmm": 14.807161,
+    "pagos_mmm": 16.002519,
+    "pct_compromisos": 1.94,
+    "pct_obligaciones": 2.25,
+    "pct_participacion": 1.22,
+    "region": "ANDINA",
+    "vigencia": 2023
+  },
+  {
+    "apropiacion_mmm": 745.442342,
+    "compromisos_mmm": 392.367818,
+    "departamento": "Risaralda",
+    "obligaciones_mmm": 52.408018,
+    "pagos_mmm": 54.132826,
+    "pct_compromisos": 52.64,
+    "pct_obligaciones": 7.03,
+    "pct_participacion": 0.82,
+    "region": "ANDINA",
+    "vigencia": 2024
+  },
+  {
+    "apropiacion_mmm": 608.334855,
+    "compromisos_mmm": 213.512067,
+    "departamento": "Risaralda",
+    "obligaciones_mmm": 53.157795,
+    "pagos_mmm": 53.135565,
+    "pct_compromisos": 35.1,
+    "pct_obligaciones": 8.74,
+    "pct_participacion": 0.83,
+    "region": "ANDINA",
+    "vigencia": 2025
+  },
+  {
+    "apropiacion_mmm": 852.1221,
+    "compromisos_mmm": 494.174812,
+    "departamento": "Risaralda",
+    "obligaciones_mmm": 112.4452,
+    "pagos_mmm": 112.070219,
+    "pct_compromisos": 57.99,
+    "pct_obligaciones": 13.2,
+    "pct_participacion": 1.0,
+    "region": "ANDINA",
+    "vigencia": 2026
+  }
+]

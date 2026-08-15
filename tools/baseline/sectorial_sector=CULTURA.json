@@ -1,0 +1,42 @@
+[
+  {
+    "apr_vigente_mmm": 673,
+    "compromisos_mmm": 333.279,
+    "entidad": "MINISTERIO DE LAS CULTURAS, LAS ARTES Y LOS SABERES - GESTION GENERAL",
+    "obligaciones_mmm": 32.302,
+    "pct_c_av": 49.5,
+    "pct_o_av": 4.8,
+    "sector": "CULTURA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 31.04,
+    "compromisos_mmm": 17.025,
+    "entidad": "ARCHIVO GENERAL DE LA NACIÓN",
+    "obligaciones_mmm": 1.977,
+    "pct_c_av": 54.8,
+    "pct_o_av": 6.4,
+    "sector": "CULTURA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 21.84,
+    "compromisos_mmm": 11.034,
+    "entidad": "INSTITUTO COLOMBIANO DE ANTROPOLOGÍA E HISTORIA",
+    "obligaciones_mmm": 2.27,
+    "pct_c_av": 50.5,
+    "pct_o_av": 10.4,
+    "sector": "CULTURA",
+    "vigencia": 2026
+  },
+  {
+    "apr_vigente_mmm": 13.463,
+    "compromisos_mmm": 10.291,
+    "entidad": "INSTITUTO CARO Y CUERVO",
+    "obligaciones_mmm": 1.261,
+    "pct_c_av": 76.4,
+    "pct_o_av": 9.4,
+    "sector": "CULTURA",
+    "vigencia": 2026
+  }
+]
