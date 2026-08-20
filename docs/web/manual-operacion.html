@@ -192,6 +192,10 @@ curl -s -o /dev/null -w "%{http_code}\n" https://dnp-btcr.skaphe.com/health</cod
 
       <div class="step"><span class="k">2</span><h3>Coloque los archivos fuente</h3></div>
       <p>En <code>data/BASES_BITACORA/&lt;Mes&gt;/</code>, respetando las carpetas numeradas por sección. Verifique que estén completos:</p>
+      <div class="call">
+        <span class="tag">Estos archivos no se publican</span>
+        <p>Son insumo del ETL, que corre fuera del contenedor. <code>.dockerignore</code> los excluye del build, así que no llegan a la imagen ni quedan accesibles desde el tablero.</p>
+      </div>
 <pre><code>python etl/bases.py      # lista lo que encuentra por sección</code></pre>
 
       <div class="step"><span class="k">3</span><h3>Prepare el entorno</h3></div>
