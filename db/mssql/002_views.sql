@@ -1,5 +1,5 @@
 -- ============================================================
--- 002_views.sql — Vistas (base dnp_dpip)
+-- 002_views.sql — Vistas
 --
 -- pgn_vista_crosstab: formato ancho (año × fase como columnas).
 -- La consume /api/evolucion/tabla_completa.

@@ -1,5 +1,5 @@
 -- ============================================================
--- 001_schema.sql — Esquema SQL Server (base dnp_dpip)
+-- 001_schema.sql — Esquema SQL Server
 -- Bitácora de Inversión Pública — DNP / DPIP
 --
 -- Port del esquema SQLite (db/pgn.db) documentado en
@@ -17,7 +17,10 @@
 --   · bitacora_id NOT NULL  (verificado: cero filas NULL en el origen)
 --
 -- Idempotente: se puede ejecutar varias veces sin error.
--- Ejecutar sobre la base dnp_dpip (COLLATE Modern_Spanish_CS_AS).
+-- El nombre de la base es libre: estos scripts no lo presuponen y no
+-- llevan USE. Todas las tablas van con el prefijo btcr_, de modo que el
+-- esquema puede instalarse dentro de una base compartida con otros
+-- sistemas. Lo que NO es libre es la collation: Modern_Spanish_CS_AS.
 -- ============================================================
 
 SET NOCOUNT ON;

@@ -1,10 +1,10 @@
 # ETLs — Guía de uso
 
-Scripts de carga de los Excel fuente hacia **SQL Server** (base `dnp_dpip`).
+Scripts de carga de los Excel fuente hacia **SQL Server**. La base la determina la cadena de conexión: no está fijada en el código.
 
 ```bash
 pip install -r requirements.txt      # pyodbc + openpyxl; requiere ODBC Driver 18
-export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};SERVER=127.0.0.1,1433;DATABASE=dnp_dpip;UID=dnp_dpip_app;PWD=...;TrustServerCertificate=yes"
+export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};SERVER=127.0.0.1,1433;DATABASE=MI_BASE;UID=USUARIO;PWD=...;TrustServerCertificate=yes"
 ```
 
 **Los archivos fuente ya no tienen ruta fija.** `etl/bases.py` los localiza en este

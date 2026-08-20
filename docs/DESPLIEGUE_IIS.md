@@ -7,6 +7,10 @@
 
 ---
 
+> **El nombre de la base es libre.** Los scripts de `db/mssql/` no llevan `USE` ni lo presuponen, y todas las tablas van con el prefijo `btcr_`, así que el esquema puede instalarse en una base propia o dentro de una compartida con otros sistemas. En los ejemplos de esta guía, `MI_BASE` es un marcador: sustitúyelo por el nombre real.
+
+---
+
 ## 1. Requisitos en el servidor Windows
 
 | Componente | Nota |
@@ -91,7 +95,7 @@ La aplicación la lee de la clave `ConnectionStrings:DnpDpip`. Hay dos formas.
 ```json
 {
   "ConnectionStrings": {
-    "DnpDpip": "Server=SERVIDOR_SQL;Database=dnp_dpip;User Id=dnp_dpip_app;Password=...;TrustServerCertificate=True"
+    "DnpDpip": "Server=SERVIDOR_SQL;Database=MI_BASE;User Id=USUARIO;Password=...;TrustServerCertificate=True"
   }
 }
 ```
@@ -103,7 +107,7 @@ La aplicación la lee de la clave `ConnectionStrings:DnpDpip`. Hay dos formas.
             stdoutLogEnabled="false" hostingModel="inprocess">
   <environmentVariables>
     <environmentVariable name="ConnectionStrings__DnpDpip"
-                         value="Server=SERVIDOR_SQL;Database=dnp_dpip;..." />
+                         value="Server=SERVIDOR_SQL;Database=MI_BASE;..." />
     <environmentVariable name="ASPNETCORE_ENVIRONMENT" value="Production" />
   </environmentVariables>
 </aspNetCore>
@@ -112,7 +116,7 @@ La aplicación la lee de la clave `ConnectionStrings:DnpDpip`. Hay dos formas.
 **Lo más limpio, si el SQL Server está en el mismo dominio:** autenticación integrada de Windows. Se le da permiso a la identidad del grupo de aplicaciones sobre la base y la cadena queda **sin contraseña**:
 
 ```
-Server=SERVIDOR_SQL;Database=dnp_dpip;Integrated Security=true;TrustServerCertificate=True
+Server=SERVIDOR_SQL;Database=MI_BASE;Integrated Security=true;TrustServerCertificate=True
 ```
 
 Es la opción recomendada en un entorno institucional: no hay credencial que rotar ni que se filtre en un archivo de configuración.
@@ -123,10 +127,16 @@ Todas las tablas llevan el prefijo `btcr_` (`btcr_metadatos_bitacora`, `btcr_pgn
 
 Si se hace así, los permisos del usuario de la aplicación pueden acotarse a esas tablas en lugar de a la base entera.
 
-### La base que se cree debe respetar la collation
+### Si se crea una base nueva, la collation no es negociable
 
 ```sql
-CREATE DATABASE dnp_dpip COLLATE Modern_Spanish_CS_AS;
+CREATE DATABASE MI_BASE COLLATE Modern_Spanish_CS_AS;
+```
+
+Si en cambio el esquema se instala en una base **existente**, hay que verificar su collation antes:
+
+```sql
+SELECT DATABASEPROPERTYEX('MI_BASE', 'Collation');
 ```
 
 No es un detalle: con una collation insensible a tildes, `PACÍFICO` y `PACIFICO` se vuelven el mismo valor y las agrupaciones por región fusionan filas **sin dar error**. Ver la regla 2 del manual técnico.

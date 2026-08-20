@@ -31,11 +31,8 @@ def _conectar():
     """
     import pyodbc  # se importa aquí para no exigirlo si solo se lee el módulo
 
-    cadena = os.environ.get("DNP_DPIP_CONN")
-    if not cadena:
-        from db import CONN_DEFAULT  # etl/db.py
-        cadena = CONN_DEFAULT
-    return pyodbc.connect(cadena)
+    from db import cadena_conexion  # etl/db.py — exige DNP_DPIP_CONN
+    return pyodbc.connect(cadena_conexion())
 
 
 def _col(conn, sql: str) -> list:

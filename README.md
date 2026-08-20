@@ -4,7 +4,7 @@
 
 Dashboard web sobre el Presupuesto General de la Nación, con seguimiento adicional a Crédito Externo y al Sistema General de Participaciones.
 
-**Arquitectura:** base de datos SQL Server (`dnp_dpip`), API REST en .NET 8 y frontend HTML autónomo.
+**Arquitectura:** base de datos SQL Server, API REST en .NET 8 y frontend HTML autónomo.
 
 > **Todas las tablas llevan el prefijo `btcr_`**, para poder convivir en una base compartida con otros sistemas de la entidad. Las rutas de la API no se prefijan: el prefijo es de almacenamiento, no del contrato público.
 
@@ -74,22 +74,22 @@ Las versiones web de arquitectura y de los dos manuales de usuario están en `do
 # Crear base y login (una sola vez, como sa)
 docker exec -i umbraco-sqlserver /opt/mssql-tools18/bin/sqlcmd \
     -S localhost -U sa -P "$SA_PASSWORD" -C -i /dev/stdin <<'SQL'
-CREATE DATABASE dnp_dpip COLLATE Modern_Spanish_CS_AS;
+CREATE DATABASE MI_BASE COLLATE Modern_Spanish_CS_AS;   -- el nombre es libre
 GO
-CREATE LOGIN dnp_dpip_app WITH PASSWORD='...', DEFAULT_DATABASE=dnp_dpip, CHECK_POLICY=OFF;
+CREATE LOGIN USUARIO WITH PASSWORD='...', DEFAULT_DATABASE=MI_BASE, CHECK_POLICY=OFF;
 GO
-USE dnp_dpip;
-CREATE USER dnp_dpip_app FOR LOGIN dnp_dpip_app;
-ALTER ROLE db_datareader ADD MEMBER dnp_dpip_app;
-ALTER ROLE db_datawriter ADD MEMBER dnp_dpip_app;
-ALTER ROLE db_ddladmin  ADD MEMBER dnp_dpip_app;
+USE MI_BASE;
+CREATE USER USUARIO FOR LOGIN USUARIO;
+ALTER ROLE db_datareader ADD MEMBER USUARIO;
+ALTER ROLE db_datawriter ADD MEMBER USUARIO;
+ALTER ROLE db_ddladmin  ADD MEMBER USUARIO;
 GO
 SQL
 
 # Aplicar el esquema (idempotente)
 for f in db/mssql/*.sql; do
   docker exec -i umbraco-sqlserver /opt/mssql-tools18/bin/sqlcmd \
-      -S localhost -U sa -P "$SA_PASSWORD" -C -b -d dnp_dpip -i /dev/stdin < "$f"
+      -S localhost -U sa -P "$SA_PASSWORD" -C -b -d "$MI_BASE" -i /dev/stdin < "$f"
 done
 ```
 
@@ -114,7 +114,7 @@ Disponible en `http://127.0.0.1:5080` — dashboard en la raíz, API en `/api`, 
 #### Desarrollo sin contenedor
 
 ```bash
-export ConnectionStrings__DnpDpip="Server=127.0.0.1,1433;Database=dnp_dpip;User Id=dnp_dpip_app;Password=...;TrustServerCertificate=True"
+export ConnectionStrings__DnpDpip="Server=127.0.0.1,1433;Database=MI_BASE;User Id=USUARIO;Password=...;TrustServerCertificate=True"
 dotnet run --project backend/src/PgnBitacora.Api --urls http://127.0.0.1:5080
 ```
 
@@ -176,7 +176,7 @@ Se publica en **https://dnp-btcr.skaphe.com** añadiendo el bloque de [`deploy/C
 Los cargadores escriben directamente en SQL Server. Toman la conexión de `DNP_DPIP_CONN` y localizan los Excel bajo `data/BASES_BITACORA/<corte>/` (o donde apunte la variable `BASES_BITACORA`).
 
 ```bash
-export DNP_DPIP_CONN="Server=...;Database=dnp_dpip;..."   # formato ODBC, ver etl/db.py
+export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};SERVER=...;DATABASE=MI_BASE;..."
 
 python etl/load_bitacora_excel.py --numero 3 --periodo 2026-I --corte 2026-03-31
 python etl/importar_pgn.py                 # Sec 2
@@ -193,7 +193,7 @@ python etl/load_sgp.py && python etl/load_sgp_componentes.py   # Sec 8
 Para comprobar que una carga reprodujo lo esperado, contra otra base:
 
 ```bash
-python tools/compare_bd.py --a dnp_dpip --b dnp_dpip_pruebas --periodo 2026-I
+python tools/compare_bd.py --a BASE_REFERENCIA --b BASE_A_VERIFICAR --periodo 2026-I
 ```
 
 Uso detallado por script en [`docs/etl_uso.md`](docs/etl_uso.md).

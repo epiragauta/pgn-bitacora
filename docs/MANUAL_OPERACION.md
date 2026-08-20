@@ -11,7 +11,7 @@
 |---|---|
 | Tablero público | https://dnp-btcr.skaphe.com |
 | Contenedor | `dnp-dpip-bitacora`, publicado en `127.0.0.1:5080` |
-| Base de datos | SQL Server `dnp_dpip`, en el contenedor `umbraco-sqlserver` |
+| Base de datos | SQL Server en el contenedor `umbraco-sqlserver`; hoy la base se llama `dnp_dpip` y sus tablas llevan el prefijo `btcr_` |
 | Proxy | Caddy en el host (`/etc/caddy/Caddyfile`) |
 | Repositorio | `/data/epv/pgn-bitacora` |
 
@@ -30,12 +30,12 @@ Es la tarea trimestral. Toma entre 20 y 40 minutos, la mayor parte esperando a q
 
 ### 2.1 Antes de empezar
 
-**Respalde la base.** Es el único paso irreversible de todo el procedimiento:
+**Respalde la base.** Es el único paso irreversible de todo el procedimiento. `MI_BASE` es el nombre de la base en su despliegue:
 
 ```bash
 docker exec umbraco-sqlserver /opt/mssql-tools18/bin/sqlcmd \
   -S localhost -U sa -P "$SA_PASSWORD" -C -Q \
-  "BACKUP DATABASE dnp_dpip TO DISK='/var/opt/mssql/backup/dnp_dpip_$(date +%F).bak' WITH INIT"
+  "BACKUP DATABASE $MI_BASE TO DISK='/var/opt/mssql/backup/${MI_BASE}_$(date +%F).bak' WITH INIT"
 ```
 
 **Coloque los archivos fuente** en `data/BASES_BITACORA/<Mes>/`, respetando las carpetas numeradas por sección (`1. INVERSIONES...`, `3. REGIONALIZACIÓN`, etc.). Verifique que estén completos:
@@ -48,7 +48,7 @@ python etl/bases.py      # lista lo que encuentra por sección
 
 ```bash
 source .venv/bin/activate
-export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};SERVER=127.0.0.1,1433;DATABASE=dnp_dpip;UID=dnp_dpip_app;PWD=...;TrustServerCertificate=yes"
+export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};SERVER=127.0.0.1,1433;DATABASE=MI_BASE;UID=USUARIO;PWD=...;TrustServerCertificate=yes"
 ```
 
 ### 2.2 Hojas que deben venir en los Excel
@@ -109,7 +109,7 @@ Sobre el primer comando: **es esperable que reporte diferencias de valores**, po
 Si quiere una verificación más estricta, cargue primero en una base de pruebas y compare:
 
 ```bash
-python tools/compare_bd.py --a dnp_dpip --b dnp_dpip_pruebas --periodo 2026-II
+python tools/compare_bd.py --a BASE_REFERENCIA --b BASE_A_VERIFICAR --periodo 2026-II
 ```
 
 Por último, **abra el tablero** y recorra las ocho secciones. Confirme que el selector muestra el periodo nuevo y que el mapa dibuja.
@@ -219,7 +219,7 @@ Ese contenedor **también aloja la base de Umbraco**: reiniciarlo afecta a otro 
 
 | Tarea | Frecuencia |
 |---|---|
-| Respaldo de `dnp_dpip` | Antes de cada cargue, y programado según la política de la entidad |
+| Respaldo de la base | Antes de cada cargue, y programado según la política de la entidad |
 | Verificar el certificado | Automático; revisar si hay alerta |
 | Actualizar imagen base de .NET | Con cada versión de parche de seguridad |
 | Revisar espacio en disco | Mensual — los respaldos se acumulan |
@@ -231,8 +231,8 @@ Ese contenedor **también aloja la base de Umbraco**: reiniciarlo afecta a otro 
 | Recurso | Valor |
 |---|---|
 | Servidor | Entorno de **desarrollo y pruebas** — el destino productivo está pendiente de definir |
-| Base | `dnp_dpip` en `umbraco-sqlserver` (compartido con Umbraco) |
-| Usuario de aplicación | `dnp_dpip_app`, con permisos acotados a esa base |
+| Base | En `umbraco-sqlserver` (instancia compartida con Umbraco); el nombre se define en la cadena de conexión |
+| Usuario de aplicación | Acotado a su base. En el despliegue actual, `dnp_dpip_app` sobre `dnp_dpip` |
 | Red Docker | `sbn-ecp_umbraco-network` |
 | Puerto interno | `127.0.0.1:5080` |
 

@@ -16,22 +16,22 @@
 # Una sola vez, como sa
 docker exec -i umbraco-sqlserver /opt/mssql-tools18/bin/sqlcmd \
     -S localhost -U sa -P "$SA_PASSWORD" -C -i /dev/stdin <<'SQL'
-CREATE DATABASE dnp_dpip COLLATE Modern_Spanish_CS_AS;
+CREATE DATABASE MI_BASE COLLATE Modern_Spanish_CS_AS;   -- el nombre es libre
 GO
-CREATE LOGIN dnp_dpip_app WITH PASSWORD='...', DEFAULT_DATABASE=dnp_dpip, CHECK_POLICY=OFF;
+CREATE LOGIN USUARIO WITH PASSWORD='...', DEFAULT_DATABASE=MI_BASE, CHECK_POLICY=OFF;
 GO
-USE dnp_dpip;
-CREATE USER dnp_dpip_app FOR LOGIN dnp_dpip_app;
-ALTER ROLE db_datareader ADD MEMBER dnp_dpip_app;
-ALTER ROLE db_datawriter ADD MEMBER dnp_dpip_app;
-ALTER ROLE db_ddladmin  ADD MEMBER dnp_dpip_app;
+USE MI_BASE;
+CREATE USER USUARIO FOR LOGIN USUARIO;
+ALTER ROLE db_datareader ADD MEMBER USUARIO;
+ALTER ROLE db_datawriter ADD MEMBER USUARIO;
+ALTER ROLE db_ddladmin  ADD MEMBER USUARIO;
 GO
 SQL
 
 # Esquema — idempotente, ejecutar en orden
 for f in db/mssql/*.sql; do
   docker exec -i umbraco-sqlserver /opt/mssql-tools18/bin/sqlcmd \
-      -S localhost -U sa -P "$SA_PASSWORD" -C -b -d dnp_dpip -i /dev/stdin < "$f"
+      -S localhost -U sa -P "$SA_PASSWORD" -C -b -d "$MI_BASE" -i /dev/stdin < "$f"
 done
 ```
 
@@ -41,7 +41,7 @@ La collation **no es un detalle de configuración**: ver §3.2.
 
 ```bash
 # Desarrollo local
-export ConnectionStrings__DnpDpip="Server=127.0.0.1,1433;Database=dnp_dpip;User Id=dnp_dpip_app;Password=...;TrustServerCertificate=True"
+export ConnectionStrings__DnpDpip="Server=127.0.0.1,1433;Database=MI_BASE;User Id=USUARIO;Password=...;TrustServerCertificate=True"
 dotnet run --project backend/src/PgnBitacora.Api --urls http://127.0.0.1:5080
 
 # Contenedor
@@ -56,7 +56,7 @@ Tablero en `/`, API en `/api`, documentación interactiva en `/swagger`, salud e
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt      # pyodbc + openpyxl
-export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};SERVER=127.0.0.1,1433;DATABASE=dnp_dpip;UID=dnp_dpip_app;PWD=...;TrustServerCertificate=yes"
+export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};SERVER=127.0.0.1,1433;DATABASE=MI_BASE;UID=USUARIO;PWD=...;TrustServerCertificate=yes"
 ```
 
 Ojo con los dos formatos de cadena de conexión: **.NET usa el formato ADO.NET** (`Server=...;Database=...`) y **Python el formato ODBC** (`DRIVER={...};SERVER=...;DATABASE=...`). No son intercambiables.
@@ -214,7 +214,7 @@ Envoltorio con la forma de la API de sqlite3 que usaban los cargadores, para que
 
 | Método | Reemplaza a | Detalle que importa |
 |---|---|---|
-| `conectar()` | `sqlite3.connect` | Lee `DNP_DPIP_CONN` |
+| `conectar()` | `sqlite3.connect` | Lee `DNP_DPIP_CONN`; **falla con instrucciones si no está definida**, y no hay valor por defecto: el anterior traía credenciales reales |
 | `conn.upsert(tabla, cols, filas, claves)` | `INSERT OR REPLACE` | **Deduplica el lote por clave conservando la última fila** y avisa por stderr. El motor anterior aplicaba la sentencia fila a fila, así que los duplicados del origen no chocaban; al insertar en bloque sí |
 | `conn.insertar_devolviendo_id(sql, params)` | `cur.lastrowid` | `SCOPE_IDENTITY()` está acotado al **lote**, no a la sesión: en un `execute` posterior devuelve `NULL`, por eso el INSERT y la consulta viajan juntos |
 | `conn.vaciar_bitacora(tablas, bid)` | `DROP TABLE` + `CREATE` | El esquema pertenece a `db/mssql/`; borrar la tabla rompería las FK y la vista |
@@ -271,7 +271,7 @@ Recorre 322 rutas y clasifica las diferencias:
 Para comparar dos bases después de un cargue:
 
 ```bash
-python tools/compare_bd.py --a dnp_dpip --b dnp_dpip_pruebas --periodo 2026-I
+python tools/compare_bd.py --a BASE_REFERENCIA --b BASE_A_VERIFICAR --periodo 2026-I
 ```
 
 ---

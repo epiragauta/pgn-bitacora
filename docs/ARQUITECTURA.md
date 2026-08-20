@@ -40,7 +40,7 @@ Se alimenta de archivos Excel producidos por SIIF Nación, PIIP, SCCI y las áre
       │  red sbn-ecp_umbraco-network
       ▼  alias interno: sqlserver
 ┌─────────────────────────────────────────────┐
-│  SQL Server 2022 — base dnp_dpip            │
+│  SQL Server 2022 — nombre configurable      │
 │  23 tablas · 1 vista · Modern_Spanish_CS_AS │
 └─────────────────────────────────────────────┘
       ▲
@@ -169,7 +169,7 @@ Excel (SIIF · PIIP · SCCI · DNP)
         │
         │  etl/db.py  (pyodbc)
         ▼
-      dnp_dpip
+      la base (tablas btcr_*)
 ```
 
 `etl/bases.py` localiza los archivos por patrón dentro de cada carpeta de sección, porque los nombres traen fechas y sufijos que cambian cada trimestre. `etl/db.py` concentra las equivalencias con el motor anterior, de modo que los cargadores conservan intacta su lógica de lectura de Excel — que es donde vive el conocimiento del negocio y lo más costoso de reescribir.
@@ -219,7 +219,7 @@ Los datos viven en el volumen de SQL Server, no en la imagen: reconstruir o rein
 | Exposición | Solo Caddy alcanza la API; el contenedor no escucha en la interfaz pública |
 | Autenticación | **No hay**, por decisión explícita: la API es pública y de solo lectura |
 | Credenciales | Fuera del repositorio, inyectadas por entorno |
-| Permisos de base | Login dedicado con alcance a `dnp_dpip`, sin acceso a otras bases de la instancia |
+| Permisos de base | Login dedicado acotado a su base, sin acceso a las demás de la instancia. Como las tablas llevan prefijo, en una base compartida los permisos pueden acotarse a ellas |
 | Inyección SQL | Todas las consultas usan parámetros; ningún valor de usuario se concatena |
 
 Los endpoints están agrupados con `MapGroup("/api")` precisamente para que introducir autenticación más adelante sea un cambio de una línea.

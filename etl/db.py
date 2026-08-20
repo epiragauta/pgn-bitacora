@@ -18,10 +18,15 @@ Diferencias con SQLite que este módulo resuelve:
   · `CREATE TABLE`       -> el esquema es responsabilidad de db/mssql/.
     Los cargadores ya no crean ni borran tablas: vacían por bitácora.
 
-Conexión: variable de entorno DNP_DPIP_CONN, o el valor por defecto de
-desarrollo. En producción se inyecta por entorno.
+Conexión: **obligatoriamente** por la variable de entorno DNP_DPIP_CONN.
 
-    export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};SERVER=...;"
+    export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};\
+SERVER=servidor,1433;DATABASE=la_base;UID=usuario;PWD=clave;TrustServerCertificate=yes"
+
+No hay valor por defecto a propósito. Antes existía uno con credenciales
+reales incrustadas, que terminaron versionadas en el repositorio; y de
+paso fijaba el nombre de la base, cuando el esquema está pensado para
+instalarse en cualquiera (todas las tablas llevan el prefijo btcr_).
 """
 
 from __future__ import annotations
@@ -38,15 +43,22 @@ except ImportError:  # pragma: no cover
         "Requiere el paquete del sistema 'ODBC Driver 18 for SQL Server'."
     )
 
-CONN_DEFAULT = (
-    "DRIVER={ODBC Driver 18 for SQL Server};"
-    "SERVER=127.0.0.1,1433;DATABASE=dnp_dpip;"
-    "UID=dnp_dpip_app;PWD=b1t4c0r42026;TrustServerCertificate=yes"
-)
+VARIABLE = "DNP_DPIP_CONN"
+
+AYUDA = f"""Falta la variable de entorno {VARIABLE}.
+
+    export {VARIABLE}="DRIVER={{ODBC Driver 18 for SQL Server}};\\
+SERVER=servidor,1433;DATABASE=la_base;UID=usuario;PWD=clave;TrustServerCertificate=yes"
+
+El nombre de la base es libre: el esquema no lo presupone y todas las
+tablas llevan el prefijo btcr_ para convivir con otros sistemas."""
 
 
 def cadena_conexion() -> str:
-    return os.environ.get("DNP_DPIP_CONN", CONN_DEFAULT)
+    cadena = os.environ.get(VARIABLE)
+    if not cadena:
+        raise SystemExit(AYUDA)
+    return cadena
 
 
 class Cursor:

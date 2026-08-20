@@ -1,5 +1,5 @@
 -- ============================================================
--- 003_seed_dane.sql — Catálogo DANE de departamentos (base dnp_dpip)
+-- 003_seed_dane.sql — Catálogo DANE de departamentos
 --
 -- Catálogo estático de las 33 entidades territoriales. Es la fuente
 -- canónica de esta tabla: la migración de datos de la Fase 2 la
