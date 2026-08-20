@@ -138,7 +138,11 @@ Cuatro cálculos no se resuelven bien en SQL y viven en C#:
 
 ### Contenido estático
 
-La misma aplicación sirve el frontend y los GeoJSON. El tipo `application/geo+json` está registrado explícitamente: sin eso el middleware de .NET devuelve 404 para esas extensiones y **el mapa queda en blanco sin error alguno**.
+La misma aplicación sirve el frontend. Se publica **únicamente `frontend/`**, que ya incluye `frontend/data/` con los GeoJSON del mapa; la carpeta `data/` de la raíz del repositorio —donde viven los Excel fuente y los insumos del ETL— no se copia a la imagen ni se expone.
+
+El tipo `application/geo+json` está registrado explícitamente porque no viene en la tabla por defecto: sin eso el middleware devuelve 404 para esas extensiones y **el mapa queda en blanco sin error alguno**.
+
+Se registra la extensión concreta en lugar de activar `ServeUnknownFileTypes`, que publica cualquier archivo bajo el directorio servido. Una extensión no reconocida devuelve 404 en vez de publicarse.
 
 ---
 

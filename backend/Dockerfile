@@ -33,11 +33,13 @@ RUN apt-get update \
 
 COPY --from=build /app/publish ./
 
-# Contenido estático que sirve la propia API, igual que hacía FastAPI.
-# Program.cs busca hacia arriba el directorio con frontend/index.html y
-# aquí lo encuentra en /app.
+# Contenido estático que sirve la propia API. Program.cs busca hacia
+# arriba el directorio con frontend/index.html y aquí lo encuentra en /app.
+#
+# Solo viaja frontend/, que ya incluye frontend/data/ con los GeoJSON del
+# mapa. La carpeta data/ de la raíz NO se copia: contiene los Excel fuente
+# del DNP y los insumos del ETL, que la API no necesita y no debe exponer.
 COPY frontend/ ./frontend/
-COPY data/     ./data/
 
 ENV ASPNETCORE_URLS=http://+:8080 \
     ASPNETCORE_ENVIRONMENT=Production \

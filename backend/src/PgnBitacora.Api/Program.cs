@@ -64,42 +64,35 @@ app.MapSgp();
 app.MapResumen();
 
 // ── Archivos estáticos ────────────────────────────────────
-// Equivale a los app.mount() de FastAPI: /data para los GeoJSON y la raíz
-// para el frontend. Las rutas /api ya están mapeadas arriba y no chocan.
+// Se sirve ÚNICAMENTE frontend/. Las capas del mapa se piden como
+// /data/*.geojson y se resuelven contra frontend/data/, que ya las
+// contiene; la carpeta data/ de la raíz del repositorio no se publica,
+// porque guarda los Excel fuente del DNP y los insumos del ETL.
 var raiz = RaizDelRepositorio(app.Environment.ContentRootPath, app.Configuration["Rutas:Raiz"]);
 var dirFrontend = Path.Combine(raiz, "frontend");
-var dirData = Path.Combine(raiz, "data");
 
-// StaticFileMiddleware solo sirve extensiones con MIME conocido y .geojson
-// no está en la tabla por defecto: sin esto, las capas del mapa Leaflet
-// responden 404 y el mapa queda en blanco sin ningún error visible.
-// StaticFiles de FastAPI servía cualquier archivo, así que se replica esa
-// permisividad para no volver a perder un recurso en silencio.
+// Lista blanca de extensiones. StaticFileMiddleware solo sirve tipos MIME
+// conocidos y .geojson no está en su tabla: sin registrarlo, las capas del
+// mapa responden 404 y Leaflet queda en blanco sin ningún error visible.
+//
+// Se registra la extensión en lugar de activar ServeUnknownFileTypes: esa
+// opción sirve CUALQUIER archivo bajo el directorio publicado, que fue como
+// los .xlsx de BASES_BITACORA quedaron descargables desde internet.
 var tiposContenido = new FileExtensionContentTypeProvider();
 tiposContenido.Mappings[".geojson"] = "application/geo+json";
 
-StaticFileOptions Opciones(string directorio, string rutaPeticion) => new()
-{
-    FileProvider = new PhysicalFileProvider(directorio),
-    RequestPath = rutaPeticion,
-    ContentTypeProvider = tiposContenido,
-    ServeUnknownFileTypes = true,
-    DefaultContentType = "application/octet-stream",
-};
-
-if (Directory.Exists(dirData))
-{
-    app.UseStaticFiles(Opciones(dirData, "/data"));
-}
-
 if (Directory.Exists(dirFrontend))
 {
-    app.UseDefaultFiles(new DefaultFilesOptions
+    var proveedor = new PhysicalFileProvider(dirFrontend);
+    app.UseDefaultFiles(new DefaultFilesOptions { FileProvider = proveedor, RequestPath = "" });
+    app.UseStaticFiles(new StaticFileOptions
     {
-        FileProvider = new PhysicalFileProvider(dirFrontend),
+        FileProvider = proveedor,
         RequestPath = "",
+        ContentTypeProvider = tiposContenido,
+        // Deliberadamente ausente ServeUnknownFileTypes: una extensión no
+        // reconocida devuelve 404 en lugar de publicarse.
     });
-    app.UseStaticFiles(Opciones(dirFrontend, ""));
 }
 else
 {

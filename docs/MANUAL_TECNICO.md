@@ -279,6 +279,12 @@ python tools/compare_bd.py --a dnp_dpip --b dnp_dpip_pruebas --periodo 2026-I
 3. Añadir la ruta a `tools/endpoints.py` para que entre en la verificación.
 4. Capturar su respuesta en la línea base y correr el comparador.
 
+### Añadir un recurso estático
+
+Solo se publica `frontend/`. Si el recurso lleva una extensión que .NET no reconoce, hay que **registrar el tipo MIME** en `tiposContenido` (`Program.cs`). No usar `ServeUnknownFileTypes`: fue la causa de que los Excel fuente del DNP quedaran descargables desde internet.
+
+Nada fuera de `frontend/` se sirve. En particular, `data/` de la raíz contiene insumos del ETL y no debe exponerse.
+
 ### Añadir una columna
 
 1. Añadirla a `db/mssql/001_schema.sql` **con guarda de idempotencia**.
@@ -298,6 +304,7 @@ python tools/compare_bd.py --a dnp_dpip --b dnp_dpip_pruebas --periodo 2026-I
 |---|---|
 | El tablero muestra cifras viejas y no da error | El frontend cayó a sus datos embebidos: alguna clave del JSON cambió o el endpoint falló. Revisar la consola del navegador |
 | El mapa aparece en blanco | Los GeoJSON devuelven 404. Verificar el registro del tipo `application/geo+json` en `Program.cs` |
+| Un recurso estático nuevo devuelve 404 | Su extensión no está en la lista blanca. **Registrarla en `tiposContenido`**, no activar `ServeUnknownFileTypes`: esa opción publica cualquier archivo del directorio servido |
 | Error 8134 | División por cero: falta un `NULLIF` |
 | Regiones o sectores fusionados | La base se creó con collation insensible a tildes |
 | Porcentajes con el último decimal distinto | Falta un `CAST(... AS FLOAT)` en la expresión |
