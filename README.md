@@ -17,6 +17,7 @@ Dashboard web sobre el Presupuesto General de la Nación, con seguimiento adicio
 | [Arquitectura](docs/ARQUITECTURA.md) | Visión de conjunto, modelo de datos y decisiones de diseño |
 | [Manual técnico](docs/MANUAL_TECNICO.md) | Desarrolladores que modifican el backend, la base o los ETL |
 | [Manual de operación](docs/MANUAL_OPERACION.md) | Cargue trimestral, despliegue e incidencias |
+| [Despliegue en IIS](docs/DESPLIEGUE_IIS.md) | Publicar en un servidor Windows con IIS |
 | [Manual de usuario](docs/MANUAL_USUARIO.md) | Analistas y directivos que consultan el tablero |
 | [Informe de la migración](docs/INFORME_MIGRACION_DOTNET_SQLSERVER.md) | Actividades, hallazgos y resultados del paso a .NET / SQL Server |
 | [Plan de migración](docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md) | Bitácora técnica con el catálogo de incompatibilidades entre motores |
