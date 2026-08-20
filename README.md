@@ -22,6 +22,7 @@ Dashboard web sobre el Presupuesto General de la Nación, con seguimiento adicio
 | [Despliegue en IIS](docs/DESPLIEGUE_IIS.md) | Publicar en un servidor Windows con IIS |
 | [Manual de usuario](docs/MANUAL_USUARIO.md) | Analistas y directivos que consultan el tablero |
 | [Informe de la migración](docs/INFORME_MIGRACION_DOTNET_SQLSERVER.md) | Actividades, hallazgos y resultados del paso a .NET / SQL Server |
+| [Informe de cambios 2026-08-20](docs/INFORME_CAMBIOS_2026-08-20.md) | Trabajo posterior: prefijo `btcr_`, despliegue en IIS y dos hallazgos de seguridad |
 | [Plan de migración](docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md) | Bitácora técnica con el catálogo de incompatibilidades entre motores |
 | [Guía de ETLs](docs/etl_uso.md) | Detalle de cada cargador |
 

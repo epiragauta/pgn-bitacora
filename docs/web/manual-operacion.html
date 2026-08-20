@@ -167,7 +167,7 @@ footer a{color:var(--ink-2)}
         <tbody>
           <tr><th>Tablero público</th><td><code>https://dnp-btcr.skaphe.com</code></td></tr>
           <tr><th>Contenedor</th><td><code>dnp-dpip-bitacora</code>, en <code>127.0.0.1:5080</code></td></tr>
-          <tr><th>Base de datos</th><td>SQL Server <code>dnp_dpip</code>, en <code>umbraco-sqlserver</code></td></tr>
+          <tr><th>Base de datos</th><td>SQL Server en <code>umbraco-sqlserver</code>. Hoy la base se llama <code>dnp_dpip</code> y sus tablas llevan el prefijo <code>btcr_</code></td></tr>
           <tr><th>Proxy</th><td>Caddy en el host</td></tr>
           <tr><th>Repositorio</th><td><code>/data/epv/pgn-bitacora</code></td></tr>
         </tbody>
@@ -188,7 +188,7 @@ curl -s -o /dev/null -w "%{http_code}\n" https://dnp-btcr.skaphe.com/health</cod
       </div>
 <pre><code>docker exec umbraco-sqlserver /opt/mssql-tools18/bin/sqlcmd \
   -S localhost -U sa -P "$SA_PASSWORD" -C -Q \
-  "BACKUP DATABASE dnp_dpip TO DISK='/var/opt/mssql/backup/dnp_dpip_$(date +%F).bak' WITH INIT"</code></pre>
+  "BACKUP DATABASE $MI_BASE TO DISK='/var/opt/mssql/backup/${MI_BASE}_$(date +%F).bak' WITH INIT"</code></pre>
 
       <div class="step"><span class="k">2</span><h3>Coloque los archivos fuente</h3></div>
       <p>En <code>data/BASES_BITACORA/&lt;Mes&gt;/</code>, respetando las carpetas numeradas por sección. Verifique que estén completos:</p>
@@ -199,9 +199,13 @@ curl -s -o /dev/null -w "%{http_code}\n" https://dnp-btcr.skaphe.com/health</cod
 <pre><code>python etl/bases.py      # lista lo que encuentra por sección</code></pre>
 
       <div class="step"><span class="k">3</span><h3>Prepare el entorno</h3></div>
+      <div class="call">
+        <span class="tag">La conexión es obligatoria</span>
+        <p>No hay valor por defecto: si <code>DNP_DPIP_CONN</code> no está definida, los cargadores terminan mostrando el formato esperado. <code>MI_BASE</code> y <code>USUARIO</code> son marcadores — el nombre de la base es libre.</p>
+      </div>
 <pre><code>source .venv/bin/activate
 export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};SERVER=127.0.0.1,1433;\
-DATABASE=dnp_dpip;UID=dnp_dpip_app;PWD=...;TrustServerCertificate=yes"</code></pre>
+DATABASE=MI_BASE;UID=USUARIO;PWD=...;TrustServerCertificate=yes"</code></pre>
     </section>
 
     <section id="hojas">
@@ -267,7 +271,7 @@ curl -s https://dnp-btcr.skaphe.com/api/resumen | head -c 400</code></pre>
         <p>Es <strong>esperable</strong> que reporte diferencias de valores: los datos cambiaron a propósito. Lo que debe revisar es que <strong>no haya diferencias de claves ni de estado HTTP</strong> — esas sí indican un problema real. Las de valores hay que contrastarlas con lo esperado del nuevo corte.</p>
       </div>
       <p>Para una verificación más estricta, cargue primero en una base de pruebas y compare:</p>
-<pre><code>python tools/compare_bd.py --a dnp_dpip --b dnp_dpip_pruebas --periodo 2026-II</code></pre>
+<pre><code>python tools/compare_bd.py --a BASE_REFERENCIA --b BASE_A_VERIFICAR --periodo 2026-II</code></pre>
       <p>Por último, <strong>abra el tablero</strong> y recorra las ocho secciones. Confirme que el selector muestra el periodo nuevo y que el mapa dibuja.</p>
     </section>
 
@@ -346,7 +350,7 @@ docker exec umbraco-sqlserver /opt/mssql-tools18/bin/sqlcmd \
       <div class="tw"><table>
         <thead><tr><th>Tarea</th><th>Frecuencia</th></tr></thead>
         <tbody>
-          <tr><td>Respaldo de <code>dnp_dpip</code></td><td>Antes de cada cargue, y programado según la política de la entidad</td></tr>
+          <tr><td>Respaldo de la base</td><td>Antes de cada cargue, y programado según la política de la entidad</td></tr>
           <tr><td>Verificar el certificado</td><td>Automático; revisar si hay alerta</td></tr>
           <tr><td>Actualizar imagen base de .NET</td><td>Con cada parche de seguridad</td></tr>
           <tr><td>Revisar espacio en disco</td><td>Mensual — los respaldos se acumulan</td></tr>
