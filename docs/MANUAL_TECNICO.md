@@ -92,7 +92,13 @@ Cada archivo de `Endpoints/` expone un método de extensión `MapXxx()` que `Pro
 
 ---
 
-## 3. Las tres reglas
+## 3. Las reglas
+
+### 3.0 Toda tabla lleva el prefijo `btcr_`
+
+Las tablas están pensadas para convivir en una base compartida con otros sistemas, así que se nombran `dbo.btcr_metadatos_bitacora`, `dbo.btcr_pgn_concepto`, etc. Restricciones e índices también: `PK_btcr_…`, `UQ_btcr_…`, `FK_btcr_…`, `idx_btcr_…`.
+
+**Las rutas de la API no se prefijan.** `/api/regionalizacion` sigue llamándose así: el prefijo es de almacenamiento y no forma parte del contrato público. Al renombrar hay que tener cuidado con un reemplazo global — el primer intento renombró también las rutas, que es justo lo que no debe pasar.
 
 ### 3.1 Los alias de columna del SQL son las claves del JSON
 

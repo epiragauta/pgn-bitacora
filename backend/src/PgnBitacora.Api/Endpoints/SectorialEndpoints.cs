@@ -15,7 +15,7 @@ public static class SectorialEndpoints
             var sql = """
                 SELECT vigencia, sector, entidad, apr_vigente_mmm,
                        compromisos_mmm, obligaciones_mmm, pct_c_av, pct_o_av
-                FROM dbo.ejecucion_sectorial_entidades
+                FROM dbo.btcr_ejecucion_sectorial_entidades
                 WHERE bitacora_id = @bid AND vigencia = @vigencia
                 """;
 
@@ -42,7 +42,7 @@ public static class SectorialEndpoints
                        pct_compromisos_prom, pct_compromisos_mejor,
                        pct_obligaciones_2025, pct_obligaciones_2024,
                        pct_obligaciones_prom, pct_obligaciones_mejor
-                FROM dbo.ejecucion_sectorial_mensual
+                FROM dbo.btcr_ejecucion_sectorial_mensual
                 WHERE bitacora_id = @bid AND vigencia = @vigencia
                 """;
 
@@ -67,7 +67,7 @@ public static class SectorialEndpoints
                 SELECT vigencia, sector, entidad,
                        apr_vigente_mmm, compromisos_mmm, obligaciones_mmm,
                        pct_c_av, pct_o_av
-                FROM dbo.ejecucion_sectorial_entidades
+                FROM dbo.btcr_ejecucion_sectorial_entidades
                 WHERE bitacora_id = @bid AND vigencia >= 2022
                 """;
 

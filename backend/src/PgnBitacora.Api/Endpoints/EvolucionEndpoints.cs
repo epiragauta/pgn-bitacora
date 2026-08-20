@@ -24,8 +24,8 @@ public static class EvolucionEndpoints
                 SELECT e.anio AS vigencia,
                        REPLACE(c.nombre, 'Servicio de la Deuda', 'Servicio Deuda') AS rubro,
                        e.valor AS vigente_mmm
-                FROM dbo.pgn_ejecucion e
-                JOIN dbo.pgn_concepto  c ON c.id = e.concepto_id
+                FROM dbo.btcr_pgn_ejecucion e
+                JOIN dbo.btcr_pgn_concepto  c ON c.id = e.concepto_id
                 WHERE c.nivel = 2 AND c.unidad = 'Miles mm COP' AND e.fase = 'Vigente'
                 """;
 
@@ -41,15 +41,15 @@ public static class EvolucionEndpoints
             await db.QueryAsync("""
                 WITH total AS (
                     SELECT e.valor
-                    FROM   dbo.pgn_ejecucion e
-                    JOIN   dbo.pgn_concepto  c ON c.id = e.concepto_id
+                    FROM   dbo.btcr_pgn_ejecucion e
+                    JOIN   dbo.btcr_pgn_concepto  c ON c.id = e.concepto_id
                     WHERE  c.nombre = 'Total PGN' AND c.unidad = 'Miles mm COP'
                       AND  e.anio = @anio AND e.fase = @fase
                 )
                 SELECT c.nombre AS concepto, e.valor,
                        ROUND(CAST(e.valor AS FLOAT) * 100.0 / NULLIF(total.valor, 0), 2) AS pct_total
-                FROM dbo.pgn_ejecucion e
-                JOIN dbo.pgn_concepto  c ON c.id = e.concepto_id
+                FROM dbo.btcr_pgn_ejecucion e
+                JOIN dbo.btcr_pgn_concepto  c ON c.id = e.concepto_id
                 CROSS JOIN total
                 WHERE c.nivel = 2 AND c.unidad = 'Miles mm COP'
                   AND e.anio = @anio AND e.fase = @fase
@@ -61,10 +61,10 @@ public static class EvolucionEndpoints
             await db.QueryAsync("""
                 SELECT v.anio, v.valor AS vigente, p.valor AS pagado,
                        ROUND(CAST(p.valor AS FLOAT) * 100.0 / NULLIF(v.valor, 0), 2) AS tasa_ejecucion_pct
-                FROM dbo.pgn_ejecucion v
-                JOIN dbo.pgn_ejecucion p
+                FROM dbo.btcr_pgn_ejecucion v
+                JOIN dbo.btcr_pgn_ejecucion p
                      ON p.anio = v.anio AND p.concepto_id = v.concepto_id AND p.fase = 'Pagado'
-                JOIN dbo.pgn_concepto c ON c.id = v.concepto_id
+                JOIN dbo.btcr_pgn_concepto c ON c.id = v.concepto_id
                 WHERE c.nombre = 'Total PGN' AND c.unidad = 'Miles mm COP' AND v.fase = 'Vigente'
                 ORDER BY v.anio
                 """))
@@ -74,8 +74,8 @@ public static class EvolucionEndpoints
             await db.QueryAsync("""
                 SELECT e.anio, c.nombre AS concepto,
                        ROUND(CAST(e.valor AS FLOAT) * 100, 4) AS valor_pct_pib
-                FROM dbo.pgn_ejecucion e
-                JOIN dbo.pgn_concepto  c ON c.id = e.concepto_id
+                FROM dbo.btcr_pgn_ejecucion e
+                JOIN dbo.btcr_pgn_concepto  c ON c.id = e.concepto_id
                 WHERE c.nivel = 2 AND c.unidad = '% PIB' AND e.fase = 'Vigente'
                 ORDER BY e.anio, c.orden
                 """))
@@ -85,16 +85,16 @@ public static class EvolucionEndpoints
             await db.QueryAsync("""
                 WITH arbol AS (
                     SELECT id, nombre, nivel, padre_id, orden
-                    FROM dbo.pgn_concepto WHERE nombre = @concepto
+                    FROM dbo.btcr_pgn_concepto WHERE nombre = @concepto
                     UNION ALL
                     SELECT c.id, c.nombre, c.nivel, c.padre_id, c.orden
-                    FROM dbo.pgn_concepto c
+                    FROM dbo.btcr_pgn_concepto c
                     JOIN arbol a ON c.padre_id = a.id
                 )
                 SELECT a.nivel, a.nombre, e.valor, COALESCE(p.nombre, '') AS padre
                 FROM arbol a
-                JOIN dbo.pgn_ejecucion e ON e.concepto_id = a.id
-                LEFT JOIN dbo.pgn_concepto p ON p.id = a.padre_id
+                JOIN dbo.btcr_pgn_ejecucion e ON e.concepto_id = a.id
+                LEFT JOIN dbo.btcr_pgn_concepto p ON p.id = a.padre_id
                 WHERE e.anio = @anio AND e.fase = @fase
                 ORDER BY a.orden
                 OPTION (MAXRECURSION 10)
@@ -102,7 +102,7 @@ public static class EvolucionEndpoints
             .WithSummary("Árbol jerárquico de un concepto y sus descendientes.");
 
         grupo.MapGet("/tabla_completa", async (IDb db) =>
-            await db.QueryAsync("SELECT * FROM dbo.pgn_vista_crosstab ORDER BY orden"))
+            await db.QueryAsync("SELECT * FROM dbo.btcr_pgn_vista_crosstab ORDER BY orden"))
             .WithSummary("Todos los conceptos × años × fases en formato pivot.");
 
         grupo.MapGet("/inversion_historica", async (int? bitacora_id, IDb db) =>
@@ -117,15 +117,15 @@ public static class EvolucionEndpoints
                        ROUND(CAST(pag.valor AS FLOAT) * 100.0 / NULLIF(v.valor, 0), 2)    AS pct_pagos,
                        ROUND(CAST(pib.valor AS FLOAT) * 100, 1)                           AS inv_pct_pib,
                        ROUND(CAST(v.valor AS FLOAT) * 100.0 / NULLIF(tot.valor, 0), 1)    AS inv_pct_gasto_total
-                FROM dbo.pgn_ejecucion v
-                JOIN dbo.pgn_ejecucion com ON com.anio=v.anio AND com.concepto_id=v.concepto_id AND com.fase='Comprometido'
-                JOIN dbo.pgn_ejecucion obl ON obl.anio=v.anio AND obl.concepto_id=v.concepto_id AND obl.fase='Obligado'
-                JOIN dbo.pgn_ejecucion pag ON pag.anio=v.anio AND pag.concepto_id=v.concepto_id AND pag.fase='Pagado'
-                JOIN dbo.pgn_ejecucion pib ON pib.anio=v.anio AND pib.fase='Vigente'
-                JOIN dbo.pgn_concepto  cpib ON cpib.id=pib.concepto_id AND cpib.nombre='Inversión como % del PIB'
-                JOIN dbo.pgn_ejecucion tot ON tot.anio=v.anio AND tot.fase='Vigente'
-                JOIN dbo.pgn_concepto  ctot ON ctot.id=tot.concepto_id AND ctot.nombre='Total PGN' AND ctot.unidad='Miles mm COP'
-                JOIN dbo.pgn_concepto  c    ON c.id=v.concepto_id AND c.nombre='Inversión' AND c.unidad='Miles mm COP'
+                FROM dbo.btcr_pgn_ejecucion v
+                JOIN dbo.btcr_pgn_ejecucion com ON com.anio=v.anio AND com.concepto_id=v.concepto_id AND com.fase='Comprometido'
+                JOIN dbo.btcr_pgn_ejecucion obl ON obl.anio=v.anio AND obl.concepto_id=v.concepto_id AND obl.fase='Obligado'
+                JOIN dbo.btcr_pgn_ejecucion pag ON pag.anio=v.anio AND pag.concepto_id=v.concepto_id AND pag.fase='Pagado'
+                JOIN dbo.btcr_pgn_ejecucion pib ON pib.anio=v.anio AND pib.fase='Vigente'
+                JOIN dbo.btcr_pgn_concepto  cpib ON cpib.id=pib.concepto_id AND cpib.nombre='Inversión como % del PIB'
+                JOIN dbo.btcr_pgn_ejecucion tot ON tot.anio=v.anio AND tot.fase='Vigente'
+                JOIN dbo.btcr_pgn_concepto  ctot ON ctot.id=tot.concepto_id AND ctot.nombre='Total PGN' AND ctot.unidad='Miles mm COP'
+                JOIN dbo.btcr_pgn_concepto  c    ON c.id=v.concepto_id AND c.nombre='Inversión' AND c.unidad='Miles mm COP'
                 WHERE v.fase = 'Vigente'
                 ORDER BY v.anio
                 """))

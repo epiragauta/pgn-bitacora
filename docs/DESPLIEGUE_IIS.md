@@ -117,6 +117,12 @@ Server=SERVIDOR_SQL;Database=dnp_dpip;Integrated Security=true;TrustServerCertif
 
 Es la opción recomendada en un entorno institucional: no hay credencial que rotar ni que se filtre en un archivo de configuración.
 
+### Convivencia en una base compartida
+
+Todas las tablas llevan el prefijo `btcr_` (`btcr_metadatos_bitacora`, `btcr_pgn_concepto`, …), igual que sus restricciones e índices. Eso permite instalar el esquema **dentro de una base existente de la entidad** sin colisionar con otros sistemas: basta con ejecutar `db/mssql/*.sql` sobre ella.
+
+Si se hace así, los permisos del usuario de la aplicación pueden acotarse a esas tablas en lugar de a la base entera.
+
 ### La base que se cree debe respetar la collation
 
 ```sql

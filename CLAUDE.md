@@ -16,7 +16,8 @@ The migration **FastAPI/SQLite → .NET 8/SQL Server** completed on 2026-08-15. 
 
 1. **All computed SQL arithmetic must be `CAST(... AS FLOAT)`.** SQLite computes in double precision; `DECIMAL` produced `1.2367` where the original gave `1.2368`. Storage stays `DECIMAL(18,6)`; only expressions are cast.
 2. **The database collation must stay `Modern_Spanish_CS_AS`.** With an accent-insensitive collation, `PACÍFICO` and `PACIFICO` collapse into one value and `GROUP BY region` silently merges rows.
-3. **The SQL column aliases *are* the JSON keys.** The frontend reads exact snake_case keys and falls back to embedded data **silently, with no error**, if one is missing. Dapper returns dictionaries precisely so no rename can slip through. Never introduce a JSON naming policy.
+3. **Every table carries the `btcr_` prefix.** The tables are meant to live in a database shared with other systems, so `dbo.btcr_metadatos_bitacora`, `dbo.btcr_pgn_concepto`, and so on. Constraints and indexes are prefixed too (`PK_btcr_…`, `idx_btcr_…`) because their names must also be unique there. **The API routes are NOT prefixed** — `/api/regionalizacion` stays as it is; the prefix is a storage concern, never part of the public contract.
+4. **The SQL column aliases *are* the JSON keys.** The frontend reads exact snake_case keys and falls back to embedded data **silently, with no error**, if one is missing. Dapper returns dictionaries precisely so no rename can slip through. Never introduce a JSON naming policy.
 
 Any backend change must pass `python tools/compare_apis.py --contra-linea-base` before being considered done. That baseline is a frozen capture of the pre-migration API — it is the safety net, so **never regenerate it to make a difference go away**.
 
@@ -117,7 +118,7 @@ docker compose logs -f api
 - All data tables use `bitacora_id` foreign key
 - Enables historical tracking across multiple periods
 
-**Section Tables:**
+**Section Tables** (all with the `btcr_` prefix in the database):
 1. **Transformaciones PND** (`inversion_transformaciones`, `inversion_componentes_pnd`, `ejecucion_transformaciones`)
 2. **Evolución Presupuestal** (`pgn_concepto`, `pgn_ejecucion`, view `pgn_vista_crosstab`) — the old `evolucion_presupuestal` table was dropped in the migration
 3. **Regionalización** (`regionalizacion`, `regionalizacion_sectores`)

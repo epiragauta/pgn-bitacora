@@ -217,7 +217,7 @@ def grafias_en_bd(conn):
     """
     return [
         (r[0], r[1]) for r in conn.execute(
-            "SELECT DISTINCT sector, entidad FROM dbo.ejecucion_sectorial_entidades"
+            "SELECT DISTINCT sector, entidad FROM dbo.btcr_ejecucion_sectorial_entidades"
         ).fetchall()
     ]
 
@@ -287,8 +287,8 @@ def verificar_columnas(conn):
     deba arreglar por su cuenta.
     """
     requeridas = {
-        'ejecucion_sectorial_entidades': {'pagos_mmm', 'pct_p_av'},
-        'ejecucion_sectorial_mensual': {
+        'btcr_ejecucion_sectorial_entidades': {'pagos_mmm', 'pct_p_av'},
+        'btcr_ejecucion_sectorial_mensual': {
             'pct_obligaciones_2025', 'pct_obligaciones_2024',
             'pct_obligaciones_prom', 'pct_obligaciones_mejor',
         },
@@ -323,9 +323,9 @@ def load_db(conn, bid, anio_max, mes_corte, tot, sec_agg, ent_agg, mens_agg, pib
             gasto_prev.get(anio),
         ))
 
-    conn.vaciar_bitacora(("ejecucion_historica",), bid)
+    conn.vaciar_bitacora(("btcr_ejecucion_historica",), bid)
     conn.upsert(
-        "ejecucion_historica",
+        "btcr_ejecucion_historica",
         ["bitacora_id", "vigencia", "vigente_mmm", "compromisos_mmm",
          "obligaciones_mmm", "pagos_mmm", "pct_compromisos", "pct_obligaciones",
          "pct_pagos", "inv_pct_pib", "inv_pct_gasto_total"],
@@ -350,18 +350,18 @@ def load_db(conn, bid, anio_max, mes_corte, tot, sec_agg, ent_agg, mens_agg, pib
         pago_rows.append((bid, anio, sector, pct(p, v)))
 
     conn.vaciar_bitacora((
-        "apropiacion_por_sector", "compromisos_pct_por_sector",
-        "obligaciones_pct_por_sector", "pagos_pct_por_sector",
+        "btcr_apropiacion_por_sector", "btcr_compromisos_pct_por_sector",
+        "btcr_obligaciones_pct_por_sector", "btcr_pagos_pct_por_sector",
     ), bid)
 
     claves_sector = ["bitacora_id", "vigencia", "sector"]
-    conn.upsert("apropiacion_por_sector",
+    conn.upsert("btcr_apropiacion_por_sector",
                 claves_sector + ["vigente_mmm"], apr_rows, claves=claves_sector)
-    conn.upsert("compromisos_pct_por_sector",
+    conn.upsert("btcr_compromisos_pct_por_sector",
                 claves_sector + ["pct_compromisos"], comp_rows, claves=claves_sector)
-    conn.upsert("obligaciones_pct_por_sector",
+    conn.upsert("btcr_obligaciones_pct_por_sector",
                 claves_sector + ["pct_obligaciones"], obl_rows, claves=claves_sector)
-    conn.upsert("pagos_pct_por_sector",
+    conn.upsert("btcr_pagos_pct_por_sector",
                 claves_sector + ["pct_pagos"], pago_rows, claves=claves_sector)
     print(f"  {len(apr_rows)} registros (sector × vigencia)")
 
@@ -379,9 +379,9 @@ def load_db(conn, bid, anio_max, mes_corte, tot, sec_agg, ent_agg, mens_agg, pib
             pct(c, v), pct(o, v), pct(p, v),
         ))
 
-    conn.vaciar_bitacora(("ejecucion_sectorial_entidades",), bid)
+    conn.vaciar_bitacora(("btcr_ejecucion_sectorial_entidades",), bid)
     conn.upsert(
-        "ejecucion_sectorial_entidades",
+        "btcr_ejecucion_sectorial_entidades",
         ["bitacora_id", "vigencia", "sector", "entidad",
          "apr_vigente_mmm", "compromisos_mmm", "obligaciones_mmm", "pagos_mmm",
          "pct_c_av", "pct_o_av", "pct_p_av"],
@@ -448,13 +448,13 @@ def load_db(conn, bid, anio_max, mes_corte, tot, sec_agg, ent_agg, mens_agg, pib
             ))
 
     conn.execute(
-        "DELETE FROM dbo.ejecucion_sectorial_mensual WHERE bitacora_id=? AND vigencia=?",
+        "DELETE FROM dbo.btcr_ejecucion_sectorial_mensual WHERE bitacora_id=? AND vigencia=?",
         (bid, anio_max)
     )
     # Esta tabla no tiene clave natural única (un sector puede repetir mes),
     # así que se inserta directo tras el borrado, sin upsert.
     conn.executemany("""
-        INSERT INTO dbo.ejecucion_sectorial_mensual
+        INSERT INTO dbo.btcr_ejecucion_sectorial_mensual
             (bitacora_id, vigencia, sector, mes,
              pct_compromisos_2025, pct_compromisos_2024,
              pct_compromisos_prom, pct_compromisos_mejor,
@@ -472,7 +472,7 @@ def verificar(conn, bid):
     rows = conn.execute("""
         SELECT vigencia, vigente_mmm, compromisos_mmm,
                pct_compromisos, pct_obligaciones
-        FROM dbo.ejecucion_historica WHERE bitacora_id=?
+        FROM dbo.btcr_ejecucion_historica WHERE bitacora_id=?
         ORDER BY vigencia
     """, (bid,)).fetchall()
     print(f"{'Año':>6}  {'Vigente mmm':>12}  {'Comp mmm':>12}  {'%Comp':>6}  {'%Obl':>6}")
@@ -480,13 +480,13 @@ def verificar(conn, bid):
         print(f"  {r[0]:>4}  {r[1]:>12,.0f}  {r[2]:>12,.0f}  {r[3]:>6}%  {r[4]:>6}%")
 
     n_sec = conn.execute(
-        "SELECT COUNT(*) FROM dbo.apropiacion_por_sector WHERE bitacora_id=?", (bid,)
+        "SELECT COUNT(*) FROM dbo.btcr_apropiacion_por_sector WHERE bitacora_id=?", (bid,)
     ).fetchone()[0]
     n_ent = conn.execute(
-        "SELECT COUNT(*) FROM dbo.ejecucion_sectorial_entidades WHERE bitacora_id=?", (bid,)
+        "SELECT COUNT(*) FROM dbo.btcr_ejecucion_sectorial_entidades WHERE bitacora_id=?", (bid,)
     ).fetchone()[0]
     n_men = conn.execute(
-        "SELECT COUNT(*) FROM dbo.ejecucion_sectorial_mensual WHERE bitacora_id=?", (bid,)
+        "SELECT COUNT(*) FROM dbo.btcr_ejecucion_sectorial_mensual WHERE bitacora_id=?", (bid,)
     ).fetchone()[0]
     print(f"\n  apropiacion_por_sector:        {n_sec:>5} registros")
     print(f"  ejecucion_sectorial_entidades: {n_ent:>5} registros")
@@ -500,7 +500,7 @@ def run(args):
 
     bid = args.bitacora_id if args.bitacora_id else dbmod.bitacora_reciente(conn)
     row = conn.execute(
-        "SELECT periodo, corte_fecha FROM dbo.metadatos_bitacora WHERE id=?", (bid,)
+        "SELECT periodo, corte_fecha FROM dbo.btcr_metadatos_bitacora WHERE id=?", (bid,)
     ).fetchone()
     if not row:
         print(f"ERROR: bitacora_id={bid} no existe en metadatos_bitacora")
@@ -537,7 +537,7 @@ def run(args):
     gasto_prev = {}
     for r in conn.execute(
         "SELECT vigencia, inv_pct_pib, inv_pct_gasto_total "
-        "FROM dbo.ejecucion_historica WHERE bitacora_id=?",
+        "FROM dbo.btcr_ejecucion_historica WHERE bitacora_id=?",
         (bid,)
     ).fetchall():
         pib_prev[r[0]]   = r[1]

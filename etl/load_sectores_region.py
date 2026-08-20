@@ -112,7 +112,7 @@ def run():
 
     # El ON CONFLICT DO UPDATE de SQLite equivale al upsert por clave natural.
     n = conn.upsert(
-        "regionalizacion_sectores",
+        "btcr_regionalizacion_sectores",
         ["bitacora_id", "vigencia", "region", "sector",
          "apropiacion_mmm", "compromisos_mmm", "obligaciones_mmm", "pagos_mmm"],
         filas, claves=["bitacora_id", "vigencia", "region", "sector"],
@@ -123,7 +123,7 @@ def run():
     print("\n--- Verificación: top 5 sectores ANDINA 2026 ---")
     for r in conn.execute("""
         SELECT TOP 5 sector, apropiacion_mmm, compromisos_mmm
-        FROM dbo.regionalizacion_sectores
+        FROM dbo.btcr_regionalizacion_sectores
         WHERE bitacora_id=? AND region='ANDINA' AND vigencia=2026
         ORDER BY apropiacion_mmm DESC
     """, (bid,)):

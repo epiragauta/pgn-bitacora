@@ -82,7 +82,7 @@ print(f"bitacora_id={bid}", file=sys.stderr)
 # esta bitácora. Antes se hacía DROP TABLE + CREATE desde schema.sql, que
 # en SQL Server rompería las claves foráneas.
 conn.upsert(
-    "sgp_historico_participacion",
+    "btcr_sgp_historico_participacion",
     ["bitacora_id", "vigencia", "educacion_mmm", "salud_mmm", "agua_potable_mmm",
      "proposito_general_mmm", "alimentacion_escolar_mmm", "riberenos_mmm",
      "resguardos_indigenas_mmm", "fonpet_ae_mmm", "total_mmm"],
@@ -92,9 +92,9 @@ conn.upsert(
 
 conn.commit()
 
-n = conn.execute("SELECT COUNT(*) FROM sgp_historico_participacion WHERE bitacora_id=?", (bid,)).fetchone()[0]
+n = conn.execute("SELECT COUNT(*) FROM btcr_sgp_historico_participacion WHERE bitacora_id=?", (bid,)).fetchone()[0]
 tot = conn.execute("""
-    SELECT ROUND(SUM(total_mmm),3) FROM sgp_historico_participacion WHERE bitacora_id=?
+    SELECT ROUND(SUM(total_mmm),3) FROM btcr_sgp_historico_participacion WHERE bitacora_id=?
 """, (bid,)).fetchone()[0]
 
 conn.close()

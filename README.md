@@ -6,6 +6,8 @@ Dashboard web sobre el Presupuesto General de la Nación, con seguimiento adicio
 
 **Arquitectura:** base de datos SQL Server (`dnp_dpip`), API REST en .NET 8 y frontend HTML autónomo.
 
+> **Todas las tablas llevan el prefijo `btcr_`**, para poder convivir en una base compartida con otros sistemas de la entidad. Las rutas de la API no se prefijan: el prefijo es de almacenamiento, no del contrato público.
+
 > La migración desde FastAPI/SQLite se completó el 2026-08-15. El histórico de decisiones, el catálogo de incompatibilidades entre motores y los resultados de cada fase están en [`docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md`](docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md) — vale la pena leerlo antes de tocar el backend.
 
 ---

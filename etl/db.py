@@ -192,7 +192,7 @@ def conectar(cadena: str | None = None) -> Conexion:
 def bitacora_reciente(conn: Conexion) -> int:
     """id de la bitácora más reciente, que es contra la que cargan los ETL."""
     fila = conn.execute(
-        "SELECT TOP 1 id FROM dbo.metadatos_bitacora ORDER BY corte_fecha DESC, id DESC"
+        "SELECT TOP 1 id FROM dbo.btcr_metadatos_bitacora ORDER BY corte_fecha DESC, id DESC"
     ).fetchone()
     if not fila:
         raise SystemExit("No hay ninguna bitácora en metadatos_bitacora.")

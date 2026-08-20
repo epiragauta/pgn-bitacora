@@ -171,7 +171,7 @@ print(f"bitacora_id={bid}", file=sys.stderr)
 # desde la hoja TD BITACORA, que cubre menos años y más sectores.
 # Antes esto se conseguía con DROP TABLE; ahora se vacía por bitácora,
 # porque borrar la tabla rompería las claves foráneas.
-conn.vaciar_bitacora(("vigencias_futuras", "deflactores_pib"), bid)
+conn.vaciar_bitacora(("btcr_vigencias_futuras", "btcr_deflactores_pib"), bid)
 
 # Deflactores
 defl_rows = []
@@ -183,7 +183,7 @@ for y in sorted(year_col):
         defl_rows.append((bid, y, d, pc, pk))
 
 conn.upsert(
-    "deflactores_pib",
+    "btcr_deflactores_pib",
     ["bitacora_id", "anio", "deflactor", "pib_corriente_mmm", "pib_constante_mmm"],
     defl_rows, claves=["bitacora_id", "anio"],
 )
@@ -198,7 +198,7 @@ for sect in all_sectors:
         vf_rows.append((bid, year, sect, round(pesos / 1e9, 3)))
 
 conn.upsert(
-    "vigencias_futuras",
+    "btcr_vigencias_futuras",
     ["bitacora_id", "vigencia_exec", "sector", "valor_corriente_mmm"],
     vf_rows, claves=["bitacora_id", "vigencia_exec", "sector"],
 )
@@ -206,10 +206,10 @@ conn.upsert(
 conn.commit()
 
 n_defl = conn.execute(
-    "SELECT COUNT(*) FROM deflactores_pib WHERE bitacora_id=?", (bid,)
+    "SELECT COUNT(*) FROM btcr_deflactores_pib WHERE bitacora_id=?", (bid,)
 ).fetchone()[0]
 n_vf = conn.execute(
-    "SELECT COUNT(*) FROM vigencias_futuras WHERE bitacora_id=?", (bid,)
+    "SELECT COUNT(*) FROM btcr_vigencias_futuras WHERE bitacora_id=?", (bid,)
 ).fetchone()[0]
 conn.close()
 

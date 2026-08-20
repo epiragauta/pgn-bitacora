@@ -96,16 +96,16 @@ def migrar(sq: sqlite3.Connection, cur: pyodbc.Cursor, tabla: str, truncar: bool
 
     if truncar:
         # DELETE y no TRUNCATE: las FK impiden truncar tablas referenciadas.
-        cur.execute(f"DELETE FROM dbo.[{tabla}]")
+        cur.execute(f"DELETE FROM dbo.[btcr_{tabla}]")
 
     filas = sq.execute(f'SELECT {", ".join(chr(34) + c + chr(34) for c in cols)} FROM "{tabla}"').fetchall()
     if not filas:
         return 0
 
-    cur.execute(f"SET IDENTITY_INSERT dbo.[{tabla}] ON")
+    cur.execute(f"SET IDENTITY_INSERT dbo.[btcr_{tabla}] ON")
     cur.fast_executemany = True
-    cur.executemany(f"INSERT INTO dbo.[{tabla}] ({lista}) VALUES ({marcas})", filas)
-    cur.execute(f"SET IDENTITY_INSERT dbo.[{tabla}] OFF")
+    cur.executemany(f"INSERT INTO dbo.[btcr_{tabla}] ({lista}) VALUES ({marcas})", filas)
+    cur.execute(f"SET IDENTITY_INSERT dbo.[btcr_{tabla}] OFF")
     return len(filas)
 
 
@@ -120,7 +120,7 @@ def validar(sq: sqlite3.Connection, cur: pyodbc.Cursor, tabla: str) -> list[str]
     fallos: list[str] = []
 
     n_org = sq.execute(f'SELECT COUNT(*) FROM "{tabla}"').fetchone()[0]
-    cur.execute(f"SELECT COUNT(*) FROM dbo.[{tabla}]")
+    cur.execute(f"SELECT COUNT(*) FROM dbo.[btcr_{tabla}]")
     n_dst = cur.fetchone()[0]
     if n_org != n_dst:
         fallos.append(f"conteo: origen={n_org} destino={n_dst}")
@@ -128,7 +128,7 @@ def validar(sq: sqlite3.Connection, cur: pyodbc.Cursor, tabla: str) -> list[str]
 
     for col in columnas_numericas(sq, tabla):
         s_org = num(sq.execute(f'SELECT SUM("{col}") FROM "{tabla}"').fetchone()[0])
-        cur.execute(f"SELECT SUM(CAST([{col}] AS FLOAT)) FROM dbo.[{tabla}]")
+        cur.execute(f"SELECT SUM(CAST([{col}] AS FLOAT)) FROM dbo.[btcr_{tabla}]")
         s_dst = num(cur.fetchone()[0])
 
         if s_org is None and s_dst is None:

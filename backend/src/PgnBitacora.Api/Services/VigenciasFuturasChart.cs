@@ -36,8 +36,8 @@ public static class VigenciasFuturasChart
             SELECT v.vigencia_exec,
                    v.sector,
                    ROUND(CAST(v.valor_corriente_mmm AS FLOAT) / NULLIF(d.deflactor, 0), 3) AS valor_ctes
-            FROM dbo.vigencias_futuras v
-            JOIN dbo.deflactores_pib d
+            FROM dbo.btcr_vigencias_futuras v
+            JOIN dbo.btcr_deflactores_pib d
               ON d.bitacora_id = v.bitacora_id AND d.anio = v.vigencia_exec
             WHERE v.bitacora_id = @bid
               AND v.vigencia_exec BETWEEN 2027 AND 2040
@@ -45,7 +45,7 @@ public static class VigenciasFuturasChart
 
         var pibFilas = await db.QueryAsync("""
             SELECT anio, pib_constante_mmm
-            FROM dbo.deflactores_pib
+            FROM dbo.btcr_deflactores_pib
             WHERE bitacora_id = @bid AND anio BETWEEN 2027 AND 2040
             """, new { bid = bitacoraId });
 

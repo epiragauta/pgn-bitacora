@@ -87,25 +87,25 @@ print(f"bitacora_id={bid}", file=sys.stderr)
 # esquema lo gobierna db/mssql/ y basta con vaciar esta bitácora.
 # credito_portafolio no tiene clave natural única, así que se recarga entera.
 conn.vaciar_bitacora(
-    ("credito_portafolio", "credito_ejecucion_entidad", "credito_ejecucion_historica"),
+    ("btcr_credito_portafolio", "btcr_credito_ejecucion_entidad", "btcr_credito_ejecucion_historica"),
     bid,
 )
 
 conn.executemany("""
-    INSERT INTO dbo.credito_portafolio
+    INSERT INTO dbo.btcr_credito_portafolio
         (bitacora_id, nombre, nombre_corto, fuente, contrato, sector, monto_usd, desembolsado_usd)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
 """, [(bid, *r) for r in port_rows])
 
 conn.upsert(
-    "credito_ejecucion_entidad",
+    "btcr_credito_ejecucion_entidad",
     ["bitacora_id", "entidad", "sector", "apr_inicial_mmm", "apr_vigente_mmm",
      "compromiso_mmm", "obligacion_mmm", "pago_mmm", "pct_com", "pct_ejec", "pct_pago"],
     [(bid, *r) for r in ent_rows], claves=["bitacora_id", "entidad"],
 )
 
 conn.upsert(
-    "credito_ejecucion_historica",
+    "btcr_credito_ejecucion_historica",
     ["bitacora_id", "anio", "pct_comprometido", "pct_ejecutado", "pct_pagado",
      "vigente_mmm", "comprometido_mmm", "ejecutado_mmm", "pagado_mmm"],
     [(bid, *r) for r in hist_rows], claves=["bitacora_id", "anio"],
@@ -113,13 +113,13 @@ conn.upsert(
 
 conn.commit()
 
-n1 = conn.execute("SELECT COUNT(*) FROM credito_portafolio WHERE bitacora_id=?", (bid,)).fetchone()[0]
-n2 = conn.execute("SELECT COUNT(*) FROM credito_ejecucion_entidad WHERE bitacora_id=?", (bid,)).fetchone()[0]
-n3 = conn.execute("SELECT COUNT(*) FROM credito_ejecucion_historica WHERE bitacora_id=?", (bid,)).fetchone()[0]
+n1 = conn.execute("SELECT COUNT(*) FROM btcr_credito_portafolio WHERE bitacora_id=?", (bid,)).fetchone()[0]
+n2 = conn.execute("SELECT COUNT(*) FROM btcr_credito_ejecucion_entidad WHERE bitacora_id=?", (bid,)).fetchone()[0]
+n3 = conn.execute("SELECT COUNT(*) FROM btcr_credito_ejecucion_historica WHERE bitacora_id=?", (bid,)).fetchone()[0]
 
 tot = conn.execute("""
     SELECT COUNT(*), ROUND(SUM(monto_usd),2), ROUND(SUM(desembolsado_usd),2)
-    FROM credito_portafolio WHERE bitacora_id=?
+    FROM btcr_credito_portafolio WHERE bitacora_id=?
 """, (bid,)).fetchone()
 
 conn.close()

@@ -65,12 +65,12 @@ def columnas_numericas(cur, tabla: str) -> list[str]:
 def resolver_bitacora(cur, periodo: str | None) -> int | None:
     if periodo:
         fila = cur.execute(
-            "SELECT id FROM dbo.metadatos_bitacora WHERE periodo = ?", periodo).fetchone()
+            "SELECT id FROM dbo.btcr_metadatos_bitacora WHERE periodo = ?", periodo).fetchone()
         if not fila:
             raise SystemExit(f"No existe la bitácora de periodo '{periodo}'")
         return fila[0]
     fila = cur.execute(
-        "SELECT TOP 1 id FROM dbo.metadatos_bitacora ORDER BY corte_fecha DESC, id DESC"
+        "SELECT TOP 1 id FROM dbo.btcr_metadatos_bitacora ORDER BY corte_fecha DESC, id DESC"
     ).fetchone()
     return fila[0] if fila else None
 
@@ -98,12 +98,12 @@ def main() -> int:
 
     tablas = tablas_con_bitacora(ca)
     # pgn_* no llevan bitacora_id: son la serie completa del PGN.
-    tablas += ["pgn_concepto", "pgn_ejecucion"]
+    tablas += ["btcr_pgn_concepto", "btcr_pgn_ejecucion"]
 
     iguales, distintas = 0, []
     print(f"{'tabla':<34}{'A':>8}{'B':>8}")
     for tabla in tablas:
-        tiene_bid = tabla not in ("pgn_concepto", "pgn_ejecucion")
+        tiene_bid = tabla not in ("btcr_pgn_concepto", "btcr_pgn_ejecucion")
         filtro = " WHERE bitacora_id = ?" if tiene_bid else ""
 
         def contar(cur, bid):

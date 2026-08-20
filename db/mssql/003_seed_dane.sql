@@ -16,7 +16,7 @@
 SET NOCOUNT ON;
 GO
 
-MERGE dbo.dane_departamentos AS destino
+MERGE dbo.btcr_dane_departamentos AS destino
 USING (VALUES
     (N'05', N'Antioquia',                                                    N'ANDINA'),
     (N'08', N'Atlántico',                                                    N'CARIBE'),
@@ -59,5 +59,5 @@ WHEN NOT MATCHED BY TARGET
     THEN INSERT (codigo, nombre, region) VALUES (origen.codigo, origen.nombre, origen.region);
 GO
 
-SELECT CONCAT('dane_departamentos: ', COUNT(*), ' filas') AS resultado FROM dbo.dane_departamentos;
+SELECT CONCAT('dane_departamentos: ', COUNT(*), ' filas') AS resultado FROM dbo.btcr_dane_departamentos;
 GO
