@@ -28,6 +28,30 @@ builder.Services.AddCors(o => o.AddDefaultPolicy(p =>
 
 var app = builder.Build();
 
+// Hospedaje bajo subruta (p. ej. /bitacora dentro del sitio SICODIS).
+// Como aplicación anidada de IIS esto lo establece el módulo por sí solo;
+// la variable existe para poder reproducir ese escenario sin IIS —en
+// desarrollo o en el contenedor— y así probarlo antes de desplegar.
+var rutaBase = app.Configuration["Rutas:Base"];
+if (!string.IsNullOrWhiteSpace(rutaBase))
+    app.UsePathBase(rutaBase);
+
+// Sin la barra final, el navegador resuelve los recursos relativos del
+// tablero (vendor/, data/) contra la raíz del dominio y no contra la
+// aplicación. Redirigir evita esa clase de fallo, que se manifiesta como
+// una página sin estilos y un mapa en blanco.
+app.Use(async (ctx, siguiente) =>
+{
+    if (ctx.Request.Path == "/" && !ctx.Request.PathBase.Value!.EndsWith('/')
+        && !string.IsNullOrEmpty(ctx.Request.PathBase.Value)
+        && !ctx.Request.Path.Value!.EndsWith('/'))
+    {
+        ctx.Response.Redirect(ctx.Request.PathBase + "/" + ctx.Request.QueryString, permanent: true);
+        return;
+    }
+    await siguiente(ctx);
+});
+
 app.UseCors();
 
 if (app.Environment.IsDevelopment() || app.Configuration.GetValue("Swagger:Habilitado", true))

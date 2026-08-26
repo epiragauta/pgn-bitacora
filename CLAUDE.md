@@ -72,6 +72,17 @@ python etl/load_sgp.py && python etl/load_sgp_componentes.py
 ```
 Order matters — see the ETL Pipeline section below.
 
+### Deploying to IIS (the DNP target)
+```powershell
+$pw = Read-Host 'Contraseña' -AsSecureString
+.\deploy\Deploy-Bitacora.ps1 -SqlServer SQLSRV01 -Database SICODIS -AppUser btcr_app -AppPassword $pw
+```
+One script covers schema, data, publish and IIS. Idempotent, supports `-WhatIf`. See `docs/DESPLIEGUE_IIS.md`.
+
+The app is hosted as a **nested IIS application** at `/bitacora`, so the frontend must never use absolute paths: `const API` resolves against `document.baseURI`. Reproduce that locally with `Rutas__Base=/bitacora`.
+
+Data ships as `db/mssql/004_datos_iniciales.sql` (regenerate with `python tools/generar_seed_sql.py`) so the IIS server needs only `sqlcmd` — no Python, no ODBC driver.
+
 ### Docker Deployment (on-premise)
 ```bash
 docker compose up -d --build       # builds backend/Dockerfile, context = repo root

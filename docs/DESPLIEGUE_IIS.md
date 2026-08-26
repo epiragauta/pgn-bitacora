@@ -11,6 +11,67 @@
 
 ---
 
+## 0. Despliegue automatizado
+
+Todo lo que describe esta guía está unificado en un script:
+
+```powershell
+$pw = Read-Host 'Contraseña de la aplicación' -AsSecureString
+.\deploy\Deploy-Bitacora.ps1 -SqlServer SQLSRV01 -Database SICODIS `
+                              -AppUser btcr_app -AppPassword $pw
+```
+
+Hace, en orden: verifica requisitos → crea las tablas y carga los datos →
+publica la aplicación → crea el grupo de aplicaciones y la aplicación
+anidada en IIS → escribe la cadena de conexión → verifica por HTTP.
+
+Es **idempotente**: volver a ejecutarlo actualiza lo que exista. Admite
+`-WhatIf` para ver qué haría sin tocar nada, y omitir fases con
+`-OmitirBaseDatos`, `-OmitirDatos` u `-OmitirIIS`.
+
+| Parámetro | Por defecto |
+|---|---|
+| `-SiteName` | `SICODIS` — sitio de IIS que la hospeda |
+| `-AppName` | `bitacora` — resulta en `/bitacora/` |
+| `-PhysicalPath` | `C:\inetpub\bitacora` |
+| `-PublishPath` | ninguno; publica desde el código. Con él, usa una carpeta ya publicada y **no requiere el SDK en el servidor** |
+| `-DeployUser` / `-DeployPassword` | ninguno; usa autenticación de Windows para ejecutar los scripts |
+| `-Force` | recarga los datos aunque la base ya tenga bitácoras |
+
+El resto de la guía explica lo que el script hace, para poder revisarlo o
+ejecutarlo a mano.
+
+---
+
+## 0.1 Hospedaje bajo subruta
+
+La aplicación se integra como **aplicación anidada** del sitio SICODIS, de
+modo que queda en `https://sicodis.dnp.gov.co/bitacora/`. Hereda el
+dominio y el certificado del sitio padre; no hace falta DNS nuevo.
+
+> **Lo que esto obligó a cambiar.** El tablero pedía la API con ruta
+> absoluta (`/api`), que bajo una subruta apuntaría a
+> `https://sicodis.dnp.gov.co/api/…` — fuera de la aplicación. Y como el
+> frontend cae a sus datos embebidos cuando una petición falla, se habría
+> visto **funcionando pero con cifras congeladas y sin ningún error**.
+> Ahora la resuelve contra `document.baseURI`, así que da `/api` en la
+> raíz y `/bitacora/api` bajo subruta, sin configuración.
+
+Del lado del backend no hubo que cambiar nada: el módulo de IIS informa la
+ruta base y ASP.NET Core la aplica. Para reproducir el escenario sin IIS
+—en desarrollo o en el contenedor— está la variable `Rutas__Base`:
+
+```bash
+Rutas__Base=/bitacora dotnet run --project backend/src/PgnBitacora.Api
+# el tablero queda en http://localhost:5080/bitacora/
+```
+
+Una petición a `/bitacora` sin barra final se redirige con 301 a
+`/bitacora/`. Sin esa barra, el navegador resolvería `vendor/` y `data/`
+contra la raíz del dominio: página sin estilos y mapa en blanco.
+
+---
+
 ## 1. Requisitos en el servidor Windows
 
 | Componente | Nota |
@@ -37,6 +98,10 @@ Comprobar que el módulo quedó registrado:
 ---
 
 ## 2. Generar el paquete
+
+> Este paso lo hace el script solo. Se documenta para poder publicar desde
+> otro equipo y pasar la carpeta con `-PublishPath`, que es lo indicado si
+> el servidor no debe tener el SDK de .NET.
 
 Desde el equipo de desarrollo — Linux, Windows o macOS, es indistinto:
 
@@ -120,6 +185,23 @@ Server=SERVIDOR_SQL;Database=MI_BASE;Integrated Security=true;TrustServerCertifi
 ```
 
 Es la opción recomendada en un entorno institucional: no hay credencial que rotar ni que se filtre en un archivo de configuración.
+
+### Los datos viajan en un .sql
+
+`db/mssql/004_datos_iniciales.sql` lleva las 5.320 filas como sentencias
+INSERT, de modo que el servidor solo necesite `sqlcmd`. **No hace falta
+Python ni el driver ODBC en el servidor de IIS**, ni copiar allí los
+Excel fuente.
+
+Se regenera desde el equipo de desarrollo cuando cambien los datos:
+
+```bash
+python tools/generar_seed_sql.py
+```
+
+Conserva los `id` originales con `IDENTITY_INSERT` —son referencias
+reales, no números decorativos— y va en una sola transacción: si algo
+falla, no queda a medias.
 
 ### Convivencia en una base compartida
 

@@ -1101,7 +1101,14 @@ footer strong{color:#fff}
 </div>
 
 <script>
-const API='/api';
+/* La API cuelga de donde esté servido este documento, no de la raíz del
+   dominio. Con '/api' fijo, al hospedar bajo una subruta —por ejemplo
+   https://sicodis.dnp.gov.co/bitacora/— el navegador pediría
+   https://sicodis.dnp.gov.co/api/... , fuera de la aplicación: las
+   peticiones fallarían y af() caería a los datos embebidos SIN avisar,
+   mostrando cifras congeladas. Resolverlo contra document.baseURI da
+   '/api' en la raíz y '/bitacora/api' bajo subruta. */
+const API=new URL('api',document.baseURI).pathname;
 let activeBit=null;  // {id, vigencia, periodo, numero_bitacora, corte_fecha}
 
 async function af(p,fb){try{const r=await fetch(API+p);if(!r.ok)throw 0;return await r.json();}catch{return fb;}}
