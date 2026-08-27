@@ -244,6 +244,13 @@ valor y las agrupaciones por región fusionan filas SIN dar error.
 # ══════════════════════════════════════════════════════════════
 # 3. Publicación
 # ══════════════════════════════════════════════════════════════
+# El paquete de despliegue trae la aplicación ya publicada en .\app, de
+# modo que el servidor no necesite el SDK de .NET. Si está, se usa.
+if (-not $PublishPath -and (Test-Path (Join-Path $RaizRepo 'app\PgnBitacora.Api.dll'))) {
+    $PublishPath = Join-Path $RaizRepo 'app'
+    $DelPaquete  = $true
+}
+
 if (-not $PublishPath) {
     Write-Paso 'Publicando la aplicación'
     if (-not (Get-Command dotnet -ErrorAction SilentlyContinue)) {
@@ -259,7 +266,8 @@ Opciones: instalarlo, o publicar en otro equipo y pasar la carpeta con -PublishP
     }
     Write-Ok "Publicado en $PublishPath"
 } else {
-    Write-Paso "Usando la carpeta publicada: $PublishPath"
+    $origen = if ($DelPaquete) { 'incluida en el paquete' } else { "indicada: $PublishPath" }
+    Write-Paso "Usando la aplicación $origen"
     if (-not (Test-Path $PublishPath)) { Stop-Con "No existe $PublishPath" }
 }
 
@@ -277,7 +285,7 @@ Write-Paso "Desplegando en $PhysicalPath"
 
 if (-not (Test-Path $PhysicalPath)) {
     New-Item -ItemType Directory -Path $PhysicalPath -Force | Out-Null
-    Write-Ok 'Carpeta creada'
+    if (-not $WhatIfPreference) { Write-Ok 'Carpeta creada' }
 }
 
 # app_offline.htm detiene la aplicación y libera los .dll, que de otro
@@ -341,10 +349,18 @@ if ($OmitirIIS) {
     # 'Sin código administrado': IIS no ejecuta .NET Framework aquí, solo
     # hospeda el proceso de .NET Core. Con un valor distinto, la respuesta
     # es 502.5 y el motivo no aparece en ningún log evidente.
-    Set-ItemProperty "IIS:\AppPools\$AppPoolName" -Name managedRuntimeVersion -Value ''
-    Set-ItemProperty "IIS:\AppPools\$AppPoolName" -Name managedPipelineMode   -Value 'Integrated'
-    Set-ItemProperty "IIS:\AppPools\$AppPoolName" -Name startMode             -Value 'AlwaysRunning'
-    Write-Ok 'Grupo de aplicaciones: Sin código administrado, canalización integrada'
+    #
+    # El Test-Path no es redundante con el bloque anterior: en una simulación
+    # el grupo no se creó, y configurar una ruta inexistente de la unidad IIS:
+    # es un error, no un aviso. Sin esta guarda, -WhatIf aborta aquí.
+    if (Test-Path "IIS:\AppPools\$AppPoolName") {
+        Set-ItemProperty "IIS:\AppPools\$AppPoolName" -Name managedRuntimeVersion -Value ''
+        Set-ItemProperty "IIS:\AppPools\$AppPoolName" -Name managedPipelineMode   -Value 'Integrated'
+        Set-ItemProperty "IIS:\AppPools\$AppPoolName" -Name startMode             -Value 'AlwaysRunning'
+        Write-Ok 'Grupo de aplicaciones: Sin código administrado, canalización integrada'
+    } else {
+        Write-Info 'Se configuraría: Sin código administrado, canalización integrada, AlwaysRunning'
+    }
 
     $rutaApp = "IIS:\Sites\$SiteName\$AppName"
     if (-not (Test-Path $rutaApp)) {
@@ -360,17 +376,31 @@ if ($OmitirIIS) {
     }
 
     $identidad = "IIS AppPool\$AppPoolName"
-    & icacls $PhysicalPath /grant "${identidad}:(OI)(CI)RX" /T /Q | Out-Null
-    Write-Ok "Permisos de lectura para '$identidad'"
+    if ($PSCmdlet.ShouldProcess($PhysicalPath, "Conceder lectura a '$identidad'")) {
+        & icacls $PhysicalPath /grant "${identidad}:(OI)(CI)RX" /T /Q | Out-Null
+        Write-Ok "Permisos de lectura para '$identidad'"
+    }
 
-    Restart-WebAppPool -Name $AppPoolName
-    Write-Ok 'Grupo de aplicaciones reiniciado'
+    if (Test-Path "IIS:\AppPools\$AppPoolName") {
+        Restart-WebAppPool -Name $AppPoolName
+        Write-Ok 'Grupo de aplicaciones reiniciado'
+    } else {
+        Write-Info "Se reiniciaría el grupo de aplicaciones '$AppPoolName'"
+    }
 }
 
 # ══════════════════════════════════════════════════════════════
 # 7. Verificación
 # ══════════════════════════════════════════════════════════════
 Write-Paso 'Verificando'
+
+# En una simulación no se consulta el sitio: -WhatIf debe describir lo que
+# haría, no producir tráfico hacia el servidor de la entidad.
+if ($WhatIfPreference) {
+    Write-Info 'Omitida: -WhatIf no ejecuta la verificación por HTTP.'
+    Write-Host "`n== Simulación terminada (no se modificó nada)" -ForegroundColor Cyan
+    return
+}
 
 if (-not $UrlVerificacion) {
     $binding = (Get-WebBinding -Name $SiteName | Select-Object -First 1).bindingInformation

@@ -56,7 +56,9 @@ Las versiones web de arquitectura y de los dos manuales de usuario están en `do
 │   └── baseline/                  ← respuestas de referencia
 ├── frontend/index.html            ← dashboard standalone
 ├── data/                          ← GeoJSON de departamentos y regiones
-├── deploy/Caddyfile.snippet       ← bloque de proxy inverso
+├── deploy/
+│   ├── Deploy-Bitacora.ps1     ← despliegue completo en IIS
+│   └── Caddyfile.snippet       ← bloque de proxy inverso
 └── docker-compose.yml
 ```
 
@@ -167,6 +169,18 @@ Todos aceptan `bitacora_id` opcional; sin él responden con la bitácora más re
 **On-premise**, detrás del Caddy del host. El contenedor publica **solo en loopback** (`127.0.0.1:5080`) y se une a la red del SQL Server para alcanzarlo por el alias `sqlserver`, sin depender del 1433 publicado.
 
 Se publica en **https://dnp-btcr.skaphe.com** añadiendo el bloque de [`deploy/Caddyfile.snippet`](deploy/Caddyfile.snippet) a `/etc/caddy/Caddyfile` y recargando Caddy, que gestiona el certificado TLS automáticamente.
+
+### En IIS (el destino del DNP)
+
+```bash
+./tools/generar_paquete.sh     # deja dist/bitacora-despliegue-<version>.zip
+```
+
+Se copia al servidor, se descomprime y se corre `deploy\Deploy-Bitacora.ps1`
+desde su carpeta. Lleva la aplicación compilada y los datos como sentencias
+SQL: allá solo hacen falta IIS, el Hosting Bundle de ASP.NET Core 8 y `sqlcmd`.
+Conviene que la primera corrida sea con `-WhatIf`. Detalle en
+[`docs/DESPLIEGUE_IIS.md`](docs/DESPLIEGUE_IIS.md).
 
 > Fly.io y Render quedaron descartados: la instancia de SQL Server no es alcanzable desde ellos.
 

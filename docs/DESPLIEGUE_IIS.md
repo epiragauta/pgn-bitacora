@@ -99,9 +99,35 @@ Comprobar que el módulo quedó registrado:
 
 ## 2. Generar el paquete
 
-> Este paso lo hace el script solo. Se documenta para poder publicar desde
-> otro equipo y pasar la carpeta con `-PublishPath`, que es lo indicado si
-> el servidor no debe tener el SDK de .NET.
+La forma corta, que deja un único `.zip` con todo lo que el servidor necesita:
+
+```bash
+./tools/generar_paquete.sh          # deja dist/bitacora-despliegue-<version>.zip
+```
+
+Ese archivo se copia al servidor, se descomprime, y desde su carpeta se corre
+el script del §0. No hace falta nada más: ni el SDK de .NET, ni Python, ni el
+driver ODBC. El script detecta la carpeta `app\` incluida en el paquete, así
+que no hay que pasarle `-PublishPath`.
+
+```
+bitacora-despliegue/
+├── LEEME.txt                 requisitos y los dos comandos a correr
+├── deploy/Deploy-Bitacora.ps1
+├── db/mssql/00{1,2,3,4}*.sql esquema, vistas, DANE y datos
+├── app/                      la aplicación publicada, con el tablero
+└── docs/DESPLIEGUE_IIS.md    esta guía
+```
+
+El generador falla si el `publish` no incluyó el tablero, y convierte los
+`.ps1`, `.sql`, `.md` y `.txt` a CRLF, porque el destino es Windows y el zip
+no convierte finales de línea por sí solo.
+
+### Publicar a mano
+
+
+Es lo que hace `generar_paquete.sh` por dentro. Sirve para publicar desde
+otro equipo y pasar la carpeta con `-PublishPath`.
 
 Desde el equipo de desarrollo — Linux, Windows o macOS, es indistinto:
 
