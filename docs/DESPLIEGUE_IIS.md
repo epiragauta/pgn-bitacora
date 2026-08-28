@@ -177,6 +177,134 @@ icacls "C:\inetpub\bitacora" /grant "IIS AppPool\bitacora:(OI)(CI)RX"
 
 ---
 
+## 3.1 El sitio padre y sus reglas de reescritura
+
+**Esto ocurrió en el despliegue real del 28 de agosto de 2026.** Merece leerse
+antes de instalar, porque el síntoma no se parece a la causa y porque el
+despliegue *aparenta* haber salido bien.
+
+### El síntoma
+
+El tablero cargaba. En la consola del navegador:
+
+```
+Uncaught SyntaxError: Unexpected token '<'  (leaflet.js:1:1)
+Uncaught SyntaxError: Unexpected token '<'  (chart.umd.min.js:1:1)
+Uncaught ReferenceError: Chart is not defined
+```
+
+`Unexpected token '<'` en la columna 1 significa siempre lo mismo: el servidor
+devolvió HTML donde se esperaba otra cosa. Y en efecto:
+
+```
+GET /bitacora/vendor/leaflet.js   -> 200  text/html   <!doctype html> ... <title>SICODIS</title>
+GET /bitacora/api/resumen         -> 200  text/html   <!doctype html> ... <title>SICODIS</title>
+```
+
+Todo lo que colgaba de `/bitacora/` —excepto la página misma— lo estaba
+respondiendo la aplicación Angular de SICODIS, con HTTP **200**.
+
+### La causa
+
+SICODIS es una SPA, y como toda SPA tiene una regla que manda al `index.html`
+cualquier URL que no corresponda a un archivo físico:
+
+```xml
+<rule name="Angular">
+  <match url=".*" />
+  <conditions>
+    <add input="{REQUEST_FILENAME}" matchType="IsFile"      negate="true" />
+    <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+  </conditions>
+  <action type="Rewrite" url="/" />
+</rule>
+```
+
+Dos hechos de IIS que se combinan mal:
+
+1. Las reglas de `<rewrite>` **se heredan** por la jerarquía de configuración,
+   de modo que la aplicación anidada las recibe.
+2. El módulo de reescritura corre en `RQ_BEGIN_REQUEST`, **antes** de que IIS
+   elija el manejador de la aplicación. La regla del padre gana.
+
+Y el `inheritInChildApplications="false"` que trae el `web.config` generado no
+lo evita: impide que *nuestra* configuración baje a hijos nuestros, no que la
+del padre suba hasta nosotros.
+
+De ahí el patrón exacto que se observó:
+
+| URL | `{REQUEST_FILENAME}` | Regla | Resultado |
+|---|---|---|---|
+| `/bitacora/` | `C:\inetpub\bitacora`, existe como directorio | no dispara | el tablero, bien |
+| `/bitacora/vendor/leaflet.js` | `…\bitacora\vendor\leaflet.js`, **no existe** — el archivo real está bajo `frontend\` | dispara | HTML de SICODIS |
+| `/bitacora/api/resumen` | jamás será un archivo | dispara | HTML de SICODIS |
+
+Solo funcionaba la página, que es justo la que hace creer que todo está bien.
+
+### Por qué era peor de lo que parecía
+
+`/api/*` devolvía **HTTP 200**. El tablero solo comprueba `r.ok`, así que la
+respuesta pasaba el filtro, `r.json()` fallaba al encontrar `<`, y el `catch`
+de `af()` caía a los datos embebidos **sin avisar**.
+
+El tablero se veía completo, con todas sus secciones y todas sus cifras. Y
+todas las cifras eran las congeladas en el HTML, no las de la base.
+
+### La corrección
+
+`backend/src/PgnBitacora.Api/web.config` descarta las reglas heredadas, y
+`dotnet publish` lo fusiona con el `<handlers>` que genera el SDK:
+
+```xml
+<location path="." inheritInChildApplications="false">
+  <system.webServer>
+    <rewrite>
+      <rules>
+        <clear />
+      </rules>
+    </rewrite>
+  </system.webServer>
+</location>
+```
+
+**Para arreglar un servidor ya desplegado** no hace falta volver a instalar:
+basta editar `C:\inetpub\bitacora\web.config` y añadir ese bloque `<rewrite>`
+dentro de `<system.webServer>`. Guardar el archivo recicla el grupo de
+aplicaciones por sí solo.
+
+### Si aparece un error 500.19
+
+Significa que la sección `rewrite` está bloqueada en `applicationHost.config`.
+Se desbloquea con:
+
+```powershell
+%windir%\system32\inetsrv\appcmd.exe unlock config -section:system.webServer/rewrite
+```
+
+La alternativa, si el administrador del sitio padre prefiere no desbloquearla,
+es excluir la subruta en la regla de SICODIS:
+
+```xml
+<add input="{REQUEST_URI}" pattern="^/bitacora" negate="true" />
+```
+
+### La lección para la verificación
+
+La fase 7 del script comprobaba el código HTTP. Todas estas rutas devolvían
+**200**, así que habría declarado exitoso un despliegue en el que no
+funcionaba ni la API ni una sola biblioteca del tablero.
+
+Ahora cada comprobación declara qué debe contener la respuesta —tipo MIME y
+una cadena— y reconoce el caso concreto:
+
+```
+   AVISO api/resumen   tipo 'text/html', se esperaba 'application/json'
+   AVISO    Devuelve HTML: el sitio padre está atendiendo esta ruta.
+```
+
+
+---
+
 ## 4. La cadena de conexión
 
 La aplicación la lee de la clave `ConnectionStrings:DnpDpip`. Hay dos formas.

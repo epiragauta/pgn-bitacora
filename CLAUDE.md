@@ -81,6 +81,8 @@ One script covers schema, data, publish and IIS. Idempotent, supports `-WhatIf`.
 
 The app is hosted as a **nested IIS application** at `/bitacora`, so the frontend must never use absolute paths: `const API` resolves against `document.baseURI`. Reproduce that locally with `Rutas__Base=/bitacora`.
 
+Being nested has a second consequence, found the hard way on the first real deploy: **the parent site's URL Rewrite rules are inherited and run before IIS picks this application's handler.** SICODIS is an Angular SPA, so its catch-all rule answered `/bitacora/vendor/*.js` and *every* `/bitacora/api/*` route with its own `index.html` — at HTTP **200**, which the frontend's `af()` accepts before failing on `r.json()` and falling back to embedded data silently. `backend/src/PgnBitacora.Api/web.config` exists solely to `<clear />` those inherited rules; `dotnet publish` merges it with the handler block the SDK generates. Do not delete it. Details in `docs/DESPLIEGUE_IIS.md` §3.1.
+
 Data ships as `db/mssql/004_datos_iniciales.sql` (regenerate with `python tools/generar_seed_sql.py`) so the IIS server needs only `sqlcmd` — no Python, no ODBC driver.
 
 ### Docker Deployment (on-premise)

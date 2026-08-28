@@ -409,18 +409,67 @@ if (-not $UrlVerificacion) {
     if ($host_) { $UrlVerificacion = "${esquema}://$host_/$AppName/" }
 }
 
+# Un HTTP 200 NO basta, y esta es la lección más cara del despliegue.
+# Hospedada bajo SICODIS, la aplicación respondía 200 en todas estas rutas
+# mientras el sitio padre servía su propio index.html en lugar de las
+# nuestras: la regla de reescritura de una SPA se hereda y corre antes.
+# Comprobar solo el código habría declarado exitoso un despliegue en el que
+# no funcionaba ni la API ni una sola biblioteca del tablero.
+#
+# Cada ruta declara qué debe contener su respuesta. Si el contenido no
+# aparece, es un fallo, responda lo que responda.
+$comprobaciones = @(
+    @{ Ruta = 'health';      Tipo = 'application/json'; Contiene = '"estado"';    Que = 'la aplicación responde' }
+    @{ Ruta = 'api/resumen'; Tipo = 'application/json'; Contiene = '"periodo"';   Que = 'la API llega a la base' }
+    @{ Ruta = '';            Tipo = 'text/html';        Contiene = 'Bitácora';    Que = 'el tablero se sirve' }
+    @{ Ruta = 'vendor/chart.umd.min.js'; Tipo = 'javascript'; Contiene = 'Chart'; Que = 'los estáticos del tablero' }
+    @{ Ruta = 'data/dptos.geojson';      Tipo = 'geo+json';   Contiene = 'Feature'; Que = 'las capas del mapa' }
+)
+
 if ($UrlVerificacion) {
     Write-Info "URL: $UrlVerificacion"
     Start-Sleep -Seconds 3
-    foreach ($ruta in @('health', 'api/resumen', '')) {
-        $url = ($UrlVerificacion.TrimEnd('/') + '/' + $ruta).TrimEnd('/')
+    $fallos = 0
+    foreach ($c in $comprobaciones) {
+        $url = ($UrlVerificacion.TrimEnd('/') + '/' + $c.Ruta).TrimEnd('/')
+        $etiqueta = if ($c.Ruta) { $c.Ruta } else { '(raíz)' }
         try {
             $r = Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 30
-            Write-Ok ("{0,-46} HTTP {1}" -f $url, $r.StatusCode)
+            $tipo = [string]$r.Headers['Content-Type']
+            # Con un tipo MIME que no le consta como texto —.geojson, por
+            # ejemplo— Invoke-WebRequest entrega el cuerpo como byte[], y
+            # convertirlo con [string] daría literalmente 'System.Byte[]'.
+            $cuerpo = if ($r.Content -is [byte[]]) {
+                [System.Text.Encoding]::UTF8.GetString($r.Content)
+            } else { [string]$r.Content }
+
+            if ($tipo -notmatch [regex]::Escape($c.Tipo)) {
+                $fallos++
+                Write-Aviso ("{0,-26} tipo '{1}', se esperaba '{2}'  <- {3}" -f $etiqueta, $tipo, $c.Tipo, $c.Que)
+                if ($cuerpo -match '(?i)<!doctype html|<html') {
+                    Write-Aviso '   Devuelve HTML: el sitio padre está atendiendo esta ruta.'
+                    Write-Aviso '   Ver la nota sobre <rewrite><clear/> en docs\DESPLIEGUE_IIS.md'
+                }
+            }
+            elseif ($cuerpo -notmatch [regex]::Escape($c.Contiene)) {
+                $fallos++
+                Write-Aviso ("{0,-26} sin '{1}' en la respuesta  <- {2}" -f $etiqueta, $c.Contiene, $c.Que)
+            }
+            else {
+                Write-Ok ("{0,-26} HTTP {1}  {2}" -f $etiqueta, $r.StatusCode, $c.Que)
+            }
         } catch {
+            $fallos++
             $codigo = if ($_.Exception.Response) { [int]$_.Exception.Response.StatusCode } else { 'sin respuesta' }
-            Write-Aviso ("{0,-46} {1}" -f $url, $codigo)
+            Write-Aviso ("{0,-26} {1}  <- {2}" -f $etiqueta, $codigo, $c.Que)
         }
+    }
+
+    if ($fallos -gt 0) {
+        Write-Host ''
+        Write-Aviso "$fallos de $($comprobaciones.Count) comprobaciones fallaron. El despliegue NO está bien."
+        Write-Aviso 'El tablero puede verse completo aun así: cuando la API falla cae a datos'
+        Write-Aviso 'embebidos sin avisar, y muestra cifras congeladas. No darlo por bueno.'
     }
 } else {
     Write-Aviso 'No se pudo deducir la URL del sitio. Verificar manualmente.'
