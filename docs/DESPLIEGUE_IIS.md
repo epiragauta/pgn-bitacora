@@ -366,6 +366,40 @@ es excluir la subruta en la regla de SICODIS:
 <add input="{REQUEST_URI}" pattern="^/bitacora" negate="true" />
 ```
 
+### El mismo error, en Swagger
+
+Aparecido al revisar `/bitacora/swagger/index.html` después de la corrección
+anterior. La página cargaba, y quedaba vacía.
+
+Swashbuckle inyectaba la ruta de la especificación en absoluto:
+
+```json
+{"urls":[{"url":"/swagger/v1/swagger.json", …}]}
+```
+
+El navegador la pedía en la raíz del dominio, fuera de la aplicación. Y el
+`index.js` de Swagger UI, que sí trae un arreglo para el hospedaje anidado,
+descarta expresamente las rutas absolutas:
+
+```js
+if (item.url.startsWith("http") || item.url.startsWith("/")) return;
+```
+
+La corrección es dar la ruta relativa en `Program.cs`:
+
+```csharp
+app.UseSwaggerUI(o => o.SwaggerEndpoint("v1/swagger.json", "API Bitácora PGN v1"));
+```
+
+Con eso resuelve bien en los dos casos: `/swagger/v1/swagger.json` en la raíz
+y `/bitacora/swagger/v1/swagger.json` bajo subruta.
+
+> Tercera aparición de la misma clase de error —`/api` en el tablero, las
+> reglas heredadas, y esto—: **bajo una subruta, toda ruta absoluta apunta
+> fuera de la aplicación.** Un barrido del proyecto no encontró más: los
+> `MapGroup("/api/…")` son patrones de enrutamiento, relativos al PathBase, y
+> el frontend resuelve todo contra `document.baseURI`.
+
 ### La lección para la verificación
 
 La fase 7 del script comprobaba el código HTTP. Todas estas rutas devolvían

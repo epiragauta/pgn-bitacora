@@ -57,7 +57,12 @@ app.UseCors();
 if (app.Environment.IsDevelopment() || app.Configuration.GetValue("Swagger:Habilitado", true))
 {
     app.UseSwagger();
-    app.UseSwaggerUI(o => o.SwaggerEndpoint("/swagger/v1/swagger.json", "API Bitácora PGN v1"));
+    // Ruta RELATIVA, no "/swagger/v1/swagger.json". Con la absoluta, bajo una
+    // subruta el navegador pediría la especificación en la raíz del dominio,
+    // fuera de la aplicación. Y el index.js de Swagger UI no lo corrige: su
+    // workaround para el hospedaje anidado descarta expresamente las que
+    // empiezan por '/'. Es el mismo error que tenía el tablero con '/api'.
+    app.UseSwaggerUI(o => o.SwaggerEndpoint("v1/swagger.json", "API Bitácora PGN v1"));
 }
 
 // Una bitácora inexistente responde 404, igual que el HTTPException del original.
