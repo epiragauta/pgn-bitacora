@@ -169,9 +169,10 @@ function Invoke-Sql {
     param(
         [string] $Archivo,
         [string] $Consulta,
+        [string] $Base = $Database,   # master, para consultar por la base misma
         [switch] $Silencioso
     )
-    $a = @('-S', $SqlServer, '-d', $Database, '-b', '-C')
+    $a = @('-S', $SqlServer, '-d', $Base, '-b', '-C')
     if ($DeployUser) {
         $a += @('-U', $DeployUser, '-P', (ConvertFrom-Secure $DeployPassword))
     } else {
@@ -275,6 +276,30 @@ foreach ($f in @('001_schema.sql', '002_views.sql', '003_seed_dane.sql')) {
     if (-not (Test-Path (Join-Path $DirSql $f))) { Stop-Con "Falta $DirSql\$f" }
 }
 Write-Ok 'Scripts de esquema presentes'
+
+# ¿Existe la base? Se pregunta contra master, y primero, porque si no
+# existe todo lo que viene después falla de una forma que no lo dice:
+# DATABASEPROPERTYEX devuelve NULL y el script se quejaría de la collation,
+# y la comprobación del usuario diría que no puede conectarse. Ninguno de
+# los dos mensajes menciona el problema real.
+$existe = (Invoke-Sql -Base master -Consulta "SET NOCOUNT ON; SELECT ISNULL(CONVERT(varchar(10), DB_ID('$Database')), '0')" | Out-String).Trim()
+if ($existe -eq '0') {
+    Stop-Con @"
+La base '$Database' no existe en $SqlServer.
+
+El script instala el esquema en una base que ya exista: no la crea, porque
+está pensado para convivir con otros sistemas en una base de la entidad.
+
+Para un entorno de pruebas, crearla con la collation correcta:
+
+    CREATE DATABASE [$Database] COLLATE Modern_Spanish_CS_AS;
+
+La collation no es un detalle: con una insensible a tildes, PACÍFICO y
+PACIFICO pasan a ser el mismo valor y los agrupamientos por región fusionan
+filas sin dar ningún error.
+"@
+}
+Write-Ok "La base '$Database' existe"
 
 # Antes de tocar nada: que la cuenta de la aplicación pueda entrar.
 Test-AccesoAplicacion -Consulta 'SET NOCOUNT ON; SELECT 1' -Que "conectarse a '$Database'" | Out-Null

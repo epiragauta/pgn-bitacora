@@ -72,6 +72,54 @@ contra la raíz del dominio: página sin estilos y mapa en blanco.
 
 ---
 
+## 0.2 Ensayo en un IIS local
+
+Probar el despliegue completo en una máquina propia antes de pedir una
+ventana en el servidor de la entidad. El script es el mismo; cambian tres
+argumentos.
+
+**El sitio no se llama SICODIS.** En un IIS recién instalado es
+`Default Web Site`, y ese es el valor que hay que pasar. Si se equivoca, el
+script se detiene y lista los sitios que encontró.
+
+**La base hay que crearla.** El script instala el esquema en una base que ya
+exista —no la crea, porque está pensado para convivir con otros sistemas—:
+
+```sql
+CREATE DATABASE [bitacora_pruebas] COLLATE Modern_Spanish_CS_AS;
+GO
+USE [bitacora_pruebas];
+CREATE LOGIN [btcr_app] WITH PASSWORD = 'una.clave.local', CHECK_POLICY = OFF;
+CREATE USER  [btcr_app] FOR LOGIN [btcr_app];
+ALTER ROLE db_datareader ADD MEMBER [btcr_app];
+GO
+```
+
+**Y el Hosting Bundle también hace falta en local** — es el mismo requisito
+del §1, y el mismo tropiezo: los Runtime no sirven.
+
+Luego, desde la carpeta del paquete y en PowerShell **de 64 bits** como
+administrador:
+
+```powershell
+$pw = Read-Host 'Contraseña' -AsSecureString
+.\deploy\Deploy-Bitacora.ps1 -SqlServer localhost -Database bitacora_pruebas `
+    -AppUser btcr_app -AppPassword $pw -SiteName 'Default Web Site' -WhatIf
+```
+
+Sin `-WhatIf` para la corrida real. Queda en `http://localhost/bitacora/`.
+
+Lo que este ensayo sí prueba: que el Hosting Bundle está bien, que los
+cuatro `.sql` corren de principio a fin, que la aplicación arranca bajo el
+módulo de IIS y que el tablero funciona hospedado en una subruta.
+
+Lo que **no** prueba: el comportamiento bajo el sitio padre. Un
+`Default Web Site` vacío no tiene reglas de reescritura que heredar, que es
+justo lo que rompió el primer despliegue real (§3.1). Para reproducirlo hay
+que ponerle al sitio local una regla de SPA como la de SICODIS.
+
+---
+
 ## 1. Requisitos en el servidor Windows
 
 | Componente | Nota |
