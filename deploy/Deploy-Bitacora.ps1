@@ -123,6 +123,44 @@ function ConvertFrom-Secure {
 }
 
 # ── sqlcmd ──────────────────────────────────────────────────
+function Test-AccesoAplicacion {
+    <#  Comprueba que AppUser —la cuenta que usará la aplicación— pueda
+        conectarse y leer. No es lo mismo que Invoke-Sql, que usa la cuenta
+        de despliegue: esa suele ser administradora y funciona siempre.
+
+        Sin esta comprobación el despliegue termina anunciando éxito y la
+        API devuelve 500 en cada endpoint que toque la base, mientras
+        /health y /swagger siguen respondiendo —no necesitan conexión—, lo
+        que hace pensar que el problema está en otra parte. Ocurrió en el
+        despliegue del DNP. #>
+    param([string] $Consulta, [string] $Que)
+
+    $a = @('-S', $SqlServer, '-d', $Database, '-b', '-C', '-l', '10',
+           '-U', $AppUser, '-P', (ConvertFrom-Secure $AppPassword),
+           '-Q', $Consulta, '-h', '-1', '-W')
+    $salida = & sqlcmd @a 2>&1
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host ($salida | Out-String) -ForegroundColor Red
+        Stop-Con @"
+La aplicación no puede $Que con el usuario '$AppUser'.
+
+Ese es el usuario que queda en appsettings.Production.json, de modo que la
+API respondería 500 en todo lo que consulte la base. Crear el login y darle
+lectura, como administrador de SQL Server:
+
+    USE [$Database];
+    CREATE LOGIN [$AppUser] WITH PASSWORD = '...';
+    CREATE USER  [$AppUser] FOR LOGIN [$AppUser];
+    ALTER ROLE db_datareader ADD MEMBER [$AppUser];
+
+Si el login ya existe pero quedó huérfano tras restaurar la base:
+
+    ALTER USER [$AppUser] WITH LOGIN = [$AppUser];
+"@
+    }
+    ($salida | Out-String).Trim()
+}
+
 function Invoke-Sql {
     <#  Ejecuta un archivo .sql o una consulta.
         -b hace que sqlcmd devuelva código distinto de cero ante un error;
@@ -187,6 +225,10 @@ foreach ($f in @('001_schema.sql', '002_views.sql', '003_seed_dane.sql')) {
     if (-not (Test-Path (Join-Path $DirSql $f))) { Stop-Con "Falta $DirSql\$f" }
 }
 Write-Ok 'Scripts de esquema presentes'
+
+# Antes de tocar nada: que la cuenta de la aplicación pueda entrar.
+Test-AccesoAplicacion -Consulta 'SET NOCOUNT ON; SELECT 1' -Que "conectarse a '$Database'" | Out-Null
+Write-Ok "El usuario '$AppUser' se conecta a la base"
 
 # ══════════════════════════════════════════════════════════════
 # 2. Base de datos
@@ -259,12 +301,13 @@ No se encontró el SDK de .NET para publicar.
 Opciones: instalarlo, o publicar en otro equipo y pasar la carpeta con -PublishPath.
 '@
     }
-    $PublishPath = Join-Path $env:TEMP "bitacora-publish-$(Get-Date -Format yyyyMMddHHmmss)"
+    $temp = if ($env:TEMP) { $env:TEMP } else { [System.IO.Path]::GetTempPath() }
+    $PublishPath = Join-Path $temp "bitacora-publish-$(Get-Date -Format yyyyMMddHHmmss)"
     if ($PSCmdlet.ShouldProcess($Proyecto, 'dotnet publish')) {
         & dotnet publish $Proyecto -c Release -o $PublishPath --nologo
         if ($LASTEXITCODE -ne 0) { Stop-Con 'Falló dotnet publish' }
+        Write-Ok "Publicado en $PublishPath"
     }
-    Write-Ok "Publicado en $PublishPath"
 } else {
     $origen = if ($DelPaquete) { 'incluida en el paquete' } else { "indicada: $PublishPath" }
     Write-Paso "Usando la aplicación $origen"
@@ -273,10 +316,23 @@ Opciones: instalarlo, o publicar en otro equipo y pasar la carpeta con -PublishP
 
 # El tablero viaja con la aplicación por un target de MSBuild. Sin él, la
 # API respondería pero la raíz daría 404, con solo una advertencia en el log.
-if (-not (Test-Path (Join-Path $PublishPath 'frontend\index.html'))) {
+#
+# En una simulación la carpeta puede no existir todavía, porque el publish
+# no llegó a correr. Comprobar su contenido daría un error que apunta al
+# .csproj cuando lo único que pasa es que no hay nada que mirar.
+if (-not (Test-Path $PublishPath)) {
+    if ($WhatIfPreference) {
+        Write-Info 'Se comprobaría que la publicación incluya el tablero'
+    } else {
+        Stop-Con "No existe $PublishPath"
+    }
+}
+elseif (-not (Test-Path (Join-Path $PublishPath 'frontend\index.html'))) {
     Stop-Con 'La carpeta publicada no contiene frontend\index.html. Revisar el target CopiarFrontend del .csproj.'
 }
-Write-Ok 'El paquete incluye el tablero'
+else {
+    Write-Ok 'El paquete incluye el tablero'
+}
 
 # ══════════════════════════════════════════════════════════════
 # 4. Copia de archivos
@@ -392,6 +448,15 @@ if ($OmitirIIS) {
 # ══════════════════════════════════════════════════════════════
 # 7. Verificación
 # ══════════════════════════════════════════════════════════════
+# Conectarse y poder leer son cosas distintas: el login puede existir sin
+# db_datareader, y entonces falla en el primer SELECT, no al conectar.
+if (-not $OmitirBaseDatos) {
+    $n = Test-AccesoAplicacion `
+            -Consulta 'SET NOCOUNT ON; SELECT COUNT(*) FROM dbo.btcr_metadatos_bitacora' `
+            -Que 'leer las tablas de la Bitácora'
+    Write-Ok "El usuario '$AppUser' lee las tablas ($n bitácoras)"
+}
+
 Write-Paso 'Verificando'
 
 # En una simulación no se consulta el sitio: -WhatIf debe describir lo que

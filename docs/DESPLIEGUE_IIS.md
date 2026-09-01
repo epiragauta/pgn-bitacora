@@ -407,8 +407,81 @@ Debe dar cero diferencias de claves, valores y estado HTTP. Es la misma comproba
 | **404 en la raíz** | Falta `frontend/` en la carpeta publicada. Verificar que el target de MSBuild se ejecutó |
 | **Mapa en blanco** | Los `.geojson` no llegan. Los sirve la aplicación, no IIS, así que revisar el registro del tipo MIME en `Program.cs` |
 | **No conecta a la base** | Cortafuegos, o la identidad del grupo de aplicaciones sin permisos si se usa autenticación integrada |
+| **500 en `/api/*` pero `/health` y `/swagger` responden** | La aplicación arrancó pero no puede leer la base. Ver abajo — es el caso más confuso |
 
 Para ver el detalle del arranque, activar el log en `web.config` (`stdoutLogEnabled="true"`) y **volver a desactivarlo después**: crece sin límite.
+
+### 500 en la API mientras `/health` responde
+
+Pasó en el DNP, y despista porque parece que la aplicación está bien.
+
+`/health` y `/swagger` no consultan la base, así que responden aunque la
+conexión esté rota. `IDb` se construye en la primera petición que lo
+necesita, y ahí revienta. De modo que este cuadro:
+
+```
+/bitacora/health        200  {"estado":"ok"}
+/bitacora/swagger/…     200
+/bitacora/api/bitacoras 500
+/bitacora/api/resumen   500
+```
+
+significa **la aplicación corre y no puede leer la base**. No es un problema
+de IIS, ni de rutas, ni del tablero.
+
+(Un 404 en `/bitacora/api/` no es un fallo: no existe ninguna ruta ahí. Los
+endpoints son `/api/resumen`, `/api/bitacoras`, etcétera.)
+
+**Causa más frecuente: el usuario de la aplicación.** El esquema y los datos
+se instalan con la cuenta de despliegue —normalmente administradora—, pero la
+aplicación se conecta con `-AppUser`. Si ese login no existe, quedó huérfano
+tras restaurar la base, o existe sin `db_datareader`, todo el despliegue
+termina bien y la API falla en cada consulta.
+
+Desde el servidor de IIS, con las credenciales que quedaron en
+`appsettings.Production.json`:
+
+```powershell
+sqlcmd -S SQLSRV01 -U btcr_app -P '...' -d SICODIS -Q "SELECT COUNT(*) FROM dbo.btcr_metadatos_bitacora"
+```
+
+| Lo que responde | Qué significa |
+|---|---|
+| `Login failed for user` | El login no existe o la contraseña no coincide |
+| `The server principal is not able to access the database` | El login existe, falta el usuario en la base |
+| `SELECT permission was denied` | Falta `db_datareader` |
+| `Invalid object name 'dbo.btcr_metadatos_bitacora'` | El esquema se instaló en otra base |
+| Un número | La base está bien; el problema está en la cadena de conexión del archivo |
+
+Para arreglarlo, como administrador de SQL Server:
+
+```sql
+USE [SICODIS];
+CREATE LOGIN [btcr_app] WITH PASSWORD = '...';
+CREATE USER  [btcr_app] FOR LOGIN [btcr_app];
+ALTER ROLE db_datareader ADD MEMBER [btcr_app];
+
+-- Si el login ya existía y la base viene de un restore:
+ALTER USER [btcr_app] WITH LOGIN = [btcr_app];
+```
+
+**Para ver el error exacto**, sea cual sea la causa:
+
+```powershell
+New-Item -ItemType Directory C:\inetpub\bitacora\logs -Force
+(Get-Content C:\inetpub\bitacora\web.config -Raw) -replace 'stdoutLogEnabled="false"', 'stdoutLogEnabled="true"' |
+    Set-Content C:\inetpub\bitacora\web.config -Encoding UTF8
+Start-Sleep 5
+try { Invoke-WebRequest https://sicodis.dnp.gov.co/bitacora/api/bitacoras -UseBasicParsing } catch {}
+Get-ChildItem C:\inetpub\bitacora\logs | Sort-Object LastWriteTime | Select-Object -Last 1 | Get-Content -Tail 40
+```
+
+Y volver a dejarlo en `"false"` al terminar.
+
+> El script ya no deja llegar hasta aquí: comprueba que `-AppUser` pueda
+> conectarse antes de tocar nada, y que pueda leer las tablas después de
+> cargar los datos. Esta sección queda para un servidor desplegado a mano o
+> con una versión anterior.
 
 ---
 
