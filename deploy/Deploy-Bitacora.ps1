@@ -205,14 +205,64 @@ if (-not $OmitirIIS) {
 
     # El Hosting Bundle registra AspNetCoreModuleV2. Sin él, IIS responde
     # 500.19 y la causa no es evidente en el log del sitio.
-    $modulos = & "$env:windir\system32\inetsrv\appcmd.exe" list modules 2>$null
-    if ($modulos -notmatch 'AspNetCoreModuleV2') {
-        Stop-Con @'
-Falta el ASP.NET Core 8 Hosting Bundle (módulo AspNetCoreModuleV2).
-Instalarlo DESPUÉS de IIS y reiniciar:  net stop was /y ; net start w3svc
-'@
+    #
+    # Se busca por tres vías porque la primera versión de esta comprobación
+    # usaba solo appcmd.exe y acusaba de faltar el módulo en un servidor
+    # donde estaba instalado. appcmd vive en system32\inetsrv, y en una
+    # consola de PowerShell de 32 bits sobre Windows de 64 WOW64 redirige
+    # system32 a SysWOW64, donde inetsrv no existe: el comando fallaba, el
+    # 2>$null se tragaba el error y la variable quedaba vacía.
+    $rutaDll = Join-Path $env:ProgramFiles 'IIS\Asp.Net Core Module\V2\aspnetcorev2.dll'
+
+    $inetsrv = if ([Environment]::Is64BitOperatingSystem -and -not [Environment]::Is64BitProcess) {
+        "$env:windir\sysnative\inetsrv"      # sin redirección de WOW64
+    } else {
+        "$env:windir\system32\inetsrv"
     }
-    Write-Ok 'AspNetCoreModuleV2 registrado'
+    $appcmd = Join-Path $inetsrv 'appcmd.exe'
+
+    $enDisco = Test-Path $rutaDll
+    $enIIS   = $false
+    try { $enIIS = [bool](Get-WebGlobalModule -Name 'AspNetCoreModuleV2' -ErrorAction Stop) } catch { }
+    if (-not $enIIS -and (Test-Path $appcmd)) {
+        $enIIS = (& $appcmd list modules 2>&1) -match 'AspNetCoreModuleV2'
+    }
+
+    if ($enIIS) {
+        Write-Ok 'AspNetCoreModuleV2 registrado'
+    }
+    elseif ($enDisco) {
+        # Instalado pero no cargado: pasa cuando el Hosting Bundle se
+        # instaló antes que IIS, o cuando falta reiniciar el servicio.
+        Stop-Con @"
+El Hosting Bundle está instalado pero IIS no tiene cargado el módulo.
+
+  Encontrado: $rutaDll
+  IIS no lo lista entre sus módulos globales.
+
+Reiniciar IIS:            net stop was /y ; net start w3svc
+Si no basta, es que se instaló ANTES que IIS. Reparar la instalación:
+                          dotnet-hosting-8.x.x-win.exe /repair
+"@
+    }
+    else {
+        Stop-Con @"
+No se encontró el módulo AspNetCoreModuleV2 de IIS.
+
+La confusión más común: el «.NET 8 Runtime» y el «ASP.NET Core 8 Runtime»
+NO instalan este módulo. Hace falta el **Hosting Bundle**, que es una
+descarga distinta de la misma página:
+
+  https://dotnet.microsoft.com/download/dotnet/8.0
+  -> Windows -> Hosting Bundle      (dotnet-hosting-8.x.x-win.exe)
+
+Instalarlo DESPUÉS de IIS y reiniciar:  net stop was /y ; net start w3svc
+
+Para ver qué hay realmente instalado:
+  Test-Path '$rutaDll'
+  Get-WebGlobalModule | Where-Object Name -like 'AspNetCore*'
+"@
+    }
 
     if (-not (Test-Path "IIS:\Sites\$SiteName")) {
         $sitios = (Get-ChildItem IIS:\Sites | Select-Object -ExpandProperty Name) -join ', '

@@ -77,7 +77,7 @@ contra la raíz del dominio: página sin estilos y mapa en blanco.
 | Componente | Nota |
 |---|---|
 | Windows Server con **IIS** habilitado | Rol «Servidor web (IIS)» |
-| **ASP.NET Core 8 Hosting Bundle** | Lo único que hay que instalar. Trae el runtime y el módulo `AspNetCoreModuleV2` que IIS necesita |
+| **ASP.NET Core 8 Hosting Bundle** | Lo único que hay que instalar. Trae el runtime y el módulo `AspNetCoreModuleV2` que IIS necesita. **No confundir con los Runtime** — ver abajo |
 | Acceso a **SQL Server** | Desde el servidor de IIS, por red |
 
 Instalar el Hosting Bundle **después** de IIS. Si se hace al revés, hay que repararlo. Luego reiniciar IIS:
@@ -87,11 +87,41 @@ net stop was /y
 net start w3svc
 ```
 
-Comprobar que el módulo quedó registrado:
+### Hosting Bundle no es lo mismo que Runtime
 
+Es el tropiezo más frecuente, y pasó en el DNP. En la página de descarga de
+.NET 8 hay varios instaladores para Windows, y **solo uno** registra el
+módulo de IIS:
+
+| Descarga | ¿Registra `AspNetCoreModuleV2`? |
+|---|---|
+| .NET Runtime | No |
+| ASP.NET Core Runtime | **No** |
+| .NET Desktop Runtime | No |
+| SDK | No |
+| **Hosting Bundle** (`dotnet-hosting-8.x.x-win.exe`) | **Sí** |
+
+Instalar los Runtime deja `dotnet --list-runtimes` mostrando
+`Microsoft.AspNetCore.App 8.x` —lo que hace pensar que ya está— mientras IIS
+sigue sin poder hospedar la aplicación.
+
+### Comprobar que quedó registrado
+
+```powershell
+Test-Path 'C:\Program Files\IIS\Asp.Net Core Module\V2\aspnetcorev2.dll'
+Get-WebGlobalModule | Where-Object Name -like 'AspNetCore*'
 ```
-%windir%\system32\inetsrv\appcmd.exe list modules | findstr AspNetCore
-```
+
+El primero dice si el Hosting Bundle está instalado; el segundo, si IIS lo
+tiene cargado. Puede darse el primero sin el segundo: significa que se
+instaló antes que IIS y hay que reparar la instalación con
+`dotnet-hosting-8.x.x-win.exe /repair`.
+
+> Con `appcmd.exe` también se ve, pero **desde una consola de 64 bits**:
+> `%windir%\system32\inetsrv\appcmd.exe list modules | findstr AspNetCore`.
+> En una consola de PowerShell de 32 bits, WOW64 redirige `system32` a
+> `SysWOW64`, donde `inetsrv` no existe, y el comando falla sin decir por
+> qué. Ahí la ruta es `%windir%\sysnative\inetsrv\appcmd.exe`.
 
 **No hace falta instalar el SDK de .NET** en el servidor: la aplicación se publica ya compilada desde otra máquina.
 
