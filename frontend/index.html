@@ -145,14 +145,14 @@ nav a.lk.active{color:var(--t);border-bottom-color:var(--t)}
 /* ── Secciones ── */
 .sec{background:var(--bl);border-bottom:1px solid var(--gc);padding:52px 0 44px}
 .sec.nf{background:var(--fw)}
-.stag{display:inline-flex;align-items:center;gap:5px;background:rgba(0,195,193,.09);border:1px solid rgba(0,195,193,.2);color:var(--t);font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-bottom:14px}
+.stag{display:inline-flex;align-items:center;gap:5px;background:color-mix(in srgb,var(--t) 9%,transparent);border:1px solid color-mix(in srgb,var(--t) 20%,transparent);color:var(--t);font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-bottom:14px}
 .stag .n{background:var(--t);color:#fff;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700}
-.stag.sm{background:rgba(254,27,123,.07);border-color:rgba(254,27,123,.18);color:var(--m)}.stag.sm .n{background:var(--m)}
-.stag.sa{background:rgba(255,202,0,.1);border-color:rgba(255,202,0,.28);color:#9a7200}.stag.sa .n{background:var(--a)}
-.stag.sp{background:rgba(127,71,221,.09);border-color:rgba(127,71,221,.26);color:var(--mo)}.stag.sp .n{background:var(--mo)}
-.transition-band{background:linear-gradient(135deg,rgba(127,71,221,.06),rgba(127,71,221,.015));border-top:1px solid rgba(127,71,221,.16);border-bottom:1px solid rgba(127,71,221,.16);padding:26px 0}
+.stag.sm{background:color-mix(in srgb,var(--m) 7%,transparent);border-color:color-mix(in srgb,var(--m) 18%,transparent);color:var(--m)}.stag.sm .n{background:var(--m)}
+.stag.sa{background:color-mix(in srgb,var(--a) 10%,transparent);border-color:color-mix(in srgb,var(--a) 28%,transparent);color:#9a7200}.stag.sa .n{background:var(--a)}
+.stag.sp{background:color-mix(in srgb,var(--mo) 9%,transparent);border-color:color-mix(in srgb,var(--mo) 26%,transparent);color:var(--mo)}.stag.sp .n{background:var(--mo)}
+.transition-band{background:linear-gradient(135deg,color-mix(in srgb,var(--mo) 6%,transparent),color-mix(in srgb,var(--mo) 2%,transparent));border-top:1px solid color-mix(in srgb,var(--mo) 16%,transparent);border-bottom:1px solid color-mix(in srgb,var(--mo) 16%,transparent);padding:26px 0}
 .transition-band .tb-inner{display:flex;align-items:flex-start;gap:16px}
-.transition-band .tb-icon{flex-shrink:0;width:38px;height:38px;border-radius:50%;background:rgba(127,71,221,.12);border:1.5px solid rgba(127,71,221,.3);display:grid;place-items:center;color:var(--mo);font-size:17px}
+.transition-band .tb-icon{flex-shrink:0;width:38px;height:38px;border-radius:50%;background:color-mix(in srgb,var(--mo) 12%,transparent);border:1.5px solid color-mix(in srgb,var(--mo) 30%,transparent);display:grid;place-items:center;color:var(--mo);font-size:17px}
 .transition-band .tb-eyebrow{font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--mo);margin-bottom:5px}
 .transition-band p{font-size:13.5px;color:var(--gm);line-height:1.6;max-width:760px;margin:0}
 h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;color:var(--gt);margin-bottom:6px;line-height:1.15}
@@ -200,9 +200,9 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 .tbl thead th:first-child{text-align:left;border-radius:5px 0 0 0}.tbl thead th:last-child{border-radius:0 5px 0 0}
 .tbl td{padding:8px 10px;border-bottom:1px solid var(--gc);color:var(--gm);text-align:right}
 .tbl td:first-child{color:var(--gt);text-align:left;font-weight:700}
-.tbl tr:hover td{background:rgba(0,195,193,.04)}
-.tbl tbody tr[onclick]:hover td{background:rgba(0,195,193,.12);transition:background .15s}
-.tbl .tr td{background:rgba(0,195,193,.06);color:var(--gt);font-weight:900;border-top:2px solid var(--t)}
+.tbl tr:hover td{background:color-mix(in srgb,var(--t) 4%,transparent)}
+.tbl tbody tr[onclick]:hover td{background:color-mix(in srgb,var(--t) 12%,transparent);transition:background .15s}
+.tbl .tr td{background:color-mix(in srgb,var(--t) 6%,transparent);color:var(--gt);font-weight:900;border-top:2px solid var(--t)}
 .pb{background:var(--m);color:#fff;font-size:9px;font-weight:900;padding:1px 6px;border-radius:8px}
 
 /* donut legend */
@@ -216,16 +216,16 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 /* regiones */
 .rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
 .rc{background:var(--bl);border:1px solid var(--gc);border-left:4px solid var(--t);border-radius:var(--rs);padding:14px;transition:box-shadow .2s,transform .2s}
-.rc:hover{box-shadow:0 4px 14px rgba(0,195,193,.13);transform:translateY(-2px)}
+.rc:hover{box-shadow:0 4px 14px color-mix(in srgb,var(--t) 13%,transparent);transform:translateY(-2px)}
 .rc[onclick]{cursor:pointer}
-.rc[onclick]:hover{box-shadow:0 6px 18px rgba(0,195,193,.18)}
-.rc-total{background:linear-gradient(135deg,rgba(0,195,193,.08) 0%,rgba(254,27,123,.05) 100%);border-left:4px solid var(--m);border:2px solid var(--m);box-shadow:0 2px 12px rgba(254,27,123,.12)}
+.rc[onclick]:hover{box-shadow:0 6px 18px color-mix(in srgb,var(--t) 18%,transparent)}
+.rc-total{background:linear-gradient(135deg,color-mix(in srgb,var(--t) 8%,transparent) 0%,color-mix(in srgb,var(--m) 5%,transparent) 100%);border-left:4px solid var(--m);border:2px solid var(--m);box-shadow:0 2px 12px color-mix(in srgb,var(--m) 12%,transparent)}
 .rc-pr{border-left:4px solid var(--nr);background:rgba(251,176,59,.04)}
 .rc-pr:hover{box-shadow:0 4px 14px rgba(251,176,59,.15);transform:translateY(-2px)}
 .ry-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:12px;border:1.5px solid var(--gc);font-size:12px;font-weight:700;color:var(--gs);cursor:pointer;transition:all .18s;user-select:none}
 .ry-pill input{display:none}
 .ry-pill.active{background:var(--t);border-color:var(--t);color:#fff}
-.rc-total:hover{box-shadow:0 4px 18px rgba(254,27,123,.2);transform:translateY(-1px)}
+.rc-total:hover{box-shadow:0 4px 18px color-mix(in srgb,var(--m) 20%,transparent);transform:translateY(-1px)}
 .rc-total .rn{font-size:13px;color:var(--m);text-transform:uppercase;letter-spacing:.02em}
 .rc-total .rsv{color:var(--m)}
 .rn{font-weight:900;font-size:13px;color:var(--gt);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
@@ -245,7 +245,7 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 .tcs{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
 .tcs .ll{color:var(--gs)}.tcs .vv{font-weight:900;color:var(--m)}
 .tcs .vvt{font-weight:900;color:var(--t)}
-.tcp{display:inline-block;margin-top:8px;background:rgba(0,195,193,.1);border:1px solid rgba(0,195,193,.2);color:var(--t);font-size:10px;font-weight:800;padding:2px 8px;border-radius:8px}
+.tcp{display:inline-block;margin-top:8px;background:color-mix(in srgb,var(--t) 10%,transparent);border:1px solid color-mix(in srgb,var(--t) 20%,transparent);color:var(--t);font-size:10px;font-weight:800;padding:2px 8px;border-radius:8px}
 .tc-hint{font-size:10px;color:var(--gs);text-align:center;margin-top:10px;padding-top:8px;border-top:1px dashed var(--gc);letter-spacing:.05em;text-transform:uppercase;opacity:.7}
 
 /* VF */
@@ -273,18 +273,18 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 .sec6-filter{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:20px;align-items:center}
 .sf-lbl{font-size:9px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--gs);margin-right:3px;flex-shrink:0}
 .sf-btn{background:none;border:1px solid var(--gc);border-radius:6px;padding:3px 9px;font-size:12px;font-weight:800;cursor:pointer;color:var(--gs);transition:all .15s;line-height:1.5}
-.sf-btn:hover{background:rgba(255,202,0,.18);border-color:var(--a);color:#6a4e00}
+.sf-btn:hover{background:color-mix(in srgb,var(--a) 18%,transparent);border-color:var(--a);color:#6a4e00}
 .sf-btn.active{background:var(--a);border-color:#d4a800;color:#4a3000}
-.sf-btn.sf-all{border-color:rgba(0,195,193,.25);color:var(--t)}
+.sf-btn.sf-all{border-color:color-mix(in srgb,var(--t) 25%,transparent);color:var(--t)}
 .sf-btn.sf-all.active{background:var(--t);border-color:var(--t);color:#fff}
 .sc.sc-hidden{display:none}
 .si-fa{font-size:26px;color:var(--m);margin-bottom:10px;display:block;line-height:1}
-.si-init{width:36px;height:36px;border-radius:50%;background:rgba(254,27,123,.1);border:1.5px solid rgba(254,27,123,.2);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#fe1b7b;margin-bottom:10px}
+.si-init{width:36px;height:36px;border-radius:50%;background:color-mix(in srgb,var(--m) 10%,transparent);border:1.5px solid color-mix(in srgb,var(--m) 20%,transparent);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:var(--m);margin-bottom:10px}
 .sc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:6px;margin-bottom:6px}
 .sc-badges{display:flex;flex-direction:column;gap:3px;flex-shrink:0;align-items:flex-end}
 .sc-badge{font-size:9px;font-weight:900;padding:2px 6px;border-radius:10px;white-space:nowrap;letter-spacing:.02em}
-.sc-bc{background:rgba(0,195,193,.12);color:#007a78}
-.sc-bo{background:rgba(254,27,123,.12);color:#b5155a}
+.sc-bc{background:color-mix(in srgb,var(--t) 12%,transparent);color:#007a78}
+.sc-bo{background:color-mix(in srgb,var(--m) 12%,transparent);color:#b5155a}
 .sc-body{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;margin:8px 0 6px}
 .sc-spark{overflow:visible}
 .sc-bars{width:88px}
@@ -296,9 +296,9 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 .sc-tbl th:first-child{text-align:left;position:sticky;left:0;background:var(--t);z-index:1}
 .sc-tbl td{padding:3px 6px;text-align:right;border-bottom:1px solid var(--gc);vertical-align:middle;white-space:nowrap}
 .sc-tbl td:first-child{text-align:left;font-weight:700;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;position:sticky;left:0;background:var(--bl);z-index:1}
-.sc-tbl tr:hover td{background:rgba(0,195,193,.05)}
-.sc-tbl tr.sc-tr-sec td{background:rgba(0,195,193,.08);font-weight:900}
-.sc-tbl .yr-hdr{background:rgba(0,195,193,.15);color:var(--gt);padding:3px 6px;font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;text-align:center}
+.sc-tbl tr:hover td{background:color-mix(in srgb,var(--t) 5%,transparent)}
+.sc-tbl tr.sc-tr-sec td{background:color-mix(in srgb,var(--t) 8%,transparent);font-weight:900}
+.sc-tbl .yr-hdr{background:color-mix(in srgb,var(--t) 15%,transparent);color:var(--gt);padding:3px 6px;font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;text-align:center}
 .sc-tbl-wrap{overflow-x:auto;max-height:280px;overflow-y:auto;margin-top:8px}
 
 /* hbars */
@@ -321,7 +321,7 @@ h2.st{font-size:clamp(22px,2.8vw,32px);font-weight:900;letter-spacing:-.01em;col
 /* diagramas de flujo en drawers */
 .dr-flow{display:flex;flex-direction:column;gap:5px;margin:14px 0 4px}
 .dr-flow-step{display:flex;align-items:center;gap:11px;background:var(--bl);border:1px solid var(--gc);border-left:3px solid var(--t);border-radius:8px;padding:9px 12px}
-.dr-flow-step>i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(0,195,193,.1);color:var(--t);font-size:13px;flex-shrink:0}
+.dr-flow-step>i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--t) 10%,transparent);color:var(--t);font-size:13px;flex-shrink:0}
 .dr-flow-step .fs-t{font-weight:800;font-size:12.5px;color:var(--gt)}
 .dr-flow-step .fs-d{font-size:11.5px;color:var(--gm);line-height:1.45}
 .dr-flow-arrow{text-align:center;color:var(--gs);font-size:11px;line-height:1}
@@ -344,8 +344,8 @@ footer strong{color:#fff}
   justify-content:center;
   width:18px;
   height:18px;
-  background:rgba(0,195,193,.15);
-  border:1.5px solid rgba(0,195,193,.35);
+  background:color-mix(in srgb,var(--t) 15%,transparent);
+  border:1.5px solid color-mix(in srgb,var(--t) 35%,transparent);
   color:var(--t);
   font-size:12px;
   font-weight:900;
@@ -364,8 +364,8 @@ footer strong{color:#fff}
   transform:scale(1.1);
 }
 .stag.sm .info-icon{
-  background:rgba(254,27,123,.12);
-  border-color:rgba(254,27,123,.3);
+  background:color-mix(in srgb,var(--m) 12%,transparent);
+  border-color:color-mix(in srgb,var(--m) 30%,transparent);
   color:var(--m);
 }
 .stag.sm .info-icon:hover{
@@ -374,8 +374,8 @@ footer strong{color:#fff}
   border-color:var(--m);
 }
 .stag.sa .info-icon{
-  background:rgba(255,202,0,.15);
-  border-color:rgba(255,202,0,.35);
+  background:color-mix(in srgb,var(--a) 15%,transparent);
+  border-color:color-mix(in srgb,var(--a) 35%,transparent);
   color:#9a7200;
 }
 .stag.sa .info-icon:hover{
@@ -384,8 +384,8 @@ footer strong{color:#fff}
   border-color:var(--a);
 }
 .stag.sp .info-icon{
-  background:rgba(127,71,221,.14);
-  border-color:rgba(127,71,221,.32);
+  background:color-mix(in srgb,var(--mo) 14%,transparent);
+  border-color:color-mix(in srgb,var(--mo) 32%,transparent);
   color:var(--mo);
 }
 .stag.sp .info-icon:hover{
@@ -399,8 +399,8 @@ footer strong{color:#fff}
   justify-content:center;
   width:18px;
   height:18px;
-  background:rgba(127,71,221,.12);
-  border:1.5px solid rgba(127,71,221,.32);
+  background:color-mix(in srgb,var(--mo) 12%,transparent);
+  border:1.5px solid color-mix(in srgb,var(--mo) 32%,transparent);
   color:var(--mo);
   font-size:12px;
   font-weight:900;
@@ -513,7 +513,7 @@ footer strong{color:#fff}
   background:var(--bl);
   border:2px solid var(--t);
   border-radius:var(--rs);
-  box-shadow:0 4px 18px rgba(0,195,193,.25);
+  box-shadow:0 4px 18px color-mix(in srgb,var(--t) 25%,transparent);
   padding:10px 12px;
   font-family:'Nunito Sans',sans-serif;
   color:var(--gt);
@@ -617,7 +617,7 @@ footer strong{color:#fff}
 .tbl thead th.def{border-bottom:2px dashed rgba(255,255,255,.55);cursor:help;display:table-cell}
 .tbl thead th.def:hover{border-bottom-color:#fff}
 #defTip{position:fixed;z-index:900;background:var(--bl);border:1.5px solid var(--t);border-radius:var(--rs);
-  box-shadow:0 8px 32px rgba(0,195,193,.22);padding:14px 16px;max-width:272px;width:272px;
+  box-shadow:0 8px 32px color-mix(in srgb,var(--t) 22%,transparent);padding:14px 16px;max-width:272px;width:272px;
   pointer-events:none;opacity:0;transition:opacity .18s;font-family:'Nunito Sans',Arial,sans-serif;line-height:1}
 #defTip.vis{opacity:1}
 .dt-term{font-size:9px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--t);margin-bottom:8px}
@@ -642,7 +642,7 @@ footer strong{color:#fff}
 .dr-tab:hover:not(.active){color:var(--gt)}
 .dr-body{flex:1;overflow-y:auto;padding:22px 22px 40px;font-size:14px;color:var(--gt);line-height:1.7}
 .dr-body p{margin-bottom:12px}.dr-body p:last-child{margin-bottom:0}
-.dr-note{background:rgba(0,195,193,.07);border-left:3px solid var(--t);border-radius:0 var(--rs) var(--rs) 0;padding:10px 14px;font-size:13px;margin:14px 0;line-height:1.55}
+.dr-note{background:color-mix(in srgb,var(--t) 7%,transparent);border-left:3px solid var(--t);border-radius:0 var(--rs) var(--rs) 0;padding:10px 14px;font-size:13px;margin:14px 0;line-height:1.55}
 .dr-src-item{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--gc)}
 .dr-src-item:last-child{border-bottom:none}
 .dr-src-name{font-weight:900;font-size:12px;min-width:72px;color:var(--t);padding-top:1px}
@@ -730,7 +730,7 @@ footer strong{color:#fff}
     </div>
     <div class="sec-illus" aria-hidden="true">
       <svg viewBox="0 0 170 110">
-        <g stroke="#00c3c1" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <g style="stroke:var(--t)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path d="M20 94 h84"/>
           <path d="M26 86 h72"/>
           <path d="M32 86 V56 M48 86 V56 M64 86 V56 M80 86 V56 M96 86 V56"/>
@@ -738,10 +738,10 @@ footer strong{color:#fff}
           <path d="M20 56 L64 28 L108 56"/>
         </g>
         <g>
-          <circle cx="136" cy="80" r="14" fill="#ffca00" opacity=".92"/>
+          <circle cx="136" cy="80" r="14" style="fill:var(--a)" opacity=".92"/>
           <text x="136" y="85" text-anchor="middle" font-size="14" font-weight="900" fill="#fff">$</text>
-          <circle cx="152" cy="55" r="10" fill="#fe1b7b" opacity=".78"/>
-          <circle cx="130" cy="40" r="7"  fill="#00c3c1" opacity=".82"/>
+          <circle cx="152" cy="55" r="10" style="fill:var(--m)" opacity=".78"/>
+          <circle cx="130" cy="40" r="7"  style="fill:var(--t)" opacity=".82"/>
         </g>
       </svg>
     </div>
@@ -928,16 +928,16 @@ footer strong{color:#fff}
     </div>
     <div class="sec-illus" aria-hidden="true">
       <svg viewBox="0 0 170 110">
-        <g stroke="#7f47dd" stroke-width="2.5" fill="none">
+        <g style="stroke:var(--mo)" stroke-width="2.5" fill="none">
           <circle cx="38" cy="55" r="24"/>
           <ellipse cx="38" cy="55" rx="10" ry="24"/>
           <path d="M16 47 h44 M16 63 h44"/>
         </g>
-        <path d="M68 55 h28" stroke="#00c3c1" stroke-width="3" stroke-linecap="round"/>
-        <path d="M94 47 L106 55 L94 63 Z" fill="#00c3c1"/>
-        <circle cx="82" cy="36" r="9" fill="#ffca00"/>
+        <path d="M68 55 h28" style="stroke:var(--t)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M94 47 L106 55 L94 63 Z" style="fill:var(--t)"/>
+        <circle cx="82" cy="36" r="9" style="fill:var(--a)"/>
         <text x="82" y="40" text-anchor="middle" font-size="11" font-weight="900" fill="#8a6d00">$</text>
-        <g stroke="#7f47dd" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <g style="stroke:var(--mo)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path d="M112 84 h50"/>
           <path d="M120 76 V58 M132 76 V58 M144 76 V58 M156 76 V58"/>
           <path d="M116 58 h44 M112 58 L138 38 L164 58"/>
@@ -1024,7 +1024,7 @@ footer strong{color:#fff}
     </div>
     <div class="sec-illus" aria-hidden="true">
       <svg viewBox="0 0 170 110">
-        <g stroke="#7f47dd" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <g style="stroke:var(--mo)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path d="M62 32 h46"/>
           <path d="M68 32 V16 M80 32 V16 M92 32 V16 M104 32 V16"/>
           <path d="M64 16 h42 M60 16 L85 4 L110 16"/>
@@ -1036,9 +1036,9 @@ footer strong{color:#fff}
           <path d="M85 50 L135 64"/>
         </g>
         <g fill="none" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="#00c3c1" d="M22 80 L35 69 L48 80 V96 H22 Z"/>
-          <path stroke="#ffca00" d="M72 84 L85 73 L98 84 V100 H72 Z"/>
-          <path stroke="#fe1b7b" d="M122 80 L135 69 L148 80 V96 H122 Z"/>
+          <path style="stroke:var(--t)" d="M22 80 L35 69 L48 80 V96 H22 Z"/>
+          <path style="stroke:var(--a)" d="M72 84 L85 73 L98 84 V100 H72 Z"/>
+          <path style="stroke:var(--m)" d="M122 80 L135 69 L148 80 V96 H122 Z"/>
         </g>
       </svg>
     </div>
@@ -2373,7 +2373,7 @@ function _renderSectorMatrix(containerId,mtz,tab){
           const cells=visIdx.map((vi,ci)=>{
             const v=s[cfg.key][vi];
             const hl=cfg.pct&&top10Sets[ci]&&top10Sets[ci].has(s.sector);
-            const bg=hl?'background:rgba(0,195,193,.15);font-weight:700':'';
+            const bg=hl?'background:color-mix(in srgb,var(--t) 15%,transparent);font-weight:700':'';
             return`<td style="${bg}">${cfg.fmt(v)}</td>`;
           });
           return`<tr><td title="${s.sector}" style="text-align:left;position:sticky;left:0;background:var(--bl)">${sn(s.sector)}</td>${cells.join('')}</tr>`;
@@ -2983,12 +2983,12 @@ function openSectorFull(sectorKey){
   const _sec = (_seSectors||[]).find(x=>x.s===sectorKey);
   const kpiBlock = _sec?.pc!=null
     ? `<div style="display:flex;gap:16px;margin-bottom:16px">
-        <div style="display:flex;flex-direction:column;align-items:center;background:rgba(0,195,193,.08);border:1.5px solid var(--t);border-radius:8px;padding:10px 24px">
+        <div style="display:flex;flex-direction:column;align-items:center;background:color-mix(in srgb,var(--t) 8%,transparent);border:1.5px solid var(--t);border-radius:8px;padding:10px 24px">
           <span style="font-size:12px;font-weight:700;color:var(--t);text-transform:uppercase;letter-spacing:.05em">% Compromisos</span>
           <span style="font-size:32px;font-weight:900;color:var(--t);line-height:1.1">${_sec.pc}%</span>
           <span style="font-size:10px;color:var(--gs)">Sobre apropiación vigente</span>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:center;background:rgba(254,27,123,.08);border:1.5px solid var(--m);border-radius:8px;padding:10px 24px">
+        <div style="display:flex;flex-direction:column;align-items:center;background:color-mix(in srgb,var(--m) 8%,transparent);border:1.5px solid var(--m);border-radius:8px;padding:10px 24px">
           <span style="font-size:12px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.05em">% Obligaciones</span>
           <span style="font-size:32px;font-weight:900;color:var(--m);line-height:1.1">${_sec.po}%</span>
           <span style="font-size:10px;color:var(--gs)">Sobre apropiación vigente</span>
@@ -3436,11 +3436,11 @@ const DC={
         <p>El <strong>crédito externo</strong> es una fuente de financiación complementaria al PGN: recursos que la Nación contrata con la banca multilateral para respaldar proyectos de inversión de gran envergadura, generalmente de ejecución plurianual.</p>
         <p>La cartera vigente de la Nación está integrada por operaciones financiadas por el <strong>Banco Interamericano de Desarrollo (BID)</strong>, el <strong>Banco Mundial (BM)</strong> y el <strong>Banco de Desarrollo de América Latina y el Caribe (CAF)</strong>.</p>
         <div class="dr-flow">
-          <div class="dr-flow-step" style="border-left-color:var(--mo)"><i class="fas fa-globe" style="background:rgba(127,71,221,.1);color:var(--mo)"></i><div><div class="fs-t">Banca multilateral</div><div class="fs-d">BID · Banco Mundial · CAF — contratan y desembolsan los créditos en USD.</div></div></div>
+          <div class="dr-flow-step" style="border-left-color:var(--mo)"><i class="fas fa-globe" style="background:color-mix(in srgb,var(--mo) 10%,transparent);color:var(--mo)"></i><div><div class="fs-t">Banca multilateral</div><div class="fs-d">BID · Banco Mundial · CAF — contratan y desembolsan los créditos en USD.</div></div></div>
           <div class="dr-flow-arrow"><i class="fas fa-arrow-down"></i></div>
           <div class="dr-flow-step"><i class="fas fa-landmark"></i><div><div class="fs-t">Nación — Presupuesto</div><div class="fs-d">Los recursos ingresan al presupuesto como recursos 13 y 14 del SIIF Nación (COP).</div></div></div>
           <div class="dr-flow-arrow"><i class="fas fa-arrow-down"></i></div>
-          <div class="dr-flow-step" style="border-left-color:var(--a)"><i class="fas fa-hard-hat" style="background:rgba(255,202,0,.14);color:#9a7200"></i><div><div class="fs-t">Entidades ejecutoras</div><div class="fs-d">Proyectos de inversión de gran envergadura, generalmente plurianuales.</div></div></div>
+          <div class="dr-flow-step" style="border-left-color:var(--a)"><i class="fas fa-hard-hat" style="background:color-mix(in srgb,var(--a) 14%,transparent);color:#9a7200"></i><div><div class="fs-t">Entidades ejecutoras</div><div class="fs-d">Proyectos de inversión de gran envergadura, generalmente plurianuales.</div></div></div>
         </div>
         <div class="dr-note">Los créditos se contratan en dólares (USD); su ejecución presupuestal interna se registra en pesos a través de los recursos 13 (crédito externo) y 14 (crédito externo — otros) del SIIF Nación.</div>`
       },
@@ -3470,11 +3470,11 @@ const DC={
       {label:'Distribución y normativa',html:`
         <p>El ciclo de distribución sigue estos pasos:</p>
         <div class="dr-flow">
-          <div class="dr-flow-step" style="border-left-color:var(--m)"><i class="fas fa-coins" style="background:rgba(254,27,123,.09);color:var(--m)"></i><div><div class="fs-t">MHCP</div><div class="fs-d">Calcula los montos del SGP (art. 85, Ley 715 de 2001) y comunica la estimación al DNP.</div></div></div>
+          <div class="dr-flow-step" style="border-left-color:var(--m)"><i class="fas fa-coins" style="background:color-mix(in srgb,var(--m) 9%,transparent);color:var(--m)"></i><div><div class="fs-t">MHCP</div><div class="fs-d">Calcula los montos del SGP (art. 85, Ley 715 de 2001) y comunica la estimación al DNP.</div></div></div>
           <div class="dr-flow-arrow"><i class="fas fa-arrow-down"></i></div>
           <div class="dr-flow-step"><i class="fas fa-chart-pie"></i><div><div class="fs-t">DNP</div><div class="fs-d">Elabora los documentos de distribución aplicando los criterios de la norma y la información certificada.</div></div></div>
           <div class="dr-flow-arrow"><i class="fas fa-arrow-down"></i></div>
-          <div class="dr-flow-step" style="border-left-color:var(--mo)"><i class="fas fa-people-roof" style="background:rgba(127,71,221,.1);color:var(--mo)"></i><div><div class="fs-t">Entidades territoriales</div><div class="fs-d">Departamentos, distritos, municipios y resguardos indígenas financian educación, salud, agua potable y propósito general.</div></div></div>
+          <div class="dr-flow-step" style="border-left-color:var(--mo)"><i class="fas fa-people-roof" style="background:color-mix(in srgb,var(--mo) 10%,transparent);color:var(--mo)"></i><div><div class="fs-t">Entidades territoriales</div><div class="fs-d">Departamentos, distritos, municipios y resguardos indígenas financian educación, salud, agua potable y propósito general.</div></div></div>
         </div>
         <div class="dr-note">La distribución se realiza de acuerdo con la normativa vigente y la información certificada por las entidades competentes para cada componente del sistema.</div>
         <div class="dr-src-item"><span class="dr-src-name">Constitución Política</span><span class="dr-src-desc">Artículos 356 y 357.</span></div>
@@ -3785,9 +3785,9 @@ const infoTexts = {
       {
         label: 'Ciclo de la Ejecución del Gasto',
         content: `<div style="font-family:inherit;display:grid;grid-template-columns:1fr 96px 1fr;grid-template-rows:auto auto auto;column-gap:8px;row-gap:10px;align-items:stretch">
-    <div style="background:rgba(254,27,123,.08);border:1.5px solid rgba(254,27,123,.25);border-radius:10px;padding:13px 14px">
+    <div style="background:color-mix(in srgb,var(--m) 8%,transparent);border:1.5px solid color-mix(in srgb,var(--m) 25%,transparent);border-radius:10px;padding:13px 14px">
       <div style="display:flex;align-items:center;gap:6px;margin-bottom:7px">
-        <span style="background:#fe1b7b;color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px">01</span>
+        <span style="background:var(--m);color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px">01</span>
         <span style="font-size:13px;font-weight:900;color:#9a1050">Apropiación vigente</span>
       </div>
       <p style="margin:0;font-size:12px;line-height:1.5;color:#5e5e5e">Corresponde a la apropiación inicial (+/-) las modificaciones realizadas a la fecha por efecto de traslados, adiciones, incorporaciones, distribuciones, etc.</p>
@@ -3796,9 +3796,9 @@ const infoTexts = {
       <span style="font-size:9px;font-weight:700;color:#9b9b9b;line-height:1.3;text-transform:uppercase;letter-spacing:.04em">Pérdida de apropiación</span>
       <span style="color:#c8c8c8;font-size:20px;line-height:1">&#8594;</span>
     </div>
-    <div style="background:rgba(254,27,123,.08);border:1.5px solid rgba(254,27,123,.25);border-radius:10px;padding:13px 14px">
+    <div style="background:color-mix(in srgb,var(--m) 8%,transparent);border:1.5px solid color-mix(in srgb,var(--m) 25%,transparent);border-radius:10px;padding:13px 14px">
       <div style="display:flex;align-items:center;gap:6px;margin-bottom:7px">
-        <span style="background:#fe1b7b;color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px">02</span>
+        <span style="background:var(--m);color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px">02</span>
         <span style="font-size:13px;font-weight:900;color:#9a1050">Compromiso</span>
       </div>
       <p style="margin:0;font-size:12px;line-height:1.5;color:#5e5e5e">Corresponde al valor de los registros presupuestales que afectan las apropiaciones vigentes, con el fin de atender un gasto por efecto de la suscripción de un contrato o convenio interadministrativo.</p>
@@ -3815,9 +3815,9 @@ const infoTexts = {
       <span style="font-size:9px;font-weight:700;color:#9b9b9b;line-height:1.3;text-transform:uppercase;letter-spacing:.04em">Reserva Presupuestal</span>
       <span style="color:#c8c8c8;font-size:20px;line-height:1">&#8595;</span>
     </div>
-    <div style="background:rgba(254,27,123,.08);border:1.5px solid rgba(254,27,123,.25);border-radius:10px;padding:13px 14px">
+    <div style="background:color-mix(in srgb,var(--m) 8%,transparent);border:1.5px solid color-mix(in srgb,var(--m) 25%,transparent);border-radius:10px;padding:13px 14px">
       <div style="display:flex;align-items:center;gap:6px;margin-bottom:7px">
-        <span style="background:#fe1b7b;color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px">04</span>
+        <span style="background:var(--m);color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px">04</span>
         <span style="font-size:13px;font-weight:900;color:#9a1050">Pago</span>
       </div>
       <p style="margin:0;font-size:12px;line-height:1.5;color:#5e5e5e">Corresponde al valor de los giros realizados a un beneficiario final con el fin de cancelar las obligaciones asumidas por la entidad.</p>
@@ -3826,9 +3826,9 @@ const infoTexts = {
       <span style="color:#c8c8c8;font-size:20px;line-height:1">&#8592;</span>
       <span style="font-size:9px;font-weight:700;color:#9b9b9b;line-height:1.3;text-transform:uppercase;letter-spacing:.04em">Cuentas por pagar</span>
     </div>
-    <div style="background:rgba(254,27,123,.08);border:1.5px solid rgba(254,27,123,.25);border-radius:10px;padding:13px 14px">
+    <div style="background:color-mix(in srgb,var(--m) 8%,transparent);border:1.5px solid color-mix(in srgb,var(--m) 25%,transparent);border-radius:10px;padding:13px 14px">
       <div style="display:flex;align-items:center;gap:6px;margin-bottom:7px">
-        <span style="background:#fe1b7b;color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px">03</span>
+        <span style="background:var(--m);color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px">03</span>
         <span style="font-size:13px;font-weight:900;color:#9a1050">Obligación</span>
       </div>
       <p style="margin:0;font-size:12px;line-height:1.5;color:#5e5e5e">Corresponde al valor de las cuentas radicadas para el pago en la dependencia pagadora, como resultado de la entrega a satisfacción de un bien o un servicio adquiridos en desarrollo de los compromisos relacionados en el ítem anterior.</p>
@@ -3839,24 +3839,24 @@ const infoTexts = {
         label: 'Rezago Presupuestal',
         content: `<div style="font-family:inherit;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start">
     <div style="display:flex;flex-direction:column;gap:10px">
-      <div style="border-radius:8px;overflow:hidden;border:1.5px solid rgba(254,27,123,.25)">
+      <div style="border-radius:8px;overflow:hidden;border:1.5px solid color-mix(in srgb,var(--m) 25%,transparent)">
         <div style="background:#9a1050;color:#fff;text-align:center;font-weight:900;font-size:12px;padding:7px 12px;letter-spacing:.04em">Pérdida de apropiación</div>
-        <div style="background:rgba(254,27,123,.06);padding:12px;font-size:12px;line-height:1.5;color:#5e5e5e">Las apropiaciones son autorizaciones máximas de gasto que el Congreso de la República aprueba para ser comprometidas durante la vigencia fiscal respectiva. Después del 31 de diciembre de cada año estas autorizaciones expiran y en consecuencia no podrán comprometerse, adicionarse, transferirse ni contracreditarse.</div>
+        <div style="background:color-mix(in srgb,var(--m) 6%,transparent);padding:12px;font-size:12px;line-height:1.5;color:#5e5e5e">Las apropiaciones son autorizaciones máximas de gasto que el Congreso de la República aprueba para ser comprometidas durante la vigencia fiscal respectiva. Después del 31 de diciembre de cada año estas autorizaciones expiran y en consecuencia no podrán comprometerse, adicionarse, transferirse ni contracreditarse.</div>
       </div>
       <div style="display:flex;justify-content:center;padding:6px 0">
         <div style="background:#1c2d5e;border-radius:50%;width:84px;height:84px;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;flex-shrink:0">
           <span style="color:#fff;font-size:8.5px;font-weight:900;line-height:1.3;text-transform:uppercase">Ejecución del Rezago</span>
         </div>
       </div>
-      <div style="border-radius:8px;overflow:hidden;border:1.5px solid rgba(254,27,123,.25)">
+      <div style="border-radius:8px;overflow:hidden;border:1.5px solid color-mix(in srgb,var(--m) 25%,transparent)">
         <div style="background:#9a1050;color:#fff;text-align:center;font-weight:900;font-size:12px;padding:7px 12px;letter-spacing:.04em">Cuentas por Pagar</div>
-        <div style="background:rgba(254,27,123,.06);padding:12px;font-size:12px;line-height:1.5;color:#5e5e5e">Obligaciones pendientes de pago para la siguiente vigencia fiscal, y se presentan en los casos en que el bien o servicio se ha recibido a satisfacción a 31 de diciembre o cuando en desarrollo de un contrato se han pactado anticipos y estos no fueron cancelados al cierre de la vigencia fiscal.</div>
+        <div style="background:color-mix(in srgb,var(--m) 6%,transparent);padding:12px;font-size:12px;line-height:1.5;color:#5e5e5e">Obligaciones pendientes de pago para la siguiente vigencia fiscal, y se presentan en los casos en que el bien o servicio se ha recibido a satisfacción a 31 de diciembre o cuando en desarrollo de un contrato se han pactado anticipos y estos no fueron cancelados al cierre de la vigencia fiscal.</div>
       </div>
     </div>
     <div style="display:flex;flex-direction:column;gap:10px">
-      <div style="border-radius:8px;overflow:hidden;border:1.5px solid rgba(127,71,221,.25)">
+      <div style="border-radius:8px;overflow:hidden;border:1.5px solid color-mix(in srgb,var(--mo) 25%,transparent)">
         <div style="background:#5a2080;color:#fff;text-align:center;font-weight:900;font-size:12px;padding:7px 12px;letter-spacing:.04em">Reserva Presupuestal</div>
-        <div style="background:rgba(127,71,221,.07);padding:12px;font-size:12px;line-height:1.5;color:#5e5e5e">Compromisos legalmente constituidos por los órganos que conforman el PGN, que tienen registro presupuestal, pero cuyo objeto no fue cumplido dentro del año fiscal que termina y, por lo mismo, se pagarán dentro de la vigencia siguiente con cargo al presupuesto de la vigencia anterior; es decir, con cargo al presupuesto que las originó.<br><br><strong style="color:#5a2080">Compromisos &#8722; Obligaciones</strong></div>
+        <div style="background:color-mix(in srgb,var(--mo) 7%,transparent);padding:12px;font-size:12px;line-height:1.5;color:#5e5e5e">Compromisos legalmente constituidos por los órganos que conforman el PGN, que tienen registro presupuestal, pero cuyo objeto no fue cumplido dentro del año fiscal que termina y, por lo mismo, se pagarán dentro de la vigencia siguiente con cargo al presupuesto de la vigencia anterior; es decir, con cargo al presupuesto que las originó.<br><br><strong style="color:#5a2080">Compromisos &#8722; Obligaciones</strong></div>
       </div>
       <div style="border-radius:8px;overflow:hidden;border:1.5px solid rgba(28,45,94,.22)">
         <div style="background:#1c2d5e;color:#fff;text-align:center;font-weight:900;font-size:12px;padding:7px 12px;letter-spacing:.04em">Rezago Presupuestal</div>
