@@ -114,6 +114,10 @@ nav a.lk.active{color:var(--t);border-bottom-color:var(--t)}
 .nav-grp{font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gs);white-space:nowrap;margin-right:-12px}
 .nav-split{width:1px;height:18px;background:var(--gc);flex-shrink:0}
 .corte-badge{background:var(--m);color:#fff;font-size:10px;font-weight:900;padding:2px 9px;border-radius:4px;letter-spacing:.04em}
+.tema-toggle{display:inline-flex;gap:2px;background:#f0f0f0;border:1px solid var(--gc);border-radius:20px;padding:2px;flex-shrink:0}
+.tt-btn{border:none;background:none;cursor:pointer;font-family:var(--app-font-body);font-size:11px;font-weight:800;color:var(--gm);padding:3px 11px;border-radius:18px;line-height:1.4;transition:background .15s,color .15s;white-space:nowrap}
+.tt-btn.active{background:var(--t);color:#fff}
+.tt-btn:hover:not(.active){color:var(--t)}
 
 /* ── Wrap ── */
 .pw{max-width:1200px;margin: 10px auto;padding:0 32px;position:relative}
@@ -672,6 +676,10 @@ footer strong{color:#fff}
     <a href="#sec7" class="lk">Crédito</a>
     <a href="#sec8" class="lk">SGP</a>
     <span class="corte-badge" id="corteBadge">Mar 2026</span>
+    <div class="tema-toggle" role="group" aria-label="Imagen institucional">
+      <button type="button" class="tt-btn" data-tema-val="clasico" onclick="setTema('clasico')">Clásico</button>
+      <button type="button" class="tt-btn" data-tema-val="pnd" onclick="setTema('pnd')">PND 2026</button>
+    </div>
   </div>
   <div class="franja"></div>
 </nav>
@@ -3591,6 +3599,7 @@ async function initApp(){
   } else {
     await init(null);
   }
+  syncTemaToggle();
 }
 initApp();
 
