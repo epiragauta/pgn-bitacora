@@ -1,0 +1,8 @@
+/* Tipografía institucional PND 2026–2030 — autoalojada (subset latin, cubre español).
+   Familias: Poppins (titulares/cuerpo) + Space Grotesk (cifras/datos).
+   Activa solo bajo html[data-tema="pnd"] (ver index.html). */
+@font-face { font-family:'Poppins'; font-weight:300; font-display:swap; src:url('fonts/poppins-light.woff2')    format('woff2'); }
+@font-face { font-family:'Poppins'; font-weight:400; font-display:swap; src:url('fonts/poppins-regular.woff2')  format('woff2'); }
+@font-face { font-family:'Poppins'; font-weight:600; font-display:swap; src:url('fonts/poppins-semibold.woff2') format('woff2'); }
+@font-face { font-family:'Poppins'; font-weight:900; font-display:swap; src:url('fonts/poppins-black.woff2')    format('woff2'); }
+@font-face { font-family:'Space Grotesk'; font-weight:500; font-display:swap; src:url('fonts/space-grotesk-medium.woff2') format('woff2'); }
