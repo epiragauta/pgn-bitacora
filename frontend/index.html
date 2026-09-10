@@ -6,6 +6,20 @@
 <title>Bitácora de Inversión Pública · 2026-I — DNP</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300c3c1'/%3E%3Crect x='12' y='34' width='10' height='18' rx='2' fill='%23ffffff' opacity='.85'/%3E%3Crect x='27' y='24' width='10' height='28' rx='2' fill='%23ffca00'/%3E%3Crect x='42' y='14' width='10' height='38' rx='2' fill='%23fe1b7b'/%3E%3C/svg%3E"/>
 <link href="vendor/nunito-sans.css" rel="stylesheet"/>
+<link href="vendor/pnd-fonts.css" rel="stylesheet"/>
+<script>
+/* ── Resolver de tema (espeja SICODIS ThemeService.init) ──
+   URL ?tema=pnd|clasico → localStorage['pgn-tema'] → 'clasico'.
+   Se ejecuta antes de pintar para evitar FOUC. */
+(function(){
+  var KEY='pgn-tema', DEF='clasico';
+  var raw=(new URLSearchParams(location.search).get('tema')||'').toLowerCase();
+  var t;
+  if(raw==='pnd'||raw==='clasico'){t=raw;try{localStorage.setItem(KEY,t);}catch(e){}}
+  else{try{t=localStorage.getItem(KEY)||DEF;}catch(e){t=DEF;}}
+  document.documentElement.setAttribute('data-tema',t);
+})();
+</script>
 <link rel="stylesheet" href="vendor/leaflet.css"/>
 <script src="vendor/leaflet.js"></script>
 <script src="vendor/chart.umd.min.js"></script>
@@ -27,11 +41,59 @@
   --r:   12px;
   --rs:  8px;
   --sh:  0 2px 14px rgba(0,0,0,.07);
+  --app-font-body:'Nunito Sans',Arial,sans-serif;    /* familia base (clásico) */
+  --app-font-display:'Nunito Sans',Arial,sans-serif;
+  --app-font-data:'Nunito Sans',Arial,sans-serif;
 }
+
+/* ── Tokens identidad PND 2026–2030 (crudos + semánticos) ─────────────
+   Extraídos de SICODIS/pnd-2026-tokens.scss. Solo declaran variables;
+   el "puente" html[data-tema="pnd"] las mapea sobre --t/--m/--a. */
+:root{
+  /* Familias */
+  --pnd-font-display:'Poppins','Century Gothic','Segoe UI',system-ui,sans-serif;
+  --pnd-font-body:'Poppins','Segoe UI',system-ui,Arial,sans-serif;
+  --pnd-font-data:'Space Grotesk','Poppins',ui-monospace,monospace;
+  /* Azules institucionales */
+  --pnd-petroleo:#015787; --pnd-azul-600:#11628F; --pnd-azul-acero:#20819D;
+  --pnd-azul-profundo:#1B3E6C; --pnd-navy:#062D7B; --pnd-indigo:#1F3C88; --pnd-anil:#2D2E5A;
+  /* Cian / turquesa acento */
+  --pnd-turquesa:#02ACBC; --pnd-cian-claro:#44CDD0; --pnd-verde-azulado:#1EA9A6;
+  /* Bandera / semántico */
+  --pnd-ambar:#FDBB02; --pnd-ambar-oscuro:#E29408; --pnd-rojo:#CB0023; --pnd-bandera-azul:#0033A0;
+  /* Neutros (sesgo azul) */
+  --pnd-tinta:#182430; --pnd-texto:#3A3A3A; --pnd-gris-azulado:#4C5563;
+  --pnd-gris-calido:#A9A2A0; --pnd-arena:#E3DCD7; --pnd-superficie:#F7F5F5; --pnd-blanco:#FFFFFF;
+  /* Gradientes */
+  --pnd-gradient-brand:linear-gradient(135deg,#015787 0%,#062D7B 100%);
+  --pnd-gradient-accent:linear-gradient(135deg,#02ACBC 0%,#44CDD0 100%);
+}
+
+/* ── PUENTE — el tema PND reasigna las variables que la app ya consume ── */
+html[data-tema="pnd"]{
+  --t:#015787;   /* turquesa → petróleo (primario/ancla) */
+  --m:#02ACBC;   /* magenta  → turquesa PND (acento) */
+  --a:#FDBB02;   /* amarillo → ámbar PND */
+  --nr:#E29408;  /* naranja sec → ámbar oscuro */
+  --mo:#1F3C88;  /* morado sec  → índigo */
+  --gt:#182430; --gm:#4C5563; --gs:#8A8683; --gc:#E3DCD7; --fw:#F7F5F5;
+  --app-font-body:var(--pnd-font-body);
+  --app-font-display:var(--pnd-font-display);
+  --app-font-data:var(--pnd-font-data);
+}
+html[data-tema="pnd"] body{font-family:var(--pnd-font-body);}
+html[data-tema="pnd"] h1,html[data-tema="pnd"] h2.st,html[data-tema="pnd"] .st,
+html[data-tema="pnd"] .hr-num,html[data-tema="pnd"] .nav-logo{font-family:var(--pnd-font-display);}
+html[data-tema="pnd"] .kv,html[data-tema="pnd"] .hr-num,
+html[data-tema="pnd"] .tbl,html[data-tema="pnd"] .tbl-pgn td{font-family:var(--pnd-font-data);font-variant-numeric:tabular-nums;}
+html[data-tema="pnd"] *:focus-visible{outline-color:var(--pnd-petroleo);}
+/* Franja de marca: en PND pasa a gradiente institucional petróleo→navy */
+html[data-tema="pnd"] .franja{background:var(--pnd-gradient-brand);}
+
 *{box-sizing:border-box;margin:0;padding:0}
 body{overflow-x:hidden}
 html{scroll-behavior:smooth}
-body{background:var(--fw);color:var(--gt);font-family:'Nunito Sans',Arial,sans-serif;font-size:15px;line-height:1.6}
+body{background:var(--fw);color:var(--gt);font-family:var(--app-font-body);font-size:15px;line-height:1.6}
 
 /* Franja tricolor diagonal (elemento principal de marca) */
 .franja{height:6px;background:linear-gradient(105deg,var(--t) 0%,var(--t) 31%,var(--m) 31%,var(--m) 63%,var(--a) 63%,var(--a) 100%)}
@@ -40,9 +102,9 @@ body{background:var(--fw);color:var(--gt);font-family:'Nunito Sans',Arial,sans-s
 nav{position:sticky;top:0;z-index:100;background:var(--bl);box-shadow:0 1px 0 var(--gc)}
 .bit-sel{background:#f4f4f4;border-bottom:1px solid #e4e4e4;padding:7px 32px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .bit-lbl{font-size:12px;font-weight:900;color:#9b9b9b;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
-.bit-btn{padding:4px 14px;border-radius:20px;border:1.5px solid #ddd;background:#fff;cursor:pointer;font-family:'Nunito Sans',sans-serif;font-size:12px;font-weight:700;color:#5e5e5e;transition:all .15s;line-height:1.4}
-.bit-btn.active{background:#00c3c1;border-color:#00c3c1;color:#fff}
-.bit-btn:hover:not(.active){border-color:#00c3c1;color:#00c3c1}
+.bit-btn{padding:4px 14px;border-radius:20px;border:1.5px solid #ddd;background:#fff;cursor:pointer;font-family:var(--app-font-body);font-size:12px;font-weight:700;color:#5e5e5e;transition:all .15s;line-height:1.4}
+.bit-btn.active{background:var(--t);border-color:var(--t);color:#fff}
+.bit-btn:hover:not(.active){border-color:var(--t);color:var(--t)}
 .nav-inner{display:flex;align-items:center;gap:17px;max-width:1200px;margin:0 auto;padding:0 32px;height:54px}
 .nav-logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:14px;color:var(--gt);text-decoration:none;margin-right:auto}
 .logo-badge{background:var(--t);color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:4px;letter-spacing:.06em}
