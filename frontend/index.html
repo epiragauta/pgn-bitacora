@@ -1235,10 +1235,58 @@ async function selectBit(bid){
 }
 
 /* Paleta DNP exacta */
-const P={t:'#00c3c1',m:'#fe1b7b',a:'#ffca00',nr:'#fbb03b',mo:'#7f47dd',gs:'#9b9b9b',gc:'#ebebeb',
-  all:['#00c3c1','#fe1b7b','#ffca00','#fbb03b','#7f47dd','#5e5e5e','#2a9d8f','#e07a5f']};
+/* Paleta de charts, reconstruida desde las CSS vars ya resueltas para el tema
+   activo (el puente html[data-tema="pnd"] reasigna --t/--m/--a...). Se muta en
+   sitio para que las referencias a P sigan siendo válidas tras un cambio de tema. */
+const P={};
+function buildPalette(){
+  const cs=getComputedStyle(document.documentElement);
+  const v=n=>cs.getPropertyValue(n).trim();
+  const pnd=document.documentElement.getAttribute('data-tema')==='pnd';
+  P.t=v('--t');P.m=v('--m');P.a=v('--a');P.nr=v('--nr');P.mo=v('--mo');
+  P.gs=v('--gs');P.gc=v('--gc');
+  // Serie categórica: gama azul institucional en PND, tricolor en clásico.
+  P.all=pnd
+    ? [v('--pnd-petroleo'),v('--pnd-turquesa'),v('--pnd-ambar'),v('--pnd-azul-acero'),
+       v('--pnd-indigo'),v('--pnd-verde-azulado'),v('--pnd-azul-600'),v('--pnd-rojo')]
+    : [P.t,P.m,P.a,P.nr,P.mo,'#5e5e5e','#2a9d8f','#e07a5f'];
+  Chart.defaults.font.family=pnd
+    ? "'Space Grotesk','Poppins',sans-serif"
+    : "'Nunito Sans',Arial,sans-serif";
+}
+buildPalette();
 
-Chart.defaults.font.family="'Nunito Sans',Arial,sans-serif";
+/* rgba(color, alpha) para fills de canvas (Chart.js no resuelve var()/color-mix).
+   Acepta hex (#rgb/#rrggbb) o rgb(...); devuelve una cadena rgba(). */
+function withAlpha(c,a){
+  c=(c||'').trim();
+  if(c[0]==='#'){
+    let h=c.slice(1);
+    if(h.length===3)h=h.split('').map(x=>x+x).join('');
+    const n=parseInt(h,16);
+    return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a})`;
+  }
+  const m=c.match(/rgba?\(([^)]+)\)/);
+  if(m){const p=m[1].split(',').map(s=>s.trim());return `rgba(${p[0]},${p[1]},${p[2]},${a})`;}
+  return c;
+}
+/* Serie de colores para la sección Vigencias Futuras, sensible al tema. */
+function vfColors(){return [P.t,P.m,P.a,P.nr,P.mo,'#999999'];}
+
+/* Cambia el tema en caliente (sin recargar): persiste, aplica atributo,
+   reconstruye paleta y re-renderiza los charts vía init(). */
+function setTema(t){
+  if(t!=='pnd'&&t!=='clasico')t='clasico';
+  try{localStorage.setItem('pgn-tema',t);}catch(e){}
+  document.documentElement.setAttribute('data-tema',t);
+  buildPalette();
+  syncTemaToggle();
+  if(typeof init==='function') init(activeBit?activeBit.id:null);
+}
+function syncTemaToggle(){
+  const cur=document.documentElement.getAttribute('data-tema')||'clasico';
+  document.querySelectorAll('.tt-btn').forEach(b=>b.classList.toggle('active',b.dataset.temaVal===cur));
+}
 Chart.defaults.font.size=12;
 Chart.defaults.color=P.gs;
 
@@ -1675,8 +1723,8 @@ function _buildLineInv(canvasId,ej){
   destroyChart(canvasId);
   new Chart(document.getElementById(canvasId).getContext('2d'),{type:'line',
     data:{labels:['2022','2023','2024','2025','2026'],datasets:[
-      {label:'% Gasto total',data:ej.map(d=>d.g), borderColor:P.m,backgroundColor:'rgba(254,27,123,.07)',tension:.35,pointRadius:4,fill:true},
-      {label:'% PIB',        data:ej.map(d=>d.pib),borderColor:P.t,backgroundColor:'rgba(0,195,193,.05)', tension:.35,pointRadius:4,fill:true}]},
+      {label:'% Gasto total',data:ej.map(d=>d.g), borderColor:P.m,backgroundColor:withAlpha(P.m,.07),tension:.35,pointRadius:4,fill:true},
+      {label:'% PIB',        data:ej.map(d=>d.pib),borderColor:P.t,backgroundColor:withAlpha(P.t,.05), tension:.35,pointRadius:4,fill:true}]},
     options:{responsive:true,maintainAspectRatio:false,
       scales:{x:{grid:{color:P.gc}},y:{grid:{color:P.gc},ticks:{callback:v=>v+'%'}}},
       plugins:{legend:{position:'bottom',labels:{boxWidth:10,padding:12}}}}});
@@ -1841,15 +1889,15 @@ function rMixReg(data){
     {
       type:'line',label:'Compromisos Regionalizado',order:1,
       data:ys.map(y=>data[y]?.pctCompReg??null),
-      borderColor:'#7f47dd',backgroundColor:'#7f47dd',
-      pointBackgroundColor:'#7f47dd',pointRadius:5,pointHoverRadius:7,
+      borderColor:P.mo,backgroundColor:P.mo,
+      pointBackgroundColor:P.mo,pointRadius:5,pointHoverRadius:7,
       tension:.3,fill:false,borderWidth:2.5
     },
     {
       type:'line',label:'Compromisos Nacional',order:1,
       data:ys.map(y=>data[y]?.pctCompNac??null),
-      borderColor:'#00c3c1',backgroundColor:'#00c3c1',
-      pointBackgroundColor:'#00c3c1',pointRadius:5,pointHoverRadius:7,
+      borderColor:P.t,backgroundColor:P.t,
+      pointBackgroundColor:P.t,pointRadius:5,pointHoverRadius:7,
       tension:.3,fill:false,borderWidth:2.5
     }
   ];
@@ -1948,7 +1996,7 @@ function _buildAprHist(canvasId, ej){
          yAxisID:'yR', order:1},
         {type:'line', label:'Inversión como % del gasto total',
          data:data.map(d=>d.g), borderColor:P.m,
-         backgroundColor:'rgba(254,27,123,.06)', tension:.35,
+         backgroundColor:withAlpha(P.m,.06), tension:.35,
          pointRadius:5, pointBackgroundColor:P.m,
          yAxisID:'yR', order:0}
       ]
@@ -2006,7 +2054,7 @@ function rAprHist(ej){
 function _buildBarReg(canvasId, data, selYears){
   destroyChart(canvasId);
   const ys=selYears.filter(y=>data[y]).map(Number);
-  const C=['#fe1b7b','#00c3c1','#9aa5b0','#4a90d9'];
+  const C=[P.m,P.t,'#9aa5b0','#4a90d9'];
   const labels=['% Vigente Regionalizado','% Compromisos Regionalizados','% Vigente Nacional','% Compromisos Nacionales'];
   const keys=['pctVigenteReg','pctCompReg','pctVigenteNac','pctCompNac'];
   const datasets=keys.map((k,i)=>({
@@ -2242,15 +2290,15 @@ function _buildMixEjHist(canvasId,ej){
          borderRadius:3,yAxisID:'yL',order:2},
         {type:'line', label:'% Compromisos',
          data:data.map(d=>d.pc),borderColor:P.t,
-         backgroundColor:'rgba(0,195,193,.07)',tension:.3,
+         backgroundColor:withAlpha(P.t,.07),tension:.3,
          pointRadius:4,pointBackgroundColor:P.t,yAxisID:'yR',order:1},
         {type:'line', label:'% Obligaciones',
          data:data.map(d=>d.po),borderColor:P.m,
-         backgroundColor:'rgba(254,27,123,.05)',tension:.3,
+         backgroundColor:withAlpha(P.m,.05),tension:.3,
          pointRadius:4,pointBackgroundColor:P.m,yAxisID:'yR',order:1},
         {type:'line', label:'% Pagos',
          data:data.map(d=>d.pp),borderColor:P.a,
-         backgroundColor:'rgba(255,202,0,.05)',tension:.3,
+         backgroundColor:withAlpha(P.a,.05),tension:.3,
          pointRadius:4,pointBackgroundColor:P.a,yAxisID:'yR',order:1}
       ]
     },
@@ -2384,7 +2432,7 @@ function _renderSectorMatrix(containerId,mtz,tab){
 }
 function rSectMatrix(mtz){_s4.mtz=mtz;_renderSectorMatrix('sectMatrix',mtz,_s4MatrixTab);}
 
-const _VF_COLORS=['#00c3c1','#fe1b7b','#ffca00','#fbb03b','#7f47dd','#999999'];
+/* _VF_COLORS: derivado del tema activo en cada render (ver vfColors()). */
 const _VF_SHORT={
   'TRANSPORTE':'Transporte','IGUALDAD Y EQUIDAD':'Igualdad',
   'HACIENDA':'Hacienda','DEFENSA Y POLICÍA':'Defensa',
@@ -2392,6 +2440,7 @@ const _VF_SHORT={
 };
 function _buildBarVF(canvasId,d){
   destroyChart(canvasId);
+  const _VF_COLORS=vfColors();
   const barDs=d.series.map((s,i)=>({
     type:'bar',label:_VF_SHORT[s.sector]||s.sector,data:s.valores,
     backgroundColor:_VF_COLORS[i]+'cc',borderColor:_VF_COLORS[i],
