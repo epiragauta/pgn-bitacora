@@ -3,8 +3,48 @@ using Microsoft.Extensions.FileProviders;
 using PgnBitacora.Api.Data;
 using PgnBitacora.Api.Endpoints;
 using PgnBitacora.Api.Json;
+using PgnBitacora.Api.Security;
+
+// Utilidad de línea de comandos para generar el valor cifrado sin arrancar
+// el servidor:  dotnet run -- --cifrar "Server=...;Password=..."
+// El passphrase se toma de SecureConfig__Passphrase (env) o del 2º argumento.
+if (args.Length >= 2 && args[0] == "--cifrar")
+{
+    var frase = args.Length >= 3
+        ? args[2]
+        : Environment.GetEnvironmentVariable("SecureConfig__Passphrase");
+    if (string.IsNullOrWhiteSpace(frase))
+    {
+        Console.Error.WriteLine(
+            "Falta el passphrase: pásalo como 3.er argumento o define SecureConfig__Passphrase.");
+        return 1;
+    }
+    Console.WriteLine(AesEncryptionHelper.Encrypt(args[1], frase));
+    return 0;
+}
 
 var builder = WebApplication.CreateBuilder(args);
+
+// ── Cadena de conexión ────────────────────────────────────
+// Precedencia: la cadena en claro 'ConnectionStrings:DnpDpip' gana si está
+// definida (cómodo para dotnet run local). Si no, se descifra el blob
+// 'SecureConfig:EncryptedConnection' con el passphrase del entorno y el
+// resultado se inyecta en la configuración, de modo que Db.cs siga leyendo
+// GetConnectionString("DnpDpip") sin enterarse de nada.
+if (string.IsNullOrWhiteSpace(builder.Configuration.GetConnectionString("DnpDpip")))
+{
+    var secure = builder.Configuration.GetSection("SecureConfig").Get<SecureConfig>();
+    if (!string.IsNullOrWhiteSpace(secure?.EncryptedConnection))
+    {
+        if (string.IsNullOrWhiteSpace(secure.Passphrase))
+            throw new InvalidOperationException(
+                "Hay 'SecureConfig:EncryptedConnection' pero falta el passphrase. " +
+                "Definir 'SecureConfig__Passphrase' como variable de entorno.");
+
+        var cadena = AesEncryptionHelper.Decrypt(secure.EncryptedConnection, secure.Passphrase);
+        builder.Configuration["ConnectionStrings:DnpDpip"] = cadena;
+    }
+}
 
 builder.Services.AddSingleton<IDb, Db>();
 builder.Services.AddEndpointsApiExplorer();
@@ -107,6 +147,7 @@ else
 }
 
 app.Run();
+return 0;
 
 // Busca hacia arriba el directorio que contiene frontend/index.html, para
 // que la API funcione igual ejecutada desde el proyecto (dotnet run) que

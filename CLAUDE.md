@@ -25,12 +25,29 @@ Any backend change must pass `python tools/compare_apis.py --contra-linea-base` 
 ### Running the .NET API
 ```bash
 # Container (production-like, on-premise)
-cp .env.example .env          # set the real password
-docker compose up -d --build  # http://127.0.0.1:5080
+cp .env.example .env          # set SecureConfig__Passphrase (the encrypted
+docker compose up -d --build  # blob lives in appsettings.json) → 127.0.0.1:5080
 
-# Local development
+# Local development — plaintext string wins if defined (see below)
 export ConnectionStrings__DnpDpip="Server=127.0.0.1,1433;Database=dnp_dpip;User Id=dnp_dpip_app;Password=...;TrustServerCertificate=True"
 dotnet run --project backend/src/PgnBitacora.Api --urls http://127.0.0.1:5080
+```
+
+**Connection string — encrypted at rest.** The connection string is not stored in
+plaintext in a deployment. `appsettings.json` carries `SecureConfig:EncryptedConnection`
+(the AES-256 ciphertext, non-secret without the passphrase) and the passphrase arrives
+via the `SecureConfig__Passphrase` env var (`.env`, gitignored). At startup `Program.cs`
+resolves the string with this precedence: **plaintext `ConnectionStrings:DnpDpip` wins if
+set** (convenient for `dotnet run`); otherwise the blob is decrypted and injected so
+`Db.cs` keeps reading `GetConnectionString("DnpDpip")` unchanged. Key = `SHA256(passphrase)`
+(same convention as the rest of the platform); a random IV is prepended to the ciphertext.
+
+Generate the ciphertext for a real connection string (prints the base64 to paste into
+`appsettings.json` → `SecureConfig:EncryptedConnection`):
+```bash
+dotnet run --project backend/src/PgnBitacora.Api -- \
+    --cifrar "Server=sqlserver,1433;Database=dnp_dpip;User Id=dnp_dpip_app;Password=REAL;TrustServerCertificate=True" \
+    "THE_PASSPHRASE"
 ```
 
 API docs at `/swagger`; the dashboard is served at `/`.
