@@ -171,6 +171,28 @@ Todos aceptan `bitacora_id` opcional; sin él responden con la bitácora más re
 
 Se publica en **https://dnp-btcr.skaphe.com** añadiendo el bloque de [`deploy/Caddyfile.snippet`](deploy/Caddyfile.snippet) a `/etc/caddy/Caddyfile` y recargando Caddy, que gestiona el certificado TLS automáticamente.
 
+### Servirla por IP y puerto
+
+Para llegar al tablero sin pasar por el subdominio, en `.env`:
+
+```bash
+API_BIND=0.0.0.0        # por omisión 127.0.0.1
+API_PUERTO=5080         # 8080 está ocupado por Umbraco en este servidor
+```
+
+y `docker compose up -d`. Queda en `http://<ip-del-host>:5080/`. El tablero
+no necesita ningún cambio: resuelve sus rutas contra `document.baseURI`, así
+que funciona igual en la raíz de un puerto que bajo una subruta.
+
+**Es HTTP en claro.** Por una IP no se puede emitir un certificado, así que
+el navegador la marcará como no segura y el tráfico viaja sin cifrar. El
+contenido ya es público, pero las dos formas de acceso no son equivalentes;
+si se quiere solo la de IP, hay que retirar además el bloque de Caddy.
+
+> Docker publica los puertos con sus propias reglas de iptables, que
+> **esquivan ufw**. Limitar quién alcanza ese puerto exige reglas en la
+> cadena `DOCKER-USER`, no en ufw.
+
 ### En IIS (el destino del DNP)
 
 ```bash

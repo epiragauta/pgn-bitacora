@@ -22,8 +22,14 @@ services:
     env_file:
       - .env
     ports:
-      # Solo loopback. Caddy hace de proxy inverso hacia este puerto.
-      - "127.0.0.1:5080:8080"
+      # Por omisión SOLO loopback: el único que debe alcanzar la API desde
+      # fuera es Caddy, que termina TLS en el host.
+      #
+      # API_BIND=0.0.0.0 en .env la publica además por IP y puerto, para
+      # llegar a ella sin pasar por el subdominio. Eso implica HTTP en
+      # claro: por IP no hay forma de emitir un certificado. El contenido
+      # ya es público, pero la conexión deja de ir cifrada.
+      - "${API_BIND:-127.0.0.1}:${API_PUERTO:-5080}:8080"
     networks:
       # Se une a la red del SQL Server existente para alcanzarlo por el
       # alias de servicio 'sqlserver', sin depender del 1433 publicado.
