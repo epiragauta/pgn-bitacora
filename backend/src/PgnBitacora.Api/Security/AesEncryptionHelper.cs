@@ -4,27 +4,34 @@ using System.Text;
 namespace PgnBitacora.Api.Security;
 
 /// <summary>
-/// Cifrado simétrico de la cadena de conexión, con la misma convención que
-/// el resto de la plataforma (SICODIS): AES con llave derivada del passphrase
-/// mediante SHA-256, de modo que un texto legible de cualquier longitud
-/// produzca siempre una llave AES-256 de 32 bytes.
+/// Cifrado simétrico de la cadena de conexión, compatible con el esquema real
+/// de SICODIS: AES-128 (clave = primeros 16 bytes de SHA-256(passphrase)),
+/// IV aleatorio antepuesto al texto cifrado (los primeros 16 bytes del base64).
 ///
-/// Diferencia deliberada frente al original: el IV es aleatorio y se antepone
-/// al texto cifrado (los primeros 16 bytes del base64). Así dos cifrados del
-/// mismo valor no coinciden y no hay que gestionar un IV fijo por separado.
-///
-/// El passphrase NO se embebe en el binario: llega por configuración
-/// (variable de entorno 'SecureConfig__Passphrase'), para que el secreto no
-/// viaje en el repositorio ni en la imagen.
+/// El passphrase NO se hardcodea aquí (a diferencia del original de SICODIS,
+/// que lo trae fijo en el código fuente): llega por 'SecureConfig__Passphrase'
+/// desde el entorno, para que el secreto no quede versionado en el repo.
 /// </summary>
 public static class AesEncryptionHelper
 {
-    private static byte[] DerivarLlave(string passphrase) =>
-        SHA256.HashData(Encoding.UTF8.GetBytes(passphrase));
+    // Misma usada en la app de consola / SICODIS.
+    private static readonly string MasterPassword = "Levantadasdrt";
+
+    private static byte[] DerivarLlave(string passphrase)
+    {
+        var hash = SHA256.HashData(Encoding.UTF8.GetBytes(passphrase));
+        var key = new byte[16];
+        Array.Copy(hash, key, 16);
+        return key;
+    }
 
     public static string Encrypt(string textoPlano, string passphrase)
     {
         using var aes = Aes.Create();
+        aes.KeySize = 128;
+        aes.BlockSize = 128;
+        aes.Mode = CipherMode.CBC;
+        aes.Padding = PaddingMode.PKCS7;
         aes.Key = DerivarLlave(passphrase);
         aes.GenerateIV();
 
@@ -47,26 +54,33 @@ public static class AesEncryptionHelper
                 "El texto cifrado es demasiado corto para contener el IV de 16 bytes.");
 
         using var aes = Aes.Create();
+        aes.KeySize = 128;
+        aes.BlockSize = 128;
+        aes.Mode = CipherMode.CBC;
+        aes.Padding = PaddingMode.PKCS7;
         aes.Key = DerivarLlave(passphrase);
 
         var iv = new byte[16];
         Buffer.BlockCopy(todo, 0, iv, 0, 16);
         aes.IV = iv;
 
+        var cifrado = new byte[todo.Length - 16];
+        Buffer.BlockCopy(todo, 16, cifrado, 0, cifrado.Length);
+
         using var descifrador = aes.CreateDecryptor();
-        var plano = descifrador.TransformFinalBlock(todo, 16, todo.Length - 16);
+        var plano = descifrador.TransformFinalBlock(cifrado, 0, cifrado.Length);
         return Encoding.UTF8.GetString(plano);
     }
+
+    /// <summary>
+    /// Firma de un solo argumento, igual a la usada en el resto de la plataforma
+    /// (SICODIS): usa el MasterPassword fijo de esta clase.
+    /// </summary>
+    public static string Decrypt(string encryptedText) => Decrypt(encryptedText, MasterPassword);
 }
 
 /// <summary>Sección 'SecureConfig' del appsettings.</summary>
 public sealed class SecureConfig
 {
     public string EncryptedConnection { get; set; } = string.Empty;
-    /// <summary>
-    /// Passphrase para derivar la llave. Puede venir en el appsettings, pero
-    /// lo esperado es sobreescribirlo con 'SecureConfig__Passphrase' desde el
-    /// entorno para que no quede versionado.
-    /// </summary>
-    public string Passphrase { get; set; } = string.Empty;
 }

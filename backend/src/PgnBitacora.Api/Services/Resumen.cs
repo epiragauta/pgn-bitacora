@@ -16,13 +16,13 @@ public static class Resumen
     {
         var meta = await db.QuerySingleAsync("""
             SELECT periodo, CONVERT(char(10), corte_fecha, 23) AS corte_fecha, numero_bitacora
-            FROM dbo.metadatos_bitacora WHERE id = @bid
+            FROM dbo.btcr_metadatos_bitacora WHERE id = @bid
             """, new { bid = bitacoraId });
 
         var p = new { bid = bitacoraId, vigencia };
 
         var inv = await db.QuerySingleAsync(
-            "SELECT * FROM dbo.ejecucion_historica WHERE bitacora_id = @bid AND vigencia = @vigencia", p);
+            "SELECT * FROM dbo.btcr_ejecucion_historica WHERE bitacora_id = @bid AND vigencia = @vigencia", p);
 
         Dictionary<string, object?> datos;
 
@@ -33,7 +33,7 @@ public static class Resumen
                        ROUND(CAST(SUM(compromisos_mmm) AS FLOAT),  3) AS compromisos_mmm,
                        ROUND(CAST(SUM(obligaciones_mmm) AS FLOAT), 3) AS obligaciones_mmm,
                        ROUND(CAST(SUM(pagos_mmm) AS FLOAT),        3) AS pagos_mmm
-                FROM dbo.ejecucion_transformaciones
+                FROM dbo.btcr_ejecucion_transformaciones
                 WHERE bitacora_id = @bid AND vigencia = @vigencia
                 """, p);
 
@@ -60,14 +60,14 @@ public static class Resumen
 
         var totalTransf = await db.QuerySingleAsync("""
             SELECT SUM(inversion_mmm) AS total
-            FROM dbo.inversion_transformaciones
+            FROM dbo.btcr_inversion_transformaciones
             WHERE bitacora_id = @bid AND vigencia = @vigencia
             """, p);
 
         var vfTotal = await db.QuerySingleAsync("""
             SELECT ROUND(SUM(CAST(v.valor_corriente_mmm AS FLOAT) / NULLIF(d.deflactor, 0)), 1) AS total
-            FROM dbo.vigencias_futuras v
-            JOIN dbo.deflactores_pib d
+            FROM dbo.btcr_vigencias_futuras v
+            JOIN dbo.btcr_deflactores_pib d
               ON d.bitacora_id = v.bitacora_id AND d.anio = v.vigencia_exec
             WHERE v.bitacora_id = @bid AND v.vigencia_exec BETWEEN 2027 AND 2040
             """, new { bid = bitacoraId });

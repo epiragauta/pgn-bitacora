@@ -16,8 +16,8 @@ public static class TransformacionesEndpoints
                 SELECT t.transformador, t.inversion_mmm, t.peso_pct,
                        e.compromisos_mmm, e.obligaciones_mmm, e.pagos_mmm,
                        e.pct_c_av, e.pct_o_av, e.pct_p_av
-                FROM dbo.inversion_transformaciones t
-                LEFT JOIN dbo.ejecucion_transformaciones e
+                FROM dbo.btcr_inversion_transformaciones t
+                LEFT JOIN dbo.btcr_ejecucion_transformaciones e
                        ON t.bitacora_id   = e.bitacora_id
                       AND t.vigencia      = e.vigencia
                       AND t.transformador = e.transformador
@@ -33,7 +33,7 @@ public static class TransformacionesEndpoints
             var ctx = await BitacoraResolver.ResolverAsync(db, bitacora_id);
             return await db.QueryAsync("""
                 SELECT componente, vigente_mmm, peso_pct
-                FROM dbo.inversion_componentes_pnd
+                FROM dbo.btcr_inversion_componentes_pnd
                 WHERE bitacora_id = @bid AND vigencia = @vigencia AND transformador = @transformador
                 ORDER BY vigente_mmm DESC, componente COLLATE Latin1_General_BIN2
                 """, new { bid = ctx.Id, vigencia = ctx.Vigencia, transformador });

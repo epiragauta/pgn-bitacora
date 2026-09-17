@@ -33,16 +33,12 @@ var builder = WebApplication.CreateBuilder(args);
 // GetConnectionString("DnpDpip") sin enterarse de nada.
 if (string.IsNullOrWhiteSpace(builder.Configuration.GetConnectionString("DnpDpip")))
 {
-    var secure = builder.Configuration.GetSection("SecureConfig").Get<SecureConfig>();
-    if (!string.IsNullOrWhiteSpace(secure?.EncryptedConnection))
+    var secureConfig = new SecureConfig();
+    builder.Configuration.GetSection("SecureConfig").Bind(secureConfig);
+    if (!string.IsNullOrWhiteSpace(secureConfig.EncryptedConnection))
     {
-        if (string.IsNullOrWhiteSpace(secure.Passphrase))
-            throw new InvalidOperationException(
-                "Hay 'SecureConfig:EncryptedConnection' pero falta el passphrase. " +
-                "Definir 'SecureConfig__Passphrase' como variable de entorno.");
-
-        var cadena = AesEncryptionHelper.Decrypt(secure.EncryptedConnection, secure.Passphrase);
-        builder.Configuration["ConnectionStrings:DnpDpip"] = cadena;
+        string decryptedConnection = AesEncryptionHelper.Decrypt(secureConfig.EncryptedConnection);
+        builder.Configuration["ConnectionStrings:DnpDpip"] = decryptedConnection;
     }
 }
 

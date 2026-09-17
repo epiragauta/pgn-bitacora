@@ -17,13 +17,13 @@ public static class MatrizSectores
         var p = new { bid = bitacoraId };
 
         var apr = await db.QueryAsync(
-            "SELECT vigencia, sector, vigente_mmm FROM dbo.apropiacion_por_sector WHERE bitacora_id=@bid", p);
+            "SELECT vigencia, sector, vigente_mmm FROM dbo.btcr_apropiacion_por_sector WHERE bitacora_id=@bid", p);
         var cmp = await db.QueryAsync(
-            "SELECT vigencia, sector, pct_compromisos FROM dbo.compromisos_pct_por_sector WHERE bitacora_id=@bid", p);
+            "SELECT vigencia, sector, pct_compromisos FROM dbo.btcr_compromisos_pct_por_sector WHERE bitacora_id=@bid", p);
         var obl = await db.QueryAsync(
-            "SELECT vigencia, sector, pct_obligaciones FROM dbo.obligaciones_pct_por_sector WHERE bitacora_id=@bid", p);
+            "SELECT vigencia, sector, pct_obligaciones FROM dbo.btcr_obligaciones_pct_por_sector WHERE bitacora_id=@bid", p);
         var pag = await db.QueryAsync(
-            "SELECT vigencia, sector, pct_pagos FROM dbo.pagos_pct_por_sector WHERE bitacora_id=@bid", p);
+            "SELECT vigencia, sector, pct_pagos FROM dbo.btcr_pagos_pct_por_sector WHERE bitacora_id=@bid", p);
 
         // El universo de vigencias y sectores lo define la apropiación,
         // igual que en el original.
