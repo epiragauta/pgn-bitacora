@@ -37,7 +37,7 @@ def get_conn():
 
 def create_bitacora(conn, numero, periodo, corte, fuente, notas):
     nuevo_id = conn.insertar_devolviendo_id("""
-        INSERT INTO dbo.metadatos_bitacora
+        INSERT INTO dbo.btcr_metadatos_bitacora
             (numero_bitacora, periodo, corte_fecha, fuente_principal, notas)
         VALUES (?,?,?,?,?)
     """, (numero, periodo, corte, fuente, notas))
@@ -64,7 +64,7 @@ def load_csv(path, required_cols=None):
 def load_inversion_transformaciones(conn, bid, rows):
     for r in rows:
         conn.execute("""
-            INSERT INTO dbo.inversion_transformaciones
+            INSERT INTO dbo.btcr_inversion_transformaciones
                 (bitacora_id, vigencia, transformador, inversion_mmm, peso_pct)
             VALUES (?,?,?,?,?)
         """, (bid, int(r["vigencia"]), r["transformador"],
@@ -76,7 +76,7 @@ def load_inversion_transformaciones(conn, bid, rows):
 def load_ejecucion_historica(conn, bid, rows):
     for r in rows:
         conn.execute("""
-            INSERT INTO dbo.ejecucion_historica
+            INSERT INTO dbo.btcr_ejecucion_historica
                 (bitacora_id, vigencia, vigente_mmm, compromisos_mmm,
                  obligaciones_mmm, pagos_mmm, pct_compromisos, pct_obligaciones,
                  pct_pagos, inv_pct_pib, inv_pct_gasto_total)
@@ -98,7 +98,7 @@ def load_ejecucion_historica(conn, bid, rows):
 def load_apropiacion_sectores(conn, bid, rows):
     for r in rows:
         conn.execute("""
-            INSERT INTO dbo.apropiacion_por_sector
+            INSERT INTO dbo.btcr_apropiacion_por_sector
                 (bitacora_id, vigencia, sector, vigente_mmm)
             VALUES (?,?,?,?)
         """, (bid, int(r["vigencia"]), r["sector"],
@@ -109,7 +109,7 @@ def load_apropiacion_sectores(conn, bid, rows):
 def load_ejecucion_sectorial(conn, bid, rows):
     for r in rows:
         conn.execute("""
-            INSERT INTO dbo.ejecucion_sectorial_entidades
+            INSERT INTO dbo.btcr_ejecucion_sectorial_entidades
                 (bitacora_id, vigencia, sector, entidad,
                  apr_vigente_mmm, compromisos_mmm, obligaciones_mmm,
                  pct_c_av, pct_o_av)
@@ -138,7 +138,7 @@ def main():
 
     # Verificar si ya existe
     exists = conn.execute(
-        "SELECT id FROM metadatos_bitacora WHERE periodo=?", (args.periodo,)
+        "SELECT id FROM btcr_metadatos_bitacora WHERE periodo=?", (args.periodo,)
     ).fetchone()
     if exists:
         print(f"⚠️  Ya existe bitácora para período {args.periodo} (id={exists[0]})")

@@ -22,13 +22,13 @@ public static class MetadatosEndpoints
         var grupo = app.MapGroup("/api").WithTags("Metadatos");
 
         grupo.MapGet("/bitacoras", async (IDb db) =>
-            await db.QueryAsync($"SELECT {Columnas} FROM dbo.metadatos_bitacora ORDER BY corte_fecha DESC"))
+            await db.QueryAsync($"SELECT {Columnas} FROM dbo.btcr_metadatos_bitacora ORDER BY corte_fecha DESC"))
             .WithSummary("Lista todas las bitácoras cargadas (más reciente primero).");
 
         grupo.MapGet("/bitacoras/{periodo}", async (string periodo, IDb db) =>
         {
             var fila = await db.QuerySingleAsync(
-                $"SELECT {Columnas} FROM dbo.metadatos_bitacora WHERE periodo = @periodo",
+                $"SELECT {Columnas} FROM dbo.btcr_metadatos_bitacora WHERE periodo = @periodo",
                 new { periodo });
 
             return fila is null

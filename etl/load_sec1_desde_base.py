@@ -136,15 +136,15 @@ def aggregate_base(base_path, anio, mes, xwalk):
 
 def load_sec1(conn, bid, vigencia, t_acc, tc_acc):
     conn.vaciar_bitacora(
-        ("inversion_transformaciones", "inversion_componentes_pnd", "ejecucion_transformaciones"), bid)
+        ("btcr_inversion_transformaciones", "btcr_inversion_componentes_pnd", "btcr_ejecucion_transformaciones"), bid)
     total_v = sum(d["v"] for d in t_acc.values()) or 1
 
     rows = [(bid, vigencia, t, round(d["v"] / MMM, 3), round(d["v"] / total_v * 100, 2))
             for t, d in t_acc.items()]
-    conn.upsert("inversion_transformaciones",
+    conn.upsert("btcr_inversion_transformaciones",
                 ["bitacora_id", "vigencia", "transformador", "inversion_mmm", "peso_pct"],
                 rows, claves=["bitacora_id", "vigencia", "transformador"])
-    print(f"  [OK] inversion_transformaciones : {len(rows)} filas")
+    print(f"  [OK] btcr_inversion_transformaciones : {len(rows)} filas")
 
     rows_c = []
     for t, comps in tc_acc.items():
@@ -156,10 +156,10 @@ def load_sec1(conn, bid, vigencia, t_acc, tc_acc):
         if otros > 0:
             rows_c.append((bid, vigencia, t, "OTROS COMPONENTES", round(otros / MMM, 3),
                            round(otros / t_total * 100, 2)))
-    conn.upsert("inversion_componentes_pnd",
+    conn.upsert("btcr_inversion_componentes_pnd",
                 ["bitacora_id", "vigencia", "transformador", "componente", "vigente_mmm", "peso_pct"],
                 rows_c, claves=["bitacora_id", "vigencia", "transformador", "componente"])
-    print(f"  [OK] inversion_componentes_pnd  : {len(rows_c)} filas")
+    print(f"  [OK] btcr_inversion_componentes_pnd  : {len(rows_c)} filas")
 
     rows_e = []
     for t, d in t_acc.items():
@@ -168,21 +168,21 @@ def load_sec1(conn, bid, vigencia, t_acc, tc_acc):
                        round(d["v"] / MMM, 3), round(d["c"] / MMM, 3),
                        round(d["o"] / MMM, 3), round(d["p"] / MMM, 3),
                        round(d["c"] / v * 100, 1), round(d["o"] / v * 100, 1), round(d["p"] / v * 100, 1)))
-    conn.upsert("ejecucion_transformaciones",
+    conn.upsert("btcr_ejecucion_transformaciones",
                 ["bitacora_id", "vigencia", "transformador", "apr_vigente_mmm",
                  "compromisos_mmm", "obligaciones_mmm", "pagos_mmm", "pct_c_av", "pct_o_av", "pct_p_av"],
                 rows_e, claves=["bitacora_id", "vigencia", "transformador"])
-    print(f"  [OK] ejecucion_transformaciones : {len(rows_e)} filas")
+    print(f"  [OK] btcr_ejecucion_transformaciones : {len(rows_e)} filas")
 
 
 def resolver_bitacora(conn, args):
     if args.crear_bitacora:
-        row = conn.execute("SELECT id FROM metadatos_bitacora WHERE periodo=?", (args.periodo,)).fetchone()
+        row = conn.execute("SELECT id FROM btcr_metadatos_bitacora WHERE periodo=?", (args.periodo,)).fetchone()
         if row:
             print(f"Bitácora {args.periodo} ya existe (id={row[0]}); se reutiliza.")
             return row[0]
         nid = conn.insertar_devolviendo_id(
-            """INSERT INTO dbo.metadatos_bitacora
+            """INSERT INTO dbo.btcr_metadatos_bitacora
                    (numero_bitacora, periodo, corte_fecha, fuente_principal, notas)
                VALUES (?,?,?,?,?)""",
             (args.numero, args.periodo, args.corte,

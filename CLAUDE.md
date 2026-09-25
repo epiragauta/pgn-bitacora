@@ -16,7 +16,8 @@ The migration **FastAPI/SQLite → .NET 8/SQL Server** completed on 2026-08-15. 
 
 1. **All computed SQL arithmetic must be `CAST(... AS FLOAT)`.** SQLite computes in double precision; `DECIMAL` produced `1.2367` where the original gave `1.2368`. Storage stays `DECIMAL(18,6)`; only expressions are cast.
 2. **The database collation must stay `Modern_Spanish_CS_AS`.** With an accent-insensitive collation, `PACÍFICO` and `PACIFICO` collapse into one value and `GROUP BY region` silently merges rows.
-3. **The SQL column aliases *are* the JSON keys.** The frontend reads exact snake_case keys and falls back to embedded data **silently, with no error**, if one is missing. Dapper returns dictionaries precisely so no rename can slip through. Never introduce a JSON naming policy.
+3. **Every table carries the `btcr_` prefix, and the database name is never hardcoded.** The scripts in `db/mssql/` carry no `USE` statement, so the schema installs into whatever database you point at — its own, or one shared with other systems. Connection details come **only** from `ConnectionStrings__DnpDpip` (.NET) and `DNP_DPIP_CONN` (Python); there is no default, deliberately, because the previous one embedded a real password that ended up in the repository. The tables are meant to live in a database shared with other systems, so `dbo.btcr_metadatos_bitacora`, `dbo.btcr_pgn_concepto`, and so on. Constraints and indexes are prefixed too (`PK_btcr_…`, `idx_btcr_…`) because their names must also be unique there. **The API routes are NOT prefixed** — `/api/regionalizacion` stays as it is; the prefix is a storage concern, never part of the public contract.
+4. **The SQL column aliases *are* the JSON keys.** The frontend reads exact snake_case keys and falls back to embedded data **silently, with no error**, if one is missing. Dapper returns dictionaries precisely so no rename can slip through. Never introduce a JSON naming policy.
 
 Any backend change must pass `python tools/compare_apis.py --contra-linea-base` before being considered done. That baseline is a frozen capture of the pre-migration API — it is the safety net, so **never regenerate it to make a difference go away**.
 
@@ -29,7 +30,7 @@ cp .env.example .env          # set SecureConfig__Passphrase (the encrypted
 docker compose up -d --build  # blob lives in appsettings.json) → 127.0.0.1:5080
 
 # Local development — plaintext string wins if defined (see below)
-export ConnectionStrings__DnpDpip="Server=127.0.0.1,1433;Database=dnp_dpip;User Id=dnp_dpip_app;Password=...;TrustServerCertificate=True"
+export ConnectionStrings__DnpDpip="Server=127.0.0.1,1433;Database=MI_BASE;User Id=USUARIO;Password=...;TrustServerCertificate=True"
 dotnet run --project backend/src/PgnBitacora.Api --urls http://127.0.0.1:5080
 ```
 
@@ -64,13 +65,13 @@ Differences in **keys**, **values** or **HTTP status** fail the command. Differe
 # Idempotent; run in order
 for f in db/mssql/*.sql; do
   docker exec -i umbraco-sqlserver /opt/mssql-tools18/bin/sqlcmd \
-      -S localhost -U sa -P "$SA_PASSWORD" -C -b -d dnp_dpip -i /dev/stdin < "$f"
+      -S localhost -U sa -P "$SA_PASSWORD" -C -b -d "$MI_BASE" -i /dev/stdin < "$f"
 done
 ```
 
 ### Comparing two databases (after an ETL run)
 ```bash
-python tools/compare_bd.py --a dnp_dpip --b dnp_dpip_pruebas --periodo 2026-I
+python tools/compare_bd.py --a BASE_REFERENCIA --b BASE_A_VERIFICAR --periodo 2026-I
 ```
 Compares row counts and the sum of every numeric column, per bitácora.
 
@@ -78,7 +79,7 @@ Compares row counts and the sum of every numeric column, per bitácora.
 
 ### Updating Data (New Bitácora)
 ```bash
-export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};SERVER=127.0.0.1,1433;DATABASE=dnp_dpip;UID=dnp_dpip_app;PWD=...;TrustServerCertificate=yes"
+export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};SERVER=127.0.0.1,1433;DATABASE=MI_BASE;UID=USUARIO;PWD=...;TrustServerCertificate=yes"
 
 python etl/load_bitacora_excel.py --numero 3 --periodo 2026-I --corte 2026-03-31
 python etl/importar_pgn.py && python etl/load_regionalizacion.py
@@ -87,6 +88,19 @@ python etl/load_vigencias_futuras.py && python etl/load_credito.py
 python etl/load_sgp.py && python etl/load_sgp_componentes.py
 ```
 Order matters — see the ETL Pipeline section below.
+
+### Deploying to IIS (the DNP target)
+```powershell
+$pw = Read-Host 'Contraseña' -AsSecureString
+.\deploy\Deploy-Bitacora.ps1 -SqlServer SQLSRV01 -Database SICODIS -AppUser btcr_app -AppPassword $pw
+```
+One script covers schema, data, publish and IIS. Idempotent, supports `-WhatIf`. See `docs/DESPLIEGUE_IIS.md`.
+
+The app is hosted as a **nested IIS application** at `/bitacora`, so the frontend must never use absolute paths: `const API` resolves against `document.baseURI`. Reproduce that locally with `Rutas__Base=/bitacora`.
+
+Being nested has a second consequence, found the hard way on the first real deploy: **the parent site's URL Rewrite rules are inherited and run before IIS picks this application's handler.** SICODIS is an Angular SPA, so its catch-all rule answered `/bitacora/vendor/*.js` and *every* `/bitacora/api/*` route with its own `index.html` — at HTTP **200**, which the frontend's `af()` accepts before failing on `r.json()` and falling back to embedded data silently. `backend/src/PgnBitacora.Api/web.config` exists solely to `<clear />` those inherited rules; `dotnet publish` merges it with the handler block the SDK generates. Do not delete it. Details in `docs/DESPLIEGUE_IIS.md` §3.1.
+
+Data ships as `db/mssql/004_datos_iniciales.sql` (regenerate with `python tools/generar_seed_sql.py`) so the IIS server needs only `sqlcmd` — no Python, no ODBC driver.
 
 ### Docker Deployment (on-premise)
 ```bash
@@ -134,7 +148,7 @@ docker compose logs -f api
 - All data tables use `bitacora_id` foreign key
 - Enables historical tracking across multiple periods
 
-**Section Tables:**
+**Section Tables** (all with the `btcr_` prefix in the database):
 1. **Transformaciones PND** (`inversion_transformaciones`, `inversion_componentes_pnd`, `ejecucion_transformaciones`)
 2. **Evolución Presupuestal** (`pgn_concepto`, `pgn_ejecucion`, view `pgn_vista_crosstab`) — the old `evolucion_presupuestal` table was dropped in the migration
 3. **Regionalización** (`regionalizacion`, `regionalizacion_sectores`)

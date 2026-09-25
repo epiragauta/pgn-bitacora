@@ -1,5 +1,5 @@
 """
-ETL: detalle sector × región → regionalizacion_sectores (SQL Server, vía db.py).
+ETL: detalle sector × región → btcr_regionalizacion_sectores (SQL Server, vía db.py).
 Valores en pesos → /1e9 para mmm.
 
 Dos formatos de fuente (autodetectados sobre los .xlsx de la sección 3):
@@ -149,9 +149,9 @@ def run():
             round(to_float(pag) / 1e9, 3),
         ))
 
-    conn.vaciar_bitacora(("regionalizacion_sectores",), bid)
+    conn.vaciar_bitacora(("btcr_regionalizacion_sectores",), bid)
     n = conn.upsert(
-        "regionalizacion_sectores",
+        "btcr_regionalizacion_sectores",
         ["bitacora_id", "vigencia", "region", "sector",
          "apropiacion_mmm", "compromisos_mmm", "obligaciones_mmm", "pagos_mmm"],
         filas, claves=["bitacora_id", "vigencia", "region", "sector"],
@@ -162,7 +162,7 @@ def run():
     print("\n--- Verificación: top 5 sectores ANDINA (año más reciente) ---")
     for r in conn.execute("""
         SELECT TOP 5 sector, apropiacion_mmm, compromisos_mmm
-        FROM dbo.regionalizacion_sectores
+        FROM dbo.btcr_regionalizacion_sectores
         WHERE bitacora_id=? AND region='ANDINA'
         ORDER BY vigencia DESC, apropiacion_mmm DESC
     """, (bid,)):

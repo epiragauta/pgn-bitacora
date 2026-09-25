@@ -31,11 +31,8 @@ def _conectar():
     """
     import pyodbc  # se importa aquí para no exigirlo si solo se lee el módulo
 
-    cadena = os.environ.get("DNP_DPIP_CONN")
-    if not cadena:
-        from db import CONN_DEFAULT  # etl/db.py
-        cadena = CONN_DEFAULT
-    return pyodbc.connect(cadena)
+    from db import cadena_conexion  # etl/db.py — exige DNP_DPIP_CONN
+    return pyodbc.connect(cadena_conexion())
 
 
 def _col(conn, sql: str) -> list:
@@ -64,31 +61,31 @@ def build_urls(conn=None) -> list[str]:
     """Devuelve todas las rutas a verificar, en orden estable."""
     conn = conn or _conectar()
 
-    bitacoras = _col(conn, "SELECT id FROM metadatos_bitacora ORDER BY id")
-    periodos = _col(conn, "SELECT periodo FROM metadatos_bitacora ORDER BY id")
+    bitacoras = _col(conn, "SELECT id FROM btcr_metadatos_bitacora ORDER BY id")
+    periodos = _col(conn, "SELECT periodo FROM btcr_metadatos_bitacora ORDER BY id")
     # Cada bitácora usa su propia convención de nombres ('CONVERGENCIA
     # REGIONAL' en la 1, '5. CONVERGENCIA REGIONAL' en la 2), así que el
     # transformador se empareja con su bitácora: consultarlo contra otra
     # devuelve vacío y no verifica nada.
     transformadores = conn.cursor().execute(
         "SELECT bitacora_id, t FROM ("
-        "  SELECT DISTINCT bitacora_id, transformador AS t FROM inversion_transformaciones"
+        "  SELECT DISTINCT bitacora_id, transformador AS t FROM btcr_inversion_transformaciones"
         ") x ORDER BY bitacora_id, t COLLATE Latin1_General_BIN2"
     ).fetchall()
-    conceptos = _col(conn, "SELECT nombre FROM pgn_concepto ORDER BY orden")
-    anios_pgn = _col(conn, "SELECT DISTINCT anio FROM pgn_ejecucion ORDER BY anio")
+    conceptos = _col(conn, "SELECT nombre FROM btcr_pgn_concepto ORDER BY orden")
+    anios_pgn = _col(conn, "SELECT DISTINCT anio FROM btcr_pgn_ejecucion ORDER BY anio")
     rubros = _distintos(conn, "REPLACE(nombre,'Servicio de la Deuda','Servicio Deuda')",
-                        "pgn_concepto", "nivel=2 AND unidad='Miles mm COP'")
-    vig_reg = _col(conn, "SELECT DISTINCT vigencia FROM regionalizacion ORDER BY vigencia")
-    regiones = _distintos(conn, "region", "regionalizacion")
-    vig_reg_sec = _col(conn, "SELECT DISTINCT vigencia FROM regionalizacion_sectores ORDER BY vigencia")
-    reg_sec = _distintos(conn, "region", "regionalizacion_sectores")
-    danes = _distintos(conn, "codigo_dane", "regionalizacion", "codigo_dane IS NOT NULL")
-    sect_vf = _distintos(conn, "sector", "vigencias_futuras")
-    sect_ent = _distintos(conn, "sector", "ejecucion_sectorial_entidades")
-    sect_men = _distintos(conn, "sector", "ejecucion_sectorial_mensual")
-    cred_fuentes = _distintos(conn, "fuente", "credito_portafolio")
-    cred_sectores = _distintos(conn, "sector", "credito_portafolio")
+                        "btcr_pgn_concepto", "nivel=2 AND unidad='Miles mm COP'")
+    vig_reg = _col(conn, "SELECT DISTINCT vigencia FROM btcr_regionalizacion ORDER BY vigencia")
+    regiones = _distintos(conn, "region", "btcr_regionalizacion")
+    vig_reg_sec = _col(conn, "SELECT DISTINCT vigencia FROM btcr_regionalizacion_sectores ORDER BY vigencia")
+    reg_sec = _distintos(conn, "region", "btcr_regionalizacion_sectores")
+    danes = _distintos(conn, "codigo_dane", "btcr_regionalizacion", "codigo_dane IS NOT NULL")
+    sect_vf = _distintos(conn, "sector", "btcr_vigencias_futuras")
+    sect_ent = _distintos(conn, "sector", "btcr_ejecucion_sectorial_entidades")
+    sect_men = _distintos(conn, "sector", "btcr_ejecucion_sectorial_mensual")
+    cred_fuentes = _distintos(conn, "fuente", "btcr_credito_portafolio")
+    cred_sectores = _distintos(conn, "sector", "btcr_credito_portafolio")
 
     conn.close()
 

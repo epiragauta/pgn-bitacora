@@ -40,7 +40,7 @@ Se alimenta de archivos Excel producidos por SIIF Nación, PIIP, SCCI y las áre
       │  red sbn-ecp_umbraco-network
       ▼  alias interno: sqlserver
 ┌─────────────────────────────────────────────┐
-│  SQL Server 2022 — base dnp_dpip            │
+│  SQL Server 2022 — nombre configurable      │
 │  23 tablas · 1 vista · Modern_Spanish_CS_AS │
 └─────────────────────────────────────────────┘
       ▲
@@ -65,20 +65,24 @@ Se alimenta de archivos Excel producidos por SIIF Nación, PIIP, SCCI y las áre
 
 El eje del modelo es `metadatos_bitacora`: cada corte trimestral tiene un registro allí, y **toda tabla de datos cuelga de él por `bitacora_id`**. Eso es lo que permite conservar varios cortes simultáneos sin mezclarlos.
 
-Los prefijos de tabla funcionan como espacio de nombres por dominio:
+**Todas las tablas llevan el prefijo `btcr_`.** El sistema está pensado para convivir en una base compartida con otros sistemas de la entidad, así que los nombres son `btcr_metadatos_bitacora`, `btcr_pgn_concepto`, etc. Las restricciones e índices también lo llevan (`PK_btcr_…`, `idx_btcr_…`), porque en una base compartida sus nombres tienen que ser únicos igual.
+
+Las **rutas de la API no se prefijan**: `/api/regionalizacion` sigue siendo eso. El prefijo es una cuestión de almacenamiento y no forma parte del contrato público.
+
+Dentro de ese prefijo común, un segundo nivel agrupa por dominio:
 
 | Prefijo | Dominio | Tablas |
 |---|---|---|
-| *(sin prefijo)* | Inversión PGN | `inversion_transformaciones`, `ejecucion_historica`, `apropiacion_por_sector`, … |
-| `pgn_` | Evolución presupuestal | `pgn_concepto`, `pgn_ejecucion` + vista `pgn_vista_crosstab` |
-| `credito_` | Crédito externo | `credito_portafolio`, `credito_ejecucion_entidad`, … |
-| `sgp_` | Participaciones | `sgp_historico_participacion`, `sgp_historico_componentes` |
+| `btcr_` a secas | Inversión PGN | `btcr_inversion_transformaciones`, `btcr_apropiacion_por_sector`, … |
+| `btcr_pgn_` | Evolución presupuestal | `btcr_pgn_concepto`, `btcr_pgn_ejecucion` + vista `btcr_pgn_vista_crosstab` |
+| `btcr_credito_` | Crédito externo | `btcr_credito_portafolio`, `btcr_credito_ejecucion_entidad`, … |
+| `btcr_sgp_` | Participaciones | `btcr_sgp_historico_participacion`, `btcr_sgp_historico_componentes` |
 
-El esquema admite un futuro `sgr_` (Sistema General de Regalías) sin cambios estructurales.
+El esquema admite un futuro `btcr_sgr_` (Sistema General de Regalías) sin cambios estructurales.
 
 ### El modelo jerárquico de la sección 2
 
-`pgn_concepto` es una **dimensión autorreferenciada**: cada concepto presupuestal apunta a su padre, formando un árbol de hasta cuatro niveles. `pgn_ejecucion` guarda el hecho —un valor por año, fase y concepto—. Esa forma es la que permite el desglose interactivo del tablero mediante una consulta recursiva.
+`btcr_pgn_concepto` es una **dimensión autorreferenciada**: cada concepto presupuestal apunta a su padre, formando un árbol de hasta cuatro niveles. `btcr_pgn_ejecucion` guarda el hecho —un valor por año, fase y concepto—. Esa forma es la que permite el desglose interactivo del tablero mediante una consulta recursiva.
 
 Estas dos tablas **no llevan `bitacora_id`**: son la serie completa del PGN, compartida por todos los cortes.
 
@@ -138,7 +142,11 @@ Cuatro cálculos no se resuelven bien en SQL y viven en C#:
 
 ### Contenido estático
 
-La misma aplicación sirve el frontend y los GeoJSON. El tipo `application/geo+json` está registrado explícitamente: sin eso el middleware de .NET devuelve 404 para esas extensiones y **el mapa queda en blanco sin error alguno**.
+La misma aplicación sirve el frontend. Se publica **únicamente `frontend/`**, que ya incluye `frontend/data/` con los GeoJSON del mapa; la carpeta `data/` de la raíz del repositorio —donde viven los Excel fuente y los insumos del ETL— no se copia a la imagen ni se expone.
+
+El tipo `application/geo+json` está registrado explícitamente porque no viene en la tabla por defecto: sin eso el middleware devuelve 404 para esas extensiones y **el mapa queda en blanco sin error alguno**.
+
+Se registra la extensión concreta en lugar de activar `ServeUnknownFileTypes`, que publica cualquier archivo bajo el directorio servido. Una extensión no reconocida devuelve 404 en vez de publicarse.
 
 ---
 
@@ -161,7 +169,7 @@ Excel (SIIF · PIIP · SCCI · DNP)
         │
         │  etl/db.py  (pyodbc)
         ▼
-      dnp_dpip
+      la base (tablas btcr_*)
 ```
 
 `etl/bases.py` localiza los archivos por patrón dentro de cada carpeta de sección, porque los nombres traen fechas y sufijos que cambian cada trimestre. `etl/db.py` concentra las equivalencias con el motor anterior, de modo que los cargadores conservan intacta su lógica de lectura de Excel — que es donde vive el conocimiento del negocio y lo más costoso de reescribir.
@@ -211,7 +219,7 @@ Los datos viven en el volumen de SQL Server, no en la imagen: reconstruir o rein
 | Exposición | Solo Caddy alcanza la API; el contenedor no escucha en la interfaz pública |
 | Autenticación | **No hay**, por decisión explícita: la API es pública y de solo lectura |
 | Credenciales | Fuera del repositorio, inyectadas por entorno |
-| Permisos de base | Login dedicado con alcance a `dnp_dpip`, sin acceso a otras bases de la instancia |
+| Permisos de base | Login dedicado acotado a su base, sin acceso a las demás de la instancia. Como las tablas llevan prefijo, en una base compartida los permisos pueden acotarse a ellas |
 | Inyección SQL | Todas las consultas usan parámetros; ningún valor de usuario se concatena |
 
 Los endpoints están agrupados con `MapGroup("/api")` precisamente para que introducir autenticación más adelante sea un cambio de una línea.

@@ -2,8 +2,8 @@
 ETL Vigencias Futuras — robusto a los formatos de Marzo y Junio 2026 (SQL Server).
 
 Carga dos tablas:
-  deflactores_pib   ← TD BITACORA (deflactor PIB base 2026, PIB corriente/constante)
-  vigencias_futuras ← pivot sector × año (pesos corrientes → mmm)
+  btcr_deflactores_pib   ← TD BITACORA (deflactor PIB base 2026, PIB corriente/constante)
+  btcr_vigencias_futuras ← pivot sector × año (pesos corrientes → mmm)
 
 Fuente del pivot (autodetectada):
   A) Hoja transaccional `BASE_SIIF_2`/`BASE_SIIF` con la columna calculada
@@ -152,7 +152,7 @@ conn = dbmod.conectar()
 bid = dbmod.bitacora_reciente(conn)
 print(f"bitacora_id={bid}", file=sys.stderr)
 
-conn.vaciar_bitacora(("vigencias_futuras", "deflactores_pib"), bid)
+conn.vaciar_bitacora(("btcr_vigencias_futuras", "btcr_deflactores_pib"), bid)
 
 defl_rows = []
 for y in sorted(year_col):
@@ -160,7 +160,7 @@ for y in sorted(year_col):
     if d is not None:
         defl_rows.append((bid, y, d, pib_corr.get(y), pib_ctes.get(y)))
 conn.upsert(
-    "deflactores_pib",
+    "btcr_deflactores_pib",
     ["bitacora_id", "anio", "deflactor", "pib_corriente_mmm", "pib_constante_mmm"],
     defl_rows, claves=["bitacora_id", "anio"])
 
@@ -171,15 +171,15 @@ for sect in all_sectors:
         if pesos:
             vf_rows.append((bid, year, sect, round(pesos / 1e9, 3)))
 conn.upsert(
-    "vigencias_futuras",
+    "btcr_vigencias_futuras",
     ["bitacora_id", "vigencia_exec", "sector", "valor_corriente_mmm"],
     vf_rows, claves=["bitacora_id", "vigencia_exec", "sector"])
 
 conn.commit()
 
-n_defl = conn.execute("SELECT COUNT(*) FROM deflactores_pib WHERE bitacora_id=?", (bid,)).fetchone()[0]
-n_vf = conn.execute("SELECT COUNT(*) FROM vigencias_futuras WHERE bitacora_id=?", (bid,)).fetchone()[0]
+n_defl = conn.execute("SELECT COUNT(*) FROM btcr_deflactores_pib WHERE bitacora_id=?", (bid,)).fetchone()[0]
+n_vf = conn.execute("SELECT COUNT(*) FROM btcr_vigencias_futuras WHERE bitacora_id=?", (bid,)).fetchone()[0]
 conn.close()
 
-print(f"\n[OK] deflactores_pib:   {n_defl} filas")
-print(f"[OK] vigencias_futuras: {n_vf} filas  ({len(all_sectors)} sectores × años) · fuente: {fuente}")
+print(f"\n[OK] btcr_deflactores_pib:   {n_defl} filas")
+print(f"[OK] btcr_vigencias_futuras: {n_vf} filas  ({len(all_sectors)} sectores × años) · fuente: {fuente}")

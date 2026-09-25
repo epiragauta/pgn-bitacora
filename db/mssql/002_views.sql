@@ -1,5 +1,5 @@
 -- ============================================================
--- 002_views.sql — Vistas (base dnp_dpip)
+-- 002_views.sql — Vistas
 --
 -- pgn_vista_crosstab: formato ancho (año × fase como columnas).
 -- La consume /api/evolucion/tabla_completa.
@@ -17,7 +17,7 @@
 SET NOCOUNT ON;
 GO
 
-CREATE OR ALTER VIEW dbo.pgn_vista_crosstab AS
+CREATE OR ALTER VIEW dbo.btcr_pgn_vista_crosstab AS
 SELECT
     c.id,
     c.nombre,
@@ -44,7 +44,7 @@ SELECT
     MAX(CASE WHEN e.anio = 2026 AND e.fase = 'Comprometido' THEN e.valor END) AS comprometido_2026,
     MAX(CASE WHEN e.anio = 2026 AND e.fase = 'Obligado'     THEN e.valor END) AS obligado_2026,
     MAX(CASE WHEN e.anio = 2026 AND e.fase = 'Pagado'       THEN e.valor END) AS pagado_2026
-FROM dbo.pgn_concepto c
-LEFT JOIN dbo.pgn_ejecucion e ON e.concepto_id = c.id
+FROM dbo.btcr_pgn_concepto c
+LEFT JOIN dbo.btcr_pgn_ejecucion e ON e.concepto_id = c.id
 GROUP BY c.id, c.nombre, c.nivel, c.unidad, c.orden;
 GO

@@ -54,29 +54,29 @@ def delete_bitacora(conn, bid):
     # Orden inverso a las FK. Ya no van evolucion_presupuestal ni las
     # regionalizacion_* antiguas: se descartaron en la migración.
     tablas = [
-        "inversion_transformaciones", "inversion_componentes_pnd",
-        "ejecucion_transformaciones", "apropiacion_por_sector",
-        "compromisos_pct_por_sector", "obligaciones_pct_por_sector",
-        "pagos_pct_por_sector", "vigencias_futuras", "deflactores_pib",
-        "ejecucion_sectorial_entidades", "ejecucion_sectorial_mensual",
-        "ejecucion_historica", "regionalizacion", "regionalizacion_sectores",
-        "credito_portafolio", "credito_ejecucion_entidad",
-        "credito_ejecucion_historica",
-        "sgp_historico_participacion", "sgp_historico_componentes",
+        "btcr_inversion_transformaciones", "btcr_inversion_componentes_pnd",
+        "btcr_ejecucion_transformaciones", "btcr_apropiacion_por_sector",
+        "btcr_compromisos_pct_por_sector", "btcr_obligaciones_pct_por_sector",
+        "btcr_pagos_pct_por_sector", "btcr_vigencias_futuras", "btcr_deflactores_pib",
+        "btcr_ejecucion_sectorial_entidades", "btcr_ejecucion_sectorial_mensual",
+        "btcr_ejecucion_historica", "btcr_regionalizacion", "btcr_regionalizacion_sectores",
+        "btcr_credito_portafolio", "btcr_credito_ejecucion_entidad",
+        "btcr_credito_ejecucion_historica",
+        "btcr_sgp_historico_participacion", "btcr_sgp_historico_componentes",
     ]
     conn.vaciar_bitacora(tablas, bid)
-    conn.execute("DELETE FROM dbo.metadatos_bitacora WHERE id=?", (bid,))
+    conn.execute("DELETE FROM dbo.btcr_metadatos_bitacora WHERE id=?", (bid,))
     conn.commit()
 
 
 def create_bitacora(conn, numero, periodo, corte, fuente, notas):
     existing = conn.execute(
-        "SELECT id FROM metadatos_bitacora WHERE periodo=?", (periodo,)
+        "SELECT id FROM btcr_metadatos_bitacora WHERE periodo=?", (periodo,)
     ).fetchone()
     if existing:
         return None, existing[0]
     nuevo_id = conn.insertar_devolviendo_id(
-        """INSERT INTO dbo.metadatos_bitacora
+        """INSERT INTO dbo.btcr_metadatos_bitacora
                (numero_bitacora, periodo, corte_fecha, fuente_principal, notas)
            VALUES (?,?,?,?,?)""",
         (numero, periodo, corte, fuente, notas),
@@ -155,7 +155,7 @@ def load_sec1(conn, bid, vigencia, t_acc, tc_acc):
         for t, d in t_acc.items()
     ]
     conn.upsert(
-        "inversion_transformaciones",
+        "btcr_inversion_transformaciones",
         ["bitacora_id", "vigencia", "transformador", "inversion_mmm", "peso_pct"],
         rows, claves=["bitacora_id", "vigencia", "transformador"],
     )
@@ -179,7 +179,7 @@ def load_sec1(conn, bid, vigencia, t_acc, tc_acc):
                            round(otros_v / t_total * 100, 2)))
 
     conn.upsert(
-        "inversion_componentes_pnd",
+        "btcr_inversion_componentes_pnd",
         ["bitacora_id", "vigencia", "transformador", "componente", "vigente_mmm", "peso_pct"],
         rows_c, claves=["bitacora_id", "vigencia", "transformador", "componente"],
     )
@@ -200,7 +200,7 @@ def load_sec1(conn, bid, vigencia, t_acc, tc_acc):
             round(d["p"] / v * 100, 1),
         ))
     conn.upsert(
-        "ejecucion_transformaciones",
+        "btcr_ejecucion_transformaciones",
         ["bitacora_id", "vigencia", "transformador", "apr_vigente_mmm",
          "compromisos_mmm", "obligaciones_mmm", "pagos_mmm",
          "pct_c_av", "pct_o_av", "pct_p_av"],
@@ -219,7 +219,7 @@ def load_sec4_sec6(conn, bid, vigencia, s_acc, ent_acc):
         for s, d in s_acc.items()
     ]
     conn.upsert(
-        "apropiacion_por_sector",
+        "btcr_apropiacion_por_sector",
         ["bitacora_id", "vigencia", "sector", "vigente_mmm"],
         rows_ap, claves=["bitacora_id", "vigencia", "sector"],
     )
@@ -227,9 +227,9 @@ def load_sec4_sec6(conn, bid, vigencia, s_acc, ent_acc):
 
     # compromisos / obligaciones / pagos pct por sector
     for tabla, campo, clave in [
-        ("compromisos_pct_por_sector",  "pct_compromisos",  "c"),
-        ("obligaciones_pct_por_sector", "pct_obligaciones", "o"),
-        ("pagos_pct_por_sector",        "pct_pagos",        "p"),
+        ("btcr_compromisos_pct_por_sector",  "pct_compromisos",  "c"),
+        ("btcr_obligaciones_pct_por_sector", "pct_obligaciones", "o"),
+        ("btcr_pagos_pct_por_sector",        "pct_pagos",        "p"),
     ]:
         rows_pct = [
             (bid, vigencia, s,
@@ -272,7 +272,7 @@ def load_sec4_sec6(conn, bid, vigencia, s_acc, ent_acc):
             round(d["o"] / v * 100, 1),
         ))
     conn.upsert(
-        "ejecucion_sectorial_entidades",
+        "btcr_ejecucion_sectorial_entidades",
         ["bitacora_id", "vigencia", "sector", "entidad", "apr_vigente_mmm",
          "compromisos_mmm", "obligaciones_mmm", "pct_c_av", "pct_o_av"],
         rows_ent, claves=["bitacora_id", "vigencia", "entidad"],
@@ -327,7 +327,7 @@ def load_sec5(conn, bid, ws_vf, año_inicio, año_fin):
                 rows_vf.append((bid, año, sector.upper(), round(val / MMM, 3), None))
 
     conn.upsert(
-        "vigencias_futuras",
+        "btcr_vigencias_futuras",
         ["bitacora_id", "vigencia_exec", "sector", "valor_corriente_mmm"],
         [(b, a, sec, v) for b, a, sec, v, _ in rows_vf],
         claves=["bitacora_id", "vigencia_exec", "sector"],
@@ -360,7 +360,7 @@ def main():
 
     # Manejo de bitácora existente
     existing = conn.execute(
-        "SELECT id FROM metadatos_bitacora WHERE periodo=?", (args.periodo,)
+        "SELECT id FROM btcr_metadatos_bitacora WHERE periodo=?", (args.periodo,)
     ).fetchone()
 
     if existing:
@@ -417,13 +417,13 @@ def main():
     print(f"  Bitácora {args.periodo} (id={bid}) -- Resumen")
     print(f"{'-'*55}")
     tablas_check = [
-        "inversion_transformaciones",
-        "inversion_componentes_pnd",
-        "ejecucion_transformaciones",
-        "apropiacion_por_sector",
-        "compromisos_pct_por_sector",
-        "vigencias_futuras",
-        "ejecucion_sectorial_entidades",
+        "btcr_inversion_transformaciones",
+        "btcr_inversion_componentes_pnd",
+        "btcr_ejecucion_transformaciones",
+        "btcr_apropiacion_por_sector",
+        "btcr_compromisos_pct_por_sector",
+        "btcr_vigencias_futuras",
+        "btcr_ejecucion_sectorial_entidades",
     ]
     for tbl in tablas_check:
         try:
@@ -438,8 +438,8 @@ def main():
     pendientes = [
         ("Sec 2", "evolucion_presupuestal",        "carpeta 2. EVOLUCIÓN PRESUPUESTAL"),
         ("Sec 3", "regionalizacion_detalle_2025",  "carpeta 3. REGIONALIZACIÓN"),
-        ("Sec 4", "ejecucion_historica",            "carpeta 4. EJECUCIÓN (series 2022-N)"),
-        ("Sec 6", "ejecucion_sectorial_mensual",   "carpeta 6. EJECUCIÓN SECTORIAL"),
+        ("Sec 4", "btcr_ejecucion_historica",            "carpeta 4. EJECUCIÓN (series 2022-N)"),
+        ("Sec 6", "btcr_ejecucion_sectorial_mensual",   "carpeta 6. EJECUCIÓN SECTORIAL"),
     ]
     print(f"\n  Pendientes (archivos fuente no disponibles):")
     for sec, tbl, origen in pendientes:

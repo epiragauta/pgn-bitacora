@@ -12,7 +12,7 @@ public static class BitacoraResolver
 
     public static async Task<Contexto> ResolverAsync(IDb db, int? bitacoraId)
     {
-        const string baseSql = "SELECT id, YEAR(corte_fecha) AS vigencia FROM dbo.metadatos_bitacora";
+        const string baseSql = "SELECT id, YEAR(corte_fecha) AS vigencia FROM dbo.btcr_metadatos_bitacora";
 
         var fila = bitacoraId is not null
             ? await db.QuerySingleAsync($"{baseSql} WHERE id = @id", new { id = bitacoraId })

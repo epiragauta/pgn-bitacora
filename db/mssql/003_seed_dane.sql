@@ -1,5 +1,5 @@
 -- ============================================================
--- 003_seed_dane.sql — Catálogo DANE de departamentos (base dnp_dpip)
+-- 003_seed_dane.sql — Catálogo DANE de departamentos
 --
 -- Catálogo estático de las 33 entidades territoriales. Es la fuente
 -- canónica de esta tabla: la migración de datos de la Fase 2 la
@@ -16,7 +16,7 @@
 SET NOCOUNT ON;
 GO
 
-MERGE dbo.dane_departamentos AS destino
+MERGE dbo.btcr_dane_departamentos AS destino
 USING (VALUES
     (N'05', N'Antioquia',                                                    N'ANDINA'),
     (N'08', N'Atlántico',                                                    N'CARIBE'),
@@ -59,5 +59,5 @@ WHEN NOT MATCHED BY TARGET
     THEN INSERT (codigo, nombre, region) VALUES (origen.codigo, origen.nombre, origen.region);
 GO
 
-SELECT CONCAT('dane_departamentos: ', COUNT(*), ' filas') AS resultado FROM dbo.dane_departamentos;
+SELECT CONCAT('dane_departamentos: ', COUNT(*), ' filas') AS resultado FROM dbo.btcr_dane_departamentos;
 GO

@@ -27,8 +27,8 @@ public static class RegionalizacionEndpoints
                        r.codigo_dane, d.nombre AS nombre_dane,
                        r.apropiacion_mmm, r.compromisos_mmm, r.obligaciones_mmm, r.pagos_mmm,
                        r.pct_compromisos, r.pct_obligaciones, r.pct_pagos, r.pct_participacion
-                FROM dbo.regionalizacion r
-                LEFT JOIN dbo.dane_departamentos d ON d.codigo = r.codigo_dane
+                FROM dbo.btcr_regionalizacion r
+                LEFT JOIN dbo.btcr_dane_departamentos d ON d.codigo = r.codigo_dane
                 WHERE r.bitacora_id = @bid AND r.vigencia = @vigencia
                 """;
 
@@ -60,7 +60,7 @@ public static class RegionalizacionEndpoints
                        ROUND(CAST(SUM(obligaciones_mmm) AS FLOAT), 3) AS obligaciones_mmm,
                        ROUND(CAST(SUM(pagos_mmm) AS FLOAT),        3) AS pagos_mmm,
                        ROUND(CAST(SUM(compromisos_mmm) AS FLOAT) * 100.0 / NULLIF(SUM(apropiacion_mmm), 0), 2) AS pct_compromisos
-                FROM dbo.regionalizacion
+                FROM dbo.btcr_regionalizacion
                 WHERE bitacora_id = @bid
                   AND tipo IN ('departamento', 'por_regionalizar', 'nacional')
                 GROUP BY vigencia, region, tipo
@@ -75,7 +75,7 @@ public static class RegionalizacionEndpoints
             var sql = """
                 SELECT vigencia, region, sector,
                        apropiacion_mmm, compromisos_mmm, obligaciones_mmm, pagos_mmm
-                FROM dbo.regionalizacion_sectores
+                FROM dbo.btcr_regionalizacion_sectores
                 WHERE bitacora_id = @bid AND vigencia = @vigencia
                 """;
 
@@ -100,7 +100,7 @@ public static class RegionalizacionEndpoints
                 SELECT r.codigo_dane, r.departamento, r.region,
                        r.apropiacion_mmm, r.compromisos_mmm,
                        r.pct_compromisos, r.pct_participacion
-                FROM dbo.regionalizacion r
+                FROM dbo.btcr_regionalizacion r
                 WHERE r.bitacora_id = @bid AND r.vigencia = @vigencia AND r.tipo = 'departamento'
                 ORDER BY r.region COLLATE Latin1_General_BIN2,
                          r.departamento COLLATE Latin1_General_BIN2
@@ -115,7 +115,7 @@ public static class RegionalizacionEndpoints
                 SELECT r.vigencia, r.departamento, r.region,
                        r.apropiacion_mmm, r.compromisos_mmm, r.obligaciones_mmm, r.pagos_mmm,
                        r.pct_compromisos, r.pct_obligaciones, r.pct_participacion
-                FROM dbo.regionalizacion r
+                FROM dbo.btcr_regionalizacion r
                 WHERE r.bitacora_id = @bid AND r.codigo_dane = @codigo
                 ORDER BY r.vigencia
                 """, new { bid = ctx.Id, codigo = codigo_dane });

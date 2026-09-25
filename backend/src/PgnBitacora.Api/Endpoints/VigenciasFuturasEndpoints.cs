@@ -20,7 +20,7 @@ public static class VigenciasFuturasEndpoints
             var ctx = await BitacoraResolver.ResolverAsync(db, bitacora_id);
             var sql = """
                 SELECT vigencia_exec, sector, valor_corriente_mmm
-                FROM dbo.vigencias_futuras
+                FROM dbo.btcr_vigencias_futuras
                 WHERE bitacora_id = @bid
                 """;
 
@@ -48,8 +48,8 @@ public static class VigenciasFuturasEndpoints
                             THEN ROUND(CAST(SUM(v.valor_corriente_mmm) AS FLOAT) / NULLIF(d.deflactor, 0)
                                        / NULLIF(d.pib_constante_mmm, 0) * 100, 4)
                             ELSE NULL END AS pct_pib
-                FROM dbo.vigencias_futuras v
-                LEFT JOIN dbo.deflactores_pib d
+                FROM dbo.btcr_vigencias_futuras v
+                LEFT JOIN dbo.btcr_deflactores_pib d
                        ON d.bitacora_id = v.bitacora_id AND d.anio = v.vigencia_exec
                 WHERE v.bitacora_id = @bid
                   AND v.vigencia_exec BETWEEN 2027 AND 2040

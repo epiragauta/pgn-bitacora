@@ -17,8 +17,7 @@ Uso:
     python etl/migrate_sqlite_to_mssql.py --solo-validar  # solo compara
     python etl/migrate_sqlite_to_mssql.py --truncar       # vacía antes de cargar
 
-Conexión por variable de entorno (recomendado):
-    export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};SERVER=...;..."
+Conexión por la variable DNP_DPIP_CONN (ver etl/db.py).
 """
 
 from __future__ import annotations
@@ -27,6 +26,8 @@ import argparse
 import os
 import sqlite3
 import sys
+
+import db as dbmod
 from decimal import Decimal
 from pathlib import Path
 
@@ -36,12 +37,6 @@ except ImportError:
     raise SystemExit("Falta pyodbc. Instalar con: pip install pyodbc")
 
 SQLITE_PATH = Path(__file__).parent.parent / "db" / "legacy" / "pgn.db"
-
-CONN_DEFAULT = (
-    "DRIVER={ODBC Driver 18 for SQL Server};"
-    "SERVER=127.0.0.1,1433;DATABASE=dnp_dpip;"
-    "UID=dnp_dpip_app;PWD=b1t4c0r42026;TrustServerCertificate=yes"
-)
 
 # Orden de carga: las tablas referenciadas van primero (FK).
 # dane_departamentos queda fuera a propósito (la siembra 003_seed_dane.sql).
@@ -96,16 +91,16 @@ def migrar(sq: sqlite3.Connection, cur: pyodbc.Cursor, tabla: str, truncar: bool
 
     if truncar:
         # DELETE y no TRUNCATE: las FK impiden truncar tablas referenciadas.
-        cur.execute(f"DELETE FROM dbo.[{tabla}]")
+        cur.execute(f"DELETE FROM dbo.[btcr_{tabla}]")
 
     filas = sq.execute(f'SELECT {", ".join(chr(34) + c + chr(34) for c in cols)} FROM "{tabla}"').fetchall()
     if not filas:
         return 0
 
-    cur.execute(f"SET IDENTITY_INSERT dbo.[{tabla}] ON")
+    cur.execute(f"SET IDENTITY_INSERT dbo.[btcr_{tabla}] ON")
     cur.fast_executemany = True
-    cur.executemany(f"INSERT INTO dbo.[{tabla}] ({lista}) VALUES ({marcas})", filas)
-    cur.execute(f"SET IDENTITY_INSERT dbo.[{tabla}] OFF")
+    cur.executemany(f"INSERT INTO dbo.[btcr_{tabla}] ({lista}) VALUES ({marcas})", filas)
+    cur.execute(f"SET IDENTITY_INSERT dbo.[btcr_{tabla}] OFF")
     return len(filas)
 
 
@@ -120,7 +115,7 @@ def validar(sq: sqlite3.Connection, cur: pyodbc.Cursor, tabla: str) -> list[str]
     fallos: list[str] = []
 
     n_org = sq.execute(f'SELECT COUNT(*) FROM "{tabla}"').fetchone()[0]
-    cur.execute(f"SELECT COUNT(*) FROM dbo.[{tabla}]")
+    cur.execute(f"SELECT COUNT(*) FROM dbo.[btcr_{tabla}]")
     n_dst = cur.fetchone()[0]
     if n_org != n_dst:
         fallos.append(f"conteo: origen={n_org} destino={n_dst}")
@@ -128,7 +123,7 @@ def validar(sq: sqlite3.Connection, cur: pyodbc.Cursor, tabla: str) -> list[str]
 
     for col in columnas_numericas(sq, tabla):
         s_org = num(sq.execute(f'SELECT SUM("{col}") FROM "{tabla}"').fetchone()[0])
-        cur.execute(f"SELECT SUM(CAST([{col}] AS FLOAT)) FROM dbo.[{tabla}]")
+        cur.execute(f"SELECT SUM(CAST([{col}] AS FLOAT)) FROM dbo.[btcr_{tabla}]")
         s_dst = num(cur.fetchone()[0])
 
         if s_org is None and s_dst is None:
@@ -148,13 +143,14 @@ def validar(sq: sqlite3.Connection, cur: pyodbc.Cursor, tabla: str) -> list[str]
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--sqlite", type=Path, default=SQLITE_PATH)
-    ap.add_argument("--conn", default=os.environ.get("DNP_DPIP_CONN", CONN_DEFAULT))
+    ap.add_argument("--conn", default=None,
+                    help="Cadena ODBC; por defecto la de DNP_DPIP_CONN")
     ap.add_argument("--solo-validar", action="store_true")
     ap.add_argument("--truncar", action="store_true", help="Vacía cada tabla antes de cargarla")
     args = ap.parse_args()
 
     sq = sqlite3.connect(args.sqlite)
-    cn = pyodbc.connect(args.conn, autocommit=False)
+    cn = pyodbc.connect(args.conn or dbmod.cadena_conexion(), autocommit=False)
     cur = cn.cursor()
 
     if not args.solo_validar:

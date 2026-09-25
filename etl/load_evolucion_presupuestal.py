@@ -4,7 +4,7 @@
 ETL Sección 2 — Evolución Presupuestal PGN desde Excel (SQL Server, db.py).
 
 Lee la hoja `Evolucion PGN` del archivo de estructura de evolución y carga
-`pgn_concepto` / `pgn_ejecucion` (reemplaza la carga por CSV de importar_pgn.py).
+`btcr_pgn_concepto` / `btcr_pgn_ejecucion` (reemplaza la carga por CSV de importar_pgn.py).
 Mismo esquema/tablas que consume la API .NET; el esquema vive en db/mssql/.
 
 La hoja es un crosstab: 28 conceptos (jerarquía de 4 niveles, incl. 4 filas
@@ -154,27 +154,27 @@ def main():
 
     # 4) Cargar en BD (SQL Server): vaciar (orden FK) → conceptos → padres → hechos
     conn = dbmod.conectar()
-    conn.execute("DELETE FROM dbo.pgn_ejecucion")
-    conn.execute("DELETE FROM dbo.pgn_concepto")
+    conn.execute("DELETE FROM dbo.btcr_pgn_ejecucion")
+    conn.execute("DELETE FROM dbo.btcr_pgn_concepto")
     conn.commit()
     with conn:
         conn.executemany(
-            "INSERT INTO dbo.pgn_concepto(nombre, padre_id, nivel, unidad, orden) VALUES (?, NULL, ?, ?, ?)",
+            "INSERT INTO dbo.btcr_pgn_concepto(nombre, padre_id, nivel, unidad, orden) VALUES (?, NULL, ?, ?, ?)",
             [(n, lv, u, o) for n, p, lv, u, o in conceptos])
-        nombre_id = {r[0]: r[1] for r in conn.execute("SELECT nombre, id FROM dbo.pgn_concepto").fetchall()}
-        conn.executemany("UPDATE dbo.pgn_concepto SET padre_id=? WHERE id=?",
+        nombre_id = {r[0]: r[1] for r in conn.execute("SELECT nombre, id FROM dbo.btcr_pgn_concepto").fetchall()}
+        conn.executemany("UPDATE dbo.btcr_pgn_concepto SET padre_id=? WHERE id=?",
                           [(nombre_id[p], nombre_id[n]) for n, p, lv, u, o in conceptos if p])
-        conn.upsert("pgn_ejecucion", ["anio", "fase", "concepto_id", "valor"],
+        conn.upsert("btcr_pgn_ejecucion", ["anio", "fase", "concepto_id", "valor"],
                     [(a, f, nombre_id[n], v) for a, f, n, v in hechos],
                     claves=["anio", "fase", "concepto_id"])
 
-    nc = conn.execute("SELECT COUNT(*) FROM dbo.pgn_concepto").fetchone()[0]
-    ne = conn.execute("SELECT COUNT(*) FROM dbo.pgn_ejecucion").fetchone()[0]
-    print(f"\n[OK] pgn_concepto: {nc} · pgn_ejecucion: {ne}")
+    nc = conn.execute("SELECT COUNT(*) FROM dbo.btcr_pgn_concepto").fetchone()[0]
+    ne = conn.execute("SELECT COUNT(*) FROM dbo.btcr_pgn_ejecucion").fetchone()[0]
+    print(f"\n[OK] btcr_pgn_concepto: {nc} · btcr_pgn_ejecucion: {ne}")
     print("\nVigente por año (mmm) — rubros principales:")
     for nombre in ("Total PGN", "Funcionamiento", "Servicio de la Deuda", "Inversión"):
         vals = {r[0]: r[1] for r in conn.execute(
-            "SELECT e.anio, e.valor FROM dbo.pgn_ejecucion e JOIN dbo.pgn_concepto c ON c.id=e.concepto_id "
+            "SELECT e.anio, e.valor FROM dbo.btcr_pgn_ejecucion e JOIN dbo.btcr_pgn_concepto c ON c.id=e.concepto_id "
             "WHERE c.nombre=? AND e.fase='Vigente' ORDER BY e.anio", (nombre,)).fetchall()}
         serie = "  ".join(f"{y}={vals.get(y, 0):,.0f}" for y in anios)
         print(f"  {nombre:<22} {serie}")

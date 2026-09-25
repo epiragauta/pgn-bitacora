@@ -95,8 +95,8 @@ def main() -> None:
 
     # 3. Conectar y vaciar (en orden de FK: primero los hechos)
     conn = dbmod.conectar()
-    conn.execute('DELETE FROM dbo.pgn_ejecucion')
-    conn.execute('DELETE FROM dbo.pgn_concepto')
+    conn.execute('DELETE FROM dbo.btcr_pgn_ejecucion')
+    conn.execute('DELETE FROM dbo.btcr_pgn_concepto')
     conn.commit()
 
     advertencias = 0
@@ -104,7 +104,7 @@ def main() -> None:
     with conn:
         # Paso A: insertar todos los conceptos sin padre_id (se resuelve después)
         conn.executemany(
-            'INSERT INTO dbo.pgn_concepto(nombre, padre_id, nivel, unidad, orden) '
+            'INSERT INTO dbo.btcr_pgn_concepto(nombre, padre_id, nivel, unidad, orden) '
             'VALUES (?, NULL, ?, ?, ?)',
             [(nombre, nivel, unidad, orden)
              for nombre, _, nivel, unidad, orden in conceptos]
@@ -113,7 +113,7 @@ def main() -> None:
         # Paso B: resolver padre_id por nombre y actualizar
         nombre_a_id: dict[str, int] = {
             r[0]: r[1]
-            for r in conn.execute('SELECT nombre, id FROM dbo.pgn_concepto').fetchall()
+            for r in conn.execute('SELECT nombre, id FROM dbo.btcr_pgn_concepto').fetchall()
         }
         actualizaciones: list[tuple[int, int]] = []
         for nombre, padre_nombre, *_ in conceptos:
@@ -128,7 +128,7 @@ def main() -> None:
                 actualizaciones.append((padre_id, nombre_a_id[nombre]))
 
         conn.executemany(
-            'UPDATE dbo.pgn_concepto SET padre_id=? WHERE id=?',
+            'UPDATE dbo.btcr_pgn_concepto SET padre_id=? WHERE id=?',
             actualizaciones
         )
 
@@ -150,14 +150,14 @@ def main() -> None:
             ))
 
         conn.upsert(
-            'pgn_ejecucion',
+            'btcr_pgn_ejecucion',
             ['anio', 'fase', 'concepto_id', 'valor'],
             hechos, claves=['anio', 'fase', 'concepto_id'],
         )
 
     # 4. Verificar y reportar
-    n_conceptos = conn.execute('SELECT COUNT(*) FROM dbo.pgn_concepto').fetchone()[0]
-    n_hechos    = conn.execute('SELECT COUNT(*) FROM dbo.pgn_ejecucion').fetchone()[0]
+    n_conceptos = conn.execute('SELECT COUNT(*) FROM dbo.btcr_pgn_concepto').fetchone()[0]
+    n_hechos    = conn.execute('SELECT COUNT(*) FROM dbo.btcr_pgn_ejecucion').fetchone()[0]
     conn.close()
 
     t1 = time.perf_counter()

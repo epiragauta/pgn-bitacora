@@ -10,9 +10,12 @@ Compara, por bitácora, el número de filas y la suma de cada columna
 numérica. No compara `id`: las identidades se regeneran en cada carga y
 son un detalle de almacenamiento, no un dato.
 
+El nombre de las bases no está fijado en el código: el esquema puede
+instalarse en cualquiera, porque todas las tablas llevan el prefijo btcr_.
+
 Uso:
-    python tools/compare_bd.py --a dnp_dpip --b dnp_dpip_pruebas
-    python tools/compare_bd.py --a dnp_dpip --b dnp_dpip_pruebas --periodo 2026-I
+    python tools/compare_bd.py --a BASE_REFERENCIA --b BASE_A_VERIFICAR
+    python tools/compare_bd.py --a BASE_REFERENCIA --b BASE_A_VERIFICAR --periodo 2026-I
 """
 
 from __future__ import annotations
@@ -65,20 +68,21 @@ def columnas_numericas(cur, tabla: str) -> list[str]:
 def resolver_bitacora(cur, periodo: str | None) -> int | None:
     if periodo:
         fila = cur.execute(
-            "SELECT id FROM dbo.metadatos_bitacora WHERE periodo = ?", periodo).fetchone()
+            "SELECT id FROM dbo.btcr_metadatos_bitacora WHERE periodo = ?", periodo).fetchone()
         if not fila:
             raise SystemExit(f"No existe la bitácora de periodo '{periodo}'")
         return fila[0]
     fila = cur.execute(
-        "SELECT TOP 1 id FROM dbo.metadatos_bitacora ORDER BY corte_fecha DESC, id DESC"
+        "SELECT TOP 1 id FROM dbo.btcr_metadatos_bitacora ORDER BY corte_fecha DESC, id DESC"
     ).fetchone()
     return fila[0] if fila else None
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--a", default="dnp_dpip", help="Base de referencia")
-    ap.add_argument("--b", default="dnp_dpip_pruebas", help="Base a verificar")
+    ap.add_argument("--a", default=os.environ.get("DNP_DPIP_DB"),
+                    help="Base de referencia (por defecto, DNP_DPIP_DB)")
+    ap.add_argument("--b", required=True, help="Base a verificar")
     ap.add_argument("--periodo", default=None, help="Periodo a comparar (ej. 2026-I)")
     ap.add_argument("--servidor", default=os.environ.get("DNP_DPIP_SERVER", "127.0.0.1,1433"))
     ap.add_argument("--usuario", default=os.environ.get("DNP_DPIP_USER", "dnp_dpip_app"))
@@ -87,6 +91,8 @@ def main() -> int:
 
     if not args.clave:
         raise SystemExit("Definir la contraseña con --clave o DNP_DPIP_PASSWORD.")
+    if not args.a:
+        raise SystemExit("Definir la base de referencia con --a o DNP_DPIP_DB.")
 
     ca, cb = conectar(args.a, args).cursor(), conectar(args.b, args).cursor()
 
@@ -98,12 +104,12 @@ def main() -> int:
 
     tablas = tablas_con_bitacora(ca)
     # pgn_* no llevan bitacora_id: son la serie completa del PGN.
-    tablas += ["pgn_concepto", "pgn_ejecucion"]
+    tablas += ["btcr_pgn_concepto", "btcr_pgn_ejecucion"]
 
     iguales, distintas = 0, []
     print(f"{'tabla':<34}{'A':>8}{'B':>8}")
     for tabla in tablas:
-        tiene_bid = tabla not in ("pgn_concepto", "pgn_ejecucion")
+        tiene_bid = tabla not in ("btcr_pgn_concepto", "btcr_pgn_ejecucion")
         filtro = " WHERE bitacora_id = ?" if tiene_bid else ""
 
         def contar(cur, bid):

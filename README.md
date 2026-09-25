@@ -4,7 +4,9 @@
 
 Dashboard web sobre el Presupuesto General de la Nación, con seguimiento adicional a Crédito Externo y al Sistema General de Participaciones.
 
-**Arquitectura:** base de datos SQL Server (`dnp_dpip`), API REST en .NET 8 y frontend HTML autónomo.
+**Arquitectura:** base de datos SQL Server, API REST en .NET 8 y frontend HTML autónomo.
+
+> **Todas las tablas llevan el prefijo `btcr_`**, para poder convivir en una base compartida con otros sistemas de la entidad. Las rutas de la API no se prefijan: el prefijo es de almacenamiento, no del contrato público.
 
 > La migración desde FastAPI/SQLite se completó el 2026-08-15. El histórico de decisiones, el catálogo de incompatibilidades entre motores y los resultados de cada fase están en [`docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md`](docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md) — vale la pena leerlo antes de tocar el backend.
 
@@ -17,8 +19,11 @@ Dashboard web sobre el Presupuesto General de la Nación, con seguimiento adicio
 | [Arquitectura](docs/ARQUITECTURA.md) | Visión de conjunto, modelo de datos y decisiones de diseño |
 | [Manual técnico](docs/MANUAL_TECNICO.md) | Desarrolladores que modifican el backend, la base o los ETL |
 | [Manual de operación](docs/MANUAL_OPERACION.md) | Cargue trimestral, despliegue e incidencias |
+| [Despliegue en IIS](docs/DESPLIEGUE_IIS.md) | Publicar en Windows/IIS, con el script `deploy/Deploy-Bitacora.ps1` |
 | [Manual de usuario](docs/MANUAL_USUARIO.md) | Analistas y directivos que consultan el tablero |
 | [Informe de la migración](docs/INFORME_MIGRACION_DOTNET_SQLSERVER.md) | Actividades, hallazgos y resultados del paso a .NET / SQL Server |
+| [Informe de cambios 2026-08-20](docs/INFORME_CAMBIOS_2026-08-20.md) | Trabajo posterior: prefijo `btcr_`, despliegue en IIS y dos hallazgos de seguridad |
+| [Informe de cambios 2026-08-27](docs/INFORME_CAMBIOS_2026-08-27.md) | Paquete de despliegue para IIS, hospedaje bajo subruta y lo que reveló `-WhatIf` |
 | [Plan de migración](docs/PLAN_MIGRACION_DOTNET_SQLSERVER.md) | Bitácora técnica con el catálogo de incompatibilidades entre motores |
 | [Guía de ETLs](docs/etl_uso.md) | Detalle de cada cargador |
 
@@ -52,7 +57,9 @@ Las versiones web de arquitectura y de los dos manuales de usuario están en `do
 │   └── baseline/                  ← respuestas de referencia
 ├── frontend/index.html            ← dashboard standalone
 ├── data/                          ← GeoJSON de departamentos y regiones
-├── deploy/Caddyfile.snippet       ← bloque de proxy inverso
+├── deploy/
+│   ├── Deploy-Bitacora.ps1     ← despliegue completo en IIS
+│   └── Caddyfile.snippet       ← bloque de proxy inverso
 └── docker-compose.yml
 ```
 
@@ -71,22 +78,22 @@ Las versiones web de arquitectura y de los dos manuales de usuario están en `do
 # Crear base y login (una sola vez, como sa)
 docker exec -i umbraco-sqlserver /opt/mssql-tools18/bin/sqlcmd \
     -S localhost -U sa -P "$SA_PASSWORD" -C -i /dev/stdin <<'SQL'
-CREATE DATABASE dnp_dpip COLLATE Modern_Spanish_CS_AS;
+CREATE DATABASE MI_BASE COLLATE Modern_Spanish_CS_AS;   -- el nombre es libre
 GO
-CREATE LOGIN dnp_dpip_app WITH PASSWORD='...', DEFAULT_DATABASE=dnp_dpip, CHECK_POLICY=OFF;
+CREATE LOGIN USUARIO WITH PASSWORD='...', DEFAULT_DATABASE=MI_BASE, CHECK_POLICY=OFF;
 GO
-USE dnp_dpip;
-CREATE USER dnp_dpip_app FOR LOGIN dnp_dpip_app;
-ALTER ROLE db_datareader ADD MEMBER dnp_dpip_app;
-ALTER ROLE db_datawriter ADD MEMBER dnp_dpip_app;
-ALTER ROLE db_ddladmin  ADD MEMBER dnp_dpip_app;
+USE MI_BASE;
+CREATE USER USUARIO FOR LOGIN USUARIO;
+ALTER ROLE db_datareader ADD MEMBER USUARIO;
+ALTER ROLE db_datawriter ADD MEMBER USUARIO;
+ALTER ROLE db_ddladmin  ADD MEMBER USUARIO;
 GO
 SQL
 
 # Aplicar el esquema (idempotente)
 for f in db/mssql/*.sql; do
   docker exec -i umbraco-sqlserver /opt/mssql-tools18/bin/sqlcmd \
-      -S localhost -U sa -P "$SA_PASSWORD" -C -b -d dnp_dpip -i /dev/stdin < "$f"
+      -S localhost -U sa -P "$SA_PASSWORD" -C -b -d "$MI_BASE" -i /dev/stdin < "$f"
 done
 ```
 
@@ -111,7 +118,7 @@ Disponible en `http://127.0.0.1:5080` — dashboard en la raíz, API en `/api`, 
 #### Desarrollo sin contenedor
 
 ```bash
-export ConnectionStrings__DnpDpip="Server=127.0.0.1,1433;Database=dnp_dpip;User Id=dnp_dpip_app;Password=...;TrustServerCertificate=True"
+export ConnectionStrings__DnpDpip="Server=127.0.0.1,1433;Database=MI_BASE;User Id=USUARIO;Password=...;TrustServerCertificate=True"
 dotnet run --project backend/src/PgnBitacora.Api --urls http://127.0.0.1:5080
 ```
 
@@ -164,6 +171,40 @@ Todos aceptan `bitacora_id` opcional; sin él responden con la bitácora más re
 
 Se publica en **https://dnp-btcr.skaphe.com** añadiendo el bloque de [`deploy/Caddyfile.snippet`](deploy/Caddyfile.snippet) a `/etc/caddy/Caddyfile` y recargando Caddy, que gestiona el certificado TLS automáticamente.
 
+### Servirla por IP y puerto
+
+Para llegar al tablero sin pasar por el subdominio, en `.env`:
+
+```bash
+API_BIND=0.0.0.0        # por omisión 127.0.0.1
+API_PUERTO=5080         # 8080 está ocupado por Umbraco en este servidor
+```
+
+y `docker compose up -d`. Queda en `http://<ip-del-host>:5080/`. El tablero
+no necesita ningún cambio: resuelve sus rutas contra `document.baseURI`, así
+que funciona igual en la raíz de un puerto que bajo una subruta.
+
+**Es HTTP en claro.** Por una IP no se puede emitir un certificado, así que
+el navegador la marcará como no segura y el tráfico viaja sin cifrar. El
+contenido ya es público, pero las dos formas de acceso no son equivalentes;
+si se quiere solo la de IP, hay que retirar además el bloque de Caddy.
+
+> Docker publica los puertos con sus propias reglas de iptables, que
+> **esquivan ufw**. Limitar quién alcanza ese puerto exige reglas en la
+> cadena `DOCKER-USER`, no en ufw.
+
+### En IIS (el destino del DNP)
+
+```bash
+./tools/generar_paquete.sh     # deja dist/bitacora-despliegue-<version>.zip
+```
+
+Se copia al servidor, se descomprime y se corre `deploy\Deploy-Bitacora.ps1`
+desde su carpeta. Lleva la aplicación compilada y los datos como sentencias
+SQL: allá solo hacen falta IIS, el Hosting Bundle de ASP.NET Core 8 y `sqlcmd`.
+Conviene que la primera corrida sea con `-WhatIf`. Detalle en
+[`docs/DESPLIEGUE_IIS.md`](docs/DESPLIEGUE_IIS.md).
+
 > Fly.io y Render quedaron descartados: la instancia de SQL Server no es alcanzable desde ellos.
 
 ---
@@ -173,7 +214,7 @@ Se publica en **https://dnp-btcr.skaphe.com** añadiendo el bloque de [`deploy/C
 Los cargadores escriben directamente en SQL Server. Toman la conexión de `DNP_DPIP_CONN` y localizan los Excel bajo `data/BASES_BITACORA/<corte>/` (o donde apunte la variable `BASES_BITACORA`).
 
 ```bash
-export DNP_DPIP_CONN="Server=...;Database=dnp_dpip;..."   # formato ODBC, ver etl/db.py
+export DNP_DPIP_CONN="DRIVER={ODBC Driver 18 for SQL Server};SERVER=...;DATABASE=MI_BASE;..."
 
 python etl/load_bitacora_excel.py --numero 3 --periodo 2026-I --corte 2026-03-31
 python etl/importar_pgn.py                 # Sec 2
@@ -190,7 +231,7 @@ python etl/load_sgp.py && python etl/load_sgp_componentes.py   # Sec 8
 Para comprobar que una carga reprodujo lo esperado, contra otra base:
 
 ```bash
-python tools/compare_bd.py --a dnp_dpip --b dnp_dpip_pruebas --periodo 2026-I
+python tools/compare_bd.py --a BASE_REFERENCIA --b BASE_A_VERIFICAR --periodo 2026-I
 ```
 
 Uso detallado por script en [`docs/etl_uso.md`](docs/etl_uso.md).

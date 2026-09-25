@@ -9,7 +9,7 @@ public static class SgpResumen
     {
         var filas = await db.QueryAsync("""
             SELECT vigencia, total_mmm
-            FROM dbo.sgp_historico_participacion
+            FROM dbo.btcr_sgp_historico_participacion
             WHERE bitacora_id = @bid
             ORDER BY vigencia
             """, new { bid = bitacoraId });

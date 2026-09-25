@@ -1,0 +1,71 @@
+﻿BITÁCORA DE INVERSIÓN PÚBLICA — PAQUETE DE DESPLIEGUE
+DNP / DPIP · versión v3.0.0-10-g002b192
+
+Contenido de este paquete
+-------------------------
+  deploy\Deploy-Bitacora.ps1   El script que hace todo el despliegue
+  db\mssql\*.sql               Esquema, vistas y datos iniciales
+  app\                         La aplicación .NET 8 ya publicada, con el tablero
+  docs\DESPLIEGUE_IIS.md       Guía detallada, resolución de problemas y reversión
+
+Requisitos en el servidor
+-------------------------
+  · Windows Server con IIS
+  · ASP.NET Core 8 Hosting Bundle  (instala el módulo AspNetCoreModuleV2)
+      https://dotnet.microsoft.com/download/dotnet/8.0
+      -> Windows -> Hosting Bundle    (dotnet-hosting-8.x.x-win.exe)
+
+      OJO: el ".NET 8 Runtime" y el "ASP.NET Core 8 Runtime" NO sirven.
+      Son descargas distintas y no registran el modulo de IIS. Solo el
+      Hosting Bundle lo hace.
+
+      Instalarlo DESPUES de IIS, y luego:  net stop was /y & net start w3svc
+      Comprobar:
+        Test-Path 'C:\Program Files\IIS\Asp.Net Core Module\V2\aspnetcorev2.dll'
+        Get-WebGlobalModule | Where-Object Name -like 'AspNetCore*'
+  · sqlcmd, y acceso a la instancia de SQL Server
+  · PowerShell 5.1 o superior, como administrador
+
+  No hace falta el SDK de .NET, ni Python, ni el driver ODBC: la aplicación
+  viene compilada y los datos viajan como sentencias SQL.
+
+Primero, en seco
+----------------
+  Abrir PowerShell COMO ADMINISTRADOR en la carpeta de este paquete y correr:
+
+      $pw = Read-Host 'Contraseña de btcr_app' -AsSecureString
+      .\deploy\Deploy-Bitacora.ps1 -SqlServer SQLSRV01 -Database SICODIS `
+          -AppUser btcr_app -AppPassword $pw -WhatIf
+
+  Con -WhatIf no modifica nada: describe cada paso y verifica los requisitos.
+  Conviene leer esa salida antes de la corrida real.
+
+Luego, de verdad
+----------------
+  El mismo comando sin -WhatIf.
+
+  El script es idempotente: se puede volver a correr para actualizar la
+  aplicación sin tocar la base, añadiendo -OmitirBaseDatos -OmitirDatos.
+
+Resultado
+---------
+  https://sicodis.dnp.gov.co/bitacora/        el tablero
+  https://sicodis.dnp.gov.co/bitacora/api/    la API
+  https://sicodis.dnp.gov.co/bitacora/health  comprobación de vida
+
+Dos cosas que fallan en silencio
+--------------------------------
+  1. La collation de la base debe ser Modern_Spanish_CS_AS. Con una collation
+     insensible a tildes, PACÍFICO y PACIFICO se vuelven el mismo valor y los
+     totales por región se fusionan sin ningún error visible. El script lo
+     verifica y se detiene si no coincide.
+
+  2. Si la API no responde, el tablero NO muestra un error: cae a unos datos
+     de respaldo embebidos y presenta cifras congeladas. Por eso la
+     verificación final consulta /api/resumen, y no solo la página.
+
+Contacto
+--------
+  Cualquier duda sobre el contenido del paquete está resuelta en
+  docs\DESPLIEGUE_IIS.md, que incluye qué hacer ante un error 502.5, cómo
+  revertir y cómo actualizar solo la aplicación.

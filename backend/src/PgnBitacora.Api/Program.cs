@@ -68,12 +68,41 @@ builder.Services.AddCors(o => o.AddDefaultPolicy(p =>
 
 var app = builder.Build();
 
+// Hospedaje bajo subruta (p. ej. /bitacora dentro del sitio SICODIS).
+// Como aplicación anidada de IIS esto lo establece el módulo por sí solo;
+// la variable existe para poder reproducir ese escenario sin IIS —en
+// desarrollo o en el contenedor— y así probarlo antes de desplegar.
+var rutaBase = app.Configuration["Rutas:Base"];
+if (!string.IsNullOrWhiteSpace(rutaBase))
+    app.UsePathBase(rutaBase);
+
+// Sin la barra final, el navegador resuelve los recursos relativos del
+// tablero (vendor/, data/) contra la raíz del dominio y no contra la
+// aplicación. Redirigir evita esa clase de fallo, que se manifiesta como
+// una página sin estilos y un mapa en blanco.
+app.Use(async (ctx, siguiente) =>
+{
+    if (ctx.Request.Path == "/" && !ctx.Request.PathBase.Value!.EndsWith('/')
+        && !string.IsNullOrEmpty(ctx.Request.PathBase.Value)
+        && !ctx.Request.Path.Value!.EndsWith('/'))
+    {
+        ctx.Response.Redirect(ctx.Request.PathBase + "/" + ctx.Request.QueryString, permanent: true);
+        return;
+    }
+    await siguiente(ctx);
+});
+
 app.UseCors();
 
 if (app.Environment.IsDevelopment() || app.Configuration.GetValue("Swagger:Habilitado", true))
 {
     app.UseSwagger();
-    app.UseSwaggerUI(o => o.SwaggerEndpoint("/swagger/v1/swagger.json", "API Bitácora PGN v1"));
+    // Ruta RELATIVA, no "/swagger/v1/swagger.json". Con la absoluta, bajo una
+    // subruta el navegador pediría la especificación en la raíz del dominio,
+    // fuera de la aplicación. Y el index.js de Swagger UI no lo corrige: su
+    // workaround para el hospedaje anidado descarta expresamente las que
+    // empiezan por '/'. Es el mismo error que tenía el tablero con '/api'.
+    app.UseSwaggerUI(o => o.SwaggerEndpoint("v1/swagger.json", "API Bitácora PGN v1"));
 }
 
 // Una bitácora inexistente responde 404, igual que el HTTPException del original.
@@ -104,42 +133,35 @@ app.MapSgp();
 app.MapResumen();
 
 // ── Archivos estáticos ────────────────────────────────────
-// Equivale a los app.mount() de FastAPI: /data para los GeoJSON y la raíz
-// para el frontend. Las rutas /api ya están mapeadas arriba y no chocan.
+// Se sirve ÚNICAMENTE frontend/. Las capas del mapa se piden como
+// /data/*.geojson y se resuelven contra frontend/data/, que ya las
+// contiene; la carpeta data/ de la raíz del repositorio no se publica,
+// porque guarda los Excel fuente del DNP y los insumos del ETL.
 var raiz = RaizDelRepositorio(app.Environment.ContentRootPath, app.Configuration["Rutas:Raiz"]);
 var dirFrontend = Path.Combine(raiz, "frontend");
-var dirData = Path.Combine(raiz, "data");
 
-// StaticFileMiddleware solo sirve extensiones con MIME conocido y .geojson
-// no está en la tabla por defecto: sin esto, las capas del mapa Leaflet
-// responden 404 y el mapa queda en blanco sin ningún error visible.
-// StaticFiles de FastAPI servía cualquier archivo, así que se replica esa
-// permisividad para no volver a perder un recurso en silencio.
+// Lista blanca de extensiones. StaticFileMiddleware solo sirve tipos MIME
+// conocidos y .geojson no está en su tabla: sin registrarlo, las capas del
+// mapa responden 404 y Leaflet queda en blanco sin ningún error visible.
+//
+// Se registra la extensión en lugar de activar ServeUnknownFileTypes: esa
+// opción sirve CUALQUIER archivo bajo el directorio publicado, que fue como
+// los .xlsx de BASES_BITACORA quedaron descargables desde internet.
 var tiposContenido = new FileExtensionContentTypeProvider();
 tiposContenido.Mappings[".geojson"] = "application/geo+json";
 
-StaticFileOptions Opciones(string directorio, string rutaPeticion) => new()
-{
-    FileProvider = new PhysicalFileProvider(directorio),
-    RequestPath = rutaPeticion,
-    ContentTypeProvider = tiposContenido,
-    ServeUnknownFileTypes = true,
-    DefaultContentType = "application/octet-stream",
-};
-
-if (Directory.Exists(dirData))
-{
-    app.UseStaticFiles(Opciones(dirData, "/data"));
-}
-
 if (Directory.Exists(dirFrontend))
 {
-    app.UseDefaultFiles(new DefaultFilesOptions
+    var proveedor = new PhysicalFileProvider(dirFrontend);
+    app.UseDefaultFiles(new DefaultFilesOptions { FileProvider = proveedor, RequestPath = "" });
+    app.UseStaticFiles(new StaticFileOptions
     {
-        FileProvider = new PhysicalFileProvider(dirFrontend),
+        FileProvider = proveedor,
         RequestPath = "",
+        ContentTypeProvider = tiposContenido,
+        // Deliberadamente ausente ServeUnknownFileTypes: una extensión no
+        // reconocida devuelve 404 en lugar de publicarse.
     });
-    app.UseStaticFiles(Opciones(dirFrontend, ""));
 }
 else
 {

@@ -232,7 +232,7 @@ def run(xlsx_path: Path) -> None:
 
     # Limpiar datos previos de esta bitácora
     deleted = conn.execute(
-        "DELETE FROM dbo.regionalizacion WHERE bitacora_id=?", (bid,)
+        "DELETE FROM dbo.btcr_regionalizacion WHERE bitacora_id=?", (bid,)
     ).rowcount
     if deleted > 0:
         print(f"  Eliminados {deleted} registros previos")
@@ -245,7 +245,7 @@ def run(xlsx_path: Path) -> None:
         "pct_compromisos", "pct_obligaciones", "pct_pagos", "pct_participacion",
     ]
     conn.upsert(
-        "regionalizacion",
+        "btcr_regionalizacion",
         COLUMNAS,
         [tuple({**r, "bitacora_id": bid}[c] for c in COLUMNAS) for r in records],
         claves=["bitacora_id", "vigencia", "region", "departamento"],
@@ -256,7 +256,7 @@ def run(xlsx_path: Path) -> None:
     # Resumen
     counts = conn.execute("""
         SELECT vigencia, tipo, COUNT(*) AS n
-        FROM dbo.regionalizacion WHERE bitacora_id=?
+        FROM dbo.btcr_regionalizacion WHERE bitacora_id=?
         GROUP BY vigencia, tipo ORDER BY vigencia, tipo
     """, (bid,)).fetchall()
     print("\nResumen cargado:")
@@ -264,9 +264,9 @@ def run(xlsx_path: Path) -> None:
         print(f"  {vigencia} - {tipo:<20} : {n} registros")
 
     total = conn.execute(
-        "SELECT COUNT(*) FROM dbo.regionalizacion WHERE bitacora_id=?", (bid,)
+        "SELECT COUNT(*) FROM dbo.btcr_regionalizacion WHERE bitacora_id=?", (bid,)
     ).fetchone()[0]
-    print(f"\nTotal: {total} registros en tabla 'regionalizacion'")
+    print(f"\nTotal: {total} registros en tabla 'btcr_regionalizacion'")
     conn.close()
 
 

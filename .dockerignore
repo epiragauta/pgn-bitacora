@@ -1,0 +1,23 @@
+# Contexto de build: solo debe entrar lo que la imagen necesita servir.
+#
+# BASES_BITACORA son los Excel de trabajo del DNP (~90 MB). Son INSUMO del
+# ETL, que corre fuera del contenedor; la API no los usa. Se excluyen aquí
+# además de en .gitignore porque COPY lee del disco, no del índice de git:
+# estar ignorados por git no impidió que se copiaran a la imagen.
+data/
+
+# Compilados y entornos locales
+backend/**/bin/
+backend/**/obj/
+.venv/
+.venv-baseline/
+__pycache__/
+*.pyc
+
+# Nada de esto sirve dentro de la imagen
+.git/
+.env
+db/legacy/
+docs/
+tools/baseline/
+etl/

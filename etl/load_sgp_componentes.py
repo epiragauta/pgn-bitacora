@@ -71,7 +71,7 @@ print(f"bitacora_id={bid}", file=sys.stderr)
 # El esquema lo gobierna db/mssql/; aquí solo se reemplazan los datos de
 # esta bitácora.
 conn.upsert(
-    "sgp_historico_componentes",
+    "btcr_sgp_historico_componentes",
     ["bitacora_id", "vigencia", "orden", "participacion", "componente", "es_total", "valor_mmm"],
     [(bid, *r) for r in registros],
     claves=["bitacora_id", "vigencia", "orden"],
@@ -79,9 +79,9 @@ conn.upsert(
 
 conn.commit()
 
-n = conn.execute("SELECT COUNT(*) FROM sgp_historico_componentes WHERE bitacora_id=?", (bid,)).fetchone()[0]
+n = conn.execute("SELECT COUNT(*) FROM btcr_sgp_historico_componentes WHERE bitacora_id=?", (bid,)).fetchone()[0]
 tot2026 = conn.execute("""
-    SELECT ROUND(SUM(valor_mmm),3) FROM sgp_historico_componentes
+    SELECT ROUND(SUM(valor_mmm),3) FROM btcr_sgp_historico_componentes
     WHERE bitacora_id=? AND vigencia=2026 AND es_total=1
 """, (bid,)).fetchone()[0]
 

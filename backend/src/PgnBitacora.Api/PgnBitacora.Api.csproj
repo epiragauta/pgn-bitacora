@@ -12,4 +12,29 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
   </ItemGroup>
 
+  <!--
+    El tablero viaja con la aplicación.
+
+    Program.cs localiza el frontend subiendo directorios hasta encontrar
+    frontend/index.html. Eso funciona al ejecutar desde el repositorio,
+    pero en un despliegue publicado (IIS, o cualquier carpeta suelta) no
+    hay nada arriba que encontrar: sin esto, `dotnet publish` produce la
+    API sin tablero y el sitio responde 404 en la raíz.
+
+    Se copia frontend/ completo, incluido frontend/data/ con los GeoJSON
+    del mapa. NO se copia data/ de la raíz del repositorio: contiene los
+    Excel fuente del DNP y los insumos del ETL, que no deben publicarse.
+  -->
+  <ItemGroup>
+    <ContenidoFrontend Include="$(MSBuildProjectDirectory)/../../../frontend/**/*" />
+  </ItemGroup>
+
+  <Target Name="CopiarFrontend" AfterTargets="Publish">
+    <Copy SourceFiles="@(ContenidoFrontend)"
+          DestinationFiles="@(ContenidoFrontend->'$(PublishDir)frontend/%(RecursiveDir)%(Filename)%(Extension)')"
+          SkipUnchangedFiles="true" />
+    <Message Importance="high"
+             Text="  Frontend copiado a $(PublishDir)frontend/ (@(ContenidoFrontend->Count()) archivos)" />
+  </Target>
+
 </Project>

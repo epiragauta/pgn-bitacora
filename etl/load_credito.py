@@ -2,9 +2,9 @@
 ETL Crédito Externo (SCCI) — robusto a los formatos de Marzo y Junio 2026.
 
 Carga tres tablas (SQL Server, vía db.py):
-  credito_portafolio          ← hoja "Portafolio"
-  credito_ejecucion_entidad   ← ejecución por entidad (COP → mmm)
-  credito_ejecucion_historica ← comparativo anual (COP → mmm)
+  btcr_credito_portafolio          ← hoja "Portafolio"
+  btcr_credito_ejecucion_entidad   ← ejecución por entidad (COP → mmm)
+  btcr_credito_ejecucion_historica ← comparativo anual (COP → mmm)
 
 Formatos soportados (autodetectados):
   A) Marzo (`Datos informe II 2026.xlsx`): Portafolio (8 col posicionales),
@@ -182,37 +182,37 @@ bid = dbmod.bitacora_reciente(conn)
 print(f"bitacora_id={bid}", file=sys.stderr)
 
 conn.vaciar_bitacora(
-    ("credito_portafolio", "credito_ejecucion_entidad", "credito_ejecucion_historica"), bid)
+    ("btcr_credito_portafolio", "btcr_credito_ejecucion_entidad", "btcr_credito_ejecucion_historica"), bid)
 
 conn.executemany("""
-    INSERT INTO dbo.credito_portafolio
+    INSERT INTO dbo.btcr_credito_portafolio
         (bitacora_id, nombre, nombre_corto, fuente, contrato, sector, monto_usd, desembolsado_usd)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
 """, [(bid, *r) for r in port_rows])
 
 conn.upsert(
-    "credito_ejecucion_entidad",
+    "btcr_credito_ejecucion_entidad",
     ["bitacora_id", "entidad", "sector", "apr_inicial_mmm", "apr_vigente_mmm",
      "compromiso_mmm", "obligacion_mmm", "pago_mmm", "pct_com", "pct_ejec", "pct_pago"],
     [(bid, *r) for r in ent_rows], claves=["bitacora_id", "entidad"])
 
 conn.upsert(
-    "credito_ejecucion_historica",
+    "btcr_credito_ejecucion_historica",
     ["bitacora_id", "anio", "pct_comprometido", "pct_ejecutado", "pct_pagado",
      "vigente_mmm", "comprometido_mmm", "ejecutado_mmm", "pagado_mmm"],
     [(bid, *r) for r in hist_rows], claves=["bitacora_id", "anio"])
 
 conn.commit()
 
-n1 = conn.execute("SELECT COUNT(*) FROM credito_portafolio WHERE bitacora_id=?", (bid,)).fetchone()[0]
-n2 = conn.execute("SELECT COUNT(*) FROM credito_ejecucion_entidad WHERE bitacora_id=?", (bid,)).fetchone()[0]
-n3 = conn.execute("SELECT COUNT(*) FROM credito_ejecucion_historica WHERE bitacora_id=?", (bid,)).fetchone()[0]
+n1 = conn.execute("SELECT COUNT(*) FROM btcr_credito_portafolio WHERE bitacora_id=?", (bid,)).fetchone()[0]
+n2 = conn.execute("SELECT COUNT(*) FROM btcr_credito_ejecucion_entidad WHERE bitacora_id=?", (bid,)).fetchone()[0]
+n3 = conn.execute("SELECT COUNT(*) FROM btcr_credito_ejecucion_historica WHERE bitacora_id=?", (bid,)).fetchone()[0]
 tot = conn.execute("""
     SELECT COUNT(*), ROUND(SUM(monto_usd),2), ROUND(SUM(desembolsado_usd),2)
-    FROM credito_portafolio WHERE bitacora_id=?""", (bid,)).fetchone()
+    FROM btcr_credito_portafolio WHERE bitacora_id=?""", (bid,)).fetchone()
 conn.close()
 
-print(f"\n[OK] credito_portafolio:          {n1} filas cargadas")
-print(f"[OK] credito_ejecucion_entidad:   {n2} filas cargadas")
-print(f"[OK] credito_ejecucion_historica: {n3} filas cargadas")
+print(f"\n[OK] btcr_credito_portafolio:          {n1} filas cargadas")
+print(f"[OK] btcr_credito_ejecucion_entidad:   {n2} filas cargadas")
+print(f"[OK] btcr_credito_ejecucion_historica: {n3} filas cargadas")
 print(f"  Operaciones: {tot[0]} · Total USD: {tot[1]:,.2f} · Desembolsado: {tot[2]:,.2f}")
