@@ -192,7 +192,16 @@ def parse_sheet(ws) -> list[dict]:
 def run(xlsx_path: Path, db_path: Path) -> None:
     print(f"Leyendo: {xlsx_path}")
     wb = openpyxl.load_workbook(xlsx_path, data_only=True)
-    ws = wb["Regionalizacion Mar-2022-2026"]
+    # El nombre de la hoja lleva el mes embebido y cambia cada corte
+    # ("Regionalizacion Mar-2022-2026", "Regionalizacion Ju-2022-2026", …),
+    # así que se busca por prefijo en vez de asumir un nombre fijo.
+    hoja = next((s for s in wb.sheetnames
+                 if s.strip().lower().startswith("regionalizacion")), None)
+    if hoja is None:
+        raise SystemExit(f"No se encontró una hoja 'Regionalizacion *' en {xlsx_path}. "
+                         f"Hojas: {wb.sheetnames}")
+    print(f"Hoja de regionalización: {hoja}")
+    ws = wb[hoja]
 
     records = parse_sheet(ws)
     print(f"Registros extraídos: {len(records)}")

@@ -853,7 +853,7 @@ footer strong{color:#fff}
     <span class="tb-icon">↴</span>
     <div>
       <div class="tb-eyebrow">Más allá del PGN</div>
-      <p>Las dos secciones siguientes reportan Crédito Externo y el Sistema General de Participaciones (SGP): fuentes de financiación y transferencias que se hacen seguimiento junto con el PGN, pero que se administran y ejecutan por fuera de él.</p>
+      <p id="introMasAllaPgn">Las dos secciones siguientes reportan Crédito Externo y el Sistema General de Participaciones (SGP): fuentes de financiación y transferencias que se hacen seguimiento junto con el PGN, pero que se administran y ejecutan por fuera de él.</p>
     </div>
   </div>
 </div>
@@ -1128,7 +1128,7 @@ function countUp(el,v,dec=1,dur=900){
   requestAnimationFrame(step);
 }
 
-function updateHero(res){
+function updateHero(res, sgpVisible=true){
   const setBill=(card,v)=>{
     const kv=card.querySelector('.kv');
     if(v==null){kv.innerHTML='— <small>Bill. COP</small>';return;}
@@ -1139,7 +1139,11 @@ function updateHero(res){
   const hn=document.getElementById('hrNum');
   if(res.inversion_vigente_mmm)countUp(hn,res.inversion_vigente_mmm/1000);else hn.textContent='—';
   document.getElementById('hrSub').innerHTML=`Inversión pública vigencia ${res.vigencia}<br>Presupuesto General de la Nación`;
-  document.getElementById('heroPara').textContent=`Evolución del presupuesto de inversión financiado a través del Presupuesto General de la Nación. Corte al ${fmtFecha(res.corte_fecha)}. Vigencias 2022–${res.vigencia}. Incluye además el seguimiento a Crédito Externo y al Sistema General de Participaciones (SGP), que se administran por fuera del PGN.`;
+  const heroBase=`Evolución del presupuesto de inversión financiado a través del Presupuesto General de la Nación. Corte al ${fmtFecha(res.corte_fecha)}. Vigencias 2022–${res.vigencia}.`;
+  const heroExtra=sgpVisible
+    ? ' Incluye además el seguimiento a Crédito Externo y al Sistema General de Participaciones (SGP), que se administran por fuera del PGN.'
+    : ' Incluye además el seguimiento al Crédito Externo, que se administra por fuera del PGN.';
+  document.getElementById('heroPara').textContent=heroBase+heroExtra;
   const qv=document.getElementById('kpiVig');
   qv.querySelector('.kl').textContent=`Apropiación vigente ${res.vigencia}`;
   setBill(qv,res.inversion_vigente_mmm);
@@ -3028,8 +3032,13 @@ async function init(bid){
   const sgpRaw         = await af(`/sgp/historico${q}`, null);
   const sgpCompRaw     = await af(`/sgp/historico_componentes${q}`, null);
 
+  // Visibilidad de SGP: se oculta si la API respondió sin filas (corte sin datos de SGP).
+  // (sgpRaw === null → sin API / standalone → se conserva la demo embebida.)
+  const sgpVisible = !(Array.isArray(sgpRaw) && sgpRaw.length === 0);
+  updateIntroCopy(sgpVisible);
+
   if(resRaw){
-    updateHero(resRaw);
+    updateHero(resRaw, sgpVisible);
     const v=resRaw.vigencia;
     const navP=document.getElementById('navPeriodo');
     if(navP)navP.textContent=`Bitácora de Inversión Pública`;
@@ -3139,16 +3148,22 @@ async function init(bid){
   rCredHist(credH);
 
   // Sección 8 — Sistema General de Participaciones (SGP)
-  const sgp = hasRows(sgpRaw) ? sgpRaw.map(x=>({
-    y:x.vigencia, educ:x.educacion_mmm, salud:x.salud_mmm, agua:x.agua_potable_mmm,
-    prop:x.proposito_general_mmm, alim:x.alimentacion_escolar_mmm, riber:x.riberenos_mmm,
-    resg:x.resguardos_indigenas_mmm, fonpet:x.fonpet_ae_mmm, total:x.total_mmm,
-  })) : D.sgpHist;
-  rSGP(sgp);
+  // Si la API respondió pero sin filas de SGP para el corte (p. ej. junio 2026),
+  // se oculta toda la sección y su enlace de navegación. En modo standalone
+  // (sin API → sgpRaw === null) se conserva el fallback embebido para la demo.
+  setSectionShown('sec8', sgpVisible);
+  if(sgpVisible){
+    const sgp = hasRows(sgpRaw) ? sgpRaw.map(x=>({
+      y:x.vigencia, educ:x.educacion_mmm, salud:x.salud_mmm, agua:x.agua_potable_mmm,
+      prop:x.proposito_general_mmm, alim:x.alimentacion_escolar_mmm, riber:x.riberenos_mmm,
+      resg:x.resguardos_indigenas_mmm, fonpet:x.fonpet_ae_mmm, total:x.total_mmm,
+    })) : D.sgpHist;
+    rSGP(sgp);
 
-  _s8.comp = hasRows(sgpCompRaw)
-    ? _groupSgpComponentes(sgpCompRaw)
-    : D.sgpComponentesSrc.map(([orden,participacion,componente,esTotal,v])=>({orden,participacion,componente,esTotal:!!esTotal,v}));
+    _s8.comp = hasRows(sgpCompRaw)
+      ? _groupSgpComponentes(sgpCompRaw)
+      : D.sgpComponentesSrc.map(([orden,participacion,componente,esTotal,v])=>({orden,participacion,componente,esTotal:!!esTotal,v}));
+  }
 }
 
 /* ── Glosario presupuestal ── */
@@ -3592,7 +3607,17 @@ async function showDepartamentos(region) {
     '<p style="color:var(--gs);text-align:center;padding:20px">Sin datos de departamentos.</p>';
 
   // ── Estructura con tabs ──
-  modalText.innerHTML = `
+  // Si no hay detalle sector×región para el corte (p. ej. junio 2026), se oculta
+  // la pestaña "Sectores" y el modal abre directo en "Departamentos". Es data-driven:
+  // cuando lleguen los datos de sectores, la pestaña reaparece automáticamente.
+  const hasSect = sectores.length > 0;
+  const noSectNote = `
+    <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:14px;padding:10px 12px;background:rgba(0,0,0,.03);border-left:3px solid var(--gc);border-radius:6px;font-size:12px;color:var(--gs)">
+      <span style="font-weight:900;color:var(--t);flex-shrink:0">&#9432;</span>
+      <span>El detalle por sector no está disponible para este corte.</span>
+    </div>`;
+
+  modalText.innerHTML = hasSect ? `
     <div style="display:flex;gap:8px;margin-bottom:16px;border-bottom:1px solid var(--gc);padding-bottom:8px">
       <button id="tabSect" onclick="switchRegTab('sect')"
         style="background:var(--t);color:#fff;border:none;border-radius:6px;padding:5px 14px;font-size:12px;font-weight:700;cursor:pointer">
@@ -3604,16 +3629,17 @@ async function showDepartamentos(region) {
       </button>
     </div>
     <div id="panelSect">
-      ${sectores.length ? `
-        <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
-          <div style="position:relative;width:260px;height:260px;flex-shrink:0">
-            <canvas id="pieSect"></canvas>
-          </div>
-          <div id="pieLegend" style="flex:1;min-width:180px"></div>
-        </div>` :
-        '<p style="color:var(--gs);text-align:center;padding:20px">Sin datos de sectores para esta región.</p>'}
+      <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+        <div style="position:relative;width:260px;height:260px;flex-shrink:0">
+          <canvas id="pieSect"></canvas>
+        </div>
+        <div id="pieLegend" style="flex:1;min-width:180px"></div>
+      </div>
     </div>
-    <div id="panelDept" style="display:none">${tablaHTML}</div>`;
+    <div id="panelDept" style="display:none">${tablaHTML}</div>`
+  : `
+    ${noSectNote}
+    <div id="panelDept">${tablaHTML}</div>`;
 
   // ── Torta de sectores ──
   if(sectores.length){
@@ -3712,6 +3738,25 @@ function switchRegTab(tab){
   document.getElementById('tabDept').style.cssText =
     tab==='dept' ? 'background:var(--t);color:#fff;border:none;border-radius:6px;padding:5px 14px;font-size:12px;font-weight:700;cursor:pointer'
                  : 'background:transparent;color:var(--gs);border:1px solid var(--gc);border-radius:6px;padding:5px 14px;font-size:12px;font-weight:700;cursor:pointer';
+}
+
+/* Muestra u oculta una sección completa y su enlace de navegación.
+   Se usa para ocultar secciones sin datos en el corte (p. ej. SGP en junio 2026). */
+function setSectionShown(secId, shown){
+  const sec = document.getElementById(secId);
+  if(sec) sec.style.display = shown ? '' : 'none';
+  document.querySelectorAll(`a[href="#${secId}"]`).forEach(a=>{
+    a.style.display = shown ? '' : 'none';
+  });
+}
+
+/* Ajusta el texto de la banda "Más allá del PGN" según SGP esté visible o no. */
+function updateIntroCopy(sgpVisible){
+  const p = document.getElementById('introMasAllaPgn');
+  if(!p) return;
+  p.textContent = sgpVisible
+    ? 'Las dos secciones siguientes reportan Crédito Externo y el Sistema General de Participaciones (SGP): fuentes de financiación y transferencias que se hacen seguimiento junto con el PGN, pero que se administran y ejecutan por fuera de él.'
+    : 'La siguiente sección reporta el Crédito Externo: una fuente de financiación a la que se hace seguimiento junto con el PGN, pero que se administra y ejecuta por fuera de él.';
 }
 
 /* ── Modal Info System ── */
