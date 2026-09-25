@@ -7,19 +7,11 @@ using PgnBitacora.Api.Security;
 
 // Utilidad de línea de comandos para generar el valor cifrado sin arrancar
 // el servidor:  dotnet run -- --cifrar "Server=...;Password=..."
-// El passphrase se toma de SecureConfig__Passphrase (env) o del 2º argumento.
+// Usa la contraseña maestra de AesEncryptionHelper (esquema SICODIS), la
+// misma con la que se descifra al arrancar.
 if (args.Length >= 2 && args[0] == "--cifrar")
 {
-    var frase = args.Length >= 3
-        ? args[2]
-        : Environment.GetEnvironmentVariable("SecureConfig__Passphrase");
-    if (string.IsNullOrWhiteSpace(frase))
-    {
-        Console.Error.WriteLine(
-            "Falta el passphrase: pásalo como 3.er argumento o define SecureConfig__Passphrase.");
-        return 1;
-    }
-    Console.WriteLine(AesEncryptionHelper.Encrypt(args[1], frase));
+    Console.WriteLine(AesEncryptionHelper.Encrypt(args[1]));
     return 0;
 }
 
@@ -33,16 +25,12 @@ var builder = WebApplication.CreateBuilder(args);
 // GetConnectionString("DnpDpip") sin enterarse de nada.
 if (string.IsNullOrWhiteSpace(builder.Configuration.GetConnectionString("DnpDpip")))
 {
-    var secure = builder.Configuration.GetSection("SecureConfig").Get<SecureConfig>();
-    if (!string.IsNullOrWhiteSpace(secure?.EncryptedConnection))
+    var secureConfig = new SecureConfig();
+    builder.Configuration.GetSection("SecureConfig").Bind(secureConfig);
+    if (!string.IsNullOrWhiteSpace(secureConfig.EncryptedConnection))
     {
-        if (string.IsNullOrWhiteSpace(secure.Passphrase))
-            throw new InvalidOperationException(
-                "Hay 'SecureConfig:EncryptedConnection' pero falta el passphrase. " +
-                "Definir 'SecureConfig__Passphrase' como variable de entorno.");
-
-        var cadena = AesEncryptionHelper.Decrypt(secure.EncryptedConnection, secure.Passphrase);
-        builder.Configuration["ConnectionStrings:DnpDpip"] = cadena;
+        string decryptedConnection = AesEncryptionHelper.Decrypt(secureConfig.EncryptedConnection);
+        builder.Configuration["ConnectionStrings:DnpDpip"] = decryptedConnection;
     }
 }
 
