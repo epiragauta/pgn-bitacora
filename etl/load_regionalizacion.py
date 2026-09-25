@@ -27,7 +27,29 @@ except ImportError:
     raise SystemExit("Instala openpyxl: pip install openpyxl")
 
 # ── Rutas por defecto ──────────────────────────────────────────
-DEFAULT_XLSX = bases.excel(3, "Consolidado Reg-Ejec-*Graficas*.xlsx")
+def _resolver_xlsx() -> Path:
+    """Elige el libro de regionalización de la sección 3.
+
+    En marzo hay varios (Consolidado, ...vf, ...Graficasvf); se prefiere el de
+    gráficas porque trae la corrección de 2022/2026. En junio hay uno solo
+    (`Consolidado Reg-Ejec-Junio-2022-2026-.xlsx`). En ambos casos se exige que
+    tenga una hoja 'Regionalizacion <mes>-2022-2026'.
+    """
+    carpeta = bases.carpeta_seccion(3)
+    xlsx = sorted(carpeta.glob("Consolidado Reg-Ejec-*.xlsx"))
+    graf = [f for f in xlsx if "grafica" in f.name.lower()]
+    for f in graf + [x for x in xlsx if x not in graf]:
+        wb = openpyxl.load_workbook(f, data_only=True, read_only=True)
+        tiene = any(s.strip().lower().startswith("regionalizacion") for s in wb.sheetnames)
+        wb.close()
+        if tiene:
+            return f
+    raise SystemExit(
+        "No se encontró en la sección 3 un libro con hoja 'Regionalizacion *'. "
+        f"Archivos: {[x.name for x in xlsx]}"
+    )
+
+DEFAULT_XLSX = _resolver_xlsx()
 
 # ── Mapeo nombre Excel → código DANE ──────────────────────────
 DANE_MAP: dict[str, str] = {
@@ -193,7 +215,12 @@ def parse_sheet(ws) -> list[dict]:
 def run(xlsx_path: Path) -> None:
     print(f"Leyendo: {xlsx_path}")
     wb = openpyxl.load_workbook(xlsx_path, data_only=True)
-    ws = wb["Regionalizacion Mar-2022-2026"]
+    # El nombre de hoja lleva el mes embebido (Mar/Ju), así que se busca por prefijo.
+    hoja = next((s for s in wb.sheetnames if s.strip().lower().startswith("regionalizacion")), None)
+    if hoja is None:
+        raise SystemExit(f"No hay hoja 'Regionalizacion *' en {xlsx_path.name}. Hojas: {wb.sheetnames}")
+    print(f"Hoja: {hoja}")
+    ws = wb[hoja]
 
     records = parse_sheet(ws)
     print(f"Registros extraídos: {len(records)}")
