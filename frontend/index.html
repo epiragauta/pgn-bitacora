@@ -43,6 +43,16 @@ nav{position:sticky;top:0;z-index:100;background:var(--bl);box-shadow:0 1px 0 va
 .bit-btn{padding:4px 14px;border-radius:20px;border:1.5px solid #ddd;background:#fff;cursor:pointer;font-family:'Nunito Sans',sans-serif;font-size:12px;font-weight:700;color:#5e5e5e;transition:all .15s;line-height:1.4}
 .bit-btn.active{background:#00c3c1;border-color:#00c3c1;color:#fff}
 .bit-btn:hover:not(.active){border-color:#00c3c1;color:#00c3c1}
+/* Selector de bitácora como lista desplegable */
+.bit-select{padding:5px 32px 5px 12px;border-radius:8px;border:1.5px solid #ddd;background-color:#fff;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='none' stroke='%235e5e5e' stroke-width='1.6' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;cursor:pointer;font-family:'Nunito Sans',sans-serif;font-size:12px;font-weight:700;color:#3f3f3f;appearance:none;-webkit-appearance:none;-moz-appearance:none;transition:border-color .15s,box-shadow .15s}
+.bit-select:hover{border-color:#00c3c1}
+.bit-select:focus{outline:none;border-color:#00c3c1;box-shadow:0 0 0 3px rgba(0,195,193,.18)}
+.bit-select:disabled{opacity:.55;cursor:progress}
+/* Indicador de progreso al cambiar de bitácora */
+.bit-loading{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:#00c3c1}
+.bit-loading[hidden]{display:none}
+.bit-spinner{width:13px;height:13px;border:2px solid rgba(0,195,193,.28);border-top-color:#00c3c1;border-radius:50%;animation:bitspin .7s linear infinite;flex-shrink:0}
+@keyframes bitspin{to{transform:rotate(360deg)}}
 .nav-inner{display:flex;align-items:center;gap:17px;max-width:1200px;margin:0 auto;padding:0 32px;height:54px}
 .nav-logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:14px;color:var(--gt);text-decoration:none;margin-right:auto}
 .logo-badge{background:var(--t);color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:4px;letter-spacing:.06em}
@@ -618,6 +628,7 @@ footer strong{color:#fff}
 <div id="bitSelector" class="bit-sel">
   <span class="bit-lbl">Bitácora:</span>
   <div id="bitBtns"></div>
+  <span id="bitLoading" class="bit-loading" hidden><span class="bit-spinner"></span>Consultando datos…</span>
 </div>
 
 <!-- HERO -->
@@ -1166,14 +1177,30 @@ function updateHero(res, sgpVisible=true){
 function buildSelector(bitas){
   const c=document.getElementById('bitBtns');
   if(!c)return;
-  c.innerHTML=bitas.map(b=>`<button class="bit-btn${activeBit&&activeBit.id===b.id?' active':''}" onclick="selectBit(${b.id})">${b.periodo} <small style="font-weight:400;opacity:.75">· ${fmtFecha(b.corte_fecha)}</small></button>`).join('');
+  c.innerHTML=`<select id="bitSelect" class="bit-select" aria-label="Seleccionar bitácora" onchange="selectBit(+this.value)">`
+    +bitas.map(b=>`<option value="${b.id}"${activeBit&&activeBit.id===b.id?' selected':''}>${b.periodo} · ${fmtFecha(b.corte_fecha)}</option>`).join('')
+    +`</select>`;
+}
+
+function setBitLoading(on){
+  const ld=document.getElementById('bitLoading');
+  const sel=document.getElementById('bitSelect');
+  if(ld)ld.hidden=!on;
+  if(sel)sel.disabled=on;
+  document.body.style.cursor=on?'progress':'';
 }
 
 async function selectBit(bid){
-  const bitas=await af('/bitacoras',[]);
-  activeBit=bitas.find(b=>b.id===bid)||null;
-  buildSelector(bitas);
-  await init(bid);
+  setBitLoading(true);
+  try{
+    const bitas=await af('/bitacoras',[]);
+    activeBit=bitas.find(b=>b.id===bid)||null;
+    buildSelector(bitas);
+    setBitLoading(true);          // el <select> se recreó; volver a marcar cargando
+    await init(bid);
+  }finally{
+    setBitLoading(false);
+  }
 }
 
 /* Paleta DNP exacta */
